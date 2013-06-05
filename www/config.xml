@@ -5,10 +5,10 @@
     versionCode = "1"
 	version 	= "1.0.0">
 
-	<name>Patrocinalos</name>
+	<name>Beta Patrocinalos</name>
 
 	<description>
-		Aplicacion mobile para patrocinalos.com
+		Aplicacion mobile beta para patrocinalos.com
 	</description>
 
 	<author href="http://www.patrocinalos.com"
