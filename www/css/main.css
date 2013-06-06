@@ -1,0 +1,161 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+ /*FONTS*/
+@font-face {
+    font-family: 'CaptureitRegular';
+    src: url('fonts/capture_it-webfont.eot');
+    src: url('fonts/capture_it-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/capture_it-webfont.woff') format('woff'),
+         url('fonts/capture_it-webfont.ttf') format('truetype'),
+         url('fonts/capture_it-webfont.svg#CaptureitRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+/* GENERAL */
+.ui-btn-corner-all{
+    border-radius: 5px 5px 5px 5px;
+}
+.ui-btn-text{
+    font-size: 17px;
+    letter-spacing: -2px;
+}
+.ui-btn.ui-btn-up-r,
+.ui-btn.ui-btn-hover-r{
+    margin-bottom: 20px;
+}
+.btn-access{
+    padding-top: 15px;
+    border-top: 1px solid #aaaaaa;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* INDEX */
+#view .ui-content{
+    background: #FFFFFF;
+    margin: 60px 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    padding: 0;
+}
+#view h1{
+    font-family:'CaptureitRegular';
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    color: #a22626;
+    letter-spacing: -1.2px;
+    margin: 0.2em 8% 0.5em;
+    height: auto;
+    overflow: hidden;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#view h1 img{
+    width: 100%;
+}
+
+#view .usuarios-patrocinalos{
+    padding-top: 235px;
+    background: url("../img/bg-index.png") no-repeat scroll center top transparent;
+}
+#view .content_usuarios{
+    padding: 5px 10px 0px 10px;
+    background: url("../img/bg-usuarios-index.png") repeat scroll 0 0 transparent;
+    overflow: hidden;
+}
+#view .content_usuarios p{
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0px;
+    padding-bottom: 2px;
+}
+#view .content_usuarios .list > li{
+    float: left;
+    margin: 1px;
+    border: 1px solid #fff;
+    margin-right: 2px;
+    margin-bottom: 4px;
+    margin-left: 2px;
+    height: 49px;
+    width: 49px;
+    border-radius: 4px;
+}
+@media only screen and  (max-width: 479px) {
+    #view h1{
+        font-size: 26px;
+        margin: 0.2em 4% 0.5em;
+    }
+    #view .content_usuarios p{
+        font-size: 12px;
+        letter-spacing: -1.2px;
+    }    
+}
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+    #view .content_usuarios .list li > img{
+        height: 75px;
+        width: 75px;        
+    }
+    #view .content_usuarios .list > li{
+        margin-right: 5px;
+        margin-bottom: 4px;
+        margin-left: 5px;
+        height: 75px;
+        width: 75px;
+    }
+}
