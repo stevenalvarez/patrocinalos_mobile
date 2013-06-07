@@ -921,6 +921,8 @@ div.ui-input-text input.ui-input-text.ui-body-cu{
     width: 95%;
     background: url("images/arrow-login.png") no-repeat scroll left center transparent;
     background-size: 4px;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
 }
 
 /* Structure */
