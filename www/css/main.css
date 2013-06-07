@@ -65,7 +65,8 @@
 }
 
 /* GENERAL */
-.ui-btn-corner-all{
+.ui-btn-corner-all,
+.ui-corner-all{
     border-radius: 5px 5px 5px 5px;
 }
 .ui-btn-text{
@@ -83,15 +84,47 @@
     margin-right: 10px;
 }
 
-/* INDEX */
-#view .ui-content{
+.ui-radio label{
+    background: none;
+    border: none;
+}
+.ui-radio input{
+    display: none;
+}
+.ui-radio-on .ui-icon{
+    background-color: #70a126 /*{global-active-background-color}*/;
+}
+.ui-radio .ui-btn-icon-left .ui-icon {
+    left: 8px;
+}
+.ui-radio .ui-btn-icon-left .ui-btn-inner{
+    padding: 0px 0px 0px 35px ;
+}
+.ui-radio-off .ui-btn-inner .ui-btn-text,
+.ui-radio-on .ui-btn-inner .ui-btn-text{
+    font-weight: normal;
+    color: #000;
+    letter-spacing: -1px;
+    font-size: 14px;
+    text-shadow: 0 0px 0 #000;    
+}
+
+/* PAGES */
+
+/* INDEX/LOGIN*/
+#view .ui-content,
+#login_user .ui-content{
     background: #FFFFFF;
-    margin: 60px 10px;
+    margin: 40px 10px;
     border-radius: 5px;
     border: 1px solid #000;
     padding: 0;
 }
-#view h1{
+#login_user .ui-content{
+    margin-bottom: 14px;
+}
+#view h1, 
+#login_user h1{
     font-family:'CaptureitRegular';
     font-size: 35px;
     font-weight: bold;
@@ -105,8 +138,8 @@
     padding-left: 10px;
     padding-right: 10px;
 }
-
-#view h1 img{
+#view h1 img,
+#login_user h1 img{
     width: 100%;
 }
 
@@ -136,8 +169,43 @@
     width: 49px;
     border-radius: 4px;
 }
+
+/*LOGIN */
+
+#login_user .recuperar_contrasena{
+    margin: 0 45px;
+    margin-bottom: 15px;
+}
+
+#login_user .access_login div.ui-body-cu.ui-input-text:first-child{
+    background: url("../img/bg-login.png") no-repeat scroll left center transparent;
+    background-size: 20px;
+    background-position: 6px;
+    margin-bottom: 16px;
+}
+#login_user .access_login div.ui-body-cu.ui-input-text:last-child{
+    background: url("../img/bg-password.png") no-repeat scroll left center transparent;
+    background-size: 20px;
+    background-position: 6px;
+}
+#login_user .ui-controlgroup{
+    margin-bottom: 25px;
+}
+#login_user p.text{
+    font-size: 12px;
+    margin-bottom: 18px;
+    margin-top: 5px;    
+}
+#login_user p.text span{
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* RESPONSIVO */
+
 @media only screen and  (max-width: 479px) {
-    #view h1{
+    #view h1,
+    #login_user h1{
         font-size: 26px;
         margin: 0.2em 4% 0.5em;
     }

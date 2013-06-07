@@ -731,7 +731,7 @@
 .ui-overlay-p {
 	border: 1px solid 		#aaa /*{t-body-border}*/;
 	color: 					#392a21 /*{t-body-color}*/;
-	background: 			#671717 /*{t-body-background-color}*/;
+	background: 			#fff /*{t-body-background-color}*/;
 	background-image: -webkit-gradient(linear, left top, left bottom, from( #671717 /*{t-body-background-start}*/), to( #651717 /*{t-body-background-end}*/)); /* Saf4+, Chrome */
 	background-image: -webkit-linear-gradient( #671717 /*{t-body-background-start}*/, #651717 /*{t-body-background-end}*/); /* Chrome 10+, Saf5.1+ */
 	background-image:    -moz-linear-gradient( #671717 /*{t-body-background-start}*/, #651717 /*{t-body-background-end}*/); /* FF3.6 */
@@ -885,6 +885,44 @@
 	font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
 	text-decoration: none;
 }
+
+/* cu */
+
+.ui-body-cu,
+.ui-overlay-cu {
+	border: 1px solid 		#aaa /*{t-body-border}*/;
+	color: 					#392a21 /*{t-body-color}*/;
+	background: 			#fff /*{t-body-background-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #671717 /*{t-body-background-start}*/), to( #651717 /*{t-body-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #671717 /*{t-body-background-start}*/, #651717 /*{t-body-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #671717 /*{t-body-background-start}*/, #651717 /*{t-body-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #671717 /*{t-body-background-start}*/, #651717 /*{t-body-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #671717 /*{t-body-background-start}*/, #651717 /*{t-body-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #671717 /*{t-body-background-start}*/, #651717 /*{t-body-background-end}*/);
+}
+.ui-overlay-cu {
+	background-image: none;
+	border-width: 0;
+}
+.ui-body-cu,
+.ui-body-cu input,
+.ui-body-cu select,
+.ui-body-cu textarea,
+.ui-body-cu button {
+	font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
+}
+
+.ui-body-cu.ui-input-text{
+    padding-left: 33px;
+}
+div.ui-input-text input.ui-input-text.ui-body-cu{
+    border-left: 1px solid #aaa;
+    padding-left: 10px;
+    width: 95%;
+    background: url("images/arrow-login.png") no-repeat scroll left center transparent;
+    background-size: 4px;
+}
+
 /* Structure */
 /* links within "buttons" 
 -----------------------------------------------------------------------------------------------------------*/

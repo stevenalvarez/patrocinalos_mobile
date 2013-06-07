@@ -53,14 +53,14 @@
         
         <div data-role="page" id="view" data-theme="p">
         
-        	<div data-role="content" id="content">
+        	<div data-role="content">
                 
                 <h1>
                     <img src="img/logo.png"/>
                 </h1>
                 
                 <div class="btn-access">
-                    <a href="#" data-role="button" data-theme="r">INICIAR SESS&Iacute;ON</a>
+                    <a href="#login_user" data-role="button" data-theme="r">INICIAR SESS&Iacute;ON</a>
                     <a href="#" data-role="button">&Uacute;NETE A PATROCINALOS</a>
                 </div>
                 <div class="usuarios-patrocinalos">
@@ -103,6 +103,46 @@
         	</div><!-- /content -->
         
         </div><!-- /page -->
+        
+    <!-- LOGIN -->
+    
+    <div data-role="page" id="login_user" data-theme="p">
+    
+    	<div data-role="content">
+            
+            <h1>
+                <img src="img/logo.png"/>
+            </h1>
+            
+            <div class="btn-access">
+            
+                <form>
+                    <div class="access_login">
+                         <input data-theme="cu" name="usuario[email]" placeholder="Email..." autocomplete="off" type="text"/>
+                         <input data-theme="cu" name="usuario[password]" placeholder="Contrase&ntilde;a..." autocomplete="off" type="password"/>
+                     </div>
+                    <fieldset data-role="controlgroup">
+                            <input name="radio-choice-1" id="radio-choice-1" value="choice-1" type="radio"/>
+                            <label data-theme="c" for="radio-choice-1">Recodar mis datos de acceso.</label>
+                    </fieldset>
+                </form>            
+            
+                <a href="#" data-role="button" data-theme="r">ENTRAR</a>
+                <a href="#" data-role="button">&Uacute;NETE A PATROCINALOS</a>
+                
+                <p class="text">
+                    a&uacute;n no estas registrado? <span>&Uacute;netenos!</span>
+                </p>
+                
+            </div>
+    	</div><!-- /content -->
+        
+        <div class="recuperar_contrasena">
+            <a href="#" data-role="button">RECUPERAR CONTRASE&Nacute;A</a>
+        </div>        
+    
+    </div><!-- /page -->
+        
         
     </body>
 </html>
