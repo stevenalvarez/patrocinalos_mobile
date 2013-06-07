@@ -138,7 +138,21 @@
     	</div><!-- /content -->
         
         <div class="recuperar_contrasena">
-            <a href="#" data-role="button">RECUPERAR CONTRASE&Nacute;A</a>
+            <a style="width: 100%; padding: 0; margin: 0;" href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-theme="p" data-transition="slideup" >RECUPERAR CONTRASE&Nacute;A</a>
+            <!-- popup - restablecer contraseña -->
+            <div data-role="popup" id="popupMenu" data-theme="b" data-overlay-theme="a">
+                <div data-role="popup" id="popupLogin" data-theme="b" class="ui-corner-all" data-overlay-theme="a">
+                    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right close">Close</a>
+                    <form>
+                        <div style="padding:10px 20px; background-color: #fff;">
+                          <h3 style="font-weight: bold; letter-spacing: -2px; font-size: 17px;">RESTABLECER CONTRASE&Ntilde;A</h3>
+                          <label for="reset_pass" class="ui-hidden-accessible">Email:</label>
+                          <input name="user_email" id="reset_pass" value="" placeholder="Email" data-theme="a" type="text"/>
+                          <button type="submit" data-theme="r">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>            
         </div>        
     
     </div><!-- /page -->

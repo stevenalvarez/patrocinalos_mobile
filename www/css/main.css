@@ -69,6 +69,9 @@
 .ui-corner-all{
     border-radius: 5px 5px 5px 5px;
 }
+.ui-btn.close{
+    border-radius: 1em;
+}
 .ui-btn-text{
     font-size: 17px;
     letter-spacing: -2px;
@@ -173,15 +176,15 @@
 /*LOGIN */
 
 #login_user .recuperar_contrasena{
-    margin: 0 45px;
-    margin-bottom: 15px;
+    margin: 0 32px;
+    margin-bottom: 10px;
 }
 
 #login_user .access_login div.ui-body-cu.ui-input-text:first-child{
     background: url("../img/bg-login.png") no-repeat scroll left center transparent;
     background-size: 20px;
     background-position: 6px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 #login_user .access_login div.ui-body-cu.ui-input-text:last-child{
     background: url("../img/bg-password.png") no-repeat scroll left center transparent;
@@ -189,7 +192,7 @@
     background-position: 6px;
 }
 #login_user .ui-controlgroup{
-    margin-bottom: 25px;
+    margin-bottom: 16px;
 }
 #login_user p.text{
     font-size: 12px;
