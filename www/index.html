@@ -61,7 +61,7 @@
                 
                 <div class="btn-access">
                     <a href="#login_user" data-role="button" data-theme="r">INICIAR SESS&Iacute;ON</a>
-                    <a href="#" data-role="button">&Uacute;NETE A PATROCINALOS</a>
+                    <a href="#register_user" data-role="button">&Uacute;NETE A PATROCINALOS</a>
                 </div>
                 <div class="usuarios-patrocinalos">
                     <div class="content_usuarios">
@@ -122,13 +122,13 @@
                          <input data-theme="cu" name="usuario[password]" placeholder="Contrase&ntilde;a..." autocomplete="off" type="password"/>
                      </div>
                     <fieldset data-role="controlgroup">
-                            <input name="radio-choice-1" id="radio-choice-1" value="choice-1" type="radio"/>
-                            <label data-theme="c" for="radio-choice-1">Recodar mis datos de acceso.</label>
+                            <input name="radio-choice-1" id="radio-choice-1" type="radio"/>
+                            <label data-theme="c" for="radio-choice-1">Recordar mis datos de acceso.</label>
                     </fieldset>
                 </form>            
             
                 <a href="#" data-role="button" data-theme="r">ENTRAR</a>
-                <a href="#" data-role="button">&Uacute;NETE A PATROCINALOS</a>
+                <a href="#register_user" data-role="button">&Uacute;NETE A PATROCINALOS</a>
                 
                 <p class="text">
                     a&uacute;n no estas registrado? <span>&Uacute;netenos!</span>
@@ -156,7 +156,61 @@
         </div>        
     
     </div><!-- /page -->
+
+    <!-- REGISTRO -->
+    
+    <div data-role="page" id="register_user" data-theme="p">
+    
+    	<div data-role="content">
+            
+            <div class="btn-access">
+            
+                <form>
+                    <div class="access_login">
+                         <div class="register_option_fb">
+                            <label class="texto_cuenta">Tienes una cuenta en facebook?</label>
+                            <a class="facebook_registro" href="#" data-role="button" data-theme="b" data-icon="none" data-iconpos="left">REGISTRO CON FACEBOOK</a>
+                            <label class="texto_facebook">Patrocinalos nunca publicitaria en tu cuenta sin tu autorizaci&oacute;n?</label>
+                         </div>
+                         <div class="texto_formulario">
+                            <span>O puedes llenar el siguiente formulario</span>
+                         </div>
+                         <label class="custom">Introduce la siguiente infomaci&oacute;n personal:</label>
+                         <input name="usuario[nombre]" placeholder="Nombre..." autocomplete="off" type="text"/>
+                         <input name="usuario[apellido]" placeholder="Apellidos..." autocomplete="off" type="text"/>
+                         <input name="usuario[email_register]" placeholder="Email..." autocomplete="off" type="text"/>
+                         <input name="usuario[password_register]" placeholder="Contrase&ntilde;a..." autocomplete="off" type="text"/>
+                         <input name="usuario[repetir_password]" placeholder="Repetir contrase&ntilde;a..." autocomplete="off" type="text"/>
+                         <select data-theme="c" name="usuario[deporte]" id="select-deporte">
+                            <option>Seleccione deporte...</option>
+                            <optgroup label="Atletismo y gimnasia">
+                                <option value="aerobic">Aerobic</option>
+                                <option value="atletismo">Atletismo</option>
+                            </optgroup>
+                            <optgroup label="Deportes acuaticos">
+                                <option value="remo">Remo</option>
+                                <option value="surf">Surf</option>
+                                <option value="vela">Vela</option>
+                            </optgroup>
+                         </select>
+                         <div data-role="fieldcontain" class="content_upload_foto">
+                            <label>Subir una foto de perfil</label>
+                            <a class="upload_foto" href="#" data-role="button" data-theme="a" data-mini="true">Buscar</a>
+                         </div>
+                     </div>
+                    <fieldset data-role="controlgroup">
+                            <input name="usuario[terminos]" id="radio-termino" type="radio"/>
+                            <label data-theme="c" for="radio-termino">Acepto los t&eacute;rminos y condiciones.</label>
+                    </fieldset>
+                </form>
+            </div>
+    	</div><!-- /content -->
         
+        <div class="guardar">
+            <a href="#" data-role="button">REGISTRARME</a>
+        </div>        
+    
+    </div><!-- /page -->
         
     </body>
 </html>
