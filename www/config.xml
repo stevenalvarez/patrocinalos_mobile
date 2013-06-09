@@ -5,15 +5,15 @@
     versionCode = "1"
 	version 	= "1.0.0">
 
-	<name>Beta Patrocinalos</name>
+	<name>Patrocinalos</name>
 
 	<description>
-		Aplicacion mobile beta para patrocinalos.com
+		Aplicacion mobile para patrocinalos.com
 	</description>
 
 	<author href="http://www.patrocinalos.com"
 		email="steven.alvarez.v@gmail.com">
-		Sysdecom
+		SYSDECOM
 	</author>
     
     <!--
@@ -54,6 +54,12 @@
     
     <gap:splash src="res/screen/ios/screen-iphone-portrait.png" />
     <gap:splash src="res/screen/ios/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480" />
+    
+    <plugin name="InAppBrowser" value="CDVInAppBrowser" />
+    <plugin name="InAppBrowser" />
+    <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
+
+    <access origin="*" browserOnly="true"/>
     
 	<feature name="http://api.phonegap.com/1.0/battery"/>
     <feature name="http://api.phonegap.com/1.0/camera"/>
