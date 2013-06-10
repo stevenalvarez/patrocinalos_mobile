@@ -396,7 +396,17 @@ label.custom{
         letter-spacing: 0px;
         margin: 0 9em;
     }    
-    #register_user .register_option_fb label{
+    #register_user .register_option_fb label,
+    #register_finalizado .save_data{
         letter-spacing: 0px;
-    }    
+    }
+    #register_finalizado .opciones{
+        margin: 0 7em;
+    }
+    #register_finalizado .fecha_nacimiento div.ui-input-text{
+        width: 85%;
+    }
+    #register_finalizado .fecha_nacimiento a.calendario{
+        width: 9%;
+    }
 }
