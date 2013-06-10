@@ -65,6 +65,9 @@
 }
 
 /* GENERAL */
+.lspacing{
+    letter-spacing: -1.2px;
+}
 .ui-btn-corner-all,
 .ui-corner-all{
     border-radius: 5px 5px 5px 5px;
@@ -101,7 +104,9 @@
     left: 8px;
 }
 .ui-radio .ui-btn-icon-left .ui-btn-inner{
-    padding: 0px 0px 0px 35px ;
+    padding: 0px 0px 0px 35px;
+    height: 22px;
+    margin-top: 0;    
 }
 .ui-radio-off .ui-btn-inner .ui-btn-text,
 .ui-radio-on .ui-btn-inner .ui-btn-text{
@@ -129,7 +134,6 @@
     float: left;
     font-size: 13px;
     width: 42%;
-    letter-spacing: -2px;
     padding-left: 27px;
     background: url("../img/subir_foto.png") no-repeat scroll left center transparent;
     background-size:22px;
@@ -259,13 +263,6 @@ label.custom{
 #register_user .btn-access{
     border-top: 0;
 }
-#register_user .register_option_fb label.texto_cuenta{
-    letter-spacing: -2px;
-}
-#register_user .register_option_fb label.texto_facebook{
-    letter-spacing: -2px;
-    font-size: 12px;
-}
 #register_user .texto_formulario{
     background: url("../img/bg_inline.png") repeat-x scroll center center transparent;
 }
@@ -273,7 +270,6 @@ label.custom{
     text-align: center;
     display: block;
     font-size: 12px;
-    letter-spacing: -2px;
     background-color: #fff;
     margin: 0 4.5em;
     color: #354f8e;    
@@ -302,6 +298,10 @@ label.custom{
     }    
 }
 @media only screen and (min-width: 480px) and (max-width: 768px) {
+    .ui-radio-off .ui-btn-inner .ui-btn-text, 
+    .ui-radio-on .ui-btn-inner .ui-btn-text {
+        letter-spacing: 0px;
+    }
     #view .content_usuarios .list li > img{
         height: 75px;
         width: 75px;        
@@ -316,19 +316,20 @@ label.custom{
     .content_upload_foto label{
         font-size: 16px;
         width: 40%;
+        letter-spacing: 0px;
     }
     .content_upload_foto .upload_foto {
         width: 52%;
     }
-    
     #register_user .register_option_fb .facebook_registro .ui-icon {
         left: 20%;
+        border-bottom: 0;
     }    
     #register_user .texto_formulario span {
-        letter-spacing: -1px;
+        letter-spacing: 0px;
         margin: 0 9em;
     }    
-    #register_user .register_option_fb label.texto_facebook {
-        letter-spacing: -1px;
+    #register_user .register_option_fb label{
+        letter-spacing: 0px;
     }    
 }
