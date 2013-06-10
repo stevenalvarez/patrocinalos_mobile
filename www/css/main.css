@@ -165,14 +165,16 @@ label.custom{
 /* INDEX/LOGIN*/
 #view .ui-content,
 #login_user .ui-content,
-#register_user .ui-content{
+#register_user .ui-content,
+#register_finalizado .ui-content{
     background: #FFFFFF;
     margin: 40px 10px;
     border-radius: 5px;
     border: 1px solid #000;
     padding: 0;
 }
-#register_user .ui-content{
+#register_user .ui-content,
+#register_finalizado .ui-content{
     margin-bottom: 10px
 }
 #login_user .ui-content{
@@ -228,12 +230,14 @@ label.custom{
 /*LOGIN */
 
 #login_user .recuperar_contrasena,
-#register_user .guardar{
+#register_user .guardar,
+#register_finalizado .guardar{
     margin: 0 32px;
     margin-bottom: 10px;
 }
-#register_user .guardar{
-    margin: 0 80px;
+#register_user .guardar,
+#register_finalizado .guardar{
+    margin: 0 70px;
 }
 
 #login_user .access_login div.ui-body-cu.ui-input-text:first-child{
@@ -265,7 +269,8 @@ label.custom{
 #register_user .access_login .ui-input-text{
     margin: 0.3em 0;
 }
-#register_user .btn-access{
+#register_user .btn-access,
+#register_finalizado .btn-access{
     border-top: 0;
 }
 #register_user .texto_formulario{
@@ -289,6 +294,60 @@ label.custom{
     left: 10px;
     border-bottom: 0;
     display: block;
+}
+
+/* REGISTRO FINALIZADO */
+#register_finalizado .fecha_nacimiento{
+    display: block;
+    overflow: hidden;
+}
+#register_finalizado .fecha_nacimiento div.ui-input-text{
+    width: 77%;
+    display: inline-block;
+    float: left;
+    margin-bottom: 0px;
+}
+#register_finalizado .fecha_nacimiento a.calendario{
+    width: 15%;
+    display: inline-block;
+    float: right;
+    margin-top: 8px;
+    background: none;
+    border: none;
+    border-radius: 0;
+    -webkit-box-shadow: 0px 0px 0px /*{global-box-shadow-size}*/ rgba(0,0,0,.2) /*{global-box-shadow-color}*/;
+    background: url("../img/bg_calendario.png") no-repeat scroll center center transparent;
+    background-size: 35px;
+}
+#register_finalizado .opciones{
+    margin: 0 2em;
+}
+#register_finalizado .opciones .first,
+#register_finalizado .opciones .second{
+    height: 25px;
+    overflow: hidden;
+    position: relative;
+    margin-right: 5px;    
+}
+#register_finalizado .opciones .first .ui-radio:first-child,
+#register_finalizado .opciones .second .ui-radio:first-child{
+    left: 0;
+    position: absolute;
+    width: 100px;
+}
+#register_finalizado .opciones .first .ui-radio:last-child,
+#register_finalizado .opciones .second .ui-radio:last-child{
+    right: 0;
+    position: absolute;
+    width: 100px;
+}
+#register_finalizado .save_data{
+    font-size: 12px;
+    padding-left: 40px;
+    display: inline-block;
+    background: url("../img/succes.png") no-repeat scroll center left transparent;
+    background-size: 30px;
+    padding-bottom: 5px;
 }
 
 /* RESPONSIVO */

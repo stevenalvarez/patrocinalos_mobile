@@ -206,10 +206,67 @@
     	</div><!-- /content -->
         
         <div class="guardar">
-            <a href="#" data-role="button">REGISTRARME</a>
+            <a href="#register_finalizado" data-role="button">REGISTRARME</a>
         </div>        
     
     </div><!-- /page -->
+    
+    <!-- REGISTRO FINALIZADO -->
+    
+    <div data-role="page" id="register_finalizado" data-theme="p">
+    
+    	<div data-role="content">
+            
+            <div class="btn-access">
+            
+                <form>
+                    <div class="access_login">
+                         <label class="lspacing save_data">Gracias por registrarte en patrocinalos.com, en breve recibiras un correo para confirmar tu registro.</label>
+                         <label class="custom lspacing">Adicionalmente requerimos que nos proveas de la siguiente informacion:</label>
+                         <div class="opciones">
+                             <fieldset data-role="controlgroup" class="first">
+                                <input name="usuario[tipo_deportista]" id="radio-ameteur" type="radio"/>
+                                <label data-theme="c" for="radio-ameteur">Amateur</label>
+                                <input name="usuario[tipo_deportista]" id="radio-profesional" type="radio"/>
+                                <label data-theme="c" for="radio-profesional">Profesional</label>
+                             </fieldset>
+                             <fieldset data-role="controlgroup" class="second">
+                                <input name="usuario[genero]" id="radio-masculino" type="radio"/>
+                                <label data-theme="c" for="radio-masculino">Masculino</label>
+                                <input name="usuario[genero]" id="radio-femenino" type="radio"/>
+                                <label data-theme="c" for="radio-femenino">Femenino&nbsp;</label>
+                             </fieldset>
+                         </div>
+                         <div class="fecha_nacimiento">
+                            <input name="usuario[fecha_nacimiento]" placeholder="Fecha Nacimiento..." autocomplete="off" type="text" readonly="readonly"/>
+                            <a class="calendario" href="#" data-role="button" data-theme="a" data-mini="true">&nbsp;</a>                         
+                         </div>
+                         <select data-theme="c" name="usuario[pais]" id="select-pais">
+                            <option>Selecciona un pais...</option>
+                            <option value="38">Espa&ntilde;a</option>
+                            <option value="39">Bolivia</option>
+                         </select>
+                         <select data-theme="c" name="usuario[ciudad]" id="select-ciudad">
+                            <option>Selecciona una ciudad...</option>
+                            <option value="40">Madrid</option>
+                            <option value="41">Sevilla</option>
+                         </select>
+                         <select data-theme="c" name="usuario[provincia]" id="select-provincia">
+                            <option>Selecciona una provincia...</option>
+                            <option value="42">Abarajas</option>
+                            <option value="43">Albete</option>
+                         </select>
+                         <input name="usuario[url_perfil]" placeholder="Url de perfil: (ej. www.patrocinalos.com/miurlpersonal)" autocomplete="off" type="text"/>
+                     </div>
+                </form>
+            </div>
+    	</div><!-- /content -->
+        
+        <div class="guardar">
+            <a href="#" data-role="button">GUARDAR DATOS</a>
+        </div>        
+    
+    </div><!-- /page -->    
         
     </body>
 </html>
