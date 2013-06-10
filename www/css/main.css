@@ -282,6 +282,9 @@ label.custom{
     background-size: 15px;
     top: 40%;
     left: 10px;
+    border-bottom: 0;
+    text-decoration: underline;
+    display: inline-block;    
 }
 
 /* RESPONSIVO */
@@ -324,6 +327,8 @@ label.custom{
     #register_user .register_option_fb .facebook_registro .ui-icon {
         left: 20%;
         border-bottom: 0;
+        text-decoration: underline;
+        display: inline-block;
     }    
     #register_user .texto_formulario span {
         letter-spacing: 0px;
