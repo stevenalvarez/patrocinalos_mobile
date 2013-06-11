@@ -73,6 +73,11 @@
     height: 30px !important;
     margin-left: -15px !important;
     width: 30px !important;
+	background-color: inherit !important;
+    background-image: inherit;
+}
+.nav-custom .nav_perfil.ui-btn .ui-icon {
+    background: url("../img/bg_perfil.png") no-repeat scroll 50% 50% / 24px 22px transparent;
 }
 .nav-custom .ui-btn .ui-btn-inner {
     padding-top: 30px !important;
@@ -99,9 +104,6 @@
 .footer .ui-btn-hover-g:hover,
 .footer .ui-btn-hover-g a.ui-link-inherit {
 	color: 					#585961;
-}
-.nav_perfil .ui-icon {
-    background: url("../img/bg_perfil.png") no-repeat scroll 50% 50% / 24px 22px transparent;
 }
 .nav_patrocinio_deportivo .ui-icon {
     background: url("../img/bg_patrocinio_deportivo.png") no-repeat scroll 50% 50% / 18px 22px transparent;
@@ -275,6 +277,7 @@ label.custom{
     height: 90px;
     margin-right: 5px;
     margin-bottom: 5px;
+    border: none;
 }
 .lista_opciones .ui-controlgroup{
     margin-bottom: 0;
@@ -285,6 +288,7 @@ label.custom{
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 58px;
+    border: none;
 }
 .lista_opciones .ui-controlgroup-horizontal .ui-btn{
     border-right-width: 1px;
