@@ -78,7 +78,59 @@
     background-image: url("../img/bg_perfil.png");
     background-repeat: no-repeat;
     background-color: transparent;
-    border: 1px solid blue;
+    background-size: 24px 22px;
+    background-position: 50% 50%;
+}
+.nav-custom .ui-btn.nav_patrocinio_deportivo .ui-icon {
+    background-image: url("../img/bg_patrocinio_deportivo.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 18px 22px;
+    background-position: 50% 50%;
+}
+.nav-custom .ui-btn.nav_fotos_videos .ui-icon {
+    background-image: url("../img/bg_fotos_videos.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 44px 22px;
+    background-position: 50% 50%;
+    margin-left: -25px !important;
+    width: 50px!important;
+}
+.nav-custom .ui-btn.nav_blog_muros .ui-icon {    
+    background-image: url("../img/bg_blog_muros.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 24px 22px;
+    background-position: 50% 50%;
+}
+.nav-custom .ui-btn.nav_home .ui-icon {
+    background-image: url("../img/bg_home.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 24px 28px;
+    background-position: 50% 50%;
+}
+.nav-custom .ui-btn.nav_login .ui-icon {
+    background-image: url("../img/bg_login.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 24px 28px;
+    background-position: 50% 50%;
+}
+.nav-custom .ui-btn.nav_ranking .ui-icon {
+    background-image: url("../img/bg_ranking.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 24px 28px;
+    background-position: 50% 50%;
+}
+.nav-custom .ui-btn.nav_deportistas .ui-icon {
+    background-image: url("../img/bg_deportistas.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 24px 28px;
+    background-position: 50% 50%;
 }
 .nav-custom .ui-btn .ui-btn-inner {
     padding-top: 30px !important;
@@ -104,30 +156,7 @@
 .footer .ui-btn-hover-g:visited,
 .footer .ui-btn-hover-g:hover,
 .footer .ui-btn-hover-g a.ui-link-inherit {
-	color: 					#585961;
-}
-.nav_patrocinio_deportivo .ui-icon {
-    background: url("../img/bg_patrocinio_deportivo.png") no-repeat scroll 50% 50% / 18px 22px transparent;
-}
-.nav_fotos_videos .ui-icon {
-    background: url("../img/bg_fotos_videos.png") no-repeat scroll 50% 50% / 44px 22px transparent;
-    margin-left: -25px !important;
-    width: 50px!important;
-}
-.nav_blog_muros .ui-icon {
-    background: url("../img/bg_blog_muros.png") no-repeat scroll 50% 50% / 24px 22px transparent;
-}
-.nav_home .ui-icon {
-    background: url("../img/bg_home.png") no-repeat scroll 50% 50% / 24px 28px transparent;
-}
-.nav_login .ui-icon {
-    background: url("../img/bg_login.png") no-repeat scroll 50% 50% / 24px 28px transparent;
-}
-.nav_ranking .ui-icon {
-    background: url("../img/bg_ranking.png") no-repeat scroll 50% 50% / 24px 28px transparent;
-}
-.nav_deportistas .ui-icon {
-    background: url("../img/bg_deportistas.png") no-repeat scroll 50% 50% / 24px 28px transparent;
+	color: #585961;
 }
 .lspacing{
     letter-spacing: -1.2px;
