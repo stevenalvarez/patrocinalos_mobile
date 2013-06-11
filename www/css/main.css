@@ -80,6 +80,7 @@
     background: url("../img/bg_perfil.png") no-repeat scroll 50% 50% / 24px 22px transparent;
     display: block;
     border: 1px solid red;
+    background-size: 22px;
 }
 .nav-custom .ui-btn .ui-btn-inner {
     padding-top: 30px !important;
