@@ -75,8 +75,10 @@
     width: 30px !important;
 }
 .nav-custom .ui-btn.nav_perfil .ui-icon {
-    background: url("../img/bg_perfil.png") no-repeat scroll 50% 50% / 24px 22px transparent;
-    border: 1px solid orange;
+    background-image: url("../img/bg_perfil.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 1px solid blue;
 }
 .nav-custom .ui-btn .ui-btn-inner {
     padding-top: 30px !important;
