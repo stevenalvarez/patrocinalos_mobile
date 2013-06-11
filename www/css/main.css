@@ -359,7 +359,7 @@ label.custom{
     margin-left: -20px !important;
 }
 .ui-controlgroup-horizontal .icon_recompensa.ui-btn{
-    background: #711515; 
+    background: #8f1d1d; 
 }
 .ui-controlgroup-horizontal .icon_recompensa .ui-icon {
     background: url("../img/bg_recompensa.png") no-repeat scroll left top transparent;
@@ -369,7 +369,7 @@ label.custom{
     margin-left: -20px !important;   
 }
 .ui-controlgroup-horizontal .icon_old_recompensa.ui-btn{ 
-    background: #861b1b;
+    background: #6e1414;
 }
 .ui-controlgroup-horizontal .icon_old_recompensa .ui-icon {
     background: url("../img/bg_old_recompensa.png") no-repeat scroll left top transparent;
