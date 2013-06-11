@@ -81,7 +81,11 @@
     background: url("../img/bg_perfil.png") no-repeat scroll 50% 50% / 24px 22px transparent;
     border: 1px solid red;
     background-size: 22px;
-    box-shadow: none;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: 0 !important;        
 }
 .nav-custom .ui-btn .ui-btn-inner {
     padding-top: 30px !important;
