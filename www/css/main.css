@@ -251,7 +251,14 @@ label.custom{
     margin-top: 4px;
     display: inline-block;    
 }
-#home .ui-content{
+#perfil .ui-content,
+#patrocinio_deportivo .ui-content,
+#fotos_videos .ui-content,
+#blog_muros .ui-content,
+#home .ui-content,
+#login .ui-content,
+#ranking .ui-content,
+#deportistas .ui-content{
     padding: 0;
 }
 .data_user{
@@ -297,6 +304,9 @@ label.custom{
 .ui-controlgroup-controls{
     overflow: hidden;
 }
+.ui-controlgroup-controls .ui-icon{
+    border-radius: 0 0 0 0 !important;
+}
 .lista_opciones{
     margin: 10px;
     margin-right: 0;
@@ -335,41 +345,60 @@ label.custom{
     white-space: normal;
     line-height: 12px;
 }
-.ui-controlgroup-horizontal .ui-icon {
-    margin-left: -17px !important;
-    display: inline-block;
+.lista_opciones .ui-controlgroup-controls .ui-btn-text span{
+    font-size: 10px;
 }
-.ui-controlgroup-horizontal .icon_pencil.ui-btn{
+.lista_opciones .ui-controlgroup-controls .icon_custom .ui-btn-text{
+    width: 88px;
+    margin-left: -2px;
+}
+.lista_opciones .ui-controlgroup-horizontal .icon_ptop_custom .ui-btn-inner{
+    padding-top: 48px;
+}
+.ui-controlgroup-horizontal .ui-icon {
+    margin-left: -20px !important;
+    display: inline-block;
+    width: 42px;
+    height: 47px;
+}
+.ui-controlgroup-horizontal .icon_pencil.ui-btn,
+.ui-controlgroup-horizontal .icon_smile.ui-btn,
+.ui-controlgroup-horizontal .icon_cash.ui-btn,
+.ui-controlgroup-horizontal .icon_foto.ui-btn{
     background: #ca2c2c;
+}
+.ui-controlgroup-horizontal .icon_info.ui-btn,
+.ui-controlgroup-horizontal .icon_smile_bgdos.ui-btn,
+.ui-controlgroup-horizontal .icon_gear.ui-btn,
+.ui-controlgroup-horizontal .icon_ppublico.ui-btn,
+.ui-controlgroup-horizontal .icon_video.ui-btn{
+    background: #aa2424;
+}
+.ui-controlgroup-horizontal .icon_recompensa.ui-btn,
+.ui-controlgroup-horizontal .icon_add_recompensa.ui-btn,
+.ui-controlgroup-horizontal .icon_smile_bgtres.ui-btn,
+.ui-controlgroup-horizontal .icon_tool.ui-btn,
+.ui-controlgroup-horizontal .icon_promocionar_social.ui-btn,
+.ui-controlgroup-horizontal .icon_mis_albunes.ui-btn{
+    background: #8f1d1d; 
+}
+.ui-controlgroup-horizontal .icon_old_recompensa.ui-btn,
+.ui-controlgroup-horizontal .icon_help.ui-btn,
+.ui-controlgroup-horizontal .icon_search.ui-btn,
+.ui-controlgroup-horizontal .icon_mis_videos.ui-btn{ 
+    background: #6e1414;
 }
 .ui-controlgroup-horizontal .icon_pencil .ui-icon {
     background: url("../img/bg_pincel.png") no-repeat scroll left top transparent;
-    width: 42px;
-    height: 47px;
-    background-size: 40px;    
-}
-.ui-controlgroup-horizontal .icon_info.ui-btn{
-    background: #aa2424;
+    background-size: 40px;
 }
 .ui-controlgroup-horizontal .icon_info .ui-icon {
     background: url("../img/bg_info.png") no-repeat scroll left top transparent;
-    width: 42px;
-    height: 47px;
     background-size: 40px;
-    margin-left: -20px !important;
-}
-.ui-controlgroup-horizontal .icon_recompensa.ui-btn{
-    background: #8f1d1d; 
 }
 .ui-controlgroup-horizontal .icon_recompensa .ui-icon {
     background: url("../img/bg_recompensa.png") no-repeat scroll left top transparent;
-    width: 42px;
-    height: 47px;
-    background-size: 40px;
-    margin-left: -20px !important;   
-}
-.ui-controlgroup-horizontal .icon_old_recompensa.ui-btn{ 
-    background: #6e1414;
+    background-size: 40px;   
 }
 .ui-controlgroup-horizontal .icon_old_recompensa .ui-icon {
     background: url("../img/bg_old_recompensa.png") no-repeat scroll left top transparent;
@@ -377,6 +406,65 @@ label.custom{
     height: 48px;
     background-size: 60px;
     margin-left: -25px !important;
+}
+.ui-controlgroup-horizontal .icon_add_recompensa .ui-icon {
+    background: url("../img/bg_add_recompensa.png") no-repeat scroll left top transparent;
+    width: 60px;
+    height: 48px;
+    background-size: 60px;
+    margin-left: -25px !important;
+}
+.ui-controlgroup-horizontal .icon_smile .ui-icon {
+    background: url("../img/bg_smile.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_cash .ui-icon {
+    background: url("../img/bg_cash.png") no-repeat scroll left top transparent;
+    background-size: 33px;
+    margin-left: -16px !important;
+}
+.ui-controlgroup-horizontal .icon_help .ui-icon {
+    background: url("../img/bg_help.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_tool .ui-icon {
+    background: url("../img/bg_tool.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_search .ui-icon {
+    background: url("../img/bg_search.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_gear .ui-icon {
+    background: url("../img/bg_gear.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_ppublico .ui-icon {
+    background: url("../img/bg_user.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_promocionar_social .ui-icon {
+    background: url("../img/bg_wifi.png") no-repeat scroll left top transparent;
+    width: 50px;
+    height: 47px;
+    background-size: 50px;
+    margin-left: -25px !important;
+}
+.ui-controlgroup-horizontal .icon_foto .ui-icon {
+    background: url("../img/bg_foto.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_video .ui-icon {
+    background: url("../img/bg_video.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_mis_albunes .ui-icon {
+    background: url("../img/bg_lista_albunes.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_mis_videos .ui-icon {
+    background: url("../img/bg_lista_videos.png") no-repeat scroll left top transparent;
+    background-size: 40px;
 }
 
 /* PAGES */
@@ -627,5 +715,8 @@ label.custom{
     }
     #register_finalizado .fecha_nacimiento a.calendario{
         width: 9%;
+    }
+    .lista_opciones{
+        margin-left: 40px;
     }
 }
