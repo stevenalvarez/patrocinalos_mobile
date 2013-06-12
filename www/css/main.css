@@ -68,7 +68,13 @@
 
 /* NAVIGATION */
 .nav-custom li{
-    background: linear-gradient(#585961, #161618) repeat scroll 0 0 #585961;
+	background: 			#585961 /*{a-bup-background-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #585961 /*{a-bup-background-start}*/), to( #161618 /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #585961 /*{a-bup-background-start}*/, #161618 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #585961 /*{a-bup-background-start}*/, #161618 /*{a-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #585961 /*{a-bup-background-start}*/, #161618 /*{a-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #585961 /*{a-bup-background-start}*/, #161618 /*{a-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #585961 /*{a-bup-background-start}*/, #161618 /*{a-bup-background-end}*/);
     padding: 3px 6px;
 }
 .nav-custom .ui-btn .ui-icon {
