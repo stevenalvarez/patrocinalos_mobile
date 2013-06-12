@@ -67,6 +67,10 @@
 /* GENERAL */
 
 /* NAVIGATION */
+.nav-custom li{
+    background: linear-gradient(#585961, #161618) repeat scroll 0 0 #585961;
+    padding: 3px 6px;
+}
 .nav-custom .ui-btn .ui-icon {
     border-radius: 0 0 0 0 !important;
     box-shadow: none !important;
@@ -105,35 +109,56 @@
     background-position: 50% 50%;
 }
 .nav-custom .ui-btn.nav_home .ui-icon {
-    background-image: url("../img/bg_home.png");
+    background-image: url("../img/bg_home_sprite.png");
     background-repeat: no-repeat;
     background-color: transparent;
-    background-size: 24px 28px;
-    background-position: 50% 50%;
+    background-size: 28px 58px;
+    background-position: 50% 0%;
+}
+.nav-custom .ui-btn.nav_home.ui-btn-active-g .ui-icon,
+.nav-custom .ui-btn.nav_home.ui-btn-hover-g .ui-icon{
+    background-image: url("../img/bg_home_sprite.png");
+    background-position: 50% 104%;
 }
 .nav-custom .ui-btn.nav_login .ui-icon {
-    background-image: url("../img/bg_login.png");
+    background-image: url("../img/bg_login_sprite.png");
     background-repeat: no-repeat;
     background-color: transparent;
-    background-size: 24px 28px;
-    background-position: 50% 50%;
+    background-size: 26px 58px;
+    background-position: 50% 0%;
+}
+.nav-custom .ui-btn.nav_login.ui-btn-active-g .ui-icon,
+.nav-custom .ui-btn.nav_login.ui-btn-hover-g .ui-icon{
+    background-image: url("../img/bg_login_sprite.png");
+    background-position: 50% 104%;
 }
 .nav-custom .ui-btn.nav_ranking .ui-icon {
-    background-image: url("../img/bg_ranking.png");
+    background-image: url("../img/bg_ranking_sprite.png");
     background-repeat: no-repeat;
     background-color: transparent;
-    background-size: 24px 28px;
-    background-position: 50% 50%;
+    background-size: 28px 58px;
+    background-position: 50% 0%;
+}
+.nav-custom .ui-btn.nav_ranking.ui-btn-active-g .ui-icon,
+.nav-custom .ui-btn.nav_ranking.ui-btn-hover-g .ui-icon{
+    background-image: url("../img/bg_ranking_sprite.png");
+    background-position: 50% 104%;
 }
 .nav-custom .ui-btn.nav_deportistas .ui-icon {
-    background-image: url("../img/bg_deportistas.png");
+    background-image: url("../img/bg_deportistas_sprite.png");
     background-repeat: no-repeat;
     background-color: transparent;
-    background-size: 24px 28px;
-    background-position: 50% 50%;
+    background-size: 28px 58px;
+    background-position: 50% 0%;
+}
+.nav-custom .ui-btn.nav_deportistas.ui-btn-active-g .ui-icon,
+.nav-custom .ui-btn.nav_deportistas.ui-btn-hover-g .ui-icon{
+    background-image: url("../img/bg_deportistas_sprite.png");
+    background-position: 50% 104%;
 }
 .nav-custom .ui-btn .ui-btn-inner {
-    padding-top: 30px !important;
+    padding-top: 32px !important;
+    border-top: none;
 }
 .nav-custom .ui-btn-inner .ui-btn-text{
     font-size: 12.5px;
@@ -148,6 +173,10 @@
     letter-spacing: 0px;
     color: #000;
     text-shadow: 0 1px 0 #5c5e64;
+}
+.footer .nav-custom .ui-btn-active-g .ui-btn-inner .ui-btn-text,
+.footer .nav-custom .ui-btn-hover-g .ui-btn-inner .ui-btn-text{
+    color: #FFF;
 }
 .footer .ui-btn-up-g,
 .footer .ui-btn-up-g:visited,
@@ -300,7 +329,9 @@ label.custom{
     display: block;
     padding-top: 4px;
 }
-
+.ui-content .ui-listview{
+    margin: 0;
+}
 .ui-controlgroup-controls{
     overflow: hidden;
 }
@@ -657,6 +688,87 @@ label.custom{
     padding-bottom: 5px;
 }
 
+/* CSS NAVIGATION HOME*/
+
+/* LISTA ACTIVIDAD GENERAL */
+#lista_actividad_general .title{
+    background-color: #972224;
+}
+#lista_actividad_general .title h2{
+    text-align: center;
+    font-size: 20px;
+    font-family:'CaptureitRegular';
+    color: #FFFFFF;
+    padding: 5px;
+    margin-bottom: 8px;
+}
+#lista_actividad_general .ui-content{
+    padding: 5px;
+}
+#lista_actividad_general .ui-listview li{
+    margin-bottom: 2px;
+    min-height: 80px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    overflow: hidden;
+}
+#lista_actividad_general .ui-listview li.pair{
+    background-color: #000;
+}
+#lista_actividad_general .ui-listview li.odd{
+    background-color: #a02b30;
+}
+#lista_actividad_general .ui-listview li .left{
+    overflow: hidden;
+}
+#lista_actividad_general .ui-listview li .recorte{
+    float: left;
+    height: 80px;
+    margin-right: 10px;
+    overflow: hidden;
+    width: 80px;  
+}
+#lista_actividad_general .ui-listview li img{
+    width: 100%;
+}
+#lista_actividad_general .ui-listview li p.ui-li-desc{
+    margin-bottom: 0;
+}
+#lista_actividad_general .ui-listview li p.ui-li-desc span.recuadro{
+    border: 1px solid #AAAAAA;
+    display: inline-block;
+    float: left;
+    height: 50px;
+    margin-right: 5px;
+    width: 70px;
+}
+#lista_actividad_general .ui-listview li p.ui-li-desc span.desc{
+    white-space: normal;
+    font-size: 11px;
+    line-height: 11px;
+    text-align: justify;
+    display: block;
+}
+#lista_actividad_general .ui-listview li p.ui-li-desc a{
+    color: #55938f;
+}
+#lista_actividad_general .ui-listview li .ui-li-heading{
+    margin-top: 0;
+}
+#lista_actividad_general .ui-listview li .info{
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+}
+#lista_actividad_general .ui-listview li .info a{
+    background: url("../img/bg_info_home.png") no-repeat scroll top right / 25px auto transparent;
+    display: block;
+    height: 25px;
+    text-indent: -9999px;
+    width: 25px;
+}
+
 /* RESPONSIVO */
 
 @media only screen and  (max-width: 479px) {
@@ -718,5 +830,9 @@ label.custom{
     }
     .lista_opciones{
         margin-left: 40px;
+    }
+    #lista_actividad_general .title h2{
+        font-size: 25px;
+        padding: 5px 0;
     }
 }
