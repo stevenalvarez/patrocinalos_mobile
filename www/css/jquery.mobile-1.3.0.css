@@ -956,7 +956,6 @@ div.ui-input-text input.ui-input-text.ui-body-cu{
 	background-image:     -ms-linear-gradient( #561e21 /*{a-bhover-background-start}*/, #3f0f10 /*{a-bhover-background-end}*/); /* IE10 */
 	background-image:      -o-linear-gradient( #561e21 /*{a-bhover-background-start}*/, #3f0f10 /*{a-bhover-background-end}*/); /* Opera 11.10+ */
 	background-image:         linear-gradient( #561e21 /*{a-bhover-background-start}*/, #3f0f10 /*{a-bhover-background-end}*/);
-    border-radius: 6px;
 }
 .ui-btn-hover-g:visited,
 .ui-btn-hover-g:hover,

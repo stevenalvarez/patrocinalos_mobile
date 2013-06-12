@@ -67,7 +67,11 @@
 /* GENERAL */
 
 /* NAVIGATION */
-.nav-custom li{
+.footer .ui-btn-hover-g,
+.footer .ui-btn-active-g {
+    border-radius: 6px;
+}
+.footer .nav-custom li{
 	background: 			#585961 /*{a-bup-background-color}*/;
 	background-image: -webkit-gradient(linear, left top, left bottom, from( #585961 /*{a-bup-background-start}*/), to( #161618 /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
 	background-image: -webkit-linear-gradient( #585961 /*{a-bup-background-start}*/, #161618 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
