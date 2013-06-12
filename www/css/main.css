@@ -758,6 +758,9 @@ label.custom{
 }
 #lista_actividad_general .ui-listview li p.ui-li-desc a{
     color: #55938f;
+    display: inline-block;
+    padding-top: 3px;
+    height: 14px;
 }
 #lista_actividad_general .ui-listview li .ui-li-heading{
     margin-top: 0;
@@ -844,5 +847,8 @@ label.custom{
     #lista_actividad_general .title h2{
         font-size: 25px;
         padding: 5px 0;
+    }
+    #lista_actividad_general .ui-listview li p.ui-li-desc span.desc{
+        font-size: 13px;
     }
 }
