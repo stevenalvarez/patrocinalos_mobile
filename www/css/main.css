@@ -767,8 +767,12 @@ label.custom{
     bottom: 4px;
     right: 4px;
 }
-#lista_actividad_general .ui-listview li .info a{
-    background: url("../img/bg_info_home.png") no-repeat scroll top right / 25px auto transparent;
+#lista_actividad_general .ui-listview li .info a{    
+    background-image: url("../img/bg_info_home.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 25px auto;
+    background-position: 50% 50%;
     display: block;
     height: 25px;
     text-indent: -9999px;
