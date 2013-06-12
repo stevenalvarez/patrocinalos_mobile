@@ -130,7 +130,7 @@
     background-image: url("../img/bg_login_sprite.png");
     background-repeat: no-repeat;
     background-color: transparent;
-    background-size: 26px 58px;
+    background-size: 26px 60px;
     background-position: 50% 0%;
 }
 .nav-custom .ui-btn.nav_login.ui-btn-active-g .ui-icon,
