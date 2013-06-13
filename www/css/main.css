@@ -1005,7 +1005,18 @@ label.custom{
     #view .content_usuarios p{
         font-size: 12px;
         letter-spacing: -1.2px;
-    }    
+    }
+    
+    .content_list_first li.ui-btn-up-c .span_normal span{
+        font-size: 13px;
+    }
+    
+    /* DEPORTISTAS - LISTA ELITES */
+    
+    #lista_deportistas_elites .ui-listview li .ui-li-heading{
+        font-size: 14px;
+        letter-spacing: -1px;
+    }
 }
 @media only screen and (min-width: 480px) and (max-width: 768px) {
     .ui-radio-off .ui-btn-inner .ui-btn-text, 
