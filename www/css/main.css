@@ -750,6 +750,9 @@ label.custom{
     overflow: hidden;
     width: 80px;  
 }
+#lista_posibles_ganadores .ui-listview li .recorte{
+    margin-right: 8px;
+}
 #lista_actividad_general .ui-listview li img,
 #lista_posibles_ganadores .ui-listview li img{
     width: 100%;
@@ -787,7 +790,7 @@ label.custom{
 #lista_posibles_ganadores .ui-listview li.odd .ui-li-heading,
 #lista_posibles_ganadores .ui-listview li.odd label,
 #lista_posibles_ganadores .ui-listview li.odd .deporte_ciudad span{
-    color: #fff;
+    color: #fff !important;
     text-shadow: 0 0px 0 #FFFFFF;
 }
 #lista_actividad_general .ui-listview li .info,
@@ -795,6 +798,9 @@ label.custom{
     position: absolute;
     bottom: 4px;
     right: 4px;
+}
+#lista_posibles_ganadores .ui-listview li .info{
+    display: none;
 }
 #lista_actividad_general .ui-listview li .info a,
 #lista_posibles_ganadores .ui-listview li .info a{
@@ -860,20 +866,25 @@ label.custom{
     border-right: 1px solid #AAAAAA;
 }
 #lista_posibles_ganadores .ui-listview li .ui-li-heading{
-    margin-bottom: 2px;
+    margin-bottom: 0px;
 }
 #lista_posibles_ganadores .ui-listview li .deporte_ciudad{
     overflow: hidden;
 }
-#lista_posibles_ganadores .ui-listview li label{
+#lista_posibles_ganadores .ui-listview li .content_descripcion label{
     color: #91161B;
     display: inline-block;
+    font-size: 14px;
+    letter-spacing: -1px;
+}
+#lista_posibles_ganadores .ui-listview li .deporte_ciudad span{
+    letter-spacing: -1px;
     font-size: 15px;
-}#lista_posibles_ganadores .ui-listview li .action_votar label{
-    display: inline-block;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    float: left;
+}
+#lista_posibles_ganadores .ui-listview li .deporte_ciudad .second{
+    float: right;
+    line-height: 27px;
+    display: none;
 }
 #lista_posibles_ganadores .ui-listview li .deporte_descripcion{
     background: url("../img/deportes/img_deporte.png") no-repeat scroll center left transparent;
@@ -881,27 +892,32 @@ label.custom{
     display: inline-block;
     height: 25px;
     line-height: 27px;
-    padding-left: 30px;
-    margin-left: 5px;
+    padding-left: 28px;
 }
 #lista_posibles_ganadores .ui-listview li span.start > a{
     background-image: url("../img/bg_start_sprite.png");
     background-repeat: no-repeat;
     background-color: transparent;
     background-position: 50% 0%;
-    background-size: 30px auto;
+    background-size: 20px auto;
     display: inline-block;
-    height: 29px;
+    height: 19px;
     text-indent: -9999px;
-    width: 32px;
+    width: 18px;
 }
 #lista_posibles_ganadores .ui-listview li .action_votar{
     overflow: hidden;
     padding-top: 4px;
 }
+#lista_posibles_ganadores .ui-listview li .action_votar label{
+    display: inline-block;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    float: left;
+}
 #lista_posibles_ganadores .ui-listview li .content_start{
     float: left;
-    margin-left: 12px;
+    margin-left: 4px;
 }
 #lista_posibles_ganadores .ui-listview li span.start{
     display: inline-block;
@@ -911,7 +927,12 @@ label.custom{
     background-position: 50% 100%;
 }
 .odd.ui-btn-up-c {
-    background: linear-gradient(#cc4646, #b93838) repeat scroll 0 0 #EEEEEE;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #cc4646 /*{a-bup-background-start}*/), to( #b93838 /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/);    
     border: 1px solid #CCCCCC;
     color: #222222;
     font-weight: bold;
@@ -980,11 +1001,40 @@ label.custom{
     .lista_opciones{
         margin-left: 40px;
     }
+    
+    /* HOME - LISTA ACTIVIDAD GENERAL */
+    
     #lista_actividad_general .title h2{
         font-size: 25px;
         padding: 5px 0;
     }
     #lista_actividad_general .ui-listview li p.ui-li-desc span.desc{
         font-size: 13px;
+    }
+    
+    /* RANKING - LISTA POSIBLES GANADORES */
+    
+    #lista_posibles_ganadores .ui-listview li .deporte_ciudad .second{
+        display: inline-block;
+    }
+    #lista_posibles_ganadores .ui-listview li .content_start {
+        margin-left: 12px;
+    }
+    #lista_posibles_ganadores .ui-listview li span.start > a {
+        background-size: 30px auto;
+        height: 29px;
+        width: 32px;
+    }
+    #lista_posibles_ganadores .ui-listview li .content_descripcion label{
+        letter-spacing: 0px;
+    }
+    #lista_posibles_ganadores .ui-listview li .action_votar label{
+        padding-top: 6px;
+    }
+    #lista_posibles_ganadores .ui-listview li .info{
+        display: block;
+    }
+    #lista_posibles_ganadores .title h3{
+        font-size: 17px;
     }
 }
