@@ -171,6 +171,31 @@
     font-weight: bold;
     text-shadow: 0 1px 0 #FFFFFF;
 }
+/* SEARCH */
+.content_search{
+    overflow: hidden;
+    background-color: #6BB0C5;
+    border-bottom: 1px solid #466B6F;
+}
+.content_search div.ui-body-cu.ui-input-text:first-child{
+    background: url("../img/bg_search_dep.png") no-repeat scroll left center #F9F9F9;
+    background-size: 20px;
+    background-position: 6px;
+    float: left;
+    width: 54%;
+    margin-left: 4px;
+}
+.content_search a.search_dep{
+    float: right;
+    margin-bottom: 0;
+    margin-top: 8px;
+    width: 28%;
+    margin-right: 4px;
+}
+.content_search a.search_dep .ui-btn-text{
+    letter-spacing: -1px;
+}
+
 /* NAVIGATION */
 .footer .ui-btn-hover-g,
 .footer .ui-btn-active-g {
@@ -405,7 +430,10 @@ label.custom{
 #deportistas .ui-content,
 #lista_actividad_general .ui-content,
 #lista_posibles_ganadores .ui-content,
-#lista_deportistas_elites .ui-content{
+#lista_deportistas_elites .ui-content,
+#lista_deportistas_amateurs .ui-content,
+#lista_nuevos_deportistas .ui-content,
+#buscar_por .ui-content{
     padding: 0;
 }
 .data_user{
@@ -859,29 +887,6 @@ label.custom{
 }
 
 /* LISTA POSIBLES GANADORES */
-#lista_posibles_ganadores .search{
-    overflow: hidden;
-    background-color: #6BB0C5;
-    border-bottom: 1px solid #466B6F;
-}
-#lista_posibles_ganadores .search div.ui-body-cu.ui-input-text:first-child{
-    background: url("../img/bg_search_dep.png") no-repeat scroll left center #F9F9F9;
-    background-size: 20px;
-    background-position: 6px;
-    float: left;
-    width: 54%;
-    margin-left: 4px;
-}
-#lista_posibles_ganadores .search a.search_dep{
-    float: right;
-    margin-bottom: 0;
-    margin-top: 8px;
-    width: 28%;
-    margin-right: 4px;
-}
-#lista_posibles_ganadores .search a.search_dep .ui-btn-text{
-    letter-spacing: -1px;
-}
 #lista_posibles_ganadores .title h2{
     font-size: 13px;
     font-weight: bold;
@@ -891,7 +896,9 @@ label.custom{
     margin-bottom: 4px;
 }
 #lista_posibles_ganadores .ui-listview li .ui-li-heading,
-#lista_deportistas_elites .ui-listview li .ui-li-heading{
+#lista_deportistas_elites .ui-listview li .ui-li-heading,
+#lista_deportistas_amateurs .ui-listview li .ui-li-heading,
+#lista_nuevos_deportistas .ui-listview li .ui-li-heading{
     margin-bottom: 0px;
 }
 #lista_posibles_ganadores .ui-listview li .deporte_ciudad{
@@ -960,15 +967,18 @@ label.custom{
 
 /* LISTA ELITES */
 
-#lista_deportistas_elites .options{
+#lista_deportistas_elites .options,
+#lista_deportistas_amateurs .options{
     background-color: #e7e7e7;
     margin-bottom: 5px;
 }
-#lista_deportistas_elites .options a.first{
+#lista_deportistas_elites .options a.first,
+#lista_deportistas_amateurs .options a.first{
     margin-right: 2px;
     width: 48%;
 }
-#lista_deportistas_elites .options a{
+#lista_deportistas_elites .options a,
+#lista_deportistas_amateurs .options a{
     display: inline-block;
     font-size: 20px;
     padding: 4px 0;
@@ -980,14 +990,18 @@ label.custom{
     text-shadow: 0 1px 0 #5c5e64;    
 }
 #lista_deportistas_elites .options a.active,
-#lista_deportistas_elites .options a:hover{
+#lista_deportistas_elites .options a:hover,
+#lista_deportistas_amateurs .options a.active,
+#lista_deportistas_amateurs .options a:hover{
     background-color: #992425;
     color: #fff;
 }
-#lista_deportistas_elites .content_descripcion{
+#lista_deportistas_elites .content_descripcion,
+#lista_deportistas_amateurs .content_descripcion{
     width: 68%;
 }
-#lista_deportistas_elites .content_descripcion .srecompensa span{
+#lista_deportistas_elites .content_descripcion .srecompensa span,
+#lista_deportistas_amateurs .content_descripcion .srecompensa span{
     white-space: nowrap;
     display: block;
     text-overflow: ellipsis;
@@ -1013,7 +1027,9 @@ label.custom{
     
     /* DEPORTISTAS - LISTA ELITES */
     
-    #lista_deportistas_elites .ui-listview li .ui-li-heading{
+    #lista_deportistas_elites .ui-listview li .ui-li-heading,
+    #lista_deportistas_amateurs .ui-listview li .ui-li-heading,
+    #lista_nuevos_deportistas .ui-listview li .ui-li-heading{
         font-size: 14px;
         letter-spacing: -1px;
     }
@@ -1109,10 +1125,12 @@ label.custom{
     .content_list_first .content_seguidor{
         display: block;
     }
-    #lista_deportistas_elites .content_descripcion {
+    #lista_deportistas_elites .content_descripcion,
+    #lista_deportistas_amateurs .content_descripcion{
         width: 61%;
     }
-    #lista_deportistas_elites .options a{
+    #lista_deportistas_elites .options a,
+    #lista_deportistas_amateurs .options a{
         font-size: 24px;
         padding-left: 1px;
     }
