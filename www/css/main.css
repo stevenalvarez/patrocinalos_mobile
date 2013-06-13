@@ -72,7 +72,105 @@
 .right{
     float: right;
 }
-
+.content_list_first{
+    padding: 5px;
+}
+.content_list_first .ui-listview li.ui-li-static.ui-li{
+    margin-bottom: 2px;
+    min-height: 80px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    overflow: hidden;
+}
+.content_list_first .ui-listview li .content_descripcion{
+    overflow: hidden;
+}
+.content_list_first .ui-listview li .recorte{
+    float: left;
+    height: 80px;
+    margin-right: 8px;
+    overflow: hidden;
+    width: 80px;  
+}
+.content_list_first .ui-listview li img{
+    width: 100%;
+    height: 100%;
+}
+.content_list_first .ui-listview li p.ui-li-desc{
+    margin-bottom: 0;
+}
+.content_list_first .ui-listview li .ui-li-heading{
+    margin-top: 0;
+}
+.content_list_first .ui-listview li .info{
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+}
+.content_list_first .ui-listview li .info a{
+    display: block;
+    height: 25px;
+    text-indent: -9999px;
+    width: 25px;
+}
+.content_list_first li.pair.ui-btn-up-c  {
+    border-bottom: 1px solid #AAAAAA;
+    border-left: 1px solid #AAAAAA;
+    border-right: 1px solid #AAAAAA;
+}
+.content_list_first li.ui-btn-up-c .content_descripcion label{
+    color: #91161B;
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: -1px;
+}
+.content_list_first li.odd.ui-btn-up-c .ui-li-heading,
+.content_list_first li.odd.ui-btn-up-c label,
+.content_list_first li.odd.ui-btn-up-c span{
+    color: #fff !important;
+    text-shadow: 0 0px 0 #FFFFFF;
+}
+.content_list_first li.ui-btn-up-c span{
+    letter-spacing: -1px;
+    font-size: 15px;
+}
+.content_list_first .content_seguidor{
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    width: 85px;
+    border-radius: 5px 5px 5px 5px;
+    padding: 7px 0;
+    text-shadow: 0 0px 0 #FFFFFF;
+    letter-spacing: -1px;
+    display: none;
+}
+.content_list_first li .content_seguidor b{
+    display: block;
+    font-size: 18px;
+    line-height: 15px;
+}
+.content_list_first li.pair .content_seguidor{
+    background-color: #e94142;
+    color: #fff;
+}
+.content_list_first li.odd .content_seguidor{
+    background-color: #f2f1f1;
+    color: #000;
+}
+.odd.ui-btn-up-c {
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #cc4646 /*{a-bup-background-start}*/), to( #b93838 /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/);    
+    border: 1px solid #CCCCCC;
+    color: #222222;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
 /* NAVIGATION */
 .footer .ui-btn-hover-g,
 .footer .ui-btn-active-g {
@@ -305,7 +403,9 @@ label.custom{
 #login .ui-content,
 #ranking .ui-content,
 #deportistas .ui-content,
-#lista_posibles_ganadores .ui-content{
+#lista_actividad_general .ui-content,
+#lista_posibles_ganadores .ui-content,
+#lista_deportistas_elites .ui-content{
     padding: 0;
 }
 .data_user{
@@ -349,6 +449,9 @@ label.custom{
 }
 .ui-content .ui-listview{
     margin: 0;
+}
+.ui-content .ui-listview .ui-li-static.ui-li{
+    padding: .7em 5px;
 }
 .lista_opciones{
     margin: 10px;
@@ -720,47 +823,11 @@ label.custom{
     padding: 5px;
     margin-bottom: 8px;
 }
-#lista_actividad_general .ui-content{
-    padding: 5px;
-}
-#lista_actividad_general .ui-listview li,
-#lista_posibles_ganadores .ui-listview li{
-    margin-bottom: 2px;
-    min-height: 80px;
-    padding-bottom: 5px;
-    padding-left: 5px;
-    padding-top: 5px;
-    overflow: hidden;
-}
 #lista_actividad_general .ui-listview li.pair{
     background-color: #000;
 }
 #lista_actividad_general .ui-listview li.odd{
     background-color: #a02b30;
-}
-#lista_actividad_general .ui-listview li .content_descripcion,
-#lista_posibles_ganadores .ui-listview li .content_descripcion{
-    overflow: hidden;
-}
-#lista_actividad_general .ui-listview li .recorte,
-#lista_posibles_ganadores .ui-listview li .recorte{
-    float: left;
-    height: 80px;
-    margin-right: 10px;
-    overflow: hidden;
-    width: 80px;  
-}
-#lista_posibles_ganadores .ui-listview li .recorte{
-    margin-right: 8px;
-}
-#lista_actividad_general .ui-listview li img,
-#lista_posibles_ganadores .ui-listview li img{
-    width: 100%;
-    height: 100%;
-}
-#lista_actividad_general .ui-listview li p.ui-li-desc,
-#lista_posibles_ganadores .ui-listview li p.ui-li-desc{
-    margin-bottom: 0;
 }
 #lista_actividad_general .ui-listview li p.ui-li-desc span.recuadro{
     border: 1px solid #AAAAAA;
@@ -783,32 +850,6 @@ label.custom{
     padding-top: 3px;
     height: 14px;
 }
-#lista_actividad_general .ui-listview li .ui-li-heading,
-#lista_posibles_ganadores .ui-listview li .ui-li-heading{
-    margin-top: 0;
-}
-#lista_posibles_ganadores .ui-listview li.odd .ui-li-heading,
-#lista_posibles_ganadores .ui-listview li.odd label,
-#lista_posibles_ganadores .ui-listview li.odd .deporte_ciudad span{
-    color: #fff !important;
-    text-shadow: 0 0px 0 #FFFFFF;
-}
-#lista_actividad_general .ui-listview li .info,
-#lista_posibles_ganadores .ui-listview li .info{
-    position: absolute;
-    bottom: 4px;
-    right: 4px;
-}
-#lista_posibles_ganadores .ui-listview li .info{
-    display: none;
-}
-#lista_actividad_general .ui-listview li .info a,
-#lista_posibles_ganadores .ui-listview li .info a{
-    display: block;
-    height: 25px;
-    text-indent: -9999px;
-    width: 25px;
-}
 #lista_actividad_general .ui-listview li .info a{
     background-image: url("../img/bg_info_home.png");
     background-repeat: no-repeat;
@@ -816,22 +857,8 @@ label.custom{
     background-size: 25px auto;
     background-position: 50% 50%;
 }
-#lista_posibles_ganadores .ui-listview li .info a{
-    background-image: url("../img/bg_shared_sprite.png");
-    background-repeat: no-repeat;
-    background-color: transparent;
-    background-size: 25px auto;
-    background-position: 50% 0%;
-}
-#lista_posibles_ganadores .ui-listview li .info a.active,
-#lista_posibles_ganadores .ui-listview li .info a:hover{
-    background-position: 50% 100%;
-}
 
 /* LISTA POSIBLES GANADORES */
-#lista_posibles_ganadores .lista_deportistas{
-    padding: 5px;
-}
 #lista_posibles_ganadores .search{
     overflow: hidden;
     background-color: #6BB0C5;
@@ -852,7 +879,10 @@ label.custom{
     width: 28%;
     margin-right: 4px;
 }
-#lista_posibles_ganadores .title h3{
+#lista_posibles_ganadores .search a.search_dep .ui-btn-text{
+    letter-spacing: -1px;
+}
+#lista_posibles_ganadores .title h2{
     font-size: 13px;
     font-weight: bold;
     letter-spacing: -1px;
@@ -860,26 +890,12 @@ label.custom{
     line-height: 22px;
     margin-bottom: 4px;
 }
-#lista_posibles_ganadores .ui-listview li {
-    border-bottom: 1px solid #AAAAAA;
-    border-left: 1px solid #AAAAAA;
-    border-right: 1px solid #AAAAAA;
-}
-#lista_posibles_ganadores .ui-listview li .ui-li-heading{
+#lista_posibles_ganadores .ui-listview li .ui-li-heading,
+#lista_deportistas_elites .ui-listview li .ui-li-heading{
     margin-bottom: 0px;
 }
 #lista_posibles_ganadores .ui-listview li .deporte_ciudad{
     overflow: hidden;
-}
-#lista_posibles_ganadores .ui-listview li .content_descripcion label{
-    color: #91161B;
-    display: inline-block;
-    font-size: 14px;
-    letter-spacing: -1px;
-}
-#lista_posibles_ganadores .ui-listview li .deporte_ciudad span{
-    letter-spacing: -1px;
-    font-size: 15px;
 }
 #lista_posibles_ganadores .ui-listview li .deporte_ciudad .second{
     float: right;
@@ -893,17 +909,6 @@ label.custom{
     height: 25px;
     line-height: 27px;
     padding-left: 28px;
-}
-#lista_posibles_ganadores .ui-listview li span.start > a{
-    background-image: url("../img/bg_start_sprite.png");
-    background-repeat: no-repeat;
-    background-color: transparent;
-    background-position: 50% 0%;
-    background-size: 20px auto;
-    display: inline-block;
-    height: 19px;
-    text-indent: -9999px;
-    width: 18px;
 }
 #lista_posibles_ganadores .ui-listview li .action_votar{
     overflow: hidden;
@@ -920,23 +925,73 @@ label.custom{
     margin-left: 4px;
 }
 #lista_posibles_ganadores .ui-listview li span.start{
+    font-size: inherit;
     display: inline-block;
+}
+#lista_posibles_ganadores .ui-listview li span.start > a{
+    background-image: url("../img/bg_start_sprite.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: 50% 0%;
+    background-size: 20px auto;
+    display: inline-block;
+    height: 19px;
+    text-indent: -9999px;
+    width: 18px;
 }
 #lista_posibles_ganadores .ui-listview li span.start > a.active,
 #lista_posibles_ganadores .ui-listview li span.start > a:hover{
     background-position: 50% 100%;
 }
-.odd.ui-btn-up-c {
-	background-image: -webkit-gradient(linear, left top, left bottom, from( #cc4646 /*{a-bup-background-start}*/), to( #b93838 /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
-	background-image: -webkit-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
-	background-image:    -moz-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* FF3.6 */
-	background-image:     -ms-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* IE10 */
-	background-image:      -o-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* Opera 11.10+ */
-	background-image:         linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/);    
-    border: 1px solid #CCCCCC;
-    color: #222222;
-    font-weight: bold;
-    text-shadow: 0 1px 0 #FFFFFF;
+#lista_posibles_ganadores .ui-listview li .info{
+    display: none;
+}
+#lista_posibles_ganadores .ui-listview li .info a{
+    background-image: url("../img/bg_shared_sprite.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 25px auto;
+    background-position: 50% 0%;
+}
+#lista_posibles_ganadores .ui-listview li .info a.active,
+#lista_posibles_ganadores .ui-listview li .info a:hover{
+    background-position: 50% 100%;
+}
+
+/* LISTA ELITES */
+
+#lista_deportistas_elites .options{
+    background-color: #e7e7e7;
+    margin-bottom: 5px;
+}
+#lista_deportistas_elites .options a.first{
+    margin-right: 2px;
+    width: 48%;
+}
+#lista_deportistas_elites .options a{
+    display: inline-block;
+    font-size: 20px;
+    padding: 4px 0;
+    text-align: center;
+    width: 50%;
+    color: #000000;
+    font-family:'CaptureitRegular';
+    letter-spacing: 0px;
+    text-shadow: 0 1px 0 #5c5e64;    
+}
+#lista_deportistas_elites .options a.active,
+#lista_deportistas_elites .options a:hover{
+    background-color: #992425;
+    color: #fff;
+}
+#lista_deportistas_elites .content_descripcion{
+    width: 68%;
+}
+#lista_deportistas_elites .content_descripcion .srecompensa span{
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 /* RESPONSIVO */
@@ -1034,7 +1089,20 @@ label.custom{
     #lista_posibles_ganadores .ui-listview li .info{
         display: block;
     }
-    #lista_posibles_ganadores .title h3{
+    #lista_posibles_ganadores .title h2{
         font-size: 17px;
+    }
+    
+    /* DEPORTISTAS - LISTA ELITES */
+    
+    .content_list_first .content_seguidor{
+        display: block;
+    }
+    #lista_deportistas_elites .content_descripcion {
+        width: 61%;
+    }
+    #lista_deportistas_elites .options a{
+        font-size: 24px;
+        padding-left: 1px;
     }
 }
