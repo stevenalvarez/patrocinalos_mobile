@@ -159,6 +159,11 @@
     background-color: #f2f1f1;
     color: #000;
 }
+.content_list_first .content_edicion{
+    padding: 5px;
+    background-color: #6BB0C5;
+    overflow: hidden;
+}
 .odd.ui-btn-up-c {
 	background-image: -webkit-gradient(linear, left top, left bottom, from( #cc4646 /*{a-bup-background-start}*/), to( #b93838 /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
 	background-image: -webkit-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
@@ -194,6 +199,30 @@
 }
 .content_search a.search_dep .ui-btn-text{
     letter-spacing: -1px;
+}
+
+/* RADIOS CUSTOMS */
+.content_formulario{
+    width: 100%;
+}
+.content_formulario .opciones .first,
+.content_formulario .opciones .second{
+    height: 25px;
+    overflow: hidden;
+    position: relative;
+    margin-right: 5px;    
+}
+.content_formulario .opciones .first .ui-radio:first-child,
+.content_formulario .opciones .second .ui-radio:first-child{
+    left: 0;
+    position: absolute;
+    width: 100px;
+}
+.content_formulario .opciones .first .ui-radio:last-child,
+.content_formulario .opciones .second .ui-radio:last-child{
+    right: 0;
+    position: absolute;
+    width: 100px;
 }
 
 /* NAVIGATION */
@@ -372,7 +401,8 @@
 .ui-radio .ui-btn-icon-left .ui-btn-inner{
     padding: 0px 0px 0px 35px;
     height: 22px;
-    margin-top: 0;    
+    margin-top: 0;
+    border-top: 0;
 }
 .ui-radio-off .ui-btn-inner .ui-btn-text,
 .ui-radio-on .ui-btn-inner .ui-btn-text{
@@ -433,7 +463,8 @@ label.custom{
 #lista_deportistas_elites .ui-content,
 #lista_deportistas_amateurs .ui-content,
 #lista_nuevos_deportistas .ui-content,
-#buscar_por .ui-content{
+#buscar_por .ui-content,
+#edicion_datos_personales .ui-content{
     padding: 0;
 }
 .data_user{
@@ -806,27 +837,8 @@ label.custom{
     background: url("../img/bg_calendario.png") no-repeat scroll center center transparent;
     background-size: 35px;
 }
-#register_finalizado .opciones{
+#register_finalizado .content_formulario .opciones{
     margin: 0 2em;
-}
-#register_finalizado .opciones .first,
-#register_finalizado .opciones .second{
-    height: 25px;
-    overflow: hidden;
-    position: relative;
-    margin-right: 5px;    
-}
-#register_finalizado .opciones .first .ui-radio:first-child,
-#register_finalizado .opciones .second .ui-radio:first-child{
-    left: 0;
-    position: absolute;
-    width: 100px;
-}
-#register_finalizado .opciones .first .ui-radio:last-child,
-#register_finalizado .opciones .second .ui-radio:last-child{
-    right: 0;
-    position: absolute;
-    width: 100px;
 }
 #register_finalizado .save_data{
     font-size: 12px;
@@ -968,17 +980,20 @@ label.custom{
 /* LISTA ELITES */
 
 #lista_deportistas_elites .options,
-#lista_deportistas_amateurs .options{
+#lista_deportistas_amateurs .options,
+#edicion_datos_personales .options{
     background-color: #e7e7e7;
     margin-bottom: 5px;
 }
 #lista_deportistas_elites .options a.first,
-#lista_deportistas_amateurs .options a.first{
+#lista_deportistas_amateurs .options a.first,
+#edicion_datos_personales .options a.first{
     margin-right: 2px;
     width: 48%;
 }
 #lista_deportistas_elites .options a,
-#lista_deportistas_amateurs .options a{
+#lista_deportistas_amateurs .options a,
+#edicion_datos_personales .options a{
     display: inline-block;
     font-size: 20px;
     padding: 4px 0;
@@ -987,14 +1002,18 @@ label.custom{
     color: #000000;
     font-family:'CaptureitRegular';
     letter-spacing: 0px;
-    text-shadow: 0 1px 0 #5c5e64;    
+    text-shadow: 0 1px 0 #5c5e64;
+    font-weight: normal;
 }
 #lista_deportistas_elites .options a.active,
 #lista_deportistas_elites .options a:hover,
 #lista_deportistas_amateurs .options a.active,
-#lista_deportistas_amateurs .options a:hover{
+#lista_deportistas_amateurs .options a:hover,
+#edicion_datos_personales .options a.active,
+#edicion_datos_personales .options a:hover{
     background-color: #992425;
     color: #fff;
+    border-bottom: 1px solid #000;
 }
 #lista_deportistas_elites .content_descripcion,
 #lista_deportistas_amateurs .content_descripcion{
@@ -1008,6 +1027,45 @@ label.custom{
     overflow: hidden;
 }
 
+/* EDICION DATOS PERSONALES */
+#edicion_datos_personales .options a{
+    font-size: 15px;
+}
+#edicion_datos_personales .content_formulario{
+    width: 60%;
+}
+#edicion_datos_personales .content_formulario .opciones .first, 
+#edicion_datos_personales .content_formulario .opciones .second{
+    margin-right: 0px;
+}
+#edicion_datos_personales .content_formulario .opciones .ui-radio .ui-btn-inner .ui-btn-text{
+    font-size: 12px;
+}
+#edicion_datos_personales #change_foto{
+    clear: both;
+    margin-bottom: 0;
+}
+#edicion_datos_personales #change_foto .ui-btn-inner{
+    padding: 0.15em 9px .2em;
+}
+#edicion_datos_personales #change_foto .ui-btn-text{
+    letter-spacing: -1px;
+    font-size: 14px;
+    text-shadow: 0 0px 0 #FFFFFF;
+}
+#edicion_datos_personales .recuadro{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    text-align: right;
+    float: right;
+    margin-right: 3px;
+    margin-bottom: 3px;   
+}
+#edicion_datos_personales .recuadro img{
+    width: 100%;
+    height: 100%;
+}
 /* RESPONSIVO */
 
 @media only screen and  (max-width: 479px) {
@@ -1071,7 +1129,7 @@ label.custom{
     #register_finalizado .save_data{
         letter-spacing: 0px;
     }
-    #register_finalizado .opciones{
+    #register_finalizado .content_formulario .opciones{
         margin: 0 7em;
     }
     #register_finalizado .fecha_nacimiento div.ui-input-text{
@@ -1134,4 +1192,13 @@ label.custom{
         font-size: 24px;
         padding-left: 1px;
     }
+    
+    /* EDICION DATOS PERSONALES */
+    #edicion_datos_personales .options a{
+        font-size: 18px;
+    }
+    #edicion_datos_personales .content_formulario{
+        width: 45%;
+    }
+    
 }
