@@ -95,7 +95,7 @@
                             </li>
                             <li>
                                 <img src="img/usuarios/user-2.jpg" />
-                            </li>                                                    
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -121,10 +121,10 @@
                          <input data-theme="cu" name="usuario[password]" placeholder="Contrase&ntilde;a..." autocomplete="off" type="password"/>
                      </div>
                     <fieldset data-role="controlgroup">
-                            <input name="radio-choice-1" id="radio-choice-1" type="radio"/>
-                            <label data-theme="c" for="radio-choice-1">Recordar mis datos de acceso.</label>
+                        <input name="radio-choice-1" id="radio-choice-1" type="radio"/>
+                        <label data-theme="c" for="radio-choice-1">Recordar mis datos de acceso.</label>
                     </fieldset>
-                </form>            
+                </form>
             
                 <a href="#home" data-role="button" data-theme="r">ENTRAR</a>
                 <a href="#register_user" data-role="button">&Uacute;NETE A PATROCINALOS</a>
@@ -134,25 +134,27 @@
                 </p>
                 
             </div>
-    	</div><!-- /content -->
-        
-        <div class="recuperar_contrasena">
-            <a style="width: 100%; padding: 0; margin: 0;" href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-theme="p" data-transition="pop" >RECUPERAR CONTRASE&Nacute;A</a>
-            <!-- popup - restablecer contraseña -->
-            <div data-role="popup" id="popupMenu" data-theme="b" data-overlay-theme="a">
-                <div data-role="popup" id="popupLogin" data-theme="b" class="ui-corner-all" data-overlay-theme="a">
-                    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right close">Close</a>
-                    <form>
-                        <div style="padding:10px 20px; background-color: #fff;">
-                          <h3 style="font-weight: bold; letter-spacing: -2px; font-size: 17px;">RESTABLECER CONTRASE&Ntilde;A</h3>
-                          <label for="reset_pass" class="ui-hidden-accessible">Email:</label>
-                          <input name="user_email" id="reset_pass" value="" placeholder="Email" data-theme="a" type="text"/>
-                          <button type="submit" data-theme="r">Enviar</button>
-                        </div>
-                    </form>
+            
+            <!-- recuperar contraseña -->
+            <div class="recuperar_contrasena">
+                <a style="width: 100%; padding: 0; margin: 0;" href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-theme="p" data-transition="pop" >RECUPERAR CONTRASE&Nacute;A</a>
+                <!-- popup - restablecer contraseña -->
+                <div data-role="popup" id="popupMenu" data-theme="b" data-overlay-theme="a">
+                    <div data-role="popup" id="popupLogin" data-theme="b" class="ui-corner-all" data-overlay-theme="a">
+                        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right close">Close</a>
+                        <form>
+                            <div style="padding:10px 20px; background-color: #fff;">
+                              <h3 style="font-weight: bold; letter-spacing: -2px; font-size: 17px;">RESTABLECER CONTRASE&Ntilde;A</h3>
+                              <label for="reset_pass" class="ui-hidden-accessible">Email:</label>
+                              <input name="user_email" id="reset_pass" value="" placeholder="Email" data-theme="a" type="text"/>
+                              <button type="submit" data-theme="r">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>            
-        </div>        
+            </div>
+            
+    	</div><!-- /content -->
     
     </div><!-- /page -->
 
@@ -163,7 +165,6 @@
     	<div data-role="content">
             
             <div class="btn-access">
-            
                 <form>
                     <div class="access_login">
                          <div class="register_option_fb">
@@ -198,8 +199,8 @@
                          </div>
                      </div>
                     <fieldset data-role="controlgroup">
-                            <input name="usuario[terminos]" id="radio-termino" type="radio"/>
-                            <label data-theme="c" for="radio-termino">Acepto los t&eacute;rminos y condiciones.</label>
+                        <input name="usuario[terminos]" id="radio-termino" type="radio"/>
+                        <label data-theme="c" for="radio-termino">Acepto los t&eacute;rminos y condiciones.</label>
                     </fieldset>
                 </form>
             </div>
@@ -207,7 +208,7 @@
         
         <div class="guardar">
             <a href="#register_finalizado" data-role="button">REGISTRARME</a>
-        </div>        
+        </div>
     
     </div><!-- /page -->
     
@@ -239,7 +240,7 @@
                          </div>
                          <div class="fecha_nacimiento">
                             <input name="usuario[fecha_nacimiento]" placeholder="Fecha Nacimiento..." autocomplete="off" type="text" readonly="readonly"/>
-                            <a class="calendario" href="#" data-role="button" data-theme="a" data-mini="true">&nbsp;</a>                         
+                            <a class="calendario" href="#" data-role="button" data-theme="a" data-mini="true">&nbsp;</a>
                          </div>
                          <select data-theme="c" name="usuario[pais]" id="select-pais">
                             <option>Selecciona un pais...</option>
@@ -264,7 +265,7 @@
         
         <div class="guardar">
             <a href="#home" data-role="button">GUARDAR DATOS</a>
-        </div>        
+        </div>
     
     </div><!-- /page -->
     
