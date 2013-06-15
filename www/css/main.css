@@ -96,6 +96,7 @@
 .content_list_first .ui-listview li img{
     width: 100%;
     height: 100%;
+    border-radius: 5px 5px 5px 5px;
 }
 .content_list_first .ui-listview li p.ui-li-desc{
     margin-bottom: 0;
@@ -469,7 +470,8 @@ label.custom{
 #lista_deportistas_amateurs .ui-content,
 #lista_nuevos_deportistas .ui-content,
 #buscar_por .ui-content,
-#edicion_datos_personales .ui-content{
+#edicion_datos_personales .ui-content,
+#edicion_datos_deportivos .ui-content{
     padding: 0;
 }
 .data_user{
@@ -905,7 +907,8 @@ label.custom{
 }
 
 /* LISTA POSIBLES GANADORES */
-#lista_posibles_ganadores .title h2{
+#lista_posibles_ganadores .title h2,
+#edicion_datos_deportivos .title h2{
     font-size: 13px;
     font-weight: bold;
     letter-spacing: -1px;
@@ -1034,6 +1037,7 @@ label.custom{
 }
 
 /* EDICION DATOS PERSONALES */
+
 #edicion_datos_personales .options a{
     font-size: 15px;
 }
@@ -1047,14 +1051,17 @@ label.custom{
 #edicion_datos_personales .content_formulario .opciones .ui-radio .ui-btn-inner .ui-btn-text{
     font-size: 12px;
 }
-#edicion_datos_personales #change_foto{
+#edicion_datos_personales #change_foto,
+#edicion_datos_deportivos #hacerme_amigo{
     clear: both;
     margin-bottom: 0;
 }
-#edicion_datos_personales #change_foto .ui-btn-inner{
+#edicion_datos_personales #change_foto .ui-btn-inner,
+#edicion_datos_deportivos #hacerme_amigo .ui-btn-inner{
     padding: 0.15em 9px .2em;
 }
-#edicion_datos_personales #change_foto .ui-btn-text{
+#edicion_datos_personales #change_foto .ui-btn-text,
+#edicion_datos_deportivos #hacerme_amigo .ui-btn-text{
     letter-spacing: -1px;
     font-size: 14px;
     text-shadow: 0 0px 0 #FFFFFF;
@@ -1080,6 +1087,165 @@ label.custom{
 #edicion_datos_personales .guardar a{
     margin-bottom: 0;
 }
+
+/* EDICION DATOS DEPORTIVOS */
+
+#edicion_datos_deportivos .ui-listview li .info a{
+    background-image: url("../img/bg_like_sprite.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 25px auto;
+}
+#edicion_datos_deportivos .ui-listview li.pair .info a{
+    background-position: 50% 0%;
+}
+#edicion_datos_deportivos .ui-listview li.odd .info a{
+    background-position: 50% 100%;
+}
+#edicion_datos_deportivos .ui-listview li .ui-li-heading span.nombre_usuario{
+    font-size: 16px;
+}
+#edicion_datos_deportivos .ui-listview li .ui-li-heading span.fecha_publicacion{
+    font-size: 13px;
+}
+#edicion_datos_deportivos .ui-listview li.pair .ui-li-heading span.fecha_publicacion{
+    color: #8d2828;
+}
+#edicion_datos_deportivos .ui-listview li p{
+    white-space: normal;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: justify;
+    display: block;
+    text-shadow: 0 0 0  !important;
+}
+#edicion_datos_deportivos .title h2{
+    font-size: 17px;
+    margin-bottom: 0px;
+}
+#edicion_datos_deportivos .data_user{
+    padding: 0;
+    border: none;
+    background-color: #eeeeee;
+}
+#edicion_datos_deportivos .data_user .recorte{
+    height: 115px;
+    width: 115px;
+    margin-right: 0px;
+}
+#edicion_datos_deportivos .data_user .foto_perfil{
+    background-color: #fff;
+    padding-right: 2px;
+    border-right: 1px solid #d9d9d9;
+    min-height: 140px;
+    width: 36%;
+}
+#edicion_datos_deportivos .data_user .description{
+    min-height: 135px;
+    border-bottom: 1px solid #d9d9d9;
+    width: 61%;
+    padding: 4px 0 0 4px;
+}
+#edicion_datos_deportivos .data_user .description .content{
+    width: 100%;
+}
+#edicion_datos_deportivos .data_user .content b{
+    color: #a22020;
+    font-size: 15px;
+}
+#edicion_datos_deportivos .data_user .content label{
+    font-size: 13px;
+    margin-top: 0;
+}
+#edicion_datos_deportivos .data_user .content label.nombre_user{
+    font-size: 16px;
+    display: block;
+}
+#edicion_datos_deportivos .data_user .content span{
+    font-size: 12px;
+    letter-spacing: -1px;
+}
+#edicion_datos_deportivos .data_user .content .necesito_para span{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+}
+#edicion_datos_deportivos .data_user .content label.inline{
+    display: inline-block;
+}
+#edicion_datos_deportivos .content_middle .top{
+    overflow: hidden;
+    font-size: 14px;
+    letter-spacing: -1px;
+    margin: 8px 3px 2px 3px;
+}
+#edicion_datos_deportivos .content_middle .top b{
+    color: #A22020;
+}
+#edicion_datos_deportivos .content_middle .center{
+    background-color: #E2E2E2;
+    border-top: 1px solid #d1cfcf;
+    border-bottom: 1px solid #d1cfcf;
+    margin-bottom: 5px;
+    color: #fff;
+    font-size: 14px;
+}
+#edicion_datos_deportivos .content_middle .center .porcentaje{
+    background-color: #ab1e1e;
+    text-shadow: 0 0 0;
+    padding: 5px 0;
+    text-align: center;
+    font-weight: bold;
+}
+#edicion_datos_deportivos .info_deportista{
+    margin: 5px 0 5px 5px;
+    overflow: hidden;
+}
+#edicion_datos_deportivos .info_deportista li{
+    float: left;
+    margin-right: 4px;
+    background-color: #94c9ea;
+    border: 1px solid #7cb4d7;
+    min-height: 60px;
+    padding: 5px;
+    width: 18%;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;    
+    text-shadow: 0 0 0 !important;
+}
+#edicion_datos_deportivos .info_deportista li label{
+    color: #fff;
+    font-size: 15px;
+} 
+#edicion_datos_deportivos .info_deportista li p{
+    color: #9b3d3f;
+    text-shadow: 0 0 0 !important;
+    font-size: 14px;
+    line-height: 13px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+#edicion_datos_deportivos .info_deportista li.black{
+    background-color: #191919;
+    width: 25%;
+    text-align: left;
+}
+#edicion_datos_deportivos .info_deportista li.last{
+    margin-right: 0;
+}
+#edicion_datos_deportivos .info_deportista li b{
+    font-size: 32px;
+    text-shadow: 0 0 0 !important;
+    color: #000;
+    display: block;
+}
+#edicion_datos_deportivos .info_deportista li.clasificacion span.text{
+    letter-spacing: -1px;
+    margin-left: -3px;
+}
+
 /* RESPONSIVO */
 
 @media only screen and  (max-width: 479px) {
@@ -1208,6 +1374,7 @@ label.custom{
     }
     
     /* EDICION DATOS PERSONALES */
+    
     #edicion_datos_personales .options a{
         font-size: 18px;
     }
@@ -1215,4 +1382,24 @@ label.custom{
         width: 45%;
     }
     
+    /* EDICION DATOS DEPORTUVOS */
+    
+    #edicion_datos_deportivos .data_user .foto_perfil{
+        width: 24%;
+    }
+    #edicion_datos_deportivos .data_user .description{
+        width: 74%;
+    }
+    #edicion_datos_deportivos .data_user .content .necesito_para span {
+        white-space: normal;
+        display: inline;
+    }
+    #edicion_datos_deportivos .info_deportista li {
+        margin-right: 6px;
+        width: 20%;
+    }
+    #edicion_datos_deportivos .info_deportista li.clasificacion span.text{
+        letter-spacing: 0;
+        margin-left: 0;
+    }
 }
