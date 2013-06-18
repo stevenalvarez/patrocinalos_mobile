@@ -471,7 +471,10 @@ label.custom{
 #lista_nuevos_deportistas .ui-content,
 #buscar_por .ui-content,
 #edicion_datos_personales .ui-content,
-#edicion_datos_deportivos .ui-content{
+#edicion_datos_deportivos .ui-content,
+#configuracion_privacidad .ui-content,
+#puntos_obtenidos_en_ronda .ui-content,
+#creacion_patrocinio_deportivo .ui-content{
     padding: 0;
 }
 .data_user{
@@ -597,7 +600,8 @@ label.custom{
 .ui-controlgroup-horizontal .icon_smile_bgtres.ui-btn,
 .ui-controlgroup-horizontal .icon_tool.ui-btn,
 .ui-controlgroup-horizontal .icon_promocionar_social.ui-btn,
-.ui-controlgroup-horizontal .icon_mis_albunes.ui-btn{
+.ui-controlgroup-horizontal .icon_mis_albunes.ui-btn,
+.ui-controlgroup-horizontal .icon_mis_puntos_obtenidos.ui-btn{
     background: #8f1d1d; 
 }
 .ui-controlgroup-horizontal .icon_old_recompensa.ui-btn,
@@ -684,6 +688,10 @@ label.custom{
     background: url("../img/bg_lista_videos.png") no-repeat scroll left top transparent;
     background-size: 40px;
 }
+.ui-controlgroup-horizontal .icon_mis_puntos_obtenidos .ui-icon {
+    background: url("../img/bg_puntos.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
 
 /* PAGES */
 
@@ -757,7 +765,8 @@ label.custom{
 #login_user .recuperar_contrasena,
 #register_user .guardar,
 #register_finalizado .guardar,
-#edicion_datos_personales .guardar{
+#edicion_datos_personales .guardar,
+#configuracion_privacidad .guardar{
     margin: 0 32px;
     margin-bottom: 10px;
 }
@@ -1246,6 +1255,144 @@ label.custom{
     margin-left: -3px;
 }
 
+/* CONFIGURACION DE PRIVACIDAD O ALERTAS */
+#configuracion_privacidad .content_edicion legend,
+#configuracion_privacidad .content_edicion label .ui-btn-text{
+    font-weight: normal;
+    letter-spacing: -1px;
+    text-shadow: 0 0 0;
+    font-size: 12px;
+}
+#configuracion_privacidad .content_edicion legend{
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* PUNTOS OBTENIDOS EN LA RONDA */
+#puntos_obtenidos_en_ronda .content_top{
+    overflow: hidden;
+    border-bottom: 1px solid #466b6f;
+    background-color: #6bb0c5;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+#puntos_obtenidos_en_ronda .content_top li{
+    float: left;
+    background-color: #fff;
+    min-height: 45px;
+    width: 49%;
+    text-align: center;
+    font-size: 14px;
+    text-shadow: 0 0 0 !important;
+    border-radius: 5px;
+    padding: 5px 0;
+}
+#puntos_obtenidos_en_ronda .content_top li b{
+    font-size: 32px;
+    text-shadow: 0 0 0 !important;
+    color: #000;
+    display: block;
+    line-height: 30px;
+}
+#puntos_obtenidos_en_ronda .content_top li span.text{
+    color: #B93838;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+#puntos_obtenidos_en_ronda .content_list_first h2{
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+#puntos_obtenidos_en_ronda .content_list_first li .content_seguidor b{
+    display: block;
+    font-size: 50px;
+    line-height: 44px;    
+}
+#puntos_obtenidos_en_ronda .content_list_first .content_seguidor{
+    font-size: 18px;
+}
+#puntos_obtenidos_en_ronda .content_list_first .content_seguidor {
+    display: block;
+}
+#puntos_obtenidos_en_ronda .content_list_first .ui-listview li .content_descripcion{
+    padding-left: 10px;
+    line-height: 25px;
+}
+
+/* PATROCINIO DEPORTIVO - CREACION */
+#creacion_patrocinio_deportivo .content_edicion legend{
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    text-shadow: 0 0 0;
+}
+#creacion_patrocinio_deportivo textarea{
+    height: 150px;
+}
+.formulario_patrocinio .guardar_patrocinio{
+    margin: 0 32px;
+    margin-bottom: 10px;
+}
+.formulario_patrocinio .guardar_patrocinio .ui-icon {
+    
+}
+
+/* Popup Votar*/
+#popupVoto{
+    border: 0;
+    border-radius: 10px 10px 5px 5px;
+}
+#popupVoto h3{
+    background-color: #9F3A3B;
+    border: 0 none;
+    border-radius: 4px 4px 0 0;
+    color: white;
+    font-size: 15px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    padding: 7px 0;
+    text-shadow: 0 0 0;
+}
+#popupVoto h3 span{
+    padding-left: 25px;
+    background-image: url("../img/bg_ticket.png");
+    background-repeat: no-repeat;
+    background-color: #9f3a3b;
+    background-size: 20px auto;
+    background-position: center left;
+    margin-left: 8px;
+}
+
+#popupVoto p{
+    padding: 10px 20px 25px 20px;
+    margin: 0 5px;
+    font-size: 12px;
+    text-shadow: 0 0 0;
+    line-height: 12px;
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 20px;
+}
+#popupVoto .patrocinar_elite{
+    margin: 20px 40px;
+}
+#popupVoto .patrocinar_elite .ui-btn .ui-btn-inner{
+    padding-left: 35px;
+    display: inline-block;
+}
+#popupVoto .patrocinar_elite .ui-icon {
+    background: url("../img/bg_euro.png") no-repeat scroll top center transparent;
+    border-radius: 0px;
+    box-shadow: none;
+    height: 20px;
+    width: 20px;
+    display: block;
+    background-size: 14px auto;
+}
+
 /* RESPONSIVO */
 
 @media only screen and  (max-width: 479px) {
@@ -1401,5 +1548,10 @@ label.custom{
     #edicion_datos_deportivos .info_deportista li.clasificacion span.text{
         letter-spacing: 0;
         margin-left: 0;
+    }
+    
+    /* CONFIGURACION DE PRIVACIDAD O ALERTAS */
+    #configuracion_privacidad .content_edicion legend{
+        font-size: 15px;
     }
 }

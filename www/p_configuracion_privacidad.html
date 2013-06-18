@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+    
+    <!-- EDICION DE CONFIGURACION DE PRIVACIDAD -->
+    
+    <div data-role="page" id="configuracion_privacidad" data-theme="c">
+    
+    	<div data-role="header" data-tap-toggle="false"  data-position="fixed" data-theme="g" class="header">
+        
+            <div data-role="navbar">
+                <ul class="nav-custom">
+                    <li><a href="#perfil" class="nav_perfil ui-btn-active-g" data-icon="none" data-iconpos="top">PERFIL</a></li>
+                    <li><a href="#patrocinio_deportivo" class="nav_patrocinio_deportivo" data-icon="none" data-iconpos="top">PATROCINIO DEPORTIVO</a></li>
+                    <li><a href="#fotos_videos" class="nav_fotos_videos" data-icon="none" data-iconpos="top">FOTOS / VIDEOS</a></li>
+                    <li><a href="#blog_muros" class="nav_blog_muros" data-icon="none" data-iconpos="top">BLOG / MUROS</a></li>
+                </ul>
+            </div>
+        
+    	</div>
+    
+    	<div data-role="content">
+            <div class="content_list_first">
+                <div class="content_edicion">
+                    <form>
+                        <fieldset data-role="controlgroup">
+                            <legend>Puedes configurar las alertas que recibiras en tu mail.</legend>
+                            <input name="configuracion[notificacion_voto]" id="recibir_notificaion" type="checkbox"/>
+                            <label for="recibir_notificaion">Deseo recibir una notificaci&oacute;n cuando un usuario me vote.</label>
+                            <input name="configuracion[notificacion_semanal]" id="notificacion_semanal" type="checkbox"/>
+                            <label for="notificacion_semanal">Deseo recibir una notificaci&oacute;n de la actualizaci&oacute;n semanal</label>
+                            <input name="configuracion[notificacion_comentario]" id="notificacion_comentario" type="checkbox"/>
+                            <label for="notificacion_comentario">Deseo recibir una notificaci&oacute;n de comentarios</label>
+                            <input name="configuracion[notificacion_patrocinio_aprobado]" id="notificacion_patrocinio_aprobado" type="checkbox"/>
+                            <label for="notificacion_patrocinio_aprobado">Recibir una notificaci&oacute;n cuando mi patrocinio sea aprobado.</label>
+                            <input name="configuracion[notificacion_patrocinio_concluye]" id="notificacion_patrocinio_concluye" type="checkbox"/>
+                            <label for="notificacion_patrocinio_concluye">Recibir notificaci&oacute;n cuando el plazo de mi patrocinio concluya.</label>
+                            <input name="configuracion[notificacion_add_amigo]" id="notificacion_add_amigo" type="checkbox"/>
+                            <label for="notificacion_add_amigo">Notificaci&oacute;n cuando un usuario me a&ntilde;ada como amigo.</label>
+                            <input name="configuracion[notificacion_pregunta_patrocinio]" id="notificacion_pregunta_patrocinio" type="checkbox"/>
+                            <label for="notificacion_pregunta_patrocinio">Notificaci&oacute;n cuando me env&iacute;en una pregunta sobre mi patrocinio.</label>
+                            <input name="configuracion[notificacion_team_mazzel]" id="notificacion_team_mazzel" type="checkbox"/>
+                            <label for="notificacion_team_mazzel">Notificaci&oacute;n del equipo de mazzel.</label>
+                            <input name="configuracion[notificacion_novedad]" id="notificacion_novedad" type="checkbox"/>
+                            <label for="notificacion_novedad">Notificaci&oacute;n de las novedades de newsletter.</label>
+                            <input name="configuracion[notificacion_liquidacion]" id="notificacion_liquidacion" type="checkbox"/>
+                            <label for="notificacion_liquidacion">Notificaci&oacute;n cuando reciba una liquidacion en mi patrocinio.</label>
+                            
+                        </fieldset>
+                        
+                        <div class="guardar">
+                            <a href="#" data-role="button" data-theme="r">ACTUALIZAR DATOS</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    	</div><!-- /content -->
+    
+        <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="g" class="footer">
+            
+            <div data-role="navbar">
+                <ul class="nav-custom">
+                    <li><a href="#home" class="nav_home" data-icon="none" data-iconpos="top">HOME</a></li>
+                    <li><a href="#login_user" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
+                    <li><a href="#ranking" class="nav_ranking" data-icon="none" data-iconpos="top">RANKING</a></li>
+                    <li><a href="#deportistas" class="nav_deportistas" data-icon="none" data-iconpos="top">DEPORTISTAS</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    
+    </div><!-- /page -->
+    
+    </body>
+</html>
