@@ -474,8 +474,9 @@ label.custom{
 #edicion_datos_deportivos .ui-content,
 #configuracion_privacidad .ui-content,
 #puntos_obtenidos_en_ronda .ui-content,
-#creacion_patrocinio_deportivo .ui-content,
-#creacion_patrocinio_deportivo_paso2 .ui-content{
+#creacion_patrocinio_deportivo_paso1 .ui-content,
+#creacion_patrocinio_deportivo_paso2 .ui-content,
+#creacion_patrocinio_deportivo_paso3 .ui-content{
     padding: 0;
 }
 .data_user{
@@ -1322,9 +1323,10 @@ label.custom{
     line-height: 25px;
 }
 
-/* PATROCINIO DEPORTIVO - CREACION */
-#creacion_patrocinio_deportivo .content_edicion h2,
-#creacion_patrocinio_deportivo_paso2 .content_edicion h2{
+/* PATROCINIO DEPORTIVO - CREACION  PASO 1 */
+#creacion_patrocinio_deportivo_paso1 .content_edicion h2,
+#creacion_patrocinio_deportivo_paso2 .content_edicion h2,
+#creacion_patrocinio_deportivo_paso3 .content_edicion h2{
     font-size: 13px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -1332,9 +1334,13 @@ label.custom{
     letter-spacing: -1px;
     text-shadow: 0 0 0;
 }
-#creacion_patrocinio_deportivo textarea,
+#creacion_patrocinio_deportivo_paso1 textarea,
 #creacion_patrocinio_deportivo_paso2 textarea{
     height: 150px;
+}
+#creacion_patrocinio_deportivo_paso2 .content_edicion label,
+#creacion_patrocinio_deportivo_paso3 .content_edicion label{
+    text-shadow: 0 0 0;
 }
 .formulario_patrocinio .guardar_patrocinio{
     margin: 0 40px;
@@ -1346,6 +1352,10 @@ label.custom{
     margin-bottom: -2px;
     padding-left: 35px;
 }
+.formulario_patrocinio .guardar_patrocinio .next .ui-btn .ui-btn-inner{
+    padding-left: 15px;
+    padding-right: 35px;
+}
 .formulario_patrocinio .guardar_patrocinio .ui-icon {
     background: url("../img/bg_next.png") no-repeat scroll top center transparent;
     border-radius: 0px;
@@ -1356,13 +1366,64 @@ label.custom{
     background-size: 15px auto;
     margin-top: -12px;
 }
+/* PATROCINIO DEPORTIVO - CREACION  PASO 2 */
+
+.formulario_patrocinio .guardar_patrocinio .volver {
+    width: 42%;
+    float: left;
+}
+.formulario_patrocinio .guardar_patrocinio .volver .ui-icon{
+    background: url("../img/bg_volver.png") no-repeat scroll top center transparent;
+    border-radius: 0px;
+    box-shadow: none;
+    height: 24px;
+    width: 20px;
+    display: block;
+    background-size: 15px auto;
+    margin-top: -12px;    
+}
+.formulario_patrocinio .guardar_patrocinio .next{
+    width: 55%;
+    float: right;
+}
+.formulario_patrocinio .guardar_patrocinio .next .ui-icon{
+    background: url("../img/bg_next.png") no-repeat scroll top right transparent;
+    border-radius: 0px;
+    box-shadow: none;
+    height: 24px;
+    width: 20px;
+    display: block;
+    background-size: 15px auto;
+    margin-top: -12px;    
+}
+/* PATROCINIO DEPORTIVO - CREACION  PASO 3 */
+#creacion_patrocinio_deportivo_paso3 .content_upload_foto{
+    margin: 0 20px;
+    border-bottom: 0;    
+} 
+#creacion_patrocinio_deportivo_paso3 .lista_fotos{
+    overflow: hidden;
+    margin: 15px 0;
+}
+#creacion_patrocinio_deportivo_paso3 .lista_fotos li{
+    float: left;
+    border: 1px solid #fff;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    height: 52px;
+}
+#creacion_patrocinio_deportivo_paso3 .lista_fotos li img{
+    height: 52px;
+}
 
 /* Popup Votar*/
-#popupVoto{
+#popupVoto,
+#popupPatrocinio{
     border: 0;
     border-radius: 10px 10px 5px 5px;
 }
-#popupVoto h3{
+#popupVoto h3,
+#popupPatrocinio h3{
     background-color: #9F3A3B;
     border: 0 none;
     border-radius: 4px 4px 0 0;
@@ -1373,7 +1434,8 @@ label.custom{
     padding: 7px 0;
     text-shadow: 0 0 0;
 }
-#popupVoto h3 span{
+#popupVoto h3 span,
+#popupPatrocinio h3 span{
     padding-left: 25px;
     background-image: url("../img/bg_ticket.png");
     background-repeat: no-repeat;
@@ -1382,8 +1444,8 @@ label.custom{
     background-position: center left;
     margin-left: 8px;
 }
-
-#popupVoto p{
+#popupVoto p,
+#popupPatrocinio p{
     padding: 10px 20px 25px 20px;
     margin: 0 5px;
     font-size: 12px;
@@ -1569,5 +1631,16 @@ label.custom{
     /* CONFIGURACION DE PRIVACIDAD O ALERTAS */
     #configuracion_privacidad .content_edicion legend{
         font-size: 15px;
+    }
+    
+    /* PATROCINIO DEPORTIVO - CREACION  PASO 1,2,3 */
+    
+    #creacion_patrocinio_deportivo_paso3 .lista_fotos li{
+        margin-right: 15px;
+        margin-bottom: 12px;
+        height: 55px;    
+    }
+    #creacion_patrocinio_deportivo_paso3 .lista_fotos li img{
+        height: 55px;
     }
 }
