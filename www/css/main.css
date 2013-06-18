@@ -474,7 +474,8 @@ label.custom{
 #edicion_datos_deportivos .ui-content,
 #configuracion_privacidad .ui-content,
 #puntos_obtenidos_en_ronda .ui-content,
-#creacion_patrocinio_deportivo .ui-content{
+#creacion_patrocinio_deportivo .ui-content,
+#creacion_patrocinio_deportivo_paso2 .ui-content{
     padding: 0;
 }
 .data_user{
@@ -1322,23 +1323,38 @@ label.custom{
 }
 
 /* PATROCINIO DEPORTIVO - CREACION */
-#creacion_patrocinio_deportivo .content_edicion legend{
+#creacion_patrocinio_deportivo .content_edicion h2,
+#creacion_patrocinio_deportivo_paso2 .content_edicion h2{
     font-size: 13px;
     font-weight: bold;
-    margin-bottom: 15px;
-    font-weight: normal;
+    margin-bottom: 10px;
+    margin-top: 5px;
     letter-spacing: -1px;
     text-shadow: 0 0 0;
 }
-#creacion_patrocinio_deportivo textarea{
+#creacion_patrocinio_deportivo textarea,
+#creacion_patrocinio_deportivo_paso2 textarea{
     height: 150px;
 }
 .formulario_patrocinio .guardar_patrocinio{
-    margin: 0 32px;
+    margin: 0 40px;
     margin-bottom: 10px;
 }
+.formulario_patrocinio .guardar_patrocinio .ui-btn .ui-btn-inner {
+    border-top: 0 none;
+    display: inline-block;
+    margin-bottom: -2px;
+    padding-left: 35px;
+}
 .formulario_patrocinio .guardar_patrocinio .ui-icon {
-    
+    background: url("../img/bg_next.png") no-repeat scroll top center transparent;
+    border-radius: 0px;
+    box-shadow: none;
+    height: 24px;
+    width: 20px;
+    display: block;
+    background-size: 15px auto;
+    margin-top: -12px;
 }
 
 /* Popup Votar*/
