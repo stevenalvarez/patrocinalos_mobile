@@ -230,7 +230,34 @@
     position: absolute;
     width: 100px;
 }
-
+/* SLIDER CUSTOMS */
+.content_slider{
+    padding-top: 22px;
+    position: relative;
+    margin-top: 5px;
+}
+.content_slider .background{
+    background-color: #fff;
+    border-radius: 10px 10px 10px 10px;
+}
+.content_slider .ui-slider{
+    height: 23px;
+    margin: 0;
+}
+.content_slider .ui-slider .slider_range{
+    position: absolute;
+    top: 0;
+    padding: 0;
+    margin-left: -18px;
+}
+.content_slider .ui-slider-track.ui-mini{
+    height: 8px;
+    top: 6px;
+    margin: 0 8px;
+}
+.content_slider .ui-slider-track .ui-btn-active{
+    background-color: #77c5d8;
+}
 /* NAVIGATION */
 .footer .ui-btn-hover-g,
 .footer .ui-btn-active-g {
@@ -476,7 +503,8 @@ label.custom{
 #puntos_obtenidos_en_ronda .ui-content,
 #creacion_patrocinio_deportivo_paso1 .ui-content,
 #creacion_patrocinio_deportivo_paso2 .ui-content,
-#creacion_patrocinio_deportivo_paso3 .ui-content{
+#creacion_patrocinio_deportivo_paso3 .ui-content,
+#recaudacion_liquidacion .ui-content{
     padding: 0;
 }
 .data_user{
@@ -930,7 +958,8 @@ label.custom{
 #lista_posibles_ganadores .ui-listview li .ui-li-heading,
 #lista_deportistas_elites .ui-listview li .ui-li-heading,
 #lista_deportistas_amateurs .ui-listview li .ui-li-heading,
-#lista_nuevos_deportistas .ui-listview li .ui-li-heading{
+#lista_nuevos_deportistas .ui-listview li .ui-li-heading,
+#recaudacion_liquidacion .ui-listview li .ui-li-heading{
     margin-bottom: 0px;
 }
 #lista_posibles_ganadores .ui-listview li .deporte_ciudad{
@@ -1001,19 +1030,22 @@ label.custom{
 
 #lista_deportistas_elites .options,
 #lista_deportistas_amateurs .options,
-#edicion_datos_personales .options{
+#edicion_datos_personales .options,
+#recaudacion_liquidacion .options{
     background-color: #e7e7e7;
     margin-bottom: 5px;
 }
 #lista_deportistas_elites .options a.first,
 #lista_deportistas_amateurs .options a.first,
-#edicion_datos_personales .options a.first{
+#edicion_datos_personales .options a.first,
+#recaudacion_liquidacion .options a.first{
     margin-right: 2px;
     width: 48%;
 }
 #lista_deportistas_elites .options a,
 #lista_deportistas_amateurs .options a,
-#edicion_datos_personales .options a{
+#edicion_datos_personales .options a,
+#recaudacion_liquidacion .options a{
     display: inline-block;
     font-size: 20px;
     padding: 4px 0;
@@ -1030,7 +1062,9 @@ label.custom{
 #lista_deportistas_amateurs .options a.active,
 #lista_deportistas_amateurs .options a:hover,
 #edicion_datos_personales .options a.active,
-#edicion_datos_personales .options a:hover{
+#edicion_datos_personales .options a:hover,
+#recaudacion_liquidacion .options a.active,
+#recaudacion_liquidacion .options a:hover{
     background-color: #992425;
     color: #fff;
     border-bottom: 1px solid #000;
@@ -1272,14 +1306,16 @@ label.custom{
 }
 
 /* PUNTOS OBTENIDOS EN LA RONDA */
-#puntos_obtenidos_en_ronda .content_top{
+#puntos_obtenidos_en_ronda .content_top,
+#recaudacion_liquidacion .content_top{
     overflow: hidden;
     border-bottom: 1px solid #466b6f;
     background-color: #6bb0c5;
     padding: 5px;
     margin-bottom: 5px;
 }
-#puntos_obtenidos_en_ronda .content_top li{
+#puntos_obtenidos_en_ronda .content_top li,
+#recaudacion_liquidacion .content_top li{
     float: left;
     background-color: #fff;
     min-height: 45px;
@@ -1290,7 +1326,8 @@ label.custom{
     border-radius: 5px;
     padding: 5px 0;
 }
-#puntos_obtenidos_en_ronda .content_top li b{
+#puntos_obtenidos_en_ronda .content_top li b,
+#recaudacion_liquidacion .content_top li b{
     font-size: 32px;
     text-shadow: 0 0 0 !important;
     color: #000;
@@ -1414,6 +1451,89 @@ label.custom{
 }
 #creacion_patrocinio_deportivo_paso3 .lista_fotos li img{
     height: 52px;
+}
+
+/* RECAUDACION LIQUIDACION */
+#recaudacion_liquidacion .content_top li{
+    border-radius: inherit;
+    width: 33%;
+    background-color: #e1e1e1;
+    border-right: 1px solid #728e97;
+    border-bottom: 1px solid #728e97;
+    border-top: 1px solid #728e97;
+}
+#recaudacion_liquidacion .content_top li.first{
+    border-left: 1px solid #728e97;
+}
+#recaudacion_liquidacion .content_top li.last{
+    border-right: none;
+}
+#recaudacion_liquidacion .content_top{
+    text-shadow: 0 0 0;
+}
+#recaudacion_liquidacion .content_top h2{
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 13px;
+}
+#recaudacion_liquidacion .content_top p{
+    color: #FFFFFF;
+    font-size: 15px;
+    letter-spacing: -1px;    
+}
+#recaudacion_liquidacion .content_top li span.text{
+    color: #000;
+    font-weight: normal;
+    letter-spacing: -1px;
+    font-size: 13px;
+}
+#recaudacion_liquidacion .content_list_first .options a{
+    font-size: 13px;
+    letter-spacing: -1px;
+    font-weight: bold;
+    font-family: inherit;
+    padding: 6px 0;
+}
+#recaudacion_liquidacion .content_list_first h3{
+    font-size: 15px;
+    letter-spacing: -1px;
+    font-weight: bold;
+    margin-bottom: 2px;    
+}
+#recaudacion_liquidacion .content_list_first .content_detalle{
+    font-size: 14px;
+    font-weight: normal;
+    text-align: right;
+    text-shadow: 0 0 0;
+    letter-spacing: -1px;
+}
+#recaudacion_liquidacion .content_list_first .ui-listview li.ui-li-static.ui-li{
+    min-height: 60px;
+}
+#recaudacion_liquidacion .content_list_first .ui-listview li .recorte{
+    height: 60px;
+    width: 60px;    
+}
+#recaudacion_liquidacion .content_list_first .ui-listview li p.ui-li-desc{
+    font-size: 25px;
+    margin-bottom: 0;
+    margin-top: 5px;
+    overflow: hidden;
+    font-weight: bold;
+}
+#recaudacion_liquidacion .content_list_first .ui-listview li p.ui-li-desc span{
+    font-size: 20px;
+    font-weight: bold;
+}
+#recaudacion_liquidacion .content_list_first li.odd.ui-btn-up-c b{
+    color: #fff;
+}
+#recaudacion_liquidacion .content_list_first li.ui-btn-up-c .content_descripcion label{
+    display: block;
+}
+#recaudacion_liquidacion .content_list_first li.ui-btn-up-c span.fecha_recaudacion{
+    font-size: 13px;
+    font-weight: bold;
 }
 
 /* Popup Votar*/
@@ -1642,5 +1762,14 @@ label.custom{
     }
     #creacion_patrocinio_deportivo_paso3 .lista_fotos li img{
         height: 55px;
+    }
+    
+    /* RECAUDACION LIQUIDACION */
+    
+    #recaudacion_liquidacion .content_list_first .options a{
+        font-size: 15px;
+    }
+    #recaudacion_liquidacion .content_list_first h3{
+        font-size: 17px;
     }
 }
