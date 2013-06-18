@@ -525,7 +525,8 @@ label.custom{
 #creacion_patrocinio_deportivo_paso2 .ui-content,
 #creacion_patrocinio_deportivo_paso3 .ui-content,
 #recaudacion_liquidacion .ui-content,
-#promocionar_patrocinio_deportivo .ui-content{
+#promocionar_patrocinio_deportivo .ui-content,
+#mis_recompensas .ui-content{
     padding: 0;
 }
 .data_user{
@@ -920,10 +921,12 @@ label.custom{
 /* CSS NAVIGATION HOME*/
 
 /* LISTA ACTIVIDAD GENERAL */
-#lista_actividad_general .title{
+#lista_actividad_general .title,
+#mis_recompensas .title{
     background-color: #972224;
 }
-#lista_actividad_general .title h2{
+#lista_actividad_general .title h2,
+#mis_recompensas .title h2{
     text-align: center;
     font-size: 20px;
     font-family:'CaptureitRegular';
