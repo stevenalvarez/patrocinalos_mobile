@@ -258,6 +258,26 @@
 .content_slider .ui-slider-track .ui-btn-active{
     background-color: #77c5d8;
 }
+
+/* MULTIPLES OPTIONS */
+.container_options .bottom .ui-btn .ui-btn-inner{
+    width: 75%;
+}
+.container_options .bottom .ui-btn-inner .ui-btn-text{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;    
+}
+.container_options .bottom .ui-icon{
+    border-radius: 0px;
+    box-shadow: none;
+    height: 24px;
+    width: 20px;
+    display: block;
+    margin-top: -14px;    
+}
+
 /* NAVIGATION */
 .footer .ui-btn-hover-g,
 .footer .ui-btn-active-g {
@@ -504,7 +524,8 @@ label.custom{
 #creacion_patrocinio_deportivo_paso1 .ui-content,
 #creacion_patrocinio_deportivo_paso2 .ui-content,
 #creacion_patrocinio_deportivo_paso3 .ui-content,
-#recaudacion_liquidacion .ui-content{
+#recaudacion_liquidacion .ui-content,
+#promocionar_patrocinio_deportivo .ui-content{
     padding: 0;
 }
 .data_user{
@@ -1363,7 +1384,8 @@ label.custom{
 /* PATROCINIO DEPORTIVO - CREACION  PASO 1 */
 #creacion_patrocinio_deportivo_paso1 .content_edicion h2,
 #creacion_patrocinio_deportivo_paso2 .content_edicion h2,
-#creacion_patrocinio_deportivo_paso3 .content_edicion h2{
+#creacion_patrocinio_deportivo_paso3 .content_edicion h2,
+#promocionar_patrocinio_deportivo .content_edicion h2{
     font-size: 13px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -1383,7 +1405,8 @@ label.custom{
     margin: 0 40px;
     margin-bottom: 10px;
 }
-.formulario_patrocinio .guardar_patrocinio .ui-btn .ui-btn-inner {
+.formulario_patrocinio .guardar_patrocinio .ui-btn .ui-btn-inner,
+.container_options .bottom .ui-btn .ui-btn-inner{
     border-top: 0 none;
     display: inline-block;
     margin-bottom: -2px;
@@ -1534,6 +1557,59 @@ label.custom{
 #recaudacion_liquidacion .content_list_first li.ui-btn-up-c span.fecha_recaudacion{
     font-size: 13px;
     font-weight: bold;
+}
+
+/* PROMOCIONAR PATROCINIO DEPORTIVO */
+#promocionar_patrocinio_deportivo .container_options{
+    background: #FFFFFF;
+    border-radius: 5px;
+    border: 1px solid #000;
+    overflow: hidden;
+    font-size: 12px;
+    letter-spacing: -1px;
+    text-shadow: 0 0 0;
+    padding: 10px;
+    font-weight: normal;
+}
+#promocionar_patrocinio_deportivo .container_options li{
+    overflow: hidden;
+}
+#promocionar_patrocinio_deportivo .container_options .content_numero{
+    padding-right: 8px;
+    width: 30px;
+}
+#promocionar_patrocinio_deportivo .container_options .numero{
+    background: url("../img/bg_numero.png") no-repeat scroll left center / 30px auto #F9F9F9;
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    height: 28px;
+    padding-left: 8px;
+    padding-top: 2px;
+    width: 22px;
+}
+#promocionar_patrocinio_deportivo .container_options .item{
+    width: 80%;
+}
+#promocionar_patrocinio_deportivo .container_options .item p{
+    line-height: 12px;
+    color: #457a85;
+}
+#promocionar_patrocinio_deportivo .container_options .bottom .recompensa .ui-icon {
+    background: url("../img/bg_recompensa.png") no-repeat scroll top center transparent;
+    background-size: 20px auto;
+}
+#promocionar_patrocinio_deportivo .container_options .bottom .promocionar_p .ui-icon {
+    background: url("../img/bg_promocionar_patrocinio.png") no-repeat scroll center center transparent;
+    background-size: 20px auto;
+}
+#promocionar_patrocinio_deportivo .container_options .bottom .invita_amigos .ui-icon {
+    background: url("../img/bg_invitar_amigos.png") no-repeat scroll center center transparent;
+    background-size: 22px auto;
+}
+#promocionar_patrocinio_deportivo .container_options .bottom .crear_dossier .ui-icon {
+    background: url("../img/bg_crear_dossier.png") no-repeat scroll center center transparent;
+    background-size: 20px auto;
 }
 
 /* Popup Votar*/
@@ -1772,4 +1848,13 @@ label.custom{
     #recaudacion_liquidacion .content_list_first h3{
         font-size: 17px;
     }
+    
+    /* PROMOCIONAR PATROCINIO DEPORTIVO */
+    
+    #promocionar_patrocinio_deportivo .container_options .content_numero{
+        padding-right: 15px;
+    }
+    .container_options .bottom .ui-btn .ui-btn-inner {
+        width: auto;
+    }    
 }
