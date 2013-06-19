@@ -1711,9 +1711,9 @@ label.custom{
     text-indent: -9999px;
 }
 
-/* Popup Votar*/
+/* Popup Votar y Patrocinio Creado */
 #popupVoto,
-#popupPatrocinio{
+#popupPatrocinio, .popup_recompensa{
     border: 0;
     border-radius: 10px 10px 5px 5px;
 }
@@ -1749,14 +1749,17 @@ label.custom{
     border-bottom: 1px solid #aaa;
     margin-bottom: 20px;
 }
-#popupVoto .patrocinar_elite{
+#popupVoto .patrocinar_elite,
+.popup_recompensa .patrocinar_elite{
     margin: 20px 40px;
 }
-#popupVoto .patrocinar_elite .ui-btn .ui-btn-inner{
+#popupVoto .patrocinar_elite .ui-btn .ui-btn-inner,
+.popup_recompensa .patrocinar_elite .ui-btn .ui-btn-inner{
     padding-left: 35px;
     display: inline-block;
 }
-#popupVoto .patrocinar_elite .ui-icon {
+#popupVoto .patrocinar_elite .ui-icon,
+.popup_recompensa .patrocinar_elite .ui-icon{
     background: url("../img/bg_euro.png") no-repeat scroll top center transparent;
     border-radius: 0px;
     box-shadow: none;
@@ -1764,6 +1767,105 @@ label.custom{
     width: 20px;
     display: block;
     background-size: 14px auto;
+}
+
+/* Popup Recompensa */
+.popup_recompensa .container_info{
+    font-size: 12px;
+    text-shadow: 0 0 0;
+    line-height: 12px;
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 20px;
+    font-weight: normal;
+    overflow: hidden;
+}
+.popup_recompensa .container_info label{
+    color: #000;
+    font-weight: bold;
+}
+.popup_recompensa .container_info span,
+.popup_recompensa .container_info p{
+    color: #7f7f7f;
+}
+.popup_recompensa .container_info p{
+    line-height: 11px;
+    max-height: 78px;
+    overflow: hidden;
+    font-size: 11px;    
+}
+.popup_recompensa .container_info .detalle,
+.popup_recompensa .container_info .fechas_sorteo,
+.popup_recompensa .container_info .tipo_recompensa,
+.popup_recompensa .container_info .ofrecido_por{
+    overflow: hidden;
+}
+.popup_recompensa .container_info .recuadro_recompensa{
+    float: left;
+    height: 80px;
+    margin-right: 8px;
+    overflow: hidden;
+    width: 120px;     
+}
+.popup_recompensa .container_info .recuadro{
+    float: left;
+    height: 80px;
+    margin-right: 8px;
+    overflow: hidden;
+    width: 80px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+}
+.popup_recompensa .container_info .recuadro_recompensa img,
+.popup_recompensa .container_info .recuadro img{
+    width: 100%;
+}
+.popup_recompensa .container_info .descripcion{
+    width: 54%;
+    margin-top: 2px; 
+}
+.popup_recompensa h2{
+    background-color: #9F3A3B;
+    border: 0 none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    padding: 7px 5px;
+    text-shadow: 0 0 0;
+}
+.popup_recompensa .popup_header,
+.popup_recompensa .popup_footer{
+    background-color: #2f2f2f;
+    text-shadow: 0 0 0;
+    letter-spacing: -1px;
+    min-height: 25px;
+    color: #fff;
+    padding: 5px 10px;
+}
+.popup_recompensa .popup_header li{
+    float: left;
+}
+.popup_recompensa .popup_header li b{
+    font-size: 20px;
+}
+.popup_recompensa .popup_header li.first{
+    width: 45%;
+}
+.popup_recompensa .container_info .tipo_recompensa,
+.popup_recompensa .container_info .ofrecido_por{
+    padding: 6px 0;
+    margin: 0 10px;
+}
+.popup_recompensa .container_info .fechas_sorteo{
+    padding-top: 4px;
+    margin: 0 10px;
+}
+.popup_recompensa .container_info .fechas_sorteo .fecha_sorteo{
+    float: left;
+}
+.popup_recompensa .container_info .fechas_sorteo .fechas,
+.popup_recompensa .container_info .fechas_sorteo .fecha_sorteo{
+    margin: 4px 0;
 }
 
 /* RESPONSIVO */
@@ -1801,13 +1903,12 @@ label.custom{
     
 }
 @media only screen and (min-width: 480px) and (max-width: 768px) {
+    
+    /* GENERAL */
     .ui-radio-off .ui-btn-inner .ui-btn-text, 
     .ui-radio-on .ui-btn-inner .ui-btn-text {
         letter-spacing: 0px;
     }
-    
-    /* GENERAL */
-    
     .content_upload_foto label{
         font-size: 16px;
         width: 40%;
@@ -1824,6 +1925,21 @@ label.custom{
     }    
     .container_options .bottom .ui-btn .ui-btn-inner {
         width: auto;
+    }
+    
+    .popup_recompensa .container_info .recuadro_recompensa{
+        height: 100px;
+        width: 150px;        
+    }
+    .popup_recompensa .container_info .descripcion {
+        width: 64%;
+    }
+    .popup_recompensa .container_info p{
+        font-size: 12px;
+        max-height: 95px;
+    }
+    .popup_recompensa .container_info .fechas_sorteo .fecha_sorteo{
+        float: right;
     }
     
     #view .content_usuarios .list li > img{
