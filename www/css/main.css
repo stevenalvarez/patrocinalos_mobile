@@ -65,7 +65,9 @@
 }
 
 /* GENERAL */
-
+.bold{
+    font-weight: bold;
+}
 .left{
     float: left;
 }
@@ -114,6 +116,9 @@
     height: 25px;
     text-indent: -9999px;
     width: 25px;
+}
+.content_list_first .ui-listview li .info.inline a{
+    display: inline-block;
 }
 .content_list_first li.pair.ui-btn-up-c  {
     border-bottom: 1px solid #AAAAAA;
@@ -526,7 +531,8 @@ label.custom{
 #creacion_patrocinio_deportivo_paso3 .ui-content,
 #recaudacion_liquidacion .ui-content,
 #promocionar_patrocinio_deportivo .ui-content,
-#mis_recompensas .ui-content{
+#mis_recompensas .ui-content,
+#ultimas_recompensas .ui-content{
     padding: 0;
 }
 .data_user{
@@ -922,11 +928,13 @@ label.custom{
 
 /* LISTA ACTIVIDAD GENERAL */
 #lista_actividad_general .title,
-#mis_recompensas .title{
+#mis_recompensas .title,
+#ultimas_recompensas .title{
     background-color: #972224;
 }
 #lista_actividad_general .title h2,
-#mis_recompensas .title h2{
+#mis_recompensas .title h2,
+#ultimas_recompensas .title h2{
     text-align: center;
     font-size: 20px;
     font-family:'CaptureitRegular';
@@ -983,7 +991,9 @@ label.custom{
 #lista_deportistas_elites .ui-listview li .ui-li-heading,
 #lista_deportistas_amateurs .ui-listview li .ui-li-heading,
 #lista_nuevos_deportistas .ui-listview li .ui-li-heading,
-#recaudacion_liquidacion .ui-listview li .ui-li-heading{
+#recaudacion_liquidacion .ui-listview li .ui-li-heading,
+#mis_recompensas .ui-listview li .ui-li-heading,
+#ultimas_recompensas .ui-listview li .ui-li-heading{
     margin-bottom: 0px;
 }
 #lista_posibles_ganadores .ui-listview li .deporte_ciudad{
@@ -1615,9 +1625,95 @@ label.custom{
     background-size: 20px auto;
 }
 
-/* Popup Votar*/
+/* MIS RECOMPENSAS */
+#mis_recompensas .content_list_first .ui-listview li .recorte,
+#ultimas_recompensas .content_list_first .ui-listview li .recorte {
+    border: 1px solid #FFFFFF;
+    border-radius: 5px 5px 5px 5px;
+}
+#mis_recompensas .ui-listview li .info a,
+#ultimas_recompensas .ui-listview li .info a{
+    background-repeat: no-repeat;
+    background-color: transparent;
+    margin-left: 4px;
+    background-size: 25px auto;
+}
+#mis_recompensas .ui-listview li.pair .info a,
+#ultimas_recompensas .ui-listview li.pair .info a{
+    background-position: 50% 100%;    
+}
+#mis_recompensas .ui-listview li.odd .info a,
+#ultimas_recompensas .ui-listview li.odd .info a{
+    background-position: 50% 0%;
+}
+#mis_recompensas .ui-listview li .info a.compartir,
+#ultimas_recompensas .ui-listview li .info a.compartir{
+    background-image: url("../img/bg_share_facebook_sprite.png");
+}
+#mis_recompensas .ui-listview li .info a.editar{
+    background-image: url("../img/bg_pincel_sprite.png");
+}
+#mis_recompensas .ui-listview li .info a.eliminar{
+    background-image: url("../img/bg_delete_sprite.png");
+}
+#mis_recompensas .ui-listview li p,
+#ultimas_recompensas .ui-listview li p{
+    margin: 0;
+    white-space: normal;
+    text-shadow: 0 0 0;
+}
+#mis_recompensas .ui-listview li p.description,
+#ultimas_recompensas .ui-listview li p.description{
+    max-height: 45px;
+}
+#mis_recompensas .ui-listview li p.ui-li-desc span,
+#ultimas_recompensas .ui-listview li p.ui-li-desc span{
+    font-size: 12px;
+    line-height: 13px;    
+}
+#mis_recompensas .ui-listview li.odd p,
+#ultimas_recompensas .ui-listview li.odd p{
+    color: #fff;
+}
+#mis_recompensas .content_list_first li.ui-btn-up-c label,
+#ultimas_recompensas .content_list_first li.ui-btn-up-c label{
+    font-weight: bold;
+}
+#mis_recompensas .ui-li-heading span,
+#ultimas_recompensas .ui-li-heading span{
+    font-size: 16px;
+}
+#mis_recompensas .ui-li-heading span.titulo,
+#ultimas_recompensas .ui-li-heading span.titulo{
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#mis_recompensas .content_list_first .ui-listview li .info,
+#ultimas_recompensas .content_list_first .ui-listview li .info{
+    display: none;
+}
+
+/* ULTIMAS RECOMPENSAS */
+#ultimas_recompensas .content_list_first .ui-listview li .recorte a.ver_amplio{
+    background-image: url("../img/bg_info_home.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 38px auto;
+    background-position: center center;
+    display: block;
+    height: 38px;
+    left: 28px;
+    position: absolute;
+    top: 25px;
+    width: 38px;
+    text-indent: -9999px;
+}
+
+/* Popup Votar y Patrocinio Creado */
 #popupVoto,
-#popupPatrocinio{
+#popupPatrocinio, .popup_recompensa{
     border: 0;
     border-radius: 10px 10px 5px 5px;
 }
@@ -1653,14 +1749,17 @@ label.custom{
     border-bottom: 1px solid #aaa;
     margin-bottom: 20px;
 }
-#popupVoto .patrocinar_elite{
+#popupVoto .patrocinar_elite,
+.popup_recompensa .patrocinar_elite{
     margin: 20px 40px;
 }
-#popupVoto .patrocinar_elite .ui-btn .ui-btn-inner{
+#popupVoto .patrocinar_elite .ui-btn .ui-btn-inner,
+.popup_recompensa .patrocinar_elite .ui-btn .ui-btn-inner{
     padding-left: 35px;
     display: inline-block;
 }
-#popupVoto .patrocinar_elite .ui-icon {
+#popupVoto .patrocinar_elite .ui-icon,
+.popup_recompensa .patrocinar_elite .ui-icon{
     background: url("../img/bg_euro.png") no-repeat scroll top center transparent;
     border-radius: 0px;
     box-shadow: none;
@@ -1670,9 +1769,114 @@ label.custom{
     background-size: 14px auto;
 }
 
+/* Popup Recompensa */
+.popup_recompensa .container_info{
+    font-size: 12px;
+    text-shadow: 0 0 0;
+    line-height: 12px;
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 20px;
+    font-weight: normal;
+    overflow: hidden;
+}
+.popup_recompensa .container_info label{
+    color: #000;
+    font-weight: bold;
+}
+.popup_recompensa .container_info span,
+.popup_recompensa .container_info p{
+    color: #7f7f7f;
+}
+.popup_recompensa .container_info p{
+    line-height: 11px;
+    max-height: 78px;
+    overflow: hidden;
+    font-size: 11px;    
+}
+.popup_recompensa .container_info .detalle,
+.popup_recompensa .container_info .fechas_sorteo,
+.popup_recompensa .container_info .tipo_recompensa,
+.popup_recompensa .container_info .ofrecido_por{
+    overflow: hidden;
+}
+.popup_recompensa .container_info .recuadro_recompensa{
+    float: left;
+    height: 80px;
+    margin-right: 8px;
+    overflow: hidden;
+    width: 120px;     
+}
+.popup_recompensa .container_info .recuadro{
+    float: left;
+    height: 80px;
+    margin-right: 8px;
+    overflow: hidden;
+    width: 80px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+}
+.popup_recompensa .container_info .recuadro_recompensa img,
+.popup_recompensa .container_info .recuadro img{
+    width: 100%;
+}
+.popup_recompensa .container_info .descripcion{
+    width: 54%;
+    margin-top: 2px; 
+}
+.popup_recompensa h2{
+    background-color: #9F3A3B;
+    border: 0 none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    padding: 7px 5px;
+    text-shadow: 0 0 0;
+}
+.popup_recompensa .popup_header,
+.popup_recompensa .popup_footer{
+    background-color: #2f2f2f;
+    text-shadow: 0 0 0;
+    letter-spacing: -1px;
+    min-height: 25px;
+    color: #fff;
+    padding: 5px 10px;
+}
+.popup_recompensa .popup_header li{
+    float: left;
+}
+.popup_recompensa .popup_header li b{
+    font-size: 20px;
+}
+.popup_recompensa .popup_header li.first{
+    width: 45%;
+}
+.popup_recompensa .container_info .tipo_recompensa,
+.popup_recompensa .container_info .ofrecido_por{
+    padding: 6px 0;
+    margin: 0 10px;
+}
+.popup_recompensa .container_info .fechas_sorteo{
+    padding-top: 4px;
+    margin: 0 10px;
+}
+.popup_recompensa .container_info .fechas_sorteo .fecha_sorteo{
+    float: left;
+}
+.popup_recompensa .container_info .fechas_sorteo .fechas,
+.popup_recompensa .container_info .fechas_sorteo .fecha_sorteo{
+    margin: 4px 0;
+}
+
 /* RESPONSIVO */
 
 @media only screen and  (max-width: 479px) {
+    
+    /* GENERAL */
+    .content_list_first li.ui-btn-up-c .span_normal span{
+        font-size: 13px;
+    }
+        
     #view h1,
     #login_user h1{
         font-size: 26px;
@@ -1683,10 +1887,6 @@ label.custom{
         letter-spacing: -1.2px;
     }
     
-    .content_list_first li.ui-btn-up-c .span_normal span{
-        font-size: 13px;
-    }
-    
     /* DEPORTISTAS - LISTA ELITES */
     
     #lista_deportistas_elites .ui-listview li .ui-li-heading,
@@ -1695,12 +1895,53 @@ label.custom{
         font-size: 14px;
         letter-spacing: -1px;
     }
+    
+    #mis_recompensas .ui-li-heading span.titulo,
+    #ultimas_recompensas .ui-li-heading span.titulo{
+        width: 128px;
+    }
+    
 }
 @media only screen and (min-width: 480px) and (max-width: 768px) {
+    
+    /* GENERAL */
     .ui-radio-off .ui-btn-inner .ui-btn-text, 
     .ui-radio-on .ui-btn-inner .ui-btn-text {
         letter-spacing: 0px;
     }
+    .content_upload_foto label{
+        font-size: 16px;
+        width: 40%;
+        letter-spacing: 0px;
+    }
+    .content_upload_foto .upload_foto {
+        width: 52%;
+    }
+    .lista_opciones{
+        margin-left: 40px;
+    }
+    .content_list_first .content_seguidor{
+        display: block;
+    }    
+    .container_options .bottom .ui-btn .ui-btn-inner {
+        width: auto;
+    }
+    
+    .popup_recompensa .container_info .recuadro_recompensa{
+        height: 100px;
+        width: 150px;        
+    }
+    .popup_recompensa .container_info .descripcion {
+        width: 64%;
+    }
+    .popup_recompensa .container_info p{
+        font-size: 12px;
+        max-height: 95px;
+    }
+    .popup_recompensa .container_info .fechas_sorteo .fecha_sorteo{
+        float: right;
+    }
+    
     #view .content_usuarios .list li > img{
         height: 75px;
         width: 75px;        
@@ -1711,14 +1952,6 @@ label.custom{
         margin-left: 5px;
         height: 75px;
         width: 75px;
-    }
-    .content_upload_foto label{
-        font-size: 16px;
-        width: 40%;
-        letter-spacing: 0px;
-    }
-    .content_upload_foto .upload_foto {
-        width: 52%;
     }
     #register_user .register_option_fb .facebook_registro .ui-icon {
         left: 20%;
@@ -1741,9 +1974,6 @@ label.custom{
     }
     #register_finalizado .fecha_nacimiento a.calendario{
         width: 9%;
-    }
-    .lista_opciones{
-        margin-left: 40px;
     }
     
     /* HOME - LISTA ACTIVIDAD GENERAL */
@@ -1784,9 +2014,6 @@ label.custom{
     
     /* DEPORTISTAS - LISTA ELITES */
     
-    .content_list_first .content_seguidor{
-        display: block;
-    }
     #lista_deportistas_elites .content_descripcion,
     #lista_deportistas_amateurs .content_descripcion{
         width: 61%;
@@ -1857,7 +2084,12 @@ label.custom{
     #promocionar_patrocinio_deportivo .container_options .content_numero{
         padding-right: 15px;
     }
-    .container_options .bottom .ui-btn .ui-btn-inner {
-        width: auto;
+    #mis_recompensas .content_list_first .ui-listview li .info,
+    #ultimas_recompensas .content_list_first .ui-listview li .info{
+        display: block;
+    }
+    #mis_recompensas .ui-li-heading span.titulo,
+    #ultimas_recompensas .ui-li-heading span.titulo{
+        width: 290px;
     }    
 }
