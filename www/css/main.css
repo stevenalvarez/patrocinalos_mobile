@@ -175,6 +175,111 @@
 .content_list_first .content_edicion .info_top{
     overflow: hidden;
 }
+.content_list_first .list_recompensa.ui-listview li.ui-li-static.ui-li{
+    background-color: transparent;
+    border: 0 none;
+    padding: 0;
+    text-shadow: 0 0 0;
+}
+.content_list_first .list_recompensa li .item_1,
+.content_list_first .list_recompensa li .item_2{
+    background-color: #F5F4F4;
+    border: 1px solid #E1E1E1;
+    padding: 5px;
+    width: 140px;
+}
+.content_list_first .list_recompensa li .item_2{
+    margin-left: 5px;
+}
+.content_list_first .list_recompensa h4{
+    letter-spacing: -1px;
+    margin-bottom: 2px;
+    font-size: 14px;
+}
+.content_list_first .list_recompensa li .content_middle{
+    position: relative;
+}
+.content_list_first .list_recompensa li .content_middle .capa{
+    background-color: #970b0b;
+    bottom: 5px;
+    height: 25px;
+    opacity: 0.5;
+    position: absolute;
+    width: 100%;
+}
+.content_list_first .list_recompensa li .content_middle p{
+    bottom: 8px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 5px;
+    position: absolute;
+    width: 93%;
+    letter-spacing: -1px;
+    height: 18px;
+}
+.content_list_first .list_recompensa li .content_middle .compartir{
+    position: absolute;
+    right: 5px;    
+}
+.content_list_first .list_recompensa li .recuadro_recompensa{
+    height: auto;
+    border: 0;
+    width: 100%;
+}
+.content_list_first .list_recompensa li .recuadro_recompensa img{
+    width: 100%;
+    border-radius: 0px;
+}
+.content_list_first .list_recompensa li .content_bottom{
+    margin-top: -5px;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.content_list_first .list_recompensa li .content_bottom label,
+.content_list_first .list_recompensa li .content_bottom span{
+    font-size: 12px;
+    color: #b7982e;
+}
+.content_list_first .list_recompensa li .action_patrocinar a{
+    margin: 0;
+}
+.content_list_first .list_recompensa li .action_patrocinar .ui-btn-inner{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: inline-block;
+    border-top: 0;
+    padding-left: 32px;
+}
+.content_list_first .list_recompensa li .action_patrocinar .ui-btn-text{
+    font-size: 12px;
+}
+.content_list_first .list_recompensa li .action_patrocinar .ui-icon{
+    background: url("../img/bg_euro.png") no-repeat scroll top left transparent;
+    background-size: 14px auto;
+    border-radius: 0 0 0 0;
+}
+.content_list_first .list_recompensa li .content_middle .compartir a{
+    display: inline-block;
+    height: 18px;
+    text-indent: -9999px;
+    width: 18px;
+    background-color: transparent;
+    background-position: 0 0;
+    background-repeat: no-repeat;    
+}
+.content_list_first .list_recompensa li .content_middle .compartir a.tw{
+    background-image: url("../img/bg_tw.png");
+    background-size: 18px auto;
+}
+.content_list_first .list_recompensa li .content_middle .compartir a.fb{
+    background-image: url("../img/bg_fb.png");
+    background-size: 18px auto;
+}
+
 .odd.ui-btn-up-c {
 	background-image: -webkit-gradient(linear, left top, left bottom, from( #cc4646 /*{a-bup-background-start}*/), to( #b93838 /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
 	background-image: -webkit-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
@@ -186,6 +291,14 @@
     color: #222222;
     font-weight: bold;
     text-shadow: 0 1px 0 #FFFFFF;
+}
+.white.ui-body-c, .white.ui-overlay-c {
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #ffffff /*{a-bup-background-start}*/), to( #ffffff /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #ffffff /*{a-bup-background-start}*/, #ffffff /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #ffffff /*{a-bup-background-start}*/, #ffffff /*{a-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #ffffff /*{a-bup-background-start}*/, #ffffff /*{a-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #ffffff /*{a-bup-background-start}*/, #ffffff /*{a-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #ffffff /*{a-bup-background-start}*/, #ffffff /*{a-bup-background-end}*/);    
 }
 /* SEARCH */
 .content_search{
@@ -522,6 +635,7 @@ label.custom{
 #lista_deportistas_amateurs .ui-content,
 #lista_nuevos_deportistas .ui-content,
 #buscar_por .ui-content,
+#buscar_por2 .ui-content,
 #edicion_datos_personales .ui-content,
 #edicion_datos_deportivos .ui-content,
 #configuracion_privacidad .ui-content,
@@ -532,7 +646,8 @@ label.custom{
 #recaudacion_liquidacion .ui-content,
 #promocionar_patrocinio_deportivo .ui-content,
 #mis_recompensas .ui-content,
-#ultimas_recompensas .ui-content{
+#ultimas_recompensas .ui-content,
+#perfil_deportista_recompensa .ui-content{
     padding: 0;
 }
 .data_user{
@@ -573,6 +688,30 @@ label.custom{
     height: 20px;
     display: block;
     padding-top: 4px;
+}
+.data_user .hacerme_amigo{
+    width: 40%;
+}
+.data_user .hacerme_amigo a{
+    margin-bottom: 0;
+}
+.data_user .hacerme_amigo .ui-btn-inner{
+    padding-left: 20px;
+}
+.data_user .hacerme_amigo .ui-btn-inner .ui-btn-text{
+    font-weight: normal;
+    letter-spacing: -1px;
+    font-size: 15px;
+}
+.data_user .hacerme_amigo .ui-btn-inner .ui-icon{
+    background-image: url("../img/bg_like.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 20px auto;
+    border-radius: 0;
+    background-position: 50% 0;
+    height: 25px;
+    margin-top: -15px;
 }
 .ui-content .ui-listview{
     margin: 0;
@@ -1710,6 +1849,23 @@ label.custom{
     width: 38px;
     text-indent: -9999px;
 }
+/* BUSQUEDA DE DEPORTISTAS */
+.ui-listview.list .ui-li-desc{
+    letter-spacing: 0;
+    padding: 0 0 5px 0;
+}
+.ui-listview.list li .ui-icon{
+    background-image: url("../img/bg_next.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 20px auto;
+    background-position: center top;
+    border-radius: 0;
+    display: inline-block;
+    height: 30px;
+    width: 25px;
+    top: 45%;
+}
 
 /* Popup Votar y Patrocinio Creado */
 #popupVoto,
@@ -1941,6 +2097,41 @@ label.custom{
     .popup_recompensa .container_info .fechas_sorteo .fecha_sorteo{
         float: right;
     }
+    .data_user .hacerme_amigo .ui-btn-inner{
+        padding-left: 40px;
+        display: inline-block;
+    }
+    .content_list_first .list_recompensa li .item_1, 
+    .content_list_first .list_recompensa li .item_2{
+        width: 220px;
+    }
+    .content_list_first .list_recompensa li .action_patrocinar .ui-btn-text,
+    .content_list_first .list_recompensa li .content_middle p{
+        font-size: 14px;
+        height: 24px;
+    }
+    .content_list_first .list_recompensa li .content_middle p label{
+        display: inline-block;
+        padding-top: 3px;        
+    }
+    .content_list_first .list_recompensa li .content_bottom label, 
+    .content_list_first .list_recompensa li .content_bottom span{
+        font-size: 13px;
+    }
+    .content_list_first .list_recompensa h4{
+        font-size: 16px;
+    }
+    .content_list_first .list_recompensa li .content_middle .compartir a{
+        height: 24px;
+        width: 24px;
+    }
+    .content_list_first .list_recompensa li .content_middle .compartir a.tw,
+    .content_list_first .list_recompensa li .content_middle .compartir a.fb{
+        background-size: 24px auto;
+    }
+    .content_list_first .list_recompensa li .content_middle .capa{
+        height: 30px;
+    }        
     
     #view .content_usuarios .list li > img{
         height: 75px;
