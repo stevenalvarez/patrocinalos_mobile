@@ -2109,6 +2109,7 @@ label.custom{
     .content_list_first .list_recompensa li .content_middle p{
         font-size: 14px;
         height: 24px;
+        width: 95%;
     }
     .content_list_first .list_recompensa li .content_middle p label{
         display: inline-block;
