@@ -647,7 +647,8 @@ label.custom{
 #promocionar_patrocinio_deportivo .ui-content,
 #mis_recompensas .ui-content,
 #ultimas_recompensas .ui-content,
-#perfil_deportista_recompensa .ui-content{
+#perfil_deportista_recompensa .ui-content,
+#crear_nueva_recompensa .ui-content{
     padding: 0;
 }
 .data_user{
@@ -1537,7 +1538,8 @@ label.custom{
 #creacion_patrocinio_deportivo_paso1 .content_edicion h2,
 #creacion_patrocinio_deportivo_paso2 .content_edicion h2,
 #creacion_patrocinio_deportivo_paso3 .content_edicion h2,
-#promocionar_patrocinio_deportivo .content_edicion h2{
+#promocionar_patrocinio_deportivo .content_edicion h2,
+#crear_nueva_recompensa .content_edicion h2{
     font-size: 13px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -1546,11 +1548,13 @@ label.custom{
     text-shadow: 0 0 0;
 }
 #creacion_patrocinio_deportivo_paso1 textarea,
-#creacion_patrocinio_deportivo_paso2 textarea{
+#creacion_patrocinio_deportivo_paso2 textarea,
+#crear_nueva_recompensa textarea{
     height: 150px;
 }
 #creacion_patrocinio_deportivo_paso2 .content_edicion label,
-#creacion_patrocinio_deportivo_paso3 .content_edicion label{
+#creacion_patrocinio_deportivo_paso3 .content_edicion label,
+#crear_nueva_recompensa .content_edicion label{
     text-shadow: 0 0 0;
 }
 .formulario_patrocinio .guardar_patrocinio{
