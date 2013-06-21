@@ -648,7 +648,8 @@ label.custom{
 #mis_recompensas .ui-content,
 #ultimas_recompensas .ui-content,
 #perfil_deportista_recompensa .ui-content,
-#crear_nueva_recompensa .ui-content{
+#crear_nueva_recompensa .ui-content,
+#mis_albumes .ui-content{
     padding: 0;
 }
 .data_user{
@@ -695,9 +696,12 @@ label.custom{
 }
 .data_user .hacerme_amigo a{
     margin-bottom: 0;
+    margin-top: 18px;
 }
 .data_user .hacerme_amigo .ui-btn-inner{
     padding-left: 20px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 .data_user .hacerme_amigo .ui-btn-inner .ui-btn-text{
     font-weight: normal;
@@ -708,11 +712,11 @@ label.custom{
     background-image: url("../img/bg_like.png");
     background-repeat: no-repeat;
     background-color: transparent;
-    background-size: 20px auto;
+    background-size: 15px auto;
     border-radius: 0;
     background-position: 50% 0;
-    height: 25px;
-    margin-top: -15px;
+    height: 20px;
+    margin-top: -11px;
 }
 .ui-content .ui-listview{
     margin: 0;
@@ -1205,21 +1209,24 @@ label.custom{
 #lista_deportistas_elites .options,
 #lista_deportistas_amateurs .options,
 #edicion_datos_personales .options,
-#recaudacion_liquidacion .options{
+#recaudacion_liquidacion .options,
+#mis_albumes .options{
     background-color: #e7e7e7;
     margin-bottom: 5px;
 }
 #lista_deportistas_elites .options a.first,
 #lista_deportistas_amateurs .options a.first,
 #edicion_datos_personales .options a.first,
-#recaudacion_liquidacion .options a.first{
+#recaudacion_liquidacion .options a.first,
+#mis_albumes .options a.first{
     margin-right: 2px;
     width: 48%;
 }
 #lista_deportistas_elites .options a,
 #lista_deportistas_amateurs .options a,
 #edicion_datos_personales .options a,
-#recaudacion_liquidacion .options a{
+#recaudacion_liquidacion .options a,
+#mis_albumes .options a{
     display: inline-block;
     font-size: 20px;
     padding: 4px 0;
@@ -1238,7 +1245,9 @@ label.custom{
 #edicion_datos_personales .options a.active,
 #edicion_datos_personales .options a:hover,
 #recaudacion_liquidacion .options a.active,
-#recaudacion_liquidacion .options a:hover{
+#recaudacion_liquidacion .options a:hover,
+#mis_albumes .options a.active,
+#mis_albumes .options a:hover{
     background-color: #992425;
     color: #fff;
     border-bottom: 1px solid #000;
@@ -1871,6 +1880,63 @@ label.custom{
     top: 45%;
 }
 
+/* FOTOS Y VIDEO */
+#mis_albumes .content_list_first .ui-listview li{
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+#mis_albumes .content_list_first .content_album{
+    border: 1px solid #EEEEEE;
+    position: relative;
+    text-shadow: 0 0 0;
+    width: 152px;
+    margin-bottom: 2px;
+    margin-right: 2px;
+}
+#mis_albumes .content_list_first .content_album.right{
+    margin-right: 0;
+}
+#mis_albumes .content_list_first .content_album .total_fotos,
+#mis_albumes .content_list_first .content_album .nombre_album{
+    background: url("../img/bg_opacity.png") repeat scroll left top transparent;
+    position: absolute;
+    color: #FFFFFF;
+}
+#mis_albumes .content_list_first .content_album .total_fotos{
+    height: 35px;
+    padding: 5px 20px;
+    top: 0;
+    width: 50%;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+#mis_albumes .content_list_first .content_album .total_fotos b{
+    font-size: 28px;
+}
+#mis_albumes .content_list_first .content_album .nombre_album{
+    padding: 10px 10px 5px;
+    right: 0;
+    bottom: 0;
+    color: #D62E36;
+    width: 70%;
+    letter-spacing: 0;
+    height: 15px;
+}
+#mis_albumes .content_list_first .content_album .nombre_album p{
+    padding-top: 4px;
+    text-align: center;
+}
+#mis_albumes .content_list_first .ui-listview li img{
+    border-radius: 0 0 0 0;
+}
+#mis_albumes .content_list_first .ui-listview .content_pictures li{
+    float: left;
+    padding: 0;
+    height: 60px;
+    width: 50%;
+}
+
 /* Popup Votar y Patrocinio Creado */
 #popupVoto,
 #popupPatrocinio, .popup_recompensa{
@@ -2417,5 +2483,28 @@ label.custom{
     #mis_recompensas .ui-li-heading span.titulo,
     #ultimas_recompensas .ui-li-heading span.titulo{
         width: 290px;
-    }    
+    }
+    
+    /* MIS ALBUNES */
+    #mis_albumes .content_list_first .content_album{
+        width: 232px;
+    }
+    #mis_albumes .content_list_first .ui-listview .content_pictures li{
+        height: 75px;
+    }
+    #mis_albumes .content_list_first .content_album .total_fotos{
+        width: 55%;
+        height: 45px;
+    }
+    #mis_albumes .content_list_first .content_album .total_fotos b {
+        font-size: 35px;
+    }
+    #mis_albumes .content_list_first .content_album .nombre_album{
+        padding: 10px 20px 5px;
+        height: 20px;
+    }
+    #mis_albumes .content_list_first .content_album .nombre_album p{
+        font-size: 16px;
+        margin-top: -4px;
+    }     
 }
