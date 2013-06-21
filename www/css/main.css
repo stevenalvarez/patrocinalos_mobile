@@ -1887,6 +1887,7 @@ label.custom{
     background: transparent;
     border: none;
     padding: 0;
+    min-height: 65px;
 }
 #mis_albumes .content_list_first .content_album,
 #mis_fotos .content_list_first .content_fotos{
@@ -1909,11 +1910,14 @@ label.custom{
 }
 #mis_albumes .content_list_first .content_album .total_fotos{
     height: 35px;
-    padding: 5px 20px;
     top: 0;
-    width: 50%;
-    padding-right: 5px;
-    padding-top: 5px;
+    width: 54%;
+    padding: 5px 5px 5px 15px;
+    letter-spacing: -1px;
+    font-size: 16px;
+}
+#mis_albumes .content_list_first .content_album .total_fotos a{
+    color: #fff;
 }
 #mis_albumes .content_list_first .content_album .total_fotos b{
     font-size: 28px;
@@ -2550,6 +2554,7 @@ label.custom{
     #mis_albumes .content_list_first .content_album .total_fotos{
         width: 55%;
         height: 45px;
+        letter-spacing: 0;
     }
     #mis_albumes .content_list_first .content_album .total_fotos b {
         font-size: 35px;
