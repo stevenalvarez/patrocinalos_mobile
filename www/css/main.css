@@ -649,7 +649,8 @@ label.custom{
 #ultimas_recompensas .ui-content,
 #perfil_deportista_recompensa .ui-content,
 #crear_nueva_recompensa .ui-content,
-#mis_albumes .ui-content{
+#mis_albumes .ui-content,
+#mis_fotos .ui-content{
     padding: 0;
 }
 .data_user{
@@ -1881,12 +1882,14 @@ label.custom{
 }
 
 /* FOTOS Y VIDEO */
-#mis_albumes .content_list_first .ui-listview li{
+#mis_albumes .content_list_first .ui-listview li,
+#mis_fotos .content_list_first .ui-listview li{
     background: transparent;
     border: none;
     padding: 0;
 }
-#mis_albumes .content_list_first .content_album{
+#mis_albumes .content_list_first .content_album,
+#mis_fotos .content_list_first .content_fotos{
     border: 1px solid #EEEEEE;
     position: relative;
     text-shadow: 0 0 0;
@@ -1894,7 +1897,8 @@ label.custom{
     margin-bottom: 2px;
     margin-right: 2px;
 }
-#mis_albumes .content_list_first .content_album.right{
+#mis_albumes .content_list_first .content_album.right,
+#mis_fotos .content_list_first .content_fotos.right{
     margin-right: 0;
 }
 #mis_albumes .content_list_first .content_album .total_fotos,
@@ -1927,7 +1931,8 @@ label.custom{
     padding-top: 4px;
     text-align: center;
 }
-#mis_albumes .content_list_first .ui-listview li img{
+#mis_albumes .content_list_first .ui-listview li img,
+#mis_fotos .content_list_first .ui-listview li img{
     border-radius: 0 0 0 0;
 }
 #mis_albumes .content_list_first .ui-listview .content_pictures li{
@@ -1935,6 +1940,56 @@ label.custom{
     padding: 0;
     height: 60px;
     width: 50%;
+}
+
+/* MIS FOTOS */
+#mis_fotos .content_list_first .row_second .content_fotos.first{
+    width: 210px;
+}
+#mis_fotos .content_list_first .row_second .content_fotos.second{
+    width: 93px;
+}
+#mis_fotos .content_list_first .content_fotos{
+    position: relative;
+}
+#mis_fotos .content_list_first a.zoom{
+    background-image: url("../img/bg_plus.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 38px auto;
+    background-position: center center;
+    display: block;
+    position: absolute;
+    text-indent: -9999px;
+    height: 38px;
+    width: 38px;
+}
+#mis_fotos .content_list_first .row_first a.zoom{
+    left: 58px;
+    top: 30px;
+}
+#mis_fotos .content_list_first .row_second .first a.zoom{
+    left: 85px;
+    top: 52px;
+}
+#mis_fotos .content_list_first .row_second .second a.zoom{
+    left: 28px;
+    top: 52px;
+}
+#mis_fotos .content_list_first .row_third a.zoom{
+    top: 14px;
+    left: 60px;
+}
+#mis_fotos .content_list_first .row_first .recuadro_foto{
+    width: 152px;
+    height: 102px;
+}
+#mis_fotos .content_list_first .row_second .recuadro_foto{
+    height: 140px;
+}
+#mis_fotos .content_list_first .row_third .recuadro_foto{
+    width: 152px;
+    height: 65px;
 }
 
 /* Popup Votar y Patrocinio Creado */
@@ -2506,5 +2561,48 @@ label.custom{
     #mis_albumes .content_list_first .content_album .nombre_album p{
         font-size: 16px;
         margin-top: -4px;
-    }     
+    }
+    
+    /* MIS FOTOS */
+    #mis_fotos .content_list_first a.zoom {
+        background-size: 48px auto;
+        height: 48px;
+        width: 48px;       
+    }
+    #mis_fotos .content_list_first .content_fotos{
+        width: 232px;
+    }
+    #mis_fotos .content_list_first .row_second .first a.zoom {
+        left: 130px;
+        top: 80px;
+    }
+    #mis_fotos .content_list_first .row_second .second a.zoom {
+        left: 50px;
+        top: 80px;
+    }
+    #mis_fotos .content_list_first .row_third a.zoom {
+        top: 25px;
+        left: 95px;
+    }
+    #mis_fotos .content_list_first .row_first .recuadro_foto {
+        width: 232px;
+        height: 132px;
+    }
+    #mis_fotos .content_list_first .row_first a.zoom {
+        left: 94px;
+        top: 42px;
+    }
+    #mis_fotos .content_list_first .row_second .content_fotos.first {
+        width: 320px;
+    }
+    #mis_fotos .content_list_first .row_second .recuadro_foto {
+        height: 215px;
+    }
+    #mis_fotos .content_list_first .row_second .content_fotos.second {
+        width: 144px;
+    }
+    #mis_fotos .content_list_first .row_third .recuadro_foto {
+        width: 232px;
+        height: 100px;
+    }    
 }
