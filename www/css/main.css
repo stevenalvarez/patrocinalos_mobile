@@ -650,7 +650,8 @@ label.custom{
 #perfil_deportista_recompensa .ui-content,
 #crear_nueva_recompensa .ui-content,
 #mis_albunes .ui-content,
-#mis_fotos .ui-content{
+#mis_fotos .ui-content,
+#mis_videos .ui-content{
     padding: 0;
 }
 .data_user{
@@ -1883,14 +1884,16 @@ label.custom{
 
 /* FOTOS Y VIDEO */
 #mis_albunes .content_list_first .ui-listview li,
-#mis_fotos .content_list_first .ui-listview li{
+#mis_fotos .content_list_first .ui-listview li,
+#mis_videos .content_list_first .ui-listview li{
     background: transparent;
     border: none;
     padding: 0;
     min-height: 65px;
 }
 #mis_albunes .content_list_first .content_album,
-#mis_fotos .content_list_first .content_fotos{
+#mis_fotos .content_list_first .content_fotos
+#mis_videos .content_list_first .content_videos{
     border: 1px solid #EEEEEE;
     position: relative;
     text-shadow: 0 0 0;
@@ -1899,7 +1902,8 @@ label.custom{
     margin-right: 2px;
 }
 #mis_albunes .content_list_first .content_album.right,
-#mis_fotos .content_list_first .content_fotos.right{
+#mis_fotos .content_list_first .content_fotos.right,
+#mis_videos .content_list_first .content_videos.right{
     margin-right: 0;
 }
 #mis_albunes .content_list_first .content_album .total_fotos,
@@ -1936,7 +1940,8 @@ label.custom{
     text-align: center;
 }
 #mis_albunes .content_list_first .ui-listview li img,
-#mis_fotos .content_list_first .ui-listview li img{
+#mis_fotos .content_list_first .ui-listview li img,
+#mis_videos .content_list_first .ui-listview li img{
     border-radius: 0 0 0 0;
 }
 #mis_albunes .content_list_first .ui-listview .content_pictures li{
@@ -1956,7 +1961,8 @@ label.custom{
 #mis_fotos .content_list_first .content_fotos{
     position: relative;
 }
-#mis_fotos .content_list_first a.zoom{
+#mis_fotos .content_list_first a.zoom,
+#mis_videos .content_list_first a.zoom{
     background-image: url("../img/bg_plus.png");
     background-repeat: no-repeat;
     background-color: transparent;
@@ -1994,6 +2000,20 @@ label.custom{
 #mis_fotos .content_list_first .row_third .recuadro_foto{
     width: 152px;
     height: 65px;
+}
+
+/* MIS VIDEOS */
+
+#mis_videos .content_list_first .content_videos{
+    position: relative;
+}
+#mis_videos .content_list_first .recuadro_video{
+    width: 152px;
+    height: auto;
+}
+#mis_videos .content_list_first a.zoom{
+    left: 58px;
+    top: 30px;
 }
 
 /* Popup Votar y Patrocinio Creado */
@@ -2682,5 +2702,17 @@ label.custom{
     #mis_fotos .content_list_first .row_third .recuadro_foto {
         width: 232px;
         height: 100px;
-    }    
+    }
+    
+    /* MIS VIDEOS */
+    #mis_videos .content_list_first .recuadro_video {
+        width: 232px;
+    }
+    #mis_videos .content_list_first a.zoom {
+        background-size: 48px auto;
+        height: 48px;
+        width: 48px;
+        left: 90px;
+        top: 60px;
+    }
 }
