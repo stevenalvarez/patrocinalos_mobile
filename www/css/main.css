@@ -656,7 +656,8 @@ label.custom{
 #mis_fotos .ui-content,
 #mis_videos .ui-content,
 #crear_nueva_entrada .ui-content,
-#ultimas_entradas .ui-content{
+#ultimas_entradas .ui-content,
+#ultimas_entradas_usuario_x .ui-content{
     padding: 0;
 }
 .data_user{
@@ -1164,7 +1165,8 @@ label.custom{
 
 /* LISTA POSIBLES GANADORES */
 #lista_posibles_ganadores .title h2,
-#edicion_datos_deportivos .title h2{
+#edicion_datos_deportivos .title h2,
+#ultimas_entradas_usuario_x h2{
     font-size: 13px;
     font-weight: bold;
     letter-spacing: -1px;
@@ -2669,7 +2671,8 @@ label.custom{
     #lista_posibles_ganadores .ui-listview li .info{
         display: block;
     }
-    #lista_posibles_ganadores .title h2{
+    #lista_posibles_ganadores .title h2,
+    #ultimas_entradas_usuario_x h2{
         font-size: 17px;
     }
     
