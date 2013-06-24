@@ -649,7 +649,7 @@ label.custom{
 #ultimas_recompensas .ui-content,
 #perfil_deportista_recompensa .ui-content,
 #crear_nueva_recompensa .ui-content,
-#mis_albumes .ui-content,
+#mis_albunes .ui-content,
 #mis_fotos .ui-content{
     padding: 0;
 }
@@ -1211,7 +1211,7 @@ label.custom{
 #lista_deportistas_amateurs .options,
 #edicion_datos_personales .options,
 #recaudacion_liquidacion .options,
-#mis_albumes .options{
+#mis_albunes .options{
     background-color: #e7e7e7;
     margin-bottom: 5px;
 }
@@ -1219,7 +1219,7 @@ label.custom{
 #lista_deportistas_amateurs .options a.first,
 #edicion_datos_personales .options a.first,
 #recaudacion_liquidacion .options a.first,
-#mis_albumes .options a.first{
+#mis_albunes .options a.first{
     margin-right: 2px;
     width: 48%;
 }
@@ -1227,7 +1227,7 @@ label.custom{
 #lista_deportistas_amateurs .options a,
 #edicion_datos_personales .options a,
 #recaudacion_liquidacion .options a,
-#mis_albumes .options a{
+#mis_albunes .options a{
     display: inline-block;
     font-size: 20px;
     padding: 4px 0;
@@ -1247,8 +1247,8 @@ label.custom{
 #edicion_datos_personales .options a:hover,
 #recaudacion_liquidacion .options a.active,
 #recaudacion_liquidacion .options a:hover,
-#mis_albumes .options a.active,
-#mis_albumes .options a:hover{
+#mis_albunes .options a.active,
+#mis_albunes .options a:hover{
     background-color: #992425;
     color: #fff;
     border-bottom: 1px solid #000;
@@ -1882,14 +1882,14 @@ label.custom{
 }
 
 /* FOTOS Y VIDEO */
-#mis_albumes .content_list_first .ui-listview li,
+#mis_albunes .content_list_first .ui-listview li,
 #mis_fotos .content_list_first .ui-listview li{
     background: transparent;
     border: none;
     padding: 0;
     min-height: 65px;
 }
-#mis_albumes .content_list_first .content_album,
+#mis_albunes .content_list_first .content_album,
 #mis_fotos .content_list_first .content_fotos{
     border: 1px solid #EEEEEE;
     position: relative;
@@ -1898,17 +1898,17 @@ label.custom{
     margin-bottom: 2px;
     margin-right: 2px;
 }
-#mis_albumes .content_list_first .content_album.right,
+#mis_albunes .content_list_first .content_album.right,
 #mis_fotos .content_list_first .content_fotos.right{
     margin-right: 0;
 }
-#mis_albumes .content_list_first .content_album .total_fotos,
-#mis_albumes .content_list_first .content_album .nombre_album{
+#mis_albunes .content_list_first .content_album .total_fotos,
+#mis_albunes .content_list_first .content_album .nombre_album{
     background: url("../img/bg_opacity.png") repeat scroll left top transparent;
     position: absolute;
     color: #FFFFFF;
 }
-#mis_albumes .content_list_first .content_album .total_fotos{
+#mis_albunes .content_list_first .content_album .total_fotos{
     height: 35px;
     top: 0;
     width: 54%;
@@ -1916,13 +1916,13 @@ label.custom{
     letter-spacing: -1px;
     font-size: 16px;
 }
-#mis_albumes .content_list_first .content_album .total_fotos a{
+#mis_albunes .content_list_first .content_album .total_fotos a{
     color: #fff;
 }
-#mis_albumes .content_list_first .content_album .total_fotos b{
+#mis_albunes .content_list_first .content_album .total_fotos b{
     font-size: 28px;
 }
-#mis_albumes .content_list_first .content_album .nombre_album{
+#mis_albunes .content_list_first .content_album .nombre_album{
     padding: 10px 10px 5px;
     right: 0;
     bottom: 0;
@@ -1931,15 +1931,15 @@ label.custom{
     letter-spacing: 0;
     height: 15px;
 }
-#mis_albumes .content_list_first .content_album .nombre_album p{
+#mis_albunes .content_list_first .content_album .nombre_album p{
     padding-top: 4px;
     text-align: center;
 }
-#mis_albumes .content_list_first .ui-listview li img,
+#mis_albunes .content_list_first .ui-listview li img,
 #mis_fotos .content_list_first .ui-listview li img{
     border-radius: 0 0 0 0;
 }
-#mis_albumes .content_list_first .ui-listview .content_pictures li{
+#mis_albunes .content_list_first .ui-listview .content_pictures li{
     float: left;
     padding: 0;
     height: 60px;
@@ -2618,25 +2618,25 @@ label.custom{
     }
     
     /* MIS ALBUNES */
-    #mis_albumes .content_list_first .content_album{
+    #mis_albunes .content_list_first .content_album{
         width: 232px;
     }
-    #mis_albumes .content_list_first .ui-listview .content_pictures li{
+    #mis_albunes .content_list_first .ui-listview .content_pictures li{
         height: 75px;
     }
-    #mis_albumes .content_list_first .content_album .total_fotos{
+    #mis_albunes .content_list_first .content_album .total_fotos{
         width: 55%;
         height: 45px;
         letter-spacing: 0;
     }
-    #mis_albumes .content_list_first .content_album .total_fotos b {
+    #mis_albunes .content_list_first .content_album .total_fotos b {
         font-size: 35px;
     }
-    #mis_albumes .content_list_first .content_album .nombre_album{
+    #mis_albunes .content_list_first .content_album .nombre_album{
         padding: 10px 20px 5px;
         height: 20px;
     }
-    #mis_albumes .content_list_first .content_album .nombre_album p{
+    #mis_albunes .content_list_first .content_album .nombre_album p{
         font-size: 16px;
         margin-top: -4px;
     }
