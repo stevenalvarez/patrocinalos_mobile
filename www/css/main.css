@@ -2271,6 +2271,64 @@ label.custom{
     line-height: 11px;    
 }
 
+/* POPUP ZOOM FOTO */
+.popup_recompensa .popup_header{
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.popup_recompensa.zoom .container_info{
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+.popup_recompensa .social_red a,
+.popup_recompensa .control_preview_next a{
+    display: inline-block;
+    height: 25px;
+    text-indent: -9999px;
+    width: 28px;
+    background-color: transparent;
+    background-position: 0 0;
+    background-repeat: no-repeat;    
+}
+.popup_recompensa .social_red a.owner_like{
+    background-image: url("../img/bg_like_sprite.png");
+    background-size: 25px auto;
+    background-position: 0% 0%;
+}
+.popup_recompensa .social_red a.compartir_tw{
+    background-image: url("../img/bg_tw.png");
+    background-size: 26px auto;
+}
+.popup_recompensa .social_red a.compartir_fb{
+    background-image: url("../img/bg_fb.png");
+    background-size: 26px auto;
+}
+.popup_recompensa.zoom .container_info .recuadro_foto_zoom {
+    width: 290px;
+}
+.popup_recompensa.zoom .container_info .recuadro_foto_zoom img{
+    width: 100%;
+    border-radius: 5px;
+}
+.popup_recompensa .control_preview_next{
+    padding-top: 10px;
+    min-height: 35px;
+    padding-bottom: 12px;
+}
+.popup_recompensa .control_preview_next a{
+    height: 35px;
+    width: 25px;
+}
+.popup_recompensa .control_preview_next a.preview{
+    background-image: url("../img/bg_volver.png");
+    background-size: 24px auto;
+}
+.popup_recompensa .control_preview_next a.next{
+    background-image: url("../img/bg_next.png");
+    background-size: 24px auto;
+}
+
 /* RESPONSIVO */
 
 @media only screen and  (max-width: 479px) {
@@ -2391,6 +2449,21 @@ label.custom{
         font-size: 13px;
         width: 65%;
         line-height: 24px;
+    }
+    .popup_recompensa.zoom .popup_header{
+        padding-bottom: 15px;
+    }
+    .popup_recompensa .social_red a{
+        height: 30px;
+        width: 30px;
+    }
+    .popup_recompensa .social_red a.owner_like,
+    .popup_recompensa .social_red a.compartir_tw,
+    .popup_recompensa .social_red a.compartir_fb{
+        background-size: 30px auto;
+    }
+    .popup_recompensa.zoom .container_info .recuadro_foto_zoom {
+        width: 420px;
     }
     
     #view .content_usuarios .list li > img{
