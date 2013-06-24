@@ -1183,7 +1183,8 @@ label.custom{
 #ultimas_recompensas .ui-listview li .ui-li-heading{
     margin-bottom: 0px;
 }
-#lista_posibles_ganadores .ui-listview li .deporte_ciudad{
+#lista_posibles_ganadores .ui-listview li .deporte_ciudad,
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar{
     overflow: hidden;
 }
 #lista_posibles_ganadores .ui-listview li .deporte_ciudad .second{
@@ -2134,6 +2135,82 @@ label.custom{
     color: #b52d2f;
 }
 
+/* ULTIMO ENTRADAS Y COMENTARIOS POR USUARIO */
+#ultimas_entradas_usuario_x .content_list_first .ui-listview li{
+    padding: 0;
+}
+#ultimas_entradas_usuario_x .content_list_first .ui-listview li .content_comentario{
+    padding: 5px;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados{
+    background-color: #6bb0c5;
+    position: relative;
+    border-bottom: 1px solid #251112;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados span.tab{
+    background-image: url("../img/bg_tab.png");
+    background-position: 0 0;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 10px;
+    right: 12px;
+    top: -9px;
+    position: absolute;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios{
+    overflow: hidden;
+    padding: 5px;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios h4{
+    margin-bottom: 4px;
+    font-size: 14px;
+    letter-spacing: -1px;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios li{
+    overflow: hidden;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #577e8a;
+    padding-bottom: 8px;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios li.last{
+    border-bottom: 0;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios .recuadro_comentario{
+    width: 50px;
+    height: 50px;    
+} 
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios .recuadro_comentario img{
+    border: 1px solid #fff;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios .descripcion_texto{
+    width: 81%;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios h5{
+    font-size: 13px;
+    letter-spacing: -1px;
+    color: #2f4b54;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios .comentario_hecho{
+    color: #fff;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar{
+    overflow: hidden;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar .texto_comentario{
+    width: 58%;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar .texto_comentario textarea,
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar .buttom a{
+    margin: 0;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar .texto_comentario textarea{
+    height: 80px;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar .buttom{
+    margin-top: 41px;
+}
+
 /* Popup Votar y Patrocinio Creado */
 #popupVoto,
 #popupPatrocinio, .popup_recompensa{
@@ -2834,5 +2911,13 @@ label.custom{
         width: 48px;
         left: 90px;
         top: 60px;
+    }
+    
+    /* COMENTARIOS HECHOS */
+    #ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios .descripcion_texto {
+        width: 87%;
+    }
+    #ultimas_entradas_usuario_x .content_comentario_realizados .comentar .texto_comentario {
+        width: 72%;
     }
 }
