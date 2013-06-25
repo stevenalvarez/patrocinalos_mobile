@@ -547,17 +547,20 @@
 }
 .ui-btn-text{
     font-size: 17px;
-    letter-spacing: -2px;
+    letter-spacing: -1px;
 }
 .ui-btn.ui-btn-up-r,
 .ui-btn.ui-btn-hover-r{
     margin-bottom: 20px;
 }
 .btn-access{
-    padding-top: 15px;
+    padding-top: 6px;
     border-top: 1px solid #aaaaaa;
     margin-left: 10px;
     margin-right: 10px;
+}
+.btn-access .blogin{
+    margin-bottom: 14px;
 }
 .ui-radio label{
     background: none;
@@ -945,7 +948,7 @@ label.custom{
 #register_user .ui-content,
 #register_finalizado .ui-content{
     background: #FFFFFF;
-    margin: 40px 10px;
+    margin: 20px 10px;
     border-radius: 5px;
     border: 1px solid #000;
     padding: 0;
@@ -965,7 +968,7 @@ label.custom{
     text-align: center;
     color: #a22626;
     letter-spacing: -1.2px;
-    margin: 0.2em 8% 0.5em;
+    margin: 0.2em 8% 0.2em;
     height: auto;
     overflow: hidden;
     padding-top: 10px;
@@ -976,13 +979,15 @@ label.custom{
 #login_user h1 img{
     width: 100%;
 }
-
+#view .background_view{
+    background: url("../img/bg-index2.png") no-repeat scroll center top transparent;
+    background-position: 50% 60%;
+}
 #view .usuarios-patrocinalos{
-    padding-top: 235px;
-    background: url("../img/bg-index.png") no-repeat scroll center top transparent;
+    padding-top: 135px;
 }
 #view .content_usuarios{
-    padding: 5px 10px 0px 10px;
+    padding: 5px 10px 4px 10px;
     background: url("../img/bg-usuarios-index.png") repeat scroll 0 0 transparent;
     overflow: hidden;
 }
@@ -1041,6 +1046,10 @@ label.custom{
 #login_user p.text span{
     font-weight: bold;
     font-size: 13px;
+}
+#login_user .recuperar_contrasena .ui-btn-inner{
+    padding-left: 10px;
+    padding-right: 10px;    
 }
 
 /* REGISTRO */
@@ -2556,7 +2565,7 @@ label.custom{
     #view h1,
     #login_user h1{
         font-size: 26px;
-        margin: 0.2em 4% 0.5em;
+        margin: 0.2em 4% 0.2em;
     }
     #view .content_usuarios p{
         font-size: 12px;
