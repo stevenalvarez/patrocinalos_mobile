@@ -1008,6 +1008,13 @@ label.custom{
     width: 49px;
     border-radius: 4px;
 }
+#view .content_usuarios .recuadro_img{
+    height: 49px;
+    width: 49px;
+}
+#view .content_usuarios .recuadro_img img{
+    width: 100%;
+}
 
 /*LOGIN */
 
