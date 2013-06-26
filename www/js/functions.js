@@ -92,3 +92,16 @@ function valEmail(valor){
         return true; 
     } 
 }
+// Show a custom alertDismissed
+function showAlert() {
+    navigator.notification.alert(
+        'message',  // message
+        alertDismissed,         // callback
+        'title',            // title
+        'Done'                  // buttonName
+    );
+}
+// alert dialog dismissed
+function alertDismissed() {
+    // do something
+}
