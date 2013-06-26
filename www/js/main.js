@@ -10,7 +10,7 @@ var BASE_URL = "http://localhost/patrocinalos_mobile/";
 
 /************************************ EVENTOS *******************************************************/
 
-//Las Terrazas
+//INICIO
 $('#view').live('pagebeforeshow', function(event, ui) {
    getUsuariosRandom();
 });
@@ -20,11 +20,21 @@ $('#view').live('pagebeforeshow', function(event, ui) {
 
 function getUsuariosRandom() {
     parent = $("#view .list");
-	$.getJSON(serviceURL + 'get_usuarios_random.php', function(data) {
+    parent.find("li").remove();
+	
+    $.getJSON(serviceURL + 'get_usuarios_random.php', function(data) {
+	//mostramos loading
+        $.mobile.loading( 'show' );
 		var usuarios = data.items;
-        parent.find("li").remove();
     	$.each(usuarios, function(index, usuario) {
     		parent.append('<li><div class="recuadro_img"><img src="'+BASE_URL+'img/Usuario/169/'+usuario.imagen+'"/><div></li>');
-    	});        
+    	});
+        
+        parent.promise().done(function() {
+            $(this).find("li:last img").load(function(){
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+            });
+        });
 	});
 }	

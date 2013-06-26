@@ -990,6 +990,7 @@ label.custom{
     padding: 5px 10px 4px 10px;
     background: url("../img/bg-usuarios-index.png") repeat scroll 0 0 transparent;
     overflow: hidden;
+    min-height: 128px;
 }
 #view .content_usuarios p{
     color: #fff;
@@ -1000,20 +1001,26 @@ label.custom{
 #view .content_usuarios .list > li{
     float: left;
     margin: 1px;
-    border: 1px solid #fff;
     margin-right: 2px;
     margin-bottom: 4px;
     margin-left: 2px;
+}
+#view .content_usuarios .recuadro_img{
+    border: 1px solid #FFFFFF;
     height: 49px;
     width: 49px;
     border-radius: 4px;
-}
-#view .content_usuarios .recuadro_img{
-    height: 49px;
-    width: 49px;
+    overflow: hidden;
+    background-color: #000;
+    margin-left: auto;
+    display: block;
+    margin-bottom: 0;
+    margin-right: auto;
+    text-align: center;
 }
 #view .content_usuarios .recuadro_img img{
-    width: 100%;
+    height: 49px;
+    width: auto;
 }
 
 /*LOGIN */

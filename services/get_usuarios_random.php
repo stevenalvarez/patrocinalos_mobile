@@ -4,7 +4,7 @@ include 'functions.php';
 
 header ('Content-type: text/html; charset=ISO-8859-1');
 
-$sql = "SELECT Usuario.title, Usuario.imagen FROM usuarios as Usuario WHERE Usuario.imagen <> 'default.png' ORDER BY RAND() limit 10";
+$sql = "SELECT Usuario.title, Usuario.imagen FROM usuarios as Usuario WHERE Usuario.imagen <> 'default.png' AND Usuario.tipo <> 'admin' ORDER BY RAND() limit 10";
 
 try {
 	$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);	
