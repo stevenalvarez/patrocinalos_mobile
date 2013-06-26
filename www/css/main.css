@@ -2704,16 +2704,14 @@ label.custom{
         width: 420px;
     }
     
-    #view .content_usuarios .list li > img{
-        height: 75px;
-        width: 75px;        
-    }
-    #view .content_usuarios .list > li{
-        margin-right: 5px;
-        margin-bottom: 4px;
+    #view .content_usuarios .recuadro_img{
         margin-left: 5px;
         height: 75px;
         width: 75px;
+    }
+    #view .content_usuarios .recuadro_img img{
+        height: 75px;
+        width: auto;
     }
     #register_user .register_option_fb .facebook_registro .ui-icon {
         left: 20%;
