@@ -1,12 +1,12 @@
 /************************************ VARIABLES DE CONFIGURACION *******************************************************/
 
 /************************************ server *******************************************************/
-//var serviceURL = "http://patrocinalos.com/services/";
-//var BASE_URL = "http://patrocinalos.com/";
+var serviceURL = "http://patrocinalos.com/services/";
+var BASE_URL = "http://patrocinalos.com/";
 
 /************************************ localhost *******************************************************/
-var serviceURL = "http://localhost/patrocinalos_mobile/services/";
-var BASE_URL = "http://localhost/patrocinalos_mobile/";
+//var serviceURL = "http://localhost/patrocinalos_mobile/services/";
+//var BASE_URL = "http://localhost/patrocinalos_mobile/";
 
 /************************************ EVENTOS *******************************************************/
 
