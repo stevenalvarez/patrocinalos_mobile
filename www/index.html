@@ -150,7 +150,7 @@
     	<div data-role="content">
             
             <div class="btn-access">
-                <form>
+                <form id="form_registro">
                     <div class="access_login">
                          <div class="register_option_fb">
                             <label class="lspacing">Tienes una cuenta en facebook?</label>
@@ -161,7 +161,7 @@
                             <span class="lspacing">O puedes llenar el siguiente formulario</span>
                          </div>
                          <label class="custom">Introduce la siguiente infomaci&oacute;n personal:</label>
-                         <input name="usuario[nombre]" placeholder="Nombre..." autocomplete="off" type="text"/>
+                         <input name="usuario[nombre]" placeholder="Nombre..." autocomplete="off" type="text" required="required"/>
                          <input name="usuario[apellido]" placeholder="Apellidos..." autocomplete="off" type="text"/>
                          <input name="usuario[email_register]" placeholder="Email..." autocomplete="off" type="text"/>
                          <input name="usuario[password_register]" placeholder="Contrase&ntilde;a..." autocomplete="off" type="text"/>
@@ -187,12 +187,14 @@
                         <input name="usuario[terminos]" id="radio-termino" type="radio"/>
                         <label data-theme="c" for="radio-termino">Acepto los t&eacute;rminos y condiciones.</label>
                     </fieldset>
+                    
+                    <input class="submit" type="submit" value="Submit"/>                                        
                 </form>
             </div>
     	</div><!-- /content -->
         
         <div class="guardar">
-            <a href="#register_finalizado" data-role="button">REGISTRARME</a>
+            <a class="registrarme" href="javascript:void(0)" data-role="button">REGISTRARME</a>
         </div>
         
         <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="g" class="footer">

@@ -15,9 +15,18 @@ $('#view').live('pagebeforeshow', function(event, ui) {
    getUsuariosRandom();
 });
 
+//REGISTRO
+$('#register_user').live('pageshow', function(event, ui) {
+    var parent = $(this);
+    
+    parent.find('a.registrarme').off('click').on("click", function(){
+        saveRegister();
+    });
+});
 
 /************************************ FUNCTIONS *******************************************************/
 
+//OBTENEMOS 10 USUARIOS DE FORMA RANDOMICA 
 function getUsuariosRandom() {
     parent = $("#view .list");
     parent.find("li").remove();
@@ -37,4 +46,27 @@ function getUsuariosRandom() {
             });
         });
 	});
-}	
+}
+
+//REGISTRAMOS LOS DATOS DEL USUARIO CUANDO SE REGISTRA
+function saveRegister() {
+    
+    var form_parent = $("form_registro");
+    
+    var nombre = $.trim(form_parent.find("input#").val());
+        
+    if(nombre !="" && email !="" && comentario !=""){
+        if(valEmail(email)){
+            $(".ui-loader").show();
+            $.post(serviceURL + 'enviar_contacto.php', $("#form_contact").serialize()).done(function(data) {
+                $(".ui-loader").hide();
+                document.getElementById("form_contact").reset();
+                alert(data);
+            });
+        }else{
+            alert("El email: " + email + ", no es correcto!!!!, por favor ingrese un email valido.");
+        }
+    }else{
+        alert("Por favor ingrese todos los campos obligatorios!.");
+    }
+}
