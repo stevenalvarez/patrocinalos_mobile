@@ -215,6 +215,39 @@ function getPhoto(source) {
     sourceType: source });
 }
 
+// UploadPhoto
+//
+function uploadPhoto() {
+    var options = new FileUploadOptions();
+    options.fileKey = "file";
+    options.fileName = IMAGEURI.substr(IMAGEURI.lastIndexOf('/')+1);
+    options.mimeType = "image/jpeg";
+    
+    var params = new Object();
+    params.value1 = "test";
+    params.value2 = "param";
+    
+    options.params = params;
+    options.chunkedMode = false;
+    
+    var ft = new FileTransfer();
+    ft.upload(IMAGEURI, serviceURL + "upload_photo.php", win, fail, options);
+}
+
+// Callback success upload photo
+//
+function win(r) {
+    console.log("Code = " + r.responseCode);
+    console.log("Response = " + r.response);
+    console.log("Sent = " + r.bytesSent);
+    alert(r.response);
+}
+
+//Callback error upload photo
+function fail(error) {
+    alert("An error has occurred: Code = " = error.code);
+}
+
 // Called if something bad happens.
 // 
 function onFail(message) {

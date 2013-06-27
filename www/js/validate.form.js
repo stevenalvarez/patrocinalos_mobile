@@ -78,8 +78,6 @@ function form_registro(){
         
         //Si todo el form es valido mandamos a registrar los datos
         if (jQuery(this).valid()) {
-            console.log("putaaaa");
-            alert("perra");
             //Mandamos a validar el mail
             var success = validar_email($.trim(document.getElementById("usuario_email_register").value));
             //Unicamente si el email no esta registrado mandamos a guardar
@@ -100,9 +98,10 @@ function saveData(){
     	html: ""
     });
             
-    $.post(serviceURL + 'set_datos_registro.php', $("#form_registro").serialize()).done(function(data) {
+    /*$.post(serviceURL + 'set_datos_registro.php', $("#form_registro").serialize()).done(function(data) {
         $.mobile.loading( 'hide' );
         document.getElementById("form_registro").reset();
         $.mobile.changePage('#register_finalizado', {transition: "slide"});
-    });
+    });*/
+    uploadPhoto();
 }

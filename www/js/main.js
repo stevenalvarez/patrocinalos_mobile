@@ -62,6 +62,6 @@ function saveRegister() {
 function listarDeportes(){
 	$.getJSON(serviceURL + 'get_deportes.php', function(data) {
 		var deportes = data.items;
-        //console.log(deportes);
+        console.log(deportes);
 	});
 }
