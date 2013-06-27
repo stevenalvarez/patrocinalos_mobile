@@ -36,6 +36,22 @@
         <script src="js/functions.js"></script>
         <script src="js/validate.form.js"></script>
         <script src="js/main.js"></script>
+        <script type="text/javascript">
+            var pictureSource;   // picture source
+            var destinationType; // sets the format of returned value 
+            
+            // Wait for Cordova to connect with the device
+            //
+            document.addEventListener("deviceready",onDeviceReady,false);
+            
+            // Cordova is ready to be used!
+            //
+            function onDeviceReady() {
+                pictureSource=navigator.camera.PictureSourceType;
+                destinationType=navigator.camera.DestinationType;
+            }
+        </script>
+                
     </head>
     <body>
         
@@ -183,8 +199,9 @@
                          </select>
                          <div data-role="fieldcontain" class="content_upload_foto">
                             <label class="lspacing">Subir una foto de perfil</label>
-                            <a class="upload_foto" href="#" data-role="button" data-theme="a" data-mini="true">Buscar</a>
+                            <a class="upload_foto" href="javascript:void(0)" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" data-role="button" data-theme="a" data-mini="true">Buscar</a>
                          </div>
+                         <img style="margin-left: 10px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; display: none;" id="pictureImage" src="" />
                      </div>
                     <fieldset data-role="controlgroup">
                         <input id="radio_termino" name="usuario[terminos]" type="radio"/>

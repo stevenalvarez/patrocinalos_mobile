@@ -79,14 +79,16 @@
 }
 form span.error{
     position: absolute;
-    font-size: 13px;
+    font-size: 12px;
     color: #ca2c2c;
     letter-spacing: -1px;
-    font-weight: bold;
 }
 form .ui-input-text span.error{
-    top: 15px;
+    top: 5px;
     right: 5px;
+    width: 54px;
+    text-align: center;
+    line-height: 12px;    
 }
 .content_list_first .ui-listview li.ui-li-static.ui-li{
     margin-bottom: 2px;
@@ -601,8 +603,8 @@ form .ui-input-text span.error{
     text-shadow: 0 0px 0 #000;    
 }
 .ui-radio span.error{
-    left: 35px;
-    top: -10px;
+    left: 2px;
+    top: -12px;
 }
 .ui-select span.ui-btn-inner{
     padding-left: 7px;
@@ -616,6 +618,7 @@ form .ui-input-text span.error{
 .ui-select span.error{
     left: 0;
     margin-top: 5px;
+    font-weight: normal;
 }
 .ui-select .ui-btn-inner span.ui-btn-text > span.error{
     color: #AAAAAA;
@@ -631,6 +634,7 @@ form .ui-input-text span.error{
     overflow: hidden;
     padding: 0;
     padding-left: 8px;
+    border-bottom: 0;
 }
 .content_upload_foto label{
     float: left;

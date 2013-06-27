@@ -3,6 +3,22 @@ jQuery.validator.addMethod("seleccionarDeporte", function(value, element) {
     return jQuery.trim(value) != "";
 }, "Debe seleccionar un deporte");
 
+var response;
+$.validator.addMethod("validarEmail", function(value, element) {
+    $.ajax({
+        type: "POST",
+        url: serviceURL + "get_validar_email.php",
+        data: "email="+value,
+        dataType:"html",
+     success: function(msg){
+         msg = $.parseJSON(msg);
+         var result = msg.success;
+         response = ( result == true ) ? false : true;
+     }
+ })
+ return response;
+}, "Este email ya est&aacute; registrado");
+
 //Formulario de registro
 function form_registro(){
     jQuery("#form_registro").validate({
@@ -18,7 +34,8 @@ function form_registro(){
     		},
     		"usuario[email_register]": {
     			required: true,
-    			email: true
+    			email: true,
+                validarEmail: true
     		},
     		"usuario[password_register]": {
     			required: true,
@@ -45,7 +62,7 @@ function form_registro(){
     		},
             "usuario[email_register]": {
     			required: "Por favor, introduzca su email",
-    			email: "Introduzca una direcci&oacute;n e-mail v&aacute;lida"
+    			email: "Direcci&oacute;n de email no v&aacute;lida"
     		},
     		"usuario[password_register]": {
     			required: "Por favor, ingrese su contrase&ntilde;a",
@@ -54,7 +71,7 @@ function form_registro(){
     		"usuario[repetir_password]": {
     			required: "Por favor, ingrese su contrase&ntilde;a",
     			minlength: "M&iacute;nimo de 5 caracteres",
-    			equalTo: "Introduzca la misma contrase&ntilde;a que el anterior"
+    			equalTo: "Repita contrase&ntilde;a"
     		},
             "usuario[terminos]": "Por favor, acepte nuestros t&eacute;rminos"
     	}
