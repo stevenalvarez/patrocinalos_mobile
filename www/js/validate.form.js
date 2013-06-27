@@ -33,9 +33,9 @@ function form_registro(){
     			minlength: 5,
     			equalTo: "#usuario_email_password_register"
     		},
-    		"usuario[deporte]": {
+    		/*"usuario[deporte]": {
     			seleccionarDeporte: true
-    		},
+    		},*/
     		"usuario[terminos]": "required"
     	},
     	messages: {
@@ -81,7 +81,7 @@ function form_registro(){
             //Mandamos a validar el mail
             var success = validar_email($.trim(document.getElementById("usuario_email_register").value));
             //Unicamente si el email no esta registrado mandamos a guardar
-            if(success){
+            if(success == false){
                 saveData();
             }
         }

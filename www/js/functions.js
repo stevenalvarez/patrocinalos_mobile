@@ -95,7 +95,7 @@ function valEmail(valor){
 
 // Validate email repetido
 function validar_email(value){
-    var response;
+    var response = false;
     jQuery.ajax({
         type: "POST",
         url: serviceURL + "get_validar_email.php",
@@ -112,14 +112,19 @@ function validar_email(value){
                 var input = jQuery("#usuario_email_register");
                 input.parent().find("span.error").remove();
                 input.after("<span class='error'>Este email ya est&aacute; registrado</span>");
-                input.parent().find("span.error").fadeOut(5000);
+                input.parent().find("span.error").fadeOut(8000);
                 input.focus();
+                response = true;
             }
-            
         },
         beforeSend : function(){
     	    //mostramos loading
-            $.mobile.loading( 'show' );
+            $.mobile.loading( 'show', {
+            	text: 'Validando Email...',
+            	textVisible: true,
+            	theme: 'c',
+            	html: ""
+            });
         }
     });
     
@@ -171,7 +176,7 @@ function onPhotoURISuccess(imageURI) {
 
   // Unhide image elements
   //
-  pictureImage.style.display = 'block';
+  pictureImage.style.display = 'inline-block';
 
   // Show the captured photo
   // The inline CSS rules are used to resize the image
@@ -207,6 +212,6 @@ function getPhoto(source) {
 // Called if something bad happens.
 // 
 function onFail(message) {
-    mensaje = message == "no image selected" ? "no se seleccion&oacute; ninguna imagen" : message;
+    mensaje = message == "no image selected" ? "no se seleccionó ninguna imagen" : message;
     showAlert(mensaje, 'Aviso', 'Aceptar');
 }
