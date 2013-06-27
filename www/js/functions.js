@@ -1,3 +1,8 @@
+/* GLOBAL VARIABLES */
+var IMAGEURI;
+
+/* FUNCTIONS */
+
 function getUrlVars() {
     var vars = [], hash;
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -169,6 +174,7 @@ function onPhotoDataSuccess(imageData) {
 function onPhotoURISuccess(imageURI) {
   // Uncomment to view the image file URI 
   // console.log(imageURI);
+  IMAGEURI = imageURI;
 
   // Get image handle
   //
@@ -188,7 +194,7 @@ function onPhotoURISuccess(imageURI) {
 //
 function capturePhoto() {
   // Take picture using device camera and retrieve image as base64-encoded string
-  navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
     destinationType: destinationType.DATA_URL });
 }
 
@@ -196,7 +202,7 @@ function capturePhoto() {
 //
 function capturePhotoEdit() {
   // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
-  navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
     destinationType: destinationType.DATA_URL });
 }
 
@@ -204,7 +210,7 @@ function capturePhotoEdit() {
 //
 function getPhoto(source) {
   // Retrieve image file location from specified source
-  navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
+    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
     destinationType: destinationType.FILE_URI,
     sourceType: source });
 }
