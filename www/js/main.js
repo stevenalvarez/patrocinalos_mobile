@@ -22,8 +22,9 @@ $('#view').live('pagebeforeshow', function(event, ui) {
 });
 
 //REGISTRO
-$('#register_user').live('pageshow', function(event, ui) {
-    $(this).find('a.registrarme').off('click').on("click", function(){
+$(document).on('pageinit', "#register_user", function(){
+    listarDeportes();
+    $(this).find('a.registrarme').on("click", function(){
         saveRegister();
     });
 });
@@ -56,4 +57,11 @@ function getUsuariosRandom() {
 function saveRegister() {
     var form_parent = document.getElementById("form_registro");
     $(form_parent).submit(); 
+}
+
+function listarDeportes(){
+	$.getJSON(serviceURL + 'get_deportes.php', function(data) {
+		var deportes = data.items;
+        console.log(deportes);
+	});
 }

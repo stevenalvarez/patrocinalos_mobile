@@ -90,23 +90,17 @@ function form_registro(){
 }
 
 function saveData(){
-    alert("Guardamos los datos, en progreso");
-    /*
-    var nombre = $.trim(form_parent.find("input#").val());
-        
-    if(nombre !="" && email !="" && comentario !=""){
-        if(valEmail(email)){
-            $(".ui-loader").show();
-            $.post(serviceURL + 'enviar_contacto.php', $("#form_contact").serialize()).done(function(data) {
-                $(".ui-loader").hide();
-                document.getElementById("form_contact").reset();
-                alert(data);
-            });
-        }else{
-            alert("El email: " + email + ", no es correcto!!!!, por favor ingrese un email valido.");
-        }
-    }else{
-        alert("Por favor ingrese todos los campos obligatorios!.");
-    }
-    */        
+    //mostramos loading
+    $.mobile.loading( 'show', {
+    	text: 'Guardando datos...',
+    	textVisible: true,
+    	theme: 'c',
+    	html: ""
+    });
+            
+    $.post(serviceURL + 'set_datos_registro.php', $("#form_registro").serialize()).done(function(data) {
+        $.mobile.loading( 'hide' );
+        document.getElementById("form_registro").reset();
+        $.mobile.changePage('#register_finalizado', {transition: "slide"});
+    });
 }
