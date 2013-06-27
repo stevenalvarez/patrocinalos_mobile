@@ -36,7 +36,7 @@ function getUsuariosRandom() {
     parent.find("li").remove();
 	
     $.getJSON(serviceURL + 'get_usuarios_random.php', function(data) {
-	//mostramos loading
+	    //mostramos loading
         $.mobile.loading( 'show' );
 		var usuarios = data.items;
     	$.each(usuarios, function(index, usuario) {

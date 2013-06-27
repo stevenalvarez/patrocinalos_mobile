@@ -3,20 +3,8 @@ jQuery.validator.addMethod("seleccionarDeporte", function(value, element) {
     return jQuery.trim(value) != "";
 }, "Debe seleccionar un deporte");
 
-var response;
 $.validator.addMethod("validarEmail", function(value, element) {
-    $.ajax({
-        type: "POST",
-        url: serviceURL + "get_validar_email.php",
-        data: "email="+value,
-        dataType:"html",
-     success: function(msg){
-         msg = $.parseJSON(msg);
-         var result = msg.success;
-         response = ( result == true ) ? false : true;
-     }
- })
- return response;
+ return validar_email(value);
 }, "Este email ya est&aacute; registrado");
 
 //Formulario de registro
@@ -34,8 +22,7 @@ function form_registro(){
     		},
     		"usuario[email_register]": {
     			required: true,
-    			email: true,
-                validarEmail: true
+    			email: true
     		},
     		"usuario[password_register]": {
     			required: true,
@@ -91,6 +78,8 @@ function form_registro(){
         
         //Si todo el form es valido mandamos a registrar los datos
         if (jQuery(this).valid()) {
+            //Mandamos a validar el mail
+            validar_email($.trim(document.getElementById("usuario_email_register").value));
             saveData();
         }
       return false;
@@ -98,7 +87,7 @@ function form_registro(){
 }
 
 function saveData(){
-    alert("si");
+    alert("Guardamos los datos, en progreso");
     /*
     var nombre = $.trim(form_parent.find("input#").val());
         

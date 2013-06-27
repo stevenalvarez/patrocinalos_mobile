@@ -84,7 +84,7 @@ form span.error{
     letter-spacing: -1px;
 }
 form .ui-input-text span.error{
-    top: 5px;
+    top: 2px;
     right: 5px;
     width: 54px;
     text-align: center;

@@ -84,13 +84,46 @@ function htmlspecialchars_decode (string, quote_style) {
 
   return string;
 }
-
+// Validate email
 function valEmail(valor){
     if(!/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$/.exec(valor)) {
         return false; 
     }else{
         return true; 
     } 
+}
+
+// Validate email repetido
+function validar_email(value){
+    var response;
+    jQuery.ajax({
+        type: "POST",
+        url: serviceURL + "get_validar_email.php",
+        data: "email="+value,
+        dataType:"html",
+        async : false,
+        cache: false,
+        success: function(msg){
+            $.mobile.loading( 'hide' );
+            msg = $.parseJSON(msg);
+            var result = msg.success;
+            //response = ( result == true ) ? false : true;
+            if(result){
+                var input = jQuery("#usuario_email_register");
+                input.parent().find("span.error").remove();
+                input.after("<span class='error'>Este email ya est&aacute; registrado</span>");
+                input.parent().find("span.error").fadeOut(5000);
+                input.focus();
+            }
+            
+        },
+        beforeSend : function(){
+    	    //mostramos loading
+            $.mobile.loading( 'show' );
+        }
+    });
+    
+    return response;
 }
 // Show a custom alertDismissed
 function showAlert(message, title, buttom) {
@@ -174,6 +207,6 @@ function getPhoto(source) {
 // Called if something bad happens.
 // 
 function onFail(message) {
-    mensaje = message == "no imagen selected" ? "no se seleccion&oacute; ninguna imagen" : message;
+    mensaje = message == "no image selected" ? "no se seleccion&oacute; ninguna imagen" : message;
     showAlert(mensaje, 'Aviso', 'Aceptar');
 }
