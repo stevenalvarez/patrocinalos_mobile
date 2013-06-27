@@ -79,8 +79,11 @@ function form_registro(){
         //Si todo el form es valido mandamos a registrar los datos
         if (jQuery(this).valid()) {
             //Mandamos a validar el mail
-            validar_email($.trim(document.getElementById("usuario_email_register").value));
-            saveData();
+            var success = validar_email($.trim(document.getElementById("usuario_email_register").value));
+            //Unicamente si el email no esta registrado mandamos a guardar
+            if(success){
+                saveData();
+            }
         }
       return false;
     });
