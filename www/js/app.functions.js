@@ -183,6 +183,7 @@ function form_registro(){
                 showLoadingCustom('Guardando datos...');
                         
                 $.post(serviceURL + 'set_create_registro.php', $("#form_registro").serialize()).done(function(data) {
+                    alert(data);
                     data = $.parseJSON(data);
                     var id_usuario = parseInt(data.item);
                     if(id_usuario){
@@ -229,6 +230,7 @@ function validar_email(value){
         async : false,
         cache: false,
         success: function(msg){
+            alert(msg);
             $.mobile.loading( 'hide' );
             msg = $.parseJSON(msg);
             var result = msg.success;
