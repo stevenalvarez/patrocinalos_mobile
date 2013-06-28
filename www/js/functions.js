@@ -1,8 +1,4 @@
-/* GLOBAL VARIABLES */
-var IMAGEURI;
-
 /* FUNCTIONS */
-
 function getUrlVars() {
     var vars = [], hash;
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -89,6 +85,7 @@ function htmlspecialchars_decode (string, quote_style) {
 
   return string;
 }
+
 // Validate email
 function valEmail(valor){
     if(!/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$/.exec(valor)) {
@@ -98,43 +95,6 @@ function valEmail(valor){
     } 
 }
 
-// Validate email repetido
-function validar_email(value){
-    var response = false;
-    jQuery.ajax({
-        type: "POST",
-        url: serviceURL + "get_validar_email.php",
-        data: "email="+value,
-        dataType:"html",
-        async : false,
-        cache: false,
-        success: function(msg){
-            $.mobile.loading( 'hide' );
-            msg = $.parseJSON(msg);
-            var result = msg.success;
-            //response = ( result == true ) ? false : true;
-            if(result){
-                var input = jQuery("#usuario_email_register");
-                input.parent().find("span.error").remove();
-                input.after("<span class='error'>Este email ya est&aacute; registrado</span>");
-                input.parent().find("span.error").fadeOut(8000);
-                input.focus();
-                response = true;
-            }
-        },
-        beforeSend : function(){
-    	    //mostramos loading
-            $.mobile.loading( 'show', {
-            	text: 'Validando Email...',
-            	textVisible: true,
-            	theme: 'c',
-            	html: ""
-            });
-        }
-    });
-    
-    return response;
-}
 // Show a custom alertDismissed
 function showAlert(message, title, buttom) {
     navigator.notification.alert(
@@ -144,113 +104,17 @@ function showAlert(message, title, buttom) {
         buttom                  // buttonName
     );
 }
+
 // alert dialog dismissed
 function alertDismissed() {
     // do something
 }
 
-// Called when a photo is successfully retrieved
-//
-function onPhotoDataSuccess(imageData) {
-  // Uncomment to view the base64 encoded image data
-  // console.log(imageData);
-
-  // Get image handle
-  //
-  var smallImage = document.getElementById('smallImage');
-
-  // Unhide image elements
-  //
-  smallImage.style.display = 'inline-block';
-
-  // Show the captured photo
-  // The inline CSS rules are used to resize the image
-  //
-  smallImage.src = "data:image/jpeg;base64," + imageData;
-}
-
-// Called when a photo is successfully retrieved
-//
-function onPhotoURISuccess(imageURI) {
-  // Uncomment to view the image file URI 
-  // console.log(imageURI);
-  IMAGEURI = imageURI;
-
-  // Get image handle
-  //
-  var pictureImage = document.getElementById('pictureImage');
-
-  // Unhide image elements
-  //
-  pictureImage.style.display = 'inline-block';
-
-  // Show the captured photo
-  // The inline CSS rules are used to resize the image
-  //
-  pictureImage.src = imageURI;
-}
-
-// A button will call this function
-//
-function capturePhoto() {
-  // Take picture using device camera and retrieve image as base64-encoded string
-    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-    destinationType: destinationType.DATA_URL });
-}
-
-// A button will call this function
-//
-function capturePhotoEdit() {
-  // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
-    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-    destinationType: destinationType.DATA_URL });
-}
-
-// A button will call this function
-//
-function getPhoto(source) {
-  // Retrieve image file location from specified source
-    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
-    destinationType: destinationType.FILE_URI,
-    sourceType: source });
-}
-
-// UploadPhoto
-//
-function uploadPhoto() {
-    var options = new FileUploadOptions();
-    options.fileKey = "file";
-    options.fileName = IMAGEURI.substr(IMAGEURI.lastIndexOf('/')+1);
-    options.mimeType = "image/jpeg";
-    
-    var params = new Object();
-    params.value1 = "test";
-    params.value2 = "param";
-    
-    options.params = params;
-    options.chunkedMode = false;
-    
-    var ft = new FileTransfer();
-    ft.upload(IMAGEURI, serviceURL + "upload_photo.php", win, fail, options);
-}
-
-// Callback success upload photo
-//
-function win(r) {
-    console.log("Code = " + r.responseCode);
-    console.log("Response = " + r.response);
-    console.log("Sent = " + r.bytesSent);
-    alert(r.response);
-}
-
-//Callback error upload photo
-function fail(error) {
-    alert("An error has occurred: Code = " = error.code);
-}
-
-// Called if something bad happens.
-// 
-function onFail(message) {
-    mensaje = message == "no image selected" ? "no se seleccionó ninguna imagen" : message;
-    showAlert(mensaje, 'Aviso', 'Aceptar');
+function showLoadingCustom(msg){
+    $.mobile.loading( 'show', {
+    	text: msg,
+    	textVisible: true,
+    	theme: 'c',
+    	html: ""
+    });
 }
