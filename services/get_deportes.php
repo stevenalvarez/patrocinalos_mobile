@@ -4,13 +4,18 @@ include 'functions.php';
 
 header ('Content-type: text/html; charset=ISO-8859-1');
 
-$sql = "SELECT `Deporte`.`id`, `Deporte`.`deportecategoria_id`, `Deporte`.`nombre`, `Deporte`.`nombre_en`, `Deporte`.`nombre_it`, `Deporte`.`codigo`, `Deporte`.`fechahora`, `Deportecategoria`.`id`, `Deportecategoria`.`codigo`, `Deportecategoria`.`nombre`, `Deportecategoria`.`nombre_en`, `Deportecategoria`.`nombre_it` FROM `prod_patrocinalos`.`deportes` AS `Deporte` LEFT JOIN `prod_patrocinalos`.`deportecategorias` AS `Deportecategoria` ON (`Deporte`.`deportecategoria_id` = `Deportecategoria`.`id`) WHERE 1 = 1 ORDER BY `Deportecategoria`.`nombre` ASC, `Deporte`.`nombre` ASC";
+$sql = "SELECT Deporte.id, Deporte.nombre, Deportecategoria.id as id_categoria, Deportecategoria.nombre as nombre_categoria FROM deportes AS Deporte LEFT JOIN deportecategorias AS Deportecategoria ON (Deporte.deportecategoria_id = Deportecategoria.id) ORDER BY Deportecategoria.nombre ASC, Deporte.nombre ASC";
 
 try {
 	$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);	
 	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$stmt = $dbh->query($sql);
 	$deportes = $stmt->fetchAll(PDO::FETCH_OBJ);
+    
+    foreach($deportes as $key => $deporte){
+        $deportes[$key]->nombre = htmlentities($deporte->nombre);
+        $deportes[$key]->nombre_categoria = htmlentities($deporte->nombre_categoria);
+    }
     
 	$dbh = null;
 	echo '{"items":'. json_encode($deportes) .'}'; 

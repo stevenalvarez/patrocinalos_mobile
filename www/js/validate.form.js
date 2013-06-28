@@ -98,10 +98,10 @@ function saveData(){
     	html: ""
     });
             
-    /*$.post(serviceURL + 'set_datos_registro.php', $("#form_registro").serialize()).done(function(data) {
+    /*/$.post(serviceURL + 'set_datos_registro.php', $("#form_registro").serialize()).done(function(data) {
         $.mobile.loading( 'hide' );
         document.getElementById("form_registro").reset();
         $.mobile.changePage('#register_finalizado', {transition: "slide"});
     });*/
-    uploadPhoto();
+    //uploadPhoto();
 }

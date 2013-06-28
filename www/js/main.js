@@ -62,6 +62,22 @@ function saveRegister() {
 function listarDeportes(){
 	$.getJSON(serviceURL + 'get_deportes.php', function(data) {
 		var deportes = data.items;
-        console.log(deportes);
+        var categoria = "";
+        var html = "";
+        $.each(deportes, function(index, deporte) {
+            if(categoria != deporte.id_categoria){
+                if(categoria != ""){
+                    html+= "</optgroup>";
+                }
+                html+= "<optgroup label='"+htmlspecialchars_decode(deporte.nombre_categoria)+"'>";
+                categoria = deporte.id_categoria;
+            }
+            html+= "<option value="+deporte.id+">"+htmlspecialchars_decode(deporte.nombre)+"</option>";
+        });
+        html+= "</optgroup>";
+        
+        //empty selector
+        jQuery("#select_deporte").find("optgroup").remove();
+        jQuery("#select_deporte").find("option").after(html);
 	});
 }
