@@ -4,12 +4,15 @@ include 'functions.php';
 
 header ('Content-type: text/html; charset=ISO-8859-1');
 
-$nombre = mysql_real_escape_string(trim($_POST["usuario"]["nombre"]));
-$apellidos = mysql_real_escape_string(trim($_POST["usuario"]["apellido"]));
+//$nombre = mysql_real_escape_string(urldecode(trim($_POST["u_nombre"])));
+$nombre = urldecode(trim($_POST["u_nombre"]));
+//$apellidos = mysql_real_escape_string(urldecode(trim($_POST["u_apellido"])));
+$apellidos = urldecode(trim($_POST["u_apellido"]));
 $title = $nombre . " " . $apellidos;
-$email = mysql_real_escape_string(trim($_POST["usuario"]["email_register"]));
-$password = trim($_POST["usuario"]["password_register"]);
-$deporte_id = !empty($_POST["usuario"]["deporte"]) ? $_POST["usuario"]["deporte"] : NULL;
+//$email = mysql_real_escape_string(trim($_POST["u_email_register"]));
+$email = trim($_POST["u_email_register"]);
+$password = trim($_POST["u_password_register"]);
+$deporte_id = !empty($_POST["u_deporte"]) ? $_POST["u_deporte"] : NULL;
 
 //Addtion
 $code = preg_replace('/[^a-zA-Z0-9]/','',uniqid('app',true));

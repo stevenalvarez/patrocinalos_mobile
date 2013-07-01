@@ -109,55 +109,55 @@ function form_registro(){
     jQuery("#form_registro").validate({
         errorElement:'span',
     	rules: {
-    		"usuario[nombre]": {
+    		"u_nombre": {
     			required: true,
     			minlength: 2
     		},
-    		"usuario[apellido]": {
+    		"u_apellido": {
     			required: true,
     			minlength: 2
     		},
-    		"usuario[email_register]": {
+    		"u_email_register": {
     			required: true,
     			email: true
     		},
-    		"usuario[password_register]": {
+    		"u_password_register": {
     			required: true,
     			minlength: 5
     		},
-    		"usuario[repetir_password]": {
+    		"u_repetir_password": {
     			required: true,
     			minlength: 5,
-    			equalTo: "#usuario_email_password_register"
+    			equalTo: "#u_password_register"
     		},
-    		/*"usuario[deporte]": {
+    		/*"u_deporte": {
     			seleccionarDeporte: true
     		},*/
-    		"usuario[terminos]": "required"
+    		"u_terminos": "required"
     	},
     	messages: {
-    		"usuario[nombre]": {
+    		"u_nombre": {
     			required: "Por favor, introduzca su nombre",
     			minlength: "M&iacute;nimo de 2 caracteres"
     		},
-    		"usuario[apellido]": {
+    		"u_apellido": {
     			required: "Por favor, introduzca su Apellido",
     			minlength: "M&iacute;nimo de 2 caracteres"
     		},
-            "usuario[email_register]": {
+            "u_email_register": {
     			required: "Por favor, introduzca su email",
     			email: "Direcci&oacute;n de email no v&aacute;lida"
     		},
-    		"usuario[password_register]": {
+    		"u_password_register": {
     			required: "Por favor, ingrese su contrase&ntilde;a",
     			minlength: "M&iacute;nimo de 5 caracteres"
     		},
-    		"usuario[repetir_password]": {
+    		"u_repetir_password": {
     			required: "Por favor, ingrese su contrase&ntilde;a",
     			minlength: "M&iacute;nimo de 5 caracteres",
     			equalTo: "Repita contrase&ntilde;a"
     		},
-            "usuario[terminos]": "Por favor, acepte nuestros t&eacute;rminos"
+            "u_terminos": "Por favor, acepte nuestros t&eacute;rminos"
     	}
     });
     
@@ -176,26 +176,35 @@ function form_registro(){
         //Si todo el form es valido mandamos a registrar los datos
         if (jQuery(this).valid()) {
             //Mandamos a validar el mail
-            var success = validar_email($.trim(document.getElementById("usuario_email_register").value));
+            var email = $.trim(document.getElementById("u_email_register").value);
+            email = email + "\n\t";
+            var success = validar_email(email);
             //Unicamente si el email no esta registrado mandamos a guardar
             if(success == false){
                 //mostramos loading
                 showLoadingCustom('Guardando datos...');
-                        
-                $.post(serviceURL + 'set_create_registro.php', $("#form_registro").serialize()).done(function(data) {
-                    alert(data);
-                    data = $.parseJSON(data);
-                    var id_usuario = parseInt(data.item);
-                    if(id_usuario){
-                        //Si selecciono un imagen mandamos a guardar en la base de datos
-                        var pictureImage = document.getElementById("pictureImage");
-                        if($(pictureImage).attr("src") != ""){
-                            uploadPhoto(id_usuario);
+                                
+                $("#u_nombre").val($("#u_nombre").escape());
+                $("#u_apellido").val($("#u_apellido").escape());
+                $.ajax({
+                    data: $("#form_registro").serialize(),
+                    type: "POST",
+                    url: serviceURL + 'set_create_registro.php',
+                    dataType: "html",
+                    success: function(data){
+                        data = $.parseJSON(data);
+                        var id_usuario = parseInt(data.item);
+                        if(id_usuario){
+                            //Si selecciono un imagen mandamos a guardar en la base de datos
+                            var pictureImage = document.getElementById("pictureImage");
+                            if($(pictureImage).attr("src") != ""){
+                                uploadPhoto(id_usuario);
+                            }else{
+                                success_registro();
+                            }
                         }else{
-                            success_registro();
+                            error_registro('Ha ocurrido un error al momento de registrarse!, por favor intente de nuevo');
                         }
-                    }else{
-                        error_registro('Ha ocurrido un error al momento de registrarse!, por favor intente de nuevo');
                     }
                 });
             }
@@ -230,13 +239,12 @@ function validar_email(value){
         async : false,
         cache: false,
         success: function(msg){
-            alert(msg);
             $.mobile.loading( 'hide' );
             msg = $.parseJSON(msg);
             var result = msg.success;
             //response = ( result == true ) ? false : true;
             if(result){
-                var input = jQuery("#usuario_email_register");
+                var input = jQuery("#u_email_register");
                 input.parent().find("span.error").remove();
                 input.after("<span class='error'>Este email ya est&aacute; registrado</span>");
                 input.parent().find("span.error").fadeOut(8000);

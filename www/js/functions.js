@@ -1,4 +1,11 @@
 /* FUNCTIONS */
+
+(function($) {
+    $.fn.escape = function() {
+        return escape(this.val());};
+    }
+)(jQuery);
+
 function getUrlVars() {
     var vars = [], hash;
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');

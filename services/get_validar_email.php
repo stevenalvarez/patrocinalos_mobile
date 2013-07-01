@@ -6,6 +6,8 @@ header ('Content-type: text/html; charset=ISO-8859-1');
 
 $sql = "SELECT Usuario.id, Usuario.email FROM usuarios as Usuario WHERE Usuario.email =:email LIMIT 1";
 
+$_POST['email'] = str_replace("\n\t","",$_POST['email']);
+
 try {
 	$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
