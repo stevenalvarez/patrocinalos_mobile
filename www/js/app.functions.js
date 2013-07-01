@@ -43,7 +43,7 @@ function onFail(message) {
 
 // UploadPhoto
 //
-function uploadPhoto(id_usuario) {
+function uploadPhoto(id_usuario, folder) {
     //Asignamos el id del usuario para realizar otras operaciones
     ID_USUARIO = id_usuario;
     
@@ -53,29 +53,41 @@ function uploadPhoto(id_usuario) {
     options.mimeType = "image/jpeg";
     
     var params = new Object();
-    params.value1 = "test";
-    params.value2 = "param";
+    params.folder = folder;
     
     options.params = params;
     options.chunkedMode = false;
     
     var ft = new FileTransfer();
-    ft.upload(IMAGEURI, serviceURL + "upload_photo.php", win, fail, options);
-}
-
-// Callback success upload photo
-//
-function win(r) {
-    console.log("Code = " + r.responseCode);
-    console.log("Response = " + r.response);
-    console.log("Sent = " + r.bytesSent);
-    //alert(r.response);
-    update_row('usuarios', 'imagen', r.response, 'id', ID_USUARIO);
-}
-
-//Callback error upload photo
-function fail(error) {
-    alert("An error has occurred: Code = " + error.code);
+    ft.upload(IMAGEURI, serviceURL + "upload_photo.php", function(r){
+        // Callback success upload photo
+        //
+        //console.log("Code = " + r.responseCode);
+        //console.log("Response = " + r.response);
+        //console.log("Sent = " + r.bytesSent);
+        
+        //Mutiples opciones, la foto puede cargarse y despues realizar otras operaciones
+        switch (folder)
+        {
+        case 'perfil':
+          //Actuializamos su foto de perfil
+          update_row('usuarios', 'imagen', r.response, 'id', ID_USUARIO);
+          break;
+        
+        case 'galeria_foto':
+          break;
+        
+        case 'galeria_video':
+          break;
+        }
+        
+    }, function(error){
+        //Callback error upload photo
+        //
+        //console.log("An error has occurred: Code = " + error.code);
+        showAlert("Se ha producido un error", "Aviso", "Aceptar");
+        
+    }, options);
 }
 
 /************************************ FUNCTIONS APP *******************************************************/
@@ -198,7 +210,7 @@ function form_registro(){
                             //Si selecciono un imagen mandamos a guardar en la base de datos
                             var pictureImage = document.getElementById("pictureImage");
                             if($(pictureImage).attr("src") != ""){
-                                uploadPhoto(id_usuario);
+                                uploadPhoto(id_usuario, 'perfil');
                             }else{
                                 success_registro();
                             }
