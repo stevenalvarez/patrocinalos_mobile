@@ -16,7 +16,7 @@ if (!empty($_FILES)) {
         $tempFile = $_FILES["file"]["tmp_name"];
         $pathinfo = pathinfo($_FILES['file']['name']);
         $filename = $pathinfo['filename'];
-        $filename = preg_replace('/[^a-zA-Z0-9]/','',uniqid('m_img',true).$filename);
+        $filename = preg_replace('/[^a-zA-Z0-9]/','',uniqid('mob_img',true).$filename);
         $ext = $pathinfo['extension'];
         $targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
         $targetFile = rtrim($targetPath,'/') . '/' .$filename.'.'.$ext;
