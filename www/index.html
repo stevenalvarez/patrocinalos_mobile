@@ -108,8 +108,8 @@
             
                 <form>
                     <div class="access_login">
-                         <input data-theme="cu" name="usuario[email]" placeholder="Email..." autocomplete="off" type="text"/>
-                         <input data-theme="cu" name="usuario[password]" placeholder="Contrase&ntilde;a..." autocomplete="off" type="password"/>
+                         <input data-theme="cu" id="u_email" name="u_email" placeholder="Email..." autocomplete="off" type="text"/>
+                         <input data-theme="cu" id="u_password" name="u_password" placeholder="Contrase&ntilde;a..." autocomplete="off" type="password"/>
                      </div>
                     <fieldset data-role="controlgroup">
                         <input name="radio-choice-1" id="radio-choice-1" type="radio"/>
@@ -235,49 +235,59 @@
             
                 <form>
                     <div class="access_login content_formulario">
-                         <label class="lspacing save_data">Gracias por registrarte en patrocinalos.com, en breve recibiras un correo para confirmar tu registro.</label>
+                         <label class="save_data">Gracias por registrarte en patrocinalos.com</label>
+                         <br />
+                         <p>Te hemos enviado un email a tu cuenta, debes validar tu cuenta email para completar tu registro.</p>
+                         <br />
+                         <p class="warning">Precuaci&oacute;n, si no encuentras este mail en la bandeja de entrada, por favor b&uacute;scalo en la carpeta SPAM o correo no deseado, a veces este tipo de correos terminan en estas carpetas.</p>
+                         
+                         <!--
+                         
                          <label class="custom lspacing">Adicionalmente requerimos que nos proveas de la siguiente informacion:</label>
                          <div class="opciones">
                              <fieldset data-role="controlgroup" class="first">
-                                <input name="usuario[tipo_deportista]" id="radio-ameteur" type="radio"/>
-                                <label data-theme="c" for="radio-ameteur">Amateur</label>
-                                <input name="usuario[tipo_deportista]" id="radio-profesional" type="radio"/>
-                                <label data-theme="c" for="radio-profesional">Profesional</label>
+                                <input name="u_tipo_deportista" id="radio_ameteur" type="radio"/>
+                                <label data-theme="c" for="radio_ameteur">Amateur</label>
+                                <input name="u_tipo_deportista" id="radio_profesional" type="radio"/>
+                                <label data-theme="c" for="radio_profesional">Profesional</label>
                              </fieldset>
                              <fieldset data-role="controlgroup" class="second">
-                                <input name="usuario[genero]" id="radio-masculino" type="radio"/>
-                                <label data-theme="c" for="radio-masculino">Masculino</label>
-                                <input name="usuario[genero]" id="radio-femenino" type="radio"/>
-                                <label data-theme="c" for="radio-femenino">Femenino&nbsp;</label>
+                                <input name="u_genero" id="radio_masculino" type="radio"/>
+                                <label data-theme="c" for="radio_masculino">Masculino</label>
+                                <input name="u_genero" id="radio_femenino" type="radio"/>
+                                <label data-theme="c" for="radio_femenino">Femenino&nbsp;</label>
                              </fieldset>
                          </div>
                          <div class="fecha_nacimiento">
-                            <input name="usuario[fecha_nacimiento]" placeholder="Fecha Nacimiento..." autocomplete="off" type="text" readonly="readonly"/>
+                            <input id="u_fecha_nacimiento" name="u_fecha_nacimiento" placeholder="Fecha Nacimiento..." autocomplete="off" type="text" readonly="readonly"/>
                             <a class="calendario" href="#" data-role="button" data-theme="a" data-mini="true">&nbsp;</a>
                          </div>
-                         <select data-theme="c" name="usuario[pais]" id="select-pais">
+                         <select data-theme="c" name="u_pais" id="select_pais">
                             <option>Selecciona un pais...</option>
                             <option value="38">Espa&ntilde;a</option>
                             <option value="39">Bolivia</option>
                          </select>
-                         <select data-theme="c" name="usuario[ciudad]" id="select-ciudad">
+                         <select data-theme="c" name="u_ciudad" id="select_ciudad">
                             <option>Selecciona una ciudad...</option>
                             <option value="40">Madrid</option>
                             <option value="41">Sevilla</option>
                          </select>
-                         <select data-theme="c" name="usuario[provincia]" id="select-provincia">
+                         <select data-theme="c" name="u_provincia" id="select_provincia">
                             <option>Selecciona una provincia...</option>
                             <option value="42">Abarajas</option>
                             <option value="43">Albete</option>
                          </select>
-                         <input name="usuario[url_perfil]" placeholder="Url de perfil: (ej. www.patrocinalos.com/miurlpersonal)" autocomplete="off" type="text"/>
+                         <input id="u_url_perfil" name="u_url_perfil" placeholder="Url de perfil: (ej. www.patrocinalos.com/miurlpersonal)" autocomplete="off" type="text"/>
+                         
+                         -->
+                         
                      </div>
                 </form>
             </div>
     	</div><!-- /content -->
         
         <div class="guardar">
-            <a href="#home" data-role="button">GUARDAR DATOS</a>
+            <a href="#login_user" data-role="button">INICIAR SESSION</a>
         </div>
         
         <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="g" class="footer">

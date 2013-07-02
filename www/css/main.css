@@ -1137,6 +1137,10 @@ label.custom{
 }
 
 /* REGISTRO FINALIZADO */
+#register_finalizado .access_login{
+    margin-top: 9px;
+    margin-bottom: 15px;    
+}
 #register_finalizado .fecha_nacimiento{
     display: block;
     overflow: hidden;
@@ -1165,10 +1169,20 @@ label.custom{
 #register_finalizado .save_data{
     font-size: 12px;
     padding-left: 40px;
-    display: inline-block;
+    display: block;
     background: url("../img/succes.png") no-repeat scroll center left transparent;
     background-size: 30px;
-    padding-bottom: 5px;
+    line-height: 30px;
+    overflow: hidden;
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+#register_finalizado p{
+    letter-spacing: -1px;
+    font-size: 12px;
+}
+#register_finalizado p.warning{
+    color: #55938f;
 }
 
 /* CSS NAVIGATION HOME*/

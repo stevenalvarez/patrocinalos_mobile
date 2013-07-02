@@ -46,6 +46,9 @@ try {
         $stmt2->execute();
         $dbh->commit();
         
+        //Enviamos el codigo de confirmacion al email del usuario registrado.
+        $success = enviar_codigo_confirmacion($nombre, $code, $email);
+        
     } catch(PDOExecption $e) {
         $dbh->rollback();
         echo '{"error":{"text":'. $e->getMessage() .'}}';

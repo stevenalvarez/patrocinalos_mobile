@@ -114,4 +114,110 @@
         if($imagen[2]==3){imagepng($img_des,$destinationddir.$fileName); }
     }
     
+    function enviar_codigo_confirmacion($name, $codigo_confirmacion, $email){
+        // message
+        $mensaje = '
+        <style> b { color: #cc1414;} td { color: #040404; font-size: 18px; font-family: Arial; line-height: 24px; text-align: justify; } a { text-transform: none; color: #cc1414; } </style><br>
+        
+        <table style="border: solid 2px #cdcaca;" align="center" bgcolor="white" border="0" cellpadding="0" cellspacing="0" width="611">
+        <tbody>
+        	<tr>
+        		<td><a target="_blank" href="http://www.patrocinalos.com/" title="Mazzel"><img style="" src="http://www.patrocinalos.com/img/mailing/mail-header2.jpg" title="Mazzel" height="104" width="611"></a></td>
+        	</tr>
+        
+        	<tr>
+        		<td>
+        <table align="center" bgcolor="white" border="0" cellpadding="0" cellspacing="0" width="611">
+        <tbody>
+        	<tr>
+        		<td height="10"></td>
+        	</tr>
+        
+        	<tr>
+        		<td width="130"><img style="" src="http://www.patrocinalos.com/img/mailing/lapiz.jpg" height="132" width="130"></td>
+        
+        		<td style="font-size: 18px;">Hola <span style="color: #c30505; font-family: arial;"></span>'.$name.'<br>
+        <br>
+         Te has registrado en www.patrocinalos.com, para completar tu registro, introduce éste codigo de confirmación: <span style="font-weight: bold">'.$codigo_confirmacion.'</span> en la opcion LOGIN de la app de patrocinalos, de esa forma activarás tu cuenta email registrada durante el registro.</td>
+        
+        		<td width="20"></td>
+        
+        		<td></td>
+        	</tr>
+        
+        	<tr>
+        		<td colspan="3" style="text-align: center;" height="100"><a style="color: #c30505; font-family: arial;" href="http://www.patrocinalos.com/"><b><span style="color: #c30505; font-family: arial; font-size: 18px;">www.patrocinalos.com</span></b></a><a></a></td>
+        	</tr>
+        </tbody>
+        </table>
+        </td>
+        	</tr>
+        
+        	<tr>
+        		<td><img style="" src="http://www.patrocinalos.com/img/mailing/mail-footerxx.jpg" height="28" width="611"></td>
+        	</tr>
+        
+        	<tr>
+        		<td width="533">
+        <table align="center" bgcolor="white" border="0" cellpadding="0" cellspacing="0" width="533">
+        <tbody>
+        	<tr>
+        		<td height="43" width="188">&nbsp;</td>
+        
+        		<td width="52"><a target="_blank" href="https://twitter.com/patrocinalos" title="twitter"><img style="" src="http://www.patrocinalos.com/img/mailing/tw.jpg" height="43" width="42"></a></td>
+        
+        		<td width="52"><a target="_blank" href="http://www.tuenti.com/#m=Page&amp;func=index&amp;page_key=1_2292_74098278" title="tuenti"><img style="" src="http://www.patrocinalos.com/img/mailing/tu.jpg" height="43" width="42"></a></td>
+        
+        		<td width="52"><a target="_blank" href="https://www.facebook.com/patrocinalos" title="facebook"><img style="" src="http://www.patrocinalos.com/img/mailing/fa.jpg" height="43" width="42"></a></td>
+        
+        		<td width="188">&nbsp;</td>
+        	</tr>
+        
+        	<tr>
+        		<td height="8"></td>
+        	</tr>
+        </tbody>
+        </table>
+        </td>
+        	</tr>
+        </tbody>
+        </table>
+        <!-- 
+        <table align="center" cellpadding="0" cellspacing="0" width="611" bgcolor="white" border="0" >
+        	<tr>
+        		<td style="font-size: 14px;"> &nbsp; </td>
+        	</tr>
+        
+        	<tr>
+        		<td style="font-size: 12px; color: #5b5b5b;"> Recibes este comunicado en tanto que estes suscrito/a al servicio de información periódica de patrocinalos.com, Si quieres dejar de recibir estos emails, haz clic <a href="http://www.patrocinalos.com/baja-news.php?mail=">aquí</a></p>
+        </td>
+        	</tr>
+        </table>
+         -->
+        <table align="center" bgcolor="white" border="0" cellpadding="0" cellspacing="0" width="770">
+        <tbody>
+        	<tr>
+        		<td style="font-size: 14px;"> &nbsp; </td>
+        	</tr>
+        
+        	<tr>
+        		<td style="font-size: 12px; color: #5b5b5b;">
+        <p>Recibes estas alertas porque estás registrado como deportista en Patrocinalos by mazzel <a href="http://www.patrocinalos.com/" style="text-decoration: none;"><span style="color: #c30505!important;">www.patrocinalos.com</span></a> Es importante que tengas activadas las alertas para recibir las notificiaciones y novedades, sino quieres recibir estos emails de alertas, puedes darte de baja en tu panel de gestión, <a href="http://www.patrocinalos.com/gestion-perfil.php?section_open=Alertas" style="text-decoration: none;"><span style="color: #c30505!important;">sección alertas</span></a></p>
+        </td>
+        	</tr>
+        </tbody>
+        </table>
+        ';
+        
+        // Para enviar un correo HTML mail, la cabecera Content-type debe fijarse
+        $cabeceras = 'MIME-Version: 1.0' . "\r\n";
+        $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        
+        // Cabeceras adicionales
+        $cabeceras .= 'From: Patrocínalos by mazzel <noreply@patrocinalos.com>'. "\r\n";
+        $subject = 'Activa tu cuenta';
+        
+        return mail($email, $subject, $mensaje, $cabeceras);
+    }    
+    
 ?>
