@@ -10,6 +10,17 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'HelveticaCondensedBlack';
+    src: url('fonts/HelveticaCdBlk.eot');
+    src: url('fonts/HelveticaCdBlk.eot?#iefix') format('embedded-opentype'),
+         url('fonts/HelveticaCdBlk.woff') format('woff'),
+         url('fonts/HelveticaCdBlk.ttf') format('truetype'),
+         url('fonts/HelveticaCdBlk.svg#HelveticaCondensedBlack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* GENERAL */
 .bold{
     font-weight: bold;
@@ -508,6 +519,11 @@ form .ui-input-text span.error{
     font-size: 17px;
     letter-spacing: -1px;
 }
+.ui-btn-submit .ui-btn-text{
+    font-size: 18px;
+    font-family:'HelveticaCondensedBlack';
+    letter-spacing: 0px;
+}
 .ui-btn.ui-btn-up-r,
 .ui-btn.ui-btn-hover-r{
     margin-bottom: 20px;
@@ -954,7 +970,7 @@ label.custom{
     background-position: 50% 60%;
 }
 #view .usuarios-patrocinalos{
-    padding-top: 40%;
+    padding-top: 39%;
 }
 #view .content_usuarios{
     padding: 5px 10px 4px 10px;
@@ -2929,7 +2945,7 @@ and (-webkit-device-pixel-ratio: 2)
 and (orientation:portrait) 
 {
     #view .usuarios-patrocinalos{
-        padding-top: 70%;
+        padding-top: 68%;
     }
 }
 
