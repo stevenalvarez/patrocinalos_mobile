@@ -1,21 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
  /*FONTS*/
 @font-face {
     font-family: 'CaptureitRegular';
@@ -26,42 +8,6 @@
          url('fonts/capture_it-webfont.svg#CaptureitRegular') format('svg');
     font-weight: normal;
     font-style: normal;
-}
-
-.event {
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    color:#FFFFFF;
-    font-size:12px;
-    margin:0px 30px;
-    padding:2px 0px;
-}
-
-.event.listening {
-    background-color:#333333;
-    display:block;
-}
-
-.event.received {
-    background-color:#4B946A;
-    display:none;
-}
-
-@keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
-}
- 
-@-webkit-keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
-}
- 
-.blink {
-    animation:fade 3000ms infinite;
-    -webkit-animation:fade 3000ms infinite;
 }
 
 /* GENERAL */
@@ -77,11 +23,13 @@
 .content_list_first{
     padding: 5px;
 }
+h1, h2, h3, h4, h5, h6, span.error, span.text{
+    letter-spacing: -1px;
+}
 form span.error{
     position: absolute;
     font-size: 12px;
     color: #ca2c2c;
-    letter-spacing: -1px;
 }
 form .ui-input-text span.error{
     top: 2px;
@@ -208,7 +156,6 @@ form .ui-input-text span.error{
     margin-left: 5px;
 }
 .content_list_first .list_recompensa h4{
-    letter-spacing: -1px;
     margin-bottom: 2px;
     font-size: 14px;
 }
@@ -544,7 +491,6 @@ form .ui-input-text span.error{
 }
 .ui-loader-verbose h1{
     font-weight: bold;
-    letter-spacing: -1px;
 }
 .ui-icon-shadow {
     -webkit-box-shadow: 0px 0px 0 rgba(255,255,255,.4) /*{global-icon-shadow}*/;
@@ -625,7 +571,6 @@ form .ui-input-text span.error{
     font-size: 17px;
     font-weight: normal;
     left: inherit;
-    letter-spacing: -1px;
     margin-top: 0;
     position: inherit;
     text-align: left;       
@@ -786,7 +731,6 @@ label.custom{
 .resumen_data li span.text{
     color: #000;
     font-weight: normal;
-    letter-spacing: -1px;
     font-size: 13px;    
 }
 .resumen_data li b{
@@ -996,18 +940,10 @@ label.custom{
 }
 #view h1, 
 #login_user h1{
-    font-family:'CaptureitRegular';
-    font-size: 35px;
-    font-weight: bold;
-    text-align: center;
-    color: #a22626;
-    letter-spacing: -1.2px;
     margin: 0.2em 8% 0.2em;
     height: auto;
     overflow: hidden;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px 10px 0 10px;
 }
 #view h1 img,
 #login_user h1 img{
@@ -1239,7 +1175,6 @@ label.custom{
 #ultimas_entradas_usuario_x h2{
     font-size: 13px;
     font-weight: bold;
-    letter-spacing: -1px;
     color: #000;
     line-height: 22px;
     margin-bottom: 4px;
@@ -1583,7 +1518,6 @@ label.custom{
     display: block;
 }
 #edicion_datos_deportivos .info_deportista li.clasificacion span.text{
-    letter-spacing: -1px;
     margin-left: -3px;
 }
 
@@ -1632,7 +1566,6 @@ label.custom{
 #puntos_obtenidos_en_ronda .content_top li span.text{
     color: #B93838;
     font-weight: bold;
-    letter-spacing: -1px;
 }
 #puntos_obtenidos_en_ronda .content_list_first h2{
     font-size: 17px;
@@ -1666,7 +1599,6 @@ label.custom{
     font-weight: bold;
     margin-bottom: 10px;
     margin-top: 5px;
-    letter-spacing: -1px;
     text-shadow: 0 0 0;
 }
 #creacion_patrocinio_deportivo_paso1 textarea,
@@ -1786,7 +1718,6 @@ label.custom{
 #recaudacion_liquidacion .content_top li span.text{
     color: #000;
     font-weight: normal;
-    letter-spacing: -1px;
     font-size: 13px;
 }
 #recaudacion_liquidacion .content_list_first .options a{
@@ -1798,7 +1729,6 @@ label.custom{
 }
 #recaudacion_liquidacion .content_list_first h3{
     font-size: 15px;
-    letter-spacing: -1px;
     font-weight: bold;
     margin-bottom: 2px;    
 }
@@ -2232,7 +2162,6 @@ label.custom{
 #ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios h4{
     margin-bottom: 4px;
     font-size: 14px;
-    letter-spacing: -1px;
 }
 #ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios li{
     overflow: hidden;
@@ -2255,7 +2184,6 @@ label.custom{
 }
 #ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios h5{
     font-size: 13px;
-    letter-spacing: -1px;
     color: #2f4b54;
 }
 #ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios .comentario_hecho{
@@ -2292,7 +2220,6 @@ label.custom{
     color: white;
     font-size: 15px;
     font-weight: normal;
-    letter-spacing: -1px;
     padding: 7px 0;
     text-shadow: 0 0 0;
 }
@@ -2397,7 +2324,6 @@ label.custom{
     color: #fff;
     font-size: 16px;
     font-weight: bold;
-    letter-spacing: -1px;
     padding: 7px 5px;
     text-shadow: 0 0 0;
 }
@@ -2656,13 +2582,21 @@ and (orientation:landscape)
 {   
     /* GENERAL */
     .ui-radio-off .ui-btn-inner .ui-btn-text, 
-    .ui-radio-on .ui-btn-inner .ui-btn-text {
+    .ui-radio-on .ui-btn-inner .ui-btn-text,
+    .content_upload_foto label,
+    #register_user .texto_formulario span,
+    #register_user .register_option_fb label,
+    #register_finalizado .save_data,
+    #lista_posibles_ganadores .ui-listview li .content_descripcion label,
+    .list_comments li p.ui-li-desc,
+    #edicion_datos_deportivos .info_deportista li.clasificacion span.text,
+    #mis_albunes .content_list_first .content_album .total_fotos
+    {
         letter-spacing: 0px;
     }
     .content_upload_foto label{
         font-size: 16px;
         width: 40%;
-        letter-spacing: 0px;
     }
     .content_upload_foto .upload_foto {
         width: 52%;
@@ -2772,12 +2706,7 @@ and (orientation:landscape)
         display: block;
     }    
     #register_user .texto_formulario span {
-        letter-spacing: 0px;
         margin: 0 9em;
-    }    
-    #register_user .register_option_fb label,
-    #register_finalizado .save_data{
-        letter-spacing: 0px;
     }
     #register_finalizado .content_formulario .opciones{
         margin: 0 7em;
@@ -2811,10 +2740,6 @@ and (orientation:landscape)
         background-size: 30px auto;
         height: 29px;
         width: 32px;
-    }
-    #lista_posibles_ganadores .ui-listview li .content_descripcion label,
-    .list_comments li p.ui-li-desc{
-        letter-spacing: 0px;
     }
     #lista_posibles_ganadores .ui-listview li .action_votar label{
         padding-top: 6px;
@@ -2865,7 +2790,6 @@ and (orientation:landscape)
         width: 20%;
     }
     #edicion_datos_deportivos .info_deportista li.clasificacion span.text{
-        letter-spacing: 0;
         margin-left: 0;
     }
     
@@ -2918,7 +2842,6 @@ and (orientation:landscape)
     #mis_albunes .content_list_first .content_album .total_fotos{
         width: 55%;
         height: 45px;
-        letter-spacing: 0;
     }
     #mis_albunes .content_list_first .content_album .total_fotos b {
         font-size: 35px;
@@ -3020,6 +2943,8 @@ and (orientation:landscape)
 {
     #view .content_usuarios p{
         letter-spacing: 0px;
+    }
+    #view .content_usuarios p{
         font-size: 14px;
     }
     #view .background_view {
