@@ -21,6 +21,17 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'HelveticaCondensedMedium';
+    src: url('fonts/HelveticaCdMed.eot');
+    src: url('fonts/HelveticaCdMed.eot?#iefix') format('embedded-opentype'),
+         url('fonts/HelveticaCdMed.woff') format('woff'),
+         url('fonts/HelveticaCdMed.ttf') format('truetype'),
+         url('fonts/HelveticaCdMed.svg#HelveticaCondensedMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* GENERAL */
 .bold{
     font-weight: bold;
@@ -37,17 +48,51 @@
 h1, h2, h3, h4, h5, h6, span.error, span.text{
     letter-spacing: -1px;
 }
-form span.error{
+form span.error,
+form .valid_field span.success{
     position: absolute;
-    font-size: 12px;
-    color: #ca2c2c;
+    font-size: 11px;
+    color: #5e5d5d;
 }
 form .ui-input-text span.error{
-    top: 2px;
-    right: 5px;
-    width: 54px;
-    text-align: center;
-    line-height: 12px;    
+    top: 8px;
+    right: 22px;
+    width: auto;
+    text-align: right;
+    border: 1px solid #bcbcbe;
+    padding: 4px 0;
+    background-color: #f3f3f5;
+    height: 14px;
+    padding-right: 12px;
+    padding-left: 8px;
+}
+form .ui-input-text span.error i{
+    background: url("../img/bg_valid_arrow.jpg") no-repeat scroll top right transparent;
+    background-size: 18px 20px;
+    padding-right: 28px;
+    height: 21px;
+    display: inline-block;
+    position: absolute;
+    right: -17px;
+    top: 1px; 
+}
+form .error_field_email span.error{
+    display: none !important;
+}
+form .valid_field span.success{
+    top: 8px;
+    right: 22px;
+    width: auto;   
+}
+form .valid_field span.success i{
+    background: url("../img/succes.png") no-repeat scroll top right transparent;
+    background-size: 18px 20px;
+    padding-right: 28px;
+    height: 21px;
+    display: inline-block;
+    position: absolute;
+    right: -17px;
+    top: 1px;     
 }
 .content_list_first .ui-listview li.ui-li-static.ui-li{
     margin-bottom: 2px;
@@ -478,6 +523,30 @@ form .ui-input-text span.error{
 .nav-custom .ui-btn-hover-g {
     border-left: 0px;
 }
+.header_navigation{
+    overflow: hidden;
+}
+.header_navigation ul{
+    margin: 0 10px;
+}
+.header_navigation ul li{
+    float: left;
+}
+.header_navigation .back,
+.header_navigation .setting{
+    width: 10%;
+}
+.header_navigation .back a{
+    margin-bottom: 6px;
+    margin-top: 6px;    
+}
+.header_navigation .page{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    font-family: 'CaptureitRegular';
+    width: 80%;
+}
 .footer .nav-custom .ui-btn-inner .ui-btn-text{
     font-family:'CaptureitRegular';
     letter-spacing: 0px;
@@ -496,6 +565,36 @@ form .ui-input-text span.error{
 .footer .ui-btn-hover-g:hover,
 .footer .ui-btn-hover-g a.ui-link-inherit {
 	color: #585961;
+}
+.texto_formulario{
+    background: url("../img/bg_inline.png") repeat-x scroll center center transparent;
+}
+.texto_formulario span{
+    text-align: center;
+    display: block;
+    font-size: 12px;
+    background-color: #fff;
+    margin: 0 3.0em;
+    color: #55a0b5;    
+}
+.facebook_registro .ui-icon,
+.twitter_registro .ui-icon{
+    border-radius: 0px;
+    width: 30px;
+    height: 25px;
+    left: 5px;
+    border-bottom: 0;
+    display: block;
+}
+.facebook_registro .ui-icon{
+    background: url("../img/bg_facebook.png") no-repeat scroll center top transparent;
+    background-size: 15px;
+    top: 40% !important;
+}
+.twitter_registro .ui-icon{
+    background: url("../img/bg_twitter.png") no-repeat scroll center top transparent;
+    background-size: 25px;
+    top: 45% !important;
 }
 .lspacing{
     letter-spacing: -1.2px;
@@ -523,6 +622,32 @@ form .ui-input-text span.error{
     font-size: 18px;
     font-family:'HelveticaCondensedBlack';
     letter-spacing: 0px;
+}
+.ui-btn-submit.ui-shadow {
+    -moz-box-shadow: -1px 2px 4px /*{global-box-shadow-size}*/ rgba(0,0,0,.6) /*{global-box-shadow-color}*/;
+    -webkit-box-shadow: -1px 2px 4px /*{global-box-shadow-size}*/ rgba(0,0,0,0.6) /*{global-box-shadow-color}*/;
+}
+.ui-btn-submit.facebook_registro .ui-btn-inner,
+.ui-btn-submit.twitter_registro .ui-btn-inner{
+    padding: .0em 20px;
+    padding-left: 38px;
+}
+.ui-btn-submit.facebook_registro .ui-btn-text,
+.ui-btn-submit.twitter_registro .ui-btn-text{
+    display: inline-block;
+    text-align: left;
+    padding: 0.5em 0;
+    padding-left: 10px;
+}
+.ui-btn-submit.facebook_registro .ui-btn-text{
+    background: url("../img/bg_border_fabebook.png") no-repeat scroll left top transparent;
+    background-position: 0 0;
+    background-size: 2px;
+}
+.ui-btn-submit.twitter_registro .ui-btn-text{
+    background: url("../img/bg_border_twitter.png") no-repeat scroll left top transparent;
+    background-position: 0 0;
+    background-size: 2px;
 }
 .ui-btn.ui-btn-up-r,
 .ui-btn.ui-btn-hover-r{
@@ -594,7 +719,6 @@ form .ui-input-text span.error{
 .content_upload_foto{
     overflow: hidden;
     padding: 0;
-    padding-left: 8px;
     border-bottom: 0;
 }
 .content_upload_foto label{
@@ -603,8 +727,10 @@ form .ui-input-text span.error{
     width: 42%;
     padding-left: 27px;
     background: url("../img/subir_foto.png") no-repeat scroll left center transparent;
-    background-size:22px;
-    margin-top: 14px;
+    background-size: 22px;
+    margin-top: 10px;
+    height: 22px;
+    line-height: 24px;
 }
 .content_upload_foto .upload_foto{
     float: right;
@@ -939,6 +1065,7 @@ label.custom{
 /* INDEX/LOGIN*/
 #view .ui-content,
 #login_user .ui-content,
+#options_register .ui-content,
 #register_user .ui-content,
 #register_finalizado .ui-content{
     background: #FFFFFF;
@@ -949,20 +1076,27 @@ label.custom{
 }
 #register_user .ui-content,
 #register_finalizado .ui-content{
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    min-height: 360px;
 }
 #login_user .ui-content{
     margin-bottom: 14px;
 }
-#view h1, 
-#login_user h1{
+#view h1,
+#options_register h1, 
+#login_user h1,
+#register_user h1,
+#register_finalizado h1{
     margin: 0.2em 8% 0.2em;
     height: auto;
     overflow: hidden;
     padding: 10px 10px 0 10px;
 }
 #view h1 img,
-#login_user h1 img{
+#options_register h1 img,
+#login_user h1 img,
+#register_user h1 img,
+#register_finalizado h1 img{
     width: 100%;
 }
 #view .background_view{
@@ -1008,6 +1142,27 @@ label.custom{
     width: auto;
 }
 
+/* OPTIONES REGISTRO */
+#options_register .ui-content{
+    margin-top: 10px;
+}
+#options_register .content_options{
+    margin: 18px 13px;
+}
+#options_register p.text {
+    font-size: 12px;
+    font-family: 'HelveticaCondensedMedium';
+    letter-spacing: 0px;
+    margin: 4px 0px;
+}
+#options_register .form_registro .ui-btn-inner{
+    padding: .6em 6px;
+}
+#options_register .facebook_registro,
+#options_register .twitter_registro{
+    margin-bottom: 15px;
+}
+
 /*LOGIN */
 
 #login_user .recuperar_contrasena,
@@ -1018,11 +1173,6 @@ label.custom{
     margin: 0 32px;
     margin-bottom: 10px;
 }
-#register_user .guardar,
-#register_finalizado .guardar{
-    margin: 0 70px;
-}
-
 #login_user .access_login div.ui-body-cu.ui-input-text:first-child{
     background: url("../img/bg-login.png") no-repeat scroll left center transparent;
     background-size: 20px;
@@ -1052,36 +1202,40 @@ label.custom{
 }
 
 /* REGISTRO */
-
+#register_user .ui-content{
+    margin-top: 10px;
+}
+#register_user .btn-access{
+    padding-top: 0px;
+}
+#register_user .guardar,
+#register_finalizado .guardar{
+    margin: 0 50px;
+}
+#register_user .ui-select span.ui-btn-text{
+    font-size: 14px;
+    margin: 3px 0;
+}
+#register_user label.text_termino{
+    font-size: 12px;
+    letter-spacing: -1px;
+    display: inline-block;
+    margin-bottom: 6px;
+}
+#register_user label.text_termino a{
+    font-weight: bold;
+    color: #000;
+}
 #register_user .access_login .ui-input-text{
-    margin: 0.3em 0;
+    margin: 0.25em 0;
     position: relative;
 }
 #register_user .btn-access,
 #register_finalizado .btn-access{
     border-top: 0;
 }
-#register_user .texto_formulario{
-    background: url("../img/bg_inline.png") repeat-x scroll center center transparent;
-}
 #register_user .texto_formulario span{
-    text-align: center;
-    display: block;
-    font-size: 12px;
-    background-color: #fff;
-    margin: 0 3.5em;
-    color: #354f8e;    
-}
-#register_user .register_option_fb .facebook_registro .ui-icon{
-    background: url("../img/bg_facebook.png") no-repeat scroll center top transparent;
-    border-radius: 0px;
-    width: 34px;
-    height: 25px;
-    background-size: 15px;
-    top: 40%;
-    left: 10px;
-    border-bottom: 0;
-    display: block;
+    margin: 0 4.5em;
 }
 
 /* REGISTRO FINALIZADO */
@@ -1120,16 +1274,18 @@ label.custom{
     display: block;
     background: url("../img/succes.png") no-repeat scroll center left transparent;
     background-size: 30px;
-    line-height: 30px;
     overflow: hidden;
     letter-spacing: -1px;
-    font-weight: bold;
 }
 #register_finalizado p{
     font-size: 12px;
+    padding-left: 40px;
 }
 #register_finalizado p.warning{
-    color: #55938f;
+    color: #671717;
+}
+#register_finalizado .texto_formulario span{
+    margin: 0 7.0em;
 }
 
 /* CSS NAVIGATION HOME*/
@@ -2610,6 +2766,10 @@ and (orientation:landscape)
     {
         letter-spacing: 0px;
     }
+    .texto_formulario span{
+        margin: 0 7.5em;
+        letter-spacing: 0px;        
+    }
     .content_upload_foto label{
         font-size: 16px;
         width: 40%;
@@ -2732,6 +2892,10 @@ and (orientation:landscape)
     }
     #register_finalizado .fecha_nacimiento a.calendario{
         width: 9%;
+    }
+    
+    #register_finalizado .texto_formulario span{
+        margin: 0 12.5em;
     }
     
     /* HOME - LISTA ACTIVIDAD GENERAL */
@@ -2947,6 +3111,31 @@ and (orientation:portrait)
     #view .usuarios-patrocinalos{
         padding-top: 68%;
     }
+    #options_register .btn-access{
+        margin-bottom: 108px;
+    }
+    /* TODO */
+    #register_user input.ui-mini, 
+    #register_user .ui-mini input, 
+    #register_user textarea.ui-mini {
+        font-size: 16px;
+    }
+    #register_user .ui-select span.ui-btn-text {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+    #register_user .texto_formulario{
+        margin: 10px 0 20px 0;
+    }
+    #register_user label.text_termino{
+        margin-bottom: 25px;
+        margin-top: 10px;        
+    }    
+    /* TODO */
+    
+    #register_finalizado .ui-content{
+        min-height: 445px;
+    }
 }
 
 /* LANDSCAPE IPHONE 5 */
@@ -2957,6 +3146,10 @@ and (max-width: 767px)
 and (-webkit-device-pixel-ratio: 2) 
 and (orientation:landscape)
 {
+    .texto_formulario span{
+        margin: 0 11em !important;
+        letter-spacing: 0px;        
+    }
     #view .content_usuarios p{
         letter-spacing: 0px;
     }
@@ -2974,5 +3167,32 @@ and (orientation:landscape)
     }
     #view .content_usuarios .recuadro_img img{
         height: 85px;
-    }   
+    }
+    
+    #register_finalizado .texto_formulario span{
+        margin: 0 15.5em  !important;
+    }
+    
+    /* TODO */
+    #register_user input.ui-mini, 
+    #register_user .ui-mini input, 
+    #register_user textarea.ui-mini {
+        font-size: 16px;
+    }
+    #register_user .ui-select span.ui-btn-text {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+    /* TODO */
 }  
+
+/* LANDSCAPE IPHONE 4/4s y 5 */
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+    .ui-btn-submit.facebook_registro .ui-btn-text, 
+    .ui-btn-submit.twitter_registro .ui-btn-text{
+        text-align: center;
+    }
+    #register_user label.text_termino {
+        font-size: 13px;
+    }
+}

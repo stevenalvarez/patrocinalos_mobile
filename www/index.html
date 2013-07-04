@@ -1,22 +1,5 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
         <meta charset="utf-8" />
@@ -31,7 +14,7 @@
         <script src="js/jquery-1.8.2.js"></script>
         
         <script type="text/javascript">
-            jQuery(document).bind("mobileinit", function () {
+            $(document).bind("mobileinit", function () {
                 $.mobile.defaultPageTransition = 'slide';
             }
         </script>
@@ -73,8 +56,8 @@
                 </h1>
                 <div class="background_view">
                     <div class="btn-access">
-                        <a class="ui-btn-submit blogin" href="#login_user" data-role="button" data-theme="r">INICIAR SES&Iacute;ON</a>
-                        <a class="ui-btn-submit" href="#register_user" data-role="button">&Uacute;NETE A PATROCINALOS</a>
+                        <a class="ui-btn-submit blogin" href="#login_user" data-role="button" data-theme="r" data-transition="slide">INICIAR SESI&Oacute;N</a>
+                        <a class="ui-btn-submit" href="#options_register" data-role="button" data-transition="slide">&Uacute;NETE A PATROCINALOS</a>
                     </div>
                     <div class="usuarios-patrocinalos">
                         <div class="content_usuarios">
@@ -88,6 +71,59 @@
                     
         </div><!-- /page -->
         
+    <!-- OPCIONES DE REGISTRO -->
+    
+    <div data-role="page" id="options_register" data-theme="p">
+    
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        <a data-theme="r" href="#" data-role="button" data-icon="back" data-rel="back" data-iconpos="notext">Volver</a>
+                    </div>
+                </li>
+                <li class="page">
+                    <span>REGISTRO</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+    
+    	<div data-role="content">
+            
+            <h1>
+                <img src="img/logo.png"/>
+            </h1>
+            
+            <div class="btn-access">
+            
+                <div class="content_options">
+                    <p class="text">
+                        <span class="bold">Puedes usar tu cuenta de Facebook o Twitter para registrarte?</span>
+                    </p>
+                                    
+                    <p class="text" style="margin-bottom: 15px;">
+                        Patrocinalos nunca publicitar&aacute; en tu cuenta sin tu autorizaci&oacute;n?
+                    </p>
+                    
+                    <a class="ui-btn-submit facebook_registro" href="#" data-role="button" data-theme="b" data-icon="none" data-iconpos="left">REGISTRO CON FACEBOOK</a>
+                    <a class="ui-btn-submit twitter_registro" href="#" data-role="button" data-theme="tw" data-icon="none" data-iconpos="left">REGISTRO CON TWITTER</a>
+                    
+                    <div class="texto_formulario" style="margin: 33px 0;">
+                        <span class="lspacing">O puedes usar tu direcci&oacute;n de correo</span>
+                    </div>
+                    
+                    <a class="ui-btn-submit form_registro" href="#register_user" data-role="button" data-theme="r">USAR MI DIRECCI&Oacute;N DE CORREO</a>
+                </div>
+                
+            </div>
+            
+    	</div><!-- /content -->
+    
+    </div><!-- /page -->
+
     <!-- LOGIN -->
     
     <div data-role="page" id="login_user" data-theme="p">
@@ -155,32 +191,46 @@
         </div>
     
     </div><!-- /page -->
-
-    <!-- REGISTRO -->
+    
+    <!-- REGISTRO POR EMAIL -->
     
     <div data-role="page" id="register_user" data-theme="p">
     
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        <a data-theme="r" href="#" data-role="button" data-icon="back" data-rel="back" data-iconpos="notext">Volver</a>
+                    </div>
+                </li>
+                <li class="page">
+                    <span>REGISTRO POR EMAIL</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+        
     	<div data-role="content">
+        
+            <h1 style="margin-bottom: 0;">
+                <img src="img/logo.png"/>
+            </h1>
             
             <div class="btn-access">
                 <form id="form_registro">
                     <div class="access_login">
-                         <div class="register_option_fb">
-                            <label class="lspacing">Tienes una cuenta en facebook?</label>
-                            <a class="facebook_registro" href="#" data-role="button" data-theme="b" data-icon="none" data-iconpos="left">REGISTRO CON FACEBOOK</a>
-                            <label class="lspacing" style="font-size: 12px;">Patrocinalos nunca publicitaria en tu cuenta sin tu autorizaci&oacute;n?</label>
-                         </div>
                          <div class="texto_formulario">
-                            <span class="lspacing">O puedes llenar el siguiente formulario</span>
+                            <span class="lspacing">Completa el siguiente formulario</span>
                          </div>
-                         <label class="custom">Introduce la siguiente infomaci&oacute;n personal:</label>
-                         <input id="u_nombre" name="u_nombre" placeholder="Nombre..." autocomplete="off" type="text"/>
-                         <input id="u_apellido" name="u_apellido" placeholder="Apellidos..." autocomplete="off" type="text"/>
-                         <input id="u_email_register" name="u_email_register" placeholder="Email..." autocomplete="off" type="text"/>
-                         <input id="u_password_register" name="u_password_register" placeholder="Contrase&ntilde;a..." autocomplete="off" type="password"/>
-                         <input id="u_repetir_password" name="u_repetir_password" placeholder="Repetir contrase&ntilde;a..." autocomplete="off" type="password"/>
-                         <select id="select_deporte" data-theme="c" name="u_deporte">
-                            <option value="">Seleccione deporte...</option>
+                         <input id="u_nombre" name="u_nombre" placeholder="Nombre..." autocomplete="off" type="text" data-mini="true"/>
+                         <input id="u_apellido" name="u_apellido" placeholder="Apellidos..." autocomplete="off" type="text" data-mini="true">
+                         <input id="u_email_register" name="u_email_register" placeholder="Email..." autocomplete="off" type="text" data-mini="true"/>
+                         <input id="u_password_register" name="u_password_register" placeholder="Contrase&ntilde;a..." autocomplete="off" type="password" data-mini="true"/>
+                         <!--<input id="u_repetir_password" name="u_repetir_password" placeholder="Repetir contrase&ntilde;a..." autocomplete="off" type="password"/>-->
+                         <select id="select_deporte" data-theme="c" name="u_deporte" data-mini="true">
+                            <option value="">Deporte que practicas</option>
                             <optgroup label="Atletismo y gimnasia">
                                 <option value="aerobic">Aerobic</option>
                                 <option value="atletismo">Atletismo</option>
@@ -190,31 +240,21 @@
                             <label class="lspacing">Subir una foto de perfil</label>
                             <a class="upload_foto" href="javascript:void(0)" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" data-role="button" data-theme="a" data-mini="true">Buscar</a>
                          </div>
-                         <img style="margin-left: 10px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-bottom: 5px; display: none;" id="pictureImage" src="" />
+                         <img style="margin-left: 2px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-bottom: 5px; display: none;" id="pictureImage" src="" />
                      </div>
+                    <!--
                     <fieldset data-role="controlgroup">
                         <input id="u_terminos" name="u_terminos" type="radio"/>
                         <label data-theme="c" for="u_terminos">Acepto los t&eacute;rminos y condiciones.</label>
                     </fieldset>
+                    -->
+                    <label class="text_termino">Al crear una cuenta, acepto los <a href="http://www.google.com.bo/" title="" onclick="window.open(this.href,'_blank'); return false;">T&eacute;rminos de servicio y pol&iacute;ticas de privacidad</a> de patrocinalos.com.</label>
                 </form>
             </div>
     	</div><!-- /content -->
         
         <div class="guardar">
-            <a class="registrarme" href="javascript:void(0)" data-role="button">REGISTRARME</a>
-        </div>
-        
-        <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="g" class="footer">
-            
-            <div data-role="navbar">
-                <ul class="nav-custom">
-                    <li><a href="#view" class="nav_home" data-icon="none" data-iconpos="top">HOME</a></li>
-                    <li><a href="#login_user" class="nav_login ui-btn-active-g" data-icon="none" data-iconpos="top">LOGIN</a></li>
-                    <li><a href="#ranking" class="nav_ranking" data-icon="none" data-iconpos="top">RANKING</a></li>
-                    <li><a href="#deportistas" class="nav_deportistas" data-icon="none" data-iconpos="top">DEPORTISTAS</a></li>
-                </ul>
-            </div>
-            
+            <a class="registrarme" href="javascript:void(0)" data-role="button">TERMINAR REGISTRO</a>
         </div>
     
     </div><!-- /page -->
@@ -223,78 +263,47 @@
     
     <div data-role="page" id="register_finalizado" data-theme="p">
     
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        &nbsp;
+                    </div>
+                </li>
+                <li class="page">
+                    <span>REGISTRO FINALIZADO</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+    
     	<div data-role="content">
+        
+            <h1 style="margin-bottom: 0;">
+                <img src="img/logo.png"/>
+            </h1>        
             
             <div class="btn-access">
             
-                <form>
-                    <div class="access_login content_formulario">
-                         <label class="save_data">Gracias por registrarte en patrocinalos.com</label>
-                         <br />
-                         <p>Te hemos enviado un email a tu cuenta, debes validar tu cuenta email para completar tu registro.</p>
-                         <br />
-                         <p class="warning">Precuaci&oacute;n, si no encuentras este mail en la bandeja de entrada, por favor b&uacute;scalo en la carpeta SPAM o correo no deseado, a veces este tipo de correos terminan en estas carpetas.</p>
-                         
-                         <!--
-                         
-                         <label class="custom lspacing">Adicionalmente requerimos que nos proveas de la siguiente informacion:</label>
-                         <div class="opciones">
-                             <fieldset data-role="controlgroup" class="first">
-                                <input name="u_tipo_deportista" id="radio_ameteur" type="radio"/>
-                                <label data-theme="c" for="radio_ameteur">Amateur</label>
-                                <input name="u_tipo_deportista" id="radio_profesional" type="radio"/>
-                                <label data-theme="c" for="radio_profesional">Profesional</label>
-                             </fieldset>
-                             <fieldset data-role="controlgroup" class="second">
-                                <input name="u_genero" id="radio_masculino" type="radio"/>
-                                <label data-theme="c" for="radio_masculino">Masculino</label>
-                                <input name="u_genero" id="radio_femenino" type="radio"/>
-                                <label data-theme="c" for="radio_femenino">Femenino&nbsp;</label>
-                             </fieldset>
-                         </div>
-                         <div class="fecha_nacimiento">
-                            <input id="u_fecha_nacimiento" name="u_fecha_nacimiento" placeholder="Fecha Nacimiento..." autocomplete="off" type="text" readonly="readonly"/>
-                            <a class="calendario" href="#" data-role="button" data-theme="a" data-mini="true">&nbsp;</a>
-                         </div>
-                         <select data-theme="c" name="u_pais" id="select_pais">
-                            <option>Selecciona un pais...</option>
-                            <option value="38">Espa&ntilde;a</option>
-                            <option value="39">Bolivia</option>
-                         </select>
-                         <select data-theme="c" name="u_ciudad" id="select_ciudad">
-                            <option>Selecciona una ciudad...</option>
-                            <option value="40">Madrid</option>
-                            <option value="41">Sevilla</option>
-                         </select>
-                         <select data-theme="c" name="u_provincia" id="select_provincia">
-                            <option>Selecciona una provincia...</option>
-                            <option value="42">Abarajas</option>
-                            <option value="43">Albete</option>
-                         </select>
-                         <input id="u_url_perfil" name="u_url_perfil" placeholder="Url de perfil: (ej. www.patrocinalos.com/miurlpersonal)" autocomplete="off" type="text"/>
-                         
-                         -->
-                         
-                     </div>
-                </form>
+                <div class="texto_formulario">
+                    <span class="lspacing">Registro finalizado</span>
+                </div>
+                
+                <div class="access_login content_formulario">
+                     <label class="save_data">Gracias por registrarte en patrocinalos.com, en breve recibir&aacute;s un correo para confirmar tu registro, debes confirmarlo durante los siguiente 7 d&iacute;as, o tu registro ser&aacute; eliminado.</label>
+                     <br />
+                     <p class="warning">Si no encuentras el mail de confirmaci&oacute;n en tu bandeja de entrada, b&uacute;scalo en el correo no desado.</p>
+                     <br />
+                     <p>Muchos deportistas como t&uacute; ya participan de la comunidad mas grandre de patrocinio deportivo, no esperes mas y accede para dar tus primeros pasos y buscar tu patrocinio.</p>
+                     
+                 </div>
             </div>
     	</div><!-- /content -->
         
         <div class="guardar">
-            <a href="#login_user" data-role="button">INICIAR SESSION</a>
-        </div>
-        
-        <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="g" class="footer">
-            
-            <div data-role="navbar">
-                <ul class="nav-custom">
-                    <li><a href="#view" class="nav_home" data-icon="none" data-iconpos="top">HOME</a></li>
-                    <li><a href="#login_user" class="nav_login ui-btn-active-g" data-icon="none" data-iconpos="top">LOGIN</a></li>
-                    <li><a href="#ranking" class="nav_ranking" data-icon="none" data-iconpos="top">RANKING</a></li>
-                    <li><a href="#deportistas" class="nav_deportistas" data-icon="none" data-iconpos="top">DEPORTISTAS</a></li>
-                </ul>
-            </div>
-            
+            <a href="#login_user" data-role="button">INICIAR SESSI&Oacute;N</a>
         </div>
     
     </div><!-- /page -->

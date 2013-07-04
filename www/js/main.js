@@ -24,6 +24,7 @@ $('#view').live('pagebeforeshow', function(event, ui) {
 $(document).on('pageinit', "#register_user", function(){
     llenarDeportes();
     form_registro();
+    key_press();
     $(this).find('a.registrarme').on("click", function(){
         saveRegister();
     });

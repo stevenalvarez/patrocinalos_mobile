@@ -137,39 +137,43 @@ function form_registro(){
     			required: true,
     			minlength: 5
     		},
-    		"u_repetir_password": {
-    			required: true,
-    			minlength: 5,
-    			equalTo: "#u_password_register"
-    		},
-    		/*"u_deporte": {
-    			seleccionarDeporte: true
-    		},*/
-    		"u_terminos": "required"
+    		/*
+                "u_repetir_password": {
+        			required: true,
+        			minlength: 5,
+        			equalTo: "#u_password_register"
+        		},
+        		"u_deporte": {
+        			seleccionarDeporte: true
+        		},
+        		"u_terminos": "required"
+            */
     	},
     	messages: {
     		"u_nombre": {
-    			required: "Por favor, introduzca su nombre",
-    			minlength: "M&iacute;nimo de 2 caracteres"
+    			required: "Por favor, introduzca su nombre <i></i>",
+    			minlength: "M&iacute;nimo de 2 caracteres <i></i>"
     		},
     		"u_apellido": {
-    			required: "Por favor, introduzca su Apellido",
-    			minlength: "M&iacute;nimo de 2 caracteres"
+    			required: "Por favor, introduzca su apellido <i></i>",
+    			minlength: "M&iacute;nimo de 2 caracteres <i></i>"
     		},
             "u_email_register": {
-    			required: "Por favor, introduzca su email",
-    			email: "Direcci&oacute;n de email no v&aacute;lida"
+    			required: "Por favor, introduzca su email <i></i>",
+    			email: "Direcci&oacute;n de email no v&aacute;lida <i></i>"
     		},
     		"u_password_register": {
-    			required: "Por favor, ingrese su contrase&ntilde;a",
-    			minlength: "M&iacute;nimo de 5 caracteres"
+    			required: "Por favor, ingrese su contrase&ntilde;a <i></i>",
+    			minlength: "M&iacute;nimo de 5 caracteres <i></i>"
     		},
-    		"u_repetir_password": {
-    			required: "Por favor, ingrese su contrase&ntilde;a",
-    			minlength: "M&iacute;nimo de 5 caracteres",
-    			equalTo: "Repita contrase&ntilde;a"
-    		},
-            "u_terminos": "Por favor, acepte nuestros t&eacute;rminos"
+    		/*
+                "u_repetir_password": {
+        			required: "Por favor, ingrese su contrase&ntilde;a",
+        			minlength: "M&iacute;nimo de 5 caracteres",
+        			equalTo: "Repita contrase&ntilde;a"
+        		},
+                "u_terminos": "Por favor, acepte nuestros t&eacute;rminos"
+            */
     	}
     });
     
@@ -184,6 +188,8 @@ function form_registro(){
         element.text(opcion_selected);
         element.show();
         /* end Fixed seleccionar deporte */
+        
+        $("#u_email_register").parent().removeClass("error_field_email");
         
         //Si todo el form es valido mandamos a registrar los datos
         if (jQuery(this).valid()) {
@@ -258,7 +264,10 @@ function validar_email(value){
             if(result){
                 var input = jQuery("#u_email_register");
                 input.parent().find("span.error").remove();
-                input.after("<span class='error'>Este email ya est&aacute; registrado</span>");
+                input.parent().find("span.success").remove();
+                input.after("<span class='error'>Este email ya est&aacute; registrado <i></i></span>");
+                input.parent().find("span.error").css("color", "#671717");
+                input.parent().find("span.error").css("font-weight", "bold");
                 input.parent().find("span.error").fadeOut(8000);
                 input.focus();
                 response = true;
@@ -293,5 +302,32 @@ function update_row(tabla, campo, valor, condicion_campo, condicion_valor){
                 error_registro('Ha ocurrido un error al momento de actualizar los datos del deportista!, por favor intente de nuevo');
             }
         }
+    });
+}
+
+function key_press(){
+    var element = $("#form_registro").find("input[type='text'], input[type='password']");
+    element.bind('keyup blur', function(){
+        if($(this).hasClass("valid")){
+            $(this).parent().find("span.success").remove();
+            if($(this).attr("id") == "u_email_register"){
+                $(this).parent().removeClass("error_field_email").addClass("valid_field");
+            }else{
+                $(this).parent().removeClass("error_field").addClass("valid_field");
+            }
+            $(this).after("<span class='success'><i></i></span>");
+        
+        }else if($(this).hasClass("error")){
+            $(this).parent().find("span.success").remove();
+            if($(this).attr("id") == "u_email_register"){
+                if(($(this).val()).length > 12){
+                    $(this).parent().removeClass("valid_field").addClass("error_field_email");
+                }else{
+                    $(this).parent().removeClass("error_field_email");
+                }
+            }else{
+                $(this).parent().removeClass("valid_field").addClass("error_field");
+            }
+        }        
     });
 }
