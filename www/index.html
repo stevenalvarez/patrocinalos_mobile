@@ -238,7 +238,7 @@
                             <label class="lspacing">Subir una foto de perfil</label>
                             <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" data-role="button" data-mini="true">Buscar</a>
                          </div>
-                         <img style="margin-left: 2px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-bottom: 5px; display: none;" id="pictureImage" src="" />
+                         <img style="margin-left: 1px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-bottom: -24px; display: none;" id="pictureImage" src="" />
                      </div>
                     <!--
                     <fieldset data-role="controlgroup">
@@ -264,7 +264,7 @@
     
     <!-- REGISTRO FINALIZADO -->
     
-    <div data-role="page" id="register_finalizado" data-theme="p">
+    <div data-role="page" id="register_finalizado" data-theme="c">
     
         <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
             <ul>
@@ -282,15 +282,11 @@
             </ul>
         </div><!-- /header -->
     
-    	<div data-role="content">
-        
-            <h1 style="margin-bottom: 0;">
-                <img src="img/logo.png"/>
-            </h1>        
+    	<div data-role="content">     
             
             <div class="btn-access">
             
-                <div class="texto_formulario">
+                <div class="texto_formulario" style="margin: 30px 0;">
                     <span class="lspacing">Registro finalizado</span>
                 </div>
                 
@@ -305,8 +301,13 @@
             </div>
     	</div><!-- /content -->
         
-        <div class="guardar">
-            <a href="#login_user" data-role="button">INICIAR SESSI&Oacute;N</a>
+        <div class="btn-options">
+            <div class="btn-first">
+                <a class="ui-btn-submit orange borrar_form" href="javascript:void(0)" data-role="button">INICIAR SESI&Oacute;N</a>
+            </div>
+            <div class="btn-second">
+                <a class="ui-btn-submit green registrarme" href="javascript:void(0)" data-role="button">COMPLETAR PERFIL</a>
+            </div>
         </div>
     
     </div><!-- /page -->

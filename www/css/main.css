@@ -51,20 +51,22 @@ h1, h2, h3, h4, h5, h6, span.error, span.text{
 form span.error,
 form .valid_field span.success{
     position: absolute;
-    font-size: 11px;
+    font-size: 0.7em;
     color: #5e5d5d;
 }
 form .ui-input-text span.error{
-    top: 8px;
+    top: 7px;
     right: 22px;
     width: auto;
     text-align: right;
-    border: 1px solid #bcbcbe;
+    border: 1px solid #d2d2d4;
     padding: 4px 0;
-    background-color: #f3f3f5;
-    height: 14px;
-    padding-right: 12px;
+    background-color: #f5f5f7;
+    height: 12px;
+    padding-right: 10px;
     padding-left: 8px;
+    border-radius: 2px;
+    font-family: Myriad Pro;
 }
 form .ui-input-text span.error i{
     background: url("../img/bg_valid_arrow.jpg") no-repeat scroll top right transparent;
@@ -74,7 +76,7 @@ form .ui-input-text span.error i{
     display: inline-block;
     position: absolute;
     right: -17px;
-    top: 1px; 
+    top: 0px; 
 }
 form .error_field_email span.error{
     display: none !important;
@@ -593,7 +595,9 @@ form .valid_field span.success i{
     font-size: 12px;
     background-color: #eeeeee;
     margin: 0 3.0em;
-    color: #55a0b5;    
+    color: #55a0b5;
+    font-family: 'HelveticaCondensedMedium';
+    letter-spacing: 0px;
 }
 .facebook_registro .ui-icon,
 .twitter_registro .ui-icon{
@@ -677,7 +681,7 @@ form .valid_field span.success i{
 .ui-btn-submit.twitter_registro .ui-btn-text{
     display: inline-block;
     text-align: left;
-    padding: 0.5em 0;
+    padding: 0.6em 0;
     padding-left: 10px;
 }
 .ui-btn-submit.facebook_registro .ui-btn-text{
@@ -777,10 +781,6 @@ form .valid_field span.success i{
 .content_upload_foto .upload_foto{
     float: right;
     width: 46%;    
-}
-.content_upload_foto span.ui-btn-inner{
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;    
 }
 .btn-options{
     overflow: hidden;
@@ -1102,20 +1102,21 @@ label.custom{
     margin-bottom: 10px;
     min-height: 360px;
 }
+#register_finalizado .ui-content{
+    min-height: 320px;
+}
 #login_user .ui-content{
     margin-bottom: 14px;
 }
 #view h1, 
-#login_user h1,
-#register_finalizado h1{
+#login_user h1{
     margin: 0.2em 8% 0.2em;
     height: auto;
     overflow: hidden;
     padding: 10px 10px 0 10px;
 }
 #view h1 img,
-#login_user h1 img,
-#register_finalizado h1 img{
+#login_user h1 img{
     width: 100%;
 }
 #view .background_view{
@@ -1167,7 +1168,7 @@ label.custom{
     margin-bottom: 25px;
 }
 #options_register .content_options{
-    margin: 32px 13px
+    margin: 32px 8px
 }
 #options_register p.text {
     font-size: 12px;
@@ -1222,7 +1223,8 @@ label.custom{
 
 /* REGISTRO */
 #register_user .ui-content{
-    margin-top: 10px;
+    margin-top: 14px;
+    margin-bottom: 8px;
 }
 #register_user .btn-access{
     padding-top: 0px;
@@ -1238,8 +1240,10 @@ label.custom{
     font-size: 12px;
     letter-spacing: -1px;
     display: inline-block;
-    margin-bottom: 6px;
     color: #949e9f;
+    line-height: 12px;
+    margin-bottom: 5px;
+    margin-top: 30px;
 }
 #register_user label.text_termino a{
     color: #57a8df;
@@ -1252,6 +1256,9 @@ label.custom{
 #register_finalizado .btn-access,
 #options_register .btn-access{
     border-top: 0;
+}
+#register_user .texto_formulario{
+    margin: 10px 0;
 }
 #register_user .texto_formulario span{
     margin: 0 4.5em;
@@ -1295,13 +1302,15 @@ label.custom{
     background-size: 30px;
     overflow: hidden;
     letter-spacing: -1px;
+    color: #949e9f
 }
 #register_finalizado p{
     font-size: 12px;
     padding-left: 40px;
+    color: #949e9f
 }
 #register_finalizado p.warning{
-    color: #671717;
+    color: #1a8aaa;
 }
 #register_finalizado .texto_formulario span{
     margin: 0 7.0em;
@@ -2775,7 +2784,6 @@ and (orientation:landscape)
     .ui-radio-off .ui-btn-inner .ui-btn-text, 
     .ui-radio-on .ui-btn-inner .ui-btn-text,
     .content_upload_foto label,
-    #register_user .texto_formulario span,
     #register_user .register_option_fb label,
     #register_finalizado .save_data,
     #lista_posibles_ganadores .ui-listview li .content_descripcion label,
@@ -2786,8 +2794,7 @@ and (orientation:landscape)
         letter-spacing: 0px;
     }
     .texto_formulario span{
-        margin: 0 7.5em;
-        letter-spacing: 0px;        
+        margin: 0 7.5em;        
     }
     .content_upload_foto label{
         font-size: 16px;
@@ -3133,6 +3140,16 @@ and (orientation:portrait)
     #options_register .btn-access{
         margin-bottom: 120px;
     }
+    #register_user .ui-content{
+        margin-top: 20px;
+        margin-bottom: 10px;        
+    }
+    #register_user .access_login .ui-input-text{
+        margin: 0.35em 0;
+    }
+    #register_user .ui-select{
+        margin: 8px 0;
+    }
     /* TODO */
     #register_user input.ui-mini, 
     #register_user .ui-mini input, 
@@ -3144,16 +3161,22 @@ and (orientation:portrait)
         margin: 5px 0;
     }
     #register_user .texto_formulario{
-        margin: 10px 0 20px 0;
+        margin: 20px 0 20px 0;
     }
     #register_user label.text_termino{
-        margin-bottom: 25px;
-        margin-top: 10px;        
-    }    
+        margin-bottom: 10px;
+        margin-top: 30px;        
+    }
+    form .ui-input-text span.error {
+        top: 10px;
+    }
+    form .valid_field span.success i{
+        top: 4px;
+    }
     /* TODO */
     
     #register_finalizado .ui-content{
-        min-height: 445px;
+        min-height: 410px;
     }
 }
 
@@ -3201,6 +3224,12 @@ and (orientation:landscape)
     #register_user .ui-select span.ui-btn-text {
         font-size: 16px;
         margin: 5px 0;
+    }
+    form .ui-input-text span.error {
+        top: 10px;
+    }
+    form .valid_field span.success i{
+        top: 4px;
     }
     /* TODO */
 }  
