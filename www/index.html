@@ -303,10 +303,172 @@
         
         <div class="btn-options">
             <div class="btn-first">
-                <a class="ui-btn-submit orange borrar_form" href="#login_user" data-role="button">INICIAR SESI&Oacute;N</a>
+                <a class="ui-btn-submit orange" href="#login_user" data-role="button" data-transition="slide">INICIAR SESI&Oacute;N</a>
             </div>
             <div class="btn-second">
-                <a class="ui-btn-submit green registrarme" href="#" data-role="button">COMPLETAR PERFIL</a>
+                <a class="ui-btn-submit green" href="#completar_perfil" data-role="button" data-transition="slide">COMPLETAR PERFIL</a>
+            </div>
+        </div>
+    
+    </div><!-- /page -->
+    
+    <!-- COMPLETAR PERFIL -->
+    
+    <div data-role="page" id="completar_perfil" data-theme="c">
+    
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
+                    </div>
+                </li>
+                <li class="page">
+                    <span>COMPLETAR PERFIL</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+    
+    	<div data-role="content">     
+            
+            <div class="btn-access">
+            
+                <div class="texto_formulario" style="margin: 20px 0;">
+                    <span class="lspacing">Completa tus datos de perfil</span>
+                </div>
+                
+                <form>
+                    <div class="content_formulario">
+
+                         <select data-theme="c" name="u_genero" id="select_genero" data-mini="true">
+                            <option value="">G&eacute;nero...</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                         </select>
+                         <div class="fecha_nacimiento">
+                            <input id="u_fecha_nacimiento" name="u_fecha_nacimiento" placeholder="Fecha Nacimiento..." autocomplete="off" type="text" readonly="readonly" data-mini="true"/>
+                            <a class="calendario" href="#" data-role="button" data-theme="a" data-mini="true">&nbsp;</a>
+                         </div>
+                         <select data-theme="c" name="u_ciudad" id="select_ciudad" data-mini="true">
+                            <option value="">Ciudad de resiencia...</option>
+                            <option value="40">Madrid</option>
+                            <option value="41">Sevilla</option>
+                         </select>
+                         <select data-theme="c" name="u_tipo_deportista" id="select_tipo_deportista" data-mini="true">
+                            <option value="">Profesional o Amateur...</option>
+                            <option value="amateur">Amateur</option>
+                            <option value="destacado">Destacado</option>
+                            <option value="profesional">Profesional</option>
+                         </select>
+                         <input id="u_url_perfil" name="u_url_perfil" placeholder="Url de perfil: (ej. miurlpersonal)" autocomplete="off" type="text" data-mini="true"/>
+                         <select data-theme="c" name="u_otros_deportes" id="select_otros_deportes" data-mini="true">
+                            <option value="">Otros deportes que sigues...</option>
+                            <option value="2">F&uacute;tbol</option>
+                            <option value="3">Baloncesto</option>
+                         </select>
+                     </div>
+                </form>
+            </div>
+    	</div><!-- /content -->
+        
+        <div class="btn-options">
+            <div class="btn-first">
+                <a class="ui-btn-submit orange guardar_form" href="javascript:void(0)" data-role="button">GUARDAR</a>
+            </div>
+            <div class="btn-second">
+                <a class="ui-btn-submit green" href="#solicitar_patrocinio" data-role="button" data-transition="slide">SOLICITAR PATROCINIO</a>
+            </div>
+        </div>
+    
+    </div><!-- /page -->
+    
+    <!-- SOLICITAR PATROCINIO -->
+    
+    <div data-role="page" id="solicitar_patrocinio" data-theme="c">
+    
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
+                    </div>
+                </li>
+                <li class="page">
+                    <span>SOLICITAR PATROCINIO</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+    
+    	<div data-role="content">     
+            
+            <div class="btn-access">
+            
+                <div class="texto_formulario">
+                    <span class="lspacing">Completa el siguiente formulario</span>
+                </div>
+                
+                <form>
+                    <div class="content_formulario">
+                    
+                        <input id="patro_cantidad_solicitada" name="patro_cantidad_solicitada" placeholder="Cantidad que necesitas (&euro;)..." autocomplete="off" type="text" data-mini="true"/>
+                        <input id="patro_minimo_indispensable" name="patro_minimo_indispensable" placeholder="M&iacute;nimo indispensable (&euro;)..." autocomplete="off" type="text" data-mini="true"/>
+                        <textarea cols="40" rows="10" name="patro_quiero_para" placeholder="&iquest;Para que lo quieres?" data-mini="true"></textarea>
+                        <textarea cols="40" rows="10" name="patro_explicalo" placeholder="Expl&iacute;calo un poco m&aacute;s" data-mini="true"></textarea>
+                        <div class="fecha_nacimiento">
+                            <input id="patro_fecha_limite" name="patro_fecha_limite" placeholder="Fecha l&iacute;mite..." autocomplete="off" type="text" readonly="readonly" data-mini="true"/>
+                            <a class="calendario" href="#" data-role="button" data-theme="a" data-mini="true">&nbsp;</a>
+                        </div>
+                        
+                        <div class="seleccionar_recompensas">
+                            <h2>Elige t&uacute;s recompensas</h2>
+                            <span style="display: inline-block;">(patrocinalos pone a tu disposici&oacute;n recompensas para premiar a aquellos que te patrocinen)</span>
+                            <ul class="lista">
+                                <li>
+                                    <div class="item">
+                                        <div class="content_recompensa">
+                                            <img src="img/recompensas/recompensa0.png" />
+                                            <img class="success" src="img/succes.png"/>
+                                        </div>
+                                        <p>Reloj nike gps</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item selected">
+                                        <div class="content_recompensa">
+                                            <img src="img/recompensas/recompensa0.png" />
+                                            <img class="success" src="img/succes.png"/>
+                                        </div>
+                                        <p>Reloj nike gps</p>
+                                    </div>
+                                </li>
+                                <li class="last">
+                                    <div class="item">
+                                        <div class="content_recompensa">
+                                            <img src="img/recompensas/recompensa0.png" />
+                                            <img class="success" src="img/succes.png"/>
+                                        </div>
+                                        <p>Reloj nike gps</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    	</div><!-- /content -->
+        
+        <div class="btn-options">
+            <div class="btn-first">
+                <a class="ui-btn-submit orange borrar_form" href="javascript:void(0)" data-role="button">BORRAR</a>
+            </div>
+            <div class="btn-second">
+                <a class="ui-btn-submit green guardar_form" href="javascript:void(0)" data-role="button">GUARDAR</a>
             </div>
         </div>
     

@@ -1090,12 +1090,15 @@ label.custom{
 #login_user .ui-content,
 #options_register .ui-content,
 #register_user .ui-content,
-#register_finalizado .ui-content{
+#register_finalizado .ui-content,
+#completar_perfil .ui-content,
+#solicitar_patrocinio .ui-content{
     background: #eeeeee;
     margin: 18px 10px;
     border-radius: 5px;
     border: 1px solid #d1d1d1;
     padding: 0;
+    min-height: 350px;
 }
 #register_user .ui-content,
 #register_finalizado .ui-content{
@@ -1222,17 +1225,20 @@ label.custom{
 }
 
 /* REGISTRO */
-#register_user .ui-content{
+#register_user .ui-content,
+#completar_perfil .ui-content{
     margin-top: 14px;
     margin-bottom: 8px;
 }
-#register_user .btn-access{
+#register_user .btn-access,{
     padding-top: 0px;
 }
 #register_finalizado .guardar{
     margin: 0 50px;
 }
-#register_user .ui-select span.ui-btn-text{
+#register_user .ui-select span.ui-btn-text,
+#completar_perfil .ui-select span.ui-btn-text,
+#solicitar_patrocinio .ui-select span.ui-btn-text{
     font-size: 14px;
     margin: 3px 0;
 }
@@ -1248,51 +1254,35 @@ label.custom{
 #register_user label.text_termino a{
     color: #57a8df;
 }
-#register_user .access_login .ui-input-text{
+#register_user .access_login .ui-input-text,
+#completar_perfil .ui-input-text,
+#solicitar_patrocinio .ui-input-text{
     margin: 0.25em 0;
     position: relative;
 }
 #register_user .btn-access,
 #register_finalizado .btn-access,
-#options_register .btn-access{
+#options_register .btn-access,
+#completar_perfil .btn-access,
+#solicitar_patrocinio .btn-access{
     border-top: 0;
 }
 #register_user .texto_formulario{
     margin: 10px 0;
 }
-#register_user .texto_formulario span{
+#register_user .texto_formulario span,
+#completar_perfil .texto_formulario span,
+#solicitar_patrocinio .texto_formulario span{
     margin: 0 4.5em;
 }
 
 /* REGISTRO FINALIZADO */
+#register_finalizado .texto_formulario span{
+    margin: 0 7.0em;
+}
 #register_finalizado .access_login{
     margin-top: 9px;
     margin-bottom: 15px;    
-}
-#register_finalizado .fecha_nacimiento{
-    display: block;
-    overflow: hidden;
-}
-#register_finalizado .fecha_nacimiento div.ui-input-text{
-    width: 77%;
-    display: inline-block;
-    float: left;
-    margin-bottom: 0px;
-}
-#register_finalizado .fecha_nacimiento a.calendario{
-    width: 15%;
-    display: inline-block;
-    float: right;
-    margin-top: 8px;
-    background: none;
-    border: none;
-    border-radius: 0;
-    -webkit-box-shadow: 0px 0px 0px /*{global-box-shadow-size}*/ rgba(0,0,0,.2) /*{global-box-shadow-color}*/;
-    background: url("../img/bg_calendario.png") no-repeat scroll center center transparent;
-    background-size: 35px;
-}
-#register_finalizado .content_formulario .opciones{
-    margin: 0 2em;
 }
 #register_finalizado .save_data{
     font-size: 12px;
@@ -1312,8 +1302,124 @@ label.custom{
 #register_finalizado p.warning{
     color: #1a8aaa;
 }
-#register_finalizado .texto_formulario span{
-    margin: 0 7.0em;
+
+/* COMPLETAR PERFIL */
+
+#completar_perfil .btn-access,
+#solicitar_patrocinio .btn-access{
+    margin-left: 8px;
+    min-height: 345px;
+}
+#completar_perfil .content_formulario > div,
+#solicitar_patrocinio .content_formulario > div{
+    padding-left: 2px;
+}
+#completar_perfil .content_formulario > div.ui-input-text,
+#solicitar_patrocinio .content_formulario > div.ui-input-text,
+#completar_perfil .content_formulario > textarea,
+#solicitar_patrocinio .content_formulario > textarea{
+    margin-left: 2px;
+    padding-left: 0.4em;
+}
+#completar_perfil .fecha_nacimiento,
+#solicitar_patrocinio .fecha_nacimiento{
+    display: block;
+    overflow: hidden;
+}
+#completar_perfil .fecha_nacimiento div.ui-input-text,
+#solicitar_patrocinio .fecha_nacimiento div.ui-input-text{
+    width: 77%;
+    display: inline-block;
+    float: left;
+    margin-bottom: 2px;
+    margin-top: 0.2em;
+}
+#completar_perfil .fecha_nacimiento a.calendario,
+#solicitar_patrocinio .fecha_nacimiento a.calendario{
+    width: 15%;
+    display: inline-block;
+    float: right;
+    margin-top: 0.4em;
+    margin-bottom: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    -webkit-box-shadow: 0px 0px 0px /*{global-box-shadow-size}*/ rgba(0,0,0,.2) /*{global-box-shadow-color}*/;
+    background: url("../img/bg_calendario.png") no-repeat scroll center center transparent;
+    background-size: 35px;
+}
+
+/* SOLICITAR PATROCINIO */
+#solicitar_patrocinio .texto_formulario{
+    margin: 5px 0;
+}
+#solicitar_patrocinio .ui-content{
+    margin-top: 8px;
+    margin-bottom: 0px;
+}
+#solicitar_patrocinio textarea{
+    height: 55px;
+}
+#solicitar_patrocinio .seleccionar_recompensas{
+    margin-top: 5px;
+    color: #909b9c;
+    font-size: 11px;
+    line-height: 12px;
+    letter-spacing: -1px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+#solicitar_patrocinio .seleccionar_recompensas h2{
+    font-size: 15px;
+    font-weight: bold;
+    margin: 4px 0;
+}
+#solicitar_patrocinio .seleccionar_recompensas ul{
+    overflow: hidden;
+    margin: 5px 0;    
+}
+#solicitar_patrocinio .seleccionar_recompensas li{
+    float: left;
+    margin-right: 4px;
+    margin-left: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 75px;
+}
+#solicitar_patrocinio .seleccionar_recompensas li.last{
+    margin-right: 0;
+}
+#solicitar_patrocinio .seleccionar_recompensas .item{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#solicitar_patrocinio .seleccionar_recompensas .item.selected{
+    background-color: #adddda;
+    border-radius: 5px;
+    color: #fff;
+}
+#solicitar_patrocinio .seleccionar_recompensas .content_recompensa{
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+}
+#solicitar_patrocinio .seleccionar_recompensas .content_recompensa img.success{
+    display: none;
+}
+#solicitar_patrocinio .seleccionar_recompensas .selected .content_recompensa img.success{
+    display: block;
+    height: 18px;
+    width: 20px;
+    position: absolute;
+    top: -2px;
+    left: -5px;
+}
+#solicitar_patrocinio .seleccionar_recompensas .content_recompensa img{
+    width: 100%;
+    height: 100%;
 }
 
 /* CSS NAVIGATION HOME*/
@@ -2907,7 +3013,9 @@ and (orientation:landscape)
         border-bottom: 0;
         display: block;
     }    
-    #register_user .texto_formulario span {
+    #register_user .texto_formulario span,
+    #completar_perfil .texto_formulario span,
+    #solicitar_patrocinio .texto_formulario span{
         margin: 0 9em;
     }
     #register_finalizado .content_formulario .opciones{
@@ -3144,23 +3252,36 @@ and (orientation:portrait)
         margin-top: 20px;
         margin-bottom: 10px;        
     }
-    #register_user .access_login .ui-input-text{
+    #register_user .access_login .ui-input-text,
+    #completar_perfil .ui-input-text,
+    #solicitar_patrocinio .ui-input-text{
         margin: 0.35em 0;
     }
-    #register_user .ui-select{
+    #register_user .ui-select,
+    #completar_perfil .ui-select,
+    #solicitar_patrocinio .ui-select{
         margin: 8px 0;
     }
     /* TODO */
     #register_user input.ui-mini, 
     #register_user .ui-mini input, 
-    #register_user textarea.ui-mini {
+    #register_user textarea.ui-mini,
+    #completar_perfil input.ui-mini, 
+    #completar_perfil .ui-mini input, 
+    #completar_perfil textarea.ui-mini,
+    #solicitar_patrocinio input.ui-mini, 
+    #solicitar_patrocinio .ui-mini input, 
+    #solicitar_patrocinio textarea.ui-mini{
         font-size: 16px;
     }
-    #register_user .ui-select span.ui-btn-text {
+    #register_user .ui-select span.ui-btn-text,
+    #completar_perfil .ui-select span.ui-btn-text,
+    #solicitar_patrocinio .ui-select span.ui-btn-text{
         font-size: 16px;
         margin: 5px 0;
     }
-    #register_user .texto_formulario{
+    #register_user .texto_formulario,
+    #completar_perfil .texto_formulario{
         margin: 20px 0 20px 0;
     }
     #register_user label.text_termino{
@@ -3173,10 +3294,18 @@ and (orientation:portrait)
     form .valid_field span.success i{
         top: 4px;
     }
+    #completar_perfil .fecha_nacimiento a.calendario,
+    #solicitar_patrocinio .fecha_nacimiento a.calendario{
+        background-size: 40px;
+        height: 42px;
+    }
     /* TODO */
     
     #register_finalizado .ui-content{
         min-height: 410px;
+    }
+    #completar_perfil .btn-access{
+        min-height: 420px;
     }
 }
 
@@ -3218,10 +3347,18 @@ and (orientation:landscape)
     /* TODO */
     #register_user input.ui-mini, 
     #register_user .ui-mini input, 
-    #register_user textarea.ui-mini {
+    #register_user textarea.ui-mini,
+    #completar_perfil input.ui-mini, 
+    #completar_perfil .ui-mini input, 
+    #completar_perfil textarea.ui-mini,
+    #solicitar_patrocinio input.ui-mini, 
+    #solicitar_patrocinio .ui-mini input, 
+    #solicitar_patrocinio textarea.ui-mini {
         font-size: 16px;
     }
-    #register_user .ui-select span.ui-btn-text {
+    #register_user .ui-select span.ui-btn-text,
+    #completar_perfil .ui-select span.ui-btn-text,
+    #solicitar_patrocinio .ui-select span.ui-btn-text{
         font-size: 16px;
         margin: 5px 0;
     }
@@ -3231,6 +3368,15 @@ and (orientation:landscape)
     form .valid_field span.success i{
         top: 4px;
     }
+    #completar_perfil .fecha_nacimiento a.calendario,
+    #solicitar_patrocinio .fecha_nacimiento a.calendario{
+        background-size: 40px;
+        height: 42px;
+    }
+    #solicitar_patrocinio .seleccionar_recompensas ul{
+        width: 83%;
+        margin: 5px auto;        
+    }    
     /* TODO */
 }  
 
@@ -3242,5 +3388,28 @@ and (orientation:landscape)
     }
     #register_user label.text_termino {
         font-size: 13px;
+    }
+    #completar_perfil .fecha_nacimiento a.calendario,
+    #solicitar_patrocinio .fecha_nacimiento a.calendario{
+        width: 8%;
+    }
+    #completar_perfil .fecha_nacimiento div.ui-input-text,
+    #solicitar_patrocinio .fecha_nacimiento div.ui-input-text{
+        width: 84% ;
+    }
+    #solicitar_patrocinio span,
+    #solicitar_patrocinio p{
+        letter-spacing: 0px;
+    }    
+    #solicitar_patrocinio .seleccionar_recompensas li{
+        width: 126px;
+    }    
+    #solicitar_patrocinio .seleccionar_recompensas .content_recompensa{
+        width: 100px;
+        height: 100px;        
+    }
+    #solicitar_patrocinio .seleccionar_recompensas .selected .content_recompensa img.success {
+        height: 25px;
+        width: 28px;
     }
 }
