@@ -200,15 +200,15 @@ function form_registro(){
         element.show();
         /* end Fixed seleccionar deporte */
         
-        /* start Fixed seleccionar tipo deportista */
-        var selector_tipo_deportista = jQuery('#form_registro').find("#select_tipo_deportista");
-        var opcion_selected = selector_tipo_deportista.find("option:selected").html();
-        var element = selector_tipo_deportista.prev(".ui-btn-inner").find(".ui-btn-text").find("span");
+        /* start Fixed seleccionar tipo usuario (individual, seguidor, empresa)*/
+        var selector_tipo_u = jQuery('#form_registro').find("#select_tipo_u");
+        var opcion_selected = selector_tipo_u.find("option:selected").html();
+        var element = selector_tipo_u.prev(".ui-btn-inner").find(".ui-btn-text").find("span");
         element.removeClass()
         element.addClass("valid")
         element.text(opcion_selected);
         element.show();
-        /* end Fixed seleccionar tipo deportista */
+        /* end Fixed seleccionar tipo usuario */
         
         $("#u_email_register").parent().removeClass("error_field_email");
         

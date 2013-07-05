@@ -13,6 +13,7 @@ $title = isset($_POST["u_title"]) && !empty($_POST["u_title"]) ? urldecode(trim(
 $email = isset($_POST["u_email_register"]) && !empty($_POST["u_email_register"]) ? trim($_POST["u_email_register"]) : NULL;
 $password = isset($_POST["u_password_register"]) && !empty($_POST["u_password_register"]) ? trim($_POST["u_password_register"]) : NULL;
 $deporte_id = isset($_POST["u_deporte"]) && !empty($_POST["u_deporte"]) ? $_POST["u_deporte"] : NULL;
+$tipo = isset($_POST["u_tipo"]) && !empty($_POST["u_tipo"]) ? $_POST["u_tipo"] : NULL;
 
 //Addtion
 $code = preg_replace('/[^a-zA-Z0-9]/','',uniqid('app',true));
@@ -29,11 +30,11 @@ try {
     $lastId = -1;
     $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 
-    $stmt = $dbh->prepare("INSERT INTO usuarios (deporte_id, title, nombre, apellidos, email, password, codigovalidacion, diaregistro) VALUES(?,?,?,?,?,?,?,?)");
+    $stmt = $dbh->prepare("INSERT INTO usuarios (deporte_id, title, nombre, apellidos, email, password, codigovalidacion, diaregistro, tipo) VALUES(?,?,?,?,?,?,?,?,?)");
 
     try {
         $dbh->beginTransaction();
-        $stmt->execute( array($deporte_id, "$title", "$nombre", "$apellidos", "$email", "$password_salt", "$code", "$now"));
+        $stmt->execute( array($deporte_id, "$title", "$nombre", "$apellidos", "$email", "$password_salt", "$code", "$now", "$tipo"));
         $lastId =  $dbh->lastInsertId();
         $dbh->commit();
         
