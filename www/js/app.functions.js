@@ -223,8 +223,9 @@ function form_registro(){
                 //mostramos loading
                 showLoadingCustom('Guardando datos...');
                                 
-                $("#u_nombre").val($("#u_nombre").escape());
-                $("#u_apellido").val($("#u_apellido").escape());
+                //$("#u_nombre").val($("#u_nombre").escape());
+                //$("#u_apellido").val($("#u_apellido").escape());
+                $("#u_title").val($("#u_title").escape());
                 $.ajax({
                     data: $("#form_registro").serialize(),
                     type: "POST",
@@ -351,4 +352,9 @@ function key_press(){
             }
         }        
     });
+}
+
+function clear_form(form){
+    $("#"+form).find("span.success").remove();
+    document.getElementById(form).reset();
 }

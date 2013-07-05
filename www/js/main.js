@@ -28,6 +28,9 @@ $(document).on('pageinit', "#register_user", function(){
     $(this).find('a.registrarme').on("click", function(){
         saveRegister();
     });
+    $(this).find('a.borrar_form').on("click", function(){
+        clear_form("form_registro");
+    });
 });
 
 /************************************ FUNCTIONS *******************************************************/
