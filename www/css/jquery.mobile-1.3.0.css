@@ -642,11 +642,11 @@
     padding-left: 33px;
 }
 div.ui-input-text input.ui-input-text.ui-body-cu{
-    border-left: 1px solid #aaa;
+    border-left: 1px solid #dcdce5;
     padding-left: 10px;
     width: 95%;
-    background: url("images/arrow-login.png") no-repeat scroll left center transparent;
-    background-size: 4px;
+    /*background: url("images/arrow-login.png") no-repeat scroll left center transparent;
+    background-size: 4px;*/
     border-radius: 0px;
     -webkit-border-radius: 0px;
 }

@@ -700,12 +700,8 @@ form .valid_field span.success i{
 }
 .btn-access{
     padding-top: 6px;
-    border-top: 1px solid #aaaaaa;
     margin-left: 10px;
     margin-right: 10px;
-}
-.btn-access .blogin{
-    margin-bottom: 14px;
 }
 .ui-radio label{
     background: none;
@@ -793,9 +789,25 @@ form .valid_field span.success i{
     width: 42%;
     float: left;
 }
+.btn-options .btn-first.long{
+    width: 55%;
+}
+.btn-options .btn-first.long.bouble_row .ui-btn-inner{
+    padding: 0.2em 10px;
+    padding-bottom: 2px;
+}
+.btn-options .btn-first.long.bouble_row .ui-btn-text{
+    line-height: 16px;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 2px;
+}
 .btn-options .btn-second {
     width: 55%;
     float: right;
+}
+.btn-options .btn-second.long{
+    width: 42%;
 }
 label.custom{
     font-size: 12px;
@@ -1109,7 +1121,8 @@ label.custom{
     min-height: 320px;
 }
 #login_user .ui-content{
-    margin-bottom: 14px;
+    margin-bottom: 25px;
+    min-height: 235px;
 }
 #view h1, 
 #login_user h1{
@@ -1197,13 +1210,13 @@ label.custom{
     margin-bottom: 10px;
 }
 #login_user .access_login div.ui-body-cu.ui-input-text:first-child{
-    background: url("../img/bg-login.png") no-repeat scroll left center transparent;
+    background: url("../img/bg-login.png") no-repeat scroll left center #fff;
     background-size: 20px;
     background-position: 6px;
     margin-bottom: 12px;
 }
 #login_user .access_login div.ui-body-cu.ui-input-text:last-child{
-    background: url("../img/bg-password.png") no-repeat scroll left center transparent;
+    background: url("../img/bg-password.png") no-repeat scroll left center #fff;
     background-size: 20px;
     background-position: 6px;
 }
@@ -1213,7 +1226,7 @@ label.custom{
 #login_user p.text{
     font-size: 12px;
     margin-bottom: 18px;
-    margin-top: 5px;    
+    margin-left: 10px;    
 }
 #login_user p.text span{
     font-weight: bold;
@@ -1228,10 +1241,7 @@ label.custom{
 #register_user .ui-content,
 #completar_perfil .ui-content{
     margin-top: 14px;
-    margin-bottom: 8px;
-}
-#register_user .btn-access,{
-    padding-top: 0px;
+    margin-bottom: 5px;
 }
 #register_finalizado .guardar{
     margin: 0 50px;
@@ -1259,13 +1269,6 @@ label.custom{
 #solicitar_patrocinio .ui-input-text{
     margin: 0.25em 0;
     position: relative;
-}
-#register_user .btn-access,
-#register_finalizado .btn-access,
-#options_register .btn-access,
-#completar_perfil .btn-access,
-#solicitar_patrocinio .btn-access{
-    border-top: 0;
 }
 #register_user .texto_formulario{
     margin: 10px 0;
@@ -2860,7 +2863,7 @@ and (orientation:portrait)
     #view h1,
     #login_user h1{
         font-size: 26px;
-        margin: 0.2em 4% 0.2em;
+        margin: 0.5em 4% 0.2em;
     }
     
     /* DEPORTISTAS - LISTA ELITES */
@@ -3249,8 +3252,8 @@ and (orientation:portrait)
         margin-bottom: 120px;
     }
     #register_user .ui-content{
-        margin-top: 20px;
-        margin-bottom: 10px;        
+        margin-top: 18px;
+        margin-bottom: 8px;        
     }
     #register_user .access_login .ui-input-text,
     #completar_perfil .ui-input-text,

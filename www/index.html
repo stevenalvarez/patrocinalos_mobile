@@ -56,7 +56,7 @@
                 </h1>
                 <div class="background_view">
                     <div class="btn-access">
-                        <a class="ui-btn-submit blogin" href="#login_user" data-role="button" data-theme="r" data-transition="slide">INICIAR SESI&Oacute;N</a>
+                        <a class="ui-btn-submit" href="#login_user" data-role="button" data-theme="r" data-transition="slide">INICIAR SESI&Oacute;N</a>
                         <a class="ui-btn-submit" href="#options_register" data-role="button" data-transition="slide">&Uacute;NETE A PATROCINALOS</a>
                     </div>
                     <div class="usuarios-patrocinalos">
@@ -122,16 +122,31 @@
 
     <!-- LOGIN -->
     
-    <div data-role="page" id="login_user" data-theme="p">
+    <div data-role="page" id="login_user" data-theme="c">
+    
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
+                    </div>
+                </li>
+                <li class="page">
+                    <span>LOGIN</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+        
+        <h1>
+            <img src="img/logo.png"/>
+        </h1>
     
     	<div data-role="content">
             
-            <h1>
-                <img src="img/logo.png"/>
-            </h1>
-            
             <div class="btn-access">
-            
                 <form>
                     <div class="access_login">
                          <input data-theme="cu" id="u_email" name="u_email" placeholder="Email..." autocomplete="off" type="text"/>
@@ -141,50 +156,41 @@
                         <input name="radio-choice-1" id="radio-choice-1" type="radio"/>
                         <label data-theme="c" for="radio-choice-1">Recordar mis datos de acceso.</label>
                     </fieldset>
-                </form>
-            
-                <a href="#home" data-role="button" data-theme="r">ENTRAR</a>
-                <a href="#register_user" data-role="button">&Uacute;NETE A PATROCINALOS</a>
-                
+                </form>                
                 <p class="text">
-                    a&uacute;n no estas registrado? <span>&Uacute;netenos!</span>
+                    a&uacute;n no estas registrado? <span>&Uacute;nete a la comunidad de patrocinalos</span>
                 </p>
-                
-            </div>
-            
-            <!-- recuperar contrasena -->
-            <div class="recuperar_contrasena">
-                <a style="width: 100%; padding: 0; margin: 0;" href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-theme="p" data-transition="pop" >RECUPERAR CONTRASE&Nacute;A</a>
-                <!-- popup - restablecer contrasena -->
-                <div data-role="popup" id="popupMenu" data-overlay-theme="a">
-                    <div data-role="popup" id="popupLogin" class="ui-corner-all" data-overlay-theme="a">
-                        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right close">Close</a>
-                        <form>
-                            <div style="padding:10px 20px; background-color: #fff;">
-                              <h3 style="font-weight: bold; letter-spacing: -2px; font-size: 17px;">RESTABLECER CONTRASE&Ntilde;A</h3>
-                              <label for="reset_pass" class="ui-hidden-accessible">Email:</label>
-                              <input name="user_email" id="reset_pass" value="" placeholder="Email" data-theme="a" type="text"/>
-                              <button type="submit" data-theme="r">Enviar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
             
     	</div><!-- /content -->
         
-        <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="g" class="footer">
-            
-            <div data-role="navbar">
-                <ul class="nav-custom">
-                    <li><a href="#view" class="nav_home" data-icon="none" data-iconpos="top">HOME</a></li>
-                    <li><a href="#login_user" class="nav_login ui-btn-active-g" data-icon="none" data-iconpos="top">LOGIN</a></li>
-                    <li><a href="#ranking" class="nav_ranking" data-icon="none" data-iconpos="top">RANKING</a></li>
-                    <li><a href="#deportistas" class="nav_deportistas" data-icon="none" data-iconpos="top">DEPORTISTAS</a></li>
-                </ul>
+        <div class="btn-options">
+            <div class="btn-first long bouble_row">
+                <a style="width: 100%; padding: 0; margin: 0;" class="ui-btn-submit orange" href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop" >RECUPERAR <br /> CONTRASE&Nacute;A</a>
             </div>
-            
+            <div class="btn-second long">
+                <a style="width: 100%; padding: 0; margin: 0;" class="ui-btn-submit green" href="javascript:void(0)" href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop">ENTRAR</a>
+            </div>
+        </div>                        
+        
+        <!-- recuperar contrasena -->
+        <div class="recuperar_contrasena">
+            <!-- popup - restablecer contrasena -->
+            <div data-role="popup" id="popupMenu" data-overlay-theme="a">
+                <div data-role="popup" id="popupLogin" class="ui-corner-all" data-overlay-theme="a">
+                    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right close">Close</a>
+                    <form>
+                        <div style="padding:10px 20px; background-color: #fff;">
+                          <h3 style="font-weight: bold; letter-spacing: -2px; font-size: 17px;">RESTABLECER CONTRASE&Ntilde;A</h3>
+                          <label for="reset_pass" class="ui-hidden-accessible">Email:</label>
+                          <input name="user_email" id="reset_pass" value="" placeholder="Email" data-theme="a" type="text"/>
+                          <button type="submit" data-theme="r">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
+        
     
     </div><!-- /page -->
     
