@@ -532,20 +532,38 @@ form .valid_field span.success i{
 .header_navigation ul li{
     float: left;
 }
-.header_navigation .back,
+.header_navigation a{
+    border-radius: 0 0 0 0 !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    -moz-box-shadow: 0px 0px 0px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0px 0px 0px rgba(0,0,0,.2)
+}
+.header_navigation .back{
+    width: 13%;
+}
 .header_navigation .setting{
     width: 10%;
 }
-.header_navigation .back a{
-    margin-bottom: 6px;
-    margin-top: 6px;    
-}
 .header_navigation .page{
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 6px;
+    margin-top: 12px;
+    margin-bottom: 7px;
     font-family: 'CaptureitRegular';
-    width: 80%;
+    width: 77%;
+    color: #cc5050;
+    font-size: 20px;
+}
+.header_navigation .volver{
+    background: url("../img/bg_back.png") no-repeat scroll left top transparent;
+    height: 25px;
+    width: 35px;
+    margin-left: 4px;
+    border: 0;
+    background-size: 35px;
+}
+.header_navigation .volver .ui-btn-inner{
+    border: 0;
 }
 .footer .nav-custom .ui-btn-inner .ui-btn-text{
     font-family:'CaptureitRegular';
@@ -573,7 +591,7 @@ form .valid_field span.success i{
     text-align: center;
     display: block;
     font-size: 12px;
-    background-color: #fff;
+    background-color: #eeeeee;
     margin: 0 3.0em;
     color: #55a0b5;    
 }
@@ -618,19 +636,42 @@ form .valid_field span.success i{
     font-size: 17px;
     letter-spacing: -1px;
 }
+.ui-btn-submit .ui-btn-inner {
+    border-top: 0;
+    border-color: inherit;
+}
 .ui-btn-submit .ui-btn-text{
-    font-size: 18px;
+    font-size: 17px;
     font-family:'HelveticaCondensedBlack';
     letter-spacing: 0px;
+    color: #fff;
+    text-shadow: 0px 1px 0px #000;
+}
+.ui-btn-submit.blue .ui-btn-inner{
+    background-color: #019add;
+}
+.ui-btn-submit.orange .ui-btn-inner{
+    background-color: #f15433;
+}
+.ui-btn-submit.green .ui-btn-inner{
+    background-color: #00aa63;
 }
 .ui-btn-submit.ui-shadow {
-    -moz-box-shadow: -1px 2px 4px /*{global-box-shadow-size}*/ rgba(0,0,0,.6) /*{global-box-shadow-color}*/;
-    -webkit-box-shadow: -1px 2px 4px /*{global-box-shadow-size}*/ rgba(0,0,0,0.6) /*{global-box-shadow-color}*/;
+    -moz-box-shadow: 0px 0px 0px /*{global-box-shadow-size}*/ rgba(0,0,0,.6) /*{global-box-shadow-color}*/;
+    -webkit-box-shadow: 0px 0px 0px /*{global-box-shadow-size}*/ rgba(0,0,0,0.6) /*{global-box-shadow-color}*/;
+}
+.ui-btn-submit.ui-btn{
+    border: none;
 }
 .ui-btn-submit.facebook_registro .ui-btn-inner,
 .ui-btn-submit.twitter_registro .ui-btn-inner{
-    padding: .0em 20px;
-    padding-left: 38px;
+    padding: 0 10px 0 38px;
+}
+.ui-btn-submit.facebook_registro .ui-btn-inner{
+    background-color: #3c5a9a;
+}
+.ui-btn-submit.twitter_registro .ui-btn-inner{
+    background-color: #55bee6;
 }
 .ui-btn-submit.facebook_registro .ui-btn-text,
 .ui-btn-submit.twitter_registro .ui-btn-text{
@@ -731,6 +772,7 @@ form .valid_field span.success i{
     margin-top: 10px;
     height: 22px;
     line-height: 24px;
+    color: #949e9f;
 }
 .content_upload_foto .upload_foto{
     float: right;
@@ -740,48 +782,38 @@ form .valid_field span.success i{
     padding-top: 0.4em;
     padding-bottom: 0.4em;    
 }
-
+.btn-options{
+    overflow: hidden;
+    margin: 0 10px;
+}
+.btn-options .ui-btn-inner{
+    padding: .6em 10px;
+}
+.btn-options .btn-first {
+    width: 42%;
+    float: left;
+}
+.btn-options .btn-second {
+    width: 55%;
+    float: right;
+}
 label.custom{
     font-size: 12px;
     letter-spacing: 0.5px;
     margin-top: 4px;
     display: inline-block;    
 }
-#perfil .ui-content,
-#patrocinio_deportivo .ui-content,
-#fotos_videos .ui-content,
-#blog_muros .ui-content,
-#home .ui-content,
-#login .ui-content,
-#ranking .ui-content,
-#deportistas .ui-content,
-#lista_actividad_general .ui-content,
-#lista_posibles_ganadores .ui-content,
-#lista_deportistas_elites .ui-content,
-#lista_deportistas_amateurs .ui-content,
-#lista_nuevos_deportistas .ui-content,
-#buscar_por .ui-content,
-#buscar_por2 .ui-content,
-#edicion_datos_personales .ui-content,
-#edicion_datos_deportivos .ui-content,
-#configuracion_privacidad .ui-content,
-#puntos_obtenidos_en_ronda .ui-content,
-#creacion_patrocinio_deportivo_paso1 .ui-content,
-#creacion_patrocinio_deportivo_paso2 .ui-content,
-#creacion_patrocinio_deportivo_paso3 .ui-content,
-#recaudacion_liquidacion .ui-content,
-#promocionar_patrocinio_deportivo .ui-content,
-#mis_recompensas .ui-content,
-#ultimas_recompensas .ui-content,
-#perfil_deportista_recompensa .ui-content,
-#crear_nueva_recompensa .ui-content,
-#mis_albunes .ui-content,
-#mis_fotos .ui-content,
-#mis_videos .ui-content,
-#crear_nueva_entrada .ui-content,
-#ultimas_entradas .ui-content,
-#ultimas_entradas_usuario_x .ui-content{
+.ui-content{
     padding: 0;
+}
+.ui-content .ui-listview{
+    margin: 0;
+}
+.ui-content .ui-listview .ui-li-static.ui-li{
+    padding: .7em 5px;
+}
+.ui-content p{
+    letter-spacing: -1px;
 }
 .data_user{
     padding: 5px 6px 8px 6px;
@@ -880,15 +912,6 @@ label.custom{
     color: #000;
     display: block;
     line-height: 30px;
-}
-.ui-content .ui-listview{
-    margin: 0;
-}
-.ui-content .ui-listview .ui-li-static.ui-li{
-    padding: .7em 5px;
-}
-.ui-content p{
-    letter-spacing: -1px;
 }
 .lista_opciones{
     margin: 10px;
@@ -1068,10 +1091,10 @@ label.custom{
 #options_register .ui-content,
 #register_user .ui-content,
 #register_finalizado .ui-content{
-    background: #FFFFFF;
+    background: #eeeeee;
     margin: 18px 10px;
     border-radius: 5px;
-    border: 1px solid #000;
+    border: 1px solid #d1d1d1;
     padding: 0;
 }
 #register_user .ui-content,
@@ -1082,10 +1105,8 @@ label.custom{
 #login_user .ui-content{
     margin-bottom: 14px;
 }
-#view h1,
-#options_register h1, 
+#view h1, 
 #login_user h1,
-#register_user h1,
 #register_finalizado h1{
     margin: 0.2em 8% 0.2em;
     height: auto;
@@ -1093,9 +1114,7 @@ label.custom{
     padding: 10px 10px 0 10px;
 }
 #view h1 img,
-#options_register h1 img,
 #login_user h1 img,
-#register_user h1 img,
 #register_finalizado h1 img{
     width: 100%;
 }
@@ -1144,10 +1163,11 @@ label.custom{
 
 /* OPTIONES REGISTRO */
 #options_register .ui-content{
-    margin-top: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 #options_register .content_options{
-    margin: 18px 13px;
+    margin: 32px 13px
 }
 #options_register p.text {
     font-size: 12px;
@@ -1160,13 +1180,12 @@ label.custom{
 }
 #options_register .facebook_registro,
 #options_register .twitter_registro{
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 /*LOGIN */
 
 #login_user .recuperar_contrasena,
-#register_user .guardar,
 #register_finalizado .guardar,
 #edicion_datos_personales .guardar,
 #configuracion_privacidad .guardar{
@@ -1208,7 +1227,6 @@ label.custom{
 #register_user .btn-access{
     padding-top: 0px;
 }
-#register_user .guardar,
 #register_finalizado .guardar{
     margin: 0 50px;
 }
@@ -1221,17 +1239,18 @@ label.custom{
     letter-spacing: -1px;
     display: inline-block;
     margin-bottom: 6px;
+    color: #949e9f;
 }
 #register_user label.text_termino a{
-    font-weight: bold;
-    color: #000;
+    color: #57a8df;
 }
 #register_user .access_login .ui-input-text{
     margin: 0.25em 0;
     position: relative;
 }
 #register_user .btn-access,
-#register_finalizado .btn-access{
+#register_finalizado .btn-access,
+#options_register .btn-access{
     border-top: 0;
 }
 #register_user .texto_formulario span{
@@ -3112,7 +3131,7 @@ and (orientation:portrait)
         padding-top: 68%;
     }
     #options_register .btn-access{
-        margin-bottom: 108px;
+        margin-bottom: 120px;
     }
     /* TODO */
     #register_user input.ui-mini, 

@@ -73,13 +73,13 @@
         
     <!-- OPCIONES DE REGISTRO -->
     
-    <div data-role="page" id="options_register" data-theme="p">
+    <div data-role="page" id="options_register" data-theme="c">
     
         <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
             <ul>
                 <li class="back">
                     <div class="left">
-                        <a data-theme="r" href="#" data-role="button" data-icon="back" data-rel="back" data-iconpos="notext">Volver</a>
+                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
                     </div>
                 </li>
                 <li class="page">
@@ -93,29 +93,25 @@
     
     	<div data-role="content">
             
-            <h1>
-                <img src="img/logo.png"/>
-            </h1>
-            
             <div class="btn-access">
             
                 <div class="content_options">
-                    <p class="text">
+                    <p class="text" style="margin-top: 35px;">
                         <span class="bold">Puedes usar tu cuenta de Facebook o Twitter para registrarte?</span>
                     </p>
                                     
-                    <p class="text" style="margin-bottom: 15px;">
+                    <p class="text" style="margin-bottom: 35px;">
                         Patrocinalos nunca publicitar&aacute; en tu cuenta sin tu autorizaci&oacute;n?
                     </p>
                     
-                    <a class="ui-btn-submit facebook_registro" href="#" data-role="button" data-theme="b" data-icon="none" data-iconpos="left">REGISTRO CON FACEBOOK</a>
-                    <a class="ui-btn-submit twitter_registro" href="#" data-role="button" data-theme="tw" data-icon="none" data-iconpos="left">REGISTRO CON TWITTER</a>
+                    <a class="ui-btn-submit facebook_registro" href="#" data-role="button" data-icon="none" data-iconpos="left" data-transition="slide">REGISTRO CON FACEBOOK</a>
+                    <a class="ui-btn-submit twitter_registro" href="#" data-role="button" data-icon="none" data-iconpos="left" data-transition="slide">REGISTRO CON TWITTER</a>
                     
                     <div class="texto_formulario" style="margin: 33px 0;">
                         <span class="lspacing">O puedes usar tu direcci&oacute;n de correo</span>
                     </div>
                     
-                    <a class="ui-btn-submit form_registro" href="#register_user" data-role="button" data-theme="r">USAR MI DIRECCI&Oacute;N DE CORREO</a>
+                    <a class="ui-btn-submit blue form_registro" href="#register_user" data-role="button" data-transition="slide">USAR MI DIRECCI&Oacute;N DE CORREO</a>
                 </div>
                 
             </div>
@@ -160,8 +156,8 @@
             <div class="recuperar_contrasena">
                 <a style="width: 100%; padding: 0; margin: 0;" href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-theme="p" data-transition="pop" >RECUPERAR CONTRASE&Nacute;A</a>
                 <!-- popup - restablecer contrasena -->
-                <div data-role="popup" id="popupMenu" data-theme="b" data-overlay-theme="a">
-                    <div data-role="popup" id="popupLogin" data-theme="b" class="ui-corner-all" data-overlay-theme="a">
+                <div data-role="popup" id="popupMenu" data-overlay-theme="a">
+                    <div data-role="popup" id="popupLogin" class="ui-corner-all" data-overlay-theme="a">
                         <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right close">Close</a>
                         <form>
                             <div style="padding:10px 20px; background-color: #fff;">
@@ -194,13 +190,13 @@
     
     <!-- REGISTRO POR EMAIL -->
     
-    <div data-role="page" id="register_user" data-theme="p">
+    <div data-role="page" id="register_user" data-theme="c">
     
         <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
             <ul>
                 <li class="back">
                     <div class="left">
-                        <a data-theme="r" href="#" data-role="button" data-icon="back" data-rel="back" data-iconpos="notext">Volver</a>
+                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
                     </div>
                 </li>
                 <li class="page">
@@ -214,18 +210,15 @@
         
     	<div data-role="content">
         
-            <h1 style="margin-bottom: 0;">
-                <img src="img/logo.png"/>
-            </h1>
-            
             <div class="btn-access">
                 <form id="form_registro">
                     <div class="access_login">
                          <div class="texto_formulario">
                             <span class="lspacing">Completa el siguiente formulario</span>
                          </div>
-                         <input id="u_nombre" name="u_nombre" placeholder="Nombre..." autocomplete="off" type="text" data-mini="true"/>
-                         <input id="u_apellido" name="u_apellido" placeholder="Apellidos..." autocomplete="off" type="text" data-mini="true">
+                         <input id="u_title" name="u_title" placeholder="Nombre y Apellidos..." autocomplete="off" type="text" data-mini="true"/>
+                         <!--<input id="u_nombre" name="u_nombre" placeholder="Nombre..." autocomplete="off" type="text" data-mini="true"/>-->
+                         <!--<input id="u_apellido" name="u_apellido" placeholder="Apellidos..." autocomplete="off" type="text" data-mini="true">-->
                          <input id="u_email_register" name="u_email_register" placeholder="Email..." autocomplete="off" type="text" data-mini="true"/>
                          <input id="u_password_register" name="u_password_register" placeholder="Contrase&ntilde;a..." autocomplete="off" type="password" data-mini="true"/>
                          <!--<input id="u_repetir_password" name="u_repetir_password" placeholder="Repetir contrase&ntilde;a..." autocomplete="off" type="password"/>-->
@@ -236,9 +229,14 @@
                                 <option value="atletismo">Atletismo</option>
                             </optgroup>
                          </select>
+                         <select id="select_tipo_deportista" data-theme="c" name="u_tipo_deportista" data-mini="true">
+                            <option value="deportista">Soy deportista</option>
+                            <option value="patrocinador">Soy patrocinador</option>
+                            <option value="empresa">Soy empresa</option>
+                         </select>
                          <div data-role="fieldcontain" class="content_upload_foto">
                             <label class="lspacing">Subir una foto de perfil</label>
-                            <a class="upload_foto" href="javascript:void(0)" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" data-role="button" data-theme="a" data-mini="true">Buscar</a>
+                            <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" data-role="button" data-mini="true">Buscar</a>
                          </div>
                          <img style="margin-left: 2px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-bottom: 5px; display: none;" id="pictureImage" src="" />
                      </div>
@@ -253,8 +251,13 @@
             </div>
     	</div><!-- /content -->
         
-        <div class="guardar">
-            <a class="registrarme" href="javascript:void(0)" data-role="button">TERMINAR REGISTRO</a>
+        <div class="btn-options">
+            <div class="btn-first">
+                <a class="ui-btn-submit orange borrar_form" href="javascript:void(0)" data-role="button">BORRAR</a>
+            </div>
+            <div class="btn-second">
+                <a class="ui-btn-submit green registrarme" href="javascript:void(0)" data-role="button">TERMINAR REGISTRO</a>
+            </div>
         </div>
     
     </div><!-- /page -->

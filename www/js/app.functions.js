@@ -121,7 +121,12 @@ function form_registro(){
     jQuery("#form_registro").validate({
         errorElement:'span',
     	rules: {
-    		"u_nombre": {
+            "u_title": {
+    			required: true,
+    			minlength: 2
+    		},
+    		/*
+            "u_nombre": {
     			required: true,
     			minlength: 2
     		},
@@ -129,6 +134,7 @@ function form_registro(){
     			required: true,
     			minlength: 2
     		},
+            */
     		"u_email_register": {
     			required: true,
     			email: true
@@ -150,7 +156,11 @@ function form_registro(){
             */
     	},
     	messages: {
-    		"u_nombre": {
+    		"u_title": {
+    			required: "Por favor, introduzca su nombre y apellido <i></i>",
+    			minlength: "M&iacute;nimo de 2 caracteres <i></i>"
+    		},
+    		/*"u_nombre": {
     			required: "Por favor, introduzca su nombre <i></i>",
     			minlength: "M&iacute;nimo de 2 caracteres <i></i>"
     		},
@@ -158,6 +168,7 @@ function form_registro(){
     			required: "Por favor, introduzca su apellido <i></i>",
     			minlength: "M&iacute;nimo de 2 caracteres <i></i>"
     		},
+            */
             "u_email_register": {
     			required: "Por favor, introduzca su email <i></i>",
     			email: "Direcci&oacute;n de email no v&aacute;lida <i></i>"
@@ -180,14 +191,24 @@ function form_registro(){
     //Submit form registro
     jQuery('#form_registro').submit(function() {
         /* start Fixed seleccionar deporte */
-        var selector = jQuery('#form_registro').find("#select_deporte");
-        var opcion_selected = selector.find("option:selected").html();
-        var element = selector.prev(".ui-btn-inner").find(".ui-btn-text").find("span");
+        var selector_deporte = jQuery('#form_registro').find("#select_deporte");
+        var opcion_selected = selector_deporte.find("option:selected").html();
+        var element = selector_deporte.prev(".ui-btn-inner").find(".ui-btn-text").find("span");
         element.removeClass()
         element.addClass("valid")
         element.text(opcion_selected);
         element.show();
         /* end Fixed seleccionar deporte */
+        
+        /* start Fixed seleccionar tipo deportista */
+        var selector_tipo_deportista = jQuery('#form_registro').find("#select_tipo_deportista");
+        var opcion_selected = selector_tipo_deportista.find("option:selected").html();
+        var element = selector_tipo_deportista.prev(".ui-btn-inner").find(".ui-btn-text").find("span");
+        element.removeClass()
+        element.addClass("valid")
+        element.text(opcion_selected);
+        element.show();
+        /* end Fixed seleccionar tipo deportista */
         
         $("#u_email_register").parent().removeClass("error_field_email");
         
