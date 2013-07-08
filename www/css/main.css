@@ -1122,7 +1122,7 @@ label.custom{
 }
 #login_user .ui-content{
     margin-bottom: 25px;
-    min-height: 235px;
+    min-height: 215px;
 }
 #view h1, 
 #login_user h1{
@@ -1209,6 +1209,9 @@ label.custom{
     margin: 0 32px;
     margin-bottom: 10px;
 }
+#login_user .access_login{
+    padding-top: 10px;
+}
 #login_user .access_login div.ui-body-cu.ui-input-text:first-child{
     background: url("../img/bg-login.png") no-repeat scroll left center #fff;
     background-size: 20px;
@@ -1226,11 +1229,11 @@ label.custom{
 #login_user p.text{
     font-size: 12px;
     margin-bottom: 18px;
-    margin-left: 10px;    
+    margin-left: 10px; 
+    padding-top: 10px;
 }
 #login_user p.text span{
-    font-weight: bold;
-    font-size: 13px;
+    color: #2eaae0;
 }
 #login_user .recuperar_contrasena .ui-btn-inner{
     padding-left: 10px;
@@ -3310,6 +3313,9 @@ and (orientation:portrait)
     #completar_perfil .btn-access{
         min-height: 420px;
     }
+    #login_user .ui-content{
+        min-height: 295px;
+    }
 }
 
 /* LANDSCAPE IPHONE 5 */
@@ -3379,7 +3385,7 @@ and (orientation:landscape)
     #solicitar_patrocinio .seleccionar_recompensas ul{
         width: 83%;
         margin: 5px auto;        
-    }    
+    }
     /* TODO */
 }  
 
