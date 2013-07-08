@@ -96,13 +96,22 @@ form .valid_field span.success i{
     right: -17px;
     top: 1px;     
 }
-.content_list_first .ui-listview li.ui-li-static.ui-li{
+.content_list_first .ui-listview li.ui-li-static.ui-li,
+.content_list_two .ui-listview li.ui-li-static.ui-li{
     margin-bottom: 2px;
     min-height: 80px;
     padding-bottom: 5px;
     padding-left: 5px;
     padding-top: 5px;
     overflow: hidden;
+}
+.content_list_two .ui-listview{
+    padding: 0 5px 5px 5px;
+}
+.content_list_two .ui-listview li.ui-li-static.ui-li{
+    padding-top: 0px;
+    margin-top: 5px;
+    min-height: 60px;
 }
 .content_list_first .ui-listview li .content_descripcion{
     overflow: hidden;
@@ -299,7 +308,66 @@ form .valid_field span.success i{
     background-image: url("../img/bg_fb.png");
     background-size: 18px auto;
 }
-
+.content_list_two .options{
+    overflow: hidden;
+    background-color: #c8cfd5;
+    margin-bottom: 10px;
+}
+.content_list_two .options a{
+    text-align: center;
+    font-size: 13px;
+    line-height: 12px;
+    width: 50%;
+    color: #6c9fb5;
+    padding-top: 6px;
+    padding-bottom: 8px;
+    letter-spacing: -1px;
+}
+.content_list_two .options a:hover{
+    color: #6b7882;
+}
+.content_list_two .options a.active{
+    color: #6b7882;
+    width: 49%;
+    padding-left: 2px;
+    background: url("../img/bg_away.png") no-repeat scroll 4px 8px #fff;
+    background-size: 22px;
+}
+.content_list_two .options a.active.first{
+    -moz-box-shadow: 2px 0px 5px rgba(0,0,0,.2);
+    -webkit-box-shadow: 2px 0px 5px rgba(0,0,0,.2);
+    border-right: 1px solid #7c8084;
+    width: 46%;
+    padding-left: 10px;
+}
+.content_list_two .ui-listview li .recorte{
+    float: left;
+    height: 60px;
+    margin-right: 8px;
+    overflow: hidden;
+    width: 90px;  
+}
+.content_list_two .ui-listview li .recorte img{
+    width: 100%;
+    height: 100%;
+}
+.content_list_two .ui-listview .ui-btn-up-c{
+    background-color: #fff;
+    border-top: 0;
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 2px solid #ced5d9;
+}
+.content_list_two .ui-li-heading{
+    margin: 0em 0 0.4em 0;
+}
+.content_list_two .ui-li-heading,
+.content_list_two .ui-li-desc{
+    color: #6b7882;
+}
+.content_list_two h4.ui-li-heading b{
+    color:  #000;
+}
 .odd.ui-btn-up-c {
 	background-image: -webkit-gradient(linear, left top, left bottom, from( #cc4646 /*{a-bup-background-start}*/), to( #b93838 /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
 	background-image: -webkit-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
@@ -585,6 +653,18 @@ form .valid_field span.success i{
 .footer .ui-btn-hover-g:hover,
 .footer .ui-btn-hover-g a.ui-link-inherit {
 	color: #585961;
+}
+.footer_menu{
+    background: transparent;
+    border: 0;
+    padding: 0;
+    text-align: center;
+    height: 0px;
+    bottom: 20px;
+}
+.footer_menu img{
+    height: 20px;
+    cursor: pointer;
 }
 .texto_formulario{
     background: url("../img/bg_inline.png") repeat-x scroll center center transparent;
@@ -2528,26 +2608,24 @@ label.custom{
 }
 .info_content{
     background-color: #456176;
-    padding: 5px 10px;
+    padding: 8px 10px;
 }
 .info_content h2{
     color: #fff;
     text-align: center;
     margin-bottom: 6px;
     font-size: 20px;
+    font-family: Arial;
 }
 .info_content .recuadro{
     width: 106px;
     height: 106px;
     border: 4px solid #fff;
 }
-.info_content .left{
-    width: 40%;
-}
 .info_content .right{
-    width: 59%;
+    width: 58%;
     float: left;
-    padding-left: 2px;
+    padding-left: 10px;
 }
 .info_content .recuadro img{
     height: 100%;
@@ -2557,26 +2635,29 @@ label.custom{
     clear: both;
     position: relative;
     margin: 0 3em;
-    height: 25px;
+    height: 22px;
     padding-top: 10px;
 }
 .info_content h3{
     color: #eab800;
     line-height: 14px;
+    font-size: 18px;
 }
 .info_content p{
     color: #d3d5d7;
     line-height: 14px;
     font-size: 12px;
     padding: 10px 0;
+    max-height: 42px;
+    overflow: hidden;
 }
 .info_content .like_cash span{
     margin-right: 5px;
-    border-radius: 5px;
+    border-radius: 4px;
     padding: 4px 5px 4px 20px;
     text-align: right;
     height: 16px;
-    width: 40px;
+    width: 45px;
     display: inline-block;
     font-size: 14px;
     font-weight: bold;
@@ -2586,6 +2667,7 @@ label.custom{
     background: url("../img/bg_color_like.png") no-repeat scroll center left #ecf0f1;
     background-size: 15px;
     background-position: 6px;
+    text-align: center;
 }
 .info_content .like_cash span.cash{
     color: #eab800;
@@ -3496,4 +3578,7 @@ and (orientation:landscape)
         height: 25px;
         width: 28px;
     }
+    .info_content .right {
+        width: 72%;
+    }    
 }

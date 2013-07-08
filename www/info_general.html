@@ -47,6 +47,20 @@
     
     <div data-role="page" id="info_general" data-theme="c">
     
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    &nbsp;
+                </li>
+                <li class="page">
+                    <span>HOME</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+    
     	<div data-role="content">
             <div class="info_deportista">
                 <div class="info_content">
@@ -69,13 +83,13 @@
                     </div>
                 </div>
             </div>
-            <div class="content_list_first">
+            <div class="content_list_two">
                 <div class="options">
-                    <a class="first active" href="#">ACTIVIDAD<br />EN PATROCINALOS</a>
-                    <a href="#">ACTIVIDAD<br />EN LA RONDA</a>
+                    <a class="left first active" href="#">ACTIVIDAD<br />EN PATROCINALOS</a>
+                    <a class="right" href="#">ACTIVIDAD<br />EN LA RONDA</a>
                 </div>
                 <ul data-role="listview">
-                	<li class="pair">
+                	<li>
                         <div class="recorte">
                             <img src="img/img_actividad1.png"/>
                         </div>
@@ -86,7 +100,7 @@
                             <p class="ui-li-desc">se ha dado de alta en <b>patrocinalos.com</b></p>
                         </div>
                     </li>
-                	<li class="odd">
+                	<li>
                         <div class="recorte">
                             <img src="img/img_actividad2.png"/>
                         </div>
@@ -97,7 +111,7 @@
                             <p class="ui-li-desc">ha empezado a seguir a <b>Jose Carlos pe&ntilde;a</b></p>
                         </div>
                     </li>
-                	<li class="pair">
+                	<li>
                         <div class="recorte">
                             <img src="img/img_actividad3.png"/>
                         </div>
@@ -108,7 +122,7 @@
                             <p class="ui-li-desc">le gusta una foto de <b>Alex Contreras</b></p>
                         </div>
                     </li>
-                	<li class="odd">
+                	<li>
                         <div class="recorte">
                             <img src="img/img_actividad4.png"/>
                         </div>
@@ -122,6 +136,16 @@
                 </ul>
             </div>
     	</div><!-- /content -->
+        
+        <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="c" class="footer_menu">
+            <a href="#add-form">
+                <img src="img/bg_list_menu.png"/>
+            </a>
+        </div>
+        
+        <div data-role="panel" data-position="bottom" data-position-fixed="true" data-display="overlay" data-theme="a" id="add-form">
+            <div>asdfjk</div>
+        </div><!-- /panel -->
     
     </div><!-- /page -->
     
