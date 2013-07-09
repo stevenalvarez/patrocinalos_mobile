@@ -6,7 +6,7 @@
         
         <title>Patrocinalos</title>
         
-        <link rel="stylesheet" href="css/jquery.mobile-1.3.0.css" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.3.1.css" />
         <link rel="stylesheet" href="css/reset.css" />
     	<link rel="stylesheet" href="css/main.css" />
         
@@ -18,7 +18,7 @@
             }
         </script>
         
-        <script src="js/jquery.mobile-1.3.0.js"></script>
+        <script src="js/jquery.mobile-1.3.1.js"></script>
         <script src="js/jquery.validate.min.js"></script>
         <script src="js/validate.add.method.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
@@ -138,14 +138,31 @@
     	</div><!-- /content -->
         
         <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="c" class="footer_menu">
-            <a href="#add-form">
+            <a href="#bottompanel2">
                 <img src="img/bg_list_menu.png"/>
             </a>
         </div>
         
-        <div data-role="panel" data-position="bottom" data-position-fixed="true" data-display="overlay" data-theme="a" id="add-form">
-            <div>asdfjk</div>
+        <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="c" id="add-form">
+            <form class="userform">
+                <h2>Login</h2>
+                <label for="name">Username:</label>
+                <input name="name" id="name" value="" data-clear-btn="true" data-mini="true" type="text">
+                <label for="password">Password:</label>
+                <input name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true" type="password">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><a href="#" data-rel="close" data-role="button" data-theme="c" data-mini="true">Cancel</a></div>
+                    <div class="ui-block-b"><a href="#" data-rel="close" data-role="button" data-theme="b" data-mini="true">Save</a></div>
+                </div>
+            </form>
         </div><!-- /panel -->
+        
+	<!-- bottompanel2  -->
+	<div data-role="panel" id="bottompanel2" data-position="bottom" data-display="push" data-theme="a" data-dark-modal="true">
+
+        <h3>Top Panel: Push</h3>
+
+	</div><!-- /bottompanel2 -->        
     
     </div><!-- /page -->
     

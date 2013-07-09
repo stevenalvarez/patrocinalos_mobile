@@ -666,6 +666,17 @@ form .valid_field span.success i{
     height: 20px;
     cursor: pointer;
 }
+.footer_menu a{
+    border: none;
+}
+.footer_menu .ui-btn-inner,
+.footer_menu .ui-btn-text{
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: inherit;
+    font-size: 24px;
+}
 .texto_formulario{
     background: url("../img/bg_inline.png") repeat-x scroll center center transparent;
 }
