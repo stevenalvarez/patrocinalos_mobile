@@ -832,11 +832,13 @@ form .valid_field span.success i{
 .ui-btn-submit.celeste .ui-btn-inner{
     background-color: #019add;
 }
-.ui-btn-submit.ui-shadow {
+.ui-btn-submit.ui-shadow,
+.ui-btn-normal.ui-shadow{
     -moz-box-shadow: 0px 0px 0px /*{global-box-shadow-size}*/ rgba(0,0,0,.6) /*{global-box-shadow-color}*/;
     -webkit-box-shadow: 0px 0px 0px /*{global-box-shadow-size}*/ rgba(0,0,0,0.6) /*{global-box-shadow-color}*/;
 }
-.ui-btn-submit.ui-btn{
+.ui-btn-submit.ui-btn,
+.ui-btn-normal.ui-btn{
     border: none;
 }
 .ui-btn-submit.facebook_registro .ui-btn-inner,
@@ -869,6 +871,40 @@ form .valid_field span.success i{
 .ui-btn.ui-btn-up-r,
 .ui-btn.ui-btn-hover-r{
     margin-bottom: 20px;
+}
+.ui-btn-normal .ui-btn-inner{
+    padding: .3em 20px;
+    border-color: inherit;
+    border-top: 0;
+}
+.ui-btn-normal .ui-btn-text{
+    font-size: 13px;
+    color: #fff;
+    font-weight: normal;
+    letter-spacing: 0;
+}
+.ui-btn-normal.azul .ui-btn-inner{
+    background-color: #019add;
+}
+.ui-collapsible-content{
+    padding: 0;
+}
+.ui-collapsible-content ul{
+    padding-top: 5px;
+}
+.ui-collapsible-content .ui-li-static.ui-li{
+    padding: 0 !important;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    margin: 6px 0px;
+}
+.ui-collapsible-heading a .ui-btn-inner{
+    background-color: #d9e4e5;
+}
+.ui-collapsible-heading a .ui-btn-text{
+    color: #6bb48b;
+    text-shadow: 0 0 0;
+    font-weight: normal;
 }
 .btn-access{
     padding-top: 6px;
@@ -1276,7 +1312,8 @@ label.custom{
 #register_user .ui-content,
 #register_finalizado .ui-content,
 #completar_perfil .ui-content,
-#solicitar_patrocinio .ui-content{
+#solicitar_patrocinio .ui-content,
+#completar_perfil_empresa .ui-content{
     background: #eeeeee;
     margin: 18px 10px;
     border-radius: 5px;
@@ -1525,6 +1562,24 @@ label.custom{
     -webkit-box-shadow: 0px 0px 0px /*{global-box-shadow-size}*/ rgba(0,0,0,.2) /*{global-box-shadow-color}*/;
     background: url("../img/bg_calendario.png") no-repeat scroll center center transparent;
     background-size: 35px;
+}
+
+/* COMPLETAR PERFIL EMPRESA */
+#completar_perfil_empresa .box_consultar{
+    background-color: #d9e4e5;
+    padding: 8px 8px 1px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #7f8c8d;
+    overflow: hidden;
+}
+#completar_perfil_empresa .close_text{
+    display: block;
+    padding-top: 12px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;    
 }
 
 /* SOLICITAR PATROCINIO */
