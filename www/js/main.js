@@ -33,6 +33,21 @@ $(document).on('pageinit', "#register_user", function(){
     });
 });
 
+$(document).on('pageinit', "#info_general", function(){
+    $( "#panel_menu" ).panel({
+        beforeopen: function( event, ui ) {}
+    });
+    $( "#panel_menu" ).panel({
+        close: function( event, ui ) {}
+    });
+	$("#panel_menu").on("panelbeforeopen", function (event, ui) {
+        $(".footer_menu").find("a.icon_menu").hide();
+    });
+	$("#panel_menu").on("panelclose", function (event, ui) {
+        $(".footer_menu").find("a.icon_menu").show();
+    });
+});
+
 /************************************ FUNCTIONS *******************************************************/
 
 //OBTENEMOS 10 USUARIOS DE FORMA RANDOMICA 
