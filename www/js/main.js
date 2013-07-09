@@ -33,7 +33,7 @@ $(document).on('pageinit', "#register_user", function(){
     });
 });
 
-$(document).on('pageinit', "#info_general", function(){
+$(document).on('pageinit', "#info_general, #info_ronda", function(){
     $( "#panel_menu" ).panel({
         beforeopen: function( event, ui ) {}
     });
