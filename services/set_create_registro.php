@@ -15,6 +15,9 @@ $password = isset($_POST["u_password_register"]) && !empty($_POST["u_password_re
 $deporte_id = isset($_POST["u_deporte"]) && !empty($_POST["u_deporte"]) ? $_POST["u_deporte"] : NULL;
 $tipo = isset($_POST["u_tipo"]) && !empty($_POST["u_tipo"]) ? $_POST["u_tipo"] : NULL;
 
+//verificamos si viene una imagen de alguna red social
+$img_url = isset($_POST["u_img_url_social"]) && !empty($_POST["u_img_url_social"]) ? $_POST["u_img_url_social"] : NULL;
+
 //Addtion
 $code = preg_replace('/[^a-zA-Z0-9]/','',uniqid('app',true));
 $some_special_chars = array("á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "ñ", "Ñ");
@@ -46,6 +49,34 @@ try {
         $stmt2->bindParam("id", $lastId);
         $stmt2->execute();
         $dbh->commit();
+        
+        //Subimos la imagen de la red social si es que hay
+        if($img_url)
+        {
+            $dir = "/app/webroot/img/";
+            $targetFolder = $dir .'Usuario/full/'; //Path de donde se va a guardar la imagen original
+            $targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
+            $imagen = saveImage($img_url, $targetPath);
+            if($imagen){
+                /* Variable para la copia de la imagen*/
+                $targetFileImg = rtrim($targetPath,'/') . '/';
+                $targetFileCopy = $_SERVER['DOCUMENT_ROOT'] . $dir;
+                $imagevars = getimagesize($targetPath.$imagen);
+                $fileNameImg = $imagen;
+                
+                //Copias
+                copia_optimizada($targetFileImg, $targetFileCopy."Usuario/800/", $imagevars, $fileNameImg, 800, 800);
+                copia_optimizada($targetFileImg, $targetFileCopy."Usuario/169/", $imagevars, $fileNameImg, 169);
+                
+                //Update imagen
+                $stmt3 = $dbh->prepare("UPDATE usuarios SET imagen= :imagen WHERE id= :id");
+                $dbh->beginTransaction();
+                $stmt3->bindParam("imagen", $imagen);
+                $stmt3->bindParam("id", $lastId);
+                $stmt3->execute();
+                $dbh->commit();
+            }
+        }
         
         //Enviamos el codigo de confirmacion al email del usuario registrado.
         $success = enviar_codigo_confirmacion($nombre, $code, $email);

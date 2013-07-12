@@ -23,6 +23,7 @@ function onPhotoURISuccess(imageURI) {
   // Get image handle
   //
   var pictureImage = document.getElementById('pictureImage');
+  var img_url = document.getElementById("u_img_url_social");
 
   // Unhide image elements
   //
@@ -32,6 +33,7 @@ function onPhotoURISuccess(imageURI) {
   // The inline CSS rules are used to resize the image
   //
   pictureImage.src = imageURI;
+  img_url.value = "";
 }
 
 // Called if something bad happens.
@@ -237,7 +239,8 @@ function form_registro(){
                         if(id_usuario){
                             //Si selecciono un imagen mandamos a guardar en la base de datos
                             var pictureImage = document.getElementById("pictureImage");
-                            if($(pictureImage).attr("src") != ""){
+                            var img_url = document.getElementById("u_img_url_social");
+                            if($(pictureImage).attr("src") != "" && $(img_url).val() == ""){
                                 uploadPhoto(id_usuario, 'perfil');
                             }else{
                                 success_registro();

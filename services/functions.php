@@ -114,6 +114,45 @@
         if($imagen[2]==3){imagepng($img_des,$destinationddir.$fileName); }
     }
     
+    /**
+     * para guardar imagenes desde una url
+     * @param mixed $url
+     * @return
+     */
+    function saveImage($url, $targetPath) {
+        $ext = end(explode(".", $url));
+        
+    	$c = curl_init();
+    	curl_setopt($c,CURLOPT_URL,$url);
+    	curl_setopt($c,CURLOPT_HEADER,0);
+    	curl_setopt($c,CURLOPT_RETURNTRANSFER,true);
+    	$s = curl_exec($c);
+    	curl_close($c);
+        $fileName = preg_replace('/[^a-zA-Z0-9]/','',uniqid('mob_img')."social");
+        $path = $targetPath.$fileName.".$ext";
+    	$f = fopen($path, 'wb');
+    	$z = fwrite($f,$s);
+    	if ($z != false) return $fileName.".$ext";
+    	return false;
+    }
+    
+    function save_img($url, $targetPath) {
+        
+        $img_file = file_get_contents($url); // url: https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/625699_575981255765699_1150061574_n.jpg 
+        $image_path = parse_url($url);
+        $img_path_parts = pathinfo($image_path['path']);
+        
+        $filename = $img_path_parts['filename'];
+        $img_ext = $img_path_parts['extension'];
+    
+        $path = $targetPath;
+        $filex = $path . $filename . "." .$img_ext;
+        $fh = fopen($filex, 'w');
+        fputs($fh, $img_file);
+        fclose($fh);
+        return filesize($filex);
+    }
+    
     function enviar_codigo_confirmacion($name, $codigo_confirmacion, $email){
         // message
         $mensaje = '
