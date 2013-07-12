@@ -44,13 +44,12 @@
                 
                 //Inicializamos el api de facebook
                 try {
-    				alert('Device is ready!	Make sure you set your app_id below this alert.');
     				FB.init({
     					appId : "378569528879624",
     					nativeInterface : CDV.FB,
     					useCachedDialogs : false
     				});
-    				document.getElementById('data').innerHTML = "FB init executed";
+                    FB_INITEXECUTED = true;
     			} catch (e) {
     				alert(e);
     			}
@@ -69,7 +68,6 @@
                 <h1>
                     <img src="img/logo.png"/>
                 </h1>
-                <div id="data">Hello Facebooktesters, loading ...</div><br>
                 <div class="background_view">
                     <div class="btn-access">
                         <a class="ui-btn-submit" href="#login_user" data-role="button" data-theme="r" data-transition="slide">INICIAR SESI&Oacute;N</a>
@@ -120,7 +118,7 @@
                         Patrocinalos nunca publicitar&aacute; en tu cuenta sin tu autorizaci&oacute;n?
                     </p>
                     
-                    <a class="ui-btn-submit facebook_registro" href="#" data-role="button" data-icon="none" data-iconpos="left" data-transition="slide">REGISTRO CON FACEBOOK</a>
+                    <a class="ui-btn-submit facebook_registro" href="javascript:void(0)" onclick="login()" data-role="button" data-icon="none" data-iconpos="left" data-transition="slide">REGISTRO CON FACEBOOK</a>
                     <a class="ui-btn-submit twitter_registro" href="#" data-role="button" data-icon="none" data-iconpos="left" data-transition="slide">REGISTRO CON TWITTER</a>
                     
                     <div class="texto_formulario" style="margin: 33px 0;">
@@ -260,9 +258,8 @@
                             <label class="lspacing">Subir una foto de perfil</label>
                             <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" data-role="button" data-mini="true">Buscar</a>
                          </div>
-                         <!--<img style="margin-left: 1px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-bottom: -24px; display: none;" id="pictureImage" src="" />-->
-                         <img style="margin-left: 1px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-bottom: -24px;" id="pictureImage" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/625699_575981255765699_1150061574_n.jpg" />
-                         <input id="u_img_url_social" type="hidden" name="u_img_url_social" value="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/625699_575981255765699_1150061574_n.jpg" />
+                         <img style="margin-left: 1px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-bottom: -24px; display: none;" id="pictureImage" src="" />
+                         <input id="u_img_url_social" type="hidden" name="u_img_url_social" value="" />
                      </div>
                     <!--
                     <fieldset data-role="controlgroup">
