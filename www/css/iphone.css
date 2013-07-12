@@ -78,13 +78,14 @@
     font-weight: bold;
  }
  .content_list_two ul.elite_list li.ui-btn-up-c .content_descripcion.left .button_blue,
- .content_list_two ul.elite_list li.ui-btn-hover-c .content_descripcion.left .button_blue{
+ .content_list_two ul.elite_list li.ui-btn-hover-c .content_descripcion.left .button_blue
+ {
      background: none repeat scroll 0 0 #00A3E2;
     border-radius: 2px 2px 2px 2px;
     color: #FFFFFF;
     display: inline-block;
-    font-family: 'HelveticaLTStdBoldCondensed';
-    font-size: 15px;
+    font-family: 'HelveticaLTStdBoldCondensed'!important;
+    font-size: 15px!important;
     font-weight: bold;
     letter-spacing: 0;
     padding: 5px 0!important;
@@ -95,6 +96,8 @@
  }
  /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/
  
+ 
+ /*PAGE DESTACADOS ÉLITE home_destacado.html*/
  .list_destacados{
     
  }
@@ -113,11 +116,12 @@
     width: 140px;
     height: auto;
     float: left;
+    min-height: 65px;
  }
  .list_destacados li .content_descripcion{
     background: url("../img/arrow_list_destacado.png") no-repeat scroll 0 0 transparent;
     float: left;
-    min-height: 105px;
+    min-height: 65px;
     margin-left: -15px;
     padding-left: 15px;
  }
@@ -135,37 +139,499 @@
     font-size: 12px;
     font-weight: bold;
  }
+ /*PAGE DESTACADOS home_destacado.html*/
  
-/* PORTRAIT IPHONE 4/4s */
+ /*PAGE BUSCAN PATRCINIO home_buscan_patrocinio.html*/
+ .list_buscan_patro{
+    
+ }
+ .list_buscan_patro li{
+    margin-bottom: 5px;
+    overflow: hidden;
+ }
+ .list_buscan_patro li .cont_top{
+    background: #d8e8f3;
+    overflow: hidden;
+ }
+ .list_buscan_patro li .cont_top .mount{
+    float: left;
+    clear: both;
+    margin-top: 1px;
+ }
+ .list_buscan_patro li .mount span{
+    background:#f39c11;
+    display: inline-block;
+    padding: 3px 15px;
+    color: #fff;
+    font-family: 'HelveticaLTStdBoldCondensed';
+    font-size: 15px;
+    width: 55px;
+ }
+ .list_buscan_patro li .cont_top .recorte{
+    width: 85px;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    margin-right: 5px;
+ }
+ .list_buscan_patro li .cont_top .recorte img{
+    width:85px;
+    height: auto;
+    float: left;
+ }
+ .list_buscan_patro li .cont_top .content_descripcion{
+     font-family: 'helvetica_lightregular';
+     font-size: 12px;
+     color:#6b6b6b;
+     padding: 5px 0 5px 0;
+ }
+ .list_buscan_patro li .cont_bottom{
+    clear: both;
+    border-top: 1px solid #fff;
+ }
+ .list_buscan_patro li .cont_bottom a h2{
+    background: #3398de;
+    color:#fff;
+    display: inline-block;
+    width: 149px;
+    text-align: left;
+    font-family: 'helvetica_lightregular';
+    font-size: 12px;
+    padding: 7px 5px;
+ }
+ .list_buscan_patro li .cont_bottom a span{
+    color:#fff;
+    display: inline-block;
+    width: 149px;
+    text-align: left;
+    font-family: 'helvetica_lightregular';
+    font-size: 12px;
+    padding: 7px 5px;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: center;
+    background: url("../img/icon_patrocina.jpg") no-repeat scroll 10px 6px #27ae61;
+    background-size:20px;
+ }
+
+ .list_buscan_patro li .cont_bottom a.link_profile{
+    float: left;
+    display: inline-block;
+ }
+ 
+ .list_buscan_patro li .cont_bottom a.link_patrocina{
+    display: inline-block;
+    float: right;
+}
+ /*PAGE BUSCAN PATRCINIO home_buscan_patrocinio.html*/
+ 
+ /*PAGE RECOMPENSAS HOME*/
+ .list_recompensas li .cont_bottom a.link_profile h2{
+    background: url("../img/icon_info.jpg") no-repeat scroll 2px 2px #3398de;
+    background-size: 32px;
+    padding: 10px 0px 11px 40px;
+    width: 120px;
+ }
+ .list_recompensas li .cont_bottom a.link_patrocina span{
+    padding: 10px 0px 11px 10px;
+ }
+ .list_recompensas li .cont_top .recorte{
+    width:66px;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    margin: 5px;
+ }
+ .list_recompensas li .cont_top .recorte img{
+    width:66px;
+    height: auto;
+    float: left;
+    border-radius: 120px;
+ }
+ /*PAGE RECOMPENSAS HOME*/
+ 
+ /*PAGE LIST BLOG HOME*/
+ .list_blog li{
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 15px;
+ }
+ .list_blog li .cont_top{
+    
+ }
+ .list_blog li .cont_top .content_descripcion{
+    width: 82%;
+    float: left;
+    padding: 0px 0 0 5px;
+ }
+ .list_blog li .cont_top .time{
+    width: 13%;
+    float: right;
+    background: #efefef;
+    border-radius: 3px;
+    padding: 5px;
+    text-align: center;
+ }
+ .list_blog li .cont_top .time span{
+    display: block;
+    clear: both;
+    text-align: center;
+ }
+ .list_blog li .cont_top .time span.hour{
+    color:#98b5b5;
+    font-family: 'HelveticaLTStdLight';
+    font-size: 11px;
+    font-weight: normal;
+ }
+ .list_blog li .cont_top .time span.day_month{
+    color:#849898;
+    font-family: 'HelveticaLTStdBoldCondensed';
+    font-size: 30px;
+ }
+ .list_blog li .cont_top .time span.day_week{
+    color:#98b5b5;
+    font-family: 'HelveticaLTStdLight';
+    font-size: 12px;
+    font-weight: normal;
+ }
+ .list_blog li .cont_top .content_descripcion h2{
+    color:#00a0e3;
+    font-family: 'HelveticaLTStdBoldCondensed';
+    font-size: 14px;
+ }
+ .list_blog li .cont_top .content_descripcion p{
+   color: #849898;
+   font-family: 'HelveticaLTStdLight';
+   font-size: 13px;
+   font-weight: normal;
+ }
+ .list_blog li .cont_bottom span{
+    color: #00998d;
+   font-family: 'HelveticaLTStdLight';
+   font-size: 11px;
+   font-weight: normal;
+   margin-right: 15px;
+ }
+ .list_blog li .cont_bottom span.coments_count{
+    background: url("../img/icon_coment.jpg") no-repeat scroll 0px 0px transparent;
+    background-size:16px;
+    padding:2px 0 2px 20px;
+ }
+ .list_blog li .cont_bottom span.like_count{
+    background: url("../img/icon_like.jpg") no-repeat scroll 0px 0px transparent;
+    background-size:16px;
+    padding:2px 0 2px 20px;
+ }
+ .list_blog li .cont_bottom span b{
+    font-weight: bold;
+ }
+ .list_blog li .cont_bottom,.list_blog li .cont_top{
+    clear: both;
+    overflow: hidden;
+ }
+ .list_blog li .cont_bottom{
+    padding: 5px;
+ }
+ /*PAGE LIST BLOG HOME*/
+ 
+/* PORTRAIT */
 @media only screen
 and (max-width: 480px)  
 and (orientation:portrait)
 {    
+ /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/   
  .content_list_two ul.elite_list li.ui-btn-up-c .content_descripcion.left{
     width: 182px;
  }
+ /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/
+ 
+ /*PAGE DESTACADOS home_destacado.html*/
  .list_destacados li .content_descripcion{
     width: 180px;
     float: left;
  }
+ /*PAGE DESTACADOS home_destacado.html*/
+ 
+ /*PAGE BUSCAN PATRCINIO home_buscan_patrocinio.html*/
+ .list_buscan_patro li .cont_bottom .mount{
+    display: none;
+ }
+ /*PAGE BUSCAN PATRCINIO home_buscan_patrocinio.html*/
+ 
 }
   
-/* PORTRAIT IPHONE 4/4s */
+/* LANDSCAPE */
 @media only screen 
 and (min-width: 320px)  
 and (max-width: 640px) 
-and (-webkit-device-pixel-ratio: 2)  
 and (orientation:landscape)
-{   
+{
+ 
+ /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/   
  .content_list_two ul.elite_list li.ui-btn-up-c .content_descripcion.left p,.content_list_two ul.elite_list li.li.ui-btn-hover-c .content_descripcion.left p
  ,.content_list_two ul.elite_list.ui-listview li.ui-li-has-arrow.ui-btn-hover-c .content_descripcion.left p
  ,.content_list_two ul.elite_list li.li.ui-btn-hover-c .content_descripcion.left a{
     font-size:15px;
  }
-    
+ /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/
+ 
+ /*PAGE DESTACADOS home_destacado.html*/   
  .list_destacados li .content_descripcion p{
     font-family: 'helvetica_lightregular';
     font-size: 15px;
     padding: 20px 5px;
  }
+ /*PAGE DESTACADOS home_destacado.html*/
+ 
+ /*PAGE BUSCAN PATRCINIO home_buscan_patrocinio.html*/
+ .list_buscan_patro li .cont_top{
+  
+ }
+ .list_buscan_patro li .cont_bottom {
+    
+ }
+ 
+ .list_buscan_patro li .cont_bottom .mount{
+    display: inline-block;
+ }
+ .list_buscan_patro li .cont_top .mount{
+    display: none;
+ }
+ .list_buscan_patro li .cont_top .content_descripcion p{
+    font-size: 14px;
+ }
+ .list_buscan_patro li .mount span{
+    display: inline-block;
+    width: 100%;
+    padding: 5px 0;
+    margin: 0 3px;
+    text-align: center;
+ }
+ .list_buscan_patro li .mount,.list_buscan_patro li .link_profile,.list_buscan_patro li .link_patrocina{
+    width: 33%;
+ }
+ .list_buscan_patro li .cont_bottom .link_profile h2,.list_buscan_patro li .cont_bottom .link_patrocina span{
+    width: 100%;
+    padding:7px 0;
+    text-align: center;
+     
+ }
+ /*PAGE BUSCAN PATRCINIO home_buscan_patrocinio.html*/
+ 
+ /*PAGE RECOMPENSAS HOME*/
+ .list_recompensas li .cont_bottom a.link_profile,.list_recompensas li .cont_bottom a.link_patrocina{
+    width: 50%;
+ }
+ .list_recompensas li .cont_bottom a.link_patrocina span,.list_recompensas li .cont_bottom a.link_profile h2{
+   width: 100%;
+   padding-left: 0;
+   padding-right: 0;
+ }
+ /*PAGE RECOMPENSAS HOME*/
+ 
+ /*PAGE LIST BLOG HOME*/
+ .list_blog li .cont_top .content_descripcion p{
+    font-size: 14px;
+ }
+ .list_blog li .cont_top .content_descripcion h2{
+    font-size: 15px;
+ }
+ /*PAGE LIST BLOG HOME*/
+ 
+}
+
+/* PORTRAIT TABLED*/
+@media only screen
+and (max-width: 768px)  
+and (min-width: 768px)  
+and (orientation:portrait)
+{    
+ 
+ /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/      
+ .content_list_two ul.elite_list li.ui-btn-up-c, .content_list_two ul.elite_list li.ui-btn-hover-c{
+    float: left;
+    width: 49%;
+    margin: 0 3px!important;
+ }
+ /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/   
+ 
+ /*PAGE BUSCAN PATRCINIO home_buscan_patrocinio.html*/
+ .list_buscan_patro li .cont_bottom .mount{
+    display: none;
+ }
+ .list_buscan_patro li{
+   width: 49%;
+   float: left;
+   margin: 3px
+ }
+ .list_buscan_patro li .link_profile,.list_buscan_patro li .link_patrocina{
+    width: 50%;
+ }
+ .list_buscan_patro li .cont_bottom .link_profile h2,.list_buscan_patro li .cont_bottom .link_patrocina span{
+    width: 100%;
+    padding:7px 0;
+    text-align: center;
+     
+ }
+ /*PAGE BUSCAN PATRCINIO home_buscan_patrocinio.html*/
+ 
+ /*PAGE RECOMPENSAS HOME*/
+ .list_recompensas li .cont_bottom a.link_profile,.list_recompensas li .cont_bottom a.link_patrocina{
+    width: 50%;
+ }
+ .list_recompensas li .cont_bottom a.link_patrocina span,.list_recompensas li .cont_bottom a.link_profile h2{
+   width: 100%;
+   padding-left: 0;
+   padding-right: 0;
+ }
+  .list_recompensas li .cont_top .recorte{
+    width:100px;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    margin: 5px;
+ }
+ .list_recompensas li .cont_top .recorte img{
+    width:100px;
+    height: auto;
+    float: left;
+    border-radius: 120px;
+ }
+ .list_recompensas li .cont_top .content_descripcion p{
+    font-size: 14px;
+ }
+ /*PAGE RECOMPENSAS HOME*/
+ /*PAGE LIST BLOG HOME*/
+ .list_blog li .cont_top .content_descripcion p{
+    font-size: 15px;
+ }
+ .list_blog li .cont_top .content_descripcion h2{
+    font-size: 16px;
+ }
+ .list_blog li .cont_top .time span.hour{
+    font-size: 13px;
+ }
+ .list_blog li .cont_top .time span.day_month{
+    font-size: 32px;
+ }
+ .list_blog li .cont_top .time span.day_week{
+    font-size: 15px;
+ }
+ .list_blog li .cont_bottom span{
+    font-size: 13px;
+ }
+ .list_blog li .cont_bottom span{
+    font-size: 13px;
+    background-size:30px!important;
+    padding: 7px 0 7px 35px!important;
+ }
+ .list_blog li .cont_bottom{
+    margin-bottom: 10px;
+ }
+ /*PAGE LIST BLOG HOME*/
+}
+
+/* LANDSCAPE TABLED*/
+@media only screen
+and (max-width: 1024px)  
+and (min-width: 1024px)  
+and (orientation:landscape)
+{  
+ /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/      
+ .content_list_two ul.elite_list li.ui-btn-up-c, .content_list_two ul.elite_list li.ui-btn-hover-c{
+    float: left;
+    width: 49%;
+    margin: 0 3px!important;
+ }
+ /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/   
+ 
+ /*PAGE BUSCAN PATRCINIO home_buscan_patrocinio.html*/
+ .list_buscan_patro li .cont_bottom .mount{
+    display: none;
+ }
+ .list_buscan_patro li{
+   width: 49%;
+   float: left;
+   margin: 3px
+ }
+ .list_buscan_patro li .mount,.list_buscan_patro li .link_profile,.list_buscan_patro li .link_patrocina{
+    width: 33%;
+ }
+ .list_buscan_patro li .cont_bottom .link_profile h2,.list_buscan_patro li .cont_bottom .link_patrocina span{
+    width: 100%;
+    padding:7px 0;
+    text-align: center;
+     
+ }
+ .list_buscan_patro li .mount span{
+    display: inline-block;
+    width: 100%;
+    padding: 5px 0;
+    margin: 0 3px;
+    text-align: center;
+ }
+ .list_buscan_patro li .cont_bottom .mount{
+    display: inline-block;
+    overflow: hidden;
+ }
+ .list_buscan_patro li .cont_top .mount{
+    display: none;
+ }
+ .list_buscan_patro li .cont_top .content_descripcion p{
+    font-size: 14px;
+ }
+ /*PAGE BUSCAN PATRCINIO home_buscan_patrocinio.html*/
+ 
+ /*PAGE RECOMPENSAS HOME*/
+ .list_recompensas li .cont_bottom a.link_profile,.list_recompensas li .cont_bottom a.link_patrocina{
+    width: 50%;
+ }
+ .list_recompensas li .cont_bottom a.link_patrocina span,.list_recompensas li .cont_bottom a.link_profile h2{
+   width: 100%;
+   padding-left: 0;
+   padding-right: 0;
+ }
+  .list_recompensas li .cont_top .recorte{
+    width:100px;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    margin: 5px;
+ }
+ .list_recompensas li .cont_top .recorte img{
+    width:100px;
+    height: auto;
+    float: left;
+    border-radius: 120px;
+ }
+ /*PAGE RECOMPENSAS HOME*/
+ /*PAGE LIST BLOG HOME*/
+ .list_blog li{
+    float: left;
+    width: 48%;
+    margin: 10px;
+ }
+ .list_blog li .cont_top .content_descripcion p{
+    font-size: 15px;
+ }
+ .list_blog li .cont_top .content_descripcion h2{
+    font-size: 16px;
+ }
+ .list_blog li .cont_top .time span.hour{
+    font-size: 13px;
+ }
+ .list_blog li .cont_top .time span.day_month{
+    font-size: 32px;
+ }
+ .list_blog li .cont_top .time span.day_week{
+    font-size: 15px;
+ }
+ .list_blog li .cont_bottom span{
+    font-size: 13px;
+    background-size:30px!important;
+    padding: 7px 0 7px 35px!important;
+ }
+ .list_blog li .cont_bottom{
+    margin-bottom: 10px;
+ }
+ /*PAGE LIST BLOG HOME*/
 }
