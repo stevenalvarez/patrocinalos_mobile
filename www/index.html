@@ -46,12 +46,13 @@
 			
             //Inicializamos el api de facebook
             try {
+				//console.log('Device is ready!	Make sure you set your app_id below this alert.');
 				FB.init({
 					appId : "378569528879624",
 					nativeInterface : CDV.FB,
 					useCachedDialogs : false
 				});
-				document.getElementById('data').innerHTML = "FB init executedddddddd";
+				document.getElementById('data_loading_fb').innerHTML = "FB init executed";
 			} catch (e) {
 				alert(e);
 			}
@@ -185,9 +186,9 @@
                 <h1>
                     <img src="img/logo.png"/>
                 </h1>
-                <div id="data">Hello Facebooktesters, loading ...</div><br>
                 <div class="background_view">
                     <div class="btn-access">
+                        <div id="data_loading_fb" style="display: none;">loading fb...</div>
                         <a class="ui-btn-submit" href="#login_user" data-role="button" data-theme="r" data-transition="slide">INICIAR SESI&Oacute;N</a>
                         <a class="ui-btn-submit" href="#options_register" data-role="button" data-transition="slide">&Uacute;NETE A PATROCINALOS</a>
                     </div>
