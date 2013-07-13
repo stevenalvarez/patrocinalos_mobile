@@ -374,7 +374,7 @@ function llenarDatosSocial(social){
     if(social == "facebook"){
         console.log("entra aqui");
         var user = getMeInfo();
-        console.log("lamo");
+        console.log("lamo " + user);
         if(getLoginStatus()){
             console.log("entra aqui login");
             //llenamos los datos
