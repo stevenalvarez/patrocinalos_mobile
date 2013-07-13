@@ -370,23 +370,20 @@ function show_registro_social(social){
 }
 
 function llenarDatosSocial(social){
+    console.log("otra vez");
     
     if(social == "facebook"){
-        console.log("entra aqui");
-        var user = getMeInfo();
-        console.log("lamo " + user);
+        console.log("entorooo facebook");
         if(getLoginStatus()){
-            console.log("entra aqui login");
+            console.log("lenamos dartos");
             //llenamos los datos
             var user = getMeInfo();
             var picture = getMePicture("960");
             if(user){
-                console.log("entra aqui user");
                 $("#form_registro").find("#u_title").val(user.name);
                 $("#form_registro").find("#u_email_register").val(user.email);   
             }
             if(picture){
-                console.log("entra aqui picture");
                 $("#form_registro").find("#pictureImage").attr("src", picture.data.url);
                 $("#form_registro").find("#u_img_url_social").val(picture.data.url)
             }

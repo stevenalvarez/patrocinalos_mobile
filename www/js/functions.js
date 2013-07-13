@@ -143,18 +143,17 @@ function login() {
 }
 
 function getLoginStatus() {
-    alert("getLoginStatus");
+    var connected = false;
     FB.getLoginStatus(function(response) {
         if (response.status == 'connected') {
-            return true;
-        } else {
-            return false;
+            connected = true;
         }
     });
+    
+    return connected;
 }
 
 function getMeInfo(){
-    alert("getMeInfo");
     var data = "";
     FB.api('/me', {
         fields: 'id, name, email, picture'
@@ -163,9 +162,6 @@ function getMeInfo(){
            alert('get user datas failed ' + JSON.stringify(response.error));
         }else{
             data = response;
-            console.log(data);
-            console.log(data.name);
-            console.log(data.email);
         }
     });
     
@@ -173,7 +169,6 @@ function getMeInfo(){
 }
 
 function getMePicture(size){
-    alert("getMePicture");
     var data = "";
     FB.api("/me/picture?width="+size,  function(response) {
         if (response.error) { 
