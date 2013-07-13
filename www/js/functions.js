@@ -129,6 +129,9 @@ function showLoadingCustom(msg){
 
 /* FACEBOOK FUNCTION */
 function login() {
+    if(getLoginStatus()){
+        llenarDatosSocial("facebook");
+    }else{
 	FB.login(function(response) {
 		if (response.authResponse) {
 			console.log('logged in');
@@ -139,6 +142,7 @@ function login() {
 	}, {
 		scope : "email,offline_access,publish_stream,user_birthday,user_location,user_work_history,user_about_me,user_hometown"
 	});
+    }
 }
 
 function getLoginStatus() {
