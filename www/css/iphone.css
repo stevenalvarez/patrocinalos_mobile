@@ -331,7 +331,332 @@
  .list_blog li .cont_bottom{
     padding: 5px;
  }
+ 
+ .content_info_blog{
+    padding: 5px;
+ }
+ .content_info_blog .time_title{
+    overflow: hidden;
+ }
+ 
+ .content_info_blog .time_title .time{
+    float: left;
+ }
+ 
+  .content_info_blog .time_title .time > div{
+    float: left;
+    line-height: 13px;
+    padding-top: 6px;
+    padding-left: 5px;
+  }
+ .content_info_blog .time_title .time .day_month{
+    font-family: 'HelveticaInserat';
+    font-size: 32px;
+    color:#859898;
+    float: left;
+ }
+ .content_info_blog .time_title .time .month{
+    font-family: 'HelveticaExtraCompressedRoman';
+    font-size: 16px;
+    color:#98b5b5;
+    float: left;
+    clear: both;
+ }
+ .content_info_blog .time_title .time .day_week{
+    font-family: 'HelveticaCondensedMedium';
+    font-size: 15px;
+    color:#99b6b6;
+    float: left;
+    clear: both;
+ }
+ .content_info_blog .time_title h2{
+    font-family: 'HelveticaLTStdBoldCondensed';
+    font-size: 15px;
+    color:#00a1e3;
+    float: left;
+    margin-left: 15px;
+ }
+ .content_info_blog .description{
+    overflow: hidden;
+ }
+ .content_info_blog .description .image{
+   width: 100%;
+    height: auto;
+    max-width: 610px;
+    overflow: hidden;
+    margin: 5px 0;
+ }
+ .content_info_blog .description .image img{
+    width: 100%;
+    height: auto;
+    max-width: 610px;
+    float: left;
+ }
+ .content_info_blog .description p.text{
+   color: #859998;
+   font-family: 'HelveticaLTStdLight';
+   font-size: 13px;
+   font-weight: normal;
+ }
+ .content_info_blog .content_bottom{
+    border-top: 1px solid #e1e1e1;
+    margin: 15px 0;
+    padding: 7px 0;
+    overflow: hidden;
+ }
+ .content_info_blog .content_bottom span{
+   color: #00998d;
+   font-family: 'HelveticaLTStdLight';
+   font-size: 12px;
+   font-weight: normal;
+   background-size:18px!important;
+   padding:2px 0 2px 22px;
+ }
+ .content_info_blog .content_bottom span.coments_count{
+    background: url("../img/icon_coment.jpg") no-repeat scroll 0px 0px transparent;
+   margin-right: 15px;
+ }
+ .content_info_blog .content_bottom span.like_count{
+    background: url("../img/icon_like.jpg") no-repeat scroll 0px 0px transparent;
+ }
+ .content_info_blog .content_bottom .buttons{
+    margin: 10px 0;
+ }
+ .content_info_blog .content_bottom .buttons a{
+    background: #ff6148;
+    color: #fff;
+    border-radius: 4px;
+    padding: 7px 5px;
+    width: 45%;
+    display: block;
+    text-align: center;
+    font-family: 'HelveticaLTStdBoldCondensed';
+    font-size: 18px;
+ }
+ .content_info_blog .content_bottom .buttons  a.coment_b{
+    float: left;
+ }
+ .content_info_blog .content_bottom .buttons  a.like_b{
+    float:right;
+ }
+ .content_info_blog.form_comment textarea{
+    width:100%;
+    border:  1px solid #d2d2d2;
+    background: #fff;
+    box-shadow:none;
+    color: #00998d;
+   font-family: 'HelveticaLTStdLight';
+   font-size: 12px;
+   font-weight: normal;
+   height:140px;
+    
+ }
+ 
+ .content_info_blog.form_comment .form_count{
+    float: left;
+ }
+ 
+ .content_info_blog.form_comment .buttons{
+    float: right;   
+    margin-top: 0;
+ }
+ .content_info_blog.form_comment .buttons a{
+    min-width: 120px;
+ }
+ .content_info_blog.form_comment .content_bottom{
+    margin-top: 0;
+    padding-top: 0;
+    border: none;
+    border-bottom: 1px solid #d2d2d2;
+    overflow: hidden;
+ }
+ .content_info_blog.form_comment .list_comments_blog li{
+    overflow: hidden;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+    margin:4px 0;
+ }
+ .content_info_blog.form_comment .list_comments_blog li .avatar{
+    width: 15%;
+    float: left;
+    margin-right: 10px;
+    text-align: center;
+ }
+ .content_info_blog.form_comment .list_comments_blog li .avatar img{
+    width: 40px;
+    height: auto;
+    border-radius:120px;
+ }
+ .content_info_blog.form_comment .list_comments_blog li .text_comment{
+    
+ }
+ .content_info_blog.form_comment .list_comments_blog li .text_comment p{
+    font-family: 'HelveticaLTStdLight';
+    font-size: 12px;
+    color: #a1adad;
+    font-weight: normal;
+ }
+ 
+ .content_info_blog.form_comment .list_comments_blog li .text_comment p span{
+    color:#00a0e3;
+ }
+ .content_info_blog.form_comment .list_comments_blog li .text_comment{
+    width: 77%;
+    float: left;
+    padding: 5px;
+    border: 1px solid #c3c3c5;
+    box-shadow: 1px 1px 4px -1px #ddd;
+    border-radius: 2px;
+    background: url("../img/bg_item_comment.png") repeat-x scroll left bottom #fff;
+ }
+ .content_info_blog.form_comment .list_comments_blog li .text_comment > div{
+    background: url("../img/b_comment_left.png") no-repeat scroll left center transparent;
+    margin-left: -18px;
+    padding-left: 18px;
+ }
+ .content_info_blog.form_comment .subtitle{
+    color:#00a0e3;
+    font-family: 'HelveticaLTStdLight';
+    font-size: 15px;
+ }
+
  /*PAGE LIST BLOG HOME*/
+ 
+ /*PAGE INFO RONDA*/
+ .content_info_ronda{
+    
+ }
+ .content_info_ronda .description{
+    position: relative;
+ }
+ .content_info_ronda .description .image{
+    
+ }
+ .content_info_ronda .description .image img{
+    width: 100%;
+    
+ }
+ .content_info_ronda .description .text{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+ }
+ .content_info_ronda .description .text h2{
+    color:#fff;
+    background:url("../img/bg_title.png") repeat scroll 0 0 transparent;
+    width: 100%;
+    overflow: hidden;
+    display: inline-block;
+    padding: 5px 0;
+ }
+ .content_info_ronda .description .text p{
+    background: #009c70;
+    color: #fff;
+    font-family: 'HelveticaLTStdLight';
+    font-size: 15px;
+    font-weight: normal;
+    padding: 7px 0;
+ }
+ .content_info_ronda .description .text h2 span{
+    font-family: 'HelveticaLTStdBoldCondensed';
+ }
+ .content_info_ronda .description .text h2 strong{
+    font-family: 'HelveticaLTStdBoldCondensed';
+    font-size: 35px;
+ }
+ .content_info_ronda .profile{
+    background: #edf2f3;
+    width:auto;
+    padding: 10px;
+    overflow: hidden;
+ }
+ .content_info_ronda .profile img{
+    border-radius:3px;
+    box-shadow: 2px 2px 8px -3px #3d3d3d;
+    width: 50px;
+    float: left;
+ }
+ .content_info_ronda .profile .status{
+    float: left;
+    overflow: hidden;
+    margin-left: 7px;
+    padding: 7px 0 7px 0;
+ }
+ .content_info_ronda .profile .status span,.content_info_ronda .profile .status strong{
+    float: left;
+    clear: both;
+ }
+ 
+ .content_info_ronda .profile .status span{
+   color:#8d9d9e; 
+   font-family: 'HelveticaLTStdLight';
+    font-size: 13px;
+    font-weight: normal;
+ }
+ .content_info_ronda .profile .status strong{
+    color:#36566e;
+    font-family: 'HelveticaLTStdLight';
+    font-size: 13px;
+    font-weight: bold;
+ }
+ .content_info_ronda .profile a{
+    color: #fff;
+    font-family: 'HelveticaLTStdLight';
+    font-size: 15px;
+    font-weight: normal;
+    background: #00b66b;
+    border-radius: 3px;
+    clear: both;
+    display: block;
+    width: 200px;
+    text-align: center;
+    padding: 8px;
+    margin: 0 auto;
+  }
+ .content_info_ronda .profile > div{
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .content_info_ronda .content_bottom p{
+    color: #869798;
+    font-family: 'HelveticaLTStdLight';
+    font-size: 13px;
+    font-weight: normal;
+    margin-bottom: 5px;
+  }
+  .content_info_ronda .content_bottom h3{
+    color: #e55e63;
+    font-family: 'HelveticaLTStdLight';
+    font-size: 16px;
+    font-weight: normal;
+  }
+  .content_info_ronda .content_bottom h4{
+    background: #edf2f3;
+    border-left: 2px solid #e55d62;
+    padding: 5px 7px;
+    overflow: hidden;
+    
+  }
+  .content_info_ronda .content_bottom h4 span{
+    color: #e55e63;
+    font-family: 'HelveticaLTStdLight';
+    font-size: 16px;
+    font-weight: normal;
+    padding: 4px 0px;
+    float: left;
+  }
+  .content_info_ronda .content_bottom > div{
+    margin: 15px 0;
+  }
+  .content_info_ronda .content_bottom h4 strong{
+    font-family: 'HelveticaLTStdBoldCondensed';
+    font-size: 20px;
+    color:#e55d62;
+    float: right;
+  }
+ /*PAGE INFO RONDA*/
  
 /* PORTRAIT */
 @media only screen
@@ -435,6 +760,22 @@ and (orientation:landscape)
  .list_blog li .cont_top .content_descripcion h2{
     font-size: 15px;
  }
+ .content_info_blog .description .image{
+    width: 50%;
+    float: left;
+    margin-right: 10px;
+
+ }
+ .content_info_blog.form_comment .list_comments_blog li .text_comment p{
+    font-size: 13px;
+ }
+ .content_info_blog.form_comment .list_comments_blog li .avatar img{
+    width: 60px;
+ }
+ .content_info_blog.form_comment .list_comments_blog li .text_comment{
+    padding: 10px 5px;
+    margin-top: 10px;
+ }
  /*PAGE LIST BLOG HOME*/
  
 }
@@ -526,6 +867,35 @@ and (orientation:portrait)
  }
  .list_blog li .cont_bottom{
     margin-bottom: 10px;
+ }
+ .content_info_blog .description .image{
+    width: 50%;
+    float: left;
+    margin-right: 10px;
+}
+.content_info_blog .description p.text{
+    font-size: 14px;
+ }
+ .content_info_blog .time_title h2{
+    font-size: 20px;
+ }
+ .content_info_blog.form_comment .list_comments_blog li .text_comment p{
+    font-size: 14px;
+ }
+ .content_info_blog.form_comment .list_comments_blog li .avatar img{
+    width: 60px;
+ }
+ .content_info_blog.form_comment .list_comments_blog li .text_comment{
+    padding: 10px 5px;
+    margin-top: 10px;
+ }
+ .content_info_blog.form_comment form textarea{
+    font-size: 17px;
+ }
+ .content_info_blog .content_bottom span {
+    font-size: 15px;
+    background-size: 20px!important;
+    padding: 0 0 4px 30px;
  }
  /*PAGE LIST BLOG HOME*/
 }
@@ -632,6 +1002,35 @@ and (orientation:landscape)
  }
  .list_blog li .cont_bottom{
     margin-bottom: 10px;
+ }
+ .content_info_blog .description .image{
+    width: 50%;
+    float: left;
+    margin-right: 10px;
+ }
+ .content_info_blog .description p.text{
+    font-size: 14px;
+ }
+ .content_info_blog .time_title h2{
+    font-size: 20px;
+ }
+ .content_info_blog.form_comment .list_comments_blog li .text_comment p{
+    font-size: 14px;
+ }
+ .content_info_blog.form_comment .list_comments_blog li .avatar img{
+    width: 60px;
+ }
+ .content_info_blog.form_comment .list_comments_blog li .text_comment{
+    padding: 10px 5px;
+    margin-top: 10px;
+ }
+ .content_info_blog.form_comment form textarea{
+    font-size: 17px;
+ }
+ .content_info_blog .content_bottom span {
+    font-size: 15px;
+    background-size: 20px!important;
+    padding: 0 0 4px 30px;
  }
  /*PAGE LIST BLOG HOME*/
 }

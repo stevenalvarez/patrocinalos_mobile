@@ -80,6 +80,14 @@
          url('fonts/helveticaltstd-light.ttf') format('truetype'),
          url('fonts/helveticaltstd-light.svg#HelveticaLTStdLight') format('svg');
 }
+@font-face {
+    font-family: 'HelveticaExtraCompressedRoman';
+    src: url('fonts/helveticaexcomp.eot');
+    src: url('fonts/helveticaexcomp.eot') format('embedded-opentype'),
+         url('fonts/helveticaexcomp.woff') format('woff'),
+         url('fonts/helveticaexcomp.ttf') format('truetype'),
+         url('fonts/helveticaexcomp.svg#HelveticaExtraCompressedRoman') format('svg');
+}
 /* GENERAL */
 .bold{
     font-weight: bold;
