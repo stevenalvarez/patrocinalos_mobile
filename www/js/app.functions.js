@@ -389,6 +389,8 @@ function llenarDatosSocial(social){
                 $("#form_registro").find("#u_img_url_social").val(picture.data.url)
             }
             
+        }else{
+            alert("nooooo");
         }
     }else if(social == "twitter"){
         
