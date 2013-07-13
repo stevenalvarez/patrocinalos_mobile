@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+        <title>Patrocinalos</title>
+        
+        <link rel="stylesheet" href="css/jquery.mobile-1.3.1.css" />
+        <link rel="stylesheet" href="css/reset.css" />
+    	<link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/iphone.css"/>
+        <script src="js/jquery-1.8.2.js"></script>
+        
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.defaultPageTransition = 'slide';
+            });
+        </script>
+        
+        <script src="js/jquery.mobile-1.3.1.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/validate.add.method.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/functions.js"></script>
+        <script src="js/app.functions.js"></script>
+        <script src="js/main.js"></script>
+        <script type="text/javascript">
+            var pictureSource;   // picture source
+            var destinationType; // sets the format of returned value 
+            
+            // Wait for Cordova to connect with the device
+            //
+            document.addEventListener("deviceready",onDeviceReady,false);
+            
+            // Cordova is ready to be used!
+            //
+            function onDeviceReady() {
+                pictureSource=navigator.camera.PictureSourceType;
+                destinationType=navigator.camera.DestinationType;
+            }
+        </script>
+                
+    </head>
+    <body>
+    
+    <!-- INFO GENERAL -->
+    <!-- INFO GENERAL -->
+    <div data-role="page" id="info_ronda" data-theme="c">
+    
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
+                    </div>
+                </li>
+                <li class="page">
+                    <span>BLOG</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+    
+    	<div data-role="content">
+            <div class="content_info_blog">
+                <div class="time_title">
+                    <div  class="time">
+                        <span class="day_month">18</span>
+                        <div>
+                            <span class="month">JULIO</span>
+                            <span class="day_week">lunes</span>
+                        </div>
+                    </div>
+                    <h2>El perfil de la semana: Dragon Boat Pinatar</h2>
+                </div>
+                <div class="description">
+                    <div class="image">
+                        <img src="img/infoblog1.jpg" alt="blog"/>
+                    </div>
+                    <p class="text">
+                        El equipo de Drag&oacute;n Boat Pinatar, se lleva las palmas esta semana, con una 
+                        camara digital de 10.1 MP, este equipo de pirag&ucirc;ismo, actualmente segundos 
+                        en el ranking de la ronda Patrocina!!, no paran de trabajar.  Vienen liderando 
+                        posiciones desde el momento en que se ha registrado en patrocinalos.com, 
+                        compartiendo experiencias de toda su actividad deportiva, realmente nos 
+                        impresiona la fuerza del equipo.
+                    </p>
+                </div>
+                <div class="content_bottom">
+                    <div>
+                        <span class="coments_count">Comentarios <b>(100)</b></span>
+                        <span class="like_count">les gusta <b>(100)</b></span>
+                    </div>
+                    <div class="buttons">
+                        <a href="#" class="coment_b">COMENTAR</a>
+                        <a href="#" class="like_b">ME GUSTA</a>
+                    </div>
+                </div>
+            </div>
+    	</div><!-- /content -->
+        
+        <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="c" class="footer_menu">
+            <a href="#panel_menu" class="icon_menu">
+                <img src="img/bg_list_menu.png"/>
+            </a>
+        </div>
+        
+        <!-- data-dark-modal="true" data-dismissible="true" -->
+        <div data-role="panel" id="panel_menu" data-position="bottom" data-position-fixed="true" data-display="overlay" data-theme="r">
+            <a class="close_menu" href="#" data-rel="close" data-role="button" data-mini="true">
+                <img src="img/bg_list_menu.png"/>
+            </a>
+            <div class="actividad_comunidad">
+                <h5>ACTIVIDAD EN LA COMUNIDAD</h5>
+                <ul>
+                    <li>
+                        <a href="#" class="m_inicio">INICIO</a>
+                    </li>
+                    <li>
+                        <a href="#" class="m_inicio">DESTACADO</a>
+                    </li>                        
+                    <li>
+                        <a href="#" class="m_deportista_elite">DEPORTISTA &Eacute;LITE</a>
+                    </li>                        
+                    <li>
+                        <a href="#" class="m_busca_patrocinio">BUSCAN PATROCINIO</a>
+                    </li>                        
+                    <li>                        
+                        <a href="#" class="m_recompensa">RECOMPENSAS</a>
+                    </li>
+                    <li>
+                        <a href="#" class="m_blog">BLOG</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mi_patrocinio">
+                <h5>MI PATROCINIO</h5>
+                <ul>
+                    <li>
+                        <a href="#" class="m_editar">EDITAR MI PATROCINIO</a>
+                    </li>
+                    <li>
+                        <a href="#" class="m_recompensa">MIS RECOMPENSAS</a>
+                    </li>
+                    <li>
+                        <a href="#" class="m_recaudacion">MIS RECAUDACIONES</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mi_perfil">
+                <h5>MI PERFIL</h5>
+                <ul>
+                    <li>
+                        <a href="#" class="m_editar">EDITAR MI PERFIL</a>
+                    </li>
+                    <li>
+                        <a href="#" class="m_foto">FOTOS / VIDEOS</a>
+                    </li>
+                    <li>
+                        <a href="#" class="m_muro">MI MURO / BLOG</a>
+                    </li>
+                    <li>
+                        <a href="#" class="m_salir">SALIR</a>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /panel -->
+    
+    </div><!-- /page -->
+    
+    </body>
+</html>
