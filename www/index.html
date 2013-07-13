@@ -52,16 +52,19 @@
 					nativeInterface : CDV.FB,
 					useCachedDialogs : false
 				});
-				document.getElementById('data_loading_fb').innerHTML = "FB inicializado...";
+				document.getElementById('data_loading_fb').innerHTML = "FB inicializado";
 			} catch (e) {
 				alert(e);
 			}
         }
-
+		
+		/* FACEBOOK FUNCTION */
 		function login() {
 			FB.login(function(response) {
 				if (response.authResponse) {
-					alert('logged in');
+        			//console.log('logged in');
+                    llenarDatosSocial("facebook");
+                    show_registro_social("facebook");
 				} else {
 					alert('not logged in');
 				}
