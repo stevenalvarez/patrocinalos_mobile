@@ -693,7 +693,7 @@ form .valid_field span.success i{
     -webkit-box-shadow: 0px 0px 0px rgba(0,0,0,.2)
 }
 .header_navigation .back{
-    width: 13%;
+    width: 12%;
 }
 .header_navigation .setting{
     width: 10%;
@@ -703,7 +703,7 @@ form .valid_field span.success i{
     margin-top: 12px;
     margin-bottom: 7px;
     font-family: 'helvetica_neueblack';
-    width: 77%;
+    width: 78%;
     color: #cc5050;
     font-size: 15px;
 }
@@ -711,7 +711,6 @@ form .valid_field span.success i{
     background: url("../img/bg_back.png") no-repeat scroll left top transparent;
     height: 25px;
     width: 35px;
-    margin-left: 4px;
     border: 0;
     background-size: 35px;
 }
