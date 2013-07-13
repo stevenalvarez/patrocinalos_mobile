@@ -1,8 +1,3 @@
-/************************************ GLOBAL VARIABLES *******************************************************/
-var IMAGEURI;
-var ID_USUARIO;
-var FB_INITEXECUTED = false;
-
 /************************************ FUNCTION PHONEGAP *******************************************************/
 
 // A button will call this function
