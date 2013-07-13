@@ -366,21 +366,25 @@ function show_registro_social(social){
         $("#register_user").find(".page span").html("REGISTRO CON TWITTER");
     }
     
-    $.mobile.changePage('#register_user', {transition: "fade"});
+    $.mobile.changePage('#register_user', {transition: "slide"});
 }
 
 function llenarDatosSocial(social){
     
     if(social == "facebook"){
+        console.log("entra aqui");
         if(getLoginStatus()){
+            console.log("entra aqui login");
             //llenamos los datos
             var user = getMeInfo();
             var picture = getMePicture("960");
             if(user){
+                console.log("entra aqui user");
                 $("#form_registro").find("#u_title").val(user.name);
                 $("#form_registro").find("#u_email_register").val(user.email);   
             }
             if(picture){
+                console.log("entra aqui picture");
                 $("#form_registro").find("#pictureImage").attr("src", picture.data.url);
                 $("#form_registro").find("#u_img_url_social").val(picture.data.url)
             }
