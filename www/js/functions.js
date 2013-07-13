@@ -143,6 +143,7 @@ function login() {
 }
 
 function getLoginStatus() {
+    alert("getLoginStatus");
     FB.getLoginStatus(function(response) {
         if (response.status == 'connected') {
             return true;
@@ -153,6 +154,7 @@ function getLoginStatus() {
 }
 
 function getMeInfo(){
+    alert("getMeInfo");
     var data = "";
     FB.api('/me', {
         fields: 'id, name, email, picture'
@@ -168,6 +170,7 @@ function getMeInfo(){
 }
 
 function getMePicture(size){
+    alert("getMePicture");
     var data = "";
     FB.api("/me/picture?width="+size,  function(response) {
         if (response.error) { 
