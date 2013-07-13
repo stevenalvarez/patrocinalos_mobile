@@ -125,3 +125,57 @@ function showLoadingCustom(msg){
     	html: ""
     });
 }
+
+
+/* FACEBOOK FUNCTION */
+function login() {
+	FB.login(function(response) {
+		if (response.authResponse) {
+			//console.log('logged in');
+            llenarDatosSocial("facebook");
+            show_registro_social("facebook");
+		} else {
+			alert('no esta logeado');
+		}
+	}, {
+		scope : "email,offline_access,publish_stream,user_birthday,user_location,user_work_history,user_about_me,user_hometown"
+	});
+}
+
+function getLoginStatus() {
+    FB.getLoginStatus(function(response) {
+        if (response.status == 'connected') {
+            return true;
+        } else {
+            return false;
+        }
+    });
+}
+
+function getMeInfo(){
+    var data = "";
+    FB.api('/me', {
+        fields: 'id, name, email, picture'
+    },function(response) {
+        if (response.error) { 
+           alert('get user datas failed ' + JSON.stringify(response.error));
+        }else{
+            data = response;
+        }
+    });
+    
+    return data;
+}
+
+function getMePicture(size){
+    var data = "";
+    FB.api("/me/picture?width="+size,  function(response) {
+        if (response.error) { 
+           alert('get picture failed ' + JSON.stringify(response.error));
+        }else{
+            data = response;
+        }
+    });
+    
+    return data;
+}

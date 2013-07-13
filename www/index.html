@@ -28,52 +28,12 @@
         <script src="js/functions.js"></script>
         <script src="js/app.functions.js"></script>
         <script src="js/main.js"></script>
+        
+        <!-- cargamos al ultimo el script que inicializa los valores una vez cargado el dispositivo -->
+        <script type="text/javascript" src="js/app.ready.js"></script>
         <script type="text/javascript">
-        var pictureSource;   // picture source
-        var destinationType; // sets the format of returned value
-        var friendIDs = [];
-        var fdata; 
-    
-        // Wait for Cordova to connect with the device
-        //
-        document.addEventListener("deviceready",onDeviceReady,false);
-    
-        // Cordova is ready to be used!
-        //
-        function onDeviceReady() {
-            pictureSource=navigator.camera.PictureSourceType;
-            destinationType=navigator.camera.DestinationType;
-			
-            //Inicializamos el api de facebook
-            try {
-				//console.log('Device is ready!	Make sure you set your app_id below this alert.');
-				FB.init({
-					appId : "378569528879624",
-					nativeInterface : CDV.FB,
-					useCachedDialogs : false
-				});
-				document.getElementById('data_loading_fb').innerHTML = "FB inicializado";
-			} catch (e) {
-				alert(e);
-			}
-        }
-		
-		/* FACEBOOK FUNCTION */
-		function login() {
-			FB.login(function(response) {
-				if (response.authResponse) {
-        			//console.log('logged in');
-                    llenarDatosSocial("facebook");
-                    show_registro_social("facebook");
-				} else {
-					alert('not logged in');
-				}
-			}, {
-				scope : "email,offline_access,publish_stream,user_birthday,user_location,user_work_history,user_about_me,user_hometown"
-			});
-		}
+            app.initialize();
         </script>
-                
     </head>
     <body>
         
