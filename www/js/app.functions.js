@@ -1,6 +1,7 @@
 /************************************ GLOBAL VARIABLES *******************************************************/
 var IMAGEURI;
 var ID_USUARIO;
+var FB_INITEXECUTED = false;
 
 /************************************ FUNCTION PHONEGAP *******************************************************/
 
@@ -360,4 +361,37 @@ function key_press(){
 function clear_form(form){
     $("#"+form).find("span.success").remove();
     document.getElementById(form).reset();
+}
+
+function show_registro_social(social){
+    
+    if(social == "facebook"){
+        $("#register_user").find(".page span").html("REGISTRO CON FACEBOOK");
+    }else if(social == "twitter"){
+        $("#register_user").find(".page span").html("REGISTRO CON TWITTER");
+    }
+    
+    $.mobile.changePage('#register_user', {transition: "fade"});
+}
+
+function llenarDatosSocial(social){
+    
+    if(social == "facebook"){
+        if(getLoginStatus()){
+            //llenamos los datos
+            var user = getMeInfo();
+            var picture = getMePicture("960");
+            if(user){
+                $("#form_registro").find("#u_title").val(user.name);
+                $("#form_registro").find("#u_email_register").val(user.email);   
+            }
+            if(picture){
+                $("#form_registro").find("#pictureImage").attr("src", picture.data.url);
+                $("#form_registro").find("#u_img_url_social").val(picture.data.url)
+            }
+            
+        }
+    }else if(social == "twitter"){
+        
+    }
 }

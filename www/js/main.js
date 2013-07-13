@@ -22,6 +22,7 @@ $('#view').live('pagebeforeshow', function(event, ui) {
 
 //REGISTRO
 $(document).on('pageinit', "#register_user", function(){
+    llenarDatosSocial();
     llenarDeportes();
     form_registro();
     key_press();
