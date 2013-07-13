@@ -380,16 +380,21 @@ function llenarDatosSocial(social){
             var user = getMeInfo();
             var picture = getMePicture("960");
             if(user){
+                console.log("user" + user);
                 $("#form_registro").find("#u_title").val(user.name);
                 $("#form_registro").find("#u_email_register").val(user.email);   
             }
             if(picture){
+                console.log("picture" + picture);
                 $("#form_registro").find("#pictureImage").attr("src", picture.data.url);
                 $("#form_registro").find("#u_img_url_social").val(picture.data.url)
             }
             
+            //Mandamos al vista
+            show_registro_social(social);
+            
         }else{
-            alert("nooooo");
+            showAlert("A ocurrido un error, usted no esta logeado!", 'Error', 'Aceptar');
         }
     }else if(social == "twitter"){
         

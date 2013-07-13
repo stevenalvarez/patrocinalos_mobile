@@ -131,9 +131,8 @@ function showLoadingCustom(msg){
 function login() {
 	FB.login(function(response) {
 		if (response.authResponse) {
-			//console.log('logged in');
+			console.log('logged in');
             llenarDatosSocial("facebook");
-            show_registro_social("facebook");
 		} else {
 			alert('no esta logeado');
 		}
