@@ -379,6 +379,10 @@ function llenarDatosSocial(social){
             //llenamos los datos
             var user = getMeInfo();
             var picture = getMePicture("960");
+            console.log("user total" + user);
+            console.log("user total" + user.name);
+            console.log("user total" + user.email);
+            console.log("picture total" + picture);
             if(user){
                 console.log("user" + user);
                 $("#form_registro").find("#u_title").val(user.name);
