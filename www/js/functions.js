@@ -147,33 +147,39 @@ function login() {
 
 function getLoginStatus() {
     var connected = false;
-    return FB.getLoginStatus(function(response) {
-        if (response.status == 'connected') {
-            connected = true;
-        }
-    });
+    return (function() {
+        FB.getLoginStatus(function(response) {
+            if (response.status == 'connected') {
+                return connected = true;
+            }
+        });
+    })();
 }
 
 function getMeInfo(){
     var data = "";
-    return FB.api('/me', {
-        fields: 'id, name, email, picture'
-    },function(response) {
-        if (response.error) { 
-           alert('get user datas failed ' + JSON.stringify(response.error));
-        }else{
-            data = response;
-        }
-    });
+    return (function() {
+        FB.api('/me', {
+            fields: 'id, name, email, picture'
+        },function(response) {
+            if (response.error) { 
+               alert('get user datas failed ' + JSON.stringify(response.error));
+            }else{
+                return data = response;
+            }
+        });
+    })();
 }
 
 function getMePicture(size){
     var data = "";
-    return FB.api("/me/picture?width="+size,  function(response) {
-        if (response.error) { 
-           alert('get picture failed ' + JSON.stringify(response.error));
-        }else{
-            data = response;
-        }
-    });
+    return (function() {
+        FB.api("/me/picture?width="+size,  function(response) {
+            if (response.error) { 
+               alert('get picture failed ' + JSON.stringify(response.error));
+            }else{
+                return data = response;
+            }
+        });
+    })();
 }
