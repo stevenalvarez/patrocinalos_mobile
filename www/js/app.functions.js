@@ -372,11 +372,9 @@ function show_registro_social(social){
 function llenarDatosSocial(social){
     console.log("otra vez");
     
-    console.log("aaaaaaaxxxxxxxxxxxxxxxxxxxx");
-    var red = app.getInfoFB();
-    console.log(red);
-    console.log(red.name);
-    console.log(red.email);
+    console.log("xxxxxxxxxxxxxxxxxxxx");
+    console.log(app.getInfoFB());
+    console.log(FB_USER_INFO);
     console.log("xxxxxxxxxxxxxxxxxxxx");
     if(social == "facebook"){
         console.log("entorooo facebook");
