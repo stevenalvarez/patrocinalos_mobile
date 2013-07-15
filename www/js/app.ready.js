@@ -46,16 +46,20 @@ var app = {
     },
     // Obtemos los datos del usuario
     getInfoFB : function(){
+        console.log("entra");
         return {
         FB.api('/me', {
             fields: 'id, name, email, picture'
         },function(response) {
             if (response.error) { 
+                    console.log("errrrororoor");
                alert('get user datas failed ' + JSON.stringify(response.error));
             }else{
+                    console.log("seeeee");
                 return response;
             }
         });
     }
+        console.log("sale");
     }
 };               
