@@ -372,6 +372,9 @@ function show_registro_social(social){
 function llenarDatosSocial(social){
     console.log("otra vez");
     
+    console.log("xxxxxxxxxxxxxxxxxxxx");
+    console.log(app.getInfoFB());
+    console.log("xxxxxxxxxxxxxxxxxxxx");
     if(social == "facebook"){
         console.log("entorooo facebook");
         if(getLoginStatus()){
