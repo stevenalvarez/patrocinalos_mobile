@@ -5,6 +5,7 @@ var friendIDs = [];
 var IMAGEURI;
 var ID_USUARIO;
 var FB_INITEXECUTED = false;
+var FB_LOGIN_SUCCESS = false;
 
 var app = {
     // Application Constructor
@@ -43,21 +44,5 @@ var app = {
 		} catch (e) {
 			alert(e);
 		}
-    },
-    // Obtemos los datos del usuario
-    getInfoFB : function(){
-        return {
-        FB.api('/me', {
-            fields: 'id, name, email, picture'
-        },function(response) {
-            if (response.error) { 
-               alert('get user datas failed ' + JSON.stringify(response.error));
-            }else{
-                    alert("puta!")
-                    FB_USER_INFO = response; 
-                return response;
-            }
-        });
-    }
     }
 };               

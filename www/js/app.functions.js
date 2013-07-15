@@ -372,39 +372,20 @@ function show_registro_social(social){
 function llenarDatosSocial(social){
     console.log("otra vez");
     
-    console.log("xxxxxxxxxxxxxxxxxxxx");
-    console.log(app.getInfoFB());
-    console.log(FB_USER_INFO);
-    console.log("xxxxxxxxxxxxxxxxxxxx");
     if(social == "facebook"){
-        console.log("entorooo facebook");
-        if(getLoginStatus()){
-            console.log("lenamos dartos");
-            //llenamos los datos
-            var user = getMeInfo();
-            var picture = getMePicture("960");
-            console.log("user total" + user);
-            console.log("user total" + user.name);
-            console.log("user total" + user.email);
-            console.log("picture total" + picture);
-            if(user){
-                console.log("user" + user);
-                $("#form_registro").find("#u_title").val(user.name);
-                $("#form_registro").find("#u_email_register").val(user.email);   
-            }
-            if(picture){
-                console.log("picture" + picture);
-                $("#form_registro").find("#pictureImage").attr("src", picture.data.url);
-                $("#form_registro").find("#u_img_url_social").val(picture.data.url)
-            }
-            
-            //Mandamos al vista
-            show_registro_social(social);
-            
+        console.log("facebook");
+        if(FB_LOGIN_SUCCESS){
+            setTimeout(function(){
+                show_registro_social(social);
+            }, 1500);
         }else{
-            showAlert("User cancelled login or did not fully authorize.", 'Error', 'Aceptar');
+            erroLogin();
         }
     }else if(social == "twitter"){
         
     }
+}
+
+function erroLogin(){
+    showAlert("User cancelled login or did not fully authorize.", 'Error', 'Aceptar');    
 }
