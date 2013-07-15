@@ -56,9 +56,7 @@
     <gap:splash src="res/screen/ios/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480" />
     
     <!-- setting facebook 15/07/2013-->
-    
-    
-    <gap:plugin name="FacebookConnect">
+    <gap:plugin name="com.phonegap.plugins.facebook">
        <param name="APP_ID" value="123456" />
        <param name="APP_NAME" value="ContosoMobile" />
      </gap:plugin>    
