@@ -373,7 +373,9 @@ function llenarDatosSocial(social){
     console.log("otra vez");
     
     console.log("xxxxxxxxxxxxxxxxxxxx");
-    console.log(app.getInfoFB());
+    var red = app.getInfoFB();
+    console.log(red.name);
+    console.log(red.email);
     console.log("xxxxxxxxxxxxxxxxxxxx");
     if(social == "facebook"){
         console.log("entorooo facebook");
