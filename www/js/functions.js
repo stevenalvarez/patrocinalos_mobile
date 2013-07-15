@@ -147,39 +147,47 @@ function login() {
 
 function getLoginStatus() {
     var connected = false;
-    return (function() {
-        FB.getLoginStatus(function(response) {
-            if (response.status == 'connected') {
-                return connected = true;
-            }
-        });
-    })();
+    FB.getLoginStatus(function(response) {
+        if (response.status == 'connected') {
+            connected = true;
+        }
+    });
+    
+    return connected;
 }
 
 function getMeInfo(){
     var data = "";
-    return (function() {
-        FB.api('/me', {
-            fields: 'id, name, email, picture'
-        },function(response) {
-            if (response.error) { 
-               alert('get user datas failed ' + JSON.stringify(response.error));
-            }else{
-                return data = response;
-            }
-        });
-    })();
+        
+        (function() {
+            FB.api('/me', {
+                fields: 'id, name, email, picture'
+            },function(response) {
+                if (response.error) { 
+                   alert('get user datas failed ' + JSON.stringify(response.error));
+                }else{
+                    console.log("peraaaaaaaaaaa");
+                    data = response;
+                }
+            });
+        })();
+    
+    return data;
 }
 
 function getMePicture(size){
     var data = "";
-    return (function() {
-        FB.api("/me/picture?width="+size,  function(response) {
-            if (response.error) { 
-               alert('get picture failed ' + JSON.stringify(response.error));
-            }else{
-                return data = response;
-            }
-        });
-    })();
+    
+        (function() {
+            FB.api("/me/picture?width="+size,  function(response) {
+                if (response.error) { 
+                   alert('get picture failed ' + JSON.stringify(response.error));
+                }else{
+                    console.log("peraaaaaaaaaaa2222222222");
+                    data = response;
+                }
+            });
+        })();
+    
+    return data;
 }
