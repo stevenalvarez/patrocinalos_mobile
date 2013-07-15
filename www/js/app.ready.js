@@ -47,7 +47,7 @@ var app = {
     // Obtemos los datos del usuario
     getInfoFB : function(){
         console.log("entra");
-        return {
+        return function() {
         FB.api('/me', {
             fields: 'id, name, email, picture'
         },function(response) {
