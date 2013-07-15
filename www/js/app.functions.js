@@ -398,7 +398,7 @@ function llenarDatosSocial(social){
             show_registro_social(social);
             
         }else{
-            showAlert("A ocurrido un error, usted no esta logeado!", 'Error', 'Aceptar');
+            showAlert("User cancelled login or did not fully authorize.", 'Error', 'Aceptar');
         }
     }else if(social == "twitter"){
         

@@ -158,36 +158,28 @@ function getLoginStatus() {
 
 function getMeInfo(){
     var data = "";
-        
-        (function() {
-            FB.api('/me', {
-                fields: 'id, name, email, picture'
-            },function(response) {
-                if (response.error) { 
-                   alert('get user datas failed ' + JSON.stringify(response.error));
-                }else{
-                    console.log("peraaaaaaaaaaa");
-                    data = response;
-                }
-            });
-        })();
+    FB.api('/me', {
+        fields: 'id, name, email, picture'
+    },function(response) {
+        if (response.error) { 
+           alert('get user datas failed ' + JSON.stringify(response.error));
+        }else{
+            data = response;
+        }
+    });
     
     return data;
 }
 
 function getMePicture(size){
     var data = "";
-    
-        (function() {
-            FB.api("/me/picture?width="+size,  function(response) {
-                if (response.error) { 
-                   alert('get picture failed ' + JSON.stringify(response.error));
-                }else{
-                    console.log("peraaaaaaaaaaa2222222222");
-                    data = response;
-                }
-            });
-        })();
+    FB.api("/me/picture?width="+size,  function(response) {
+        if (response.error) { 
+           alert('get picture failed ' + JSON.stringify(response.error));
+        }else{
+            data = response;
+        }
+    });
     
     return data;
 }
