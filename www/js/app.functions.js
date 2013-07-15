@@ -372,8 +372,9 @@ function show_registro_social(social){
 function llenarDatosSocial(social){
     console.log("otra vez");
     
-    console.log("xxxxxxxxxxxxxxxxxxxx");
+    console.log("aaaaaaaxxxxxxxxxxxxxxxxxxxx");
     var red = app.getInfoFB();
+    console.log(red);
     console.log(red.name);
     console.log(red.email);
     console.log("xxxxxxxxxxxxxxxxxxxx");
