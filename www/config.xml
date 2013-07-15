@@ -56,10 +56,10 @@
     <gap:splash src="res/screen/ios/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480" />
     
     <!-- setting facebook 15/07/2013-->
-    <gap:plugin name="com.phonegap.plugins.facebook">
-       <param name="APP_ID" value="123456" />
-       <param name="APP_NAME" value="ContosoMobile" />
-     </gap:plugin>    
+    <gap:plugin name="com.phonegap.plugins.facebook" />
+        <param name="APP_ID" value="378569528879624" />
+        <param name="APP_NAME" value="Patrocinalos by Mazzel" />
+    </gap:plugin>
     
     <plugin name="InAppBrowser" value="CDVInAppBrowser" />
     <plugin name="InAppBrowser" />
