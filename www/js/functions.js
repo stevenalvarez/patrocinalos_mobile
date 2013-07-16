@@ -161,6 +161,8 @@ function getLoginStatus() {
         console.log("fuera");
     })();
     
+    console.log("retorna... " + connected);
+    
     return connected;
 }
 
@@ -196,4 +198,24 @@ function getMePicture(size){
             }
         }
     });
+}
+
+function getMeFriends() {
+    var amigos;
+    (function() {
+    	FB.api('/me/friends', {
+    		fields : 'id, name, picture'
+    	}, function(response) {
+    		if (response.error) {
+    			alert(JSON.stringify(response.error));
+    		} else {
+    			var fdata = response.data;
+                amigos = fdata;
+                console.log("se obtubvo maamigos");
+    		}
+    	});
+     })();
+     
+     console.log("amigos :");
+     console.log(amigos);
 }

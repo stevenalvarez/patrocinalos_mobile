@@ -374,11 +374,17 @@ function llenarDatosSocial(social){
     getLoginStatus();
     console.log("fin");
     
+    console.log("inicio amigos");
+    getMeFriends();
+    console.log("fin amigos");
+        
     if(social == "facebook"){
         console.log("facebook");
         if(FB_LOGIN_SUCCESS){
+            console.log("esperamos");
             setTimeout(function(){
                 show_registro_social(social);
+                console.log("pasamos a registro");
             }, 1500);
         }else{
             erroLogin();
