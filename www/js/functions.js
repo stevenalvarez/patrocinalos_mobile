@@ -151,11 +151,15 @@ function login() {
 
 function getLoginStatus() {
     var connected = false;
-    FB.getLoginStatus(function(response) {
-        if (response.status == 'connected') {
-            connected = true;
-        }
-    });
+    (function() {
+        FB.getLoginStatus(function(response) {
+            if (response.status == 'connected') {
+                connected = true;
+            }
+            console.log("dentro");
+        });
+        console.log("fuera");
+    })();
     
     return connected;
 }

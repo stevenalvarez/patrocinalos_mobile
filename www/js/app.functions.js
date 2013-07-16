@@ -370,6 +370,9 @@ function show_registro_social(social){
 }
 
 function llenarDatosSocial(social){
+    console.log("inicio");
+    getLoginStatus();
+    console.log("fin");
     
     if(social == "facebook"){
         console.log("facebook");
