@@ -202,7 +202,7 @@ function getMePicture(size){
 
 function getMeFriends() {
     var amigos;
-    (function() {
+    return function() {
     	FB.api('/me/friends', {
     		fields : 'id, name, picture'
     	}, function(response) {
@@ -210,11 +210,12 @@ function getMeFriends() {
     			alert(JSON.stringify(response.error));
     		} else {
     			var fdata = response.data;
-                amigos = fdata;
-                console.log("se obtubvo maamigos");
+                return amigos = fdata;
+                console.log("se obtuvo amigos:");
+                console.log(amigos);
     		}
     	});
-     })();
+     };
      
      console.log("amigos :");
      console.log(amigos);

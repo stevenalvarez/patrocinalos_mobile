@@ -375,7 +375,8 @@ function llenarDatosSocial(social){
     console.log("fin");
     
     console.log("inicio amigos");
-    getMeFriends();
+    var friends = getMeFriends();
+    friends();
     console.log("fin amigos");
         
     if(social == "facebook"){
