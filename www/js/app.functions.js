@@ -358,8 +358,70 @@ function clear_form(form){
     document.getElementById(form).reset();
 }
 
-function show_registro_social(social){
-    console.log("show_registro_social");
+/* REGISTRO FACEBOOK FUNCTION */
+//getLoginStatus
+function getLoginStatus() {
+    var connected = false;
+    FB.getLoginStatus(function(response) {
+        if (response.status == 'connected') {
+            connected = true;
+        }
+    });
+    
+    return connected;
+}
+
+//loginFacebookConnect
+function loginFacebookConnect() {
+    if(getLoginStatus()){
+        showRegistroSocial("facebook");
+    }else{
+    	FB.login(function(response) {
+    		if (response.authResponse) {
+                
+                //llenamos los datos name, email
+                FB.api('/me', {
+                    fields: 'id, name, email, picture'
+                },function(response) {
+                    if (response.error) { 
+                       alert('get user datas failed ' + JSON.stringify(response.error));
+                    }else{
+                        var user = response;
+                        $("#form_registro").find("#u_title").val(user.name);
+                        $("#form_registro").find("#u_email_register").val(user.email);
+                        
+                        //ocultamos el loading...
+                        $.mobile.loading( 'hide' );
+                    }
+                });
+                
+                //imagen del usuario
+                FB.api("/me/picture?width=960",  function(response) {
+                    if (response.error) { 
+                       alert('get picture failed ' + JSON.stringify(response.error));
+                    }else{
+                        var picture = response;
+                        $("#form_registro").find("#pictureImage").attr("src", picture.data.url).show();
+                        $("#form_registro").find("#u_img_url_social").val(picture.data.url);
+                    }
+                });
+                
+                //mandamos al registro
+                setTimeout(function(){
+                    showRegistroSocial('facebook');
+                    showLoadingCustom('Cargando datos...');
+                }, 10);
+                
+    		} else {
+                showAlert("User cancelled login or did not fully authorize.", 'Error Login', 'Aceptar');
+    		}
+    	}, {
+    		scope : "email,offline_access,publish_stream,user_birthday,user_location,user_work_history,user_about_me,user_hometown"
+    	});
+    }
+}
+
+function showRegistroSocial(social){
     
     if(social == "facebook"){
         $("#register_user").find(".page span").html("REGISTRO CON FACEBOOK");
