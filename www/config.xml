@@ -55,10 +55,10 @@
     <gap:splash src="res/screen/ios/screen-iphone-portrait.png" />
     <gap:splash src="res/screen/ios/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480" />
     
-    <!-- setting facebook 15/07/2013-->
-    <gap:plugin name="com.phonegap.plugins.FacebookConnect">
-        <param name="APP_ID" value="378569528879624" />
-        <param name="APP_NAME" value="Patrocinalos by Mazzel" />
+    <!-- setting com.phonegap.plugins.facebookconnect 15/07/2013-->
+    <gap:plugin name="com.phonegap.plugins.facebookconnect">
+        <preference name="APP_ID" value="378569528879624" />
+        <preference name="APP_NAME" value="Patrocinalos by Mazzel" />
     </gap:plugin>
     
     <plugin name="InAppBrowser" value="CDVInAppBrowser" />
