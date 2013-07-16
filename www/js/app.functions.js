@@ -373,11 +373,13 @@ function getLoginStatus() {
 
 //loginFacebookConnect
 function loginFacebookConnect() {
-    if(getLoginStatus()){
+    if(FB_LOGIN_SUCCESS){
         showRegistroSocial("facebook");
     }else{
     	FB.login(function(response) {
     		if (response.authResponse) {
+    		  
+                FB_LOGIN_SUCCESS = true;
                 
                 //llenamos los datos name, email
                 FB.api('/me', {
