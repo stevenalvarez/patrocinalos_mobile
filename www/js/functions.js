@@ -161,7 +161,6 @@ function getLoginStatus() {
 }
 
 function getMeInfo(){
-    console.log("getMeInfo");
     FB.api('/me', {
         fields: 'id, name, email, picture'
     },function(response) {
@@ -180,14 +179,13 @@ function getMeInfo(){
 }
 
 function getMePicture(size){
-    console.log("getMePicture");
     FB.api("/me/picture?width="+size,  function(response) {
         if (response.error) { 
            alert('get picture failed ' + JSON.stringify(response.error));
         }else{
             var picture = response;
             if(FB_LOGIN_SUCCESS){
-                $("#form_registro").find("#pictureImage").attr("src", picture.data.url);
+                $("#form_registro").find("#pictureImage").attr("src", picture.data.url).show();
                 $("#form_registro").find("#u_img_url_social").val(picture.data.url);
             }else{
                 erroLogin();
