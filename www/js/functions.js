@@ -129,12 +129,16 @@ function showLoadingCustom(msg){
 
 /* FACEBOOK FUNCTION */
 function login() {
-    if(getLoginStatus()){
+    if(FB_LOGIN_SUCCESS){
+        getMeInfo();
+        getMePicture("960");
         llenarDatosSocial("facebook");
     }else{
 	FB.login(function(response) {
 		if (response.authResponse) {
-			console.log('logged in');
+            FB_LOGIN_SUCCESS = true;
+            getMeInfo();
+            getMePicture("960");
             llenarDatosSocial("facebook");
 		} else {
 			alert('no esta logeado');
@@ -157,29 +161,37 @@ function getLoginStatus() {
 }
 
 function getMeInfo(){
-    var data = "";
+    console.log("getMeInfo");
     FB.api('/me', {
         fields: 'id, name, email, picture'
     },function(response) {
         if (response.error) { 
            alert('get user datas failed ' + JSON.stringify(response.error));
         }else{
-            data = response;
+            var user = response;
+            if(FB_LOGIN_SUCCESS){
+                $("#form_registro").find("#u_title").val(user.name);
+                $("#form_registro").find("#u_email_register").val(user.email);
+            }else{
+                erroLogin();
+            }
         }
     });
-    
-    return data;
 }
 
 function getMePicture(size){
-    var data = "";
+    console.log("getMePicture");
     FB.api("/me/picture?width="+size,  function(response) {
         if (response.error) { 
            alert('get picture failed ' + JSON.stringify(response.error));
         }else{
-            data = response;
+            var picture = response;
+            if(FB_LOGIN_SUCCESS){
+                $("#form_registro").find("#pictureImage").attr("src", picture.data.url);
+                $("#form_registro").find("#u_img_url_social").val(picture.data.url);
+            }else{
+                erroLogin();
+            }
         }
     });
-    
-    return data;
 }

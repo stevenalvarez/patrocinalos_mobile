@@ -5,6 +5,7 @@ var friendIDs = [];
 var IMAGEURI;
 var ID_USUARIO;
 var FB_INITEXECUTED = false;
+var FB_LOGIN_SUCCESS = false;
 
 var app = {
     // Application Constructor
