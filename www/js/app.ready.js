@@ -4,8 +4,6 @@ var destinationType; // sets the format of returned value
 var friendIDs = [];
 var IMAGEURI;
 var ID_USUARIO;
-var FB_INITEXECUTED = false;
-var FB_LOGIN_SUCCESS = false;
 
 var app = {
     // Application Constructor
@@ -40,7 +38,6 @@ var app = {
 				useCachedDialogs : false
 			});
 			document.getElementById('data_loading_fb').innerHTML = "FB inicializado...";
-            FB_INITEXECUTED = true;
 		} catch (e) {
 			alert(e);
 		}

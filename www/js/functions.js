@@ -128,18 +128,26 @@ function showLoadingCustom(msg){
 
 
 /* FACEBOOK FUNCTION */
+function getLoginStatus() {
+    var connected = false;
+    FB.getLoginStatus(function(response) {
+        if (response.status == 'connected') {
+            connected = true;
+        }
+    });
+    
+    return connected;
+}
+
 function login() {
-    if(FB_LOGIN_SUCCESS){
-        getMeInfo();
-        getMePicture("960");
-        llenarDatosSocial("facebook");
+    if(getLoginStatus()){
+        console.log("ya esta logeado");
+        show_registro_social("facebook");
     }else{
 	FB.login(function(response) {
 		if (response.authResponse) {
-            FB_LOGIN_SUCCESS = true;
-            getMeInfo();
-            getMePicture("960");
-            llenarDatosSocial("facebook");
+		    console.log("llenamos los datos");
+            fillDataRegistro();
 		} else {
 			alert('no esta logeado');
 		}
@@ -149,24 +157,11 @@ function login() {
     }
 }
 
-function getLoginStatus() {
-    var connected = false;
-    (function() {
-        FB.getLoginStatus(function(response) {
-            if (response.status == 'connected') {
-                connected = true;
-            }
-            console.log("dentro");
-        });
-        console.log("fuera");
-    })();
+function fillDataRegistro(){
+    console.log("fillDataRegistro");
+    showLoadingCustom('Cargando datos...');
     
-    console.log("retorna... " + connected);
-    
-    return connected;
-}
-
-function getMeInfo(){
+    //Datos del usuario
     FB.api('/me', {
         fields: 'id, name, email, picture'
     },function(response) {
@@ -174,49 +169,29 @@ function getMeInfo(){
            alert('get user datas failed ' + JSON.stringify(response.error));
         }else{
             var user = response;
-            if(FB_LOGIN_SUCCESS){
-                $("#form_registro").find("#u_title").val(user.name);
-                $("#form_registro").find("#u_email_register").val(user.email);
-            }else{
-                erroLogin();
-            }
+            $("#form_registro").find("#u_title").val(user.name);
+            $("#form_registro").find("#u_email_register").val(user.email);
+            $.mobile.loading( 'hide' );
+            console.log("hide fillDataRegistro");
         }
     });
-}
-
-function getMePicture(size){
-    FB.api("/me/picture?width="+size,  function(response) {
+    
+    showLoadingCustom('Cargando datos...');
+    
+    //imagen del usuario
+    FB.api("/me/picture?width=960",  function(response) {
         if (response.error) { 
            alert('get picture failed ' + JSON.stringify(response.error));
         }else{
             var picture = response;
-            if(FB_LOGIN_SUCCESS){
-                $("#form_registro").find("#pictureImage").attr("src", picture.data.url).show();
-                $("#form_registro").find("#u_img_url_social").val(picture.data.url);
-            }else{
-                erroLogin();
-            }
+            $("#form_registro").find("#pictureImage").attr("src", picture.data.url).show();
+            $("#form_registro").find("#u_img_url_social").val(picture.data.url);
+            $.mobile.loading( 'hide' );
+            console.log("hide picture");
         }
     });
-}
-
-function getMeFriends() {
-    var amigos;
-    return function() {
-    	FB.api('/me/friends', {
-    		fields : 'id, name, picture'
-    	}, function(response) {
-    		if (response.error) {
-    			alert(JSON.stringify(response.error));
-    		} else {
-    			var fdata = response.data;
-                return amigos = fdata;
-                console.log("se obtuvo amigos:");
-                console.log(amigos);
-    		}
-    	});
-     };
-     
-     console.log("amigos :");
-     console.log(amigos);
+    
+    setTimeout(function(){
+        show_registro_social('facebook');
+    }, 500);
 }

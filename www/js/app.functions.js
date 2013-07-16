@@ -359,6 +359,7 @@ function clear_form(form){
 }
 
 function show_registro_social(social){
+    console.log("show_registro_social");
     
     if(social == "facebook"){
         $("#register_user").find(".page span").html("REGISTRO CON FACEBOOK");
@@ -367,34 +368,4 @@ function show_registro_social(social){
     }
     
     $.mobile.changePage('#register_user', {transition: "slide"});
-}
-
-function llenarDatosSocial(social){
-    console.log("inicio");
-    getLoginStatus();
-    console.log("fin");
-    
-    console.log("inicio amigos");
-    var friends = getMeFriends();
-    friends();
-    console.log("fin amigos");
-        
-    if(social == "facebook"){
-        console.log("facebook");
-        if(FB_LOGIN_SUCCESS){
-            console.log("esperamos");
-            setTimeout(function(){
-                show_registro_social(social);
-                console.log("pasamos a registro");
-            }, 1500);
-        }else{
-            erroLogin();
-        }
-    }else if(social == "twitter"){
-        
-    }
-}
-
-function erroLogin(){
-    showAlert("User cancelled login or did not fully authorize.", 'Error', 'Aceptar');    
 }
