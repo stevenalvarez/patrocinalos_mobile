@@ -656,6 +656,138 @@
     color:#e55d62;
     float: right;
   }
+  .content_info_ronda.actividad_r .description .text p{
+    background:url("../img/bg_title.png") repeat scroll 0 0 transparent;
+    padding-top: 0;
+  }
+  .content_info_ronda.actividad_r .description .text h2{
+    padding-bottom: 0;
+  }
+  .content_info_ronda.actividad_r .menu_ronda{
+    width: 100%;
+  }
+  .content_info_ronda.actividad_r .menu_ronda a{
+    background: #7bbcd0;
+    width: 50%;
+    font-family: 'HelveticaLTStdLight';
+    font-size: 15px;
+    font-weight: normal;
+    color: #fff;
+    padding-top: 5px;
+    display: block;
+    text-align: center;
+    line-height: 15px;
+    float: left;
+    min-height: 35px;
+  }
+  .content_info_ronda.actividad_r .menu_ronda a.tab_actividad{
+    /*background-image:url("../img/icon_time.jpg");*/
+  }
+  .content_info_ronda.actividad_r .menu_ronda a.first{
+    line-height: 30px;
+  }
+  .content_info_ronda.actividad_r .menu_ronda a.active{
+    background: #fff;
+    color: #6b7882;
+    box-shadow: -3px -2px 5px -3px #444444;
+  }
+  .content_info_ronda.actividad_r .list_actividades{
+    overflow: hidden;
+    padding: 5px;
+  }
+  .content_info_ronda.actividad_r .list_actividades li{
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 2px;
+  }
+  .content_info_ronda.actividad_r .list_actividades li .avatar{
+    width: 30px;
+    height: 31px;
+    float: left;
+    margin-right: 5px;
+  }
+  .content_info_ronda.actividad_r .list_actividades li .avatar img{
+    width: 30px;
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px -1px #444;
+  }
+  .content_info_ronda.actividad_r .content_bottom{
+    clear: both;
+  }
+  .content_info_ronda.actividad_r .list_actividades li p{
+    font-family: 'HelveticaLTStdLight';
+    color:#75848e;
+    font-size: 13px;
+  }
+  .content_info_ronda.actividad_r .list_actividades li p span{
+    color:#00a2e1;
+  }
+  .content_info_ronda.actividad_r .list_actividades .description_c{
+    background:url("../img/arrow_link.png") no-repeat scroll right center #edf2f3; 
+    overflow: hidden;
+    padding: 5px;
+   background-size: 20px;
+   border-bottom: 1px solid #b7cbcf;
+  }
+  
+  .content_info_ronda.actividad_r .list_actividades .description_c .counter span b{
+    font-family: 'HelveticaExtraCompressedRoman';
+    font-size: 18px;
+    color: #ffa700;
+    background: #fff;
+    padding: 3px 5px 3px 3px;
+    display: inline-block;
+    border-radius: 0px 3px 3px 0px;
+    font-weight: normal;
+  }
+  .content_info_ronda.actividad_r .list_actividades .description_c .counter .add{
+     background: url("../img/icon_cup.png") no-repeat scroll 7px 4px #ffa700;
+    border-radius: 3px 10px 10px 3px;
+    padding: 0px 0 0px 35px;
+    display: inline-block;
+  }
+  .content_info_ronda.actividad_r .list_actividades .description_c .counter .total{
+    background:url("../img/icon_cup2.png") no-repeat scroll 7px 4px #fff; 
+    border-radius: 3px;
+    padding: 0px 0 0px 35px;
+    display: inline-block;
+  }
+  .content_info_ronda.actividad_r .list_actividades .description_c .counter .time{
+    font-family: 'HelveticaLTStdLight';
+    color:#75848e;
+    font-size: 10px;
+    font-weight: normal;
+  }
+  .content_info_ronda.actividad_r .list_actividades .description_c span.position{
+    font-family: 'HelveticaLTStdBoldCondensed';
+    float: left;
+    margin-right: 7px;
+    color:#767e83;
+    font-size: 24px;
+  }
+  .content_info_ronda.actividad_r .ranking_list .list_actividades li p{
+    float: left;
+    padding:8px 5px;
+    min-width: 110px;
+  }
+  .content_info_ronda.actividad_r .ranking_list .list_actividades li .avatar{
+    width: 35px;
+    height: auto;
+  }
+  .content_info_ronda.actividad_r .ranking_list .list_actividades li .avatar img{
+    width: 35px;
+    height: auto;
+  }
+  .content_info_ronda.actividad_r .ranking_list .list_actividades li .counter{
+    float: left;
+    padding: 5px 0;
+  }
+  .content_info_ronda.actividad_r .menu_ronda a.active.tab_ranking {
+    box-shadow: 3px -1px 4px -3px #444444;
+    position: relative;
+    z-index: 1;
+  }
  /*PAGE INFO RONDA*/
  
 /* PORTRAIT */
