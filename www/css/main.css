@@ -700,12 +700,13 @@ form .valid_field span.success i{
 }
 .header_navigation .page{
     text-align: center;
-    margin-top: 12px;
-    margin-bottom: 7px;
+    margin-top: 15px;
+    margin-bottom: 10px;
     font-family: 'helvetica_neueblack';
     width: 78%;
     color: #cc5050;
     font-size: 15px;
+    letter-spacing: -1px;
 }
 .header_navigation .volver{
     background: url("../img/bg_back.png") no-repeat scroll left top transparent;
