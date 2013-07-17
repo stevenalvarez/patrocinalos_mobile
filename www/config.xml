@@ -67,13 +67,7 @@
 
     <access origin="*" browserOnly="true"/>
     
-    <!-- debug -->
-    <feature name="debug-server" required="true">
-      <param name="domain" value="10.0.0.51"/>
-      <param name="key" value="mobilelospa"/>
-    </feature>
-    
-	<feature name="http://api.phonegap.com/1.0/battery"/>
+    <feature name="http://api.phonegap.com/1.0/battery"/>
     <feature name="http://api.phonegap.com/1.0/camera"/>
     <feature name="http://api.phonegap.com/1.0/contacts"/>
     <feature name="http://api.phonegap.com/1.0/file"/>
