@@ -1,4 +1,140 @@
-
+ 
+ /*PAGE REGISTRO - BUSCAN PATROCINIO*/
+ .list_buscan_patro{
+    
+ }
+ .list_buscan_patro ul li{
+    border-bottom: 1px dotted #bdc3c7;
+    margin: 0 6px 7px 6px;
+    padding-bottom: 7px;
+ }
+ .list_buscan_patro ul{
+    
+ }
+ .list_buscan_patro ul li .avatar{
+    width: 40px;
+    height: auto;
+    float: left;
+    margin-right: 10px;
+    margin-bottom:7px;
+    padding: 8px 0px 0 0;
+ }
+ .list_buscan_patro ul li .avatar img{
+    width: 40px;
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px -1px #444;
+ }
+ .list_buscan_patro ul li .description_c{
+    padding: 7px 5px 10px;
+ }
+ .list_buscan_patro ul li .description_c p{
+    font-family: 'HelveticaLTStdLight';
+    color: #75848e;
+    font-size: 13px;
+    font-weight: normal;
+ }
+ .list_buscan_patro ul li .description_c p span{
+    color: #00a2e1;
+ }
+ .list_buscan_patro ul li .buttons{
+    
+ }
+ .list_buscan_patro ul li .buttons a,.list_buscan_patro ul li .buttons a:hover,.list_buscan_patro ul li .buttons a:active{
+    font-family: 'HelveticaLTStdLight';
+    color: #fff;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 5px 0;
+    width: 110px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 2px;
+ }
+ .list_buscan_patro ul li .buttons a.patrocinar{
+    background: url("../img/icon_patrocina2.jpg") no-repeat scroll 5px 5px #00b969;
+    background-size: 18px;
+ }
+ .list_buscan_patro ul li .buttons a.seguir{
+    background: url("../img/icon_seguir.jpg") no-repeat scroll 5px 5px #ff5951;
+    background-size: 17px;
+ }
+ .list_buscan_patro .form_search{
+   margin: 7px;
+ }
+ .list_buscan_patro .form_search p{
+    font-family: 'HelveticaLTStdLight';
+    color: #7f8c8d;
+    font-size: 12px;
+    font-weight: normal;
+ }
+ .list_buscan_patro .form_search .input{
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: url("../img/icon_search.jpg") no-repeat scroll right 0 transparent;
+    background-size: 35px;
+    padding: 0px 40px 0px 0;
+    margin: 1px 0 15px 0;
+ }
+ .list_buscan_patro h4{
+    text-align: center;
+    border-bottom: 1px solid #b6b5b5;
+    line-height: 2px;
+    margin: 10px 0;
+ }
+ .list_buscan_patro h4 span{
+    font-size: 12px;
+    font-family: 'helvetica_lightregular';
+    color: #46494a;
+    background: #fff;
+    padding: 0px 5px;
+ }
+ .list_buscan_patro h3{
+    color: #00b968;
+    font-family: 'HelveticaLTStdBoldCondensed';
+    font-size: 16px;
+    font-weight: normal;
+    margin: 10px 0 0 5px;
+ }
+ .list_buscan_patro .form_search .input input:focus{
+    box-shadow: 0px 0px 3px 1px #019add;
+ }
+ .list_buscan_patro .form_search a{
+    color: #fff;
+    border-radius: 4px;
+    padding: 9px 5px;
+    width: 45%;
+    display: block;
+    text-align: center;
+    font-family: 'HelveticaLTStdBoldCondensed';
+    font-size: 15px;
+ }
+ .list_buscan_patro .form_search a.terminar{
+    float: left;
+     background: #00b969;
+ }
+ .list_buscan_patro .form_search a.buscar{
+    float: right;
+     background: #ff6148;
+ }
+ 
+ .list_buscan_patro .form_search .input input ,.list_buscan_patro .form_search .input  .ui-input-text{
+    border: none;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    color: #7f8c8d;
+    font-family: 'helvetica_lightregular';
+    font-size: 16px;
+    margin: 0;
+ }
+  .list_buscan_patro .form_search .input .ui-input-text input {
+    border-right: 1px solid #ccc;
+    padding: 9px 0 9px 5px!important;
+ }
+ /*PAGE REGISTRO - BUSCAN PATROCINIO*/
+ 
+ 
  /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/
  .content_list_two ul.elite_list li.ui-btn-up-c,.content_list_two ul.elite_list li.ui-btn-hover-c{
    background: #3d586d;
