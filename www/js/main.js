@@ -86,7 +86,7 @@ function saveRegister() {
 
 /*OBTENEMOS LOS DATOS DE PUBLICACIONES DESTACADAS DE LA HOME*/
 function getDestacados(){
-    .getJSON(BASE_URL_APP+'rondas/mobileGetDestacados', function(data) {
+    $.getJSON(BASE_URL_APP+'rondas/mobileGetDestacados', function(data) {
 	    //mostramos loading
         jQuery(".list_destacados").html("");
         $.mobile.loading( 'show' );
