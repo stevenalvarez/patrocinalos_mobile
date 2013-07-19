@@ -15,6 +15,6 @@
 	$dbhost = 'localhost';
 	$dbuser = 'root';
 	$dbpass = '';
-	$dbname = 'prod_patrocinalos';
+	$dbname = 'prod_patrocinalos5';
 
 ?>
