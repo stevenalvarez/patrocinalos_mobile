@@ -56,7 +56,8 @@ var app = {
 			});
 			document.getElementById('data_loading_fb').innerHTML = "FB inicializado...";
 		} catch (e) {
-			alert(e);
+		      console.log("Error al inicializar con facebook");
+			//alert(e);
 		}
     }
 };               
