@@ -1,8 +1,8 @@
 /************************************ VARIABLES DE CONFIGURACION *******************************************************/
 
 /************************************ server *******************************************************/
-/*var serviceURL = "http://patrocinalos.com/services/";
-var BASE_URL = "http://patrocinalos.com/";*/
+var serviceURL = "http://patrocinalos.com/services/";
+var BASE_URL = "http://patrocinalos.com/";
 
 /************************************ localhost *******************************************************/
 var serviceURL = "http://localhost/MOBILE_PATROCINALOS/patrocinalos_mobile/services/";
