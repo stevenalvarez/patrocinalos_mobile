@@ -1,13 +1,13 @@
 /************************************ VARIABLES DE CONFIGURACION *******************************************************/
 
 /************************************ server *******************************************************/
-//var serviceURL = "http://patrocinalos.com/services/";
-//var BASE_URL = "http://patrocinalos.com/";
+var serviceURL = "http://patrocinalos.com/services/";
+var BASE_URL = "http://patrocinalos.com/";
 
 /************************************ localhost *******************************************************/
-var serviceURL = "http://localhost/MOBILE_PATROCINALOS/patrocinalos_mobile/services/";
-var BASE_URL = "http://localhost/MOBILE_PATROCINALOS/patrocinalos_mobile/";
-var BASE_URL_APP="http://localhost/BITBUCKET_RED_SOCIAL/aplicacion/";
+//var serviceURL = "http://localhost/patrocinalos_mobile/services/";
+//var BASE_URL = "http://localhost/patrocinalos_mobile/";
+//var BASE_URL_APP="http://localhost/patrocinalos_red_social/aplicacion/";
 
 /************************************ BIND EVENT *******************************************************/
 
@@ -61,7 +61,7 @@ function getUsuariosRandom() {
     parent = $("#view .list");
     parent.find("li").remove();
 	
-    $.getJSON(serviceURL+'get_usuarios_random.php', function(data) {
+    $.getJSON(serviceURL + 'get_usuarios_random.php', function(data) {
 	    //mostramos loading
         $.mobile.loading( 'show' );
 		var usuarios = data.items;
