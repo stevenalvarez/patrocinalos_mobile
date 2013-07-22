@@ -1,13 +1,13 @@
 /************************************ VARIABLES DE CONFIGURACION *******************************************************/
 
 /************************************ server *******************************************************/
-var serviceURL = "http://patrocinalos.com/services/";
-var BASE_URL = "http://patrocinalos.com/";
+/*var serviceURL = "http://patrocinalos.com/services/";
+var BASE_URL = "http://patrocinalos.com/";*/
 
 /************************************ localhost *******************************************************/
-//var serviceURL = "http://localhost/patrocinalos_mobile/services/";
-//var BASE_URL = "http://localhost/patrocinalos_mobile/";
-//var BASE_URL_APP="http://localhost/patrocinalos_red_social/aplicacion/";
+var serviceURL = "http://localhost/MOBILE_PATROCINALOS/patrocinalos_mobile/services/";
+var BASE_URL = "http://localhost/MOBILE_PATROCINALOS/patrocinalos_mobile/";
+var BASE_URL_APP="http://localhost/BITBUCKET_RED_SOCIAL/aplicacion/";
 
 /************************************ BIND EVENT *******************************************************/
 
@@ -56,7 +56,7 @@ $(document).on('pageinit', "#home_destacados", function(){
 
 //CUANDO CARGUE LA PAGE DE PUBLICACIONES DESTACADAS DE LA HOME
 $(document).on('pageinit', "#home_elites", function(){
-   getElites();
+  getElites();
 });
 
 
@@ -132,20 +132,23 @@ function getElites(){
     
     $.getJSON(BASE_URL_APP+'rondas/mobileGetHomeElites', function(data) {
         //mostramos loading
-        //jQuery(".elite_list").html("");
+        jQuery(".elite_list").html("");
         $.mobile.loading( 'show' );
        	var destacados = data.items;
        	$.each(destacados, function(index, destacado) {
     	    html_data=' <li class="ui-btn ui-btn-up-c ui-btn-icon-right ui-li-has-arrow ui-li">';
             html_data+=' <div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a class="ui-link-inherit" href="#">';
             html_data+='    <div class="recorte">';
-            html_data+='      <img src="'+BASE_URL_APP+"img/home/"+destacado.Entrada.imagen+'"/>';
+            html_data+='      <img src="'+BASE_URL_APP+'img/home/'+destacado.Entrada.imagen+'"/>';
             html_data+='    </div>';
             html_data+='    <div class="content_descripcion left">'
             html_data+='         <p class="ui-li-desc">';
-            html_data+='            <b>Pol Espargar&oacute;</b> a comentado una foto de <b>Isco</b>';
+            html_data+='            '+destacado.Entrada.title+'';
             html_data+='         </p>';
-            html_data+='         <span class="button_blue">visita su perf&iacute;l</span>';
+            
+            if(destacado.Entrada.usuario_id!=null){
+                html_data+='         <span class="button_blue">visita su perf&iacute;l</span>';
+            }
             html_data+='    </div>';
             html_data+='  </a></div></div>';
             html_data+='</li>';
