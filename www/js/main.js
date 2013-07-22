@@ -168,3 +168,26 @@ function getElites(){
     
 }
 
+/*OBTENEMOS LA INFO DE RONDA ACTIVA*/
+function getRondaActiva(){
+    $.getJSON(BASE_URL_APP+'rondas/mobileGetRondaActiva', function(data) {
+        //mostramos loading
+        jQuery(".elite_list").html("");
+        $.mobile.loading('show');
+       	var destacados = data.items;
+       	$.each(destacados, function(index, destacado) {
+    	    html_data='';
+            html_data+='';
+           
+            jQuery(".elite_list").append(html_data);
+        });
+        
+        jQuery(".elite_list").promise().done(function() {
+            $(this).find("li:last img").load(function(){
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+            });
+        });
+    });
+}
+
