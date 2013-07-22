@@ -20,7 +20,7 @@
         </script>
         
         <!-- debug sin configurar en el config.xml -->
-        <script src="http://debug.phonegap.com/target/target-script-min.js#mobilelospa"></script>
+        <!--<script src="http://debug.phonegap.com/target/target-script-min.js#mobilelospa"></script>-->
         
         <script src="js/jquery.mobile-1.3.1.js"></script>
         <script src="js/jquery.validate.min.js"></script>
@@ -32,6 +32,8 @@
         <script src="js/jsOAuth-1.3.6.min.js"></script>
         <script src="js/functions.js"></script>
         <script src="js/app.functions.js"></script>
+        <script src="js/tw.functions.js"></script>
+        <script src="js/config.js"></script>
         <script src="js/main.js"></script>
         
         <!-- cargamos al ultimo el script que inicializa los valores una vez cargado el dispositivo -->
@@ -103,7 +105,7 @@
                     </p>
                     
                     <a class="ui-btn-submit facebook_registro" href="javascript:void(0)" onclick="loginFacebookConnect()" data-role="button" data-icon="none" data-iconpos="left" data-transition="slide">REGISTRO CON FACEBOOK</a>
-                    <a class="ui-btn-submit twitter_registro" href="#" data-role="button" data-icon="none" data-iconpos="left" data-transition="slide">REGISTRO CON TWITTER</a>
+                    <a class="ui-btn-submit twitter_registro" href="javascript:void(0)" onclick="loginTwitter()" data-role="button" data-icon="none" data-iconpos="left" data-transition="slide">REGISTRO CON TWITTER</a>
                     
                     <div class="texto_formulario" style="margin: 33px 0;">
                         <span class="lspacing">O puedes usar tu direcci&oacute;n de correo</span>
@@ -147,14 +149,14 @@
             <div class="btn-access">
                 <form>
                     <div class="access_login">
-                         <input data-theme="cu" id="u_email" name="u_email" placeholder="Email..." autocomplete="off" type="text"/>
+                         <input data-theme="cu" id="u_email" name="u_email" placeholder="Email..." autocomplete="off" autocapitalize="off" style="text-transform:lowercase;" type="email"/>
                          <input data-theme="cu" id="u_password" name="u_password" placeholder="Contrase&ntilde;a..." autocomplete="off" type="password"/>
                      </div>
                     <fieldset data-role="controlgroup">
-                        <input name="radio-choice-1" id="radio-choice-1" type="radio"/>
-                        <label data-theme="c" for="radio-choice-1">Recordar mis datos de acceso.</label>
+                        <input name="u_remember_me" id="u_remember_me" type="radio"/>
+                        <label data-theme="c" for="u_remember_me">Recordar mis datos de acceso.</label>
                     </fieldset>
-                </form>                
+                </form>
                 <p class="text">
                     a&uacute;n no estas registrado? <span>&Uacute;nete a la comunidad de patrocinalos</span>
                 </p>

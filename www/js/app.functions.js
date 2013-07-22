@@ -423,6 +423,15 @@ function loginFacebookConnect() {
     }
 }
 
+//loginTwitter
+function loginTwitter() {
+    if(TW_LOGIN_SUCCESS){
+        showRegistroSocial("twitter");
+    }else{
+        Twitter.init();
+    }
+}
+
 function showRegistroSocial(social){
     
     if(social == "facebook"){
