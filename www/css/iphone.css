@@ -136,7 +136,8 @@
  
  
  /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/
- .content_list_two ul.elite_list li.ui-btn-up-c,.content_list_two ul.elite_list li.ui-btn-hover-c{
+ .content_list_two ul.elite_list li.ui-btn-up-c,.content_list_two ul.elite_list li.ui-btn-hover-c,
+ .content_list_two ul.elite_list li,.content_list_two ul.elite_list{
    background: #3d586d;
    padding:0!important;
    margin:0px!important;
@@ -145,7 +146,7 @@
    border-right: 0!important;
    border-bottom: 1px solid #b1b1b1;
  }
- .content_list_two ul.elite_list li.ui-btn-down-c{
+ .content_list_two ul.elite_list li.ui-btn-down-c,.content_list_two ul.elite_list li{
     background: #4d6175;
  }
  .content_list_two ul.elite_list li .ui-icon.ui-icon-arrow-r.ui-icon-shadow{
@@ -968,6 +969,9 @@ and (orientation:landscape)
  /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/
  
  /*PAGE DESTACADOS home_destacado.html*/   
+ .list_destacados li .content_descripcion{
+    max-width: 70%;
+ }
  .list_destacados li .content_descripcion p{
     font-family: 'helvetica_lightregular';
     font-size: 15px;

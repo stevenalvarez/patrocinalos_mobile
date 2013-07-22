@@ -54,6 +54,12 @@ $(document).on('pageinit', "#home_destacados", function(){
    getDestacados();
 });
 
+//CUANDO CARGUE LA PAGE DE PUBLICACIONES DESTACADAS DE LA HOME
+$(document).on('pageinit', "#home_elites", function(){
+   getElites();
+});
+
+
 /************************************ FUNCTIONS *******************************************************/
 
 //OBTENEMOS 10 USUARIOS DE FORMA RANDOMICA 
@@ -84,14 +90,14 @@ function saveRegister() {
     $(form_parent).submit(); 
 }
 
-/*OBTENEMOS LOS DATOS DE PUBLICACIONES DESTACADAS DE LA HOME*/
+/*OBTENEMOS LOS DATOS DE PUBLICACIONES DESTACADOS DE LA HOME*/
 function getDestacados(){
-    $.getJSON(BASE_URL_APP+'rondas/mobileGetDestacados', function(data) {
-	    //mostramos loading
+    
+    $.getJSON(BASE_URL_APP+'rondas/mobileGetHomeDestacados', function(data) {
+        //mostramos loading
         jQuery(".list_destacados").html("");
         $.mobile.loading( 'show' );
-        console.log("data:"+data);
-		var destacados = data.items;
+       	var destacados = data.items;
        	$.each(destacados, function(index, destacado) {
     	    html_data=' <li>';
             html_data+=' <a href="#">';
@@ -116,6 +122,46 @@ function getDestacados(){
             });
         });
 	});
+   
     
     
 }
+
+/*OBTENEMOS LOS DATOS DE DEPORTISTAS ÉLITES DE LA HOME*/
+function getElites(){
+    
+    $.getJSON(BASE_URL_APP+'rondas/mobileGetHomeElites', function(data) {
+        //mostramos loading
+        //jQuery(".elite_list").html("");
+        $.mobile.loading( 'show' );
+       	var destacados = data.items;
+       	$.each(destacados, function(index, destacado) {
+    	    html_data=' <li class="ui-btn ui-btn-up-c ui-btn-icon-right ui-li-has-arrow ui-li">';
+            html_data+=' <div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a class="ui-link-inherit" href="#">';
+            html_data+='    <div class="recorte">';
+            html_data+='      <img src="'+BASE_URL_APP+"img/home/"+destacado.Entrada.imagen+'"/>';
+            html_data+='    </div>';
+            html_data+='    <div class="content_descripcion left">'
+            html_data+='         <p class="ui-li-desc">';
+            html_data+='            <b>Pol Espargar&oacute;</b> a comentado una foto de <b>Isco</b>';
+            html_data+='         </p>';
+            html_data+='         <span class="button_blue">visita su perf&iacute;l</span>';
+            html_data+='    </div>';
+            html_data+='  </a></div></div>';
+            html_data+='</li>';
+                    
+            jQuery(".elite_list").append(html_data);
+        });
+        
+        jQuery(".elite_list").promise().done(function() {
+            $(this).find("li:last img").load(function(){
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+            });
+        });
+	});
+   
+    
+    
+}
+
