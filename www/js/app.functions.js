@@ -526,3 +526,7 @@ function isLogin(){
     }
     return res;
 }
+
+function redirectLogin(){
+    $.mobile.changePage('#login_user', {transition: "fade"});
+}

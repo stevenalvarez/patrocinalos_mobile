@@ -3796,6 +3796,10 @@ and (orientation:portrait)
     #login_user .ui-content{
         min-height: 295px;
     }
+    .ui-panel-position-bottom, .ui-panel-position-top{
+        height: 30em;
+    }
+    
 }
 
 /* LANDSCAPE IPHONE 5 */
