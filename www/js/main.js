@@ -15,12 +15,23 @@ $('#view').live('pagebeforeshow', function(event, ui) {
 $(document).on('pageinit', "#register_user", function(){
     llenarDeportes();
     form_registro();
-    key_press();
+    key_press("form_registro");
     $(this).find('a.registrarme').on("click", function(){
-        saveRegister();
+        var form_parent = document.getElementById("form_registro");
+        $(form_parent).submit();
     });
     $(this).find('a.borrar_form').on("click", function(){
         clear_form("form_registro");
+    });
+});
+
+//LOGIN
+$(document).on('pageinit', "#login_user", function(){
+    form_login();
+    key_press("form_login");
+    $(this).find('a.logearme').on("click", function(){
+        var form_parent = document.getElementById("form_login");
+        $(form_parent).submit();
     });
 });
 
@@ -79,12 +90,6 @@ function getUsuariosRandom() {
 	});
 }
 
-//GUARDAR REGISTRO
-function saveRegister() {
-    var form_parent = document.getElementById("form_registro");
-    $(form_parent).submit(); 
-}
-
 /*OBTENEMOS LOS DATOS DE PUBLICACIONES DESTACADOS DE LA HOME*/
 function getDestacados(){
     
@@ -117,9 +122,6 @@ function getDestacados(){
             });
         });
 	});
-   
-    
-    
 }
 
 /*OBTENEMOS LOS DATOS DE DEPORTISTAS ÉLITES DE LA HOME*/
@@ -158,9 +160,6 @@ function getElites(){
             });
         });
 	});
-   
-    
-    
 }
 
 /*OBTENEMOS LA INFO DE RONDA ACTIVA*/
@@ -180,4 +179,3 @@ function getRondaActiva(){
         
     });
 }
-
