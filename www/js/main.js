@@ -49,6 +49,11 @@ $(document).on('pageinit', "#home_elites", function(){
   getElites();
 });
 
+//CUANDO CARGUE LA PAGE DE INFO DE LA RONDA
+$(document).on('pageinit', "#detail_ronda", function(){
+  getRondaActiva();
+});
+
 
 /************************************ FUNCTIONS *******************************************************/
 
@@ -162,22 +167,17 @@ function getElites(){
 function getRondaActiva(){
     $.getJSON(BASE_URL_APP+'rondas/mobileGetRondaActiva', function(data) {
         //mostramos loading
-        jQuery(".elite_list").html("");
         $.mobile.loading('show');
-       	var destacados = data.items;
-       	$.each(destacados, function(index, destacado) {
-    	    html_data='';
-            html_data+='';
-           
-            jQuery(".elite_list").append(html_data);
-        });
+       	var ronda = data.ronda;
+        jQuery("#name_ronda").text(""+ronda.nombre);    
+        jQuery("#patrocinio_ronda").text( ""+ronda.patrocinio_hasta);    
+        jQuery("#num_ganadores").text(""+ronda.num_patrocinados);
+        jQuery("#puntos_necesarios").text(""+ronda.puntos_necesarios+" puntos");
+        jQuery("#fecha_inscripcion").text(""+ronda.fecha_ini);
+        jQuery("#fecha_fin").text(""+ronda.fecha_fin);
+        jQuery("#fecha_votacion").text(""+ronda.fecha_ini);
+        $.mobile.loading( 'hide' );    
         
-        jQuery(".elite_list").promise().done(function() {
-            $(this).find("li:last img").load(function(){
-                //ocultamos loading
-                $.mobile.loading( 'hide' );
-            });
-        });
     });
 }
 

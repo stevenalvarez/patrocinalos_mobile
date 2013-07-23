@@ -29,6 +29,7 @@
         <script src="facebook-js-sdk.js"></script>
         <script src="js/functions.js"></script>
         <script src="js/app.functions.js"></script>
+        <script src="js/config.js"></script>
         <script src="js/main.js"></script>
         
         <!-- cargamos al ultimo el script que inicializa los valores una vez cargado el dispositivo -->
@@ -66,8 +67,8 @@
                         <img src="img/ronda_iberdrola.jpg" alt="blog"/>
                     </div>
                     <div class="text">
-                        <h2><span>Iberdrola ofrece</span> <strong>3.000,00 &euro;</strong></h2>
-                        <p>A repartir entre los 3 ganadores</p>
+                        <h2><span id="name_ronda">Iberdrola ofrece</span> <strong><b id="patrocinio_ronda"></b> &euro;</strong></h2>
+                        <p>A repartir entre los <span id="num_ganadores">3</span> ganadores</p>
                     </div>
                 </div>
                 <div class="profile">
@@ -85,20 +86,20 @@
                         <h3>Inscripci&oacute;n:</h3>
                         <p>Inscr&iacute;bete en la rondas antes de que se cierre el plazo,
                             no dejes escapar la oportunidad</p>
-                        <h4><span>Fin de la inscripci&oacute;n:</span><strong>23/06/2013</strong></h4>
+                        <h4><span>Fin de la inscripci&oacute;n:</span><strong id="fecha_inscripcion">23/06/2013</strong></h4>
                     </div>
                     <div>
                         <h3>Puntuaci&oacute;n:</h3>
                         <p>
                             consigue puntos para superar el corte, consigue puntos 
                             con fotos, videos, amigos.</p>
-                        <h4><span>Puntos necesarios:</span><strong>500 puntos</strong></h4>
-                        <h4><span>Fecha l&iacute;mite:</span><strong>30/06/2013</strong></h4>
+                        <h4><span>Puntos necesarios:</span><strong id="puntos_necesarios">500 puntos</strong></h4>
+                        <h4><span>Fecha l&iacute;mite:</span><strong id="fecha_fin">30/06/2013</strong></h4>
                     </div>
                     <div>
                         <h3>Votaci&oacute;n:</h3>
                         <p>Los usuarios, con sus votos, elegir&aacute;n los 10 mejores perfiles</p>
-                        <h4><span>Fin de la inscripci&oacute;n:</span><strong>23/06/2013</strong></h4>
+                        <h4><span>Fin de la inscripci&oacute;n:</span><strong id="fecha_votacion">23/06/2013</strong></h4>
                     </div>
                 </div>
             </div>
