@@ -281,6 +281,12 @@ function form_login(){
     //Submit form login
     jQuery('#form_login').submit(function() {
         
+        if ($("#u_remember_me").is(":checked")) {
+        alert("sis");
+        }else{
+            alert("no");
+        }        
+        
         //Si todo el form es valido mandamos a verificar los datos de acceso
         if (jQuery(this).valid()) {
             //mostramos loading
@@ -291,15 +297,17 @@ function form_login(){
                 type: "POST",
                 url: BASE_URL_APP + 'usuarios/mobileLogin',
                 dataType: "html",
-                success: function(data){
-                    console.log(data);
-                    data = $.parseJSON(data);
-                    var id_usuario = parseInt(data.item);
-                    if(id_usuario){
-                        alert("login success");
-                        
+                success: function(msg){
+                    $.mobile.loading( 'hide' );
+                    msg = $.parseJSON(msg);
+                    var success = msg.success;
+                    var datas = msg.item;
+                    if(success){
+                        var usuario = datas.Usuario;
+                        var days = $("#u_remember_me").is(":checked") ? 365 : 1;
+                        createCookie("user", usuario, days);
                     }else{
-                        alert("no login");
+                        //mostramos el mensaje de login fallido
                     }
                 }
             });
@@ -498,4 +506,14 @@ function showRegistroSocial(social){
     }
     
     $.mobile.changePage('#register_user', {transition: "slide"});
+}
+
+function isLogin(){
+    var res = false;
+    var cookie_user = readCookie("user");
+    if(cookie === null){
+        res = true;
+        COOKIE = cookie_user;
+    }
+    return res;
 }

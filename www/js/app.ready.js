@@ -6,6 +6,7 @@ var IMAGEURI;
 var ID_USUARIO;
 var FB_LOGIN_SUCCESS = false;
 var TW_LOGIN_SUCCESS = false;
+var COOKIE = '';
 
 //Twitter
 var oauth; // Holds out oAuth request
