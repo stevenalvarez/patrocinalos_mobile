@@ -281,12 +281,6 @@ function form_login(){
     //Submit form login
     jQuery('#form_login').submit(function() {
         
-        if ($("#u_remember_me").is(":checked")) {
-        alert("sis");
-        }else{
-            alert("no");
-        }        
-        
         //Si todo el form es valido mandamos a verificar los datos de acceso
         if (jQuery(this).valid()) {
             //mostramos loading
@@ -303,11 +297,26 @@ function form_login(){
                     var success = msg.success;
                     var datas = msg.item;
                     if(success){
-                        var usuario = datas.Usuario;
-                        var days = $("#u_remember_me").is(":checked") ? 365 : 1;
-                        createCookie("user", usuario, days);
+                        //verificamos si el usuario esta validado, 
+                        //sino es un usuario registrado pero aun no validado
+                        //entonces mostramos el campo para que meta su codigo de activacion
+                        var validado = msg.validado;
+                        if(validado){
+                            var usuario = datas.Usuario;
+                            var days = $("#u_remember_me").is(":checked") ? 365 : 1;
+                            
+                            //una vez logeado guardamos en cookies su datos importantes y lo llevamos a otra vista
+                            createCookie("user", JSON.stringify(usuario), days);
+                            $.mobile.changePage('info_general.html', {transition: "fade"});
+                        }else{
+                            //mostramos el mensaje de que debe colocar el codigo de activacion para quedar activo en el sistema
+                            $("#login_user").find(".msg_error").find("label").html("Usted no activo su cuenta, por favor coloque el c&oacute;digo de validaci&oacute;n");
+                            $("#login_user").find(".msg_error").fadeIn("slow");
+                            $("#login_user").find(".campo_codigo_validacion").show();
+                        }
                     }else{
                         //mostramos el mensaje de login fallido
+                        $("#login_user").find(".msg_error").fadeIn("slow");
                     }
                 }
             });
@@ -510,8 +519,8 @@ function showRegistroSocial(social){
 
 function isLogin(){
     var res = false;
-    var cookie_user = readCookie("user");
-    if(cookie === null){
+    var cookie_user = $.parseJSON(readCookie("user"));
+    if(cookie_user !== null){
         res = true;
         COOKIE = cookie_user;
     }
