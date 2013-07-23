@@ -252,6 +252,62 @@ function form_registro(){
     });
 }
 
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO DE LOGIN
+function form_login(){
+    jQuery("#form_login").validate({
+        errorElement:'span',
+    	rules: {
+    		"u_email": {
+    			required: true,
+    			email: true
+    		},
+    		"u_password": {
+    			required: true,
+    			minlength: 5
+    		}
+    	},
+    	messages: {
+            "u_email": {
+    			required: "Por favor, introduzca su email <i></i>",
+    			email: "Direcci&oacute;n de email no v&aacute;lida <i></i>"
+    		},
+    		"u_password": {
+    			required: "Por favor, ingrese su contrase&ntilde;a <i></i>",
+    			minlength: "M&iacute;nimo de 5 caracteres <i></i>"
+    		},
+    	}
+    });
+    
+    //Submit form login
+    jQuery('#form_login').submit(function() {
+        
+        //Si todo el form es valido mandamos a verificar los datos de acceso
+        if (jQuery(this).valid()) {
+            //mostramos loading
+            showLoadingCustom('Validando datos...');
+            
+            $.ajax({
+                data: $("#form_login").serialize(),
+                type: "POST",
+                url: BASE_URL_APP + 'usuarios/mobileLogin',
+                dataType: "html",
+                success: function(data){
+                    console.log(data);
+                    data = $.parseJSON(data);
+                    var id_usuario = parseInt(data.item);
+                    if(id_usuario){
+                        alert("login success");
+                        
+                    }else{
+                        alert("no login");
+                    }
+                }
+            });
+        }
+      return false;
+    });
+}
+
 // REGISTRO SUCCESS
 //
 function success_registro(){
@@ -326,12 +382,12 @@ function update_row(tabla, campo, valor, condicion_campo, condicion_valor){
     });
 }
 
-function key_press(){
-    var element = $("#form_registro").find("input[type='text'], input[type='password']");
+function key_press(id){
+    var element = $("#" + id).find("input[type='text'], input[type='email'], input[type='password']");
     element.bind('keyup blur', function(){
         if($(this).hasClass("valid")){
             $(this).parent().find("span.success").remove();
-            if($(this).attr("id") == "u_email_register"){
+            if(($(this).attr("id") == "u_email_register") || $(this).attr("id") == "u_email"){
                 $(this).parent().removeClass("error_field_email").addClass("valid_field");
             }else{
                 $(this).parent().removeClass("error_field").addClass("valid_field");
@@ -340,8 +396,9 @@ function key_press(){
         
         }else if($(this).hasClass("error")){
             $(this).parent().find("span.success").remove();
-            if($(this).attr("id") == "u_email_register"){
-                if(($(this).val()).length > 12){
+            var chart = ($(this).attr("id") == "u_email_register") ? 12 : 10;
+            if(($(this).attr("id") == "u_email_register") || ($(this).attr("id") == "u_email")){
+                if(($(this).val()).length > chart){
                     $(this).parent().removeClass("valid_field").addClass("error_field_email");
                 }else{
                     $(this).parent().removeClass("error_field_email");
@@ -349,7 +406,7 @@ function key_press(){
             }else{
                 $(this).parent().removeClass("valid_field").addClass("error_field");
             }
-        }        
+        }
     });
 }
 
