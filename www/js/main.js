@@ -60,8 +60,6 @@ $('#info_general').live('pagebeforeshow', function(event, ui) {
     }
 });
 
-
-if(isLogin()){
 //CUANDO CARGUE LA PAGE DE PUBLICACIONES DESTACADAS DE LA HOME
 $(document).on('pageinit', "#home_destacados", function(){
    getDestacados();
@@ -87,10 +85,7 @@ $(document).on('pageinit', "#home_bloggin", function(){
 $('#home_detail_blog').live('pagebeforeshow', function(event, ui) {
   getInfoBlog(getUrlVars()["id_blog"]);
 });
-}
-else{
-    redirectLogin();
-}
+
 
 /************************************ FUNCTIONS *******************************************************/
 
@@ -248,7 +243,7 @@ function getInfoBlog(id_blog){
        jQuery("#detail_post .month").text(item.comentario.mes);
        jQuery("#detail_post .day_week").text(item.comentario.dia_semana);
        jQuery("#detail_post .title_post").text(item.usuario.title);
-       jQuery("#detail_post .text").text(item.comentario.mensaje)
+       jQuery("#detail_post .text").html(item.comentario.mensaje);
        if(item.comentario.iamge!="")
         jQuery("#detail_post .image").html('<img src="img/infoblog1.jpg" alt="blog"/>');
     });
