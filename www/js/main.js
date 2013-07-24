@@ -65,6 +65,17 @@ $(document).on('pageinit', "#detail_ronda", function(){
   getRondaActiva();
 });
 
+//CUANDO CARGUE LA PAGE DE INFO DE LA RONDA
+$(document).on('pageinit', "#home_bloggin", function(){
+  getBlogHome();
+});
+
+//CUANDO CARGUE LA PAGE DE INFO DE LA RONDA
+
+$('#home_detail_blog').live('pagebeforeshow', function(event, ui) {
+  getInfoBlog(getUrlVars()["id_blog"]);
+});
+
 
 /************************************ FUNCTIONS *******************************************************/
 
@@ -177,5 +188,53 @@ function getRondaActiva(){
         jQuery("#fecha_votacion").text(""+ronda.fecha_ini);
         $.mobile.loading( 'hide' );    
         
+    });
+}
+
+/*OBTENEMOS LOS DATOS DE DEPORTISTAS ÉLITES DE LA HOME*/
+function getBlogHome(){
+    
+    $.getJSON(BASE_URL_APP+'comentarios/mobileGetBlogHome', function(data) {
+        //mostramos loading
+        jQuery(".list_blog").html("");
+        $.mobile.loading( 'show' );
+       	var comentarios = data.items;
+       	$.each(comentarios, function(index, item) {
+    	    html_data='<li>';
+            html_data+='<a href="home_info_blog.html?id_blog='+item.comentario.id+'">';
+            html_data+='  <div class="cont_top">';
+            html_data+='    <div class="content_descripcion">';
+            html_data+='      <h2>'+item.usuario.title+'</h2>';
+            html_data+='      <p>'+item.comentario.mensaje+'</p>';
+            html_data+='    </div>';
+            html_data+='    <div class="time">';
+            html_data+='        <span class="hour">'+item.comentario.hora+'</span>';
+            html_data+='        <span class="day_month">'+item.comentario.dia+'</span>';
+            html_data+='        <span class="day_week">'+item.comentario.dia_semana+'</span>';
+            html_data+='    </div>';
+            html_data+='  </div>';
+            html_data+='  <div class="cont_bottom">';
+            html_data+='    <span class="coments_count">Comentarios <b>(100)</b></span>';
+            html_data+='    <span class="like_count">Me gusta <b>(100)</b></span>';
+            html_data+='  </div>';
+            html_data+='</a>';
+            html_data+='</li>';
+                    
+            jQuery(".list_blog").append(html_data);
+            $.mobile.loading( 'hide' );
+        });
+   	});
+}
+
+function getInfoBlog(id_blog){
+    $.getJSON(BASE_URL_APP+'comentarios/mobileGetComment/'+id_blog, function(data) {
+        var item = data.item;
+       jQuery("#detail_post .day_month").text(item.comentario.dia);
+       jQuery("#detail_post .month").text(item.comentario.mes);
+       jQuery("#detail_post .day_week").text(item.comentario.dia_semana);
+       jQuery("#detail_post .title_post").text(item.usuario.title);
+       jQuery("#detail_post .text").text(item.comentario.mensaje)
+       if(item.comentario.iamge!="")
+        jQuery("#detail_post .image").html('<img src="img/infoblog1.jpg" alt="blog"/>');
     });
 }
