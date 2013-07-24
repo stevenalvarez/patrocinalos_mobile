@@ -33,11 +33,11 @@ try {
     $lastId = -1;
     $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 
-    $stmt = $dbh->prepare("INSERT INTO usuarios (deporte_id, title, nombre, apellidos, email, password, codigovalidacion, diaregistro, tipo) VALUES(?,?,?,?,?,?,?,?,?)");
+    $stmt = $dbh->prepare("INSERT INTO usuarios (deporte_id, title, nombre, apellidos, email, password, validado, codigovalidacion, diaregistro, tipo) VALUES(?,?,?,?,?,?,?,?,?,?)");
 
     try {
         $dbh->beginTransaction();
-        $stmt->execute( array($deporte_id, "$title", "$nombre", "$apellidos", "$email", "$password_salt", "$code", "$now", "$tipo"));
+        $stmt->execute( array($deporte_id, "$title", "$nombre", "$apellidos", "$email", "$password_salt", "1", "$code", "$now", "$tipo"));
         $lastId =  $dbh->lastInsertId();
         $dbh->commit();
         

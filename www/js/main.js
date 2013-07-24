@@ -9,9 +9,11 @@ $(document).bind('pageinit', function(){
         close: function( event, ui ) {}
     });
 	$("#panel_menu").on("panelbeforeopen", function (event, ui) {
+	    $(this).find(".close_menu").css("top", "-20px");
         $(".footer_menu").find("a.icon_menu").hide();
     });
 	$("#panel_menu").on("panelclose", function (event, ui) {
+	    $(this).find(".close_menu").css("top", "0px");
         $(".footer_menu").find("a.icon_menu").show();
     });
 });

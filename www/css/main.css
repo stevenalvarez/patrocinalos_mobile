@@ -149,8 +149,7 @@ form .valid_field span.success i{
     height: 21px;
     display: inline-block;
     position: absolute;
-    right: -17px;
-    top: 1px;     
+    right: -17px;     
 }
 .content_list_first .ui-listview li.ui-li-static.ui-li,
 .content_list_two .ui-listview li.ui-li-static.ui-li{
@@ -821,8 +820,8 @@ form .valid_field span.success i{
     text-shadow: 0 0 0;
     box-shadow: 0 0 0;
     position: absolute;
-    right: 0;
-    top: -20px;
+    right: 0px;
+    margin-top: 2px;
 }
 .ui-panel-position-bottom a.close_menu .ui-btn-inner{
     margin: 0;
@@ -1053,11 +1052,11 @@ form .valid_field span.success i{
     padding: .6em 10px;
 }
 .btn-options .btn-first {
-    width: 42%;
+    width: 49%;
     float: left;
 }
 .btn-options .btn-first.long{
-    width: 55%;
+    width: 49%;
 }
 .btn-options .btn-first.long.bouble_row .ui-btn-inner{
     padding: 0.2em 10px;
@@ -1070,11 +1069,11 @@ form .valid_field span.success i{
     margin-top: 2px;
 }
 .btn-options .btn-second {
-    width: 55%;
+    width: 49%;
     float: right;
 }
 .btn-options .btn-second.long{
-    width: 42%;
+    width: 49%;
 }
 label.custom{
     font-size: 12px;
@@ -1378,7 +1377,7 @@ label.custom{
     border-radius: 5px;
     border: 1px solid #d1d1d1;
     padding: 0;
-    min-height: 350px;
+    min-height: 330px;
 }
 #register_user .ui-content,
 #register_finalizado .ui-content{
@@ -2944,7 +2943,7 @@ label.custom{
 #panel_menu .ui-panel-inner li a{
     display: block;
     margin: 0px 10px;
-    padding: 5px 0;
+    padding: 0.35em 0;
     font-weight: normal;
     color: #e96262;
     font-size: 12px;
