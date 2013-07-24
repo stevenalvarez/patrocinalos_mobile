@@ -62,6 +62,11 @@ $('#info_general').live('pagebeforeshow', function(event, ui) {
     }
 });
 
+//INFO GENERAL CUANDO SE MUESTRA LA PAGINA
+$(document).on('pageshow', "#info_general", function(){
+    jQuery('.m-carousel').carousel();
+});
+
 //CUANDO CARGUE LA PAGE DE PUBLICACIONES DESTACADAS DE LA HOME
 $(document).on('pageinit', "#home_destacados", function(){
    getDestacados();
