@@ -60,6 +60,8 @@ $('#info_general').live('pagebeforeshow', function(event, ui) {
     }
 });
 
+
+if(isLogin()){
 //CUANDO CARGUE LA PAGE DE PUBLICACIONES DESTACADAS DE LA HOME
 $(document).on('pageinit', "#home_destacados", function(){
    getDestacados();
@@ -85,7 +87,10 @@ $(document).on('pageinit', "#home_bloggin", function(){
 $('#home_detail_blog').live('pagebeforeshow', function(event, ui) {
   getInfoBlog(getUrlVars()["id_blog"]);
 });
-
+}
+else{
+    redirectLogin();
+}
 
 /************************************ FUNCTIONS *******************************************************/
 
