@@ -1507,6 +1507,28 @@ label.custom{
     padding-left: 10px;
     padding-right: 10px;    
 }
+.msg_error{
+    background: none repeat scroll 0 0 #f9f9fa;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px 5px 5px 5px;
+    margin: 18px 10px;
+    padding: 5px;
+    overflow: hidden;
+}
+.msg_error a.ui-link{
+    color: #A72929;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    float: left;
+}
+.msg_error label{
+    color: #B74040;
+    display: inline-block;
+    font-size: 10px;
+    margin-left: 10px;
+    letter-spacing: -1px;
+}
 
 /* REGISTRO */
 #register_user .ui-content,

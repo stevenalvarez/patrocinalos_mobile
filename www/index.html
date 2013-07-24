@@ -143,6 +143,10 @@
         <h1>
             <img src="img/logo.png"/>
         </h1>
+        
+        <div class="msg_error" style="display: none;">
+            <a class="ui-link close_msg_error" href="javascript:void(0)">X</a> <label>Tu email o contrase&ntilde;a no son correctas, vuelve a intentarlo</label>
+        </div>
     
     	<div data-role="content">
             
@@ -151,7 +155,10 @@
                     <div class="access_login">
                          <input data-theme="cu" id="u_email" name="u_email" placeholder="Email..." autocomplete="off" autocapitalize="off" style="text-transform:lowercase;" type="email"/>
                          <input data-theme="cu" id="u_password" name="u_password" placeholder="Contrase&ntilde;a..." autocomplete="off" type="password"/>
-                     </div>
+                    </div>
+                    <div class="campo_codigo_validacion" style="display: none;">
+                        <input id="u_codigo_validacion" name="u_codigo_validacion" placeholder="C&oacute;digo validaci&oacute;n..." autocomplete="off" />
+                    </div>
                     <fieldset data-role="controlgroup">
                         <input name="u_remember_me" id="u_remember_me" type="radio"/>
                         <label data-theme="c" for="u_remember_me">Recordar mis datos de acceso.</label>
@@ -300,7 +307,7 @@
                 <div class="access_login content_formulario">
                      <label class="save_data">Gracias por registrarte en patrocinalos.com, en breve recibir&aacute;s un correo para confirmar tu registro, debes confirmarlo durante los siguiente 7 d&iacute;as, o tu registro ser&aacute; eliminado.</label>
                      <br />
-                     <p class="warning">Si no encuentras el mail de confirmaci&oacute;n en tu bandeja de entrada, b&uacute;scalo en el correo no desado.</p>
+                     <p class="warning">Si no encuentras el mail de confirmaci&oacute;n en tu bandeja de entrada, b&uacute;scalo en el correo no deseado.</p>
                      <br />
                      <p>Muchos deportistas como t&uacute; ya participan de la comunidad mas grandre de patrocinio deportivo, no esperes mas y accede para dar tus primeros pasos y buscar tu patrocinio.</p>
                      

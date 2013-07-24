@@ -29,6 +29,9 @@ $(document).on('pageinit', "#register_user", function(){
 $(document).on('pageinit', "#login_user", function(){
     form_login();
     key_press("form_login");
+    $(".close_msg_error").on("click", function(){
+        $(this).parent().fadeOut("slow");
+    });
     $(this).find('a.logearme').on("click", function(){
         var form_parent = document.getElementById("form_login");
         $(form_parent).submit();
