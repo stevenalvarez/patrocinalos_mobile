@@ -62,11 +62,6 @@ $('#info_general').live('pagebeforeshow', function(event, ui) {
     }
 });
 
-//INFO GENERAL CUANDO SE MUESTRA LA PAGINA
-$(document).on('pageshow', "#info_general", function(){
-    jQuery('.m-carousel').carousel();
-});
-
 //CUANDO CARGUE LA PAGE DE PUBLICACIONES DESTACADAS DE LA HOME
 $(document).on('pageinit', "#home_destacados", function(){
    getDestacados();
@@ -258,18 +253,36 @@ function getInfoBlog(id_blog){
 
 /* OBTENEMOS LA ENTRADAS PARA LA HOME */
 function getEntradasByCarrousel(){
+    var parent = jQuery("#info_general");
     $.getJSON(BASE_URL_APP+'entradas/mobileGetEntradas', function(data) {
         if(data){
+            parent.find(".m-item.clone").remove();
             //mostramos loading
             $.mobile.loading('show');
             
             var entradas = data.items;
            	$.each(entradas, function(index, item) {
-           	    console.log(item.Entrada.id);
-            });            
+                var clone = parent.find(".m-item:first").clone(true);
+                
+                clone.find(".usuario_title").html(item.Entrada.usuario);
+                clone.find(".entrada_imagen").attr("src", BASE_URL_APP+'img/home/'+item.Entrada.imagen);
+                clone.find(".texto_corto").html(item.Entrada.title);
+                clone.find(".descripcion").html(item.Entrada.texto);
+                clone.find(".buttom_ir_perfil").find("a").attr("href", "p_edicion_datos_deportivos.html?usuario_id="+item.Entrada.usuario_id);
+                
+                clone.css("display", "inline-block");
+                clone.addClass("clone");
+           	    parent.find(".m-carousel-inner").append(clone);
+            });
             
-            //ocultamos loading
-            $.mobile.loading( 'hide' );
+            parent.find(".m-carousel-inner").promise().done(function() {
+                //Borramos el primer items y aplicamos que sea carrousel
+                parent.find(".m-item:first").remove();
+                jQuery('.m-carousel').carousel();
+                
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+            });
         } 
     });
 }
