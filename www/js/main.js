@@ -87,10 +87,14 @@ $(document).on('pageinit', "#home_bloggin", function(){
   getBlogHome();
 });
 
-//CUANDO CARGUE LA PAGE DE INFO DE LA RONDA
-
+//CUANDO CARGUE LA PAGE DE DETALLE DE ENTRADA DE BLOG
 $('#home_detail_blog').live('pagebeforeshow', function(event, ui) {
   getInfoBlog(getUrlVars()["id_blog"]);
+});
+
+//CUANDO CARGUE LA PAGE DE COMENTAR LA ENTRADA DE BLOG
+$('#home_blog_comment').live('pagebeforeshow', function(event, ui) {
+  getInfoBlogComment(getUrlVars()["id_blog"]);
 });
 
 
@@ -243,6 +247,7 @@ function getBlogHome(){
    	});
 }
 
+/*OBTENEMOS LOS DATOS DE UNA ENTRADA ESPECÍFICA DEL BLOG DE LA HOME*/
 function getInfoBlog(id_blog){
     $.getJSON(BASE_URL_APP+'comentarios/mobileGetComment/'+id_blog, function(data) {
         var item = data.item;
@@ -251,8 +256,22 @@ function getInfoBlog(id_blog){
        jQuery("#detail_post .day_week").text(item.comentario.dia_semana);
        jQuery("#detail_post .title_post").text(item.usuario.title);
        jQuery("#detail_post .text").html(item.comentario.mensaje);
-       if(item.comentario.iamge!="")
-        jQuery("#detail_post .image").html('<img src="img/infoblog1.jpg" alt="blog"/>');
+       jQuery("#btn_comment").attr("href","home_blog_comentar.html?id_blog="+id_blog);
+       
+       if(item.comentario.img!=null || item.comentario.img!="")
+        jQuery("#detail_post .image").html('<img src="'+BASE_URL_APP+'img/comentarios/800/'+item.comentario.img+'" alt="blog"/>');
+    });
+}
+
+/*OBTENEMOS LOS DATOS PARA COMENTAR UNA ENTRADA ESPECÍFICA DEL BLOG DE LA HOME*/
+function getInfoBlogComment(id_blog){
+    $.getJSON(BASE_URL_APP+'comentarios/mobileGetComment/'+id_blog, function(data) {
+        var item = data.item;
+       jQuery("#detail_post .day_month").text(item.comentario.dia);
+       jQuery("#detail_post .month").text(item.comentario.mes);
+       jQuery("#detail_post .day_week").text(item.comentario.dia_semana);
+       jQuery("#detail_post .title_post").text(item.usuario.title);
+       
     });
 }
 
