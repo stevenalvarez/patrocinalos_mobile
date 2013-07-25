@@ -111,8 +111,9 @@
 }
 .m-carousel-controls{
     padding-top: 0px !important;
-    position: relative !important;
-    top: -22px !important;
+    position: absolute !important;
+    bottom: 3px !important;
+    width: 96%;
 }
 .m-carousel-bulleted a.m-active{
     background-color: #b94949 !important;
@@ -2946,7 +2947,7 @@ label.custom{
 }
 #panel_menu .ui-panel-inner h5{
     color: #74bed1;
-    margin: 4px 10px;
+    margin: 15px 10px 4px 10px;
     font-size: 12px;
     display: block;
     text-align: left;
@@ -3012,6 +3013,26 @@ label.custom{
 #panel_menu .ui-panel-inner li a.m_salir{
     background: url("../img/bg_m_exit.png") no-repeat scroll left center transparent;
     background-size: 14px;
+}
+#panel_menu .ui-collapsible-set,
+#panel_menu .ui-collapsible-inset{
+    margin: 0;
+}
+#panel_menu .ui-collapsible-inset .ui-collapsible-heading .ui-btn{
+    border: 0;
+    color: #74bed1;
+    background: none;
+    border: 0;
+    text-shadow: 0 0 0;
+}
+#panel_menu .ui-collapsible-heading a .ui-btn-inner {
+    background: none;
+    padding: 1px 25px 1px 0;
+    border: 0;
+}
+#panel_menu .ui-collapsible-heading a .ui-btn-text{
+    color: #74bed1;
+    font-size: 12px;
 }
 /* Popup Votar y Patrocinio Creado */
 #popupVoto,
