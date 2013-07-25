@@ -57,6 +57,7 @@ $('#info_general').live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
         var user = COOKIE;
         getEntradasByCarrousel();
+        getActividades();
     }else{
         redirectLogin();
     }
@@ -364,5 +365,44 @@ function getEntradasByCarrousel(){
                 $.mobile.loading( 'hide' );
             });
         } 
+    });
+}
+
+//OBTENEMOS LAS ACTIVIDADES EN PATROCINALOS
+function getActividades() {
+    $.getJSON(BASE_URL_APP+'actividades/mobileGetActividades', function(data) {
+        $('#lista_actividades li').remove();
+        if(data.items){
+             //mostramos loading
+             $.mobile.loading( 'show' );
+            
+             var actividades = data.items;
+             $.each(actividades, function(index, actividad) {
+                html='<li>';
+                html+='<div class="recorte">';
+                html+='<img src="'+BASE_URL_APP+'img/Usuario/169/'+actividad.Actividade.usuario_imagen+'"/>';
+                html+='</div>';
+                html+='<div class="content_descripcion left">';
+                html+='<h4 class="ui-li-heading">';
+                if(actividad.Actividade.usuario_imagen == "gustafoto"){
+                    html+='A <b>'+actividad.Actividade.usuario_title+'</b>';
+                }else{
+                    html+='<b>'+actividad.Actividade.usuario_title+'</b>';
+                }
+                html+='</h4>';
+                html+='<p class="ui-li-desc">'+actividad.Actividade.texto_descripcion+'</p>';
+                html+='</div>';
+                html+='</li>';
+                                
+                $('#lista_actividades').append(html);
+             });
+             
+             $('#lista_actividades').listview('refresh');
+            
+             $('#lista_actividades').find("li:last img").load(function() {
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+             });
+        }
     });
 }
