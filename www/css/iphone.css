@@ -536,6 +536,10 @@
    font-size: 13px;
    font-weight: normal;
  }
+ .content_info_blog .description p.text img{
+    max-width: 100%;
+    width: auto;
+ }
  .content_info_blog .content_bottom{
     border-top: 1px solid #e1e1e1;
     margin: 15px 0;
