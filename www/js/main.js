@@ -90,6 +90,7 @@ $('#home_detail_blog').live('pagebeforeshow', function(event, ui) {
 //CUANDO CARGUE LA PAGE DE COMENTAR LA ENTRADA DE BLOG
 $('#home_blog_comment').live('pagebeforeshow', function(event, ui) {
   getInfoBlogComment(getUrlVars()["id_blog"]);
+  
 });
 
 
@@ -230,8 +231,8 @@ function getBlogHome(){
             html_data+='    </div>';
             html_data+='  </div>';
             html_data+='  <div class="cont_bottom">';
-            html_data+='    <span class="coments_count">Comentarios <b>(100)</b></span>';
-            html_data+='    <span class="like_count">Me gusta <b>(100)</b></span>';
+            html_data+='    <span class="coments_count">Comentarios <b>('+item.comentario.respuestas+')</b></span>';
+            html_data+='    <span class="like_count">Me gusta <b>('+item.comentario.likes_count+')</b></span>';
             html_data+='  </div>';
             html_data+='</a>';
             html_data+='</li>';
@@ -245,28 +246,85 @@ function getBlogHome(){
 /*OBTENEMOS LOS DATOS DE UNA ENTRADA ESPECÍFICA DEL BLOG DE LA HOME*/
 function getInfoBlog(id_blog){
     $.getJSON(BASE_URL_APP+'comentarios/mobileGetComment/'+id_blog, function(data) {
-        var item = data.item;
+       var item = data.item;
        jQuery("#detail_post .day_month").text(item.comentario.dia);
        jQuery("#detail_post .month").text(item.comentario.mes);
        jQuery("#detail_post .day_week").text(item.comentario.dia_semana);
        jQuery("#detail_post .title_post").text(item.usuario.title);
        jQuery("#detail_post .text").html(item.comentario.mensaje);
        jQuery("#btn_comment").attr("href","home_blog_comentar.html?id_blog="+id_blog);
-       
-       if(item.comentario.img!=null || item.comentario.img!="")
-        jQuery("#detail_post .image").html('<img src="'+BASE_URL_APP+'img/comentarios/800/'+item.comentario.img+'" alt="blog"/>');
+       jQuery("#number_comment").text("("+item.comentario.respuestas+")");
+       if(item.comentario.img!=null && $.trim(item.comentario.img)!=""){
+         jQuery("#detail_post .image").html('<img src="'+BASE_URL_APP+'img/comentarios/800/'+item.comentario.img+'" alt="blog"/>');
+        }
+       else jQuery("#detail_post .image").remove();
     });
 }
 
 /*OBTENEMOS LOS DATOS PARA COMENTAR UNA ENTRADA ESPECÍFICA DEL BLOG DE LA HOME*/
 function getInfoBlogComment(id_blog){
     $.getJSON(BASE_URL_APP+'comentarios/mobileGetComment/'+id_blog, function(data) {
-        var item = data.item;
+       var item = data.item;
+       var respuestas = data.respuestas;
        jQuery("#detail_post .day_month").text(item.comentario.dia);
        jQuery("#detail_post .month").text(item.comentario.mes);
        jQuery("#detail_post .day_week").text(item.comentario.dia_semana);
        jQuery("#detail_post .title_post").text(item.usuario.title);
-       
+       jQuery(".list_comments_blog").html("");
+       jQuery("#number_comment_c").text("("+item.comentario.respuestas+")");
+       jQuery("#id_coment_form").val(id_blog);
+       jQuery("#id_user_login").val(COOKIE.id);
+       	$.each(respuestas, function(index, respuesta) {
+       	   html_c=" <li>";
+           html_c+='      <div class="avatar">';
+           html_c+='         <img src="'+BASE_URL_APP+'img/Usuario/169/'+respuesta.usuario.imagen+'" alt="avatar" />';
+           html_c+='     </div>';
+           html_c+='     <div class="text_comment">';
+           html_c+='         <div>';
+           html_c+='              <p><span>'+respuesta.usuario.title+' :</span> '+respuesta.comentario.mensaje+'</p>';
+           html_c+='         </div>';
+           html_c+='     </div>';
+           html_c+=' </li>';
+           jQuery(".list_comments_blog").append(html_c);
+        });
+        
+    });
+    
+    jQuery('a#btn_send_comment').on("click", function(){
+        if(jQuery("#form_response_comment #comentario").val()!="" &&  jQuery("#form_response_comment #comentario").val()!="Escribe tu comentario..."){
+        showLoadingCustom('Enviando datos...');
+        $.ajax({
+                    data: $("#form_response_comment").serialize(),
+                    type: "POST",
+                    url: BASE_URL_APP+'comentarios/respadd',
+                    dataType: "html",
+                    success: function(data){
+                       data_j = $.parseJSON(data);
+                       if(data_j.respuesta==1)
+                       {
+                         html_c=" <li>";
+                         html_c+='      <div class="avatar">';
+                         html_c+='         <img src="'+BASE_URL_APP+'img/Usuario/169/'+COOKIE.imagen+'" alt="avatar" />';
+                         html_c+='     </div>';
+                         html_c+='     <div class="text_comment">';
+                         html_c+='         <div>';
+                         html_c+='              <p><span>'+COOKIE.title+' :</span> '+$("#form_response_comment #comentario").val()+'</p>';
+                         html_c+='         </div>';
+                         html_c+='     </div>';
+                         html_c+=' </li>';
+                         jQuery(".list_comments_blog").append(html_c);
+                        showAlert('Se ha enviado correctamente tu comentario.', "Aviso", "Aceptar");
+                       }
+                       else{
+                        showAlert('Ha ocurrido un error, intente nuevamente.', "Aviso", "Aceptar");
+                       }
+                       $.mobile.loading( 'hide' );
+                    }
+                });
+        }
+        else{
+            showAlert("Debes introducir un comentario.", "Aviso", "Aceptar");
+        }
     });
 }
 

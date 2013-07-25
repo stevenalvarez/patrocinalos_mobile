@@ -37,16 +37,20 @@
                     <h2 class="title_post">El perfil de la semana: Dragon Boat Pinatar</h2>
                 </div>
                 <div>
-                    <form method="post" action="">
-                        <textarea placeholder='Escribe tu comentarios aqu&iacute;...'></textarea>
+                    <form method="post" action="" id="form_response_comment">
+                        <input type="hidden" name="source_conexion" id="mobile_app" value="mobile_app" />
+                        <input type="hidden" name="id" id="id_coment_form" />
+                        <input type="hidden" name="type" value="blog"/>
+                        <input type="hidden" name="id_user_login" id="id_user_login"/>
+                        <textarea id="comentario" name="comentario" placeholder='Escribe tu comentario...'></textarea>
                     </form>
                 </div>
                 <div class="content_bottom">
                     <div class="form_count">
-                        <span class="coments_count">Comentarios <b id="number_comment">(100)</b></span>
+                        <span class="coments_count">Comentarios <b id="number_comment_c">(100)</b></span>
                     </div>
                     <div class="buttons">
-                        <a href="#" class="coment_b">COMENTAR</a>
+                        <a href="#" class="coment_b" id="btn_send_comment">COMENTAR</a>
                     </div>
                 </div>
                 <h4 class="subtitle">&Uacute;ltimos comentarios</h4>
