@@ -101,6 +101,22 @@
 .content_list_first{
     padding: 5px;
 }
+.m-fluid .m-item{
+    margin-right: 0px !important;
+}
+.m-carousel-bulleted a{
+    padding: 2px !important;
+    margin: 0 3px !important;
+    background-color: #fff !important;
+}
+.m-carousel-controls{
+    padding-top: 0px !important;
+    position: relative !important;
+    top: -22px !important;
+}
+.m-carousel-bulleted a.m-active{
+    background-color: #b94949 !important;
+}
 h1, h2, h3, h4, h5, h6, span.error, span.text{
     letter-spacing: -1px;
 }
@@ -2832,7 +2848,7 @@ label.custom{
 }
 .info_deportista{
     background-color: #1d1d1d;
-    padding-bottom: 28px;
+    padding-bottom: 36px;
 }
 .info_content{
     background-color: #456176;
