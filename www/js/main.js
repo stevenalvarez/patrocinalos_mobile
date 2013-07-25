@@ -269,17 +269,20 @@ function getEntradasByCarrousel(){
                 clone.find(".texto_corto").html(item.Entrada.title);
                 clone.find(".descripcion").html(item.Entrada.texto);
                 clone.find(".buttom_ir_perfil").find("a").attr("href", "p_edicion_datos_deportivos.html?usuario_id="+item.Entrada.usuario_id);
-                
                 clone.css("display", "inline-block");
                 clone.addClass("clone");
+                
            	    parent.find(".m-carousel-inner").append(clone);
+                if(index == 0){
+                    parent.find(".m-carousel-controls").append('<a href="#" data-slide="'+(index+2)+'" class="m-active">'+(index+2)+'</a>');
+                }else{
+                    parent.find(".m-carousel-controls").append('<a href="#" data-slide="'+(index+2)+'">'+(index+2)+'</a>');
+                }
             });
             
             parent.find(".m-carousel-inner").promise().done(function() {
-                //Borramos el primer items y aplicamos que sea carrousel
-                parent.find(".m-item:first").remove();
-                jQuery('.m-carousel').carousel();
-                
+                parent.find(".m-carousel-controls").show();
+                parent.find('.m-carousel').carousel();
                 //ocultamos loading
                 $.mobile.loading( 'hide' );
             });
