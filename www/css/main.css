@@ -2911,7 +2911,7 @@ label.custom{
     color: #d3d5d7;
     line-height: 14px;
     font-size: 12px;
-    padding: 10px 0;
+    margin: 10px 0;
     max-height: 42px;
     overflow: hidden;
 }
@@ -3340,6 +3340,19 @@ label.custom{
 .popup_recompensa .control_preview_next a.next{
     background-image: url("../img/bg_next.png");
     background-size: 24px auto;
+}
+
+/* LISTA ACTIVIDADES */
+.content_list_two #lista_actividades.ui-listview li .recorte{
+    background-color: #000;
+    text-align: center;
+}
+.content_list_two #lista_actividades.ui-listview li .recorte img{
+    width: auto;
+    height: 60px;
+}
+.content_list_two #lista_actividades.ui-listview li .content_descripcion{
+    width: 66%;
 }
 
 /***************************************** RESPONSIVO *******************************************************/
@@ -3928,5 +3941,8 @@ and (orientation:landscape)
     }
     .info_content h2.bg_ronda{
         margin: 0 7.4em 6px 7.4em;
+    }
+    .content_list_two #lista_actividades.ui-listview li .content_descripcion{
+        width: 78%;
     }
 }
