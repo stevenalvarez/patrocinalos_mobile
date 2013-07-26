@@ -94,6 +94,16 @@ $('#home_blog_comment').live('pagebeforeshow', function(event, ui) {
   
 });
 
+//CUANDO CARGUE LA PAGE DE LOS PATROCINIOS ACTIVOS DE LA HOME
+$('#home_buscan_patrocinio').live('pagebeforeshow', function(event, ui) {
+    getBuscanPatrocinio();
+});
+
+//CUANDO CARGUE LA PAGE DE LAS RECOMPENSAS DE LA HOME
+$('#home_recompensas_ofrecidas').live('pagebeforeshow', function(event, ui) {
+    getRecompensas();
+});
+
 
 /************************************ FUNCTIONS *******************************************************/
 
@@ -327,6 +337,82 @@ function getInfoBlogComment(id_blog){
             showAlert("Debes introducir un comentario.", "Aviso", "Aceptar");
         }
     });
+}
+
+/*OBTENEMOS LOS DATOS DE LOS DEPORTISTAS CON PATROCINIO ACTIVO DE LA HOME*/
+function getBuscanPatrocinio(){
+    jQuery(".list_buscan_patro").html("");
+    $.getJSON(BASE_URL_APP+'crowfundings/mobileGetBuscanPatrocinio', function(data) {
+        $.mobile.loading( 'show' );
+        var items = data.items;
+       	$.each(items, function(index,item) {
+       	    html_data=' <li>';
+            html_data+='    <div class="cont_top">';
+            html_data+='        <div class="recorte">';
+            html_data+='            <img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Usuario.imagen+'"/>';
+            html_data+='        </div>';
+            html_data+='        <div class="content_descripcion">';
+            html_data+='            <p>'+item.Crowfunding.actividad_patrocinio+'</p>';
+            html_data+='        </div>';
+            html_data+='        <div class="mount">';
+            html_data+='            <span>'+item.Crowfunding.monto+' &euro;</span>';
+            html_data+='        </div>';
+            html_data+='    </div>';
+            html_data+='    <div class="cont_bottom">';
+            html_data+='        <a href="#" class="link_profile"><h2>'+item.Usuario.title+'</h2></a>';
+            html_data+='        <a href="#" class="link_patrocina"><span>PATROCINAR</span></a>';
+            html_data+='       <div class="mount">';
+            html_data+='            <span>'+item.Crowfunding.monto+' &euro;</span>';
+            html_data+='        </div>';
+            html_data+='    </div>';
+            html_data+='</li>';
+            
+            if(item.Crowfunding.actividad_patrocinio!=null && item.Crowfunding.actividad_patrocinio!="")        
+            jQuery(".list_buscan_patro").append(html_data);
+    	});
+        
+        jQuery(".list_buscan_patro").promise().done(function() {
+            $(this).find("li:last img").load(function(){
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+            });
+        });
+	});
+}
+
+/*OBTENEMOS LOS DATOS DE LAS RECOMPENSAS DE LA HOME*/
+function getRecompensas(){
+    jQuery("#recompensas_home").html("");
+    $.getJSON(BASE_URL_APP+'recompensas/mobileGetRecompensas', function(data) {
+        //mostramos loading
+        $.mobile.loading( 'show' );
+        var items = data.items;
+       	$.each(items, function(index,item) {
+       	    html_data=' <li>';
+            html_data+='    <div class="cont_top">';
+            html_data+='      <div class="recorte">';
+            html_data+='           <img src="'+BASE_URL_APP+'img/recompensas/'+item.Recompensa.imagen+'"/>';
+            html_data+='      </div>';
+            html_data+='      <div class="content_descripcion">';
+            html_data+='          <p>'+item.Recompensa.descripcion+'</p>';
+            html_data+='      </div>';
+            html_data+='    </div>';
+            html_data+='    <div class="cont_bottom">';
+            html_data+='       <a href="#" class="link_profile"><h2>'+item.Recompensa.nombre+'</h2></a>';
+            html_data+='       <a href="#" class="link_patrocina"><span>PATROCINAR</span></a>';
+            html_data+='    </div>';
+            html_data+='</li>';
+                    
+            jQuery("#recompensas_home").append(html_data);
+    	});
+        
+        jQuery("#recompensas_home").promise().done(function() {
+            $(this).find("li:last img").load(function(){
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+            });
+        });
+	});
 }
 
 /* OBTENEMOS LA ENTRADAS PARA LA HOME */
