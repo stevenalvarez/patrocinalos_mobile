@@ -508,7 +508,50 @@ function getActividades() {
 
 //OBTEMOS LOS DATOS DEL PERFIL DE UN DEPORTISTA EN ESPECIFICO
 function loadPerfilDeportista(usuario_id){
+    var parent = jQuery("#perfil_deportivo");
     $.getJSON(BASE_URL_APP + 'usuarios/mobileGetPerfilDeportista?usuario_id='+usuario_id, function(data){
-        alert(data);
+        if(data.item){
+            
+             //mostramos loading
+             $.mobile.loading( 'show' );
+            
+            var data_item = data.item;
+            parent.find(".imagen_user").attr("src", BASE_URL_APP+'img/Usuario/169/'+data_item.Usuario.imagen);
+            
+            if(data_item.Usuario.urlfacebook){
+                var element = parent.find(".link_red_social a.facebook");
+                element.attr("href", data_item.Usuario.urlfacebook);
+                element.attr("onclick", "window.open(this.href,'_system'); return false;");
+            }
+            if(data_item.Usuario.twitter){
+                var element = parent.find(".link_red_social a.twitter");
+                element.attr("href", data_item.Usuario.twitter);
+                element.attr("onclick", "window.open(this.href,'_system'); return false;");
+            }
+            parent.find(".dias_finalizar").find("i").text(data_item.Crowfunding.dias_restantes);
+            
+            // datos usuario
+            parent.find(".nombre_user").text(data_item.Usuario.title);
+            parent.find(".deporte span").text(data_item.Usuario.deporte_nombre);
+            parent.find(".patrociname span").text(data_item.Crowfunding.titulo);
+            parent.find(".necesito_para span").text(data_item.Crowfunding.paraque_necesito);
+            parent.find(".cuanto_necesito").find(".monto").text(data_item.Crowfunding.monto);
+            parent.find(".recaudado").find(".monto").text(data_item.Crowfunding.total_recaudado);
+            parent.find(".porcentaje").css("width", data_item.Crowfunding.porcentaje_recaudado+"%");
+            parent.find(".numero_porcentaje span").text(data_item.Crowfunding.porcentaje_recaudado);
+            
+            var comentarios_muros = data_item.MisComentariosdeMuro;
+            $.each(comentarios_muros, function(index, comentario_muro) {
+                console.log(comentario_muro.usuario_title);
+            });
+            
+            parent.promise().done(function() {
+                $(this).find(".imagen_user").load(function(){
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );
+                });
+            });
+            
+        }
     });
 }
