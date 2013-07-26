@@ -70,7 +70,7 @@ $('#info_general').live('pagebeforeshow', function(event, ui) {
 $('#perfil_deportivo').live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
         var user = COOKIE;
-        loadPerfil(getUrlVars()["usuario_id"]);
+        loadPerfilDeportista(getUrlVars()["usuario_id"]);
     }else{
         redirectLogin();
     }
@@ -503,5 +503,12 @@ function getActividades() {
                 $.mobile.loading( 'hide' );
              });
         }
+    });
+}
+
+//OBTEMOS LOS DATOS DEL PERFIL DE UN DEPORTISTA EN ESPECIFICO
+function loadPerfilDeportista(usuario_id){
+    $.getJSON(BASE_URL_APP + 'usuarios/mobileGetPerfilDeportista?usuario_id='+usuario_id, function(data){
+        alert(data);
     });
 }
