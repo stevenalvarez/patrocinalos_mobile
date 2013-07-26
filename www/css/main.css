@@ -1814,7 +1814,7 @@ label.custom{
 #ultimas_entradas_usuario_x h2{
     font-size: 13px;
     font-weight: bold;
-    color: #000;
+    color: #cc5050;
     line-height: 22px;
     margin-bottom: 4px;
 }
@@ -2018,10 +2018,11 @@ label.custom{
     background-position: 50% 100%;
 }
 #edicion_datos_deportivos .ui-listview li .ui-li-heading span.nombre_usuario{
-    font-size: 16px;
+    font-size: 15px;
+    color: #00A2E1;
 }
 #edicion_datos_deportivos .ui-listview li .ui-li-heading span.fecha_publicacion{
-    font-size: 13px;
+    font-size: 12px;
 }
 #edicion_datos_deportivos .ui-listview li.pair .ui-li-heading span.fecha_publicacion{
     color: #8d2828;
@@ -2033,10 +2034,13 @@ label.custom{
     text-align: justify;
     display: block;
     text-shadow: 0 0 0  !important;
+    margin-right: 20px;
+    margin-bottom: 5px;
 }
 #edicion_datos_deportivos .title h2{
-    font-size: 17px;
-    margin-bottom: 0px;
+    font-size: 15px;
+    margin-left: 5px;
+    margin-top: 5px;
 }
 #edicion_datos_deportivos .data_user{
     padding: 0;
@@ -2047,14 +2051,16 @@ label.custom{
     height: 115px;
     width: 115px;
     margin-right: 0px;
-    -webkit-box-shadow: 1px 1px 3px #d5d5d5 /*{global-icon-shadow}*/;
-    box-shadow: 1px 1px 3px #d5d5d5 /*{global-icon-shadow}*/;
+    -webkit-box-shadow: 1px 3px 4px #d5d5d5 /*{global-icon-shadow}*/;
+    box-shadow: 1px 3px 4px #d5d5d5 /*{global-icon-shadow}*/;
 }
 #edicion_datos_deportivos .data_user .foto_perfil{
     background-color: #fff;
     padding-right: 2px;
     min-height: 140px;
     width: 36%;
+    margin-left: 2px;
+    margin-top: 4px;
 }
 #edicion_datos_deportivos .data_user .description{
     min-height: 135px;
@@ -2102,7 +2108,7 @@ label.custom{
     color: #A22020;
 }
 #edicion_datos_deportivos .content_progress{
-    margin-top: 5px;
+    margin-top: 10px;
 }
 #edicion_datos_deportivos .progress{
     background-color: #81b4ca;
@@ -2132,8 +2138,8 @@ label.custom{
     color: #2f475f !important;
 }
 #edicion_datos_deportivos .link_red_social{
-    padding-top: 6px;
-    margin-left: 4px;
+    padding-top: 5px;
+    margin-left: 2px;
     clear: both;
 }
 #edicion_datos_deportivos .link_red_social a{
@@ -2161,7 +2167,6 @@ label.custom{
 #edicion_datos_deportivos .dias_finalizar{
     font-size: 13px;
     letter-spacing: -1px;
-    margin-left: 3px;
     margin-top: 2px;
 }
 #edicion_datos_deportivos .info_deportista{
@@ -2209,6 +2214,47 @@ label.custom{
 }
 #edicion_datos_deportivos .info_deportista li.clasificacion span.text{
     margin-left: -3px;
+}
+/* LISTA COMETARIOS */
+.list_comentarios{
+    overflow: hidden;
+}
+.list_comentarios li{
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 2px;
+    border-top: 1px solid #fff;
+}
+.list_comentarios li a.ui-link-inherit{
+    padding: 0 !important;
+}
+.list_comentarios .ui-li-heading{
+    margin-top: 0;
+    font-weight: normal;
+}
+.list_comentarios li .avatar{
+    width: 45px;
+    height: 48px;
+    float: left;
+    margin-right: 8px;
+}
+.list_comentarios li .avatar img{
+    width: 45px;
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px -1px #444;
+}
+.list_comentarios li .content_descripcion{
+    font-family: 'HelveticaLTStdLight';
+    color:#75848e;
+    font-size: 13px;
+}
+.list_comentarios .description_c{
+    background:url("../img/arrow_link.png") no-repeat scroll right center #edf2f3; 
+    overflow: hidden;
+    padding: 5px;
+    background-size: 20px;
+    border-bottom: 1px solid #b7cbcf;
 }
 
 /* CONFIGURACION DE PRIVACIDAD O ALERTAS */
@@ -2898,7 +2944,14 @@ label.custom{
 
 /* INFO GENERAL */
 #info_general, 
-#info_ronda{
+#info_ronda,
+#edicion_datos_deportivos,
+#detail_ronda,
+#home_detail_blog,
+#home_destacados,
+#home_elites,
+#home_blog_comment,
+#home_bloggin{
     padding-bottom: 0px !important;
 }
 .info_deportista{
