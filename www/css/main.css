@@ -98,6 +98,9 @@
 .right{
     float: right;
 }
+.clear{
+    clear: both;
+}
 .content_list_first{
     padding: 5px;
 }
@@ -2038,31 +2041,34 @@ label.custom{
 #edicion_datos_deportivos .data_user{
     padding: 0;
     border: none;
-    background-color: #eeeeee;
+    background: transparent;
 }
 #edicion_datos_deportivos .data_user .recorte{
     height: 115px;
     width: 115px;
     margin-right: 0px;
+    -webkit-box-shadow: 1px 1px 3px #d5d5d5 /*{global-icon-shadow}*/;
+    box-shadow: 1px 1px 3px #d5d5d5 /*{global-icon-shadow}*/;
 }
 #edicion_datos_deportivos .data_user .foto_perfil{
     background-color: #fff;
     padding-right: 2px;
-    border-right: 1px solid #d9d9d9;
     min-height: 140px;
     width: 36%;
 }
 #edicion_datos_deportivos .data_user .description{
     min-height: 135px;
-    border-bottom: 1px solid #d9d9d9;
     width: 61%;
     padding: 4px 0 0 4px;
 }
 #edicion_datos_deportivos .data_user .description .content{
     width: 100%;
 }
+#edicion_datos_deportivos .data_user .description .content span{
+    color: #9ea9aa;
+}
 #edicion_datos_deportivos .data_user .content b{
-    color: #a22020;
+    color: #cc5050;
     font-size: 15px;
 }
 #edicion_datos_deportivos .data_user .content label{
@@ -2095,20 +2101,68 @@ label.custom{
 #edicion_datos_deportivos .content_middle .top b{
     color: #A22020;
 }
-#edicion_datos_deportivos .content_middle .center{
-    background-color: #E2E2E2;
+#edicion_datos_deportivos .content_progress{
+    margin-top: 5px;
+}
+#edicion_datos_deportivos .progress{
+    background-color: #81b4ca;
     border-top: 1px solid #d1cfcf;
     border-bottom: 1px solid #d1cfcf;
-    margin-bottom: 5px;
     color: #fff;
     font-size: 14px;
+    border-radius: 2px;
 }
-#edicion_datos_deportivos .content_middle .center .porcentaje{
-    background-color: #ab1e1e;
+#edicion_datos_deportivos .progress .porcentaje{
+    background-color: #CC5050;
     text-shadow: 0 0 0;
     padding: 5px 0;
     text-align: center;
     font-weight: bold;
+    height: 2px;
+    border-radius: 2px 0px 0px 2px;
+}
+#edicion_datos_deportivos .numero_porcentaje{
+    text-align: center;
+    font-size: 16px;
+    color: #2f475f !important;
+}
+#edicion_datos_deportivos .numero_porcentaje span.numero{
+    font-size: 18px;
+    display: inline-block;
+    color: #2f475f !important;
+}
+#edicion_datos_deportivos .link_red_social{
+    padding-top: 6px;
+    margin-left: 4px;
+    clear: both;
+}
+#edicion_datos_deportivos .link_red_social a{
+    text-indent: -9999px;
+    display: inline-block;
+}
+#edicion_datos_deportivos .link_red_social a.facebook{ 
+    background: url("../img/bg_link_facebook.png") no-repeat scroll center left transparent;
+    background-position: 0 0;
+    background-size: 33px;
+    height: 33px;
+    width: 33px;
+}
+#edicion_datos_deportivos .link_red_social a.twitter{
+    margin-left: 2px;
+    background: url("../img/bg_link_twitter.png") no-repeat scroll center left transparent;
+    background-position: 0 0;
+    background-size: 34px;
+    height: 34px;
+    width: 34px;
+}
+#edicion_datos_deportivos .btn-options{
+    margin: 0 5px;
+}
+#edicion_datos_deportivos .dias_finalizar{
+    font-size: 13px;
+    letter-spacing: -1px;
+    margin-left: 3px;
+    margin-top: 2px;
 }
 #edicion_datos_deportivos .info_deportista{
     margin: 5px 0 5px 5px;
