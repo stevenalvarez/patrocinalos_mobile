@@ -66,6 +66,16 @@ $('#info_general').live('pagebeforeshow', function(event, ui) {
     }
 });
 
+//PERFIL DEPORTIVO
+$('#perfil_deportivo').live('pagebeforeshow', function(event, ui) {
+    if(isLogin()){
+        var user = COOKIE;
+        loadPerfil(getUrlVars()["usuario_id"]);
+    }else{
+        redirectLogin();
+    }
+});
+
 //CUANDO CARGUE LA PAGE DE PUBLICACIONES DESTACADAS DE LA HOME
 $(document).on('pageinit', "#home_destacados", function(){
    getDestacados();
@@ -435,7 +445,7 @@ function getEntradasByCarrousel(){
                 clone.find(".entrada_imagen").attr("src", BASE_URL_APP+'img/home/'+item.Entrada.imagen);
                 clone.find(".texto_corto").html(item.Entrada.title);
                 clone.find(".descripcion").html(item.Entrada.texto);
-                clone.find(".buttom_ir_perfil").find("a").attr("href", "p_edicion_datos_deportivos.html?usuario_id="+item.Entrada.usuario_id);
+                clone.find(".buttom_ir_perfil").find("a").attr("href", "perfil_deportivo.html?usuario_id="+item.Entrada.usuario_id);
                 clone.css("display", "inline-block");
                 clone.addClass("clone");
                 
