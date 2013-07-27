@@ -530,3 +530,15 @@ function isLogin(){
 function redirectLogin(){
     $.mobile.changePage('#login_user', {transition: "fade"});
 }
+
+//Abrimos el enlace en un navegador del sistema (IOS|ANDROID)
+//target: the target to load the URL in (String) (Optional, Default: "_self")
+//_self - opens in the Cordova WebView if url is in the white-list, else it opens in the InAppBrowser 
+//_blank - always open in the InAppBrowser 
+//_system - always open in the system web browser/
+function openOnWindow(element, target){
+	element.find('a').click( function() {
+	   window.open($(this).attr('href') , target );
+	   return false;
+	});
+}

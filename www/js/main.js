@@ -550,6 +550,10 @@ function loadPerfilDeportista(usuario_id){
             });
             
             if(data_item.MisComentariosdeMuro != ""){
+                
+                //borramos todos los items clonados
+                parent.find(".list_comentarios > li.cloned").remove();
+                
                 //mostramos loading
                 $.mobile.loading( 'show' );
                 var comentarios_muros = data_item.MisComentariosdeMuro;
@@ -559,8 +563,14 @@ function loadPerfilDeportista(usuario_id){
                         clone.find(".img_avatar").attr("src", BASE_URL_APP+'img/Usuario/169/'+comentario_muro.usuario_imagen);
                         clone.find(".nombre_usuario").html(comentario_muro.usuario_title);
                         clone.find(".fecha_publicacion").html(comentario_muro.fecha);
-                        clone.find(".comentario").html(comentario_muro.mensaje);
+                        
+                        var element_comentario = clone.find(".comentario");
+                        element_comentario.html(comentario_muro.mensaje);
+                        openOnWindow(element_comentario, '_system');
+                        
+                        clone.addClass("cloned");
                         clone.css("display", "block");
+                        
                         parent.find(".list_comentarios").append(clone);
                     }
                 });
