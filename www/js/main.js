@@ -528,22 +528,19 @@ function loadPerfilDeportista(usuario_id){
                 element.attr("href", data_item.Usuario.twitter);
                 element.attr("onclick", "window.open(this.href,'_system'); return false;");
             }
-            parent.find(".dias_finalizar").find("i").text(data_item.Crowfunding.dias_restantes);
             
-            // datos usuario
             parent.find(".nombre_user").text(data_item.Usuario.title);
             parent.find(".deporte span").text(data_item.Usuario.deporte_nombre);
-            parent.find(".patrociname span").text(data_item.Crowfunding.titulo);
-            parent.find(".necesito_para span").text(data_item.Crowfunding.paraque_necesito);
-            parent.find(".cuanto_necesito").find(".monto").text(data_item.Crowfunding.monto);
-            parent.find(".recaudado").find(".monto").text(data_item.Crowfunding.total_recaudado);
-            parent.find(".porcentaje").css("width", data_item.Crowfunding.porcentaje_recaudado+"%");
-            parent.find(".numero_porcentaje span").text(data_item.Crowfunding.porcentaje_recaudado);
             
-            var comentarios_muros = data_item.MisComentariosdeMuro;
-            $.each(comentarios_muros, function(index, comentario_muro) {
-                console.log(comentario_muro.usuario_title);
-            });
+            if(data_item.Crowfunding !=""){
+                parent.find(".dias_finalizar").find("i").text(data_item.Crowfunding.dias_restantes).parent().show();
+                parent.find(".patrociname span").text(data_item.Crowfunding.titulo).parent().show();
+                parent.find(".necesito_para span").text(data_item.Crowfunding.paraque_necesito).parent().show();
+                parent.find(".cuanto_necesito").find(".monto").text(data_item.Crowfunding.monto).parent().show();
+                parent.find(".recaudado").find(".monto").text(data_item.Crowfunding.total_recaudado).parent().show();
+                parent.find(".progress").find(".porcentaje").css("width", data_item.Crowfunding.porcentaje_recaudado+"%").parent().show();
+                parent.find(".numero_porcentaje span").text(data_item.Crowfunding.porcentaje_recaudado).parent().show();                
+            }
             
             parent.promise().done(function() {
                 $(this).find(".imagen_user").load(function(){
@@ -552,6 +549,31 @@ function loadPerfilDeportista(usuario_id){
                 });
             });
             
+            if(data_item.MisComentariosdeMuro != ""){
+                //mostramos loading
+                $.mobile.loading( 'show' );
+                var comentarios_muros = data_item.MisComentariosdeMuro;
+                $.each(comentarios_muros, function(index, comentario_muro) {
+                    if(comentario_muro.mensaje != ""){
+                        var clone = parent.find(".list_comentarios").find("li:first").clone(true);
+                        clone.find(".img_avatar").attr("src", BASE_URL_APP+'img/Usuario/169/'+comentario_muro.usuario_imagen);
+                        clone.find(".nombre_usuario").html(comentario_muro.usuario_title);
+                        clone.find(".fecha_publicacion").html(comentario_muro.fecha);
+                        clone.find(".comentario").html(comentario_muro.mensaje);
+                        clone.css("display", "block");
+                        parent.find(".list_comentarios").append(clone);
+                    }
+                });
+                
+                parent.find(".list_comentarios").listview('refresh');
+                parent.find(".list_comentarios").promise().done(function() {
+                    $(this).find("li:last").find("img").load(function(){
+                        //ocultamos loading
+                        $.mobile.loading( 'hide' );
+                    });
+                });
+                
+            }
         }
     });
 }
