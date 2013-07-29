@@ -27,54 +27,15 @@
     	<div data-role="content">
             <div class="content_list_first">
                 <div class="options">
-                    <a class="first active" href="p_edicion_datos_personales.html">DATOS PERSONALES</a>
-                    <a class="" href="p_edicion_datos_deportivos.html">DATOS DEPORTIVOS</a>
+                    <a class="first" href="p_edicion_datos_personales.html">DATOS PERSONALES</a>
+                    <a class="active" href="p_edicion_datos_deportivos.html">DATOS DEPORTIVOS</a>
                 </div>
                 <div class="content_edicion form_data_profile">
-                    <form id="form_edit_data">
-                        <div class="info_top">
-                            <!--<div class="content_formulario left">
-                                 <div class="opciones">
-                                     <fieldset data-role="controlgroup" class="first">
-                                        <input name="usuario[tipo_deportista]" id="radio-ameteur" type="radio"/>
-                                        <label data-theme="c" for="radio-ameteur">Amateur</label>
-                                        <input name="usuario[tipo_deportista]" id="radio-profesional" type="radio" checked="checked"/>
-                                        <label data-theme="c" for="radio-profesional">Profesional</label>
-                                     </fieldset>
-                                     <fieldset data-role="controlgroup" class="second">
-                                        <input name="usuario[genero]" id="radio-masculino" type="radio" checked="checked"/>
-                                        <label data-theme="c" for="radio-masculino">Masculino</label>
-                                        <input name="usuario[genero]" id="radio-femenino" type="radio"/>
-                                        <label data-theme="c" for="radio-femenino">Femenino&nbsp;</label>
-                                     </fieldset>
-                                 </div>
-                            </div>-->
-                            <div class="right">
-                                <div class="recuadro">
-                                    <img src="img/usuarios/img_usuario.png" />
-                                </div>
-                                <a id="change_foto" class="change_button_p" href="#" data-role="button" data-theme="r" data-mini="true">Cambiar imagen</a>
-                                <a id="change_pass" class="change_button_p" href="#" data-role="button" data-theme="r" data-mini="true">Cambiar<br/> contrese&ntilde;a</a>
-                            </div>
-                        </div>                
-                        <input name="usuario[estado]" placeholder="Estado..." autocomplete="off" type="text" value="estado compitiendo"/>
-                        <input name="usuario[nombre]" placeholder="Nombre..." autocomplete="off" type="text" value="Juan Ignacio"/>
-                        <input name="usuario[email_register]" placeholder="Email..." autocomplete="off" type="text" value="info@mazzel.com"/>
-                        <input name="usuario[direccion]" placeholder="Direcci&oacute;n..." autocomplete="off" type="text"/>
-                        <select data-theme="c" name="usuario[pais]" id="select-pais">
-                            <option>Selecciona un pais...</option>
-                            <option value="38" selected="selected">Espa&ntilde;a</option>
-                            <option value="39">Bolivia</option>
-                        </select>
-                        <select data-theme="c" name="usuario[ciudad]" id="select-ciudad">
-                            <option>Selecciona una ciudad...</option>
-                            <option value="40" selected="selected">Madrid</option>
-                            <option value="41">Sevilla</option>
-                        </select>
-                        <input name="usuario[codigo_postal]" placeholder="C&oacute;digo postal..." autocomplete="off" type="text"/>
-                        <input name="usuario[telefono]" placeholder="Tel&eacute;fono..." autocomplete="off" type="text"/>
-                        <input name="usuario[url_perfil]" placeholder="Url de perfil: (ej. www.patrocinalos.com/miurlpersonal)" autocomplete="off" type="text" value="url personal: juanignacio"/>
-                        
+                    <form id="form_edit_data" class="form_datos_deportivos">
+                        <textarea name="usuario[estado]" placeholder="Objetivos deportivos..." autocomplete="off"></textarea>
+                        <textarea name="usuario[estado]" placeholder="Porque patrocinarme..." autocomplete="off"></textarea>
+                        <input name="usuario[estado]" placeholder="A&ntilde;o de fundaci&oacute;n..." autocomplete="off" type="text"/>
+                        <input name="usuario[estado]" placeholder="Clasificaci&oacute;n temporada anterior y categor&iacute;a..." autocomplete="off" type="text"/>
                         <div class="buttons_action">
                             <a href="#" class="green">ACTUALIZAR DATOS</a>
                         </div>
