@@ -2051,6 +2051,7 @@ label.custom{
     height: 115px;
     width: 115px;
     margin-right: 0px;
+    border-radius: 5px 5px 5px 5px;
     -webkit-box-shadow: 1px 3px 4px #d5d5d5 /*{global-icon-shadow}*/;
     box-shadow: 1px 3px 4px #d5d5d5 /*{global-icon-shadow}*/;
 }
