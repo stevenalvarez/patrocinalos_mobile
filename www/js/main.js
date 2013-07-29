@@ -126,12 +126,12 @@ function getUsuariosRandom() {
     parent = $("#view .list");
     parent.find("li").remove();
 	
-    $.getJSON(serviceURL + 'get_usuarios_random.php', function(data) {
+    $.getJSON(BASE_URL_APP + 'usuarios/mobileGetDeportistasRandom', function(data) {
 	    //mostramos loading
         $.mobile.loading( 'show' );
 		var usuarios = data.items;
-    	$.each(usuarios, function(index, usuario) {
-    		parent.append('<li><div class="recuadro_img"><img src="'+BASE_URL+'img/Usuario/169/'+usuario.imagen+'"/><div></li>');
+    	$.each(usuarios, function(index, item) {
+    		parent.append('<li><div class="recuadro_img"><img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Usuario.imagen+'"/><div></li>');
     	});
         
         parent.promise().done(function() {
