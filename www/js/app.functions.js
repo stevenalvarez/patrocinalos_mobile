@@ -41,9 +41,7 @@ function onFail(message) {
 
 // UploadPhoto
 //
-function uploadPhoto(id_usuario, folder) {
-    //Asignamos el id del usuario para realizar otras operaciones
-    ID_USUARIO = id_usuario;
+function uploadPhoto(usuario_id, folder) {
     
     var options = new FileUploadOptions();
     options.fileKey = "file";
@@ -52,38 +50,33 @@ function uploadPhoto(id_usuario, folder) {
     
     var params = new Object();
     params.folder = folder;
+    params.usuario_id = usuario_id;
     
     options.params = params;
     options.chunkedMode = false;
     
     var ft = new FileTransfer();
-    ft.upload(IMAGEURI, serviceURL + "upload_photo.php", function(r){
+    ft.upload(IMAGEURI, BASE_URL_APP + "usuarios/mobileUploadImagenDevice", function(r){
         // Callback success upload photo
         //
         //console.log("Code = " + r.responseCode);
         //console.log("Response = " + r.response);
         //console.log("Sent = " + r.bytesSent);
         
-        //Mutiples opciones, la foto puede cargarse y despues realizar otras operaciones
-        switch (folder)
-        {
-        case 'perfil':
-          //Actuializamos su foto de perfil
-          update_row('usuarios', 'imagen', r.response, 'id', ID_USUARIO);
-          break;
-        
-        case 'galeria_foto':
-          break;
-        
-        case 'galeria_video':
-          break;
+        var success = r.response;
+        if(success){
+            $.mobile.loading( 'hide' );
+            alert("ashdf");
+            success_registro();
+        }else{
+            error_registro('Ha ocurrido un error al momento de actualizar los datos del deportista!, por favor intente de nuevo');
         }
         
     }, function(error){
         //Callback error upload photo
         //
         //console.log("An error has occurred: Code = " + error.code);
-        showAlert("Se ha producido un error", "Aviso", "Aceptar");
+        showAlert("Se ha producido un error al momento de subir la imagen desde el dispositivo", "Aviso", "Aceptar");
         
     }, options);
 }
@@ -227,17 +220,17 @@ function form_registro(){
                 $.ajax({
                     data: $("#form_registro").serialize(),
                     type: "POST",
-                    url: serviceURL + 'set_create_registro.php',
+                    url: BASE_URL_APP + 'usuarios/mobileNewRegistro',
                     dataType: "html",
                     success: function(data){
                         data = $.parseJSON(data);
-                        var id_usuario = parseInt(data.item);
-                        if(id_usuario){
+                        var usuario_id = parseInt(data.item);
+                        if(usuario_id){
                             //Si selecciono un imagen mandamos a guardar en la base de datos
                             var pictureImage = document.getElementById("pictureImage");
                             var img_url = document.getElementById("u_img_url_social");
                             if($(pictureImage).attr("src") != "" && $(img_url).val() == ""){
-                                uploadPhoto(id_usuario, 'perfil');
+                                uploadPhoto(usuario_id, 'perfil');
                             }else{
                                 success_registro();
                             }
@@ -374,29 +367,6 @@ function validar_email(value){
     });
     
     return response;
-}
-
-// ACTUALIZAR UN CAMPO DE UNA TABLA
-//
-function update_row(tabla, campo, valor, condicion_campo, condicion_valor){
-    jQuery.ajax({
-        type: "POST",
-        url: serviceURL + "set_update_data.php",
-        data: { 'tabla': tabla, 'campo': campo, 'valor': valor, 'condicion_campo': condicion_campo, 'condicion_valor' : condicion_valor},
-        dataType:"html",
-        async : false,
-        cache: false,
-        success: function(data){
-            data = $.parseJSON(data);
-            $.mobile.loading( 'hide' );
-            var success = data.item;
-            if(success){
-                success_registro();
-            }else{
-                error_registro('Ha ocurrido un error al momento de actualizar los datos del deportista!, por favor intente de nuevo');
-            }
-        }
-    });
 }
 
 function key_press(id){
