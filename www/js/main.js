@@ -58,7 +58,6 @@ $(document).on('pageinit', "#login_user", function(){
 //INFO GENERAL
 $('#info_general').live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
-        var user = COOKIE;
         getEntradasByCarrousel();
         getActividades();
     }else{
@@ -70,7 +69,9 @@ $('#info_general').live('pagebeforeshow', function(event, ui) {
 $('#perfil_deportivo').live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
         var user = COOKIE;
-        loadPerfilDeportista(getUrlVars()["usuario_id"]);
+        var me = user.id;
+        loadPerfilDeportista(me, getUrlVars()["usuario_id"]);
+        loadEventPerfilDeportista(this, me, getUrlVars()["usuario_id"]);
     }else{
         redirectLogin();
     }
@@ -506,16 +507,24 @@ function getActividades() {
     });
 }
 
-//OBTEMOS LOS DATOS DEL PERFIL DE UN DEPORTISTA EN ESPECIFICO
-function loadPerfilDeportista(usuario_id){
+//OBTENEMOS LOS DATOS DEL PERFIL DE UN DEPORTISTA EN ESPECIFICO
+function loadPerfilDeportista(me, usuario_id){
     var parent = jQuery("#perfil_deportivo");
-    $.getJSON(BASE_URL_APP + 'usuarios/mobileGetPerfilDeportista?usuario_id='+usuario_id, function(data){
+    $.getJSON(BASE_URL_APP + 'usuarios/mobileGetPerfilDeportista?me=' + me + '&usuario_id='+usuario_id, function(data){
         if(data.item){
             
-             //mostramos loading
-             $.mobile.loading( 'show' );
+            //mostramos loading
+            $.mobile.loading( 'show' );
             
             var data_item = data.item;
+            
+            //verifica si el deportista logeado ya es seguidor del deportista x
+            if(data_item.Usuario.soy_su_seguidor){
+                parent.find("#seguir_deportista").find(".ui-btn-text").text("Dejar de seguir");
+                parent.find("#seguir_deportista").removeClass("seguir");
+                parent.find("#seguir_deportista").addClass("dejar_seguir");
+            }
+            
             parent.find(".imagen_user").attr("src", BASE_URL_APP+'img/Usuario/169/'+data_item.Usuario.imagen);
             
             if(data_item.Usuario.urlfacebook){
@@ -584,6 +593,49 @@ function loadPerfilDeportista(usuario_id){
                 });
                 
             }
+        }
+    });
+}
+
+//INICIAMOS LOS EVENTO SEGUIR, PATROCINAR DEPORTISTA
+function loadEventPerfilDeportista(element, me, to_usuario_id){
+    $(element).find("#seguir_deportista").click(function(){
+        
+        if($(this).hasClass("seguir")){
+            //mostramos loading
+            $.mobile.loading( 'show' );
+            $.getJSON(BASE_URL_APP + 'amigos/mobileSeguirDeportista?me=' + me + "&to_usuario_id=" + to_usuario_id, function(data){
+                if(data.success){
+                    $(element).find("#seguir_deportista").find(".ui-btn-text").text("Dejar de seguir");
+                    $(element).find("#seguir_deportista").removeClass("seguir");
+                    $(element).find("#seguir_deportista").addClass("dejar_seguir");
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );
+                }else{
+                    showAlert("Ocurrio un error", "Error", "Aceptar");
+                }
+            });
+        }else if($(this).hasClass("dejar_seguir")){
+            dejarSeguirDeportista(element, me, to_usuario_id);
+        }
+        
+        return false;
+    });
+}
+
+//DEJAR DE SEGUIR A UN DEPORTISTA
+function dejarSeguirDeportista(element, me, to_usuario_id){
+    //mostramos loading
+    $.mobile.loading( 'show' );
+    $.getJSON(BASE_URL_APP + 'amigos/mobileDejarSeguirDeportista?me=' + me + '&to_usuario_id=' + to_usuario_id, function(data){
+        if(data.success){
+            $(element).find("#seguir_deportista").find(".ui-btn-text").text("Seguir");
+            $(element).find("#seguir_deportista").removeClass("dejar_seguir");
+            $(element).find("#seguir_deportista").addClass("seguir");
+            //ocultamos loading
+            $.mobile.loading( 'hide' );
+        }else{
+            showAlert("Ocurrio un error", "Error", "Aceptar");
         }
     });
 }
