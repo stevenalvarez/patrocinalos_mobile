@@ -92,19 +92,19 @@ function uploadPhoto(id_usuario, folder) {
 
 //LLENAR DEPORTES PARA EL FORMULARIO DE REGISTRO
 function llenarDeportes(){
-	$.getJSON(serviceURL + 'get_deportes.php', function(data) {
+	$.getJSON(BASE_URL_APP + 'deportes/mobileGetDeportes', function(data) {
 		var deportes = data.items;
         var categoria = "";
         var html = "";
         $.each(deportes, function(index, deporte) {
-            if(categoria != deporte.id_categoria){
+            if(categoria != deporte.Deportecategoria.id_categoria){
                 if(categoria != ""){
                     html+= "</optgroup>";
                 }
-                html+= "<optgroup label='"+htmlspecialchars_decode(deporte.nombre_categoria)+"'>";
-                categoria = deporte.id_categoria;
+                html+= "<optgroup label='"+htmlspecialchars_decode(deporte.Deportecategoria.nombre_categoria)+"'>";
+                categoria = deporte.Deportecategoria.id_categoria;
             }
-            html+= "<option value="+deporte.id+">"+htmlspecialchars_decode(deporte.nombre)+"</option>";
+            html+= "<option value="+deporte.Deporte.id+">"+htmlspecialchars_decode(deporte.Deporte.nombre)+"</option>";
         });
         html+= "</optgroup>";
         
@@ -345,7 +345,7 @@ function validar_email(value){
     var response = false;
     jQuery.ajax({
         type: "POST",
-        url: serviceURL + "get_validar_email.php",
+        url: BASE_URL_APP + "usuarios/mobileValidarEmail",
         data: "email="+value,
         dataType:"html",
         async : false,
