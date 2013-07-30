@@ -68,6 +68,14 @@ var Twitter = {
                     
                     // SETTING OUR LOCAL STORAGE
                     localStorage.setItem(twitterKey, JSON.stringify(accessData));
+                    
+                    //mandamos al registro
+                    setTimeout(function(){
+                        TW_LOGIN_SUCCESS = true;
+                        showRegistroSocial('twitter');
+                        showLoadingCustom('Cargando datos...');
+                    }, 0);
+                    
                     oauth.get('https://api.twitter.com/1.1/users/show.json?screen_name=' + screen_name,
                     function(data)
                     {
@@ -76,12 +84,8 @@ var Twitter = {
                         $("#form_registro").find("#pictureImage").attr("src", user.profile_image_url).show();
                         $("#form_registro").find("#u_img_url_social").val(user.profile_image_url);
                         
-                        //mandamos al registro
-                        setTimeout(function(){
-                            TW_LOGIN_SUCCESS = true;
-                            showRegistroSocial('twitter');
-                            showLoadingCustom('Cargando datos...');
-                        }, 0);
+                        //ocultamos el loading...
+                        $.mobile.loading( 'hide' );
                     
                     },
                     function(data) { alert('Fail to fetch the info of the authenticated user!'); }
