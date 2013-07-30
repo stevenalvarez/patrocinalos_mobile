@@ -66,7 +66,6 @@ function uploadPhoto(usuario_id, folder) {
         var success = r.response;
         if(success){
             $.mobile.loading( 'hide' );
-            alert("ashdf");
             success_registro();
         }else{
             error_registro('Ha ocurrido un error al momento de actualizar los datos del deportista!, por favor intente de nuevo');
@@ -211,12 +210,7 @@ function form_registro(){
             var success = validar_email(email);
             //Unicamente si el email no esta registrado mandamos a guardar
             if(success == false){
-                //mostramos loading
-                showLoadingCustom('Guardando datos...');
-                                
-                //$("#u_nombre").val($("#u_nombre").escape());
-                //$("#u_apellido").val($("#u_apellido").escape());
-                $("#u_title").val($("#u_title").escape());
+                
                 $.ajax({
                     data: $("#form_registro").serialize(),
                     type: "POST",
@@ -237,7 +231,11 @@ function form_registro(){
                         }else{
                             error_registro('Ha ocurrido un error al momento de registrarse!, por favor intente de nuevo');
                         }
-                    }
+                    },
+                    beforeSend : function(){
+                        //mostramos loading
+                        showLoadingCustom('Guardando datos...');
+                    }                    
                 });
             }
         }
@@ -276,8 +274,6 @@ function form_login(){
         
         //Si todo el form es valido mandamos a verificar los datos de acceso
         if (jQuery(this).valid()) {
-            //mostramos loading
-            showLoadingCustom('Validando datos...');
             
             $.ajax({
                 data: $("#form_login").serialize(),
@@ -311,6 +307,10 @@ function form_login(){
                         //mostramos el mensaje de login fallido
                         $("#login_user").find(".msg_error").fadeIn("slow");
                     }
+                },
+                beforeSend : function(){
+            	    //mostramos loading
+                    showLoadingCustom('Validando datos...');
                 }
             });
         }
