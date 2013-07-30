@@ -3,6 +3,7 @@ var pictureSource;   // picture source
 var destinationType; // sets the format of returned value
 var friendIDs = [];
 var IMAGEURI;
+var ID_USUARIO;
 var FB_LOGIN_SUCCESS = false;
 var TW_LOGIN_SUCCESS = false;
 var COOKIE = '';
