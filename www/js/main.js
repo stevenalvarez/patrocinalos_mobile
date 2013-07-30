@@ -118,6 +118,15 @@ $('#home_recompensas_ofrecidas').live('pagebeforeshow', function(event, ui) {
     getRecompensas();
 });
 
+//CUANDO CARGUE LA PAGE DE EDICIÓN DE DATOS DE PERFIL
+$("#edicion_datos_personales").live('pagebeforeshow', function(event, ui) {
+    if(isLogin()){
+        getDatosPersonales(COOKIE.id);
+    }else{
+        redirectLogin();
+    }
+});
+
 
 /************************************ FUNCTIONS *******************************************************/
 
@@ -427,6 +436,36 @@ function getRecompensas(){
             });
         });
 	});
+}
+
+/*OBTENEMOS LOS DATOS PERSONALES DENTRO EL PANEL DE GESTION DEL DEPORTISTA*/
+function getDatosPersonales(id_user){
+    var pais_dep="";
+    var provincia_dep="";
+     $.getJSON(BASE_URL_APP+'usuarios/mobileGetDatosPersonales/'+id_user, function(data){
+        jQuery("#estado_dep").val(data.item.usuario.estado);
+        jQuery("#title_dep").val(data.item.usuario.title);
+        jQuery("#email_dep").val(data.item.usuario.email);
+        jQuery("#direccion_dep").val(data.item.usuario.direccion);
+        jQuery("#postal_dep").val(data.item.usuario.postal);
+        jQuery("#telefono_dep").val(data.item.usuario.telefono);
+        jQuery("#urlamigable_dep").val(data.item.usuario.urlamigable);
+        jQuery("#imagen_dep").attr("src",BASE_URL_APP+'img/Usuario/169/'+data.item.usuario.imagen);
+        pais_dep=data.item.id;
+        jQuery("#select-pais").siblings("span.ui-btn-inner").find("span.ui-btn-text").html("<span>"+data.pais.nombre+"</span>");
+        alert(jQuery("#select-pais").siblings("span.ui-btn-inner").html());
+        provincia_dep=data.provincia.id;
+     });
+     
+     $.getJSON(BASE_URL_APP+'usuarios/mobileGetPaises', function(data){
+        $.each(data.items,function(index,item){
+            if(item.paises.id==pais_dep)
+                jQuery("#select-pais").append('<option selected="selected" value="'+item.paises.id+'">'+item.paises.nombre+'</option>');
+            else
+                jQuery("#select-pais").append('<option value="'+item.paises.id+'">'+item.paises.nombre+'</option>');
+        });
+     });
+     
 }
 
 /* OBTENEMOS LA ENTRADAS PARA LA HOME */

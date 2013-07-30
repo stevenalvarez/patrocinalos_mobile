@@ -1083,6 +1083,10 @@
     margin-top: 10px;
     
  }
+ 
+ #edicion_datos_personales .content_edicion.form_data_profile #form_edit_data .right .recuadro img{
+    border-radius:3px;
+ }
  /*PAGE EDITAR DATOS DE PERFIL DEL DEPORTISTA p_edicion_datos_personales.html*/
  
  
