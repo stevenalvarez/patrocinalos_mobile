@@ -51,29 +51,27 @@
                             </div>-->
                             <div class="right">
                                 <div class="recuadro">
-                                    <img src="img/usuarios/img_usuario.png" />
+                                    <img id="imagen_dep" src="img/usuarios/img_usuario.png" />
                                 </div>
                                 <a id="change_foto" class="change_button_p" href="#" data-role="button" data-theme="r" data-mini="true">Cambiar imagen</a>
                                 <a id="change_pass" class="change_button_p" href="#" data-role="button" data-theme="r" data-mini="true">Cambiar<br/> contrese&ntilde;a</a>
                             </div>
                         </div>                
-                        <input name="usuario[estado]" placeholder="Estado..." autocomplete="off" type="text" value="estado compitiendo"/>
-                        <input name="usuario[nombre]" placeholder="Nombre..." autocomplete="off" type="text" value="Juan Ignacio"/>
-                        <input name="usuario[email_register]" placeholder="Email..." autocomplete="off" type="text" value="info@mazzel.com"/>
-                        <input name="usuario[direccion]" placeholder="Direcci&oacute;n..." autocomplete="off" type="text"/>
+                        <input name="usuario[estado]" placeholder="Estado..." autocomplete="off" type="text" value="estado compitiendo" id="estado_dep"/>
+                        <input name="usuario[nombre]" placeholder="Nombre..." autocomplete="off" type="text" value="Juan Ignacio" id="title_dep"/>
+                        <input name="usuario[email_register]" placeholder="Email..." autocomplete="off" type="text" value="info@mazzel.com" id="email_dep"/>
+                        <input name="usuario[direccion]" placeholder="Direcci&oacute;n..." autocomplete="off" type="text" id="direccion_dep"/>
                         <select data-theme="c" name="usuario[pais]" id="select-pais">
                             <option>Selecciona un pais...</option>
-                            <option value="38" selected="selected">Espa&ntilde;a</option>
-                            <option value="39">Bolivia</option>
                         </select>
                         <select data-theme="c" name="usuario[ciudad]" id="select-ciudad">
                             <option>Selecciona una ciudad...</option>
                             <option value="40" selected="selected">Madrid</option>
                             <option value="41">Sevilla</option>
                         </select>
-                        <input name="usuario[codigo_postal]" placeholder="C&oacute;digo postal..." autocomplete="off" type="text"/>
-                        <input name="usuario[telefono]" placeholder="Tel&eacute;fono..." autocomplete="off" type="text"/>
-                        <input name="usuario[url_perfil]" placeholder="Url de perfil: (ej. www.patrocinalos.com/miurlpersonal)" autocomplete="off" type="text" value="url personal: juanignacio"/>
+                        <input name="usuario[codigo_postal]" placeholder="C&oacute;digo postal..." autocomplete="off" type="text" id="postal_dep"/>
+                        <input name="usuario[telefono]" placeholder="Tel&eacute;fono..." autocomplete="off" type="text" id="telefono_dep"/>
+                        <input name="usuario[url_perfil]" placeholder="Url de perfil: (ej. www.patrocinalos.com/miurlpersonal)" autocomplete="off" type="text" id="urlamigable_dep" value="url personal: juanignacio"/>
                         
                         <div class="buttons_action">
                             <a href="#" class="green">ACTUALIZAR DATOS</a>
@@ -85,9 +83,9 @@
     
           <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="c" class="footer_menu">
             <a href="#panel_menu" class="icon_menu">
-                <img src="img/bg_list_menu.png"/>
+               <img src="img/bg_list_menu.png"/>
             </a>
-        </div>
+          </div>
         
         <!-- data-dark-modal="true" data-dismissible="true" -->
         <div data-role="panel" id="panel_menu" data-position="bottom" data-position-fixed="true" data-display="overlay" data-theme="r">
