@@ -43,70 +43,60 @@ var Twitter = {
 		/*
 		We will check to see if the childBrowser's new URL matches our callBackURL
 		*/
-        if (loc.indexOf(callback) >= 0) {
-            
-    		if (loc.indexOf(callback + "?") >= 0) {
-    			
-    			// Parse the returned URL
-                var params = loc.toString().split("&");
-                var verifier = params[1].toString();
-                console.log("verifier: " + verifier);
-                //get access token
-                oauth.get('https://api.twitter.com/oauth/access_token?' + verifier+'&'+requestParams,
-    					function(data) {
-    						var accessParams = {};
-    						var qvars_tmp = data.text.split('&');
-    						for (var i = 0; i < qvars_tmp.length; i++) {
-    							var y = qvars_tmp[i].split('=');
-    							accessParams[y[0]] = decodeURIComponent(y[1]);
-    						}
-                            var screen_name = accessParams.screen_name;
-                            console.log("name: " + screen_name);
-                            
-    						oauth.setAccessToken([accessParams.oauth_token, accessParams.oauth_token_secret]);
-    						
-    						// Save access token/key in localStorage
-    						var accessData = {};
-    						accessData.accessTokenKey = accessParams.oauth_token;
-    						accessData.accessTokenSecret = accessParams.oauth_token_secret;
-    						
-    						// SETTING OUR LOCAL STORAGE
-    						console.log("TWITTER: Storing token key/secret in localStorage");
-    						localStorage.setItem(twitterKey, JSON.stringify(accessData));
-                            oauth.get('https://api.twitter.com/1.1/users/show.json?screen_name=' + screen_name,
-                            function(data)
-                            {
-                              var user = jQuery.parseJSON(data.text);
-                              $("#form_registro").find("#u_title").val(user.name);
-                              $("#form_registro").find("#pictureImage").attr("src", user.profile_image_url).show();
-                              $("#form_registro").find("#u_img_url_social").val(user.profile_image_url);
-                              
-                              //mandamos al registro
-                              setTimeout(function(){
-                                showRegistroSocial('twitter');
-                                showLoadingCustom('Cargando datos...');
-                              }, 0);
-                              
-                            },
-                                function(data) { alert('Fail to fetch the info of the authenticated user!'); }
-                            );                        
-    						
-    						// Since everything went well we can close our childBrowser!
-    						window.plugins.childBrowser.close();
-    				},
-    				function(data) { 
-    					console.log(data);
-    				   
-    				}
-    			);
-    		}
-    		else {
-    			// do nothing	
-    		}
-        }else{
-            showAlert("ocurrio un error al momento de obtener los datos de twitter....", "Advertencia", "Aceptar");
-			window.plugins.childBrowser.close();            
-        }
+		if (loc.indexOf(callback + "?") >= 0) {
+			
+			// Parse the returned URL
+            var params = loc.toString().split("&");
+            var verifier = params[1].toString();
+            //get access token
+            oauth.get('https://api.twitter.com/oauth/access_token?' + verifier+'&'+requestParams,
+					function(data) {
+						var accessParams = {};
+						var qvars_tmp = data.text.split('&');
+						for (var i = 0; i < qvars_tmp.length; i++) {
+							var y = qvars_tmp[i].split('=');
+							accessParams[y[0]] = decodeURIComponent(y[1]);
+						}
+                        var screen_name = accessParams.screen_name;
+                        
+						oauth.setAccessToken([accessParams.oauth_token, accessParams.oauth_token_secret]);
+						
+						// Save access token/key in localStorage
+						var accessData = {};
+						accessData.accessTokenKey = accessParams.oauth_token;
+						accessData.accessTokenSecret = accessParams.oauth_token_secret;
+						
+						// SETTING OUR LOCAL STORAGE
+						localStorage.setItem(twitterKey, JSON.stringify(accessData));
+                        oauth.get('https://api.twitter.com/1.1/users/show.json?screen_name=' + screen_name,
+                        function(data)
+                        {
+                          var user = jQuery.parseJSON(data.text);
+                          $("#form_registro").find("#u_title").val(user.name);
+                          $("#form_registro").find("#pictureImage").attr("src", user.profile_image_url).show();
+                          $("#form_registro").find("#u_img_url_social").val(user.profile_image_url);
+                          
+                          //mandamos al registro
+                          setTimeout(function(){
+                            showRegistroSocial('twitter');
+                            showLoadingCustom('Cargando datos...');
+                          }, 0);
+                          
+                        },
+                            function(data) { alert('Fail to fetch the info of the authenticated user!'); }
+                        );                        
+						
+						// Since everything went well we can close our childBrowser!
+						window.plugins.childBrowser.close();
+				},
+				function(data) { 
+					console.log(data);
+				}
+			);
+		}
+		else {
+			// do nothing	
+		}
 	},
 	tweet:function(){
 		var storedAccessData, rawData = localStorage.getItem(twitterKey);
