@@ -100,14 +100,6 @@ var Twitter = {
             );
         }
         else {
-            alert(loc);
-            //Si es IOS por ahora mostramos un mensaje y cerramos el childBrowser
-            var uagent = navigator.userAgent.toLowerCase();
-            
-            if (uagent.search("iphone") > -1 || uagent.search("ipod") > -1 || uagent.search("ipad") > -1 || uagent.search("appletv") > -1) {
-                window.plugins.childBrowser.close();
-                showAlert("ocurrio un error al momento de obtener los datos de twitter en IOS", "Advertencia", "Aceptar");
-            }
         // do nothing	
         }
 	},
