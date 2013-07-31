@@ -531,12 +531,12 @@ function getDatosDeportivos(id_user){
 }
 
 /*FUNCION PARA GUARDAR LOS DATOS PERSONALES*/
-function saveDatosPersonales(){
+function saveDatosPersonales(form){
     
     if(COOKIE.id){
         showLoadingCustom('Enviando datos...');
         $.ajax({
-                    data: $("#form_edit_data").serialize(),
+                    data: $("#"+form).serialize(),
                     type: "POST",
                     url: BASE_URL_APP+'usuarios/mobileSaveDatosPersonales/'+COOKIE.id,
                     dataType: "html",
