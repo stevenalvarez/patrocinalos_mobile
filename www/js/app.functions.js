@@ -512,3 +512,21 @@ function openOnWindow(element, target){
 	   return false;
 	});
 }
+
+/*FUNCION PARA CAPTURAR UNA FOTO MEDIANTE LA CAMARA DEL DISPOSITIVO*/
+//preview:elemento html donde se carga la foto de preview, 
+//name:input hidden para guardar el nombre y enviarlo para guardarlo en la DB
+//destination:path en el servidor donde se guarda el archivo
+function capturePhoto(preview,name,destination){
+    
+}
+
+/*funccion para cerrar un modal*/
+//thiss:link que cierra el modal
+//status:para cerrar o mostrar un modal
+function modalOpenHide(thiss,status){
+    if(status=="hide")
+        jQuery("#"+jQuery(thiss).attr("rel")).fadeOut("fast");
+    else if(status=="show")
+            jQuery("#"+jQuery(thiss).attr("rel")).fadeIn("fast");
+}

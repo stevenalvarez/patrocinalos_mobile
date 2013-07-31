@@ -467,6 +467,9 @@ function getDatosPersonales(id_user){
         jQuery("#urlamigable_dep").val(data.item.usuario.urlamigable);
         jQuery("#urlamigable_dep").before("<b class='title_mini'>Url:</b>");
         jQuery("#imagen_dep").attr("src",BASE_URL_APP+'img/Usuario/169/'+data.item.usuario.imagen);
+        jQuery("#u_img_url_social").val(data.item.usuario.imagen);
+        jQuery("#modal_box img.preview").attr("src",BASE_URL_APP+'img/Usuario/169/'+data.item.usuario.imagen);
+        
         pais_dep=data.item.pais.id;
         jQuery("#select-pais").siblings("span.ui-btn-inner").find("span.ui-btn-text").html("<span>"+data.item.pais.nombre+"</span>");
         provincia_dep=data.item.provincia.id;
