@@ -6,7 +6,7 @@
     
     <!-- EDICION DE DATOS PERSONALES -->
     
-    <div data-role="page" id="edicion_datos_personales" data-theme="c">
+    <div data-role="page" id="edicion_datos_deportivos" data-theme="c">
     
     	<div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
             <ul>
@@ -32,12 +32,20 @@
                 </div>
                 <div class="content_edicion form_data_profile">
                     <form id="form_edit_data" class="form_datos_deportivos">
-                        <textarea name="usuario[estado]" placeholder="Objetivos deportivos..." autocomplete="off"></textarea>
-                        <textarea name="usuario[estado]" placeholder="Porque patrocinarme..." autocomplete="off"></textarea>
-                        <input name="usuario[estado]" placeholder="A&ntilde;o de fundaci&oacute;n..." autocomplete="off" type="text"/>
-                        <input name="usuario[estado]" placeholder="Clasificaci&oacute;n temporada anterior y categor&iacute;a..." autocomplete="off" type="text"/>
+                        <input type="hidden" name="datos" value="datos_deportivos" />
+                        <div class="text-area">
+                            <textarea name="objetivos_dep" id="objetivos_dep" placeholder="Objetivos deportivos..." autocomplete="off"></textarea>
+                        </div>
+                        <div class="text-area">
+                            <textarea name="porquepatrocinar_dep" id="porquepatrocinar_dep" placeholder="Porque patrocinarme..." autocomplete="off"></textarea>
+                        </div>
+                         <div class="text-area">
+                            <textarea name="competiciones" id="competiciones" placeholder="Competiciones en que he participado..." autocomplete="off"></textarea>
+                        </div>
+                        <input name="aniofundacion_dep" id="aniofundacion_dep" placeholder="A&ntilde;o de fundaci&oacute;n..." autocomplete="off" type="text"/>
+                        <input name="clasificacion_dep" id="clasificacion_dep" placeholder="Clasificaci&oacute;n temporada anterior y categor&iacute;a..." autocomplete="off" type="text"/>
                         <div class="buttons_action">
-                            <a href="#" class="green">ACTUALIZAR DATOS</a>
+                            <a href="javascript:void(0)" id="actualizar_datos" class="green">ACTUALIZAR DATOS</a>
                         </div>
                     </div>
                 </form>

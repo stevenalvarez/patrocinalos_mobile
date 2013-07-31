@@ -805,10 +805,10 @@
   .content_info_ronda.actividad_r .description .text h2{
     padding-bottom: 0;
   }
-  .content_info_ronda.actividad_r .menu_ronda,#edicion_datos_personales .options{
+  .content_info_ronda.actividad_r .menu_ronda,#edicion_datos_personales .options,#edicion_datos_deportivos .options{
     width: 100%;
   }
-  .content_info_ronda.actividad_r .menu_ronda a,#edicion_datos_personales .options a{
+  .content_info_ronda.actividad_r .menu_ronda a,#edicion_datos_personales .options a,#edicion_datos_deportivos .options a{
     background: #7bbcd0;
     width: 50%;
     font-family: 'HelveticaLTStdLight';
@@ -828,7 +828,7 @@
   .content_info_ronda.actividad_r .menu_ronda a.first{
     line-height: 30px;
   }
-  .content_info_ronda.actividad_r .menu_ronda a.active,#edicion_datos_personales .options a.active{
+  .content_info_ronda.actividad_r .menu_ronda a.active,#edicion_datos_personales .options a.active,#edicion_datos_deportivos .options  a.active{
     background: #fff;
     color: #6b7882;
     box-shadow: -3px -2px 5px -3px #444444;
@@ -925,7 +925,8 @@
     float: left;
     padding: 5px 0;
   }
-  .content_info_ronda.actividad_r .menu_ronda a.active.tab_ranking,#edicion_datos_personales .options a.active.first {
+  .content_info_ronda.actividad_r .menu_ronda a.active.tab_ranking,#edicion_datos_personales .options a.active.first,
+  #edicion_datos_deportivos .options a.active.first {
     box-shadow: 3px -1px 4px -3px #444444;
     position: relative;
     z-index: 1;
@@ -985,13 +986,13 @@
     padding: 6px 0 17px 7px;
     margin: -19px -9px 0 0px;
  }
- #edicion_datos_personales .content_list_first{
+ #edicion_datos_personales .content_list_first,#edicion_datos_deportivos .content_list_first{
     padding-top: 0;
  }
- #edicion_datos_personales .content_list_first div.options{
+ #edicion_datos_personales .content_list_first div.options,#edicion_datos_deportivos .content_list_first div.options{
     overflow: hidden;
  }
- #edicion_datos_personales .content_list_first div.options a{
+ #edicion_datos_personales .content_list_first div.options a,#edicion_datos_deportivos .content_list_first div.options a{
     border: none;
     padding: 0;
     margin: 0;
@@ -1004,10 +1005,11 @@
     width: 50%;
  }
  
- #edicion_datos_personales .content_list_first div.options a.active{
+ #edicion_datos_personales .content_list_first div.options a.active,#edicion_datos_deportivos .content_list_first div.options a.active{
     color:#6b7882
  }
- #edicion_datos_personales .content_edicion.form_data_profile #form_edit_data .change_button_p span.ui-btn-text{
+ #edicion_datos_personales .content_edicion.form_data_profile #form_edit_data .change_button_p span.ui-btn-text,
+ #edicion_datos_deportivos .content_edicion.form_data_profile #form_edit_data .change_button_p span.ui-btn-text{
     font-size: 17px;
     text-shadow: 0 0px 0 #FFFFFF;
     font-weight: normal;
@@ -1087,6 +1089,25 @@
  #edicion_datos_personales .content_edicion.form_data_profile #form_edit_data .right .recuadro img{
     border-radius:3px;
  }
+ .ui-input-text b.title_mini,.text-area b.title_mini{
+    font-family: 'HelveticaLTStdLight';
+    font-size: 14px;
+    color: #78c8eb;
+    font-weight: normal;
+    float: left;
+    padding: .4em 0;
+    margin-right: 3px;
+ }
+ div.ui-input-text input.ui-input-text{
+    width: 80%;
+ }
+ div.ui-input-text input.ui-input-text#title_dep,div.ui-input-text input.ui-input-text#telefono_dep{
+    width: 78%;
+ }
+ div.ui-input-text input.ui-input-text#direccion_dep{
+    width: 75%;
+ }
+ 
  /*PAGE EDITAR DATOS DE PERFIL DEL DEPORTISTA p_edicion_datos_personales.html*/
  
  

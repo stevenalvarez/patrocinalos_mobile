@@ -127,6 +127,15 @@ $("#edicion_datos_personales").live('pagebeforeshow', function(event, ui) {
     }
 });
 
+//CUANDO CARGUE LA PAGE DE EDICIÓN DE DATOS DE DEPORTIVOS EN EL PERFIL
+$("#edicion_datos_deportivos").live('pagebeforeshow', function(event, ui) {
+    if(isLogin()){
+        getDatosDeportivos(COOKIE.id);
+    }else{
+        redirectLogin();
+    }
+});
+
 
 /************************************ FUNCTIONS *******************************************************/
 
@@ -444,30 +453,105 @@ function getDatosPersonales(id_user){
     var provincia_dep="";
      $.getJSON(BASE_URL_APP+'usuarios/mobileGetDatosPersonales/'+id_user, function(data){
         jQuery("#estado_dep").val(data.item.usuario.estado);
+        jQuery("#estado_dep").before("<b class='title_mini'>Estado:</b>");
         jQuery("#title_dep").val(data.item.usuario.title);
+        jQuery("#title_dep").before("<b class='title_mini'>Nombre:</b>");
         jQuery("#email_dep").val(data.item.usuario.email);
+        jQuery("#email_dep").before("<b class='title_mini'>Email:</b>");
         jQuery("#direccion_dep").val(data.item.usuario.direccion);
+        jQuery("#direccion_dep").before("<b class='title_mini'>Direccion:</b>");
         jQuery("#postal_dep").val(data.item.usuario.postal);
+        jQuery("#postal_dep").before("<b class='title_mini'>Postal:</b>");
         jQuery("#telefono_dep").val(data.item.usuario.telefono);
+        jQuery("#telefono_dep").before("<b class='title_mini'>Tel&eacute;fono:</b>");
         jQuery("#urlamigable_dep").val(data.item.usuario.urlamigable);
+        jQuery("#urlamigable_dep").before("<b class='title_mini'>Url:</b>");
         jQuery("#imagen_dep").attr("src",BASE_URL_APP+'img/Usuario/169/'+data.item.usuario.imagen);
-        pais_dep=data.item.id;
-        jQuery("#select-pais").siblings("span.ui-btn-inner").find("span.ui-btn-text").html("<span>"+data.pais.nombre+"</span>");
-        alert(jQuery("#select-pais").siblings("span.ui-btn-inner").html());
-        provincia_dep=data.provincia.id;
-     });
+        pais_dep=data.item.pais.id;
+        jQuery("#select-pais").siblings("span.ui-btn-inner").find("span.ui-btn-text").html("<span>"+data.item.pais.nombre+"</span>");
+        provincia_dep=data.item.provincia.id;
+        jQuery("#select-ciudad").siblings("span.ui-btn-inner").find("span.ui-btn-text").html("<span>"+data.item.provincia.nombre+"</span>");
      
-     $.getJSON(BASE_URL_APP+'usuarios/mobileGetPaises', function(data){
-        $.each(data.items,function(index,item){
-            if(item.paises.id==pais_dep)
-                jQuery("#select-pais").append('<option selected="selected" value="'+item.paises.id+'">'+item.paises.nombre+'</option>');
-            else
-                jQuery("#select-pais").append('<option value="'+item.paises.id+'">'+item.paises.nombre+'</option>');
-        });
+    
+         $.getJSON(BASE_URL_APP+'usuarios/mobileGetPaises', function(data){
+            $.each(data.items,function(index,item){
+                if(item.paises.id==pais_dep)
+                    jQuery("#select-pais").append('<option selected="selected" value="'+item.paises.id+'">'+item.paises.nombre+'</option>');
+                else
+                    jQuery("#select-pais").append('<option value="'+item.paises.id+'">'+item.paises.nombre+'</option>');
+            });
+         });
+         
+         $.getJSON(BASE_URL_APP+'usuarios/mobileGetProvincias/'+pais_dep, function(data){
+            $.each(data.items,function(index,item){
+                if(item.provincias.id==provincia_dep)
+                    jQuery("#select-ciudad").append('<option selected="selected" value="'+item.provincias.id+'">'+item.provincias.nombre+'</option>');
+                else
+                    jQuery("#select-ciudad").append('<option value="'+item.provincias.id+'">'+item.provincias.nombre+'</option>');
+            });
+         });
      });
      
 }
 
+/*OBTENEMOS LOS DATOS PERSONALES DENTRO EL PANEL DE GESTION DEL DEPORTISTA*/
+function getDatosDeportivos(id_user){
+     $.getJSON(BASE_URL_APP+'usuarios/mobileGetDatosPersonales/'+id_user, function(data){
+        jQuery("#objetivos_dep").val(data.item.usuario.objetivos);
+        jQuery("#objetivos_dep").before("<b class='title_mini'>Objetivos:</b>");
+        jQuery("#porquepatrocinar_dep").val(data.item.usuario.porque_patrocinar);
+        jQuery("#porquepatrocinar_dep").before("<b class='title_mini'>Porqu&eacute; patrocinarme:</b>");    
+        
+        if(data.item.usuario.tipo=="equipo"){
+          jQuery("#competiciones").hide();  
+          jQuery("#aniofundacion_dep").val(data.item.usuario.aniofundacion);
+          if(data.item.usuario.aniofundacion){
+            jQuery("#aniofundacion_dep").before("<b class='title_mini'>A&ntilde;o de fundaci&oacute;:</b>");
+          }
+          jQuery("#clasificacion_dep").val(data.item.usuario.clasificacion);
+          if(data.item.usuario.aniofundacion){
+            jQuery("#aniofundacion_dep").before("<b class='title_mini'>A&ntilde;o de fundaci&oacute;:</b>");
+          }    
+        }
+        else{
+          jQuery("#competiciones").val(data.item.usuario.competiciones);
+          if(data.item.usuario.competiciones){
+            jQuery("#competiciones").before("<b class='title_mini'>Competiciones en que he participado:</b>");
+          }
+          jQuery("#aniofundacion_dep").parent("div.ui-input-text").hide();
+          jQuery("#clasificacion_dep").parent("div.ui-input-text").hide(); 
+        }
+       
+        
+        
+     });
+}
+
+/*FUNCION PARA GUARDAR LOS DATOS PERSONALES*/
+function saveDatosPersonales(){
+    
+    if(COOKIE.id){
+        showLoadingCustom('Enviando datos...');
+        $.ajax({
+                    data: $("#form_edit_data").serialize(),
+                    type: "POST",
+                    url: BASE_URL_APP+'usuarios/mobileSaveDatosPersonales/'+COOKIE.id,
+                    dataType: "html",
+                    success: function(data){
+                       data_j = $.parseJSON(data);
+                       if(data_j.respuesta==1)
+                       {
+                        showAlert('Se ha guardado correctamente tus datos', "Aviso", "Aceptar");
+                       }
+                       else{
+                        showAlert('Ha ocurrido un error, intente nuevamente.', "Aviso", "Aceptar");
+                       }
+                       $.mobile.loading('hide');
+                    }
+               });
+    }
+    
+}
 /* OBTENEMOS LA ENTRADAS PARA LA HOME */
 function getEntradasByCarrousel(){
     var parent = jQuery("#info_general");
