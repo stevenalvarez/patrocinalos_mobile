@@ -668,11 +668,14 @@ function loadPerfilDeportista(me, usuario_id){
             parent.find(".deporte span").text(data_item.Usuario.deporte_nombre);
             
             if(data_item.Crowfunding !=""){
-                parent.find(".dias_finalizar").find("i").text(data_item.Crowfunding.dias_restantes).parent().show();
+                parent.find(".dias_finalizar").find("i").text(data_item.Crowfunding.dias_restantes);
+                parent.find(".dias_finalizar").show();
                 parent.find(".patrociname span").text(data_item.Crowfunding.titulo).parent().show();
                 parent.find(".necesito_para span").text(data_item.Crowfunding.paraque_necesito).parent().show();
-                parent.find(".cuanto_necesito").find(".monto").text(data_item.Crowfunding.monto).parent().show();
-                parent.find(".recaudado").find(".monto").text(data_item.Crowfunding.total_recaudado).parent().show();
+                parent.find(".cuanto_necesito").find(".monto").text(data_item.Crowfunding.monto);
+                parent.find(".cuanto_necesito").show();
+                parent.find(".recaudado").find(".monto").text(data_item.Crowfunding.total_recaudado);
+                parent.find(".recaudado").show();
                 parent.find(".progress").find(".porcentaje").css("width", data_item.Crowfunding.porcentaje_recaudado+"%").parent().show();
                 parent.find(".numero_porcentaje span").text(data_item.Crowfunding.porcentaje_recaudado).parent().show();                
             }
@@ -746,6 +749,20 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
         }
         
         return false;
+    });
+    
+    //Evento para el pago por paypal
+    form_pago = $(element).find("#formulario_pago_individual"); 
+    form_pago.find("a.pago_paypal").off('click').on("click", function(){
+        var pago_monto = form_pago.find("#pago_monto").val();
+        var pago_termino = form_pago.find("#pago_termino").is(":checked") ? true : false;
+        
+        if($.trim(pago_monto) != "" && (parseInt(pago_monto) > 0)){
+            //Mandamos a pedir la url para realizar el pago por paypal
+        }else{
+            showAlert("Por favor!, introduzca un monto valido.", "Aviso", "Aceptar");
+            form_pago.find("#pago_monto").val("");
+        }
     });
 }
 
