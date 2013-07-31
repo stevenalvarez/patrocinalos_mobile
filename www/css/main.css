@@ -3020,8 +3020,9 @@ label.custom{
     color: #d3d5d7;
     line-height: 14px;
     font-size: 12px;
-    margin: 10px 0;
-    max-height: 42px;
+    margin: 0 0 8px 0;
+    max-height: 82px;
+    min-height: 82px;
     overflow: hidden;
 }
 .info_content .like_cash span{

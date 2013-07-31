@@ -481,11 +481,16 @@ function getEntradasByCarrousel(){
            	$.each(entradas, function(index, item) {
                 var clone = parent.find(".m-item:first").clone(true);
                 
-                clone.find(".usuario_title").html(item.Entrada.usuario);
+                if(item.Usuario){
+                    clone.find(".usuario_title").html(item.Usuario.title);
+                    clone.find(".descripcion").html(item.Entrada.title);
+                    clone.find(".buttom_ir_perfil").find("a").attr("href", "perfil_deportivo.html?usuario_id="+item.Entrada.usuario_id).show();
+                    clone.find(".like_cash").css("display", "block");
+                }else{
+                    clone.find(".usuario_title").html(item.Entrada.title);
+                    clone.find(".descripcion").html(item.Entrada.texto);
+                }
                 clone.find(".entrada_imagen").attr("src", BASE_URL_APP+'img/home/'+item.Entrada.imagen);
-                clone.find(".texto_corto").html(item.Entrada.title);
-                clone.find(".descripcion").html(item.Entrada.texto);
-                clone.find(".buttom_ir_perfil").find("a").attr("href", "perfil_deportivo.html?usuario_id="+item.Entrada.usuario_id);
                 clone.css("display", "inline-block");
                 clone.addClass("clone");
                 
