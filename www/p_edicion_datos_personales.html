@@ -32,6 +32,7 @@
                 </div>
                 <div class="content_edicion form_data_profile">
                     <form id="form_edit_data">
+                        <input type="hidden" name="datos" value="datos_personales" />
                         <div class="info_top">
                             <!--<div class="content_formulario left">
                                  <div class="opciones">
@@ -57,24 +58,24 @@
                                 <a id="change_pass" class="change_button_p" href="#" data-role="button" data-theme="r" data-mini="true">Cambiar<br/> contrese&ntilde;a</a>
                             </div>
                         </div>                
-                        <input name="usuario[estado]" placeholder="Estado..." autocomplete="off" type="text" value="estado compitiendo" id="estado_dep"/>
-                        <input name="usuario[nombre]" placeholder="Nombre..." autocomplete="off" type="text" value="Juan Ignacio" id="title_dep"/>
-                        <input name="usuario[email_register]" placeholder="Email..." autocomplete="off" type="text" value="info@mazzel.com" id="email_dep"/>
-                        <input name="usuario[direccion]" placeholder="Direcci&oacute;n..." autocomplete="off" type="text" id="direccion_dep"/>
-                        <select data-theme="c" name="usuario[pais]" id="select-pais">
+                        <input name="estado_dep" placeholder="Estado..." autocomplete="off" type="text" value="estado compitiendo" id="estado_dep"/>
+                        <input name="title_dep" placeholder="Nombre..." autocomplete="off" type="text" value="Juan Ignacio" id="title_dep"/>
+                        <input name="email_dep" placeholder="Email..." autocomplete="off" type="text" value="info@mazzel.com" id="email_dep"/>
+                        <input name="direccion_dep" placeholder="Direcci&oacute;n..." autocomplete="off" type="text" id="direccion_dep"/>
+                        <select data-theme="c" name="pais_id" id="select-pais">
                             <option>Selecciona un pais...</option>
                         </select>
-                        <select data-theme="c" name="usuario[ciudad]" id="select-ciudad">
+                        <select data-theme="c" name="provincia_id" id="select-ciudad">
                             <option>Selecciona una ciudad...</option>
                             <option value="40" selected="selected">Madrid</option>
                             <option value="41">Sevilla</option>
                         </select>
-                        <input name="usuario[codigo_postal]" placeholder="C&oacute;digo postal..." autocomplete="off" type="text" id="postal_dep"/>
-                        <input name="usuario[telefono]" placeholder="Tel&eacute;fono..." autocomplete="off" type="text" id="telefono_dep"/>
-                        <input name="usuario[url_perfil]" placeholder="Url de perfil: (ej. www.patrocinalos.com/miurlpersonal)" autocomplete="off" type="text" id="urlamigable_dep" value="url personal: juanignacio"/>
+                        <input name="postal_dep" placeholder="C&oacute;digo postal..." autocomplete="off" type="text" id="postal_dep"/>
+                        <input name="telefono_dep" placeholder="Tel&eacute;fono..." autocomplete="off" type="text" id="telefono_dep"/>
+                        <input name="urlamigable_dep" placeholder="Url de perfil: (ej. www.patrocinalos.com/miurlpersonal)" autocomplete="off" type="text" id="urlamigable_dep" value="url personal: juanignacio"/>
                         
                         <div class="buttons_action">
-                            <a href="#" class="green">ACTUALIZAR DATOS</a>
+                            <a href="javascript:void(0)" onclick="saveDatosPersonales()" id="actualizar_datos" class="green">ACTUALIZAR DATOS</a>
                         </div>
                     </div>
                 </form>
