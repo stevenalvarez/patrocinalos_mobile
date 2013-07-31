@@ -40,6 +40,24 @@
                 </div>
             </div>
         </div>
+        
+        <div class="modal_box" id="modal_box_pass">
+            <a class="close" rel="modal_box_pass" href="javascript:void(0)" onclick="modalOpenHide(this,'hide')">X</a>
+            <div class="content_modal">
+                <div class="content_change">
+                    <h3>Cambiar contrase&ntilde; de acceso</h3>
+                    <form id="form_pass">
+                        <input type="hidden" name="datos" value="cambiar_pass" />
+                        <input name="passold_dep" placeholder="contrase&ntilde;a anterior..." autocomplete="off" type="password"/>
+                        <input name="nuevapass_dep" placeholder="nueva contrase&ntilde;a..." autocomplete="off" type="password"/>
+                        <input name="renuevapass_dep" placeholder="repetir nueva contrase&ntilde;a..." autocomplete="off" type="password"/>
+                    </form>
+                    <div class="buttons_upload">
+                        <a href="javascript:void(0)" onclick="saveDatosPersonales()">GUARDAR CONTRASE&Ntilde;A</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     	<div data-role="content">
             <div class="content_list_first">
                 <div class="options">
@@ -72,7 +90,7 @@
                                     <img id="imagen_dep" src="img/usuarios/img_usuario.png" />
                                 </div>
                                 <a id="change_foto" class="change_button_p" rel="modal_box" href="javascript:void(0)" onclick="modalOpenHide(this,'show')" data-role="button" data-theme="r" data-mini="true">Cambiar imagen</a>
-                                <a id="change_pass" class="change_button_p" href="#" data-role="button" data-theme="r" data-mini="true">Cambiar<br/> contrese&ntilde;a</a>
+                                <a id="change_pass" class="change_button_p" rel="modal_box_pass" href="javascript:void(0)" onclick="modalOpenHide(this,'show')" data-role="button" data-theme="r" data-mini="true">Cambiar<br/> contrese&ntilde;a</a>
                             </div>
                         </div>                
                         <input name="estado_dep" placeholder="Estado..." autocomplete="off" type="text" value="estado compitiendo" id="estado_dep"/>

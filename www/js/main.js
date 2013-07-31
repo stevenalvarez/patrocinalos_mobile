@@ -544,10 +544,10 @@ function saveDatosPersonales(){
                        data_j = $.parseJSON(data);
                        if(data_j.respuesta==1)
                        {
-                        showAlert('Se ha guardado correctamente tus datos', "Aviso", "Aceptar");
+                        showAlert(data_j.message, "Aviso", "Aceptar");
                        }
                        else{
-                        showAlert('Ha ocurrido un error, intente nuevamente.', "Aviso", "Aceptar");
+                        showAlert(data_j.message, "Aviso", "Aceptar");
                        }
                        $.mobile.loading('hide');
                     }
