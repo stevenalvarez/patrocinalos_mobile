@@ -3316,6 +3316,8 @@ label.custom{
 .popup_recompensa.pago .container_info .recuadro {
     height: 60px;
     width: 60px;
+    background-color: #000000;
+    text-align: center;
 }
 .popup_recompensa .container_info .auspiciador_recompensa div,
 .popup_recompensa .container_info .deportista_patrocinador .datos{
