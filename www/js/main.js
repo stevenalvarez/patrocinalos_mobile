@@ -813,8 +813,21 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
                     url: BASE_URL_APP+'aportaciones/mobileAdd/'+me,
                     dataType: "html",
                     success: function(data){
+                        
+                        //ocultamos el loading
                         $.mobile.loading('hide');
-                        console.log(data);
+                        var result = $.parseJSON(data);
+                        
+                        if(result.aportacion_realizada){
+                            //Cerramos el popup
+                            $("#popupPatrocinar").popup("close");
+                            
+                            var url_pago = result.url_redirect_pago;
+                			window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
+                			window.plugins.childBrowser.onLocationChange = function(loc){ pagoRealizado(loc); }; // When the ChildBrowser URL changes we need to track that
+                        }else{
+                            showAlert(result.error_alcanzado, "Error", "Aceptar");
+                        }
                     },
                     beforeSend : function(){
                         //mostramos loading
@@ -847,4 +860,9 @@ function dejarSeguirDeportista(element, me, to_usuario_id){
             showAlert("Ocurrio un error", "Error", "Aceptar");
         }
     });
+}
+
+//CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO
+function pagoRealizado(loc){
+    alert(loc);
 }
