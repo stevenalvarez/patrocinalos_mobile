@@ -805,10 +805,10 @@
   .content_info_ronda.actividad_r .description .text h2{
     padding-bottom: 0;
   }
-  .content_info_ronda.actividad_r .menu_ronda,#edicion_datos_personales .options,#edicion_datos_deportivos .options{
+  .content_info_ronda.actividad_r .menu_ronda,#edicion_datos_personales .options,#edicion_datos_deportivos .options,.options.tabs{
     width: 100%;
   }
-  .content_info_ronda.actividad_r .menu_ronda a,#edicion_datos_personales .options a,#edicion_datos_deportivos .options a{
+  .content_info_ronda.actividad_r .menu_ronda a,#edicion_datos_personales .options a,#edicion_datos_deportivos .options a,.options.tabs a{
     background: #7bbcd0;
     width: 50%;
     font-family: 'HelveticaLTStdLight';
@@ -828,7 +828,7 @@
   .content_info_ronda.actividad_r .menu_ronda a.first{
     line-height: 30px;
   }
-  .content_info_ronda.actividad_r .menu_ronda a.active,#edicion_datos_personales .options a.active,#edicion_datos_deportivos .options  a.active{
+  .content_info_ronda.actividad_r .menu_ronda a.active,#edicion_datos_personales .options a.active,#edicion_datos_deportivos .options  a.active,.options.tabs a.active{
     background: #fff;
     color: #6b7882;
     box-shadow: -3px -2px 5px -3px #444444;
@@ -926,7 +926,7 @@
     padding: 5px 0;
   }
   .content_info_ronda.actividad_r .menu_ronda a.active.tab_ranking,#edicion_datos_personales .options a.active.first,
-  #edicion_datos_deportivos .options a.active.first {
+  #edicion_datos_deportivos .options a.active.first,.options.tabs a.active.first{
     box-shadow: 3px -1px 4px -3px #444444;
     position: relative;
     z-index: 1;
@@ -989,10 +989,10 @@
  #edicion_datos_personales .content_list_first,#edicion_datos_deportivos .content_list_first{
     padding-top: 0;
  }
- #edicion_datos_personales .content_list_first div.options,#edicion_datos_deportivos .content_list_first div.options{
+ #edicion_datos_personales .content_list_first div.options,#edicion_datos_deportivos .content_list_first div.options,.options.tabs{
     overflow: hidden;
  }
- #edicion_datos_personales .content_list_first div.options a,#edicion_datos_deportivos .content_list_first div.options a{
+ #edicion_datos_personales .content_list_first div.options a,#edicion_datos_deportivos .content_list_first div.options a,.options.tabs a{
     border: none;
     padding: 0;
     margin: 0;
@@ -1005,7 +1005,7 @@
     width: 50%;
  }
  
- #edicion_datos_personales .content_list_first div.options a.active,#edicion_datos_deportivos .content_list_first div.options a.active{
+ #edicion_datos_personales .content_list_first div.options a.active,#edicion_datos_deportivos .content_list_first div.options a.active,.options.tabs a.active{
     color:#6b7882
  }
  #edicion_datos_personales .content_edicion.form_data_profile #form_edit_data .change_button_p span.ui-btn-text,
@@ -1205,7 +1205,68 @@
  .modal_box#modal_box_pass .content_modal .content_change .buttons_upload a{
     width: 100%;
  }
+ .modal_box#modal_box_pass form div.ui-input-text{
+    margin: 10px 0;
+ }
+ .modal_box#modal_box_pass form div.ui-input-text input{
+    padding: 10px 0;
+ }
+ form#form_edit_data .ui-input-text span.error{
+    font-size: 11px;
+    font-family: 'helvetica_lightregular';
+    color: #a1adad;
+    background-color: #f6f7f8;
+    border: 1px solid #c4c3c5;
+ }
  /*PAGE EDITAR DATOS DE PERFIL DEL DEPORTISTA p_edicion_datos_personales.html*/
+ 
+ /*PAGE LISTA DE ALBUMS DE FOTO*/
+ .list_media{
+    display: block;
+    overflow: hidden;
+ }
+ .list_media li{
+  position: relative;
+  width: 158px;
+  float: left;
+  margin: 1px;
+ }
+ .list_media li h3{
+   position: absolute;
+   background: rgba(0,0,0, 0.5);
+   top:0;
+   left:0;
+   color:#fff; 
+   font-family: 'HelveticaLTStdBoldCondensed';
+   font-size: 24px;
+   padding: 5px;
+ }
+ .list_media li h4{
+   position: absolute;
+   background: rgba(0,0,0, 0.5);
+   bottom:0;
+   right:0; 
+   color: #cc5050;
+   padding: 5px;
+   font-family: 'HelveticaLTStdLight';
+   font-size: 15px; 
+ }
+ .list_media li div.preview{
+   width: 79px;
+   height: 52px;
+   overflow: hidden;
+   float: left;
+ }
+ .list_media li div.preview img{
+    width: 79px;
+    height: auto;
+    max-width: 79px;
+    max-height: 52px;
+ }
+ .content_media.content_list_first{
+    padding: 0;
+ }
+ /*PAGE LISTA DE ALBUMS DE FOTO*/
  
  
 /* PORTRAIT */
