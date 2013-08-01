@@ -725,8 +725,13 @@ function loadPerfilDeportista(me, usuario_id){
                         $.mobile.loading( 'hide' );
                     });
                 });
-                
             }
+            
+            //Actualizamos los datos para realizar la aportacion
+            var form_pago = parent.find("#formulario_pago_individual"); 
+            form_pago.find("#imagen_deportista").attr("src", BASE_URL_APP+'img/Usuario/169/'+data_item.Usuario.imagen);
+            form_pago.find(".nombre_deportista").text(data_item.Usuario.title);
+            form_pago.find("#crowd_id").val(data_item.Crowfunding.id);
         }
     });
 }
@@ -756,19 +761,38 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
         return false;
     });
     
-    //Evento para el pago por paypal
+    //PAGO MEDIANTE PAYPAL Y TPV
     form_pago = $(element).find("#formulario_pago_individual"); 
+    //START PAYPAL
     form_pago.find("a.pago_paypal").off('click').on("click", function(){
         var pago_monto = form_pago.find("#pago_monto").val();
         var pago_termino = form_pago.find("#pago_termino").is(":checked") ? true : false;
         
         if($.trim(pago_monto) != "" && (parseInt(pago_monto) > 0)){
-            //Mandamos a pedir la url para realizar el pago por paypal
+            if(isLogin()){
+                $.ajax({
+                    data: $(form_pago).serialize(),
+                    type: "POST",
+                    url: BASE_URL_APP+'aportaciones/mobileAdd/'+me,
+                    dataType: "html",
+                    success: function(data){
+                        $.mobile.loading('hide');
+                        console.log(data);
+                    },
+                    beforeSend : function(){
+                        //mostramos loading
+                        showLoadingCustom('Verificando datos...');
+                    }
+                });
+            }else{
+                showAlert("Por favor vuelva a logearse he intente de nuevo", "Aviso", "Aceptar");
+            }
         }else{
             showAlert("Por favor!, introduzca un monto valido.", "Aviso", "Aceptar");
             form_pago.find("#pago_monto").val("");
         }
     });
+    //END PAYPAL
 }
 
 //DEJAR DE SEGUIR A UN DEPORTISTA

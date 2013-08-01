@@ -190,31 +190,32 @@
             <div data-role="popup" class="popup_recompensa pago" id="popupPatrocinar" data-theme="c" class="ui-corner-all" data-overlay-theme="a">
                 <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right close">Close</a>
                 <div style="background-color: #C4E2E8;border-radius: 5px;overflow: hidden;">
-                    <div class="container_info" style="margin-bottom:0; border-bottom: none">
-                        <div class="ofrecido_por" style="padding-bottom: 0;">
-                            <div class="recuadro left">
-                                <img id="imagen_deportista" src="img/usuarios/img_usuario.png" />
-                            </div>
-                            <div class="deportista_patrocinador left">
-                                <div class="datos">
-                                    <label class="big">Deportista: </label>
-                                    <span class="nombre_deportista">Juan Ignacio</span>
+                    <form class="formulario_pago_patrocinio" id="formulario_pago_individual">
+                        <div class="container_info" style="margin-bottom:0; border-bottom: none">
+                            <div class="ofrecido_por" style="padding-bottom: 0;">
+                                <div class="recuadro left">
+                                    <img id="imagen_deportista" src="img/usuarios/img_usuario.png" />
+                                </div>
+                                <div class="deportista_patrocinador left">
+                                    <div class="datos">
+                                        <label class="big">Deportista: </label>
+                                        <span class="nombre_deportista">Juan Ignacio</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <form class="formulario_pago_patrocinio" id="formulario_pago_individual">
+                        <input type="hidden" value="" id="crowd_id" name="crowd" />
                         <div class="container_info_bottom">
                             <div class="pago_realizar">
                                 <div class="monto_euro">
                                      <label>Patrocinio a transferir: </label>
-                                     <input id="pago_monto" class="monto_pago bold" data-theme="cu" name="pago_monto" placeholder="Monto" autocomplete="off" type="text" value=""/>
+                                     <input id="pago_monto" class="monto_pago bold" data-theme="cu" name="amount" placeholder="Monto" autocomplete="off" type="text" value=""/>
                                 </div>
                             </div>
                             <div class="patrocinio_termino">
                                 <fieldset data-role="controlgroup" data-theme="c">
                                     <label>
-                                        <input id="pago_termino" name="pago_termino" type="checkbox"/>Quiero que mi patrocinio sea an&oacute;nimo
+                                        <input id="pago_termino" name="anonimo" type="checkbox"/>Quiero que mi patrocinio sea an&oacute;nimo
                                     </label>
                                 </fieldset>
                             </div>
