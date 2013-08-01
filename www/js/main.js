@@ -810,7 +810,7 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
                 $.ajax({
                     data: $(form_pago).serialize(),
                     type: "POST",
-                    url: BASE_URL_APP+'aportaciones/mobileAdd/'+me,
+                    url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/PAYPAL",
                     dataType: "html",
                     success: function(data){
                         
@@ -822,9 +822,9 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
                             //Cerramos el popup
                             $("#popupPatrocinar").popup("close");
                             
-                            var url_pago = result.url_redirect_pago;
+                            var url_pago = result.url_redirect_pago;  
                 			window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
-                			window.plugins.childBrowser.onLocationChange = function(loc){ pagoRealizado(loc); }; // When the ChildBrowser URL changes we need to track that
+                			window.plugins.childBrowser.onLocationChange = function(loc){ procesoPago(loc); }; // When the ChildBrowser URL changes we need to track that
                         }else{
                             showAlert(result.error_alcanzado, "Error", "Aceptar");
                         }
@@ -863,6 +863,62 @@ function dejarSeguirDeportista(element, me, to_usuario_id){
 }
 
 //CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO
-function pagoRealizado(loc){
-    alert(loc);
+function procesoPago(loc){
+    
+    var url_callback = BASE_URL_APP + 'aportaciones/mobileAddAportacion/';
+    if (loc.indexOf(url_callback + "?") >= 0) {
+        
+        // Parse the returned URL
+        var token, payer_id = '';
+        var params = loc.substr(loc.indexOf('?') + 1);
+         
+        params = params.split('&');
+        for (var i = 0; i < params.length; i++) {
+            var y = params[i].split('=');
+            if(y[0] === 'PayerID') {
+                payer_id = y[1];
+            }
+            //Obtenemos el token generado
+            if(y[0] === 'token') {
+                token = y[1];
+            }
+        }
+        
+        //controlamos si es que se realizo el pago correctamete, porque tambien puede cancelarlo
+        if(payer_id != '')
+        {
+            //Cerramos el childBrowser
+            window.plugins.childBrowser.close();
+            
+            //Actualizamos la aportacion
+            $.ajax({
+                data: "token="+token,
+                type: "POST",
+                url: BASE_URL_APP+'aportaciones/mobileUpdateAportacion/PAYPAL',
+                dataType: "html",
+                success: function(data){
+                    
+                    //ocultamos el loading
+                    $.mobile.loading('hide');
+                    var result = $.parseJSON(data);
+                    
+                    if(result.update_success){
+                        //Aqui debemos mostrar un popup con el texto de agradecimiento, por ahora solo un mensaje
+                        showAlert("Aportacion realizada con exito", "Aviso", "Aceptar");
+                    }else{
+                        showAlert(result.error_alcanzado, "Error", "Aceptar");
+                    }
+                },
+                beforeSend : function(){
+                    //mostramos loading
+                    showLoadingCustom('Guardando aportacion...');
+                }
+            });
+        }else{
+            showAlert("Su aportacion fue cancelada", "Aviso", "Aceptar");
+        }
+        
+    }else {
+        // todo
+    }
 }
