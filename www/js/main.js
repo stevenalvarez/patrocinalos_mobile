@@ -915,6 +915,8 @@ function procesoPago(loc){
                 }
             });
         }else{
+            //Cerramos el childBrowser
+            window.plugins.childBrowser.close();
             showAlert("Su aportacion fue cancelada", "Aviso", "Aceptar");
         }
         
