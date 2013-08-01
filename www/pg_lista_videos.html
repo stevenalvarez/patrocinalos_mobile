@@ -61,60 +61,12 @@
     	<div data-role="content">
             <div class="content_list_first">
                 <div class="options">
-                    <a class="first active" href="p_edicion_datos_personales.html">DATOS PERSONALES</a>
-                    <a class="" href="p_edicion_datos_deportivos.html">DATOS DEPORTIVOS</a>
+                    <a class="first" href="pg_lista_albums_fotos.html">FOTOS</a>
+                    <a class="active" href="pg_lista_videos.html">VIDEOS</a>
                 </div>
                 <div class="content_edicion form_data_profile">
-                    <form id="form_edit_data">
-                        <input type="hidden" name="datos" value="datos_personales" />
-                        <input type="hidden" name="imagen_dep" id="u_img_url_social"/>
-                        <div class="info_top">
-                            <!--<div class="content_formulario left">
-                                 <div class="opciones">
-                                     <fieldset data-role="controlgroup" class="first">
-                                        <input name="usuario[tipo_deportista]" id="radio-ameteur" type="radio"/>
-                                        <label data-theme="c" for="radio-ameteur">Amateur</label>
-                                        <input name="usuario[tipo_deportista]" id="radio-profesional" type="radio" checked="checked"/>
-                                        <label data-theme="c" for="radio-profesional">Profesional</label>
-                                     </fieldset>
-                                     <fieldset data-role="controlgroup" class="second">
-                                        <input name="usuario[genero]" id="radio-masculino" type="radio" checked="checked"/>
-                                        <label data-theme="c" for="radio-masculino">Masculino</label>
-                                        <input name="usuario[genero]" id="radio-femenino" type="radio"/>
-                                        <label data-theme="c" for="radio-femenino">Femenino&nbsp;</label>
-                                     </fieldset>
-                                 </div>
-                            </div>-->
-                            <div class="right">
-                                <div class="recuadro">
-                                    <img id="imagen_dep" src="img/usuarios/img_usuario.png" />
-                                </div>
-                                <a id="change_foto" class="change_button_p" rel="modal_box" href="javascript:void(0)" onclick="modalOpenHide(this,'show')" data-role="button" data-theme="r" data-mini="true">Cambiar imagen</a>
-                                <a id="change_pass" class="change_button_p" rel="modal_box_pass" href="javascript:void(0)" onclick="modalOpenHide(this,'show')" data-role="button" data-theme="r" data-mini="true">Cambiar<br/> contrese&ntilde;a</a>
-                            </div>
-                        </div>                
-                        <input name="estado_dep" placeholder="Tu estado..." autocomplete="off" type="text" value="estado compitiendo" id="estado_dep"/>
-                        <input name="title_dep" placeholder="Tu nombre completo..." autocomplete="off" type="text" value="Juan Ignacio" id="title_dep"/>
-                        <input name="email_dep" placeholder="Email que usas para acceder..." autocomplete="off" type="text" value="info@mazzel.com" id="email_dep"/>
-                        <input name="direccion_dep" placeholder="Direcci&oacute;n de domicilio..." autocomplete="off" type="text" id="direccion_dep"/>
-                        <select data-theme="c" name="pais_id" id="select-pais">
-                            <option>Selecciona un pais...</option>
-                        </select>
-                        <select data-theme="c" name="provincia_id" id="select-ciudad">
-                            <option>Selecciona una ciudad...</option>
-                            <option value="40" selected="selected">Madrid</option>
-                            <option value="41">Sevilla</option>
-                        </select>
-                        <input name="postal_dep" placeholder="C&oacute;digo postal..." autocomplete="off" type="text" id="postal_dep"/>
-                        <input name="telefono_dep" placeholder="N&uacute;mero telef&oacute;nico..." autocomplete="off" type="text" id="telefono_dep"/>
-                        <input name="urlamigable_dep" placeholder="Nombre para usar en la url personal..." autocomplete="off" type="text" id="urlamigable_dep" value="url personal: juanignacio"/>
-                        
-                        <div class="buttons_action">
-                            <a href="javascript:void(0)" onclick="saveDatosPersonales('form_edit_data')" id="actualizar_datos" class="green">ACTUALIZAR DATOS</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                    
+                </div>
     	</div><!-- /content -->
     
           <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="c" class="footer_menu">

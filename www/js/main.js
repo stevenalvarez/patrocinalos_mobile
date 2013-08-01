@@ -136,6 +136,16 @@ $("#edicion_datos_deportivos").live('pagebeforeshow', function(event, ui) {
     }
 });
 
+//CUANDO CARGUE LA PAGE DE LA LISTA DE ALBUMS DE FOTOS
+$(".page_list_albums").live('pagebeforeshow', function(event, ui) {
+    if(isLogin()){
+        getAlbums(COOKIE.id);
+    }else{
+        redirectLogin();
+    }
+});
+
+
 
 /************************************ FUNCTIONS *******************************************************/
 
@@ -533,7 +543,26 @@ function getDatosDeportivos(id_user){
 /*FUNCION PARA GUARDAR LOS DATOS PERSONALES*/
 function saveDatosPersonales(form){
     
-    if(COOKIE.id){
+    jQuery("#"+form).validate({
+        errorElement:'span',
+    	rules:{ "estado_dep":{minlength:2},
+    		    "title_dep":{required: true,minlength:5},
+                "email_dep":{required: true,email:true},
+                "select-pais":{required: true},
+                "select-ciudad":{required: true},
+                "urlamigable_dep":{required: true},
+        },
+    	messages: {
+    		"estado_dep":{minlength: "M&iacute;nimo de 2 caracteres<i></i>"},
+            "title_dep":{required:"Este campo es obligatorio.<i></i>",minlength:"M&iacute;nimo de 5 caracteres<i></i>"},
+            "email_dep":{required:"Este campo es obligatorio.<i></i>",email:"Email no v&aacute;lido<i></i>"},
+            "select-pais":{required:"Este campo es obligatorio.<i></i>"},
+            "select-ciudad":{required:"Este campo es obligatorio.<i></i>"},
+            "urlamigable_dep":{required:"Este campo es obligatorio.<i></i>"},
+    	}
+    });
+    
+    if(COOKIE.id && jQuery("#"+form).valid()){
         showLoadingCustom('Enviando datos...');
         $.ajax({
                     data: $("#"+form).serialize(),
@@ -555,6 +584,14 @@ function saveDatosPersonales(form){
     }
     
 }
+
+/*OBTENEMOS LA LISTA DE GALERIA DE FOTOS*/
+function getAlbums(id_user){
+     $.getJSON(BASE_URL_APP+'Fotosgaleria/mobileGetAlbums/'+id_user, function(data){
+        
+     });
+}
+
 /* OBTENEMOS LA ENTRADAS PARA LA HOME */
 function getEntradasByCarrousel(){
     var parent = jQuery("#info_general");
