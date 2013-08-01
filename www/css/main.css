@@ -879,7 +879,7 @@ form .valid_field span.success i{
 }
 .ui-btn-submit .ui-btn-text{
     font-size: 17px;
-    font-family:'HelveticaCondensedBlack';
+    font-family:'HelveticaLTStdBoldCondensed';
     letter-spacing: 0px;
     color: #fff;
     text-shadow: 0px 1px 0px #000;
@@ -2054,6 +2054,13 @@ label.custom{
     border-radius: 5px 5px 5px 5px;
     -webkit-box-shadow: 1px 3px 4px #d5d5d5 /*{global-icon-shadow}*/;
     box-shadow: 1px 3px 4px #d5d5d5 /*{global-icon-shadow}*/;
+    overflow: hidden;
+    background-color: #000;
+    text-align: center;
+}
+#perfil_deportivo .data_user .recorte img{
+    width: auto;
+    height: 115px;    
 }
 #perfil_deportivo .data_user .foto_perfil{
     background-color: #fff;
@@ -2090,6 +2097,7 @@ label.custom{
     font-size: 12px;
     letter-spacing: -1px;
 }
+#perfil_deportivo .data_user .content .patrociname span,
 #perfil_deportivo .data_user .content .necesito_para span{
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -2109,7 +2117,7 @@ label.custom{
     color: #A22020;
 }
 #perfil_deportivo .content_progress{
-    margin-top: 10px;
+    margin-top: 14px;
 }
 #perfil_deportivo .progress{
     background-color: #81b4ca;
@@ -2241,7 +2249,7 @@ label.custom{
 }
 .list_comentarios li .avatar img{
     width: 45px;
-    height: auto;
+    height: 45px;
     border-radius: 3px;
     box-shadow: 1px 1px 5px -1px #444;
 }
@@ -3408,7 +3416,7 @@ label.custom{
     min-height: 24px;
 }
 .popup_recompensa.pago .popup_footer p span{
-    font-size: 12px;
+    font-size: 11px;
     display: block;
     width: 48%;
     line-height: 11px;    
@@ -3621,7 +3629,6 @@ and (orientation:landscape)
         float: right;
     }
     .popup_recompensa.pago .popup_footer p span{
-        font-size: 13px;
         width: 65%;
         line-height: 24px;
     }
