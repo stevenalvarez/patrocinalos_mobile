@@ -801,39 +801,76 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
     //PAGO MEDIANTE PAYPAL Y TPV
     form_pago = $(element).find("#formulario_pago_individual"); 
     //START PAYPAL
-    form_pago.find("a.pago_paypal").off('click').on("click", function(){
+    form_pago.find("a.pago_paypal, a.pago_tpv_4B").off('click').on("click", function(){
+        var elem = $(this);
         var pago_monto = form_pago.find("#pago_monto").val();
         var pago_termino = form_pago.find("#pago_termino").is(":checked") ? true : false;
         
         if($.trim(pago_monto) != "" && (parseInt(pago_monto) > 0)){
             if(isLogin()){
-                $.ajax({
-                    data: $(form_pago).serialize(),
-                    type: "POST",
-                    url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/PAYPAL",
-                    dataType: "html",
-                    success: function(data){
-                        
-                        //ocultamos el loading
-                        $.mobile.loading('hide');
-                        var result = $.parseJSON(data);
-                        
-                        if(result.aportacion_realizada){
-                            //Cerramos el popup
-                            $("#popupPatrocinar").popup("close");
+                
+                //PAGO PAYPAL
+                if(elem.attr("lang") == "PAYPAL"){
+                    $.ajax({
+                        data: $(form_pago).serialize(),
+                        type: "POST",
+                        url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/PAYPAL",
+                        dataType: "html",
+                        success: function(data){
                             
-                            var url_pago = result.url_redirect_pago;  
-                			window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
-                			window.plugins.childBrowser.onLocationChange = function(loc){ procesoPago(loc, me); }; // When the ChildBrowser URL changes we need to track that
-                        }else{
-                            showAlert(result.error_alcanzado, "Error", "Aceptar");
+                            //ocultamos el loading
+                            $.mobile.loading('hide');
+                            var result = $.parseJSON(data);
+                            
+                            if(result.aportacion_realizada){
+                                //Cerramos el popup
+                                $("#popupPatrocinar").popup("close");
+                                
+                                var url_pago = result.url_redirect_pago;  
+                    			window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
+                    			window.plugins.childBrowser.onLocationChange = function(loc){ procesoPago(loc, me); }; // When the ChildBrowser URL changes we need to track that
+                            }else{
+                                showAlert(result.error_alcanzado, "Error", "Aceptar");
+                            }
+                        },
+                        beforeSend : function(){
+                            //mostramos loading
+                            showLoadingCustom('Verificando datos...');
                         }
-                    },
-                    beforeSend : function(){
-                        //mostramos loading
-                        showLoadingCustom('Verificando datos...');
-                    }
-                });
+                    });
+                
+                //PAGO TPV
+                }else if(elem.attr("lang") == "TPV"){
+                    $.ajax({
+                        data: $(form_pago).serialize(),
+                        type: "POST",
+                        url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/TPV",
+                        dataType: "html",
+                        success: function(data){
+                            
+                            //ocultamos el loading
+                            $.mobile.loading('hide');
+                            var result = $.parseJSON(data);
+                            
+                            if(result.aportacion_realizada){
+                                //Cerramos el popup
+                                $("#popupPatrocinar").popup("close");
+                                
+                                var url_pago = result.url_redirect_pago;
+                                var params = result.params;
+                                var site_url = BASE_URL_APP+'aportaciones/mobileRedireccionamientoTPV/?url='+url_pago+'&ref='+params.ref+'&store='+params.store+'&idioma='+params.idioma;
+                    			window.plugins.childBrowser.showWebPage(site_url, { showLocationBar : false }); 
+                    			window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoTPV(loc, me); }; // When the ChildBrowser URL changes we need to track that                                
+                            }else{
+                                showAlert(result.error_alcanzado, "Error", "Aceptar");
+                            }
+                        },
+                        beforeSend : function(){
+                            //mostramos loading
+                            showLoadingCustom('Verificando datos...');
+                        }
+                    });
+                }
             }else{
                 showAlert("Por favor vuelva a logearse he intente de nuevo", "Aviso", "Aceptar");
             }
@@ -923,4 +960,9 @@ function procesoPago(loc, usuario_id){
     }else {
         // todo
     }
+}
+
+//CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO POR TPV
+function procesoPagoTPV(loc, usuario_id){
+    alert(loc);
 }
