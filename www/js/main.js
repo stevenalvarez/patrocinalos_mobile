@@ -824,7 +824,7 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
                             
                             var url_pago = result.url_redirect_pago;  
                 			window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
-                			window.plugins.childBrowser.onLocationChange = function(loc){ procesoPago(loc); }; // When the ChildBrowser URL changes we need to track that
+                			window.plugins.childBrowser.onLocationChange = function(loc){ procesoPago(loc, me); }; // When the ChildBrowser URL changes we need to track that
                         }else{
                             showAlert(result.error_alcanzado, "Error", "Aceptar");
                         }
@@ -863,10 +863,9 @@ function dejarSeguirDeportista(element, me, to_usuario_id){
 }
 
 //CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO
-function procesoPago(loc){
+function procesoPago(loc, usuario_id){
     
-    var url_callback = BASE_URL_APP + 'aportaciones/mobileAddAportacion/';
-    alert(url_callback);
+    var url_callback = BASE_URL_APP + 'aportaciones/mobileAddAportacion/' + usuario_id + '/';
     if (loc.indexOf(url_callback + "?") >= 0) {
         
         // Parse the returned URL
@@ -888,6 +887,7 @@ function procesoPago(loc){
         //controlamos si es que se realizo el pago correctamete, porque tambien puede cancelarlo
         if(payer_id != '')
         {
+            alert("success");
             //Cerramos el childBrowser
             window.plugins.childBrowser.close();
             
@@ -902,8 +902,10 @@ function procesoPago(loc){
                     //ocultamos el loading
                     $.mobile.loading('hide');
                     var result = $.parseJSON(data);
+                    alert(result);
                     
                     if(result.update_success){
+                        alert("yeah");
                         //Aqui debemos mostrar un popup con el texto de agradecimiento, por ahora solo un mensaje
                         showAlert("Aportacion realizada con exito", "Aviso", "Aceptar");
                     }else{
@@ -922,7 +924,6 @@ function procesoPago(loc){
         }
         
     }else {
-        alert(loc);
         // todo
     }
 }
