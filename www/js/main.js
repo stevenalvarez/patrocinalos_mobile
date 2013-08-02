@@ -859,8 +859,9 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
                                 var url_pago = result.url_redirect_pago;
                                 var params = result.params;
                                 var site_url = BASE_URL_APP+'aportaciones/mobileRedireccionamientoTPV/?url='+url_pago+'&ref='+params.ref+'&store='+params.store+'&idioma='+params.idioma;
-                    			window.plugins.childBrowser.showWebPage(site_url, { showLocationBar : false }); 
-                    			window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoTPV(loc, me); }; // When the ChildBrowser URL changes we need to track that                                
+                                //window.location = site_url;
+                    			window.plugins.childBrowser.showWebPage(site_url, { showLocationBar : false });
+                    			window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoTPV(loc, me); }; // When the ChildBrowser URL changes we need to track that
                             }else{
                                 showAlert(result.error_alcanzado, "Error", "Aceptar");
                             }
