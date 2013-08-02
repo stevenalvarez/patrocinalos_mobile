@@ -887,7 +887,6 @@ function procesoPago(loc, usuario_id){
         //controlamos si es que se realizo el pago correctamete, porque tambien puede cancelarlo
         if(payer_id != '')
         {
-            alert("success");
             //Cerramos el childBrowser
             window.plugins.childBrowser.close();
             
@@ -902,10 +901,8 @@ function procesoPago(loc, usuario_id){
                     //ocultamos el loading
                     $.mobile.loading('hide');
                     var result = $.parseJSON(data);
-                    alert(result);
                     
                     if(result.update_success){
-                        alert("yeah");
                         //Aqui debemos mostrar un popup con el texto de agradecimiento, por ahora solo un mensaje
                         showAlert("Aportacion realizada con exito", "Aviso", "Aceptar");
                     }else{
