@@ -866,6 +866,7 @@ function dejarSeguirDeportista(element, me, to_usuario_id){
 function procesoPago(loc){
     
     var url_callback = BASE_URL_APP + 'aportaciones/mobileAddAportacion/';
+    alert(url_callback);
     if (loc.indexOf(url_callback + "?") >= 0) {
         
         // Parse the returned URL
@@ -921,6 +922,7 @@ function procesoPago(loc){
         }
         
     }else {
+        alert(loc);
         // todo
     }
 }
