@@ -243,6 +243,55 @@ function form_registro(){
     });
 }
 
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO DE ENVIO DE CODIGO DE VALIDACION - RECUPERAR PASSWORD
+function form_codigovalidacion(element){
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+    		"u_email": {
+    			required: true,
+    			email: true
+    		}
+    	},
+    	messages: {
+            "u_email": {
+    			required: "Por favor, introduzca su email <i></i>",
+    			email: "Direcci&oacute;n de email no v&aacute;lida <i></i>"
+    		}
+    	}
+    });
+    
+    //Submit form
+    formulario.submit(function() {
+        
+        formulario.find("input[type='email']").parent().removeClass("error_field_email");
+        
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            $.ajax({
+                data: formulario.serialize(),
+                type: "POST",
+                url: BASE_URL_APP + 'usuarios/mobileEnviarCodigoValidacion',
+                dataType: "html",
+                success: function(data){
+                    data = $.parseJSON(data);
+                    if(data.success){
+                        showAlert(data.mensaje, "Aviso", "Aceptar");
+                    }else{
+                        showAlert(data.mensaje, "Error", "Aceptar");
+                    }
+                },
+                beforeSend : function(){
+                    //mostramos loading
+                    showLoadingCustom('Enviando codigo...');
+                }
+            });
+        }
+      return false;
+    });
+}
+
 //INICIA LAS VALIDACIONES PARA EL FORMULARIO DE LOGIN
 function form_login(){
     jQuery("#form_login").validate({
@@ -374,7 +423,7 @@ function key_press(id){
     element.bind('keyup blur', function(){
         if($(this).hasClass("valid")){
             $(this).parent().find("span.success").remove();
-            if(($(this).attr("id") == "u_email_register") || $(this).attr("id") == "u_email"){
+            if(($(this).attr("name") == "u_email_register") || $(this).attr("name") == "u_email"){
                 $(this).parent().removeClass("error_field_email").addClass("valid_field");
             }else{
                 $(this).parent().removeClass("error_field").addClass("valid_field");
@@ -383,8 +432,8 @@ function key_press(id){
         
         }else if($(this).hasClass("error")){
             $(this).parent().find("span.success").remove();
-            var chart = ($(this).attr("id") == "u_email_register") ? 12 : 10;
-            if(($(this).attr("id") == "u_email_register") || ($(this).attr("id") == "u_email")){
+            var chart = ($(this).attr("name") == "u_email_register") ? 12 : 10;
+            if(($(this).attr("name") == "u_email_register") || ($(this).attr("name") == "u_email")){
                 if(($(this).val()).length > chart){
                     $(this).parent().removeClass("valid_field").addClass("error_field_email");
                 }else{

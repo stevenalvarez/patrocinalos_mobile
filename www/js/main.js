@@ -42,6 +42,24 @@ $(document).on('pageinit', "#register_user", function(){
     });
 });
 
+//RECUPERAR PASSWORD
+$(document).on('pageinit', "#recuperar_password", function(){
+    form_codigovalidacion("form_codigovalidacion");
+    key_press("form_codigovalidacion");
+    //form_cambiar_password("form_cambiar_password");
+    key_press("form_cambiar_password");
+    
+    $(this).find('a.enviar_codigovalidacion').on("click", function(){
+        var form_parent = document.getElementById("form_codigovalidacion");
+        $(form_parent).submit();
+    });
+    
+    $(this).find('a.cambiar_password').on("click", function(){
+        var form_parent = document.getElementById("form_cambiar_password");
+        $(form_parent).submit();
+    });
+});
+
 //LOGIN
 $(document).on('pageinit', "#login_user", function(){
     form_login();

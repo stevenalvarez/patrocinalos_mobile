@@ -1391,7 +1391,8 @@ label.custom{
 #register_finalizado .ui-content,
 #completar_perfil .ui-content,
 #solicitar_patrocinio .ui-content,
-#completar_perfil_empresa .ui-content{
+#completar_perfil_empresa .ui-content,
+#recuperar_password .ui-content{
     background: #eeeeee;
     margin: 18px 10px;
     border-radius: 5px;
@@ -2528,10 +2529,12 @@ label.custom{
 #promocionar_patrocinio_deportivo .container_options li{
     overflow: hidden;
 }
+#recuperar_password #form_recuperar_password .content_numero,
 #promocionar_patrocinio_deportivo .container_options .content_numero{
     padding-right: 8px;
     width: 30px;
 }
+#recuperar_password #form_recuperar_password .numero,
 #promocionar_patrocinio_deportivo .container_options .numero{
     background: url("../img/bg_numero.png") no-repeat scroll left center / 30px auto #F9F9F9;
     display: block;
@@ -2542,12 +2545,29 @@ label.custom{
     padding-top: 2px;
     width: 22px;
 }
+#recuperar_password #form_recuperar_password .numero{
+    background: url("../img/bg_numero.png") no-repeat scroll left center / 30px auto transparent;
+}
+#recuperar_password #form_recuperar_password li{
+    margin: 20px 0;
+    overflow: hidden;
+}
+#recuperar_password #form_recuperar_password .item{
+    width: 85%;
+}
 #promocionar_patrocinio_deportivo .container_options .item{
     width: 80%;
 }
+#recuperar_password #form_recuperar_password .item p,
 #promocionar_patrocinio_deportivo .container_options .item p{
     line-height: 12px;
     color: #457a85;
+}
+#recuperar_password #form_recuperar_password .item p{
+    font-size: 12px;
+    letter-spacing: -1px;
+    text-shadow: 0 0 0;
+    font-weight: normal;
 }
 #promocionar_patrocinio_deportivo .container_options .bottom .recompensa .ui-icon {
     background: url("../img/bg_recompensa.png") no-repeat scroll top center transparent;
