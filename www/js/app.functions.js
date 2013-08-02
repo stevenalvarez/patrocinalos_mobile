@@ -275,8 +275,11 @@ function form_codigovalidacion(element){
                 url: BASE_URL_APP + 'usuarios/mobileEnviarCodigoValidacion',
                 dataType: "html",
                 success: function(data){
+                    $.mobile.loading( 'hide' );
+                    
                     data = $.parseJSON(data);
                     if(data.success){
+                        clear_form(element);
                         showAlert(data.mensaje, "Aviso", "Aceptar");
                     }else{
                         showAlert(data.mensaje, "Error", "Aceptar");
