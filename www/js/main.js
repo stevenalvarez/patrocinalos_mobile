@@ -844,9 +844,9 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
                                 //Cerramos el popup
                                 $("#popupPatrocinar").popup("close");
                                 
-                                var url_pago = result.url_redirect_pago;  
-                    			window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
-                    			window.plugins.childBrowser.onLocationChange = function(loc){ procesoPago(loc, me); }; // When the ChildBrowser URL changes we need to track that
+                                var url_pago = result.url_redirect_pago;
+                                window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
+                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPago(loc, me); }; // When the ChildBrowser URL changes we need to track that
                             }else{
                                 showAlert(result.error_alcanzado, "Error", "Aceptar");
                             }
@@ -878,8 +878,8 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
                                 var params = result.params;
                                 var site_url = BASE_URL_APP+'aportaciones/mobileRedireccionamientoTPV/?url='+url_pago+'&ref='+params.ref+'&store='+params.store+'&idioma='+params.idioma;
                                 //window.location = site_url;
-                    			window.plugins.childBrowser.showWebPage(site_url, { showLocationBar : false });
-                    			window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoTPV(loc, me); }; // When the ChildBrowser URL changes we need to track that
+                                window.plugins.childBrowser.showWebPage(site_url, { showLocationBar : false });
+                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoTPV(loc, params.ref, me); }; // When the ChildBrowser URL changes we need to track that
                             }else{
                                 showAlert(result.error_alcanzado, "Error", "Aceptar");
                             }
@@ -982,6 +982,8 @@ function procesoPago(loc, usuario_id){
 }
 
 //CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO POR TPV
-function procesoPagoTPV(loc, usuario_id){
+function procesoPagoTPV(loc, token, usuario_id){
+    //sabemos que se hizo el pago correctamente si lleva a vuelve
+    //entonces verificamos con el token si esta pagado y mostramos el mensaje de pagado o no
     alert(loc);
 }
