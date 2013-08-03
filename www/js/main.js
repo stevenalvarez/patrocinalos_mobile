@@ -137,9 +137,18 @@ $("#edicion_datos_deportivos").live('pagebeforeshow', function(event, ui) {
 });
 
 //CUANDO CARGUE LA PAGE DE LA LISTA DE ALBUMS DE FOTOS
-$(".page_list_albums").live('pagebeforeshow', function(event, ui) {
+$("#page_list_albums").live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
         getAlbums(COOKIE.id);
+    }else{
+        redirectLogin();
+    }
+});
+
+//CUANDO CARGUE LA PAGE DE LA LISTA DE FOTOS DE UN ALBUM
+$("#page_list_fotos").live('pagebeforeshow', function(event, ui) {
+    if(isLogin()){
+        getPhotosAlbum(getUrlVars()["album"]);
     }else{
         redirectLogin();
     }
@@ -587,9 +596,56 @@ function saveDatosPersonales(form){
 
 /*OBTENEMOS LA LISTA DE GALERIA DE FOTOS*/
 function getAlbums(id_user){
-     $.getJSON(BASE_URL_APP+'Fotosgaleria/mobileGetAlbums/'+id_user, function(data){
-        
+     jQuery("ul.list_media").html("");
+     $.mobile.loading('show');
+     $.getJSON(BASE_URL_APP+'Fotosgalerias/mobileGetAlbums/'+id_user, function(data){
+           $.each(data.items, function(index, item){
+                html_data='<li><a href="pg_lista_fotos.html?album='+item.album.id+'">';
+                html_data+='    <h3>'+item.num_fotos+' fotos</h3>';
+                $.each(item.fotos, function(index,item_f){
+                    url_foto=BASE_URL_APP+'img/Usuario/169/'+item_f.foto.url;
+                    if(item_f.foto.url=="default_photo.jpg") url_foto='img/'+item_f.foto.url;
+                    html_data+='    <div class="preview">';
+                    html_data+='        <img src="'+url_foto+'" width="auto" height="auto" />';
+                    html_data+='    </div>';
+                });
+                html_data+='    <h4>'+item.album.nombre+'</h4>';
+                html_data+='</a></li>';
+                jQuery("ul.list_media").append(html_data);
+                $.mobile.loading( 'hide' );
+           });
      });
+}
+
+function getPhotosAlbum(album){
+    jQuery("ul.list_media_fotos li").html("");
+     $.mobile.loading('show');
+     $.getJSON(BASE_URL_APP+'Fotosgalerias/mobileGetPhotos/'+album, function(data){
+        list_left=data.items.list_left;
+        list_right=data.items.list_right;    
+        $.each(list_left, function(index,photo){
+            html_data='<div class="preview">';
+            html_data+='    <a href="javascript:void()" onclick="zoomPhoto(this)" rel="'+BASE_URL_APP+'/img/Usuario/800/'+photo.url+'" class="zoom_media">&nbsp;</a>';
+            html_data+='    <img src="'+BASE_URL_APP+'/img/Usuario/169/'+photo.url+'" width="auto" height="auto" />';
+            html_data+='</div>';
+            
+            jQuery("ul.list_media_fotos li.list_left").append(html_data);
+        });
+        $.each(list_right, function(index,photo){
+            html_data='<div class="preview">';
+            html_data+='    <a href="javascript:void()" onclick="zoomPhoto(this)" rel="'+BASE_URL_APP+'/img/Usuario/800/'+photo.url+'" class="zoom_media">&nbsp;</a>';
+            html_data+='    <img src="'+BASE_URL_APP+'/img/Usuario/169/'+photo.url+'" width="auto" height="auto" />';
+            html_data+='</div>';
+            
+            jQuery("ul.list_media_fotos li.list_right").append(html_data);
+        });
+        $.mobile.loading( 'hide' );
+     });
+     
+}
+function zoomPhoto(thiss){
+    jQuery("#modal_box_media").find(".zoom_image img").attr("src",jQuery(thiss).attr("rel"));
+    jQuery("#modal_box_media").fadeIn("fast");
 }
 
 /* OBTENEMOS LA ENTRADAS PARA LA HOME */
