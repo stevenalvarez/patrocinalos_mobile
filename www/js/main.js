@@ -879,7 +879,7 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
                                 var site_url = BASE_URL_APP+'aportaciones/mobileRedireccionamientoTPV/?url='+url_pago+'&ref='+params.ref+'&store='+params.store+'&idioma='+params.idioma;
                                 //window.location = site_url;
                                 window.plugins.childBrowser.showWebPage(site_url, { showLocationBar : false });
-                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoTPV(loc, params.ref, me); }; // When the ChildBrowser URL changes we need to track that
+                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoTPV(loc); }; // When the ChildBrowser URL changes we need to track that
                             }else{
                                 showAlert(result.error_alcanzado, "Error", "Aceptar");
                             }
@@ -973,7 +973,7 @@ function procesoPago(loc, usuario_id){
         }else{
             //Cerramos el childBrowser
             window.plugins.childBrowser.close();
-            showAlert("Su aportacion fue cancelada", "Aviso", "Aceptar");
+            showAlert("Su aportacion fue cancelada", "Error", "Aceptar");
         }
         
     }else {
@@ -982,8 +982,73 @@ function procesoPago(loc, usuario_id){
 }
 
 //CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO POR TPV
-function procesoPagoTPV(loc, token, usuario_id){
-    //sabemos que se hizo el pago correctamente si lleva a vuelve
-    //entonces verificamos con el token si esta pagado y mostramos el mensaje de pagado o no
-    alert(loc);
+function procesoPagoTPV(loc){
+    //Exiten 3 tipos de estados en el cual se mueve el pago para realizar la transaccion
+    //aceptadaconfirmadortodotpvokpasarela -> Coloca el pago si todo esta bine en estado "pagado"
+    //denegada -> error al momento de realizar el pago
+    //vuelve -> Significa que ser hizo correctamente el pago
+    
+    //Controlamos 2 casos de estados de transaccion "denegada y vuelve"
+    
+    var url_callback_denegada = BASE_URL_APP + 'aportaciones/denegada/';
+    var url_callback_vuelve = BASE_URL_APP + 'aportaciones/vuelve/';
+    
+    if (loc.indexOf(url_callback_vuelve + "?") >= 0) {
+        
+        // Parse the returned URL
+        var token = '';
+        var params = loc.substr(loc.indexOf('?') + 1);
+         
+        params = params.split('&');
+        for (var i = 0; i < params.length; i++) {
+            var y = params[i].split('=');
+            if(y[0] === 'pszPurchorderNum') {
+                token = y[1];
+            }
+        }
+        
+        //controlamos si es que se realizo el pago correctamete, porque tambien puede cancelarlo
+        if(token != '')
+        {
+            //Cerramos el childBrowser
+            window.plugins.childBrowser.close();
+            
+            //Verificamos si la aportacion fue pagada
+            $.ajax({
+                data: "token="+token,
+                type: "POST",
+                url: BASE_URL_APP+'aportaciones/mobileVerificarAportacion',
+                dataType: "html",
+                success: function(data){
+                    
+                    //ocultamos el loading
+                    $.mobile.loading('hide');
+                    var result = $.parseJSON(data);
+                    
+                    if(result.aportacion_pagada){
+                        //Aqui debemos mostrar un popup con el texto de agradecimiento, por ahora solo un mensaje
+                        showAlert("Aportacion realizada con exito", "Aviso", "Aceptar");
+                    }else{
+                        showAlert(result.error_alcanzado, "Error", "Aceptar");
+                    }
+                },
+                beforeSend : function(){
+                    //mostramos loading
+                    showLoadingCustom('Verificando aportacion...');
+                }
+            });
+        }else{
+            //Cerramos el childBrowser
+            window.plugins.childBrowser.close();
+            showAlert("Su aportacion fue denegada", "Error", "Aceptar");
+        }
+        
+    }else if (loc.indexOf(url_callback_denegada + "?") >= 0) {
+        //Cerramos el childBrowser
+        window.plugins.childBrowser.close();
+        showAlert("Su aportacion fue denegada", "Error", "Aceptar");
+        
+    }else{
+        // todo
+    }
 }
