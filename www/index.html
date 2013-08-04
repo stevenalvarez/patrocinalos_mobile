@@ -24,7 +24,7 @@
         </script>
         
         <!-- debug sin configurar en el config.xml -->
-        <script src="http://debug.phonegap.com/target/target-script-min.js#mobilelospa"></script>
+        <!--<script src="http://debug.phonegap.com/target/target-script-min.js#mobilelospa"></script>-->
         
         <script src="js/jquery.mobile-1.3.1.js"></script>
         <script src="js/jquery.validate.min.js"></script>
@@ -62,7 +62,7 @@
                 <div class="background_view">
                     <div class="btn-access">
                         <div id="data_loading_fb" style="display: none;">loading fb...</div>
-                        <a class="ui-btn-submit" href="#login_user" data-role="button" data-theme="r" data-transition="slide">INICIAR SESI&Oacute;N</a>
+                        <a class="ui-btn-submit" href="login_user.html" data-role="button" data-theme="r" data-transition="slide">INICIAR SESI&Oacute;N</a>
                         <a class="ui-btn-submit" href="#options_register" data-role="button" data-transition="slide">&Uacute;NETE A PATROCINALOS</a>
                     </div>
                     <div class="usuarios-patrocinalos">
@@ -120,134 +120,6 @@
                     <a class="ui-btn-submit blue form_registro" href="#register_user" data-role="button" data-transition="slide">USAR MI DIRECCI&Oacute;N DE CORREO</a>
                 </div>
                 
-            </div>
-            
-    	</div><!-- /content -->
-    
-    </div><!-- /page -->
-
-    <!-- LOGIN -->
-    
-    <div data-role="page" id="login_user" data-theme="c">
-    
-        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
-            <ul>
-                <li class="back">
-                    <div class="left">
-                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
-                    </div>
-                </li>
-                <li class="page">
-                    <span>LOGIN</span>
-                </li>
-                <li class="setting">
-                    &nbsp;
-                </li>
-            </ul>
-        </div><!-- /header -->
-        
-        <h1>
-            <img src="img/logo.png"/>
-        </h1>
-        
-        <div class="msg_error" style="display: none;">
-            <a class="ui-link close_msg_error" href="javascript:void(0)">X</a> <label>Tu email o contrase&ntilde;a no son correctas, vuelve a intentarlo</label>
-        </div>
-    
-    	<div data-role="content">
-            
-            <div class="btn-access">
-                <form id="form_login">
-                    <div class="access_login">
-                         <input data-theme="cu" id="u_email" name="u_email" placeholder="Email..." autocomplete="off" autocapitalize="off" style="text-transform:lowercase;" type="email"/>
-                         <input data-theme="cu" id="u_password" name="u_password" placeholder="Contrase&ntilde;a..." autocomplete="off" type="password"/>
-                    </div>
-                    <div class="campo_codigo_validacion" style="display: none;">
-                        <input id="u_codigo_validacion" name="u_codigo_validacion" placeholder="C&oacute;digo validaci&oacute;n..." autocomplete="off" />
-                    </div>
-                    <fieldset data-role="controlgroup">
-                        <input name="u_remember_me" id="u_remember_me" type="radio"/>
-                        <label data-theme="c" for="u_remember_me">Recordar mis datos de acceso.</label>
-                    </fieldset>
-                </form>
-                <p class="text">
-                    a&uacute;n no estas registrado? <span>&Uacute;nete a la comunidad de patrocinalos</span>
-                </p>
-            </div>
-            
-    	</div><!-- /content -->
-        
-        <div class="btn-options">
-            <div class="btn-first long bouble_row">
-                <a style="width: 100%; padding: 0; margin: 0;" class="ui-btn-submit orange" href="#recuperar_password" data-role="button" data-transition="slide">RECUPERAR <br /> PASSWORD</a>
-            </div>
-            <div class="btn-second long">
-                <a style="width: 100%; padding: 0; margin: 0;" class="ui-btn-submit green logearme" href="javascript:void(0)" data-role="button">ENTRAR</a>
-            </div>
-        </div>
-    
-    </div><!-- /page -->
-    
-    <!-- RECUPERAR PASSWORD -->
-    
-    <div data-role="page" id="recuperar_password" data-theme="c">
-    
-        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
-            <ul>
-                <li class="back">
-                    <div class="left">
-                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
-                    </div>
-                </li>
-                <li class="page">
-                    <span>RECUPERAR PASSWORD</span>
-                </li>
-                <li class="setting">
-                    &nbsp;
-                </li>
-            </ul>
-        </div><!-- /header -->
-        
-    	<div data-role="content">
-            
-            <div class="btn-access">
-                <div id="form_recuperar_password">
-                    <ul>
-                        <li>
-                            <div class="left content_numero">
-                                <span class="numero">1</span>
-                            </div>
-                            <div class="left item">
-                                <form id="form_codigovalidacion">
-                                    <div class="top">
-                                        <p>Introduce tu email, te enviaremos un c&oacute;digo de validaci&oacute;n con el cual podr&aacute;s cambiar tu contrase&ntilde;a.</p>
-                                    </div>
-                                    <div class="bottom">
-                                        <input style="width: 100%;" name="u_email" placeholder="Email..." autocomplete="off" autocapitalize="off" style="text-transform:lowercase;" type="email"/>
-                                        <a class="ui-btn-submit blue enviar_codigovalidacion" href="javascript:void(0)" data-role="button">ENVIAME C&Oacute;DIGO</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="left content_numero">
-                                <span class="numero">2</span>
-                            </div>
-                            <div class="left item">
-                                <form id="form_cambiar_password">
-                                    <div class="top">
-                                        <p>Si ya recibiste el c&oacute;digo de validaci&oacute;n, introducelo junto con tu email y podr&aacute;s cambiar tu contrase&ntilde;a antigua por una nueva.</p>
-                                    </div>
-                                    <div class="bottom">
-                                        <input style="width: 100%;" name="u_email" placeholder="Email..." autocomplete="off" autocapitalize="off" style="text-transform:lowercase;" type="email"/>
-                                        <input style="width: 100%;" name="u_codigovalidacion" placeholder="C&oacute;digo..." autocomplete="off" type="text"/>
-                                        <a class="ui-btn-submit blue cambiar_password" href="javascript:void(0)" data-role="button">CAMBIAR PASSOWORD</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
             </div>
             
     	</div><!-- /content -->
@@ -370,7 +242,7 @@
         
         <div class="btn-options">
             <div class="btn-first">
-                <a class="ui-btn-submit orange" href="#login_user" data-role="button" data-transition="slide">INICIAR SESI&Oacute;N</a>
+                <a class="ui-btn-submit orange" href="login_user.html" data-role="button" data-transition="slide">INICIAR SESI&Oacute;N</a>
             </div>
             <div class="btn-second">
                 <a class="ui-btn-submit green" href="#completar_perfil" data-role="button" data-transition="slide">COMPLETAR PERFIL</a>
@@ -696,7 +568,7 @@
             <div data-role="navbar">
                 <ul class="nav-custom">
                     <li><a href="#home" class="nav_home ui-btn-active-g" data-icon="none" data-iconpos="top">HOME</a></li>
-                    <li><a href="#login_user" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
+                    <li><a href="login_user.html" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
                     <li><a href="#ranking" class="nav_ranking" data-icon="none" data-iconpos="top">RANKING</a></li>
                     <li><a href="#deportistas" class="nav_deportistas" data-icon="none" data-iconpos="top">DEPORTISTAS</a></li>
                 </ul>
@@ -748,7 +620,7 @@
             <div data-role="navbar">
                 <ul class="nav-custom">
                     <li><a href="#home" class="nav_home" data-icon="none" data-iconpos="top">HOME</a></li>
-                    <li><a href="#login_user" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
+                    <li><a href="login_user.html" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
                     <li><a href="#ranking" class="nav_ranking ui-btn-active-g" data-icon="none" data-iconpos="top">RANKING</a></li>
                     <li><a href="#deportistas" class="nav_deportistas" data-icon="none" data-iconpos="top">DEPORTISTAS</a></li>
                 </ul>
@@ -800,7 +672,7 @@
             <div data-role="navbar">
                 <ul class="nav-custom">
                     <li><a href="#home" class="nav_home" data-icon="none" data-iconpos="top">HOME</a></li>
-                    <li><a href="#login_user" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
+                    <li><a href="login_user.html" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
                     <li><a href="#ranking" class="nav_ranking" data-icon="none" data-iconpos="top">RANKING</a></li>
                     <li><a href="#deportistas" class="nav_deportistas ui-btn-active-g" data-icon="none" data-iconpos="top">DEPORTISTAS</a></li>
                 </ul>
@@ -855,7 +727,7 @@
             <div data-role="navbar">
                 <ul class="nav-custom">
                     <li><a href="#home" class="nav_home" data-icon="none" data-iconpos="top">HOME</a></li>
-                    <li><a href="#login_user" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
+                    <li><a href="login_user.html" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
                     <li><a href="#ranking" class="nav_ranking" data-icon="none" data-iconpos="top">RANKING</a></li>
                     <li><a href="#deportistas" class="nav_deportistas" data-icon="none" data-iconpos="top">DEPORTISTAS</a></li>
                 </ul>
@@ -912,7 +784,7 @@
             <div data-role="navbar">
                 <ul class="nav-custom">
                     <li><a href="#home" class="nav_home" data-icon="none" data-iconpos="top">HOME</a></li>
-                    <li><a href="#login_user" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
+                    <li><a href="login_user.html" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
                     <li><a href="#ranking" class="nav_ranking" data-icon="none" data-iconpos="top">RANKING</a></li>
                     <li><a href="#deportistas" class="nav_deportistas" data-icon="none" data-iconpos="top">DEPORTISTAS</a></li>
                 </ul>
@@ -964,7 +836,7 @@
             <div data-role="navbar">
                 <ul class="nav-custom">
                     <li><a href="#home" class="nav_home" data-icon="none" data-iconpos="top">HOME</a></li>
-                    <li><a href="#login_user" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
+                    <li><a href="login_user.html" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
                     <li><a href="#ranking" class="nav_ranking" data-icon="none" data-iconpos="top">RANKING</a></li>
                     <li><a href="#deportistas" class="nav_deportistas" data-icon="none" data-iconpos="top">DEPORTISTAS</a></li>
                 </ul>
@@ -1017,7 +889,7 @@
             <div data-role="navbar">
                 <ul class="nav-custom">
                     <li><a href="#home" class="nav_home" data-icon="none" data-iconpos="top">HOME</a></li>
-                    <li><a href="#login_user" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
+                    <li><a href="login_user.html" class="nav_login" data-icon="none" data-iconpos="top">LOGIN</a></li>
                     <li><a href="#ranking" class="nav_ranking" data-icon="none" data-iconpos="top">RANKING</a></li>
                     <li><a href="#deportistas" class="nav_deportistas" data-icon="none" data-iconpos="top">DEPORTISTAS</a></li>
                 </ul>

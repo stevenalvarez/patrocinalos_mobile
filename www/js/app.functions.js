@@ -348,7 +348,12 @@ function form_login(){
                             
                             //una vez logeado guardamos en cookies su datos importantes y lo llevamos a otra vista
                             createCookie("user", JSON.stringify(usuario), days);
-                            $.mobile.changePage('info_general.html', {transition: "fade"});
+                            
+                            var goToPage =  "info_general.html";
+                            if(REDIREC_TO != ''){
+                                goToPage = REDIREC_TO;
+                            }
+                            $.mobile.changePage(goToPage, {transition: "fade"});
                         }else{
                             //mostramos el mensaje de que debe colocar el codigo de activacion para quedar activo en el sistema
                             $("#login_user").find(".msg_error").find("label").html("Usted no activo su cuenta, por favor coloque el c&oacute;digo de validaci&oacute;n");
@@ -545,12 +550,14 @@ function isLogin(){
     if(cookie_user !== null){
         res = true;
         COOKIE = cookie_user;
+    }else{
+        REDIREC_TO = window.location.href;
     }
     return res;
 }
 
 function redirectLogin(){
-    $.mobile.changePage('#login_user', {transition: "fade"});
+    $.mobile.changePage('login_user.html', {transition: "fade", changeHash: false});
 }
 
 //Abrimos el enlace en un navegador del sistema (IOS|ANDROID)

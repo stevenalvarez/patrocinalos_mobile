@@ -695,6 +695,7 @@ function getActividades() {
 
 //OBTENEMOS LOS DATOS DEL PERFIL DE UN DEPORTISTA EN ESPECIFICO
 function loadPerfilDeportista(me, usuario_id){
+    
     var parent = jQuery("#perfil_deportivo");
     $.getJSON(BASE_URL_APP + 'usuarios/mobileGetPerfilDeportista?me=' + me + '&usuario_id='+usuario_id, function(data){
         if(data.item){
@@ -725,7 +726,7 @@ function loadPerfilDeportista(me, usuario_id){
             }
             
             parent.find(".nombre_user").text(data_item.Usuario.title);
-            parent.find(".deporte span").text(data_item.Usuario.deporte_nombre);
+            parent.find(".deporte span").text(data_item.Usuario.deporte_nombre).parent().show();
             
             if(data_item.Crowfunding !=""){
                 parent.find(".dias_finalizar").find("i").text(data_item.Crowfunding.dias_restantes);
