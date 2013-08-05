@@ -295,6 +295,130 @@ function form_codigovalidacion(element){
     });
 }
 
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO DE CAMBIAR PASSWORD - RECUPERAR PASSWORD
+function form_cambiar_password(element){
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+    		"u_email": {
+    			required: true,
+    			email: true
+    		},
+            "u_codigovalidacion": {
+    			required: true,
+    			minlength: 2
+    		},
+    	},
+    	messages: {
+            "u_email": {
+    			required: "Por favor, introduzca su email <i></i>",
+    			email: "Direcci&oacute;n de email no v&aacute;lida <i></i>"
+    		},
+            "u_codigovalidacion": {
+    			required: "Por favor, ingrese el codigo de validacion <i></i>",
+    			minlength: "M&iacute;nimo de 2 caracteres <i></i>"
+    		}
+    	}
+    });
+    
+    //Submit form
+    formulario.submit(function() {
+        
+        formulario.find("input[type='email']").parent().removeClass("error_field_email");
+        
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            $.ajax({
+                data: formulario.serialize(),
+                type: "POST",
+                url: BASE_URL_APP + 'usuarios/mobileVerificarCodigoValidacion',
+                dataType: "html",
+                success: function(data){
+                    $.mobile.loading( 'hide' );
+                    
+                    data = $.parseJSON(data);
+                    if(data.success){
+                        clear_form(element);
+                        //Mostramos el popup
+                        $("#recuperar_password").find("#popupPassword").find("#usuario_id").val(data.item.Usuario.id);
+                        $("#recuperar_password").find("#popupPassword").popup("open");
+                    }else{
+                        showAlert(data.mensaje, "Error", "Aceptar");
+                    }
+                },
+                beforeSend : function(){
+                    //mostramos loading
+                    showLoadingCustom('Verificando datos...');
+                }
+            });
+        }
+      return false;
+    });
+}
+
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO DE POPUP CAMBIAR PASSWORD - RECUPERAR PASSWORD
+function popup_form_cambiar_password(element){
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+    	   
+    		"u_new_password": {
+    			required: true,
+    			minlength: 5
+    		},
+            "u_repetir_password": {
+    			required: true,
+    			minlength: 5,
+    			equalTo: "#u_new_password"
+    		}
+    	},
+    	messages: {
+    		"u_new_password": {
+    			required: "Por favor, ingrese su contrase&ntilde;a <i></i>",
+    			minlength: "M&iacute;nimo de 5 caracteres <i></i>"
+    		},
+            "u_repetir_password": {
+    			required: "Por favor, ingrese su contrase&ntilde;a <i></i>",
+    			minlength: "M&iacute;nimo de 5 caracteres <i></i>",
+    			equalTo: "Repita contrase&ntilde;a <i></i>"
+    		}
+    	}
+    });
+    
+    //Submit form
+    formulario.submit(function() {
+        
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            $.ajax({
+                data: formulario.serialize(),
+                type: "POST",
+                url: BASE_URL_APP + 'usuarios/mobileCambiarPassword',
+                dataType: "html",
+                success: function(data){
+                    $.mobile.loading( 'hide' );
+                    
+                    data = $.parseJSON(data);
+                    if(data.success){
+                        clear_form(element);
+                        showAlert(data.mensaje, "Aviso", "Aceptar");
+                        $.mobile.changePage('login_user.html', {transition: "fade"});
+                    }else{
+                        showAlert(data.mensaje, "Error", "Aceptar");
+                    }
+                },
+                beforeSend : function(){
+                    //mostramos loading
+                    showLoadingCustom('Guardando datos...');
+                }
+            });
+        }
+      return false;
+    });
+}
+
 //INICIA LAS VALIDACIONES PARA EL FORMULARIO DE LOGIN
 function form_login(){
     jQuery("#form_login").validate({
@@ -447,6 +571,12 @@ function key_press(id){
                 }else{
                     $(this).parent().removeClass("error_field_email");
                 }
+            }else if(($(this).attr("name") == "u_repetir_password")){
+                if((($(this).val()).length > 6)){
+                    $(this).parent().removeClass("valid_field").addClass("error_field_email");
+                }else{
+                    $(this).parent().removeClass("error_field_email");
+                }
             }else{
                 $(this).parent().removeClass("valid_field").addClass("error_field");
             }
@@ -487,7 +617,7 @@ function loginFacebookConnect() {
                     fields: 'id, name, email, picture'
                 },function(response) {
                     if (response.error) { 
-                       alert('get user datas failed ' + JSON.stringify(response.error));
+                       showAlert('get user datas failed ' + JSON.stringify(response.error));
                     }else{
                         var user = response;
                         $("#form_registro").find("#u_title").val(user.name);
@@ -501,7 +631,7 @@ function loginFacebookConnect() {
                 //imagen del usuario
                 FB.api("/me/picture?width=960",  function(response) {
                     if (response.error) { 
-                       alert('get picture failed ' + JSON.stringify(response.error));
+                       showAlert('get picture failed ' + JSON.stringify(response.error));
                     }else{
                         var picture = response;
                         $("#form_registro").find("#pictureImage").attr("src", picture.data.url).show();

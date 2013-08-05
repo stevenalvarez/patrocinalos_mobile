@@ -5,7 +5,8 @@ var friendIDs = [];
 var IMAGEURI;
 var FB_LOGIN_SUCCESS = false;
 var TW_LOGIN_SUCCESS = false;
-var REDIREC_TO, COOKIE = '';
+var COOKIE = '';
+var REDIREC_TO = '';
 
 //Twitter
 var oauth; // Holds out oAuth request

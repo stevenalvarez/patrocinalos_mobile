@@ -3977,7 +3977,8 @@ and (orientation:portrait)
     #register_finalizado .ui-content{
         min-height: 410px;
     }
-    #completar_perfil .btn-access{
+    #completar_perfil .btn-access,
+    #recuperar_password .btn-access{
         min-height: 420px;
     }
     #login_user .ui-content{

@@ -46,8 +46,10 @@ $(document).on('pageinit', "#register_user", function(){
 $(document).on('pageinit', "#recuperar_password", function(){
     form_codigovalidacion("form_codigovalidacion");
     key_press("form_codigovalidacion");
-    //form_cambiar_password("form_cambiar_password");
+    form_cambiar_password("form_cambiar_password");
     key_press("form_cambiar_password");
+    popup_form_cambiar_password("popup_form_cambiar_password");
+    key_press("popup_form_cambiar_password");    
     
     $(this).find('a.enviar_codigovalidacion').on("click", function(){
         var form_parent = document.getElementById("form_codigovalidacion");
@@ -58,6 +60,12 @@ $(document).on('pageinit', "#recuperar_password", function(){
         var form_parent = document.getElementById("form_cambiar_password");
         $(form_parent).submit();
     });
+    
+    $(this).find('a.cambiar_nuevo_password').on("click", function(){
+        var form_parent = document.getElementById("popup_form_cambiar_password");
+        $(form_parent).submit();
+    });
+    
 });
 
 //LOGIN
