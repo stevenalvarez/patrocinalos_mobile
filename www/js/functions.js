@@ -170,8 +170,9 @@ function getImage(element_preview) {
 function capturePhoto(element_preview) {
     // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
     navigator.camera.getPicture(function(imageData){
+        alert(element_preview);
           var pictureImage = document.getElementById(element_preview);
-          pictureImage.style.display = 'inline-block';
+          pictureImage.style.display = 'block';
           pictureImage.src = "data:image/jpeg;base64," + imageData;
     }, 
     function(message) {
