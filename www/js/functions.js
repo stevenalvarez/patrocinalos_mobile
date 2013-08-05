@@ -210,6 +210,7 @@ function uploadImagen(folder) {
     var ft = new FileTransfer();
     ft.upload(IMAGEURI, BASE_URL_APP + "fotos/mobileUploadImagen", 
     function(r){
+        IMAGEURI = '';
         return r.response;
         
     }, function(error){

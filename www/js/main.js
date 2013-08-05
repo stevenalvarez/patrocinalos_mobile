@@ -575,7 +575,7 @@ function getDatosDeportivos(id_user){
 }
 
 /*FUNCION PARA GUARDAR LOS DATOS PERSONALES*/
-function saveDatosPersonales(form){
+function saveDatosPersonales(form, uploadImage){
     
     jQuery("#"+form).validate({
         errorElement:'span',
@@ -597,7 +597,21 @@ function saveDatosPersonales(form){
     });
     
     if(COOKIE.id && jQuery("#"+form).valid()){
-        showLoadingCustom('Enviando datos...');
+        //Existen 2 proceso
+        //1.- Subir la imagen
+        
+        //Si es true se sube la imagen
+        if(uploadImage !== undefined && uploadImage == true){
+            //controlamos que el valor de la imagen a subir no este vacia, 
+            //eso significa que se selecciono un imagen o se capturo una imagen
+            if(IMAGEURI != ''){
+                var nombre_imagen = uploadImagen("Usuario");
+                console.log(nombre_imagen);
+            }
+        }
+        
+        //2.- Actualizar los datos
+        /*showLoadingCustom('Enviando datos...');
         $.ajax({
                     data: $("#"+form).serialize(),
                     type: "POST",
@@ -614,7 +628,7 @@ function saveDatosPersonales(form){
                        }
                        $.mobile.loading('hide');
                     }
-               });
+               });*/
     }
     
 }
