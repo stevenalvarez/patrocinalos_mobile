@@ -24,7 +24,7 @@
         </script>
         
         <!-- debug sin configurar en el config.xml -->
-        <!--<script src="http://debug.phonegap.com/target/target-script-min.js#mobilelospa"></script>-->
+        <script src="http://debug.phonegap.com/target/target-script-min.js#mobilelospa"></script>
         
         <script src="js/jquery.mobile-1.3.1.js"></script>
         <script src="js/jquery.validate.min.js"></script>
@@ -45,30 +45,7 @@
         <!-- cargamos al ultimo el script que inicializa los valores una vez cargado el dispositivo -->
         <script type="text/javascript" src="js/app.ready.js"></script>
         <script type="text/javascript">
-        alert("1")
             app.initialize();
-        // A button will call this function
-        //
-        function capturePhotoPERAAA() {
-            alert("2")
-            // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-            navigator.camera.getPicture(function(imageURI){
-                  alert("puattt");
-                  alert(imageURI);
-            }, 
-            function(message) {
-                showAlert('Failed because: ' + message, 'Error', 'Aceptar');
-            }, 
-            { 
-                quality: 50, 
-                destinationType: destinationType.FILE_URI,
-                sourceType : pictureSource.CAMERA,
-                allowEdit: true,
-                encodingType: navigator.camera.EncodingType.JPEG,
-                targetWidth: 100,
-                targetHeight: 100
-            });
-        }            
         </script>
     </head>
     <body>
@@ -198,7 +175,7 @@
                          <div data-role="fieldcontain" class="content_upload_foto">
                             <label class="lspacing">Subir una foto de perfil</label>
                             <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" data-role="button" data-mini="true">Buscar</a>
-                            <a href="javascript:void(0)" onclick="capturePhotoPERAAA();" data-role="button">Capturar Foto</a>
+                            <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="capturePhoto('pictureImage');" data-role="button" data-mini="true">Capturar Foto</a>
                          </div>
                          <img style="margin-left: 1px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-bottom: -24px; margin-top: -50px; display: none;" id="pictureImage" src="" />
                          <input id="u_img_url_social" type="hidden" name="u_img_url_social" value="" />
