@@ -169,19 +169,24 @@ function getImage(element_preview) {
 //
 function capturePhoto(element_preview) {
     // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-    navigator.camera.getPicture(function(imageData){
-        alert(element_preview);
+    navigator.camera.getPicture(function(imageURI){
+          alert("comienza");
           var pictureImage = document.getElementById(element_preview);
-          pictureImage.style.display = 'block';
-          pictureImage.src = "data:image/jpeg;base64," + imageData;
+          pictureImage.style.display = 'inline-block';
+          pictureImage.src = imageURI;
+          alert("termina");
     }, 
     function(message) {
         showAlert('Failed because: ' + message, 'Error', 'Aceptar');
     }, 
     { 
-        quality: 50, 
+        quality: 100, 
+        destinationType: navigator.camera.DestinationType.FILE_URI,
+        sourceType : navigator.camera.PictureSourceType.CAMERA,
         allowEdit: true,
-        destinationType: navigator.camera.DestinationType.DATA_URL
+        encodingType: navigator.camera.EncodingType.JPEG,
+        targetWidth: 100,
+        targetHeight: 100
     });
 }
 
