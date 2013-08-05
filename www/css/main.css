@@ -1055,7 +1055,7 @@ form .valid_field span.success i{
     padding-left: 27px;
     background: url("../img/subir_foto.png") no-repeat scroll left center transparent;
     background-size: 22px;
-    margin-top: 10px;
+    margin: 10px 0;
     height: 22px;
     line-height: 24px;
     color: #949e9f;

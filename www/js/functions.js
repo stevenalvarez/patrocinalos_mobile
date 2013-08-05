@@ -117,6 +117,21 @@ function alertDismissed() {
     // do something
 }
 
+function check_network() {
+    var networkState = navigator.network.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.NONE]     = 'No network connection';
+
+    confirm('Connection type:\n ' + states[networkState]);
+}
+
 function showLoadingCustom(msg){
     $.mobile.loading( 'show', {
     	text: msg,
@@ -125,6 +140,79 @@ function showLoadingCustom(msg){
     	html: ""
     });
 }
+
+//funcion que obtiene una imagen de la libreria de fotos del dispostivo
+//param : element_preview, id del elemento donde va ha mostrar el preview de la imagen seleccionada
+//return: retorna IMAGE que sirve para luego mandarlo al servidor, es el $_FILE
+function getImage(element_preview) {
+    var IMAGE = '';
+    navigator.camera.getPicture(function (imageURI){
+        
+        var pictureImage = document.getElementById(element_preview);
+        pictureImage.style.display = 'inline-block';
+        pictureImage.src = imageURI;
+        IMAGE = imageURI;
+    },
+    function(message) {
+        showAlert('Failed because: ' + message, 'Error', 'Aceptar');
+    },
+    {
+        quality: 50,
+        destinationType: navigator.camera.DestinationType.FILE_URI,
+        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY //(PHOTOLIBRARY|SAVEDPHOTOALBUM)
+    });
+    
+    return IMAGE;
+}
+
+// A button will call this function
+//
+function capturePhoto(element_preview) {
+    // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+    navigator.camera.getPicture(function(imageData){
+          var pictureImage = document.getElementById(element_preview);
+          pictureImage.style.display = 'inline-block';
+          pictureImage.src = "data:image/jpeg;base64," + imageData;
+    }, 
+    function(message) {
+        showAlert('Failed because: ' + message, 'Error', 'Aceptar');
+    }, 
+    { 
+        quality: 50, 
+        allowEdit: true,
+        destinationType: navigator.camera.DestinationType.DATA_URL,
+        sourceType : navigator.camera.PictureSourceType.CAMERA
+    });
+}
+
+//function uploadImagen, envia la imagen al servidor
+//param : IMAGE, imagen a subir
+//return: retorno el nombre con el cual se guardo la imagen
+function uploadImagen(IMAGE, folder) {
+    
+    var options = new FileUploadOptions();
+    options.fileKey = "file";
+    options.fileName = IMAGEURI.substr(IMAGEURI.lastIndexOf('/')+1);
+    options.mimeType = "image/jpeg";
+    
+    var params = new Object();
+    params.folder = folder;
+    
+    options.params = params;
+    options.chunkedMode = false;
+    
+    var ft = new FileTransfer();
+    ft.upload(IMAGE, BASE_URL_APP + "fotos/mobileUploadImagen", 
+    function(r){
+        return = r.response;
+        
+    }, function(error){
+        showAlert(error, "Error", "Aceptar");
+        return = '';
+        
+    }, options);
+}
+
 
 function createCookie(name,value,days) {
 	if (days) {

@@ -702,14 +702,6 @@ function openOnWindow(element, target){
 	});
 }
 
-/*FUNCION PARA CAPTURAR UNA FOTO MEDIANTE LA CAMARA DEL DISPOSITIVO*/
-//preview:elemento html donde se carga la foto de preview, 
-//name:input hidden para guardar el nombre y enviarlo para guardarlo en la DB
-//destination:path en el servidor donde se guarda el archivo
-function capturePhoto(preview,name,destination){
-    
-}
-
 /*funccion para cerrar un modal*/
 //thiss:link que cierra el modal
 //status:para cerrar o mostrar un modal
