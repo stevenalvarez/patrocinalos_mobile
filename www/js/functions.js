@@ -148,7 +148,7 @@ function getImage(element_preview) {
     navigator.camera.getPicture(function (imageURI){
         
         var pictureImage = document.getElementById(element_preview);
-        pictureImage.style.display = 'inline-block';
+        pictureImage.style.display = 'block';
         pictureImage.src = imageURI;
         
         //guardamos la imagen seleccionada para luego enviar al servidor
@@ -171,7 +171,7 @@ function capturePhoto(element_preview) {
     
     navigator.camera.getPicture(function(imageURI){
           var pictureImage = document.getElementById(element_preview);
-          pictureImage.style.display = 'inline-block';
+          pictureImage.style.display = 'block';
           pictureImage.src = imageURI;
           
           //guardamos la imagen capturada para luego enviar al servidor
