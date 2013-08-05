@@ -180,8 +180,7 @@ function capturePhoto(element_preview) {
     { 
         quality: 50, 
         allowEdit: true,
-        destinationType: navigator.camera.DestinationType.DATA_URL,
-        sourceType : navigator.camera.PictureSourceType.CAMERA
+        destinationType: navigator.camera.DestinationType.DATA_URL
     });
 }
 
