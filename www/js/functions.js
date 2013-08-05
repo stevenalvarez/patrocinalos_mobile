@@ -204,11 +204,11 @@ function uploadImagen(IMAGE, folder) {
     var ft = new FileTransfer();
     ft.upload(IMAGE, BASE_URL_APP + "fotos/mobileUploadImagen", 
     function(r){
-        return = r.response;
+        return r.response;
         
     }, function(error){
         showAlert(error, "Error", "Aceptar");
-        return = '';
+        return '';
         
     }, options);
 }
