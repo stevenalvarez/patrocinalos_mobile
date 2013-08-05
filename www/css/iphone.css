@@ -1229,7 +1229,7 @@
   position: relative;
   width: 158px;
   float: left;
-  margin: 1px;
+  border: 1px solid #EEEEEE;
  }
  .list_media li h3{
    position: absolute;
@@ -1246,7 +1246,8 @@
    background: rgba(0,0,0, 0.5);
    bottom:0;
    right:0; 
-   color: #cc5050;
+   /*color: #cc5050;*/
+   color: #eee;
    padding: 5px;
    font-family: 'HelveticaLTStdLight';
    font-size: 15px; 
@@ -1265,6 +1266,57 @@
  }
  .content_media.content_list_first{
     padding: 0;
+ }
+ .list_media_fotos{
+    
+ }
+ .list_media_fotos li{
+    float: left;
+    width: 50%;
+ }
+ .list_media_fotos li a.zoom_media{
+    position: absolute;
+    left:0%;
+    top:0%;
+    background: url("../img/zoom_icon.png") no-repeat center center transparent;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-size: 35px;
+ }
+ .list_media_fotos li div.preview{
+    position: relative;
+    border: 1px solid #fff;
+    padding: 0;
+    overflow: hidden;
+    border-left: 0;
+    border-bottom: 0;
+ }
+ .list_media_fotos li div.preview img{
+    width: 100%;
+    height: auto;
+    float: left;
+ }
+ .list_media_fotos li a.delete_media{
+    position: absolute;
+    top: 0;
+ }
+ h3.title_media{
+    font-family: 'helvetica_lightregular';
+    font-size: 15px;
+    color: #019add;
+    display: block;
+    padding: 5px;
+ }
+ #modal_box_media .content_modal{
+    border: 1px solid #fff;
+    padding: 0;
+    border-radius: 3px;
+ }
+ .zoom_image img{
+    display: block;
+    overflow: hidden;
+    width: 100%;
  }
  /*PAGE LISTA DE ALBUMS DE FOTO*/
  
