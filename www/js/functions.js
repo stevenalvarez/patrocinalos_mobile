@@ -141,13 +141,14 @@ function showLoadingCustom(msg){
     });
 }
 
-//funcion que obtiene una imagen de la libreria de fotos del dispostivo
-//param : element_preview, id del elemento donde va ha mostrar el preview de la imagen seleccionada
+//funcion getImage, que obtiene una imagen de la libreria de fotos del dispostivo, 
+//como parametros se le mandan 2 posibles elementos donde se van a mostrar antes las fotos antes de subirlas 
+//param : elem_preview, id del elemento donde va ha mostrar el preview de la imagen seleccionada
 //return: void
-function getImage(element_preview) {
+function getImage(elem_preview) {
     navigator.camera.getPicture(function (imageURI){
         
-        var pictureImage = document.getElementById(element_preview);
+        var pictureImage = document.getElementById(elem_preview);
         pictureImage.style.display = 'block';
         pictureImage.src = imageURI;
         
@@ -164,18 +165,19 @@ function getImage(element_preview) {
     });
 }
 
-// A button will call this function
-//param : element_preview, id del elemento donde va ha mostrar el preview de la imagen seleccionada
+//funcion capturePhoto, que obtiene una imagen de la libreria de fotos del dispostivo, 
+//como parametros se le mandan 2 posibles elementos donde se van a mostrar antes las fotos antes de subirlas 
+//param : elem_preview, id del elemento donde va ha mostrar el preview de la imagen seleccionada
 //return: void
-function capturePhoto(element_preview) {
+function capturePhoto(elem_preview) {
     
     navigator.camera.getPicture(function(imageURI){
-          var pictureImage = document.getElementById(element_preview);
-          pictureImage.style.display = 'block';
-          pictureImage.src = imageURI;
+        var pictureImage = document.getElementById(elem_preview);
+        pictureImage.style.display = 'block';
+        pictureImage.src = imageURI;
           
-          //guardamos la imagen capturada para luego enviar al servidor
-          IMAGEURI = imageURI;
+        //guardamos la imagen capturada para luego enviar al servidor
+        IMAGEURI = imageURI;
     }, 
     function(message) {
         showAlert('Failed because: ' + message, 'Error', 'Aceptar');

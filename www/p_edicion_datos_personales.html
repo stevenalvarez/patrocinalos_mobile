@@ -28,14 +28,14 @@
             <div class="content_modal">
                 <div class="content_change">
                     <h3>Cambiar imagen de perf&iacute;l</h3>
-                    <img src="img/image_profile.jpg" width="170" height="auto" class="preview" id="vvvpictureImage" />
+                    <img src="img/image_profile.jpg" width="170" height="auto" class="preview" id="pictureImage2" />
                     <p>
                         Puedes buscar y cargar una foto existente en tu tel&eacute;fono, o puedes hacerte 
                         una nueva foto con la c&aacute;mara del dispositivo.
                     </p>
                     <div class="buttons_upload">
-                        <a href="javascript:void(0)" onclick="capturePhoto('image_preview','imagen_dep','img/Usuario')">CAPTURAR FOTO</a>
-                        <a href="javascript:void(0)" onclick="getPhoto(pictureSource.PHOTOLIBRARY)">BUSCAR UNA FOTO</a>
+                        <a href="javascript:void(0)" onclick="capturePhoto('pictureImage2')">CAPTURAR FOTO</a>
+                        <a href="javascript:void(0)" onclick="getImage('pictureImage2')">BUSCAR UNA FOTO</a>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,6 @@
                 <div class="content_edicion form_data_profile">
                     <form id="form_edit_data">
                         <input type="hidden" name="datos" value="datos_personales" />
-                        <input type="hidden" name="imagen_dep" id="u_img_url_social"/>
                         <div class="info_top">
                             <!--<div class="content_formulario left">
                                  <div class="opciones">
