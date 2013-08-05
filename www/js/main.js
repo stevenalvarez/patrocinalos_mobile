@@ -42,6 +42,32 @@ $(document).on('pageinit', "#register_user", function(){
     });
 });
 
+//RECUPERAR PASSWORD
+$(document).on('pageinit', "#recuperar_password", function(){
+    form_codigovalidacion("form_codigovalidacion");
+    key_press("form_codigovalidacion");
+    form_cambiar_password("form_cambiar_password");
+    key_press("form_cambiar_password");
+    popup_form_cambiar_password("popup_form_cambiar_password");
+    key_press("popup_form_cambiar_password");    
+    
+    $(this).find('a.enviar_codigovalidacion').on("click", function(){
+        var form_parent = document.getElementById("form_codigovalidacion");
+        $(form_parent).submit();
+    });
+    
+    $(this).find('a.cambiar_password').on("click", function(){
+        var form_parent = document.getElementById("form_cambiar_password");
+        $(form_parent).submit();
+    });
+    
+    $(this).find('a.cambiar_nuevo_password').on("click", function(){
+        var form_parent = document.getElementById("popup_form_cambiar_password");
+        $(form_parent).submit();
+    });
+    
+});
+
 //LOGIN
 $(document).on('pageinit', "#login_user", function(){
     form_login();
@@ -733,6 +759,7 @@ function getActividades() {
 
 //OBTENEMOS LOS DATOS DEL PERFIL DE UN DEPORTISTA EN ESPECIFICO
 function loadPerfilDeportista(me, usuario_id){
+    
     var parent = jQuery("#perfil_deportivo");
     $.getJSON(BASE_URL_APP + 'usuarios/mobileGetPerfilDeportista?me=' + me + '&usuario_id='+usuario_id, function(data){
         if(data.item){
@@ -763,7 +790,7 @@ function loadPerfilDeportista(me, usuario_id){
             }
             
             parent.find(".nombre_user").text(data_item.Usuario.title);
-            parent.find(".deporte span").text(data_item.Usuario.deporte_nombre);
+            parent.find(".deporte span").text(data_item.Usuario.deporte_nombre).parent().show();
             
             if(data_item.Crowfunding !=""){
                 parent.find(".dias_finalizar").find("i").text(data_item.Crowfunding.dias_restantes);
@@ -818,8 +845,13 @@ function loadPerfilDeportista(me, usuario_id){
                         $.mobile.loading( 'hide' );
                     });
                 });
-                
             }
+            
+            //Actualizamos los datos para realizar la aportacion
+            var form_pago = parent.find("#formulario_pago_individual"); 
+            form_pago.find("#imagen_deportista").attr("src", BASE_URL_APP+'img/Usuario/169/'+data_item.Usuario.imagen);
+            form_pago.find(".nombre_deportista").text(data_item.Usuario.title);
+            form_pago.find("#crowd_id").val(data_item.Crowfunding.id);
         }
     });
 }
@@ -849,19 +881,89 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
         return false;
     });
     
-    //Evento para el pago por paypal
+    //PAGO MEDIANTE PAYPAL Y TPV
     form_pago = $(element).find("#formulario_pago_individual"); 
-    form_pago.find("a.pago_paypal").off('click').on("click", function(){
+    //START PAYPAL
+    form_pago.find("a.pago_paypal, a.pago_tpv_4B").off('click').on("click", function(){
+        var elem = $(this);
         var pago_monto = form_pago.find("#pago_monto").val();
         var pago_termino = form_pago.find("#pago_termino").is(":checked") ? true : false;
         
         if($.trim(pago_monto) != "" && (parseInt(pago_monto) > 0)){
-            //Mandamos a pedir la url para realizar el pago por paypal
+            if(isLogin()){
+                
+                //PAGO PAYPAL
+                if(elem.attr("lang") == "PAYPAL"){
+                    $.ajax({
+                        data: $(form_pago).serialize(),
+                        type: "POST",
+                        url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/PAYPAL",
+                        dataType: "html",
+                        success: function(data){
+                            
+                            //ocultamos el loading
+                            $.mobile.loading('hide');
+                            var result = $.parseJSON(data);
+                            
+                            if(result.aportacion_realizada){
+                                //Cerramos el popup
+                                $("#popupPatrocinar").popup("close");
+                                
+                                var url_pago = result.url_redirect_pago;
+                                window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
+                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPago(loc, me); }; // When the ChildBrowser URL changes we need to track that
+                            }else{
+                                showAlert(result.error_alcanzado, "Error", "Aceptar");
+                            }
+                        },
+                        beforeSend : function(){
+                            //mostramos loading
+                            showLoadingCustom('Verificando datos...');
+                        }
+                    });
+                
+                //PAGO TPV
+                }else if(elem.attr("lang") == "TPV"){
+                    $.ajax({
+                        data: $(form_pago).serialize(),
+                        type: "POST",
+                        url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/TPV",
+                        dataType: "html",
+                        success: function(data){
+                            
+                            //ocultamos el loading
+                            $.mobile.loading('hide');
+                            var result = $.parseJSON(data);
+                            
+                            if(result.aportacion_realizada){
+                                //Cerramos el popup
+                                $("#popupPatrocinar").popup("close");
+                                
+                                var url_pago = result.url_redirect_pago;
+                                var params = result.params;
+                                var site_url = BASE_URL_APP+'aportaciones/mobileRedireccionamientoTPV/?url='+url_pago+'&ref='+params.ref+'&store='+params.store+'&idioma='+params.idioma;
+                                //window.location = site_url;
+                                window.plugins.childBrowser.showWebPage(site_url, { showLocationBar : false });
+                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoTPV(loc); }; // When the ChildBrowser URL changes we need to track that
+                            }else{
+                                showAlert(result.error_alcanzado, "Error", "Aceptar");
+                            }
+                        },
+                        beforeSend : function(){
+                            //mostramos loading
+                            showLoadingCustom('Verificando datos...');
+                        }
+                    });
+                }
+            }else{
+                showAlert("Por favor vuelva a logearse he intente de nuevo", "Aviso", "Aceptar");
+            }
         }else{
             showAlert("Por favor!, introduzca un monto valido.", "Aviso", "Aceptar");
             form_pago.find("#pago_monto").val("");
         }
     });
+    //END PAYPAL
 }
 
 //DEJAR DE SEGUIR A UN DEPORTISTA
@@ -879,4 +981,139 @@ function dejarSeguirDeportista(element, me, to_usuario_id){
             showAlert("Ocurrio un error", "Error", "Aceptar");
         }
     });
+}
+
+//CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO
+function procesoPago(loc, usuario_id){
+    
+    var url_callback = BASE_URL_APP + 'aportaciones/mobileAddAportacion/' + usuario_id + '/';
+    if (loc.indexOf(url_callback + "?") >= 0) {
+        
+        // Parse the returned URL
+        var token, payer_id = '';
+        var params = loc.substr(loc.indexOf('?') + 1);
+         
+        params = params.split('&');
+        for (var i = 0; i < params.length; i++) {
+            var y = params[i].split('=');
+            if(y[0] === 'PayerID') {
+                payer_id = y[1];
+            }
+            //Obtenemos el token generado
+            if(y[0] === 'token') {
+                token = y[1];
+            }
+        }
+        
+        //controlamos si es que se realizo el pago correctamete, porque tambien puede cancelarlo
+        if(payer_id != '')
+        {
+            //Cerramos el childBrowser
+            window.plugins.childBrowser.close();
+            
+            //Actualizamos la aportacion
+            $.ajax({
+                data: "token="+token,
+                type: "POST",
+                url: BASE_URL_APP+'aportaciones/mobileUpdateAportacion/PAYPAL',
+                dataType: "html",
+                success: function(data){
+                    
+                    //ocultamos el loading
+                    $.mobile.loading('hide');
+                    var result = $.parseJSON(data);
+                    
+                    if(result.update_success){
+                        //Aqui debemos mostrar un popup con el texto de agradecimiento, por ahora solo un mensaje
+                        showAlert("Aportacion realizada con exito", "Aviso", "Aceptar");
+                    }else{
+                        showAlert(result.error_alcanzado, "Error", "Aceptar");
+                    }
+                },
+                beforeSend : function(){
+                    //mostramos loading
+                    showLoadingCustom('Guardando aportacion...');
+                }
+            });
+        }else{
+            //Cerramos el childBrowser
+            window.plugins.childBrowser.close();
+            showAlert("Su aportacion fue cancelada", "Error", "Aceptar");
+        }
+        
+    }else {
+        // todo
+    }
+}
+
+//CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO POR TPV
+function procesoPagoTPV(loc){
+    //Exiten 3 tipos de estados en el cual se mueve el pago para realizar la transaccion
+    //aceptadaconfirmadortodotpvokpasarela -> Coloca el pago si todo esta bine en estado "pagado"
+    //denegada -> error al momento de realizar el pago
+    //vuelve -> Significa que ser hizo correctamente el pago
+    
+    //Controlamos 2 casos de estados de transaccion "denegada y vuelve"
+    
+    var url_callback_denegada = BASE_URL_APP + 'aportaciones/denegada/';
+    var url_callback_vuelve = BASE_URL_APP + 'aportaciones/vuelve/';
+    
+    if (loc.indexOf(url_callback_vuelve + "?") >= 0) {
+        
+        // Parse the returned URL
+        var token = '';
+        var params = loc.substr(loc.indexOf('?') + 1);
+         
+        params = params.split('&');
+        for (var i = 0; i < params.length; i++) {
+            var y = params[i].split('=');
+            if(y[0] === 'pszPurchorderNum') {
+                token = y[1];
+            }
+        }
+        
+        //controlamos si es que se realizo el pago correctamete, porque tambien puede cancelarlo
+        if(token != '')
+        {
+            //Cerramos el childBrowser
+            window.plugins.childBrowser.close();
+            
+            //Verificamos si la aportacion fue pagada
+            $.ajax({
+                data: "token="+token,
+                type: "POST",
+                url: BASE_URL_APP+'aportaciones/mobileVerificarAportacion',
+                dataType: "html",
+                success: function(data){
+                    
+                    //ocultamos el loading
+                    $.mobile.loading('hide');
+                    var result = $.parseJSON(data);
+                    
+                    if(result.aportacion_pagada){
+                        //Aqui debemos mostrar un popup con el texto de agradecimiento, por ahora solo un mensaje
+                        showAlert("Aportacion realizada con exito", "Aviso", "Aceptar");
+                    }else{
+                        showAlert(result.error_alcanzado, "Error", "Aceptar");
+                    }
+                },
+                beforeSend : function(){
+                    //mostramos loading
+                    showLoadingCustom('Verificando aportacion...');
+                }
+            });
+        }else{
+            //Cerramos el childBrowser
+            window.plugins.childBrowser.close();
+            showAlert("Su aportacion fue denegada", "Error", "Aceptar");
+        }
+        
+    }else if (loc.indexOf(url_callback_denegada + "?") >= 0) {
+        //Cerramos el childBrowser
+        window.plugins.childBrowser.close();
+        showAlert("Su aportacion fue denegada", "Error", "Aceptar");
+        
+    }else{
+        // todo
+    }
 }

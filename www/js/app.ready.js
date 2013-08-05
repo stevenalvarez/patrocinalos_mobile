@@ -2,10 +2,11 @@
 var pictureSource;   // picture source
 var destinationType; // sets the format of returned value
 var friendIDs = [];
-var IMAGEURI;
+var IMAGEURI; //Ruta URI al fichero de imagen desde dispositivo
 var FB_LOGIN_SUCCESS = false;
 var TW_LOGIN_SUCCESS = false;
 var COOKIE = '';
+var REDIREC_TO = '';
 
 //Twitter
 var oauth; // Holds out oAuth request

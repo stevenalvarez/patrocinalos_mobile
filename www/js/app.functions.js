@@ -243,6 +243,182 @@ function form_registro(){
     });
 }
 
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO DE ENVIO DE CODIGO DE VALIDACION - RECUPERAR PASSWORD
+function form_codigovalidacion(element){
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+    		"u_email": {
+    			required: true,
+    			email: true
+    		}
+    	},
+    	messages: {
+            "u_email": {
+    			required: "Por favor, introduzca su email <i></i>",
+    			email: "Direcci&oacute;n de email no v&aacute;lida <i></i>"
+    		}
+    	}
+    });
+    
+    //Submit form
+    formulario.submit(function() {
+        
+        formulario.find("input[type='email']").parent().removeClass("error_field_email");
+        
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            $.ajax({
+                data: formulario.serialize(),
+                type: "POST",
+                url: BASE_URL_APP + 'usuarios/mobileEnviarCodigoValidacion',
+                dataType: "html",
+                success: function(data){
+                    $.mobile.loading( 'hide' );
+                    
+                    data = $.parseJSON(data);
+                    if(data.success){
+                        clear_form(element);
+                        showAlert(data.mensaje, "Aviso", "Aceptar");
+                    }else{
+                        showAlert(data.mensaje, "Error", "Aceptar");
+                    }
+                },
+                beforeSend : function(){
+                    //mostramos loading
+                    showLoadingCustom('Enviando codigo...');
+                }
+            });
+        }
+      return false;
+    });
+}
+
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO DE CAMBIAR PASSWORD - RECUPERAR PASSWORD
+function form_cambiar_password(element){
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+    		"u_email": {
+    			required: true,
+    			email: true
+    		},
+            "u_codigovalidacion": {
+    			required: true,
+    			minlength: 2
+    		},
+    	},
+    	messages: {
+            "u_email": {
+    			required: "Por favor, introduzca su email <i></i>",
+    			email: "Direcci&oacute;n de email no v&aacute;lida <i></i>"
+    		},
+            "u_codigovalidacion": {
+    			required: "Por favor, ingrese el codigo de validacion <i></i>",
+    			minlength: "M&iacute;nimo de 2 caracteres <i></i>"
+    		}
+    	}
+    });
+    
+    //Submit form
+    formulario.submit(function() {
+        
+        formulario.find("input[type='email']").parent().removeClass("error_field_email");
+        
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            $.ajax({
+                data: formulario.serialize(),
+                type: "POST",
+                url: BASE_URL_APP + 'usuarios/mobileVerificarCodigoValidacion',
+                dataType: "html",
+                success: function(data){
+                    $.mobile.loading( 'hide' );
+                    
+                    data = $.parseJSON(data);
+                    if(data.success){
+                        clear_form(element);
+                        //Mostramos el popup
+                        $("#recuperar_password").find("#popupPassword").find("#usuario_id").val(data.item.Usuario.id);
+                        $("#recuperar_password").find("#popupPassword").popup("open");
+                    }else{
+                        showAlert(data.mensaje, "Error", "Aceptar");
+                    }
+                },
+                beforeSend : function(){
+                    //mostramos loading
+                    showLoadingCustom('Verificando datos...');
+                }
+            });
+        }
+      return false;
+    });
+}
+
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO DE POPUP CAMBIAR PASSWORD - RECUPERAR PASSWORD
+function popup_form_cambiar_password(element){
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+    	   
+    		"u_new_password": {
+    			required: true,
+    			minlength: 5
+    		},
+            "u_repetir_password": {
+    			required: true,
+    			minlength: 5,
+    			equalTo: "#u_new_password"
+    		}
+    	},
+    	messages: {
+    		"u_new_password": {
+    			required: "Por favor, ingrese su contrase&ntilde;a <i></i>",
+    			minlength: "M&iacute;nimo de 5 caracteres <i></i>"
+    		},
+            "u_repetir_password": {
+    			required: "Por favor, ingrese su contrase&ntilde;a <i></i>",
+    			minlength: "M&iacute;nimo de 5 caracteres <i></i>",
+    			equalTo: "Repita contrase&ntilde;a <i></i>"
+    		}
+    	}
+    });
+    
+    //Submit form
+    formulario.submit(function() {
+        
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            $.ajax({
+                data: formulario.serialize(),
+                type: "POST",
+                url: BASE_URL_APP + 'usuarios/mobileCambiarPassword',
+                dataType: "html",
+                success: function(data){
+                    $.mobile.loading( 'hide' );
+                    
+                    data = $.parseJSON(data);
+                    if(data.success){
+                        clear_form(element);
+                        showAlert(data.mensaje, "Aviso", "Aceptar");
+                        $.mobile.changePage('login_user.html', {transition: "fade"});
+                    }else{
+                        showAlert(data.mensaje, "Error", "Aceptar");
+                    }
+                },
+                beforeSend : function(){
+                    //mostramos loading
+                    showLoadingCustom('Guardando datos...');
+                }
+            });
+        }
+      return false;
+    });
+}
+
 //INICIA LAS VALIDACIONES PARA EL FORMULARIO DE LOGIN
 function form_login(){
     jQuery("#form_login").validate({
@@ -296,7 +472,12 @@ function form_login(){
                             
                             //una vez logeado guardamos en cookies su datos importantes y lo llevamos a otra vista
                             createCookie("user", JSON.stringify(usuario), days);
-                            $.mobile.changePage('info_general.html', {transition: "fade"});
+                            
+                            var goToPage =  "info_general.html";
+                            if(REDIREC_TO != ''){
+                                goToPage = REDIREC_TO;
+                            }
+                            $.mobile.changePage(goToPage, {transition: "fade"});
                         }else{
                             //mostramos el mensaje de que debe colocar el codigo de activacion para quedar activo en el sistema
                             $("#login_user").find(".msg_error").find("label").html("Usted no activo su cuenta, por favor coloque el c&oacute;digo de validaci&oacute;n");
@@ -374,7 +555,7 @@ function key_press(id){
     element.bind('keyup blur', function(){
         if($(this).hasClass("valid")){
             $(this).parent().find("span.success").remove();
-            if(($(this).attr("id") == "u_email_register") || $(this).attr("id") == "u_email"){
+            if(($(this).attr("name") == "u_email_register") || $(this).attr("name") == "u_email"){
                 $(this).parent().removeClass("error_field_email").addClass("valid_field");
             }else{
                 $(this).parent().removeClass("error_field").addClass("valid_field");
@@ -383,9 +564,15 @@ function key_press(id){
         
         }else if($(this).hasClass("error")){
             $(this).parent().find("span.success").remove();
-            var chart = ($(this).attr("id") == "u_email_register") ? 12 : 10;
-            if(($(this).attr("id") == "u_email_register") || ($(this).attr("id") == "u_email")){
+            var chart = ($(this).attr("name") == "u_email_register") ? 12 : 10;
+            if(($(this).attr("name") == "u_email_register") || ($(this).attr("name") == "u_email")){
                 if(($(this).val()).length > chart){
+                    $(this).parent().removeClass("valid_field").addClass("error_field_email");
+                }else{
+                    $(this).parent().removeClass("error_field_email");
+                }
+            }else if(($(this).attr("name") == "u_repetir_password")){
+                if((($(this).val()).length > 6)){
                     $(this).parent().removeClass("valid_field").addClass("error_field_email");
                 }else{
                     $(this).parent().removeClass("error_field_email");
@@ -430,7 +617,7 @@ function loginFacebookConnect() {
                     fields: 'id, name, email, picture'
                 },function(response) {
                     if (response.error) { 
-                       alert('get user datas failed ' + JSON.stringify(response.error));
+                       showAlert('get user datas failed ' + JSON.stringify(response.error));
                     }else{
                         var user = response;
                         $("#form_registro").find("#u_title").val(user.name);
@@ -444,7 +631,7 @@ function loginFacebookConnect() {
                 //imagen del usuario
                 FB.api("/me/picture?width=960",  function(response) {
                     if (response.error) { 
-                       alert('get picture failed ' + JSON.stringify(response.error));
+                       showAlert('get picture failed ' + JSON.stringify(response.error));
                     }else{
                         var picture = response;
                         $("#form_registro").find("#pictureImage").attr("src", picture.data.url).show();
@@ -493,12 +680,14 @@ function isLogin(){
     if(cookie_user !== null){
         res = true;
         COOKIE = cookie_user;
+    }else{
+        REDIREC_TO = window.location.href;
     }
     return res;
 }
 
 function redirectLogin(){
-    $.mobile.changePage('#login_user', {transition: "fade"});
+    $.mobile.changePage('login_user.html', {transition: "fade", changeHash: false});
 }
 
 //Abrimos el enlace en un navegador del sistema (IOS|ANDROID)
@@ -511,14 +700,6 @@ function openOnWindow(element, target){
 	   window.open($(this).attr('href') , target );
 	   return false;
 	});
-}
-
-/*FUNCION PARA CAPTURAR UNA FOTO MEDIANTE LA CAMARA DEL DISPOSITIVO*/
-//preview:elemento html donde se carga la foto de preview, 
-//name:input hidden para guardar el nombre y enviarlo para guardarlo en la DB
-//destination:path en el servidor donde se guarda el archivo
-function capturePhoto(preview,name,destination){
-    
 }
 
 /*funccion para cerrar un modal*/
