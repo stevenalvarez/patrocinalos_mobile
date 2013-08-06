@@ -512,7 +512,6 @@ function getDatosPersonales(id_user){
         jQuery("#urlamigable_dep").val(data.item.usuario.urlamigable);
         jQuery("#urlamigable_dep").before("<b class='title_mini'>Url:</b>");
         jQuery("#imagen_dep").attr("src",BASE_URL_APP+'img/Usuario/169/'+data.item.usuario.imagen);
-        jQuery("#u_img_url_social").val(data.item.usuario.imagen);
         jQuery("#modal_box img.preview").attr("src",BASE_URL_APP+'img/Usuario/169/'+data.item.usuario.imagen);
         
         pais_dep=data.item.pais.id;
@@ -576,7 +575,7 @@ function getDatosDeportivos(id_user){
 }
 
 /*FUNCION PARA GUARDAR LOS DATOS PERSONALES*/
-function saveDatosPersonales(form){
+function saveDatosPersonales(form, upload_image){
     
     jQuery("#"+form).validate({
         errorElement:'span',
@@ -598,8 +597,30 @@ function saveDatosPersonales(form){
     });
     
     if(COOKIE.id && jQuery("#"+form).valid()){
+        
         showLoadingCustom('Enviando datos...');
-        $.ajax({
+        
+        //Existen 2 proceso
+        //1.- Subir la imagen
+        if(upload_image !== undefined && upload_image == true){
+            //controlamos que el valor de la imagen a subir no este vacia, 
+            //eso significa que se selecciono un imagen o se capturo una imagen
+            if(IMAGEURI != ''){
+                
+                //creamos un objecto con los parametros que queremos que llegue al servidor
+                //para luego ahi hacer otra operaciones con esos parametros.
+                var params = new Object();
+                params.folder = "Usuario"; // la carpeta donde se va a guardar la imagen
+                params.usuario_id = COOKIE.id; // id del usuario para el cual es la nueva imagen.
+                
+                //Utilizamos la funcion de subir la imagen de forma asincrona, ya que solo
+                //va subir la imagen y nada mas, ahi termina el proceso.
+                uploadImagenAsynchronous(params);
+            }
+        }
+        
+        //2.- Actualizar los otros datos
+        /*$.ajax({
                     data: $("#"+form).serialize(),
                     type: "POST",
                     url: BASE_URL_APP+'usuarios/mobileSaveDatosPersonales/'+COOKIE.id,
@@ -615,7 +636,7 @@ function saveDatosPersonales(form){
                        }
                        $.mobile.loading('hide');
                     }
-               });
+               });*/
     }
     
 }

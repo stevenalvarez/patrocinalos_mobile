@@ -28,14 +28,14 @@
             <div class="content_modal">
                 <div class="content_change">
                     <h3>Cambiar imagen de perf&iacute;l</h3>
-                    <img src="img/image_profile.jpg" width="170" height="auto" class="preview" id="cccpictureImage" />
+                    <img src="img/image_profile.jpg" width="170" height="auto" class="preview" id="pictureImage3" />
                     <p>
                         Puedes buscar y cargar una foto existente en tu tel&eacute;fono, o puedes hacerte 
                         una nueva foto con la c&aacute;mara del dispositivo.
                     </p>
                     <div class="buttons_upload">
-                        <a href="javascript:void(0)" onclick="capturePhoto('image_preview','imagen_dep','img/Usuario')">CAPTURAR FOTO</a>
-                        <a href="javascript:void(0)" onclick="getPhoto(pictureSource.PHOTOLIBRARY)">BUSCAR UNA FOTO</a>
+                        <a href="javascript:void(0)" onclick="capturePhoto('pictureImage3')">CAPTURAR FOTO</a>
+                        <a href="javascript:void(0)" onclick="getImage('pictureImage3')">BUSCAR UNA FOTO</a>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                         <input name="renuevapass_dep" placeholder="repetir nueva contrase&ntilde;a..." autocomplete="off" type="password"/>
                     </form>
                     <div class="buttons_upload">
-                        <a href="javascript:void(0)" onclick="saveDatosPersonales('form_pass')">GUARDAR CONTRASE&Ntilde;A</a>
+                        <a href="javascript:void(0)" onclick="saveDatosPersonales('form_pass', false)">GUARDAR CONTRASE&Ntilde;A</a>
                     </div>
                 </div>
             </div>

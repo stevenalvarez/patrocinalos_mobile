@@ -711,3 +711,11 @@ function modalOpenHide(thiss,status){
     else if(status=="show")
             jQuery("#"+jQuery(thiss).attr("rel")).fadeIn("fast");
 }
+
+//funcion que se ejecuta una vez que se subio con exito la imagen
+//para luego hacer otros procedimientos
+//recibe toda la respuesta del servidor
+function callbackSynchronous(response){
+    //aqui controlamos que mas se hace despues de subir la imagen
+    //podemos ejecutar actualizaciones, mandar un post, etc.
+}

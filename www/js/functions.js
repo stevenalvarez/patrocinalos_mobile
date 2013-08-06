@@ -141,17 +141,19 @@ function showLoadingCustom(msg){
     });
 }
 
-//funcion que obtiene una imagen de la libreria de fotos del dispostivo
-//param : element_preview, id del elemento donde va ha mostrar el preview de la imagen seleccionada
-//return: retorna IMAGE que sirve para luego mandarlo al servidor, es el $_FILE
-function getImage(element_preview) {
-    var IMAGE = '';
+//funcion getImage, que obtiene una imagen de la libreria de fotos del dispostivo, 
+//como parametros se le mandan 2 posibles elementos donde se van a mostrar antes las fotos antes de subirlas 
+//param : elem_preview, id del elemento donde va ha mostrar el preview de la imagen seleccionada
+//return: void
+function getImage(elem_preview) {
     navigator.camera.getPicture(function (imageURI){
         
-        var pictureImage = document.getElementById(element_preview);
-        pictureImage.style.display = 'inline-block';
+        var pictureImage = document.getElementById(elem_preview);
+        pictureImage.style.display = 'block';
         pictureImage.src = imageURI;
-        IMAGE = imageURI;
+        
+        //guardamos la imagen seleccionada para luego enviar al servidor
+        IMAGEURI = imageURI;
     },
     function(message) {
         showAlert('Failed because: ' + message, 'Error', 'Aceptar');
@@ -161,61 +163,84 @@ function getImage(element_preview) {
         destinationType: navigator.camera.DestinationType.FILE_URI,
         sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY //(PHOTOLIBRARY|SAVEDPHOTOALBUM)
     });
-    
-    return IMAGE;
 }
 
-// A button will call this function
-//
-function capturePhoto(element_preview) {
-    // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+//funcion capturePhoto, que obtiene una imagen de la libreria de fotos del dispostivo, 
+//como parametros se le mandan 2 posibles elementos donde se van a mostrar antes las fotos antes de subirlas 
+//param : elem_preview, id del elemento donde va ha mostrar el preview de la imagen seleccionada
+//return: void
+function capturePhoto(elem_preview) {
+    
     navigator.camera.getPicture(function(imageURI){
-          var pictureImage = document.getElementById(element_preview);
-          pictureImage.style.display = 'inline-block';
-          pictureImage.src = imageURI;
+        var pictureImage = document.getElementById(elem_preview);
+        pictureImage.style.display = 'block';
+        pictureImage.src = imageURI;
+          
+        //guardamos la imagen capturada para luego enviar al servidor
+        IMAGEURI = imageURI;
     }, 
     function(message) {
         showAlert('Failed because: ' + message, 'Error', 'Aceptar');
     }, 
     { 
-        quality: 100, 
+        quality: 50, 
         destinationType: navigator.camera.DestinationType.FILE_URI,
         sourceType : navigator.camera.PictureSourceType.CAMERA,
         allowEdit: true,
-        encodingType: navigator.camera.EncodingType.JPEG,
-        targetWidth: 100,
-        targetHeight: 100
+        encodingType: navigator.camera.EncodingType.JPEG
     });
 }
 
-//function uploadImagen, envia la imagen al servidor
-//param : IMAGE, imagen a subir
-//return: retorno el nombre con el cual se guardo la imagen
-function uploadImagen(IMAGE, folder) {
+//function uploadImagenAsynchronous, envia la imagen al servidor, 
+//lo hace de forma asincrona, es decir no sabemos cuando va ha terminar.
+//params: parametros que contienen por ejemplo la carpeta donde se va a guardar la imagen, nombre, etc.
+//return: void
+function uploadImagenAsynchronous(params) {
     
     var options = new FileUploadOptions();
     options.fileKey = "file";
     options.fileName = IMAGEURI.substr(IMAGEURI.lastIndexOf('/')+1);
     options.mimeType = "image/jpeg";
     
-    var params = new Object();
-    params.folder = folder;
+    options.params = params;
+    options.chunkedMode = false;
+    
+    var ft = new FileTransfer();
+    ft.upload(IMAGEURI, BASE_URL_APP + "fotos/mobileUploadImagen", 
+    function(r){
+        IMAGEURI = ''; //establecemos en vacio la variable por si quiere volver a subir la misma imagen
+        //consolelog(r.response); //respuesta del servidor
+    }, 
+    function(error){
+        showAlert('Failed because: ' + error, "Error", "Aceptar");
+    }, options);
+}
+
+//function uploadImagenSynchronous, envia la imagen al servidor, 
+//lo hace de forma sincrona, al terminar de subir la imagen mandamos a ejecutar otra funcion
+//params: parametros que contienen por ejemplo la carpeta donde se va a guardar la imagen, nombre, etc.
+//return: void
+function uploadImagenSynchronous(params) {
+    
+    var options = new FileUploadOptions();
+    options.fileKey = "file";
+    options.fileName = IMAGEURI.substr(IMAGEURI.lastIndexOf('/')+1);
+    options.mimeType = "image/jpeg";
     
     options.params = params;
     options.chunkedMode = false;
     
     var ft = new FileTransfer();
-    ft.upload(IMAGE, BASE_URL_APP + "fotos/mobileUploadImagen", 
+    ft.upload(IMAGEURI, BASE_URL_APP + "fotos/mobileUploadImagen", 
     function(r){
-        return r.response;
-        
-    }, function(error){
-        showAlert(error, "Error", "Aceptar");
-        return '';
-        
+        IMAGEURI = ''; //establecemos en vacio la variable por si quiere volver a subir la misma imagen
+        //consolelog(r.response); //respuesta del servidor
+        callbackSynchronous(r);
+    }, 
+    function(error){
+        showAlert('Failed because: ' + error, "Error", "Aceptar");
     }, options);
 }
-
 
 function createCookie(name,value,days) {
 	if (days) {
