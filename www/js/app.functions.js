@@ -59,9 +59,7 @@ function uploadPhoto(params) {
         //console.log("Response = " + r.response);
         //console.log("Sent = " + r.bytesSent);
         
-        console.log(r.response);
         var respuesta = $.parseJSON(r.response);
-        console.log(respuesta);
         if(respuesta.success){
             IMAGEURI = '';
             $.mobile.loading( 'hide' );
