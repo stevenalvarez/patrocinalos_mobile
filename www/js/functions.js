@@ -191,21 +191,16 @@ function capturePhoto(elem_preview) {
     });
 }
 
-//function uploadImagen, envia la imagen al servidor
-//param : folder, carpeta donde se va a subir la foto
-//return: retorna el nombre con el cual se guardo la imagen
-function uploadImagen(folder) {
-    
-    alert("a");
-    var imagen_upload = '';
+//function uploadImagenAsynchronous, envia la imagen al servidor, 
+//lo hace de forma asincrona, es decir no sabemos cuando va ha terminar.
+//params: parametros que contienen por ejemplo la carpeta donde se va a guardar la imagen, nombre, etc.
+//return: void
+function uploadImagenAsynchronous(params) {
     
     var options = new FileUploadOptions();
     options.fileKey = "file";
     options.fileName = IMAGEURI.substr(IMAGEURI.lastIndexOf('/')+1);
     options.mimeType = "image/jpeg";
-    
-    var params = new Object();
-    params.folder = folder;
     
     options.params = params;
     options.chunkedMode = false;
@@ -213,18 +208,38 @@ function uploadImagen(folder) {
     var ft = new FileTransfer();
     ft.upload(IMAGEURI, BASE_URL_APP + "fotos/mobileUploadImagen", 
     function(r){
-        alert("b");
-        IMAGEURI = '';
-        imagen_upload = r.response;
-        console.log("nombre : " + r.response);
-        
-    }, function(error){
-        alert("c");
+        IMAGEURI = ''; //establecemos en vacio la variable por si quiere volver a subir la misma imagen
+        //consolelog(r.response); //respuesta del servidor
+    }, 
+    function(error){
         showAlert('Failed because: ' + error, "Error", "Aceptar");
-        console.log("error!!");
     }, options);
+}
+
+//function uploadImagenSynchronous, envia la imagen al servidor, 
+//lo hace de forma sincrona, al terminar de subir la imagen mandamos a ejecutar otra funcion
+//params: parametros que contienen por ejemplo la carpeta donde se va a guardar la imagen, nombre, etc.
+//return: void
+function uploadImagenSynchronous(params) {
     
-    return imagen_upload;
+    var options = new FileUploadOptions();
+    options.fileKey = "file";
+    options.fileName = IMAGEURI.substr(IMAGEURI.lastIndexOf('/')+1);
+    options.mimeType = "image/jpeg";
+    
+    options.params = params;
+    options.chunkedMode = false;
+    
+    var ft = new FileTransfer();
+    ft.upload(IMAGEURI, BASE_URL_APP + "fotos/mobileUploadImagen", 
+    function(r){
+        IMAGEURI = ''; //establecemos en vacio la variable por si quiere volver a subir la misma imagen
+        //consolelog(r.response); //respuesta del servidor
+        callbackSynchronous(r);
+    }, 
+    function(error){
+        showAlert('Failed because: ' + error, "Error", "Aceptar");
+    }, options);
 }
 
 function createCookie(name,value,days) {

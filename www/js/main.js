@@ -597,27 +597,30 @@ function saveDatosPersonales(form, upload_image){
     });
     
     if(COOKIE.id && jQuery("#"+form).valid()){
+        
+        showLoadingCustom('Enviando datos...');
+        
         //Existen 2 proceso
         //1.- Subir la imagen
-        
-        //Si es true se sube la imagen
         if(upload_image !== undefined && upload_image == true){
             //controlamos que el valor de la imagen a subir no este vacia, 
             //eso significa que se selecciono un imagen o se capturo una imagen
             if(IMAGEURI != ''){
-                var nombre_imagen = uploadImagen("Usuario");
-                console.log("TERMINA");
-                console.log(nombre_imagen);
-            }else{
-                alert("vacio");
+                
+                //creamos un objecto con los parametros que queremos que llegue al servidor
+                //para luego ahi hacer otra operaciones con esos parametros.
+                var params = new Object();
+                params.folder = "Usuario"; // la carpeta donde se va a guardar la imagen
+                params.usuario_id = COOKIE.id; // id del usuario para el cual es la nueva imagen.
+                
+                //Utilizamos la funcion de subir la imagen de forma asincrona, ya que solo
+                //va subir la imagen y nada mas, ahi termina el proceso.
+                uploadImagenAsynchronous(params);
             }
-        }else{
-            alert("entra");
         }
         
-        //2.- Actualizar los datos
-        /*showLoadingCustom('Enviando datos...');
-        $.ajax({
+        //2.- Actualizar los otros datos
+        /*$.ajax({
                     data: $("#"+form).serialize(),
                     type: "POST",
                     url: BASE_URL_APP+'usuarios/mobileSaveDatosPersonales/'+COOKIE.id,
