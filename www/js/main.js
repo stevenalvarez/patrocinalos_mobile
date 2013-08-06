@@ -608,7 +608,11 @@ function saveDatosPersonales(form, upload_image){
                 var nombre_imagen = uploadImagen("Usuario");
                 console.log("TERMINA");
                 console.log(nombre_imagen);
+            }else{
+                alert("vacio");
             }
+        }else{
+            alert("entra");
         }
         
         //2.- Actualizar los datos

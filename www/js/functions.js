@@ -196,6 +196,7 @@ function capturePhoto(elem_preview) {
 //return: retorna el nombre con el cual se guardo la imagen
 function uploadImagen(folder) {
     
+    alert("a");
     var imagen_upload = '';
     
     var options = new FileUploadOptions();
@@ -212,11 +213,13 @@ function uploadImagen(folder) {
     var ft = new FileTransfer();
     ft.upload(IMAGEURI, BASE_URL_APP + "fotos/mobileUploadImagen", 
     function(r){
+        alert("b");
         IMAGEURI = '';
         imagen_upload = r.response;
         console.log("nombre : " + r.response);
         
     }, function(error){
+        alert("c");
         showAlert('Failed because: ' + error, "Error", "Aceptar");
         console.log("error!!");
     }, options);
