@@ -1320,6 +1320,62 @@
  }
  /*PAGE LISTA DE ALBUMS DE FOTO*/
  
+ /*PAGE MI PATROCINIO DEPORTIVO*/
+ .steps_patrocinio ul{
+    overflow: hidden;
+    background-size: 3px;
+    margin: 0 0 7px 0;
+ }
+ .steps_patrocinio li{
+    width: 33%;
+    float: left;
+    text-align: center;
+    background: url("../img/bg_steps.png") transparent 0 center repeat-x;
+    background-size: 3px;
+ }
+ .steps_patrocinio li.active span{
+    background: #0091ca;
+    color:#fff;
+ }
+ .steps_patrocinio li span{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius:120px;
+    background: #76c8f0;
+    color:#c9e7f7;
+    font-family: 'HelveticaCondensedMedium';
+    text-align: center;
+    font-size: 25px;
+    
+ }
+ .steps_patrocinio li.firts span{
+    float: left;
+ }
+ .steps_patrocinio li.last span{
+    float: right;
+ }
+ .steps_patrocinio p{
+    color: #82c2ed;
+    font-size: 12px;
+    font-family: 'helvetica_lightregular';
+    margin: 0 0 5px 0;
+ }
+ #form_edit_data .ui-input-datebox .ui-btn-icon-notext{
+    background: url("../img/icon_calendar.png") transparent 0 0;
+    background-size: 26px;
+    width: 26px;
+    height: 26px;
+    margin: 0;
+    border: none;
+    margin-top: -14px!important;
+    margin-right: 5px;
+    box-shadow: none;
+ }
+ #form_edit_data .ui-input-datebox .ui-btn-icon-notext span{
+    display: none;
+ }
+ /*PAGE MI PATROCINIO DEPORTIVO*/
  
 /* PORTRAIT */
 @media only screen
