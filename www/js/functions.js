@@ -196,6 +196,8 @@ function capturePhoto(elem_preview) {
 //return: retorna el nombre con el cual se guardo la imagen
 function uploadImagen(folder) {
     
+    var imagen_upload = '';
+    
     var options = new FileUploadOptions();
     options.fileKey = "file";
     options.fileName = IMAGEURI.substr(IMAGEURI.lastIndexOf('/')+1);
@@ -211,13 +213,15 @@ function uploadImagen(folder) {
     ft.upload(IMAGEURI, BASE_URL_APP + "fotos/mobileUploadImagen", 
     function(r){
         IMAGEURI = '';
-        return r.response;
+        imagen_upload = r.response;
+        console.log("nombre : " + r.response);
         
     }, function(error){
         showAlert('Failed because: ' + error, "Error", "Aceptar");
-        return '';
-        
+        console.log("error!!");
     }, options);
+    
+    return imagen_upload;
 }
 
 function createCookie(name,value,days) {
