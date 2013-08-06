@@ -41,30 +41,29 @@ function onFail(message) {
 
 // UploadPhoto
 //
-function uploadPhoto(usuario_id, folder) {
+function uploadPhoto(params) {
     
     var options = new FileUploadOptions();
     options.fileKey = "file";
     options.fileName = IMAGEURI.substr(IMAGEURI.lastIndexOf('/')+1);
     options.mimeType = "image/jpeg";
     
-    var params = new Object();
-    params.folder = folder;
-    params.usuario_id = usuario_id;
-    
     options.params = params;
     options.chunkedMode = false;
     
     var ft = new FileTransfer();
-    ft.upload(IMAGEURI, BASE_URL_APP + "usuarios/mobileUploadImagenDevice", function(r){
+    ft.upload(IMAGEURI, BASE_URL_APP + "fotos/mobileUploadImagen", function(r){
         // Callback success upload photo
         //
         //console.log("Code = " + r.responseCode);
         //console.log("Response = " + r.response);
         //console.log("Sent = " + r.bytesSent);
         
-        var success = r.response;
-        if(success){
+        console.log(r.response);
+        var respuesta = $.parseJSON(r.response);
+        console.log(respuesta);
+        if(respuesta.success){
+            IMAGEURI = '';
             $.mobile.loading( 'hide' );
             success_registro();
         }else{
@@ -224,7 +223,11 @@ function form_registro(){
                             var pictureImage = document.getElementById("pictureImage");
                             var img_url = document.getElementById("u_img_url_social");
                             if($(pictureImage).attr("src") != "" && $(img_url).val() == ""){
-                                uploadPhoto(usuario_id, 'perfil');
+                                var params = new Object();
+                                params.folder = "Usuario";
+                                params.usuario_id = usuario_id;
+                                //Subimos la imagen seleccionada desde el dispositivo
+                                uploadPhoto(params);
                             }else{
                                 success_registro();
                             }

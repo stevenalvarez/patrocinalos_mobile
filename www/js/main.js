@@ -616,6 +616,10 @@ function saveDatosPersonales(form, upload_image){
                 //Utilizamos la funcion de subir la imagen de forma asincrona, ya que solo
                 //va subir la imagen y nada mas, ahi termina el proceso.
                 uploadImagenAsynchronous(params);
+                
+                //Actualizamos la nueva imagen de su perfil
+                var pictureImage = document.getElementById('imagen_dep');
+                pictureImage.src = IMAGEURI;
             }
         }
         
