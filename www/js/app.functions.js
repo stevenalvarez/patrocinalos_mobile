@@ -23,7 +23,7 @@ function onPhotoURISuccess(imageURI) {
 
   // Unhide image elements
   //
-  pictureImage.style.display = 'inline-block';
+  pictureImage.style.display = 'block';
 
   // Show the captured photo
   // The inline CSS rules are used to resize the image
