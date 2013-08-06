@@ -620,7 +620,7 @@ function saveDatosPersonales(form, upload_image){
         }
         
         //2.- Actualizar los otros datos
-        /*$.ajax({
+        $.ajax({
                     data: $("#"+form).serialize(),
                     type: "POST",
                     url: BASE_URL_APP+'usuarios/mobileSaveDatosPersonales/'+COOKIE.id,
@@ -636,7 +636,7 @@ function saveDatosPersonales(form, upload_image){
                        }
                        $.mobile.loading('hide');
                     }
-               });*/
+               });
     }
     
 }
