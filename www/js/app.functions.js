@@ -103,6 +103,53 @@ function llenarDeportes(){
 	});
 }
 
+function llenarRecompensasMazzel(parent_id)
+{
+    var element_lista = jQuery("#"+ parent_id).find(".lista");
+    element_lista.find("li").remove();
+    $.getJSON(BASE_URL_APP+'recompensas/mobileGetRecompensas', function(data) {
+        //mostramos loading
+        $.mobile.loading( 'show' );
+        var items = data.items;
+        var size = items.length;
+        console.log(data);
+       	$.each(items, function(index,item) {
+       	    if(size == (index+1)){
+       	        html=' <li class="last">';
+       	    }else{
+       	        html=' <li>';
+       	    }
+            html+='<div class="item">';
+            html+='<div class="content_recompensa">';
+            html+='<img src="'+BASE_URL_APP+'img/recompensas/'+item.Recompensa.imagen+'"/>';
+            html+='<img class="success" src="img/succes.png"/>';
+            html+='</div>';
+            
+            html+='</div>';
+            html+='</li>';
+                    
+            element_lista.append(html);
+    	});
+        
+        element_lista.promise().done(function() {
+            $(this).find("li:last img:first").load(function(){
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+                
+                //evento cuando selecciona una recompensa
+                element_lista.find("li").click(function(){
+                    var item_li = $(this).find(".item");
+                    if(item_li.hasClass("selected")){
+                        item_li.removeClass("selected");
+                    }else{
+                        item_li.addClass("selected");
+                    }
+                })
+            });
+        });
+	});    
+}
+
 //INICIA LAS VALIDACIONES PARA EL FORMULARIO DE REGISTRO
 function form_registro(){
     jQuery("#form_registro").validate({
@@ -480,7 +527,91 @@ function form_completar_perfil(element){
                 });                
             
             }else{
-                showAlert("Error, no puede actualizar datos, antes debe registrarse","Error", "Aceptar");
+                showAlert("Error no puede actualizar datos!, antes debe registrarse.","Error", "Aceptar");
+            }
+        }
+      return false;
+    });
+}
+
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO SOLICITAR PATROCINIO
+function form_solicitar_patrocinio(element){
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+   		   "patro_cantidad_solicitada": {
+    			required: true,
+    			number: true
+   		   },
+   		   "patro_minimo_indispensable": {
+    			required: true,
+    			number: true
+   		   },
+   		   "patro_quiero_para": {
+    			required: true
+   		   },
+           "patro_fecha_limite" : {
+                required: true
+           }
+    	},
+    	messages: {
+            "patro_cantidad_solicitada": {
+    			required: "Por favor, ingrese una cantidad <i></i>",
+    			number: "Por favor, ingrese solo numeros <i></i>"
+    		},
+            "patro_minimo_indispensable": {
+    			required: "Por favor, ingrese un minimo indispensable <i></i>",
+    			number: "Por favor, ingrese solo numeros <i></i>"
+    		},
+            "patro_quiero_para": {
+    			required: ""
+    		},
+            "patro_fecha_limite": {
+    			required: "Por favor, establezca una fecha limite <i></i>"
+    		},
+    	}
+    });
+    
+    //Si hubo un registro entonces actualizamos los datos con los valores del registro
+    if(isUserRegistered())
+    {
+        var userRegistered = COOKIE_NEW_REGISTER;
+        formulario.find("input[name='u_usuario_id']").val(userRegistered.id);
+    }
+    
+    //Submit form
+    formulario.submit(function() {
+        
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            var usuario_id = formulario.find("input[name='u_usuario_id']").val();
+            
+            if(usuario_id != '' && parseInt(usuario_id) > 0)
+            {
+                $.ajax({
+                    data: formulario.serialize(),
+                    type: "POST",
+                    url: BASE_URL_APP + 'usuarios/mobileSolicitarPatrocinio',
+                    dataType: "html",
+                    success: function(data){
+                        $.mobile.loading( 'hide' );
+                        
+                        data = $.parseJSON(data);
+                        if(data.success){
+                            showAlert(data.mensaje, "Aviso", "Aceptar");
+                        }else{
+                            showAlert(data.mensaje, "Error", "Aceptar");
+                        }
+                    },
+                    beforeSend : function(){
+                        //mostramos loading
+                        showLoadingCustom('Guardando datos...');
+                    }
+                });                
+            
+            }else{
+                showAlert("Error no puede solicitar patrocinio!, antes debe registrarse.","Error", "Aceptar");
             }
         }
       return false;

@@ -78,6 +78,20 @@ $(document).on('pageinit', "#completar_perfil", function(){
     });
 });
 
+//SOLICITAR PATROCINIO
+$(document).on('pageinit', "#solicitar_patrocinio", function(){
+    llenarRecompensasMazzel("solicitar_patrocinio");
+    form_solicitar_patrocinio("form_solicitar_patrocinio");
+    key_press("form_solicitar_patrocinio");
+    $(this).find('a.guardar_form').on("click", function(){
+        var form_parent = document.getElementById("form_solicitar_patrocinio");
+        $(form_parent).submit();
+    });
+    $(this).find('a.borrar_form').on("click", function(){
+        clear_form("form_solicitar_patrocinio");
+    });
+});
+
 //LOGIN
 $(document).on('pageinit', "#login_user", function(){
     form_login();

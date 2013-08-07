@@ -465,9 +465,9 @@
                     <span class="lspacing">Completa el siguiente formulario</span>
                 </div>
                 
-                <form>
+                <form id="form_solicitar_patrocinio">
                     <div class="content_formulario">
-                    
+                        <input type="hidden" name="u_usuario_id" value="" />
                         <input id="patro_cantidad_solicitada" name="patro_cantidad_solicitada" placeholder="Cantidad que necesitas (&euro;)..." autocomplete="off" type="text" data-mini="true"/>
                         <input id="patro_minimo_indispensable" name="patro_minimo_indispensable" placeholder="M&iacute;nimo indispensable (&euro;)..." autocomplete="off" type="text" data-mini="true"/>
                         <textarea cols="40" rows="10" name="patro_quiero_para" placeholder="&iquest;Para que lo quieres?" data-mini="true"></textarea>
@@ -478,7 +478,7 @@
                         <div class="seleccionar_recompensas">
                             <h2>Elige t&uacute;s recompensas</h2>
                             <span style="display: inline-block;">(patrocinalos pone a tu disposici&oacute;n recompensas para premiar a aquellos que te patrocinen)</span>
-                            <ul class="lista">
+                            <ul class="lista" style="margin-bottom: 0;">
                                 <li>
                                     <div class="item">
                                         <div class="content_recompensa">

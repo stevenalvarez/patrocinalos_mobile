@@ -1718,14 +1718,16 @@ label.custom{
 }
 #solicitar_patrocinio .seleccionar_recompensas ul{
     overflow: hidden;
-    margin: 5px 0;    
+    margin: 10px 0;    
 }
 #solicitar_patrocinio .seleccionar_recompensas li{
     float: left;
     margin-right: 4px;
-    margin-left: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
+    margin-left: 4px;
+    margin-bottom: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+    cursor: pointer;
     width: 75px;
 }
 #solicitar_patrocinio .seleccionar_recompensas li.last{
