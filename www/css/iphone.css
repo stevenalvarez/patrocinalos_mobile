@@ -1098,7 +1098,7 @@
     padding: .4em 0;
     margin-right: 3px;
  }
- div.ui-input-text input.ui-input-text{
+ #form_edit_data div.ui-input-text input.ui-input-text{
     width: 80%;
  }
  div.ui-input-text input.ui-input-text#title_dep,div.ui-input-text input.ui-input-text#telefono_dep{
