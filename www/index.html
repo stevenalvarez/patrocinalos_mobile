@@ -283,19 +283,19 @@
                     <span class="lspacing">Completa tus datos de perfil</span>
                 </div>
                 
-                <form>
+                <form id="form_completar_perfil">
                     <div class="content_formulario">
-
+                         <input type="hidden" name="u_usuario_id" value="" />
                          <select data-theme="c" name="u_genero" id="select_genero" data-mini="true">
                             <option value="">G&eacute;nero...</option>
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
                          </select>
-                         <input style="width: 100%;" id="u_fecha_nacimiento" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="u_fecha_nacimiento" type="text" placeholder="Fecha Nacimiento..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
+                         <div class="fecha_calendario">
+                            <input style="width: 100%;" id="u_fecha_nacimiento" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="u_fecha_nacimiento" type="text" placeholder="Fecha Nacimiento..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
+                         </div>
                          <select data-theme="c" name="u_ciudad" id="select_ciudad" data-mini="true">
                             <option value="">Ciudad de resiencia...</option>
-                            <option value="40">Madrid</option>
-                            <option value="41">Sevilla</option>
                          </select>
                          <select data-theme="c" name="u_tipo_deportista" id="select_tipo_deportista" data-mini="true">
                             <option value="">Profesional o Amateur...</option>
@@ -308,6 +308,7 @@
                             <option value="">Otros deportes que sigues...</option>
                             <option value="2">F&uacute;tbol</option>
                             <option value="3">Baloncesto</option>
+                            <option value="66">Otros</option>
                          </select>
                      </div>
                 </form>
@@ -471,8 +472,9 @@
                         <input id="patro_minimo_indispensable" name="patro_minimo_indispensable" placeholder="M&iacute;nimo indispensable (&euro;)..." autocomplete="off" type="text" data-mini="true"/>
                         <textarea cols="40" rows="10" name="patro_quiero_para" placeholder="&iquest;Para que lo quieres?" data-mini="true"></textarea>
                         <textarea cols="40" rows="10" name="patro_explicalo" placeholder="Expl&iacute;calo un poco m&aacute;s" data-mini="true"></textarea>
-                        <input style="width: 100%;" id="patro_fecha_limite" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="patro_fecha_limite" type="text" placeholder="Fecha L&iacute;mite..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
-                        
+                        <div class="fecha_calendario">
+                            <input style="width: 100%;" id="patro_fecha_limite" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="patro_fecha_limite" type="text" placeholder="Fecha L&iacute;mite..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
+                        </div>
                         <div class="seleccionar_recompensas">
                             <h2>Elige t&uacute;s recompensas</h2>
                             <span style="display: inline-block;">(patrocinalos pone a tu disposici&oacute;n recompensas para premiar a aquellos que te patrocinen)</span>

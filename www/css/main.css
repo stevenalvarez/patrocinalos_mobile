@@ -130,6 +130,10 @@ form .valid_field span.success{
     font-size: 0.7em;
     color: #5e5d5d;
 }
+form .fecha_calendario span.error,
+form .fecha_calendario .valid_field span.success{
+    display: none;
+}
 form .ui-input-text span.error{
     top: 7px;
     right: 21px;
@@ -143,6 +147,10 @@ form .ui-input-text span.error{
     padding-left: 8px;
     border-radius: 2px;
     font-family: Myriad Pro;
+}
+form .fecha_calendario .ui-input-text span.error{
+    right: 55px;
+    top: 9px;
 }
 form .ui-input-text span.error i{
     background: url("../img/bg_valid_arrow.jpg") no-repeat scroll top right transparent;
@@ -3531,6 +3539,9 @@ and (orientation:portrait)
     .content_list_first li.ui-btn-up-c .span_normal span{
         font-size: 13px;
     }
+    .ui-select .ui-btn-inner span.ui-btn-text > span.error{
+        font-size: 14px;
+    }
         
     #view h1,
     #login_user h1{
@@ -3916,6 +3927,9 @@ and (max-width: 568px)
 and (-webkit-device-pixel-ratio: 2)
 and (orientation:portrait) 
 {
+    .ui-select .ui-btn-inner span.ui-btn-text > span.error{
+        font-size: 16px;
+    }
     #view .usuarios-patrocinalos{
         padding-top: 68%;
     }

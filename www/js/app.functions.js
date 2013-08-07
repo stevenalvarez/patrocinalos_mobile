@@ -177,25 +177,9 @@ function form_registro(){
     
     //Submit form registro
     jQuery('#form_registro').submit(function() {
-        /* start Fixed seleccionar deporte */
-        var selector_deporte = jQuery('#form_registro').find("#select_deporte");
-        var opcion_selected = selector_deporte.find("option:selected").html();
-        var element = selector_deporte.prev(".ui-btn-inner").find(".ui-btn-text").find("span");
-        element.removeClass()
-        element.addClass("valid")
-        element.text(opcion_selected);
-        element.show();
-        /* end Fixed seleccionar deporte */
         
-        /* start Fixed seleccionar tipo usuario (individual, seguidor, empresa)*/
-        var selector_tipo_u = jQuery('#form_registro').find("#select_tipo_u");
-        var opcion_selected = selector_tipo_u.find("option:selected").html();
-        var element = selector_tipo_u.prev(".ui-btn-inner").find(".ui-btn-text").find("span");
-        element.removeClass()
-        element.addClass("valid")
-        element.text(opcion_selected);
-        element.show();
-        /* end Fixed seleccionar tipo usuario */
+        fixedSelector("form_registro", "select_deporte");
+        fixedSelector("form_registro", "select_tipo_u");
         
         $("#u_email_register").parent().removeClass("error_field_email");
         
@@ -215,8 +199,13 @@ function form_registro(){
                     dataType: "html",
                     success: function(data){
                         data = $.parseJSON(data);
-                        var usuario_id = parseInt(data.item);
+                        var usuario_id = parseInt(data.usuario_id);
+                        var urlamigable = data.urlamigable;
                         if(usuario_id){
+                            //Guardamos el id del usuario que se acaba de registrar
+                            //Guardamos la urlamigable del usuario que se creo por defecto
+                            USUARIO_ID = usuario_id;
+                            USUARIO_URL_AMIGABLE = urlamigable;
                             //Si selecciono un imagen mandamos a guardar en la base de datos
                             var pictureImage = document.getElementById("pictureImage");
                             var img_url = document.getElementById("u_img_url_social");
@@ -415,6 +404,80 @@ function popup_form_cambiar_password(element){
                     showLoadingCustom('Guardando datos...');
                 }
             });
+        }
+      return false;
+    });
+}
+
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO COMPLETAR PERFIL
+function form_completar_perfil(element){
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+    	   "u_genero": "required",
+           "u_fecha_nacimiento": "required",
+           "u_tipo_deportista": "required",
+           "u_url_perfil": "required",
+           "u_otros_deportes": "required",
+    	},
+    	messages: {
+    	   "u_genero": "",
+           "u_fecha_nacimiento": "Por favor, coloque su fecha de nacimiento <i></i>",
+           "u_tipo_deportista": "",
+           "u_url_perfil": "Por favor, coloque una url de perfil <i></i>",
+           "u_otros_deportes": "",
+    	}
+    });
+    
+    //llenamos las ciudades, como no sabemos de que pais es el usuario 
+    //entonces no mandamos esos parametros por defecto se mostrar la ciudades del pais España
+    llenarCiudades(formulario, "select_ciudad");
+    
+    //Colocamos el id del usuario, previo registro
+    //Colocamso la uramigable del usario previo registro
+    formulario.find("input[name='u_usuario_id']").val(USUARIO_ID);
+    formulario.find("input[name='u_url_perfil']").val(USUARIO_URL_AMIGABLE);
+    
+    //Submit form
+    formulario.submit(function() {
+        
+        fixedSelector(element, "select_genero");
+        fixedSelector(element, "select_ciudad");
+        fixedSelector(element, "select_tipo_deportista");
+        fixedSelector(element, "select_otros_deportes");
+        
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            var usuario_id = formulario.find("input[name='u_usuario_id']").val();
+            
+            if(usuario_id != '' && parseInt(usuario_id) > 0)
+            {
+                $.ajax({
+                    data: formulario.serialize(),
+                    type: "POST",
+                    url: BASE_URL_APP + 'usuarios/mobileCompletarPerfil',
+                    dataType: "html",
+                    success: function(data){
+                        $.mobile.loading( 'hide' );
+                        
+                        data = $.parseJSON(data);
+                        if(data.success){
+                            clear_form(element);
+                            showAlert(data.mensaje, "Aviso", "Aceptar");
+                        }else{
+                            showAlert(data.mensaje, "Error", "Aceptar");
+                        }
+                    },
+                    beforeSend : function(){
+                        //mostramos loading
+                        showLoadingCustom('Guardando datos...');
+                    }
+                });                
+            
+            }else{
+                showAlert("Error, no puede actualizar datos, antes debe registrarse","Error", "Aceptar");
+            }
         }
       return false;
     });
@@ -719,4 +782,40 @@ function modalOpenHide(thiss,status){
 function callbackSynchronous(response){
     //aqui controlamos que mas se hace despues de subir la imagen
     //podemos ejecutar actualizaciones, mandar un post, etc.
+}
+
+//llena las ciudades de un determinado pais y coloca seleccionado a la ciudad seleccionada
+//parent : formulario padre
+//element : elemento donde se va colocar todas las ciudades
+//param : pais_id, id de pais que se quiere seleccionar sus ciudades
+//param : provincia_id, id de la provincia o ciudad que se quiere seleccionar como pre determinada
+function llenarCiudades(parent, element, pais_id, provincia_id){
+    //si no hay pais a listar sus ciudades por defecto es españa
+    if(pais_id == undefined || pais_id == ''){
+        pais_id = 28;
+    }
+    //si no hay pais a listar sus ciudades por defecto es españa
+    if(provincia_id == undefined || provincia_id == ''){
+        provincia_id = '';
+    }
+    
+    $.getJSON(BASE_URL_APP+'usuarios/mobileGetProvincias/'+pais_id, function(data){
+        $.each(data.items,function(index,item){
+            if(item.provincias.id==provincia_id)
+                parent.find("#"+element).append('<option selected="selected" value="'+item.provincias.id+'">'+item.provincias.nombre+'</option>');
+            else
+                parent.find("#"+element).append('<option value="'+item.provincias.id+'">'+item.provincias.nombre+'</option>');
+        });
+    });
+}
+
+//fixea el error que hay cuando se selecciona un elemento del selector
+function fixedSelector(form_id, element_selector){
+    var selector_deporte = jQuery('#'+form_id).find("#" +element_selector);
+    var opcion_selected = selector_deporte.find("option:selected").html();
+    var element = selector_deporte.prev(".ui-btn-inner").find(".ui-btn-text").find("span");
+    element.removeClass()
+    element.addClass("valid")
+    element.text(opcion_selected);
+    element.show();
 }
