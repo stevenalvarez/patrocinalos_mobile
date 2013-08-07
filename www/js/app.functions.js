@@ -199,13 +199,15 @@ function form_registro(){
                     dataType: "html",
                     success: function(data){
                         data = $.parseJSON(data);
-                        var usuario_id = parseInt(data.usuario_id);
-                        var urlamigable = data.urlamigable;
-                        if(usuario_id){
-                            //Guardamos el id del usuario que se acaba de registrar
-                            //Guardamos la urlamigable del usuario que se creo por defecto
-                            USUARIO_ID = usuario_id;
-                            USUARIO_URL_AMIGABLE = urlamigable;
+                        var success = data.success;
+                        
+                        if(success){
+                            var usuario = data.usuario.Usuario;
+                            var usuario_id = usuario.id;
+                            
+                            //una vez creado guardamos en cookies su datos importantes
+                            createCookie("userRegistered", JSON.stringify(usuario), 1);
+                            
                             //Si selecciono un imagen mandamos a guardar en la base de datos
                             var pictureImage = document.getElementById("pictureImage");
                             var img_url = document.getElementById("u_img_url_social");
@@ -434,10 +436,13 @@ function form_completar_perfil(element){
     //entonces no mandamos esos parametros por defecto se mostrar la ciudades del pais España
     llenarCiudades(formulario, "select_ciudad");
     
-    //Colocamos el id del usuario, previo registro
-    //Colocamso la uramigable del usario previo registro
-    formulario.find("input[name='u_usuario_id']").val(USUARIO_ID);
-    formulario.find("input[name='u_url_perfil']").val(USUARIO_URL_AMIGABLE);
+    //Si hubo un registro entonces actualizamos los datos con los valores del registro
+    if(isUserRegistered())
+    {
+        var userRegistered = COOKIE_NEW_REGISTER;
+        formulario.find("input[name='u_usuario_id']").val(userRegistered.id);
+        formulario.find("input[name='u_url_perfil']").val(userRegistered.urlamigable);
+    }
     
     //Submit form
     formulario.submit(function() {
@@ -463,7 +468,6 @@ function form_completar_perfil(element){
                         
                         data = $.parseJSON(data);
                         if(data.success){
-                            clear_form(element);
                             showAlert(data.mensaje, "Aviso", "Aceptar");
                         }else{
                             showAlert(data.mensaje, "Error", "Aceptar");
@@ -746,6 +750,16 @@ function isLogin(){
         COOKIE = cookie_user;
     }else{
         REDIREC_TO = window.location.href;
+    }
+    return res;
+}
+
+function isUserRegistered(){
+    var res = false;
+    var cookie_userRegistered = $.parseJSON(readCookie("userRegistered"));
+    if(cookie_userRegistered !== null){
+        res = true;
+        COOKIE_NEW_REGISTER = cookie_userRegistered;
     }
     return res;
 }

@@ -5,9 +5,8 @@ var friendIDs = [];
 var IMAGEURI = ''; //Ruta URI al fichero de imagen desde dispositivo
 var FB_LOGIN_SUCCESS = false;
 var TW_LOGIN_SUCCESS = false;
-var USUARIO_ID = ''; // ID del usuario NUEVO que se registro
-var USUARIO_URL_AMIGABLE = ''; // URLAMIGABLE del usuario NUEVO que se registro
 var COOKIE = '';
+var COOKIE_NEW_REGISTER = ''; //Almacenamos todos los datos necesario del nuevo registro(id,urlamigable,etc).
 var REDIREC_TO = '';
 
 //Twitter
