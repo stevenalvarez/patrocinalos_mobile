@@ -68,6 +68,16 @@ $(document).on('pageinit', "#recuperar_password", function(){
     
 });
 
+//COMPLETAR PERFIL
+$(document).on('pageinit', "#completar_perfil", function(){
+    form_completar_perfil("form_completar_perfil");
+    key_press("form_completar_perfil");
+    $(this).find('a.guardar_form').on("click", function(){
+        var form_parent = document.getElementById("form_completar_perfil");
+        $(form_parent).submit();
+    });
+});
+
 //LOGIN
 $(document).on('pageinit', "#login_user", function(){
     form_login();

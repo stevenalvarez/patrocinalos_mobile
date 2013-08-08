@@ -6,6 +6,7 @@ var IMAGEURI = ''; //Ruta URI al fichero de imagen desde dispositivo
 var FB_LOGIN_SUCCESS = false;
 var TW_LOGIN_SUCCESS = false;
 var COOKIE = '';
+var COOKIE_NEW_REGISTER = ''; //Almacenamos todos los datos necesario del nuevo registro(id,urlamigable,etc).
 var REDIREC_TO = '';
 
 //Twitter
