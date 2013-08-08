@@ -117,6 +117,22 @@ function alertDismissed() {
     // do something
 }
 
+// Show a custom confirmation dialog
+//
+function showConfirm(message, title) {
+    navigator.notification.alert(
+         message, // message
+         onConfirm,            // callback to invoke with index of button pressed
+         title,           // title
+         'Aceptar,Cancelar'         // buttonLabels
+    );
+}
+
+// process the confirmation dialog result
+function onConfirm(buttonIndex) {
+    alert('You selected button ' + buttonIndex);
+}
+
 function check_network() {
     var networkState = navigator.network.connection.type;
 
