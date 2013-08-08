@@ -605,6 +605,7 @@ function form_solicitar_patrocinio(element){
                         if(data.respuesta){
                             showAlert(data.message, "Aviso", "Aceptar");
                             //mandamos a la pagina de patrocinio finalizado
+                            $.mobile.changePage('#patrocinio_registrado', {transition: "slide"});
                         }else{
                             showAlert(data.message, "Error", "Aceptar");
                         }
