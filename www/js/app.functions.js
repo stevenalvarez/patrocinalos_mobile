@@ -277,7 +277,7 @@ function form_registro(){
                     beforeSend : function(){
                         //mostramos loading
                         showLoadingCustom('Guardando datos...');
-                    }                    
+                    }
                 });
             }
         }
@@ -527,7 +527,87 @@ function form_completar_perfil(element){
                         //mostramos loading
                         showLoadingCustom('Guardando datos...');
                     }
-                });                
+                });
+            
+            }else{
+                showAlert("Error no puede actualizar datos!, antes debe registrarse.","Error", "Aceptar");
+            }
+        }
+      return false;
+    });
+}
+
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO COMPLETAR PERFIL EMPRESA
+function form_completar_perfil_empresa(element){
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+    	   "e_cif": "required",
+           "e_provincia": "required",
+           "e_direccion": "required",
+           "e_cod_postal": "required",
+           "e_nombre": "required",
+           "e_nombre_empresa_juridico": "required",
+           "e_deportes_asociar": "required",
+    	},
+    	messages: {
+    	   "e_cif": "Por favor, coloque su CIF <i></i>",
+           "e_provincia": "",
+           "e_direccion": "Por favor, coloque su direccion <i></i>",
+           "e_cod_postal": "Por favor, coloque su codigo postal <i></i>",
+           "e_nombre": "Por favor, coloque el nombre de la empresa <i></i>",
+           "e_nombre_empresa_juridico": "Por favor, coloque el nombre juridicio <i></i>",
+           "e_deportes_asociar": "",
+    	}
+    });
+    
+    //llenamos las ciudades, como no sabemos de que pais es el usuario 
+    //entonces no mandamos esos parametros por defecto se mostrar la ciudades del pais España
+    llenarCiudades(formulario, "select_eprovincia");
+    
+    //Si hubo un registro entonces actualizamos los datos con los valores del registro
+    if(isUserRegistered())
+    {
+        var userRegistered = COOKIE_NEW_REGISTER;
+        formulario.find("input[name='u_usuario_id']").val(userRegistered.id);
+    }
+    
+    //Submit form
+    formulario.submit(function() {
+        
+        //Expandimos todos los collasibles, para que vea que debe llenar datos en donde se pide
+        formulario.find(".ui-collapsible-inset").trigger('expand');
+        
+        fixedSelector(element, "select_eprovincia");
+        fixedSelector(element, "select_deportes_asociar");
+        
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            var usuario_id = formulario.find("input[name='u_usuario_id']").val();
+            
+            if(usuario_id != '' && parseInt(usuario_id) > 0)
+            {
+                $.ajax({
+                    data: formulario.serialize(),
+                    type: "POST",
+                    url: BASE_URL_APP + 'usuarios/mobileCompletarPerfilEmpresa',
+                    dataType: "html",
+                    success: function(data){
+                        $.mobile.loading( 'hide' );
+                        
+                        data = $.parseJSON(data);
+                        if(data.success){
+                            showAlert(data.mensaje, "Aviso", "Aceptar");
+                        }else{
+                            showAlert(data.mensaje, "Error", "Aceptar");
+                        }
+                    },
+                    beforeSend : function(){
+                        //mostramos loading
+                        showLoadingCustom('Guardando datos...');
+                    }
+                });
             
             }else{
                 showAlert("Error no puede actualizar datos!, antes debe registrarse.","Error", "Aceptar");

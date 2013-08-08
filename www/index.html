@@ -249,7 +249,7 @@
                 <a class="ui-btn-submit orange" href="login_user.html" data-role="button" data-transition="slide">INICIAR SESI&Oacute;N</a>
             </div>
             <div class="btn-second">
-                <a class="ui-btn-submit green" href="#completar_perfil" data-role="button" data-transition="slide">COMPLETAR PERFIL</a>
+                <a class="ui-btn-submit green btn_completar_perfil" href="#completar_perfil" data-role="button" data-transition="slide">COMPLETAR PERFIL</a>
             </div>
         </div>
     
@@ -346,7 +346,7 @@
             </ul>
         </div><!-- /header -->
     
-    	<div data-role="content">     
+    	<div data-role="content" style="margin-bottom: 5px;">
             
             <div class="btn-access">
             
@@ -356,26 +356,25 @@
                 <div class="box_consultar">
                     <p>Si quieres que el perfil de tu empresa tenga el mejor aspecto, si quieres sacarle el m&aacute;ximo partido, consulta nuestra p&aacute;gina de ayuda de empresas.</p>
                     <div class="left">
-                        <a class="ui-btn-normal azul" href="#" data-role="button">Consultar</a>
+                        <a class="ui-btn-normal azul" href="http://www.google.com.bo/" title="" onclick="window.open(this.href,'_blank'); return false;" data-role="button">Consultar</a>
                     </div>
                     <div class="right">
                         <span class="close_text">X</span>
                     </div>
                 </div>
                 
-                <form>
+                <form id="form_completar_perfil_empresa">
                     <div class="content_formulario">
-                        <div data-role="collapsible" data-mini="true" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right">
+                        <input type="hidden" name="u_usuario_id" value="" />
+                        <div data-role="collapsible" data-mini="true" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-collapsed="false">
                             <h4>Datos obligatorios</h4>
                             <ul data-role="listview">
                                 <li>
                                     <input id="e_cif" name="e_cif" placeholder="CIF..." autocomplete="off" type="text" data-mini="true"/>
                                 </li>
                                 <li>
-                                     <select data-theme="c" name="u_provincia" id="select_provincia" data-mini="true">
-                                        <option>Provincia...</option>
-                                        <option value="42">Abarajas</option>
-                                        <option value="43">Albete</option>
+                                     <select data-theme="c" name="e_provincia" id="select_eprovincia" data-mini="true">
+                                        <option value="">Provincia...</option>
                                      </select>
                                 </li>
                                 <li>
@@ -404,19 +403,24 @@
                             <h4>Infomaci&oacute;n para el perfil</h4>
                             <ul data-role="listview">
                                 <li>
-                                    <input id="e_nombre_empresa" name="e_nombre_empresa" placeholder="Nombre de la empresa..." autocomplete="off" type="text" data-mini="true"/>
+                                    <input id="e_nombre_empresa_juridico" name="e_nombre_empresa_juridico" placeholder="Nombre jur&iacute;dico de la empresa..." autocomplete="off" type="text" data-mini="true"/>
                                 </li>
                                 <li>
                                      <div data-role="fieldcontain" class="content_upload_foto">
                                         <label class="lspacing" style="font-weight: normal;">Logotipo de tu empresa</label>
-                                        <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" data-role="button" data-mini="true">Buscar</a>
-                                     </div>                                
+                                        <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="getImage('pictureEmpresa');" data-role="button" data-mini="true">Buscar</a>
+                                        <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="capturePhoto('pictureEmpresa');" data-role="button" data-mini="true">Capturar Foto</a>
+                                     </div>
+                                     <div class="content_imagen_empresa">
+                                        <img style="margin-left: 1px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-top: -43px; display: none;" id="pictureEmpresa" src="" />
+                                     </div>
                                 </li>
                                 <li>
                                      <select data-theme="c" name="e_deportes_asociar" id="select_deportes_asociar" data-mini="true">
-                                        <option>Deportes a asociar...</option>
+                                        <option value="">Deportes a asociar...</option>
                                         <option value="100">Futbol</option>
                                         <option value="101">Tenis</option>
+                                        <option value="102">Otros</option>
                                      </select>
                                 </li>
                             </ul>
