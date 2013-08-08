@@ -124,7 +124,8 @@ function llenarRecompensasMazzel(parent_id)
             html+='<img src="'+BASE_URL_APP+'img/recompensas/'+item.Recompensa.imagen+'"/>';
             html+='<img class="success" src="img/succes.png"/>';
             html+='</div>';
-            
+            html+='<input type="checkbox" name="ids_recompensa[]" value="'+item.Recompensa.id+'" style="display: none;"/>';
+            html+='<p class="nombre_recompensa">'+item.Recompensa.nombre+'</p>';
             html+='</div>';
             html+='</li>';
                     
@@ -141,8 +142,10 @@ function llenarRecompensasMazzel(parent_id)
                     var item_li = $(this).find(".item");
                     if(item_li.hasClass("selected")){
                         item_li.removeClass("selected");
+                        item_li.find("input[type='checkbox']").removeAttr("checked");
                     }else{
                         item_li.addClass("selected");
+                        item_li.find("input[type='checkbox']").attr("checked","checked");
                     }
                 })
             });
@@ -574,9 +577,10 @@ function form_solicitar_patrocinio(element){
     });
     
     //Si hubo un registro entonces actualizamos los datos con los valores del registro
+    var userRegistered;
     if(isUserRegistered())
     {
-        var userRegistered = COOKIE_NEW_REGISTER;
+        userRegistered = COOKIE_NEW_REGISTER;
         formulario.find("input[name='u_usuario_id']").val(userRegistered.id);
     }
     
@@ -592,23 +596,24 @@ function form_solicitar_patrocinio(element){
                 $.ajax({
                     data: formulario.serialize(),
                     type: "POST",
-                    url: BASE_URL_APP + 'usuarios/mobileSolicitarPatrocinio',
+                    url: BASE_URL_APP+'crowfundings/mobileSavePatrocinio/'+userRegistered.id,
                     dataType: "html",
                     success: function(data){
                         $.mobile.loading( 'hide' );
                         
                         data = $.parseJSON(data);
-                        if(data.success){
-                            showAlert(data.mensaje, "Aviso", "Aceptar");
+                        if(data.respuesta){
+                            showAlert(data.message, "Aviso", "Aceptar");
+                            //mandamos a la pagina de patrocinio finalizado
                         }else{
-                            showAlert(data.mensaje, "Error", "Aceptar");
+                            showAlert(data.message, "Error", "Aceptar");
                         }
                     },
                     beforeSend : function(){
                         //mostramos loading
                         showLoadingCustom('Guardando datos...');
                     }
-                });                
+                });
             
             }else{
                 showAlert("Error no puede solicitar patrocinio!, antes debe registrarse.","Error", "Aceptar");

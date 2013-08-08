@@ -468,12 +468,13 @@
                 <form id="form_solicitar_patrocinio">
                     <div class="content_formulario">
                         <input type="hidden" name="u_usuario_id" value="" />
-                        <input id="patro_cantidad_solicitada" name="patro_cantidad_solicitada" placeholder="Cantidad que necesitas (&euro;)..." autocomplete="off" type="text" data-mini="true"/>
-                        <input id="patro_minimo_indispensable" name="patro_minimo_indispensable" placeholder="M&iacute;nimo indispensable (&euro;)..." autocomplete="off" type="text" data-mini="true"/>
-                        <textarea cols="40" rows="10" name="patro_quiero_para" placeholder="&iquest;Para que lo quieres?" data-mini="true"></textarea>
-                        <textarea cols="40" rows="10" name="patro_explicalo" placeholder="Expl&iacute;calo un poco m&aacute;s" data-mini="true"></textarea>
+                        <input type="hidden" name="save_edit" value="save"/>
+                        <input name="cantidad_patro" placeholder="Cantidad que necesitas (&euro;)..." autocomplete="off" type="text" data-mini="true"/>
+                        <input name="cantidad_min_patro" placeholder="M&iacute;nimo indispensable (&euro;)..." autocomplete="off" type="text" data-mini="true"/>
+                        <textarea cols="40" rows="10" name="titulo_patro" placeholder="&iquest;Para que lo quieres?" data-mini="true"></textarea>
+                        <textarea cols="40" rows="10" name="descripcion_patro" placeholder="Expl&iacute;calo un poco m&aacute;s" data-mini="true"></textarea>
                         <div class="fecha_calendario">
-                            <input style="width: 100%;" id="patro_fecha_limite" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="patro_fecha_limite" type="text" placeholder="Fecha L&iacute;mite..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
+                            <input style="width: 100%;" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="fecha_fin" type="text" placeholder="Fecha L&iacute;mite..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
                         </div>
                         <div class="seleccionar_recompensas">
                             <h2>Elige t&uacute;s recompensas</h2>
@@ -485,7 +486,8 @@
                                             <img src="img/recompensas/recompensa0.png" />
                                             <img class="success" src="img/succes.png"/>
                                         </div>
-                                        <p>Reloj nike gps</p>
+                                        <input type="checkbox" name="ids_recompensa[]" value="" style="display: none;"/>
+                                        <p class="nombre_recompensa">Reloj nike gps</p>
                                     </div>
                                 </li>
                                 <li>
@@ -494,7 +496,8 @@
                                             <img src="img/recompensas/recompensa0.png" />
                                             <img class="success" src="img/succes.png"/>
                                         </div>
-                                        <p>Reloj nike gps</p>
+                                        <input type="checkbox" name="ids_recompensa[]" value="" style="display: none;"/>
+                                        <p class="nombre_recompensa">Reloj nike gps</p>
                                     </div>
                                 </li>
                                 <li class="last">
@@ -503,7 +506,8 @@
                                             <img src="img/recompensas/recompensa0.png" />
                                             <img class="success" src="img/succes.png"/>
                                         </div>
-                                        <p>Reloj nike gps</p>
+                                        <input type="checkbox" name="ids_recompensa[]" value="" style="display: none;"/>
+                                        <p class="nombre_recompensa">Reloj nike gps</p>
                                     </div>
                                 </li>
                             </ul>
