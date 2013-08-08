@@ -1375,6 +1375,51 @@
  #form_edit_data .ui-input-datebox .ui-btn-icon-notext span{
     display: none;
  }
+ 
+ .list_recompensa_patro{
+    overflow: hidden;
+ }
+ .list_recompensa_patro li{
+   position: relative;
+   float: left;
+   margin: 2px;
+ }
+ .list_recompensa_patro li.selected > div{
+    background:#a5e2de;
+ }
+ .list_recompensa_patro li > div{
+    background: #edf2f3;
+    border-radius:3px;
+    padding: 5px;
+ }
+ .list_recompensa_patro li div div.recorte{
+    border-radius: 120px;
+    width: 89px;
+    height: 89px;
+    text-align: center;
+    overflow: hidden;
+ }
+ .list_recompensa_patro li.selected > div {
+    background-image: url("../img/icon_select_re.png");
+    background-repeat: no-repeat;
+    background-size: 25px;
+    background-position: 2px 1px;
+ }
+ 
+  .list_recompensa_patro li div div.recorte img{
+   height: 89px;
+   width: auto;
+ }
+ 
+ .list_recompensa_patro li div h4{
+    color: #98a5a6;
+    font-family: 'helvetica_lightregular';
+    font-size: 15px;
+    text-align: center;
+ }
+ .list_recompensa_patro li.selected div h4{
+    color: #fff;
+ }
  /*PAGE MI PATROCINIO DEPORTIVO*/
  
 /* PORTRAIT */

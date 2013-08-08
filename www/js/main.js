@@ -180,7 +180,23 @@ $("#page_list_fotos").live('pagebeforeshow', function(event, ui) {
     }
 });
 
+//CUANDO CARGUE LA PAGE DE EDICIÓN DE PATROCINIO
+$("#edicion_datos_patrocinio").live('pagebeforeshow', function(event, ui) {
+    if(isLogin()){
+        getPatrocinioDeportivo();
+    }else{
+        redirectLogin();
+    }
+});
 
+//CUANDO CARGUE LA PAGE DE RECOMPENSAS DE PATROCINIO
+$("#edicion_recompensas_patrocinio").live('pagebeforeshow', function(event, ui) {
+    if(isLogin()){
+        getRecompensasPatrocinio();
+    }else{
+        redirectLogin();
+    }
+});
 
 /************************************ FUNCTIONS *******************************************************/
 
@@ -694,12 +710,99 @@ function getPhotosAlbum(album){
      });
      
 }
+
 function zoomPhoto(thiss){
     jQuery("#modal_box_media").find(".zoom_image img").attr("src",jQuery(thiss).attr("rel"));
     jQuery("#modal_box_media").fadeIn("fast");
 }
 
-/* OBTENEMOS LA ENTRADAS PARA LA HOME */
+/*FUNCION PARA OBTENER LOS DATOS DE PATROCINIO*/
+function getPatrocinioDeportivo(){
+    $.getJSON(BASE_URL_APP+'crowfundings/mobileGetPatrocinio/'+COOKIE.id, function(data){
+        if(data){
+          jQuery("#form_edit_data #cantidad_patro").val(data.crowd.monto);
+          jQuery("#form_edit_data #cantidad_min_patro").val(data.crowd.monto_min);
+          jQuery("#form_edit_data #titulo_patro").val(data.crowd.titulo);
+          jQuery("#form_edit_data #descripcion_patro").val(data.crowd.descripcion);       
+          jQuery("#form_edit_data #fecha_fin").val(data.crowd.fecha_fin);
+          jQuery("#form_edit_data #crowd_id").val(data.crowd.id);
+          jQuery("#form_edit_data #save_edit").val("edit");
+        }
+    });
+}
+
+/*FUNCION PARA GUARDAR LOS DATOS DE PATROCINIO*/
+function saveDatosPatrocinio(form){
+    jQuery("#"+form).validate({
+        errorElement:'span',
+    	rules:{ "cantidad_patro":{required:true,number:true},
+                 "cantidad_min_patro":{required:true,number:true},
+    		    "titulo_patro":{required:true}, 
+                "descripcion_patro":{required:true},
+                "fecha_fin":{required:true},
+        },
+    	messages: {
+    		"cantidad_patro":{required: "La cantidad es incorrecta.<i></i>",number:"Debe ser un n&uacute;mero.<i></i>"},
+            "cantidad_min_patro":{required: "La cantidad es incorrecta.<i></i>",number:"Debe ser un n&uacute;mero.<i></i>"},
+            "titulo_patro":{required:"Este campo es obligatorio.<i></i>"},
+            "descripcion_patro":{required:"Este campo es obligatorio.<i></i>"},
+            "fecha_fin":{required:"Este campo es obligatorio.<i></i>"},
+        }
+    });
+    if(COOKIE.id && jQuery("#"+form).valid()){
+        showLoadingCustom('Enviando datos...');
+        $.ajax({
+                    data: $("#"+form).serialize(),
+                    type: "POST",
+                    url: BASE_URL_APP+'crowfundings/mobileSavePatrocinio/'+COOKIE.id,
+                    dataType: "html",
+                    success: function(data){
+                       data_p = $.parseJSON(data);
+                       if(data_p.respuesta==1)
+                       {
+                        jQuery("#"+form+" #save_edit").val("edit");
+                        jQuery("#"+form+" #crowd_id").val(data_p.crowd.id);
+                        $.mobile.changePage('p_edicion_recompensas_patrocinio.html', {transition: "slide", changeHash: false});
+                       }
+                       else{
+                        showAlert(data_p.message, "Aviso", "Aceptar");
+                       }
+                       $.mobile.loading('hide');
+                    }
+               });
+    }
+}
+
+/*FUNCION PARA OPTENER LAS RECOMPENSAS DE PATROCINALOS*/
+function getRecompensasPatrocinio(){
+    jQuery("#list_recompensa_patro").html("");
+    $.getJSON(BASE_URL_APP+'recompensas/mobileGetRecompensas', function(data) {
+        //mostramos loading
+        $.mobile.loading('show');
+        var items = data.items;
+       	$.each(items, function(index,item){
+       	    html_data=' <li>';
+            html_data+='  <div id="'+item.Recompensa.id+'">';
+            html_data+='     <div class="recorte">';
+            html_data+='           <img src="'+BASE_URL_APP+'img/recompensas/'+item.Recompensa.imagen+'"/>';
+            html_data+='     </div>';
+            html_data+='     <h4>'+item.Recompensa.nombre+'</h4>';
+            html_data+='  </div>';
+            html_data+='</li>';
+                    
+            jQuery("#list_recompensa_patro").append(html_data);
+    	});
+        
+        jQuery("#list_recompensa_patro").promise().done(function() {
+            $(this).find("li:last img").load(function(){
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+            });
+        });
+	});
+}
+
+
 function getEntradasByCarrousel(){
     var parent = jQuery("#info_general");
     $.getJSON(BASE_URL_APP+'entradas/mobileGetEntradas', function(data) {
