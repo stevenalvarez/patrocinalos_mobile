@@ -176,11 +176,11 @@
                             <option value="empresa">Soy empresa</option>
                          </select>
                          <div data-role="fieldcontain" class="content_upload_foto">
-                            <label class="lspacing">Subir una foto de perfil</label>
+                            <label class="lspacing"><span class="foto_normal">Subir una foto de perfil</span><span class="foto_empresa" style="display: none;">Logotipo de tu empresa</span></label>
                             <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" data-role="button" data-mini="true">Buscar</a>
                             <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="capturePhoto('pictureImage');" data-role="button" data-mini="true">Capturar Foto</a>
                          </div>
-                         <img style="margin-left: 1px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-bottom: -24px; margin-top: -43px; display: none;" id="pictureImage" src="" />
+                         <img style="margin-left: 1px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-top: -43px; display: none;" id="pictureImage" src="" />
                          <input id="u_img_url_social" type="hidden" name="u_img_url_social" value="" />
                      </div>
                     <!--
@@ -249,7 +249,7 @@
                 <a class="ui-btn-submit orange" href="login_user.html" data-role="button" data-transition="slide">INICIAR SESI&Oacute;N</a>
             </div>
             <div class="btn-second">
-                <a class="ui-btn-submit green" href="#completar_perfil" data-role="button" data-transition="slide">COMPLETAR PERFIL</a>
+                <a class="ui-btn-submit green btn_completar_perfil" href="#completar_perfil" data-role="button" data-transition="slide">COMPLETAR PERFIL</a>
             </div>
         </div>
     
@@ -346,7 +346,7 @@
             </ul>
         </div><!-- /header -->
     
-    	<div data-role="content">     
+    	<div data-role="content" style="margin-bottom: 5px;">
             
             <div class="btn-access">
             
@@ -356,26 +356,25 @@
                 <div class="box_consultar">
                     <p>Si quieres que el perfil de tu empresa tenga el mejor aspecto, si quieres sacarle el m&aacute;ximo partido, consulta nuestra p&aacute;gina de ayuda de empresas.</p>
                     <div class="left">
-                        <a class="ui-btn-normal azul" href="#" data-role="button">Consultar</a>
+                        <a class="ui-btn-normal azul" href="http://www.google.com.bo/" title="" onclick="window.open(this.href,'_blank'); return false;" data-role="button">Consultar</a>
                     </div>
                     <div class="right">
                         <span class="close_text">X</span>
                     </div>
                 </div>
                 
-                <form>
+                <form id="form_completar_perfil_empresa">
                     <div class="content_formulario">
-                        <div data-role="collapsible" data-mini="true" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right">
+                        <input type="hidden" name="u_usuario_id" value="" />
+                        <div data-role="collapsible" data-mini="true" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-collapsed="false">
                             <h4>Datos obligatorios</h4>
                             <ul data-role="listview">
                                 <li>
                                     <input id="e_cif" name="e_cif" placeholder="CIF..." autocomplete="off" type="text" data-mini="true"/>
                                 </li>
                                 <li>
-                                     <select data-theme="c" name="u_provincia" id="select_provincia" data-mini="true">
-                                        <option>Provincia...</option>
-                                        <option value="42">Abarajas</option>
-                                        <option value="43">Albete</option>
+                                     <select data-theme="c" name="e_provincia" id="select_eprovincia" data-mini="true">
+                                        <option value="">Provincia...</option>
                                      </select>
                                 </li>
                                 <li>
@@ -404,19 +403,14 @@
                             <h4>Infomaci&oacute;n para el perfil</h4>
                             <ul data-role="listview">
                                 <li>
-                                    <input id="e_nombre_empresa" name="e_nombre_empresa" placeholder="Nombre de la empresa..." autocomplete="off" type="text" data-mini="true"/>
-                                </li>
-                                <li>
-                                     <div data-role="fieldcontain" class="content_upload_foto">
-                                        <label class="lspacing" style="font-weight: normal;">Logotipo de tu empresa</label>
-                                        <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" data-role="button" data-mini="true">Buscar</a>
-                                     </div>                                
+                                    <input id="e_nombre_empresa_juridico" name="e_nombre_empresa_juridico" placeholder="Nombre jur&iacute;dico de la empresa..." autocomplete="off" type="text" data-mini="true"/>
                                 </li>
                                 <li>
                                      <select data-theme="c" name="e_deportes_asociar" id="select_deportes_asociar" data-mini="true">
-                                        <option>Deportes a asociar...</option>
+                                        <option value="">Deportes a asociar...</option>
                                         <option value="100">Futbol</option>
                                         <option value="101">Tenis</option>
+                                        <option value="102">Otros</option>
                                      </select>
                                 </li>
                             </ul>
@@ -524,6 +518,86 @@
             <div class="btn-second">
                 <a class="ui-btn-submit green guardar_form" href="javascript:void(0)" data-role="button">GUARDAR</a>
             </div>
+        </div>
+    
+    </div><!-- /page -->
+    
+    <!-- PATROCINIO REGISTRADO SATISFACTORIAMENTE -->
+    
+    <div data-role="page" id="patrocinio_registrado" data-theme="c">
+    
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        &nbsp;
+                    </div>
+                </li>
+                <li class="page">
+                    <span>PATROCINIO REGISTRADO</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+    
+    	<div data-role="content">     
+            
+            <div class="btn-access">
+            
+                <div class="texto_formulario" style="margin: 30px 0;">
+                    <span class="lspacing">Patrocinio registrado</span>
+                </div>
+                
+                <div class="access_login content_formulario">
+                     <label class="save_data">Tu patrocinio ha sido creado satisfactoriamente!!!. Para poder editarlo inicia sesion y ve a tu panel, ahi podr&aacute;s encontrar esta opcion y m&aacute;s.</label>     
+                 </div>
+            </div>
+    	</div><!-- /content -->
+        
+        <div class="btn-options">
+            <a class="ui-btn-submit orange" href="login_user.html" data-role="button" data-transition="slide">INICIAR SESI&Oacute;N</a>
+        </div>
+    
+    </div><!-- /page -->
+    
+    <!-- PERFIL COMPLETADO EXITOSAMENTE -->
+    
+    <div data-role="page" id="completar_perfil_exitosamente" data-theme="c">
+    
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        &nbsp;
+                    </div>
+                </li>
+                <li class="page">
+                    <span>PERFIL COMPLETADO</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+    
+    	<div data-role="content">     
+            
+            <div class="btn-access">
+            
+                <div class="texto_formulario" style="margin: 30px 0;">
+                    <span class="lspacing">Perfil completado</span>
+                </div>
+                
+                <div class="access_login content_formulario">
+                     <label class="save_data">Se ha completado tu perfil satisfactoriamente!!!. <br /> Ahora inicia sesion para poder ingresar a tu panel.</label>
+                 </div>
+            </div>
+    	</div><!-- /content -->
+        
+        <div class="btn-options">
+            <a class="ui-btn-submit orange" href="login_user.html" data-role="button" data-transition="slide">INICIAR SESI&Oacute;N</a>
         </div>
     
     </div><!-- /page -->

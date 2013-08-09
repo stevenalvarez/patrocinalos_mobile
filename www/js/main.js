@@ -68,6 +68,17 @@ $(document).on('pageinit', "#recuperar_password", function(){
     
 });
 
+//REGISTRO FINALIZADO
+$(document).on('pageinit', "#register_finalizado", function(){
+    //controlamos si completar perfil pertenece a empresa o solo a un usuario normal
+    if(isUserRegistered()){
+        var userRegistered = COOKIE_NEW_REGISTER;
+        if(userRegistered.tipo == "empresa"){
+            $(this).find('a.btn_completar_perfil').attr("href","#completar_perfil_empresa");
+        }
+    }
+})
+
 //COMPLETAR PERFIL
 $(document).on('pageinit', "#completar_perfil", function(){
     form_completar_perfil("form_completar_perfil");
@@ -75,6 +86,22 @@ $(document).on('pageinit', "#completar_perfil", function(){
     $(this).find('a.guardar_form').on("click", function(){
         var form_parent = document.getElementById("form_completar_perfil");
         $(form_parent).submit();
+    });
+});
+
+//COMPLETAR PERFIL EMPRESA
+$(document).on('pageinit', "#completar_perfil_empresa", function(){
+    form_completar_perfil_empresa("form_completar_perfil_empresa");
+    key_press("form_completar_perfil_empresa");
+    $(this).find(".close_text").on("click", function(){
+        $(this).parent().parent().fadeOut("slow");
+    });
+    $(this).find('a.guardar_form').on("click", function(){
+        var form_parent = document.getElementById("form_completar_perfil_empresa");
+        $(form_parent).submit();
+    });
+    $(this).find('a.borrar_form').on("click", function(){
+        clear_form("form_completar_perfil_empresa");
     });
 });
 

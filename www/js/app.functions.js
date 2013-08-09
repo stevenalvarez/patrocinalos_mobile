@@ -225,6 +225,18 @@ function form_registro(){
     	}
     });
     
+    //Cambiamos de texto para la foto dependiendo si es empresa, deportista o patrocinador
+    jQuery("#form_registro").find("#select_tipo_u").change(function(){
+        var content_upload_foto = jQuery("#form_registro").find(".content_upload_foto"); 
+        if($(this).val() == "empresa"){
+            content_upload_foto.find("span.foto_normal").hide();
+            content_upload_foto.find("span.foto_empresa").show();
+        }else{
+            content_upload_foto.find("span.foto_empresa").hide();
+            content_upload_foto.find("span.foto_normal").show();
+        }
+    });
+    
     //Submit form registro
     jQuery('#form_registro').submit(function() {
         
@@ -277,7 +289,7 @@ function form_registro(){
                     beforeSend : function(){
                         //mostramos loading
                         showLoadingCustom('Guardando datos...');
-                    }                    
+                    }
                 });
             }
         }
@@ -527,7 +539,100 @@ function form_completar_perfil(element){
                         //mostramos loading
                         showLoadingCustom('Guardando datos...');
                     }
-                });                
+                });
+            
+            }else{
+                showAlert("Error no puede actualizar datos!, antes debe registrarse.","Error", "Aceptar");
+            }
+        }
+      return false;
+    });
+}
+
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO COMPLETAR PERFIL EMPRESA
+function form_completar_perfil_empresa(element){
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+           "e_provincia": "required",
+           "e_direccion": "required",
+           "e_cod_postal": "required",
+           "e_nombre": "required",
+           "e_nombre_empresa_juridico": "required",
+           "e_deportes_asociar": "required",
+   		   "e_telefono": {
+    			number: true
+   		   },
+   		   "e_cif": {
+    			required: true,
+    			number: true
+   		   },
+    	},
+    	messages: {
+           "e_provincia": "",
+           "e_direccion": "Por favor, coloque su direccion <i></i>",
+           "e_cod_postal": "Por favor, coloque su codigo postal <i></i>",
+           "e_nombre": "Por favor, coloque el nombre de la empresa <i></i>",
+           "e_nombre_empresa_juridico": "Por favor, coloque el nombre juridicio <i></i>",
+           "e_deportes_asociar": "",
+           "e_telefono": {
+                number: "Por favor, ingrese solo numeros telefonicos <i></i>"
+           },
+           "e_cif": {
+            	required: "Por favor, coloque su CIF <i></i>",
+            	number: "Por favor, ingrese solo numeros <i></i>"
+           },
+    	}
+    });
+    
+    //llenamos las ciudades, como no sabemos de que pais es el usuario 
+    //entonces no mandamos esos parametros por defecto se mostrar la ciudades del pais España
+    llenarCiudades(formulario, "select_eprovincia");
+    
+    //Si hubo un registro entonces actualizamos los datos con los valores del registro
+    if(isUserRegistered())
+    {
+        var userRegistered = COOKIE_NEW_REGISTER;
+        formulario.find("input[name='u_usuario_id']").val(userRegistered.id);
+    }
+    
+    //Submit form
+    formulario.submit(function() {
+        
+        //Expandimos todos los collasibles, para que vea que debe llenar datos en donde se pide
+        formulario.find(".ui-collapsible-inset").trigger('expand');
+        
+        fixedSelector(element, "select_eprovincia");
+        fixedSelector(element, "select_deportes_asociar");
+        
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            var usuario_id = formulario.find("input[name='u_usuario_id']").val();
+            
+            if(usuario_id != '' && parseInt(usuario_id) > 0)
+            {
+                $.ajax({
+                    data: formulario.serialize(),
+                    type: "POST",
+                    url: BASE_URL_APP + 'usuarios/mobileCompletarPerfilEmpresa',
+                    dataType: "html",
+                    success: function(data){
+                        $.mobile.loading( 'hide' );
+                        
+                        data = $.parseJSON(data);
+                        if(data.success){
+                            //mandamos a la pagina de perfil completado satisfactoriamente
+                            $.mobile.changePage('#completar_perfil_exitosamente', {transition: "slide"});
+                        }else{
+                            showAlert(data.mensaje, "Error", "Aceptar");
+                        }
+                    },
+                    beforeSend : function(){
+                        //mostramos loading
+                        showLoadingCustom('Guardando datos...');
+                    }
+                });
             
             }else{
                 showAlert("Error no puede actualizar datos!, antes debe registrarse.","Error", "Aceptar");
@@ -603,8 +708,8 @@ function form_solicitar_patrocinio(element){
                         
                         data = $.parseJSON(data);
                         if(data.respuesta){
-                            showAlert(data.message, "Aviso", "Aceptar");
                             //mandamos a la pagina de patrocinio finalizado
+                            $.mobile.changePage('#patrocinio_registrado', {transition: "slide"});
                         }else{
                             showAlert(data.message, "Error", "Aceptar");
                         }
