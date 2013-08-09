@@ -1388,9 +1388,10 @@
     background:#a5e2de;
  }
  .list_recompensa_patro li > div{
-    background: #edf2f3;
+    /*background: #edf2f3;*/
     border-radius:3px;
     padding: 5px;
+    width: 89px;
  }
  .list_recompensa_patro li div div.recorte{
     border-radius: 120px;
@@ -1398,6 +1399,7 @@
     height: 89px;
     text-align: center;
     overflow: hidden;
+    background: #000;
  }
  .list_recompensa_patro li.selected > div {
     background-image: url("../img/icon_select_re.png");
@@ -1416,6 +1418,7 @@
     font-family: 'helvetica_lightregular';
     font-size: 15px;
     text-align: center;
+    line-height: 12px;
  }
  .list_recompensa_patro li.selected div h4{
     color: #fff;

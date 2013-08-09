@@ -6,7 +6,7 @@
     
     <!-- EDICION DE DATOS PERSONALES -->
     
-    <div data-role="page" id="edicion_recompensas_patrocinio" data-theme="c">
+    <div data-role="page" id="edicion_multimedia_patrocinio" data-theme="c">
     
     	<div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
             <ul>
@@ -28,73 +28,62 @@
                 <div class="steps_patrocinio">
                     <ul>
                         <li class="firts"><span>1</span></li>
-                        <li class="active"><span>2</span></li>
-                        <li class="last"><span>3</span></li>
+                        <li><span>2</span></li>
+                        <li class="last active"><span>3</span></li>
                     </ul>
                     <p>
-                       (patrocinalos pone a tu disposici&oacute;n recompensas para premiar a aquellos que te patrocinen)
+                    Publica tu prueba deportiva para cual recibir&aacute;s patrocinio econ&oacute;mico.
                     </p>
                 </div>
-                
-                    <form id="form_edit_data">
-                        <input type="hidden" name="crowd_id" id="crowd_id"/>
-                        <ul class="list_recompensa_patro" id="list_recompensa_patro">
-                            <li class="selected">
-                                <div>
-                                    <div class="recorte">
-                                        <img src="img/recompensa1.jpg" width="auto" height="auto"/>
-                                    </div>
-                                    <h4>reloj nike gps</h4>
+                   <form id="form_edit_data">
+                        <input type="hidden" name="save_edit" id="save_edit" value="save"/>
+                        <input type="hidden" name="crowd_id" id="crowd_id" value=""/>
+                        <ul class="list_media_fotos">
+                            <li class="list_left">
+                                <div class="preview">
+                                    <a href="javascript:void()" onclick="zoomPhoto(this)" class="zoom_media">&nbsp;</a>
+                                    <img src="img/infoblog1.jpg" width="auto" height="auto" />
+                                </div>
+                                <div class="preview">
+                                   <a class="zoom_media">&nbsp;</a>
+                                   <img src="img/image_profile.jpg" width="auto" height="auto" />
+                                </div>
+                                <div class="preview">
+                                    <a href="#" class="zoom_media">&nbsp;</a>
+                                    <img src="img/image_profile.jpg" width="auto" height="auto" />
+                                </div>
+                          
+                                <div class="preview">
+                                    <a class="zoom_media">&nbsp;</a>
+                                    <img src="img/infoblog1.jpg" width="auto" height="auto" />
                                 </div>
                             </li>
-                            <li>
-                                <div>
-                                    <div class="recorte">
-                                        <img src="img/recompensa1.jpg" width="auto" height="auto"/>
-                                    </div>
-                                    <h4>reloj nike gps</h4>
+                            <li class="list_right">
+                                <div class="preview">
+                                    <a class="zoom_media">&nbsp;</a>
+                                    <img src="img/image_profile.jpg" width="auto" height="auto" />
                                 </div>
-                            </li>
-                            <li class="selected">
-                                <div>
-                                    <div class="recorte">
-                                        <img src="img/recompensa1.jpg" width="auto" height="auto"/>
-                                    </div>
-                                    <h4>reloj nike gps</h4>
+                          
+                                <div class="preview">
+                                    <a class="zoom_media">&nbsp;</a>
+                                    <img src="img/infoblog1.jpg" width="auto" height="auto" />
                                 </div>
-                            </li>
-                            <li class="selected">
-                                <div>
-                                    <div class="recorte">
-                                        <img src="img/recompensa1.jpg" width="auto" height="auto"/>
-                                    </div>
-                                    <h4>reloj nike gps</h4>
+                                <div class="preview">
+                                    <a class="zoom_media">&nbsp;</a>
+                                    <img src="img/image_profile.jpg" width="auto" height="auto" />
                                 </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <div class="recorte">
-                                        <img src="img/recompensa1.jpg" width="auto" height="auto"/>
-                                    </div>
-                                    <h4>reloj nike gps</h4>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <div class="recorte">
-                                        <img src="img/recompensa1.jpg" width="auto" height="auto"/>
-                                    </div>
-                                    <h4>reloj nike gps</h4>
+                          
+                                <div class="preview">
+                                    <a class="zoom_media">&nbsp;</a>
+                                    <img src="img/infoblog1.jpg" width="auto" height="auto" />
                                 </div>
                             </li>
                         </ul>
                         <div class="buttons_action two">
-                            <a href="javascript:void(0)" onclick="saveRecompensasPatrocinio('form_edit_data',false)" id="actualizar_datos" class="orange">GUARDAR</a>
-                            <a href="javascript:void(0)" onclick="saveRecompensasPatrocinio('form_edit_data',true)" id="actualizar_datos" class="green">CONTINUAR</a>
+                            <a href="javascript:void(0)" onclick="" id="actualizar_datos" class="green">ELIMINAR SELECCIÓN</a>
+                            <a href="javascript:void(0)" onclick="" id="actualizar_datos" class="green">FINALIZAR</a>
                         </div>
                     </form>
-                
-                
             </div>
     	</div><!-- /content -->
     

@@ -48,8 +48,9 @@
                             <textarea name="descripcion_patro" id="descripcion_patro" placeholder="Expl&iacute;calo un poco mas..." autocomplete="off"></textarea>
                         </div>  
                         <input name="fecha_fin" id="fecha_fin" onclick="$('#fecha_fin').datebox('open')" type="date" data-role="datebox" data-options='{"mode": "calbox"}'/>
-                        <div class="buttons_action">
-                            <a href="javascript:void(0)" onclick="saveDatosPatrocinio('form_edit_data')" id="actualizar_datos" class="green">SIGUIENTE PASO</a>
+                        <div class="buttons_action two">
+                            <a href="javascript:void(0)" onclick="saveDatosPatrocinio('form_edit_data',false)" id="actualizar_datos" class="green">GUARDAR</a>
+                            <a href="javascript:void(0)" onclick="saveDatosPatrocinio('form_edit_data',true)" id="actualizar_datos" class="green">CONTINUAR</a>
                         </div>
                     </form>
                 </div>
