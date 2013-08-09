@@ -3547,6 +3547,13 @@ label.custom{
 .content_list_two #lista_actividades.ui-listview li .content_descripcion{
     width: 66%;
 }
+#solicitan_buscan_patrocinio .list_buscan_patro h4{
+    margin: 14px 0;
+}
+#solicitan_buscan_patrocinio .list_buscan_patro h4 span{
+    color: #55a0b5;
+    font-family: 'HelveticaCondensedMedium';    
+}
 
 /***************************************** RESPONSIVO *******************************************************/
 

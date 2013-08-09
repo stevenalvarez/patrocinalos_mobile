@@ -70,11 +70,14 @@ $(document).on('pageinit', "#recuperar_password", function(){
 
 //REGISTRO FINALIZADO
 $(document).on('pageinit', "#register_finalizado", function(){
-    //controlamos si completar perfil pertenece a empresa o solo a un usuario normal
+    //controlamos si completar perfil pertenece a individual, seguidor o empresa
     if(isUserRegistered()){
         var userRegistered = COOKIE_NEW_REGISTER;
         if(userRegistered.tipo == "empresa"){
             $(this).find('a.btn_completar_perfil').attr("href","#completar_perfil_empresa");
+        }else if(userRegistered.tipo == "seguidor"){
+            $(this).find('a.btn_completar_perfil').find("span.ui-btn-text").text("PATROCINAR A DEPORTISTA");
+            $(this).find('a.btn_completar_perfil').attr("href","#solicitan_buscan_patrocinio");
         }
     }
 })
