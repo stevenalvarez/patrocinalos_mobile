@@ -1401,7 +1401,8 @@ label.custom{
 #solicitar_patrocinio .ui-content,
 #completar_perfil_empresa .ui-content,
 #recuperar_password .ui-content,
-#patrocinio_registrado .ui-content{
+#patrocinio_registrado .ui-content,
+#completar_perfil_exitosamente .ui-content{
     background: #eeeeee;
     margin: 18px 10px;
     border-radius: 5px;
@@ -1411,12 +1412,14 @@ label.custom{
 }
 #register_user .ui-content,
 #register_finalizado .ui-content,
-#patrocinio_registrado .ui-content{
+#patrocinio_registrado .ui-content,
+#completar_perfil_exitosamente .ui-content{
     margin-bottom: 10px;
     min-height: 360px;
 }
 #register_finalizado .ui-content,
-#patrocinio_registrado .ui-content{
+#patrocinio_registrado .ui-content,
+#completar_perfil_exitosamente .ui-content{
     min-height: 320px;
 }
 #login_user .ui-content{
@@ -1583,7 +1586,7 @@ label.custom{
     color: #949e9f;
     line-height: 12px;
     margin-bottom: 5px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 #register_user label.text_termino a{
     color: #57a8df;
@@ -1605,16 +1608,19 @@ label.custom{
 
 /* REGISTRO FINALIZADO */
 #register_finalizado .texto_formulario span,
-#patrocinio_registrado .texto_formulario span{
+#patrocinio_registrado .texto_formulario span,
+#completar_perfil_exitosamente .texto_formulario span{
     margin: 0 7.0em;
 }
 #register_finalizado .access_login,
-#patrocinio_registrado .access_login{
+#patrocinio_registrado .access_login,
+#completar_perfil_exitosamente .access_login{
     margin-top: 9px;
     margin-bottom: 15px;    
 }
 #register_finalizado .save_data,
-#patrocinio_registrado .save_data{
+#patrocinio_registrado .save_data,
+#completar_perfil_exitosamente .save_data{
     font-size: 12px;
     padding-left: 40px;
     display: block;
@@ -1625,7 +1631,8 @@ label.custom{
     color: #949e9f
 }
 #register_finalizado p,
-#patrocinio_registrado p{
+#patrocinio_registrado p,
+#completar_perfil_exitosamente p{
     font-size: 12px;
     padding-left: 40px;
     color: #949e9f
@@ -3596,6 +3603,7 @@ and (orientation:landscape)
     #register_user .register_option_fb label,
     #register_finalizado .save_data,
     #patrocinio_registrado .save_data,
+    #completar_perfil_exitosamente .save_data,
     #lista_posibles_ganadores .ui-listview li .content_descripcion label,
     .list_comments li p.ui-li-desc,
     #perfil_deportivo .info_deportista li.clasificacion span.text,
@@ -3732,7 +3740,8 @@ and (orientation:landscape)
     }
     
     #register_finalizado .texto_formulario span,
-    #patrocinio_registrado .texto_formulario span{
+    #patrocinio_registrado .texto_formulario span,
+    #completar_perfil_exitosamente .texto_formulario span{
         margin: 0 12.5em;
     }
     
@@ -3993,7 +4002,7 @@ and (orientation:portrait)
     }
     #register_user label.text_termino{
         margin-bottom: 10px;
-        margin-top: 30px;        
+        margin-top: 10px;        
     }
     form .ui-input-text span.error {
         top: 10px;
@@ -4009,7 +4018,8 @@ and (orientation:portrait)
     /* TODO */
     
     #register_finalizado .ui-content,
-    #patrocinio_registrado .ui-content{
+    #patrocinio_registrado .ui-content,
+    #completar_perfil_exitosamente .ui-content{
         min-height: 410px;
     }
     #completar_perfil .btn-access,
@@ -4057,7 +4067,8 @@ and (orientation:landscape)
     }
     
     #register_finalizado .texto_formulario span,
-    #patrocinio_registrado .texto_formulario span{
+    #patrocinio_registrado .texto_formulario span,
+    #completar_perfil_exitosamente .texto_formulario span{
         margin: 0 15.5em  !important;
     }
     

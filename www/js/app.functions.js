@@ -225,6 +225,18 @@ function form_registro(){
     	}
     });
     
+    //Cambiamos de texto para la foto dependiendo si es empresa, deportista o patrocinador
+    jQuery("#form_registro").find("#select_tipo_u").change(function(){
+        var content_upload_foto = jQuery("#form_registro").find(".content_upload_foto"); 
+        if($(this).val() == "empresa"){
+            content_upload_foto.find("span.foto_normal").hide();
+            content_upload_foto.find("span.foto_empresa").show();
+        }else{
+            content_upload_foto.find("span.foto_empresa").hide();
+            content_upload_foto.find("span.foto_normal").show();
+        }
+    });
+    
     //Submit form registro
     jQuery('#form_registro').submit(function() {
         
@@ -543,22 +555,34 @@ function form_completar_perfil_empresa(element){
     formulario.validate({
         errorElement:'span',
     	rules: {
-    	   "e_cif": "required",
            "e_provincia": "required",
            "e_direccion": "required",
            "e_cod_postal": "required",
            "e_nombre": "required",
            "e_nombre_empresa_juridico": "required",
            "e_deportes_asociar": "required",
+   		   "e_telefono": {
+    			number: true
+   		   },
+   		   "e_cif": {
+    			required: true,
+    			number: true
+   		   },
     	},
     	messages: {
-    	   "e_cif": "Por favor, coloque su CIF <i></i>",
            "e_provincia": "",
            "e_direccion": "Por favor, coloque su direccion <i></i>",
            "e_cod_postal": "Por favor, coloque su codigo postal <i></i>",
            "e_nombre": "Por favor, coloque el nombre de la empresa <i></i>",
            "e_nombre_empresa_juridico": "Por favor, coloque el nombre juridicio <i></i>",
            "e_deportes_asociar": "",
+           "e_telefono": {
+                number: "Por favor, ingrese solo numeros telefonicos <i></i>"
+           },
+           "e_cif": {
+            	required: "Por favor, coloque su CIF <i></i>",
+            	number: "Por favor, ingrese solo numeros <i></i>"
+           },
     	}
     });
     
@@ -598,7 +622,8 @@ function form_completar_perfil_empresa(element){
                         
                         data = $.parseJSON(data);
                         if(data.success){
-                            showAlert(data.mensaje, "Aviso", "Aceptar");
+                            //mandamos a la pagina de perfil completado satisfactoriamente
+                            $.mobile.changePage('#completar_perfil_exitosamente', {transition: "slide"});
                         }else{
                             showAlert(data.mensaje, "Error", "Aceptar");
                         }
@@ -683,7 +708,6 @@ function form_solicitar_patrocinio(element){
                         
                         data = $.parseJSON(data);
                         if(data.respuesta){
-                            showAlert(data.message, "Aviso", "Aceptar");
                             //mandamos a la pagina de patrocinio finalizado
                             $.mobile.changePage('#patrocinio_registrado', {transition: "slide"});
                         }else{

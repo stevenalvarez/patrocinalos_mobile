@@ -176,11 +176,11 @@
                             <option value="empresa">Soy empresa</option>
                          </select>
                          <div data-role="fieldcontain" class="content_upload_foto">
-                            <label class="lspacing">Subir una foto de perfil</label>
+                            <label class="lspacing"><span class="foto_normal">Subir una foto de perfil</span><span class="foto_empresa" style="display: none;">Logotipo de tu empresa</span></label>
                             <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" data-role="button" data-mini="true">Buscar</a>
                             <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="capturePhoto('pictureImage');" data-role="button" data-mini="true">Capturar Foto</a>
                          </div>
-                         <img style="margin-left: 1px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-bottom: -24px; margin-top: -43px; display: none;" id="pictureImage" src="" />
+                         <img style="margin-left: 1px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-top: -43px; display: none;" id="pictureImage" src="" />
                          <input id="u_img_url_social" type="hidden" name="u_img_url_social" value="" />
                      </div>
                     <!--
@@ -406,16 +406,6 @@
                                     <input id="e_nombre_empresa_juridico" name="e_nombre_empresa_juridico" placeholder="Nombre jur&iacute;dico de la empresa..." autocomplete="off" type="text" data-mini="true"/>
                                 </li>
                                 <li>
-                                     <div data-role="fieldcontain" class="content_upload_foto">
-                                        <label class="lspacing" style="font-weight: normal;">Logotipo de tu empresa</label>
-                                        <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="getImage('pictureEmpresa');" data-role="button" data-mini="true">Buscar</a>
-                                        <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="capturePhoto('pictureEmpresa');" data-role="button" data-mini="true">Capturar Foto</a>
-                                     </div>
-                                     <div class="content_imagen_empresa">
-                                        <img style="margin-left: 1px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-top: -43px; display: none;" id="pictureEmpresa" src="" />
-                                     </div>
-                                </li>
-                                <li>
                                      <select data-theme="c" name="e_deportes_asociar" id="select_deportes_asociar" data-mini="true">
                                         <option value="">Deportes a asociar...</option>
                                         <option value="100">Futbol</option>
@@ -570,7 +560,47 @@
             <a class="ui-btn-submit orange" href="login_user.html" data-role="button" data-transition="slide">INICIAR SESI&Oacute;N</a>
         </div>
     
-    </div><!-- /page -->    
+    </div><!-- /page -->
+    
+    <!-- PERFIL COMPLETADO EXITOSAMENTE -->
+    
+    <div data-role="page" id="completar_perfil_exitosamente" data-theme="c">
+    
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        &nbsp;
+                    </div>
+                </li>
+                <li class="page">
+                    <span>PERFIL COMPLETADO</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+    
+    	<div data-role="content">     
+            
+            <div class="btn-access">
+            
+                <div class="texto_formulario" style="margin: 30px 0;">
+                    <span class="lspacing">Perfil completado</span>
+                </div>
+                
+                <div class="access_login content_formulario">
+                     <label class="save_data">Se ha completado tu perfil satisfactoriamente!!!. <br /> Ahora inicia sesion para poder ingresar a tu panel.</label>
+                 </div>
+            </div>
+    	</div><!-- /content -->
+        
+        <div class="btn-options">
+            <a class="ui-btn-submit orange" href="login_user.html" data-role="button" data-transition="slide">INICIAR SESI&Oacute;N</a>
+        </div>
+    
+    </div><!-- /page -->
     
     <!-- NAVIGATION BOTTOM -->
     
