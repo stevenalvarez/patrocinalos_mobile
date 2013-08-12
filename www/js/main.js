@@ -122,6 +122,20 @@ $(document).on('pageinit', "#solicitar_patrocinio", function(){
     });
 });
 
+//SOLICITAN BUSCAN PATROCINIO
+$(document).on('pageinit', "#solicitan_buscan_patrocinio", function(){
+    var parent = $(this); 
+    parent.find('a.buscar_deportista').on("click", function(){
+        var nombre_deportista = $.trim(parent.find("#nombre_deportista_abuscar").val());
+        alert(nombre_deportista);
+        if(nombre_deportista.length > 1){
+            llenarDeportistaBuscanPatrocinio(parent, nombre_deportista);
+        }else{
+            showAlert("Coloca como minimo 2 caracteres", "Aviso", "Aceptar");
+        }
+    });
+});
+
 //LOGIN
 $(document).on('pageinit', "#login_user", function(){
     form_login();
@@ -1337,4 +1351,8 @@ function procesoPagoTPV(loc){
     }else{
         // todo
     }
+}
+
+function llenarDeportistaBuscanPatrocinio(element, nombre_deportista){
+    
 }
