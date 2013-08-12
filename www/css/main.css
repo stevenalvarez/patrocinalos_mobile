@@ -3554,6 +3554,18 @@ label.custom{
     color: #55a0b5;
     font-family: 'HelveticaCondensedMedium';    
 }
+#solicitan_buscan_patrocinio .list_buscan_patro .ui-listview li{
+    margin: 0 auto;
+    background: none;
+    border-top: 0;
+    padding-top: 0;
+}
+#solicitan_buscan_patrocinio .list_buscan_patro .ui-listview li .ui-li-desc{
+    margin: 0;
+}
+#solicitan_buscan_patrocinio .list_buscan_patro .ui-listview li .buttons a{
+    width: 41%;
+}
 
 /***************************************** RESPONSIVO *******************************************************/
 
@@ -4159,4 +4171,7 @@ and (orientation:landscape)
     .content_list_two #lista_actividades.ui-listview li .content_descripcion{
         width: 78%;
     }
+    #solicitan_buscan_patrocinio .list_buscan_patro .ui-listview li .buttons a{
+        width: 44%;
+    }    
 }
