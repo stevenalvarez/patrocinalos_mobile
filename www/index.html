@@ -157,23 +157,13 @@
                          <div class="texto_formulario">
                             <span class="lspacing">Completa el siguiente formulario</span>
                          </div>
-                         <input id="u_title" name="u_title" placeholder="Nombre y Apellidos..." autocomplete="off" type="text" data-mini="true"/>
-                         <!--<input id="u_nombre" name="u_nombre" placeholder="Nombre..." autocomplete="off" type="text" data-mini="true"/>-->
-                         <!--<input id="u_apellido" name="u_apellido" placeholder="Apellidos..." autocomplete="off" type="text" data-mini="true">-->
+                         <input id="u_urlamigable" name="u_urlamigable" placeholder="Nombre de usuario..." autocomplete="off" type="text" data-mini="true"/>
                          <input id="u_email_register" name="u_email_register" placeholder="Email..." autocomplete="off" autocapitalize="off" style="text-transform:lowercase;" type="email" data-mini="true"/>
                          <input id="u_password_register" name="u_password_register" placeholder="Contrase&ntilde;a..." autocomplete="off" type="password" data-mini="true"/>
-                         <!--<input id="u_repetir_password" name="u_repetir_password" placeholder="Repetir contrase&ntilde;a..." autocomplete="off" type="password"/>-->
-                         <select id="select_deporte" data-theme="c" name="u_deporte" data-mini="true">
-                            <option value="">Deporte que practicas</option>
-                            <optgroup label="Atletismo y gimnasia">
-                                <option value="aerobic">Aerobic</option>
-                                <option value="atletismo">Atletismo</option>
-                            </optgroup>
-                         </select>
                          <select id="select_tipo_u" data-theme="c" name="u_tipo" data-mini="true">
                             <option value="individual">Soy deportista</option>
-                            <option value="seguidor">Soy patrocinador</option>
-                            <option value="empresa">Soy empresa</option>
+                            <option value="patrocinador">Soy patrocinador</option>
+                            <option value="empresa">Soy empresa patrocinadora</option>
                          </select>
                          <div data-role="fieldcontain" class="content_upload_foto">
                             <label class="lspacing"><span class="foto_normal">Subir una foto de perfil</span><span class="foto_empresa" style="display: none;">Logotipo de tu empresa</span></label>
@@ -183,13 +173,7 @@
                          <img style="margin-left: 1px; border: 1px solid #000; height: 70px; width: 70px; border-radius: 5px; margin-top: -43px; display: none;" id="pictureImage" src="" />
                          <input id="u_img_url_social" type="hidden" name="u_img_url_social" value="" />
                      </div>
-                    <!--
-                    <fieldset data-role="controlgroup">
-                        <input id="u_terminos" name="u_terminos" type="radio"/>
-                        <label data-theme="c" for="u_terminos">Acepto los t&eacute;rminos y condiciones.</label>
-                    </fieldset>
-                    -->
-                    <label class="text_termino">Al crear una cuenta, acepto los <a href="http://patrocinalos.com/terminos-condiciones" title="" onclick="window.open(this.href,'_blank'); return false;">T&eacute;rminos de servicio y pol&iacute;ticas de privacidad</a> de patrocinalos.com.</label>
+                    <label class="text_termino">Al crear una cuenta, acepto los <a href="http://patrocinalos.com/terminos-condiciones" title="" onclick="window.open(this.href,'_blank'); return false;">T&eacute;rminos y condiciones de uso</a> de patrocinalos.com.</label>
                 </form>
             </div>
     	</div><!-- /content -->
