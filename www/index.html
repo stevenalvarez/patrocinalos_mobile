@@ -239,7 +239,7 @@
     
     </div><!-- /page -->
     
-    <!-- COMPLETAR PERFIL -->
+    <!-- FORMULARIO COMPLETAR PERFIL PARA EL DEPORTISTA TIPO INDIVIDUAL -->
     
     <div data-role="page" id="completar_perfil" data-theme="c">
     
@@ -270,6 +270,13 @@
                 <form id="form_completar_perfil">
                     <div class="content_formulario">
                          <input type="hidden" name="u_usuario_id" value="" />
+                         <select data-theme="c" name="u_tipo" id="select_tipo" data-mini="true">
+                            <option value="">Deportista Individual o Equipo</option>
+                            <option selected="selected" value="individual">Individual</option>
+                            <option value="equipo">Equipo</option>
+                         </select>
+                         <input id="u_nombre" name="u_nombre" placeholder="Nombre" autocomplete="off" type="text" data-mini="true"/>
+                         <input id="u_apellidos" name="u_apellidos" placeholder="Apellidos" autocomplete="off" type="text" data-mini="true"/>
                          <select data-theme="c" name="u_genero" id="select_genero" data-mini="true">
                             <option value="">G&eacute;nero...</option>
                             <option value="M">Masculino</option>
@@ -279,15 +286,13 @@
                             <input style="width: 100%;" id="u_fecha_nacimiento" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="u_fecha_nacimiento" type="text" placeholder="Fecha Nacimiento..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
                          </div>
                          <select data-theme="c" name="u_ciudad" id="select_ciudad" data-mini="true">
-                            <option value="">Ciudad de resiencia...</option>
+                            <option value="">Ciudad de residencia...</option>
                          </select>
                          <select data-theme="c" name="u_tipo_deportista" id="select_tipo_deportista" data-mini="true">
                             <option value="">Profesional o Amateur...</option>
-                            <option value="amateur">Amateur</option>
-                            <option value="destacado">Destacado</option>
                             <option value="profesional">Profesional</option>
+                            <option value="amateur">Amateur</option>
                          </select>
-                         <input id="u_url_perfil" name="u_url_perfil" placeholder="Url de perfil: (ej. miurlpersonal)" autocomplete="off" type="text" data-mini="true"/>
                          <select data-theme="c" name="u_otros_deportes" id="select_otros_deportes" data-mini="true">
                             <option value="">Otros deportes que sigues...</option>
                             <option value="2">F&uacute;tbol</option>
@@ -310,7 +315,7 @@
     
     </div><!-- /page -->
     
-    <!-- COMPLETAR PERFIL EMPRESA -->
+    <!-- FORMULARIO COMPLETAR PERFIL PARA EL DEPORTISTA TIPO EMPRESA -->
     
     <div data-role="page" id="completar_perfil_empresa" data-theme="c">
     
