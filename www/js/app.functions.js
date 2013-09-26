@@ -430,7 +430,7 @@ function popup_form_cambiar_password(element){
     });
 }
 
-//INICIA LAS VALIDACIONES PARA EL FORMULARIO COMPLETAR PERFIL
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO COMPLETAR PERFIL DEPORTISTA(INDIVIDUAL O EQUIPO)
 function form_completar_perfil(element){
     var formulario = jQuery("#"+element); 
     formulario.validate({
@@ -451,21 +451,22 @@ function form_completar_perfil(element){
     	}
     });
     
-    //llenamos las ciudades, como no sabemos de que pais es el usuario 
-    //entonces no mandamos esos parametros por defecto se mostrar la ciudades del pais España
-    llenarCiudades(formulario, "select_ciudad");
-    
     //Si hubo un registro entonces actualizamos los datos con los valores del registro
     if(isUserRegistered())
     {
         var userRegistered = COOKIE_NEW_REGISTER;
         formulario.find("input[name='u_usuario_id']").val(userRegistered.id);
-        formulario.find("input[name='u_url_perfil']").val(userRegistered.urlamigable);
+        
+        //llenamos las ciudades, ya sabemos de que pais es el usuario y en que ciudad esta  
+        llenarCiudades(formulario, "select_ciudad",userRegistered.pais_id,userRegistered.ciudad_id);
+    }else{
+        llenarCiudades(formulario, "select_ciudad");
     }
     
     //Submit form
     formulario.submit(function() {
         
+        fixedSelector(element, "select_tipo");
         fixedSelector(element, "select_genero");
         fixedSelector(element, "select_ciudad");
         fixedSelector(element, "select_tipo_deportista");
@@ -543,15 +544,16 @@ function form_completar_perfil_empresa(element){
     	}
     });
     
-    //llenamos las ciudades, como no sabemos de que pais es el usuario 
-    //entonces no mandamos esos parametros por defecto se mostrar la ciudades del pais España
-    llenarCiudades(formulario, "select_eprovincia");
-    
     //Si hubo un registro entonces actualizamos los datos con los valores del registro
     if(isUserRegistered())
     {
         var userRegistered = COOKIE_NEW_REGISTER;
         formulario.find("input[name='u_usuario_id']").val(userRegistered.id);
+        
+        //llenamos las ciudades, ya sabemos de que pais es el usuario y en que ciudad esta  
+        llenarCiudades(formulario, "select_ciudad",userRegistered.pais_id,userRegistered.ciudad_id);        
+    }else{
+        llenarCiudades(formulario, "select_eprovincia");
     }
     
     //Submit form
@@ -1044,12 +1046,12 @@ function llenarCiudades(parent, element, pais_id, provincia_id){
         provincia_id = '';
     }
     
-    $.getJSON(BASE_URL_APP+'usuarios/mobileGetProvincias/'+pais_id, function(data){
+    $.getJSON(BASE_URL_APP+'usuarios/mobileGetCiudades/'+pais_id, function(data){
         $.each(data.items,function(index,item){
-            if(item.provincias.id==provincia_id)
-                parent.find("#"+element).append('<option selected="selected" value="'+item.provincias.id+'">'+item.provincias.nombre+'</option>');
+            if(item.ciudades.id==provincia_id)
+                parent.find("#"+element).append('<option selected="selected" value="'+item.ciudades.id+'">'+item.ciudades.nombre+'</option>');
             else
-                parent.find("#"+element).append('<option value="'+item.provincias.id+'">'+item.provincias.nombre+'</option>');
+                parent.find("#"+element).append('<option value="'+item.ciudades.id+'">'+item.ciudades.nombre+'</option>');
         });
     });
 }

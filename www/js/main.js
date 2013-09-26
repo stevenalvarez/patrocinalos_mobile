@@ -69,12 +69,12 @@ $(document).on('pageinit', "#recuperar_password", function(){
 
 //REGISTRO FINALIZADO
 $(document).on('pageinit', "#register_finalizado", function(){
-    //controlamos si completar perfil pertenece a individual, seguidor o empresa
+    //controlamos si completar perfil pertenece a deportista(individual o equipo), patrocinador o empresa
     if(isUserRegistered()){
         var userRegistered = COOKIE_NEW_REGISTER;
         if(userRegistered.tipo == "empresa"){
             $(this).find('a.btn_completar_perfil').attr("href","#completar_perfil_empresa");
-        }else if(userRegistered.tipo == "seguidor"){
+        }else if(userRegistered.tipo == "patrocinador"){
             $(this).find('a.btn_completar_perfil').find("span.ui-btn-text").text("PATROCINAR A DEPORTISTA");
             $(this).find('a.btn_completar_perfil').attr("href","#solicitan_buscan_patrocinio");
         }
@@ -611,12 +611,12 @@ function getDatosPersonales(id_user){
             });
          });
          
-         $.getJSON(BASE_URL_APP+'usuarios/mobileGetProvincias/'+pais_dep, function(data){
+         $.getJSON(BASE_URL_APP+'usuarios/mobileGetCiudades/'+pais_dep, function(data){
             $.each(data.items,function(index,item){
-                if(item.provincias.id==provincia_dep)
-                    jQuery("#select-ciudad").append('<option selected="selected" value="'+item.provincias.id+'">'+item.provincias.nombre+'</option>');
+                if(item.ciudades.id==provincia_dep)
+                    jQuery("#select-ciudad").append('<option selected="selected" value="'+item.ciudades.id+'">'+item.ciudades.nombre+'</option>');
                 else
-                    jQuery("#select-ciudad").append('<option value="'+item.provincias.id+'">'+item.provincias.nombre+'</option>');
+                    jQuery("#select-ciudad").append('<option value="'+item.ciudades.id+'">'+item.ciudades.nombre+'</option>');
             });
          });
      });
