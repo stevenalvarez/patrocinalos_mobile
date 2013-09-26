@@ -29,7 +29,7 @@ jQuery.validator.addMethod("seleccionarDeporte", function(value, element) {
     return jQuery.trim(value) != "";
 }, "Debe seleccionar un deporte");
 
-//Validar Email
-$.validator.addMethod("validarEmail", function(value, element) {
- return validar_email(value);
-}, "Este email ya est&aacute; registrado");
+//Validar urlamigable
+$.validator.addMethod("onlyLetterNumber", function(value, element) {
+ return /^[0-9a-zA-Z_-]+$/.exec(value);
+}, "* No se permiten caracteres especiales, solo a-z,0-9");

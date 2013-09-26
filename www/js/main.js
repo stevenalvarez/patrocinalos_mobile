@@ -30,7 +30,6 @@ $('#view').live('pagebeforeshow', function(event, ui) {
 
 //REGISTRO
 $(document).on('pageinit', "#register_user", function(){
-    llenarDeportes();
     form_registro();
     key_press("form_registro");
     $(this).find('a.registrarme').on("click", function(){

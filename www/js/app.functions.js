@@ -81,24 +81,13 @@ function uploadPhoto(params) {
 
 //LLENAR DEPORTES PARA EL FORMULARIO DE REGISTRO
 function llenarDeportes(){
-	$.getJSON(BASE_URL_APP + 'deportes/mobileGetDeportes', function(data) {
+	$.getJSON(BASE_URL_APP + 'usuarios/mobileGetDeportes', function(data) {
 		var deportes = data.items;
-        var categoria = "";
         var html = "";
-        $.each(deportes, function(index, deporte) {
-            if(categoria != deporte.Deportecategoria.id_categoria){
-                if(categoria != ""){
-                    html+= "</optgroup>";
-                }
-                html+= "<optgroup label='"+htmlspecialchars_decode(deporte.Deportecategoria.nombre_categoria)+"'>";
-                categoria = deporte.Deportecategoria.id_categoria;
-            }
-            html+= "<option value="+deporte.Deporte.id+">"+htmlspecialchars_decode(deporte.Deporte.nombre)+"</option>";
+        $.each(deportes, function(index, item) {
+            html+= "<option value="+item.deportes.id+">"+item.deportes.nombre+"</option>";
         });
-        html+= "</optgroup>";
         
-        //empty selector
-        jQuery("#select_deporte").find("optgroup").remove();
         jQuery("#select_deporte").find("option").after(html);
 	});
 }
@@ -158,20 +147,11 @@ function form_registro(){
     jQuery("#form_registro").validate({
         errorElement:'span',
     	rules: {
-            "u_title": {
+            "u_urlamigable": {
     			required: true,
-    			minlength: 2
+    			minlength: 2,
+                onlyLetterNumber:true
     		},
-    		/*
-            "u_nombre": {
-    			required: true,
-    			minlength: 2
-    		},
-    		"u_apellido": {
-    			required: true,
-    			minlength: 2
-    		},
-            */
     		"u_email_register": {
     			required: true,
     			email: true
@@ -180,32 +160,13 @@ function form_registro(){
     			required: true,
     			minlength: 5
     		},
-    		/*
-                "u_repetir_password": {
-        			required: true,
-        			minlength: 5,
-        			equalTo: "#u_password_register"
-        		},
-        		"u_deporte": {
-        			seleccionarDeporte: true
-        		},
-        		"u_terminos": "required"
-            */
     	},
     	messages: {
-    		"u_title": {
-    			required: "Por favor, introduzca su nombre y apellido <i></i>",
-    			minlength: "M&iacute;nimo de 2 caracteres <i></i>"
+    		"u_urlamigable": {
+    			required: "Por favor, introduzca su nombre de usuario <i></i>",
+    			minlength: "M&iacute;nimo de 2 caracteres <i></i>",
+                onlyLetterNumber: "No se permiten caracteres especiales, solo a-z,0-9 <i></i>",
     		},
-    		/*"u_nombre": {
-    			required: "Por favor, introduzca su nombre <i></i>",
-    			minlength: "M&iacute;nimo de 2 caracteres <i></i>"
-    		},
-    		"u_apellido": {
-    			required: "Por favor, introduzca su apellido <i></i>",
-    			minlength: "M&iacute;nimo de 2 caracteres <i></i>"
-    		},
-            */
             "u_email_register": {
     			required: "Por favor, introduzca su email <i></i>",
     			email: "Direcci&oacute;n de email no v&aacute;lida <i></i>"
@@ -214,14 +175,6 @@ function form_registro(){
     			required: "Por favor, ingrese su contrase&ntilde;a <i></i>",
     			minlength: "M&iacute;nimo de 5 caracteres <i></i>"
     		},
-    		/*
-                "u_repetir_password": {
-        			required: "Por favor, ingrese su contrase&ntilde;a",
-        			minlength: "M&iacute;nimo de 5 caracteres",
-        			equalTo: "Repita contrase&ntilde;a"
-        		},
-                "u_terminos": "Por favor, acepte nuestros t&eacute;rminos"
-            */
     	}
     });
     
@@ -250,9 +203,13 @@ function form_registro(){
             //Mandamos a validar el mail
             var email = $.trim(document.getElementById("u_email_register").value);
             email = email + "\n\t";
-            var success = validar_email(email);
-            //Unicamente si el email no esta registrado mandamos a guardar
-            if(success == false){
+            var urlamigable = $.trim(document.getElementById("u_urlamigable").value);
+            urlamigable = urlamigable + "\n\t";
+            
+            var email_registrado = validar_email(email);
+            var urlamigable_registrado = validar_urlamigable(urlamigable,'');
+            //Unicamente si el email no esta registrado y la urlamigable no esta registrado mandamos a guardar
+            if(email_registrado == false && urlamigable_registrado == false){
                 
                 $.ajax({
                     data: $("#form_registro").serialize(),
@@ -837,12 +794,11 @@ function validar_email(value){
             $.mobile.loading( 'hide' );
             msg = $.parseJSON(msg);
             var result = msg.success;
-            //response = ( result == true ) ? false : true;
             if(result){
                 var input = jQuery("#u_email_register");
                 input.parent().find("span.error").remove();
                 input.parent().find("span.success").remove();
-                input.after("<span class='error'>Este email ya est&aacute; registrado <i></i></span>");
+                input.after("<span class='error'>Este email ya est&aacute; siendo usado o no esta permitido <i></i></span>");
                 input.parent().find("span.error").css("color", "#671717");
                 input.parent().find("span.error").css("font-weight", "bold");
                 input.parent().find("span.error").fadeOut(8000);
@@ -853,6 +809,40 @@ function validar_email(value){
         beforeSend : function(){
     	    //mostramos loading
             showLoadingCustom('Validando Email...');
+        }
+    });
+    
+    return response;
+}
+
+function validar_urlamigable(urlamigable,usuario_id){
+    var response = false;
+    jQuery.ajax({
+        type: "POST",
+        url: BASE_URL_APP + "usuarios/mobileValidarUrlamigable",
+        data: {urlamigable:urlamigable,usuario_id:usuario_id},
+        dataType:"html",
+        async : false,
+        cache: false,
+        success: function(msg){
+            $.mobile.loading( 'hide' );
+            msg = $.parseJSON(msg);
+            var result = msg.success;
+            if(result){
+                var input = jQuery("#u_urlamigable");
+                input.parent().find("span.error").remove();
+                input.parent().find("span.success").remove();
+                input.after("<span class='error'>Este nombre de usuario ya est&aacute; siendo utilizado <i></i></span>");
+                input.parent().find("span.error").css("color", "#671717");
+                input.parent().find("span.error").css("font-weight", "bold");
+                input.parent().find("span.error").fadeOut(8000);
+                input.focus();
+                response = true;
+            }
+        },
+        beforeSend : function(){
+    	    //mostramos loading
+            showLoadingCustom('Validando Nombre de usuario...');
         }
     });
     
