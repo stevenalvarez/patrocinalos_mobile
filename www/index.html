@@ -270,34 +270,32 @@
                 <form id="form_completar_perfil">
                     <div class="content_formulario">
                          <input type="hidden" name="u_usuario_id" value="" />
+                         <input type="hidden" name="u_pais_id" value="" />
                          <select data-theme="c" name="u_tipo" id="select_tipo" data-mini="true">
                             <option value="">Deportista Individual o Equipo</option>
                             <option selected="selected" value="individual">Individual</option>
                             <option value="equipo">Equipo</option>
                          </select>
-                         <input id="u_nombre" name="u_nombre" placeholder="Nombre" autocomplete="off" type="text" data-mini="true"/>
-                         <input id="u_apellidos" name="u_apellidos" placeholder="Apellidos" autocomplete="off" type="text" data-mini="true"/>
+                         <input id="u_nombre" name="u_nombre" placeholder="Nombre..." autocomplete="off" type="text" data-mini="true"/>
+                         <input id="u_apellidos" name="u_apellidos" placeholder="Apellidos..." autocomplete="off" type="text" data-mini="true"/>
                          <select data-theme="c" name="u_genero" id="select_genero" data-mini="true">
-                            <option value="">G&eacute;nero...</option>
+                            <option value="">G&eacute;nero</option>
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
                          </select>
                          <div class="fecha_calendario">
-                            <input style="width: 100%;" id="u_fecha_nacimiento" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="u_fecha_nacimiento" type="text" placeholder="Fecha Nacimiento..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
+                            <input style="width: 100%;" id="u_fecha_nacimiento" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="u_fecha_nacimiento" type="text" placeholder="Fecha de nacimiento..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
                          </div>
                          <select data-theme="c" name="u_ciudad" id="select_ciudad" data-mini="true">
-                            <option value="">Ciudad de residencia...</option>
+                            <option value="">Ciudad de residencia</option>
                          </select>
                          <select data-theme="c" name="u_tipo_deportista" id="select_tipo_deportista" data-mini="true">
-                            <option value="">Profesional o Amateur...</option>
+                            <option value="">Profesional o Amateur</option>
                             <option value="profesional">Profesional</option>
                             <option value="amateur">Amateur</option>
                          </select>
-                         <select data-theme="c" name="u_otros_deportes" id="select_otros_deportes" data-mini="true">
-                            <option value="">Otros deportes que sigues...</option>
-                            <option value="2">F&uacute;tbol</option>
-                            <option value="3">Baloncesto</option>
-                            <option value="66">Otros</option>
+                         <select id="select_deporte" data-theme="c" name="u_deporte" data-mini="true">
+                            <option value="">Deporte que practicas</option>
                          </select>
                      </div>
                 </form>

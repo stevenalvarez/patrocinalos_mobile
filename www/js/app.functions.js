@@ -436,18 +436,24 @@ function form_completar_perfil(element){
     formulario.validate({
         errorElement:'span',
     	rules: {
+    	   "u_tipo": "required",
+           "u_nombre": "required",
+           "u_apellidos": "required",
     	   "u_genero": "required",
            "u_fecha_nacimiento": "required",
+           "u_ciudad": "required",
            "u_tipo_deportista": "required",
-           "u_url_perfil": "required",
-           "u_otros_deportes": "required",
+           "u_deporte": "required",
     	},
     	messages: {
+    	   "u_tipo": "",
+           "u_nombre": "Por favor, coloque un nombre <i></i>",
+           "u_apellidos": "Por favor, coloque un apellido <i></i>",
     	   "u_genero": "",
-           "u_fecha_nacimiento": "Por favor, coloque su fecha de nacimiento <i></i>",
+           "u_fecha_nacimiento": "Por favor, seleccione una fecha <i></i>",
+           "u_ciudad": "",
            "u_tipo_deportista": "",
-           "u_url_perfil": "Por favor, coloque una url de perfil <i></i>",
-           "u_otros_deportes": "",
+           "u_deporte": "",
     	}
     });
     
@@ -456,12 +462,30 @@ function form_completar_perfil(element){
     {
         var userRegistered = COOKIE_NEW_REGISTER;
         formulario.find("input[name='u_usuario_id']").val(userRegistered.id);
+        formulario.find("input[name='u_pais_id']").val(userRegistered.pais_id);
         
         //llenamos las ciudades, ya sabemos de que pais es el usuario y en que ciudad esta  
         llenarCiudades(formulario, "select_ciudad",userRegistered.pais_id,userRegistered.ciudad_id);
     }else{
         llenarCiudades(formulario, "select_ciudad");
     }
+    
+    //Si alterna entre deportista individual o equipo
+    formulario.find("#select_tipo").change(function(){
+        var tipo = $(this).val();
+        if(tipo == "individual"){
+            formulario.find("input[name='u_nombre']").attr("placeholder","Nombre...");
+            formulario.find("input[name='u_fecha_nacimiento']").attr("placeholder","Fecha de nacimiento...");
+            formulario.find("input[name='u_apellidos']").removeAttr("disabled").parent().show();
+            formulario.find("select[name='u_genero']").removeAttr("disabled").parent().parent().show();
+            
+        }else if(tipo == "equipo"){
+            formulario.find("input[name='u_nombre']").attr("placeholder","Nombre del equipo...");
+            formulario.find("input[name='u_fecha_nacimiento']").attr("placeholder","Fecha de creacion de tu equipo...");
+            formulario.find("input[name='u_apellidos']").attr("disabled","disabled").parent().hide();
+            formulario.find("select[name='u_genero']").attr("disabled","disabled").parent().parent().hide();
+        }
+    })
     
     //Submit form
     formulario.submit(function() {
@@ -470,7 +494,7 @@ function form_completar_perfil(element){
         fixedSelector(element, "select_genero");
         fixedSelector(element, "select_ciudad");
         fixedSelector(element, "select_tipo_deportista");
-        fixedSelector(element, "select_otros_deportes");
+        fixedSelector(element, "select_deporte");
         
         //Si todo el form es valido mandamos
         if (jQuery(this).valid()) {
@@ -1053,6 +1077,8 @@ function llenarCiudades(parent, element, pais_id, provincia_id){
             else
                 parent.find("#"+element).append('<option value="'+item.ciudades.id+'">'+item.ciudades.nombre+'</option>');
         });
+        //actualiza el texto
+        fixedSelector(parent.attr("id"), element);
     });
 }
 

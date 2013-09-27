@@ -83,6 +83,7 @@ $(document).on('pageinit', "#register_finalizado", function(){
 
 //COMPLETAR PERFIL
 $(document).on('pageinit', "#completar_perfil", function(){
+    llenarDeportes();
     form_completar_perfil("form_completar_perfil");
     key_press("form_completar_perfil");
     $(this).find('a.guardar_form').on("click", function(){
