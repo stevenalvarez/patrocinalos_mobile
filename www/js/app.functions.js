@@ -92,56 +92,6 @@ function llenarDeportes(){
 	});
 }
 
-function llenarRecompensasMazzel(parent_id)
-{
-    var element_lista = jQuery("#"+ parent_id).find(".lista");
-    element_lista.find("li").remove();
-    $.getJSON(BASE_URL_APP+'recompensas/mobileGetRecompensas', function(data) {
-        //mostramos loading
-        $.mobile.loading( 'show' );
-        var items = data.items;
-        var size = items.length;
-        console.log(data);
-       	$.each(items, function(index,item) {
-       	    if(size == (index+1)){
-       	        html=' <li class="last">';
-       	    }else{
-       	        html=' <li>';
-       	    }
-            html+='<div class="item">';
-            html+='<div class="content_recompensa">';
-            html+='<img src="'+BASE_URL_APP+'img/recompensas/'+item.Recompensa.imagen+'"/>';
-            html+='<img class="success" src="img/succes.png"/>';
-            html+='</div>';
-            html+='<input type="checkbox" name="ids_recompensa[]" value="'+item.Recompensa.id+'" style="display: none;"/>';
-            html+='<p class="nombre_recompensa">'+item.Recompensa.nombre+'</p>';
-            html+='</div>';
-            html+='</li>';
-                    
-            element_lista.append(html);
-    	});
-        
-        element_lista.promise().done(function() {
-            $(this).find("li:last img:first").load(function(){
-                //ocultamos loading
-                $.mobile.loading( 'hide' );
-                
-                //evento cuando selecciona una recompensa
-                element_lista.find("li").click(function(){
-                    var item_li = $(this).find(".item");
-                    if(item_li.hasClass("selected")){
-                        item_li.removeClass("selected");
-                        item_li.find("input[type='checkbox']").removeAttr("checked");
-                    }else{
-                        item_li.addClass("selected");
-                        item_li.find("input[type='checkbox']").attr("checked","checked");
-                    }
-                })
-            });
-        });
-	});    
-}
-
 //INICIA LAS VALIDACIONES PARA EL FORMULARIO DE REGISTRO
 function form_registro(){
     jQuery("#form_registro").validate({
@@ -631,34 +581,32 @@ function form_solicitar_patrocinio(element){
     formulario.validate({
         errorElement:'span',
     	rules: {
-   		   "patro_cantidad_solicitada": {
+   		   "proyecto_monto": {
     			required: true,
     			number: true
    		   },
-   		   "patro_minimo_indispensable": {
-    			required: true,
-    			number: true
-   		   },
-   		   "patro_quiero_para": {
+   		   "proyecto_title": {
     			required: true
    		   },
-           "patro_fecha_limite" : {
+   		   "proyecto_enlace": {
+    			url: true
+   		   },           
+           "proyecto_fecha_limite" : {
                 required: true
            }
     	},
     	messages: {
-            "patro_cantidad_solicitada": {
-    			required: "Por favor, ingrese una cantidad <i></i>",
+            "proyecto_monto": {
+    			required: "Por favor, ingrese un monto <i></i>",
     			number: "Por favor, ingrese solo numeros <i></i>"
     		},
-            "patro_minimo_indispensable": {
-    			required: "Por favor, ingrese un minimo indispensable <i></i>",
-    			number: "Por favor, ingrese solo numeros <i></i>"
+            "proyecto_title": {
+    			required: "Por favor, ingrese un frase breve <i></i>"
     		},
-            "patro_quiero_para": {
-    			required: ""
-    		},
-            "patro_fecha_limite": {
+            "proyecto_enlace": {
+    			url: "Por favor, escribe una URL v&aacute;lida. <i></i>"
+    		},            
+            "proyecto_fecha_limite": {
     			required: "Por favor, establezca una fecha limite <i></i>"
     		},
     	}

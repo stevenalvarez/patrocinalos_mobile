@@ -430,7 +430,7 @@
                     </div>
                 </li>
                 <li class="page">
-                    <span>SOLICITAR PATROCINIO</span>
+                    <span>SOLICITA UN PATROCINIO</span>
                 </li>
                 <li class="setting">
                     &nbsp;
@@ -440,7 +440,7 @@
     
     	<div data-role="content">     
             
-            <div class="btn-access">
+            <div class="btn-access" style="margin-bottom: 4px;">
             
                 <div class="texto_formulario">
                     <span class="lspacing">Completa el siguiente formulario</span>
@@ -450,49 +450,23 @@
                     <div class="content_formulario">
                         <input type="hidden" name="u_usuario_id" value="" />
                         <input type="hidden" name="save_edit" value="save"/>
-                        <input name="cantidad_patro" placeholder="Cantidad que necesitas (&euro;)..." autocomplete="off" type="text" data-mini="true"/>
-                        <input name="cantidad_min_patro" placeholder="M&iacute;nimo indispensable (&euro;)..." autocomplete="off" type="text" data-mini="true"/>
-                        <textarea cols="40" rows="10" name="titulo_patro" placeholder="&iquest;Para que lo quieres?" data-mini="true"></textarea>
-                        <textarea cols="40" rows="10" name="descripcion_patro" placeholder="Expl&iacute;calo un poco m&aacute;s" data-mini="true"></textarea>
+                        <input name="proyecto_monto" placeholder="Cantidad que necesitas (&euro;)" autocomplete="off" type="text" data-mini="true"/>
+                        <input name="proyecto_title" placeholder="&iquest;Para que lo quieres?" autocomplete="off" type="text" data-mini="true"/>
+                        <textarea cols="40" rows="10" name="proyecto_actividad_patrocinio" placeholder="Expl&iacute;calo un poco m&aacute;s..." data-mini="true"></textarea>
+                        <input name="proyecto_enlace" placeholder="Enlace a tu pagina web..." autocomplete="off" type="text" data-mini="true"/>
                         <div class="fecha_calendario">
-                            <input style="width: 100%;" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="fecha_fin" type="text" placeholder="Fecha L&iacute;mite..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
+                            <input style="width: 100%;" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="proyecto_fecha_limite" type="text" placeholder="Fecha L&iacute;mite..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
                         </div>
-                        <div class="seleccionar_recompensas">
-                            <h2>Elige t&uacute;s recompensas</h2>
-                            <span style="display: inline-block;">(patrocinalos pone a tu disposici&oacute;n recompensas para premiar a aquellos que te patrocinen)</span>
-                            <ul class="lista" style="margin-bottom: 0;">
-                                <li>
-                                    <div class="item">
-                                        <div class="content_recompensa">
-                                            <img src="img/recompensas/recompensa0.png" />
-                                            <img class="success" src="img/succes.png"/>
-                                        </div>
-                                        <input type="checkbox" name="ids_recompensa[]" value="" style="display: none;"/>
-                                        <p class="nombre_recompensa">Reloj nike gps</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item selected">
-                                        <div class="content_recompensa">
-                                            <img src="img/recompensas/recompensa0.png" />
-                                            <img class="success" src="img/succes.png"/>
-                                        </div>
-                                        <input type="checkbox" name="ids_recompensa[]" value="" style="display: none;"/>
-                                        <p class="nombre_recompensa">Reloj nike gps</p>
-                                    </div>
-                                </li>
-                                <li class="last">
-                                    <div class="item">
-                                        <div class="content_recompensa">
-                                            <img src="img/recompensas/recompensa0.png" />
-                                            <img class="success" src="img/succes.png"/>
-                                        </div>
-                                        <input type="checkbox" name="ids_recompensa[]" value="" style="display: none;"/>
-                                        <p class="nombre_recompensa">Reloj nike gps</p>
-                                    </div>
-                                </li>
-                            </ul>
+                        <fieldset data-role="controlgroup" style="margin-left: -4px;">
+                            <input name="usuario[terminos]" id="radio-termino" type="radio"/>
+                            <label data-theme="c" for="radio-termino">Recibir el patrocinio como un "sueldo" mensual.</label>
+                        </fieldset>
+                        <div data-role="fieldcontain" class="content_upload_foto">
+                            <label class="lspacing" style="line-height: 15px;margin-top: 5px;margin-bottom: 16px;"><span class="foto_normal">Sube una imagen para tu patrocinio</span></label>
+                            <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="getImage('pictureImageProyecto')" data-role="button" data-mini="true">Buscar</a>
+                            <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="capturePhoto('pictureImageProyecto')" data-role="button" data-mini="true">Capturar Foto</a>
                         </div>
+                        <img style="margin:-45px 0 0 2px;border: 1px solid #000; height: auto; width: 70px; border-radius: 5px; display: none;" id="pictureImageProyecto" src="" />
                     </div>
                 </form>
             </div>
