@@ -75,8 +75,8 @@ $(document).on('pageinit', "#register_finalizado", function(){
         if(userRegistered.tipo == "empresa"){
             $(this).find('a.btn_completar_perfil').attr("href","#completar_perfil_empresa");
         }else if(userRegistered.tipo == "patrocinador"){
-            $(this).find('a.btn_completar_perfil').find("span.ui-btn-text").text("PATROCINAR A DEPORTISTA");
-            $(this).find('a.btn_completar_perfil').attr("href","#solicitan_buscan_patrocinio");
+            //$(this).find('a.btn_completar_perfil').find("span.ui-btn-text").text("PATROCINAR A DEPORTISTA");
+            $(this).find('a.btn_completar_perfil').attr("href","#completar_perfil_patrocinador");
         }
     }
 })
@@ -92,8 +92,20 @@ $(document).on('pageinit', "#completar_perfil", function(){
     });
 });
 
+//COMPLETAR PERFIL PATROCINADOR
+$(document).on('pageinit', "#completar_perfil_patrocinador", function(){
+    llenarDeportesPatrocinador($(this).attr("id"));
+    form_completar_perfil_patrocinador("form_completar_perfil_patrocinador");
+    key_press("form_completar_perfil_patrocinador");
+    $(this).find('a.guardar_form').on("click", function(){
+        var form_parent = document.getElementById("form_completar_perfil_patrocinador");
+        $(form_parent).submit();
+    });
+});
+
 //COMPLETAR PERFIL EMPRESA
 $(document).on('pageinit', "#completar_perfil_empresa", function(){
+    llenarDeportesPatrocinador($(this).attr("id"));
     form_completar_perfil_empresa("form_completar_perfil_empresa");
     key_press("form_completar_perfil_empresa");
     $(this).find(".close_text").on("click", function(){

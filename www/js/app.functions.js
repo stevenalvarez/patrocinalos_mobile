@@ -92,6 +92,23 @@ function llenarDeportes(){
 	});
 }
 
+//LLENAR DEPORTES PARA EL FORMULARIO DE REGISTRO PARA PATROCINADOR
+function llenarDeportesPatrocinador(parent_id){
+	$.getJSON(BASE_URL_APP + 'usuarios/mobileGetDeportes', function(data) {
+		var deportes = data.items;
+        var html = "";
+        $.each(deportes, function(index, item) {
+            html+="<li>"
+            html+="<label>";
+            html+="<input name='deportes["+item.deportes.id+"]' value='"+item.deportes.id+"' type='checkbox'/>"+item.deportes.nombre;
+            html+="</label>";
+            html+="</li>"
+        });
+        
+        jQuery("#"+parent_id).find("#deportes_que_sigues").append(html);
+	});
+}
+
 //INICIA LAS VALIDACIONES PARA EL FORMULARIO DE REGISTRO
 function form_registro(){
     jQuery("#form_registro").validate({
@@ -130,13 +147,16 @@ function form_registro(){
     
     //Cambiamos de texto para la foto dependiendo si es empresa, deportista o patrocinador
     jQuery("#form_registro").find("#select_tipo_u").change(function(){
-        var content_upload_foto = jQuery("#form_registro").find(".content_upload_foto"); 
+        var form_registro = jQuery("#form_registro");
+        var content_upload_foto = form_registro.find(".content_upload_foto"); 
         if($(this).val() == "empresa"){
+            form_registro.find("input[name='u_urlamigable']").attr("placeholder","Nombre de la empresa...");
             content_upload_foto.find("span.foto_normal").hide();
             content_upload_foto.find("span.foto_empresa").show();
         }else{
-            content_upload_foto.find("span.foto_empresa").hide();
+            form_registro.find("input[name='u_urlamigable']").attr("placeholder","Nombre de usuario...");
             content_upload_foto.find("span.foto_normal").show();
+            content_upload_foto.find("span.foto_empresa").hide();
         }
     });
     
@@ -481,19 +501,97 @@ function form_completar_perfil(element){
     });
 }
 
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO COMPLETAR PERFIL DEPORTISTA(INDIVIDUAL O EQUIPO)
+function form_completar_perfil_patrocinador(element){
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+           "u_nombre": "required",
+           "u_apellidos": "required",
+    	   "u_genero": "required",
+           "u_fecha_nacimiento": "required",
+           "u_ciudad": "required",
+    	},
+    	messages: {
+           "u_nombre": "Por favor, coloque un nombre <i></i>",
+           "u_apellidos": "Por favor, coloque un apellido <i></i>",
+    	   "u_genero": "",
+           "u_fecha_nacimiento": "Por favor, seleccione una fecha <i></i>",
+           "u_ciudad": "",
+    	}
+    });
+    
+    //Si hubo un registro entonces actualizamos los datos con los valores del registro
+    if(isUserRegistered())
+    {
+        var userRegistered = COOKIE_NEW_REGISTER;
+        formulario.find("input[name='u_usuario_id']").val(userRegistered.id);
+        formulario.find("input[name='u_pais_id']").val(userRegistered.pais_id);
+        
+        //llenamos las ciudades, ya sabemos de que pais es el usuario y en que ciudad esta  
+        llenarCiudades(formulario, "select_ciudad2",userRegistered.pais_id,userRegistered.ciudad_id);
+    }else{
+        llenarCiudades(formulario, "select_ciudad2");
+    }
+    
+    //Submit form
+    formulario.submit(function() {
+        
+        fixedSelector(element, "select_genero2");
+        fixedSelector(element, "select_ciudad2");
+        
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            var usuario_id = formulario.find("input[name='u_usuario_id']").val();
+            
+            if(usuario_id != '' && parseInt(usuario_id) > 0)
+            {
+                $.ajax({
+                    data: formulario.serialize(),
+                    type: "POST",
+                    url: BASE_URL_APP + 'usuarios/mobileCompletarPerfil',
+                    dataType: "html",
+                    success: function(data){
+                        $.mobile.loading( 'hide' );
+                        
+                        data = $.parseJSON(data);
+                        if(data.success){
+                            showAlert(data.mensaje, "Aviso", "Aceptar");
+                            
+                            //una vez que guarda sus datos le redireccionamos al login
+                            $.mobile.changePage('login_user.html', {transition: "fade"});
+                        }else{
+                            showAlert(data.mensaje, "Error", "Aceptar");
+                        }
+                    },
+                    beforeSend : function(){
+                        //mostramos loading
+                        showLoadingCustom('Guardando datos...');
+                    }
+                });
+            
+            }else{
+                showAlert("Error no puede actualizar datos!, antes debe registrarse.","Error", "Aceptar");
+            }
+        }
+      return false;
+    });
+}
+
 //INICIA LAS VALIDACIONES PARA EL FORMULARIO COMPLETAR PERFIL EMPRESA
 function form_completar_perfil_empresa(element){
     var formulario = jQuery("#"+element); 
     formulario.validate({
         errorElement:'span',
     	rules: {
-           "e_provincia": "required",
+           "u_ciudad": "required",
            "e_direccion": "required",
            "e_cod_postal": "required",
-           "e_nombre": "required",
-           "e_nombre_empresa_juridico": "required",
-           "e_deportes_asociar": "required",
+           "u_nombre": "required",
+           "e_persona_contacto": "required",
    		   "e_telefono": {
+   		        required: true,
     			number: true
    		   },
    		   "e_cif": {
@@ -502,13 +600,13 @@ function form_completar_perfil_empresa(element){
    		   },
     	},
     	messages: {
-           "e_provincia": "",
+           "u_ciudad": "",
            "e_direccion": "Por favor, coloque su direccion <i></i>",
            "e_cod_postal": "Por favor, coloque su codigo postal <i></i>",
-           "e_nombre": "Por favor, coloque el nombre de la empresa <i></i>",
-           "e_nombre_empresa_juridico": "Por favor, coloque el nombre juridicio <i></i>",
-           "e_deportes_asociar": "",
+           "u_nombre": "Por favor, coloque el nombre de la empresa <i></i>",
+           "e_persona_contacto": "Por favor, coloque un nombre <i></i>",
            "e_telefono": {
+                required: "Por favor, coloque un telefonico <i></i>",
                 number: "Por favor, ingrese solo numeros telefonicos <i></i>"
            },
            "e_cif": {
@@ -523,11 +621,12 @@ function form_completar_perfil_empresa(element){
     {
         var userRegistered = COOKIE_NEW_REGISTER;
         formulario.find("input[name='u_usuario_id']").val(userRegistered.id);
+        formulario.find("input[name='u_pais_id']").val(userRegistered.pais_id);
         
         //llenamos las ciudades, ya sabemos de que pais es el usuario y en que ciudad esta  
-        llenarCiudades(formulario, "select_ciudad",userRegistered.pais_id,userRegistered.ciudad_id);        
+        llenarCiudades(formulario, "select_ciudad3",userRegistered.pais_id,userRegistered.ciudad_id);        
     }else{
-        llenarCiudades(formulario, "select_eprovincia");
+        llenarCiudades(formulario, "select_ciudad3");
     }
     
     //Submit form
@@ -536,8 +635,7 @@ function form_completar_perfil_empresa(element){
         //Expandimos todos los collasibles, para que vea que debe llenar datos en donde se pide
         formulario.find(".ui-collapsible-inset").trigger('expand');
         
-        fixedSelector(element, "select_eprovincia");
-        fixedSelector(element, "select_deportes_asociar");
+        fixedSelector(element, "select_ciudad3");
         
         //Si todo el form es valido mandamos
         if (jQuery(this).valid()) {
@@ -548,7 +646,7 @@ function form_completar_perfil_empresa(element){
                 $.ajax({
                     data: formulario.serialize(),
                     type: "POST",
-                    url: BASE_URL_APP + 'usuarios/mobileCompletarPerfilEmpresa',
+                    url: BASE_URL_APP + 'usuarios/mobileCompletarPerfil',
                     dataType: "html",
                     success: function(data){
                         $.mobile.loading( 'hide' );
