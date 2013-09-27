@@ -418,7 +418,7 @@
     
     </div><!-- /page -->
     
-    <!-- SOLICITAR PATROCINIO -->
+    <!-- SOLICITA UN PATROCINIO -->
     
     <div data-role="page" id="solicitar_patrocinio" data-theme="c">
     
@@ -449,7 +449,6 @@
                 <form id="form_solicitar_patrocinio">
                     <div class="content_formulario">
                         <input type="hidden" name="u_usuario_id" value="" />
-                        <input type="hidden" name="save_edit" value="save"/>
                         <input name="proyecto_monto" placeholder="Cantidad que necesitas (&euro;)" autocomplete="off" type="text" data-mini="true"/>
                         <input name="proyecto_title" placeholder="&iquest;Para que lo quieres?" autocomplete="off" type="text" data-mini="true"/>
                         <textarea cols="40" rows="10" name="proyecto_actividad_patrocinio" placeholder="Expl&iacute;calo un poco m&aacute;s..." data-mini="true"></textarea>
@@ -458,11 +457,11 @@
                             <input style="width: 100%;" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="proyecto_fecha_limite" type="text" placeholder="Fecha L&iacute;mite..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
                         </div>
                         <fieldset data-role="controlgroup" style="margin-left: -4px;">
-                            <input name="usuario[terminos]" id="radio-termino" type="radio"/>
-                            <label data-theme="c" for="radio-termino">Recibir el patrocinio como un "sueldo" mensual.</label>
+                            <input name="proyecto_sueldo" id="proyecto_sueldo" type="radio"/>
+                            <label data-theme="c" for="proyecto_sueldo">Recibir el patrocinio como un "sueldo" mensual.</label>
                         </fieldset>
                         <div data-role="fieldcontain" class="content_upload_foto">
-                            <label class="lspacing" style="line-height: 15px;margin-top: 5px;margin-bottom: 16px;"><span class="foto_normal">Sube una imagen para tu patrocinio</span></label>
+                            <label class="lspacing" style="line-height: 15px;margin-top: 5px;margin-bottom: 18px;"><span class="foto_normal">Sube una imagen para tu patrocinio</span></label>
                             <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="getImage('pictureImageProyecto')" data-role="button" data-mini="true">Buscar</a>
                             <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="capturePhoto('pictureImageProyecto')" data-role="button" data-mini="true">Capturar Foto</a>
                         </div>
@@ -572,13 +571,13 @@
                 </div>
                 
                 <div class="access_login content_formulario">
-                     <label class="save_data">Tu patrocinio ha sido creado satisfactoriamente!!!. Para poder editarlo inicia sesion y ve a tu panel, ahi podr&aacute;s encontrar esta opcion y m&aacute;s.</label>     
+                     <label class="save_data">T&uacute; patrocinio fu&eacute; creado con exito. En menos de 24h si el contenido es correcto ser&aacute; activado. Si hay cualquier problema te enviaremos un email. Para poder editarlo inicia sesion y ve a tu panel, ahi podr&aacute;s encontrar esta opcion y m&aacute;s.</label>     
                  </div>
             </div>
     	</div><!-- /content -->
         
         <div class="btn-options">
-            <a class="ui-btn-submit orange" href="login_user.html" data-role="button" data-transition="slide">INICIAR SESI&Oacute;N</a>
+            <a class="ui-btn-submit orange" href="login_user.html" data-role="button" data-transition="fade">INICIAR SESI&Oacute;N</a>
         </div>
     
     </div><!-- /page -->

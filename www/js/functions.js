@@ -222,7 +222,7 @@ function uploadImagenAsynchronous(params) {
     options.chunkedMode = false;
     
     var ft = new FileTransfer();
-    ft.upload(IMAGEURI, BASE_URL_APP + "fotos/mobileUploadImagen", 
+    ft.upload(IMAGEURI, BASE_URL_APP + "usuarios/mobileUploadImagen", 
     function(r){
         IMAGEURI = ''; //establecemos en vacio la variable por si quiere volver a subir la misma imagen
         //consolelog(r.response); //respuesta del servidor
@@ -247,7 +247,7 @@ function uploadImagenSynchronous(params) {
     options.chunkedMode = false;
     
     var ft = new FileTransfer();
-    ft.upload(IMAGEURI, BASE_URL_APP + "fotos/mobileUploadImagen", 
+    ft.upload(IMAGEURI, BASE_URL_APP + "usuarios/mobileUploadImagen", 
     function(r){
         IMAGEURI = ''; //establecemos en vacio la variable por si quiere volver a subir la misma imagen
         //consolelog(r.response); //respuesta del servidor

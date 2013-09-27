@@ -52,7 +52,7 @@ function uploadPhoto(params) {
     options.chunkedMode = false;
     
     var ft = new FileTransfer();
-    ft.upload(IMAGEURI, BASE_URL_APP + "fotos/mobileUploadImagen", function(r){
+    ft.upload(IMAGEURI, BASE_URL_APP + "usuarios/mobileUploadImagen", function(r){
         // Callback success upload photo
         //
         //console.log("Code = " + r.responseCode);
@@ -632,17 +632,33 @@ function form_solicitar_patrocinio(element){
                 $.ajax({
                     data: formulario.serialize(),
                     type: "POST",
-                    url: BASE_URL_APP+'crowfundings/mobileSavePatrocinio/'+userRegistered.id,
+                    url: BASE_URL_APP+'proyectos/mobileSolictarPatrocinio/'+userRegistered.id,
                     dataType: "html",
                     success: function(data){
                         $.mobile.loading( 'hide' );
                         
                         data = $.parseJSON(data);
-                        if(data.respuesta){
+                        if(data.success){
+                            //controlamos que el valor de la imagen a subir no este vacia, 
+                            //eso significa que se selecciono un imagen o se capturo una imagen
+                            if(IMAGEURI != ''){
+                                
+                                //creamos un objecto con los parametros que queremos que llegue al servidor
+                                //para luego ahi hacer otra operaciones con esos parametros.
+                                var params = new Object();
+                                params.folder = "Proyecto"; // la carpeta donde se va a guardar la imagen
+                                params.usuario_id = userRegistered.id; // id del usuario para el cual es la nueva imagen.
+                                params.proyecto_id = data.proyecto_id; // id del proyecto para el cual es la imagen.
+                                
+                                //Utilizamos la funcion de subir la imagen de forma asincrona, ya que solo
+                                //va subir la imagen y nada mas, ahi termina el proceso.
+                                uploadImagenAsynchronous(params);
+                            }
+                            
                             //mandamos a la pagina de patrocinio finalizado
                             $.mobile.changePage('#patrocinio_registrado', {transition: "slide"});
                         }else{
-                            showAlert(data.message, "Error", "Aceptar");
+                            showAlert(data.mensaje, "Error", "Aceptar");
                         }
                     },
                     beforeSend : function(){
