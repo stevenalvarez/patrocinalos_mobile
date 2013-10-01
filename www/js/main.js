@@ -163,7 +163,7 @@ $(document).on('pageinit', "#login_user", function(){
 $('#info_general').live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
         getEntradasByCarrousel();
-        getActividades();
+        //getActividades();
     }else{
         redirectLogin();
     }
@@ -922,28 +922,24 @@ function saveRecompensasPatrocinio(form,seguir){
 
 function getEntradasByCarrousel(){
     var parent = jQuery("#info_general");
-    $.getJSON(BASE_URL_APP+'entradas/mobileGetEntradas', function(data) {
+    $.getJSON(BASE_URL_APP+'rondas/mobileHome', function(data) {
         if(data){
             parent.find(".m-item.clone").remove();
             //mostramos loading
             $.mobile.loading('show');
             
-            var entradas = data.items;
+            var entradas = data.entradas;
            	$.each(entradas, function(index, item) {
+           	    
                 var clone = parent.find(".m-item:first").clone(true);
-                
-                if(item.Usuario){
-                    clone.find(".usuario_title").html(item.Usuario.title);
-                    clone.find(".descripcion").html(item.Entrada.title);
-                    clone.find(".buttom_ir_perfil").find("a").attr("href", "perfil_deportivo.html?usuario_id="+item.Entrada.usuario_id).show();
-                    clone.find(".like_cash").css("display", "block");
-                }else{
-                    clone.find(".usuario_title").html(item.Entrada.title);
-                    clone.find(".descripcion").html(item.Entrada.texto);
-                }
-                clone.find(".entrada_imagen").attr("src", BASE_URL_APP+'img/home/'+item.Entrada.imagen);
-                clone.css("display", "inline-block");
+                clone.find(".usuario_title").html(item.Entrada.title);
+                clone.find(".descripcion").html(item.Entrada.texto);
+                clone.find(".buttom_ir_perfil").find("a").attr("href", "perfil_deportivo.html?usuario_id="+item.Entrada.usuario_id);
+                clone.find(".like_cash").find(".like").text(item.seguidores);
+                clone.find(".like_cash").css("display", "block");
+                clone.find(".entrada_imagen").attr("src", BASE_URL_APP+'img/home/crop.php?w=150&i='+item.Entrada.imagen);
                 clone.addClass("clone");
+                clone.css("display", "inline-block");
                 
            	    parent.find(".m-carousel-inner").append(clone);
                 if(index == 0){
