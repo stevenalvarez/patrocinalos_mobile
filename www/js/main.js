@@ -181,11 +181,11 @@ $('#home').live('pagebeforeshow', function(event, ui) {
 });
 
 //PERFIL DEPORTIVO
-$('#perfil_deportivo').live('pagebeforeshow', function(event, ui) {
+$('#proyecto_deportivo').live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
         var user = COOKIE;
         var me = user.id;
-        loadPerfilDeportista(me, getUrlVars()["usuario_id"]);
+        loadPerfilDeportista($(this).attr('id'), me, getUrlVars()["usuario_id"]);
         loadEventPerfilDeportista(this, me, getUrlVars()["usuario_id"]);
     }else{
         redirectLogin();
@@ -1053,7 +1053,7 @@ function getEntradasByCarrousel(parent_id, hash){
                                     '</div>'+
                                 '</div>'+
                                 '<div class="buttom_ir_perfil">'+
-                                    '<a class="ui-btn-submit celeste ui-btn ui-btn-corner-all" href="perfil_deportivo.html?usuario_id='+item.Entrada.usuario_id+'">'+
+                                    '<a class="ui-btn-submit celeste ui-btn ui-btn-corner-all" href="proyecto_deportivo.html?usuario_id='+item.Entrada.usuario_id+'">'+
                                         '<span class="ui-btn-inner">'+
                                         '<span class="ui-btn-text">VISITA SU PROYECTO</span>'+
                                         '</span>'+
@@ -1084,9 +1084,9 @@ function getEntradasByCarrousel(parent_id, hash){
 }
 
 //OBTENEMOS LOS DATOS DEL PERFIL DE UN DEPORTISTA EN ESPECIFICO
-function loadPerfilDeportista(me, usuario_id){
+function loadPerfilDeportista(parent_id, me, usuario_id){
     
-    var parent = jQuery("#perfil_deportivo");
+    var parent = $("#"+parent_id);
     $.getJSON(BASE_URL_APP + 'usuarios/mobileGetPerfilDeportista?me=' + me + '&usuario_id='+usuario_id, function(data){
         if(data.item){
             

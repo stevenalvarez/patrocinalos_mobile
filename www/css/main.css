@@ -1878,7 +1878,7 @@ label.custom{
 
 /* LISTA POSIBLES GANADORES */
 #lista_posibles_ganadores .title h2,
-#perfil_deportivo .title h2,
+#proyecto_deportivo .title h2,
 #ultimas_entradas_usuario_x h2{
     font-size: 13px;
     font-weight: bold;
@@ -2036,16 +2036,16 @@ label.custom{
     font-size: 12px;
 }
 #edicion_datos_personales #change_foto,
-#perfil_deportivo #hacerme_amigo{
+#proyecto_deportivo #hacerme_amigo{
     clear: both;
     margin-bottom: 0;
 }
 #edicion_datos_personales #change_foto .ui-btn-inner,
-#perfil_deportivo #hacerme_amigo .ui-btn-inner{
+#proyecto_deportivo #hacerme_amigo .ui-btn-inner{
     padding: 0.15em 9px .2em;
 }
 #edicion_datos_personales #change_foto .ui-btn-text,
-#perfil_deportivo #hacerme_amigo .ui-btn-text{
+#proyecto_deportivo #hacerme_amigo .ui-btn-text{
     font-size: 14px;
     text-shadow: 0 0px 0 #FFFFFF;
     font-weight: normal;
@@ -2073,29 +2073,29 @@ label.custom{
 
 /* EDICION DATOS DEPORTIVOS */
 
-#perfil_deportivo .ui-listview li .info a{
+#proyecto_deportivo .ui-listview li .info a{
     background-image: url("../img/bg_like_sprite.png");
     background-repeat: no-repeat;
     background-color: transparent;
     background-size: 25px auto;
 }
-#perfil_deportivo .ui-listview li.pair .info a{
+#proyecto_deportivo .ui-listview li.pair .info a{
     background-position: 50% 0%;
 }
-#perfil_deportivo .ui-listview li.odd .info a{
+#proyecto_deportivo .ui-listview li.odd .info a{
     background-position: 50% 100%;
 }
-#perfil_deportivo .ui-listview li .ui-li-heading span.nombre_usuario{
+#proyecto_deportivo .ui-listview li .ui-li-heading span.nombre_usuario{
     font-size: 15px;
     color: #00A2E1;
 }
-#perfil_deportivo .ui-listview li .ui-li-heading span.fecha_publicacion{
+#proyecto_deportivo .ui-listview li .ui-li-heading span.fecha_publicacion{
     font-size: 12px;
 }
-#perfil_deportivo .ui-listview li.pair .ui-li-heading span.fecha_publicacion{
+#proyecto_deportivo .ui-listview li.pair .ui-li-heading span.fecha_publicacion{
     color: #8d2828;
 }
-#perfil_deportivo .ui-listview li p{
+#proyecto_deportivo .ui-listview li p{
     white-space: normal;
     font-size: 12px;
     line-height: 12px;
@@ -2105,17 +2105,17 @@ label.custom{
     margin-right: 20px;
     margin-bottom: 5px;
 }
-#perfil_deportivo .title h2{
+#proyecto_deportivo .title h2{
     font-size: 15px;
     margin-left: 5px;
     margin-top: 5px;
 }
-#perfil_deportivo .data_user{
+#proyecto_deportivo .data_user{
     padding: 0;
     border: none;
     background: transparent;
 }
-#perfil_deportivo .data_user .recorte{
+#proyecto_deportivo .data_user .recorte{
     height: 115px;
     width: 115px;
     margin-right: 0px;
@@ -2126,11 +2126,11 @@ label.custom{
     background-color: #000;
     text-align: center;
 }
-#perfil_deportivo .data_user .recorte img{
+#proyecto_deportivo .data_user .recorte img{
     width: auto;
     height: 115px;    
 }
-#perfil_deportivo .data_user .foto_perfil{
+#proyecto_deportivo .data_user .foto_perfil{
     background-color: #fff;
     padding-right: 2px;
     min-height: 140px;
@@ -2138,56 +2138,56 @@ label.custom{
     margin-left: 2px;
     margin-top: 4px;
 }
-#perfil_deportivo .data_user .description{
+#proyecto_deportivo .data_user .description{
     min-height: 135px;
     width: 61%;
     padding: 4px 0 0 4px;
 }
-#perfil_deportivo .data_user .description .content{
+#proyecto_deportivo .data_user .description .content{
     width: 100%;
 }
-#perfil_deportivo .data_user .description .content span{
+#proyecto_deportivo .data_user .description .content span{
     color: #9ea9aa;
 }
-#perfil_deportivo .data_user .content b{
+#proyecto_deportivo .data_user .content b{
     color: #cc5050;
     font-size: 15px;
 }
-#perfil_deportivo .data_user .content label{
+#proyecto_deportivo .data_user .content label{
     font-size: 13px;
     margin-top: 0;
 }
-#perfil_deportivo .data_user .content label.nombre_user{
+#proyecto_deportivo .data_user .content label.nombre_user{
     font-size: 16px;
     display: block;
 }
-#perfil_deportivo .data_user .content span{
+#proyecto_deportivo .data_user .content span{
     font-size: 12px;
     letter-spacing: -1px;
 }
-#perfil_deportivo .data_user .content .patrociname span,
-#perfil_deportivo .data_user .content .necesito_para span{
+#proyecto_deportivo .data_user .content .patrociname span,
+#proyecto_deportivo .data_user .content .necesito_para span{
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     display: block;
 }
-#perfil_deportivo .data_user .content label.inline{
+#proyecto_deportivo .data_user .content label.inline{
     display: inline-block;
 }
-#perfil_deportivo .content_middle .top{
+#proyecto_deportivo .content_middle .top{
     overflow: hidden;
     font-size: 14px;
     letter-spacing: -1px;
     margin: 8px 3px 2px 3px;
 }
-#perfil_deportivo .content_middle .top b{
+#proyecto_deportivo .content_middle .top b{
     color: #A22020;
 }
-#perfil_deportivo .content_progress{
+#proyecto_deportivo .content_progress{
     margin-top: 14px;
 }
-#perfil_deportivo .progress{
+#proyecto_deportivo .progress{
     background-color: #81b4ca;
     border-top: 1px solid #d1cfcf;
     border-bottom: 1px solid #d1cfcf;
@@ -2195,7 +2195,7 @@ label.custom{
     font-size: 14px;
     border-radius: 2px;
 }
-#perfil_deportivo .progress .porcentaje{
+#proyecto_deportivo .progress .porcentaje{
     background-color: #CC5050;
     text-shadow: 0 0 0;
     padding: 5px 0;
@@ -2204,33 +2204,33 @@ label.custom{
     height: 2px;
     border-radius: 2px 0px 0px 2px;
 }
-#perfil_deportivo .numero_porcentaje{
+#proyecto_deportivo .numero_porcentaje{
     text-align: center;
     font-size: 16px;
     color: #2f475f !important;
 }
-#perfil_deportivo .numero_porcentaje span.numero{
+#proyecto_deportivo .numero_porcentaje span.numero{
     font-size: 18px;
     display: inline-block;
     color: #2f475f !important;
 }
-#perfil_deportivo .link_red_social{
+#proyecto_deportivo .link_red_social{
     padding-top: 5px;
     margin-left: 2px;
     clear: both;
 }
-#perfil_deportivo .link_red_social a{
+#proyecto_deportivo .link_red_social a{
     text-indent: -9999px;
     display: inline-block;
 }
-#perfil_deportivo .link_red_social a.facebook{ 
+#proyecto_deportivo .link_red_social a.facebook{ 
     background: url("../img/bg_link_facebook.png") no-repeat scroll center left transparent;
     background-position: 0 0;
     background-size: 33px;
     height: 33px;
     width: 33px;
 }
-#perfil_deportivo .link_red_social a.twitter{
+#proyecto_deportivo .link_red_social a.twitter{
     margin-left: 2px;
     background: url("../img/bg_link_twitter.png") no-repeat scroll center left transparent;
     background-position: 0 0;
@@ -2238,19 +2238,19 @@ label.custom{
     height: 34px;
     width: 34px;
 }
-#perfil_deportivo .btn-options{
+#proyecto_deportivo .btn-options{
     margin: 0 5px;
 }
-#perfil_deportivo .dias_finalizar{
+#proyecto_deportivo .dias_finalizar{
     font-size: 13px;
     letter-spacing: -1px;
     margin-top: 2px;
 }
-#perfil_deportivo .info_deportista{
+#proyecto_deportivo .info_deportista{
     margin: 5px 0 5px 5px;
     overflow: hidden;
 }
-#perfil_deportivo .info_deportista li{
+#proyecto_deportivo .info_deportista li{
     float: left;
     margin-right: 4px;
     background-color: #94c9ea;
@@ -2263,11 +2263,11 @@ label.custom{
     color: #fff;    
     text-shadow: 0 0 0 !important;
 }
-#perfil_deportivo .info_deportista li label{
+#proyecto_deportivo .info_deportista li label{
     color: #fff;
     font-size: 15px;
 } 
-#perfil_deportivo .info_deportista li p{
+#proyecto_deportivo .info_deportista li p{
     color: #9b3d3f;
     text-shadow: 0 0 0 !important;
     font-size: 14px;
@@ -2275,21 +2275,21 @@ label.custom{
     margin-top: 5px;
     overflow: hidden;
 }
-#perfil_deportivo .info_deportista li.black{
+#proyecto_deportivo .info_deportista li.black{
     background-color: #191919;
     width: 25%;
     text-align: left;
 }
-#perfil_deportivo .info_deportista li.last{
+#proyecto_deportivo .info_deportista li.last{
     margin-right: 0;
 }
-#perfil_deportivo .info_deportista li b{
+#proyecto_deportivo .info_deportista li b{
     font-size: 32px;
     text-shadow: 0 0 0 !important;
     color: #000;
     display: block;
 }
-#perfil_deportivo .info_deportista li.clasificacion span.text{
+#proyecto_deportivo .info_deportista li.clasificacion span.text{
     margin-left: -3px;
 }
 /* LISTA COMETARIOS */
@@ -3041,7 +3041,7 @@ label.custom{
 /* INFO GENERAL */
 #home, 
 #info_ronda,
-#perfil_deportivo,
+#proyecto_deportivo,
 #detail_ronda,
 #home_detail_blog,
 #home_destacados,
@@ -3666,7 +3666,7 @@ and (orientation:landscape)
     #completar_perfil_exitosamente .save_data,
     #lista_posibles_ganadores .ui-listview li .content_descripcion label,
     .list_comments li p.ui-li-desc,
-    #perfil_deportivo .info_deportista li.clasificacion span.text,
+    #proyecto_deportivo .info_deportista li.clasificacion span.text,
     #mis_albunes .content_list_first .content_album .total_fotos
     {
         letter-spacing: 0px;
@@ -3863,21 +3863,21 @@ and (orientation:landscape)
     
     /* EDICION DATOS DEPORTUVOS */
     
-    #perfil_deportivo .data_user .foto_perfil{
+    #proyecto_deportivo .data_user .foto_perfil{
         width: 24%;
     }
-    #perfil_deportivo .data_user .description{
+    #proyecto_deportivo .data_user .description{
         width: 74%;
     }
-    #perfil_deportivo .data_user .content .necesito_para span {
+    #proyecto_deportivo .data_user .content .necesito_para span {
         white-space: normal;
         display: inline;
     }
-    #perfil_deportivo .info_deportista li {
+    #proyecto_deportivo .info_deportista li {
         margin-right: 6px;
         width: 20%;
     }
-    #perfil_deportivo .info_deportista li.clasificacion span.text{
+    #proyecto_deportivo .info_deportista li.clasificacion span.text{
         margin-left: 0;
     }
     
