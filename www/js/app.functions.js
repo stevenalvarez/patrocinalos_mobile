@@ -385,7 +385,7 @@ function popup_form_cambiar_password(element){
                     if(data.success){
                         clear_form(element);
                         showAlert(data.mensaje, "Aviso", "Aceptar");
-                        $.mobile.changePage('login_user.html', {transition: "fade"});
+                        $.mobile.changePage('login.html', {transition: "fade"});
                     }else{
                         showAlert(data.mensaje, "Error", "Aceptar");
                     }
@@ -560,7 +560,7 @@ function form_completar_perfil_patrocinador(element){
                             showAlert(data.mensaje, "Aviso", "Aceptar");
                             
                             //una vez que guarda sus datos le redireccionamos al login
-                            $.mobile.changePage('login_user.html', {transition: "fade"});
+                            $.mobile.changePage('login.html', {transition: "fade"});
                         }else{
                             showAlert(data.mensaje, "Error", "Aceptar");
                         }
@@ -827,20 +827,20 @@ function form_login(){
                             //una vez logeado guardamos en cookies su datos importantes y lo llevamos a otra vista
                             createCookie("user", JSON.stringify(usuario), days);
                             
-                            var goToPage =  "info_general.html";
+                            var goToPage =  "home.html";
                             if(REDIREC_TO != ''){
                                 goToPage = REDIREC_TO;
                             }
                             $.mobile.changePage(goToPage, {transition: "fade"});
                         }else{
                             //mostramos el mensaje de que debe colocar el codigo de activacion para quedar activo en el sistema
-                            $("#login_user").find(".msg_error").find("label").html("Usted no activo su cuenta, por favor coloque el c&oacute;digo de validaci&oacute;n");
-                            $("#login_user").find(".msg_error").fadeIn("slow");
-                            $("#login_user").find(".campo_codigo_validacion").show();
+                            $("#login").find(".msg_error").find("label").html("Usted no activo su cuenta, por favor coloque el c&oacute;digo de validaci&oacute;n");
+                            $("#login").find(".msg_error").fadeIn("slow");
+                            $("#login").find(".campo_codigo_validacion").show();
                         }
                     }else{
                         //mostramos el mensaje de login fallido
-                        $("#login_user").find(".msg_error").fadeIn("slow");
+                        $("#login").find(".msg_error").fadeIn("slow");
                     }
                 },
                 beforeSend : function(){
@@ -1084,7 +1084,7 @@ function isUserRegistered(){
 }
 
 function redirectLogin(){
-    $.mobile.changePage('login_user.html', {transition: "fade", changeHash: false});
+    $.mobile.changePage('login.html', {transition: "fade", changeHash: false});
 }
 
 //Abrimos el enlace en un navegador del sistema (IOS|ANDROID)

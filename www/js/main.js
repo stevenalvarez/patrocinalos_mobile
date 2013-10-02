@@ -4,21 +4,32 @@
 $(document).bind('pageinit', function(){
 });
 
-$(document).bind('pageshow', function() { 
-    $("#" + $.mobile.activePage.attr('id')).find( "#panel_menu" ).panel({
-        beforeopen: function( event, ui ) {}
-    });
-    $("#" + $.mobile.activePage.attr('id')).find( "#panel_menu" ).panel({
-        close: function( event, ui ) {}
-    });
-	$("#" + $.mobile.activePage.attr('id')).find("#panel_menu").on("panelbeforeopen", function (event, ui) {
-	    $(this).find(".close_menu").css("top", "-20px");
-        $(".footer_menu").find("a.icon_menu").hide();
-    });
-	$("#" + $.mobile.activePage.attr('id')).find("#panel_menu").on("panelclose", function (event, ui) {
-	    $(this).find(".close_menu").css("top", "0px");
-        $(".footer_menu").find("a.icon_menu").show();
-    });
+$(document).bind('pageshow', function() {
+    var page_id = $("#" + $.mobile.activePage.attr('id'));
+    //cargamos el panel de opciones en donde se encuentre #contenedor_panel
+    //solo cargamos en el caso que no este cargado aun el panel, en otro caso no.
+    if(page_id.find("#contenedor_panel").html() == ""){
+        page_id.find("#contenedor_panel").load("panel.html", function(){
+            page_id.find("#contenedor_panel").find("#panel_menu").panel();
+            page_id.find("#contenedor_panel").find("#panel_menu").find("#content_options").trigger("create");
+            setTimeout(function(){
+                page_id.find( "#panel_menu" ).panel({
+                    beforeopen: function( event, ui ) {}
+                });
+                page_id.find( "#panel_menu" ).panel({
+                    close: function( event, ui ) {}
+                });
+            	page_id.find("#panel_menu").on("panelbeforeopen", function (event, ui) {
+            	    $(this).find(".close_menu").css("top", "-20px");
+                    page_id.find(".footer_menu").find("a.icon_menu").hide();
+                });
+            	page_id.find("#panel_menu").on("panelclose", function (event, ui) {
+            	    $(this).find(".close_menu").css("top", "0px");
+                    page_id.find(".footer_menu").find("a.icon_menu").show();
+                });
+            },0);
+        });
+    }
 });
 
 /************************************ EVENTOS *******************************************************/
@@ -147,7 +158,7 @@ $(document).on('pageinit', "#solicitan_buscan_patrocinio", function(){
 });
 
 //LOGIN
-$(document).on('pageinit', "#login_user", function(){
+$(document).on('pageinit', "#login", function(){
     form_login();
     key_press("form_login");
     $(".close_msg_error").on("click", function(){
@@ -160,10 +171,10 @@ $(document).on('pageinit', "#login_user", function(){
 });
 
 //INFO GENERAL
-$('#info_general').live('pagebeforeshow', function(event, ui) {
+$('#home').live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
-        getEntradasByCarrousel();
-        //getActividades();
+        var hash = window.location.hash;
+        getEntradasByCarrousel($(this).attr('id'), hash);
     }else{
         redirectLogin();
     }
@@ -920,81 +931,155 @@ function saveRecompensasPatrocinio(form,seguir){
     }
 }
 
-function getEntradasByCarrousel(){
-    var parent = jQuery("#info_general");
+function getEntradasByCarrousel(parent_id, hash){
+    var parent = $("#"+parent_id);
+    parent.find("#tabs_opciones a").bind("touchstart click",function(){
+        $(this).parent().find("a").removeClass("active");
+        $(this).addClass("active");
+        if($(this).attr("id") == "tab_actividad_rondas"){
+            parent.find('#lista_actividades').hide();
+            parent.find('#lista_actividades_ronda').show();            
+        }else{
+            parent.find('#lista_actividades_ronda').hide();
+            parent.find('#lista_actividades').show();            
+        }
+    });
+    
+    //obtenemos los proyectos, actividad en patrocinalos y actividad en ronda
     $.getJSON(BASE_URL_APP+'rondas/mobileHome', function(data) {
         if(data){
-            parent.find(".m-item.clone").remove();
+            
             //mostramos loading
             $.mobile.loading('show');
             
-            var entradas = data.entradas;
-           	$.each(entradas, function(index, item) {
-           	    
-                var clone = parent.find(".m-item:first").clone(true);
-                clone.find(".usuario_title").html(item.Entrada.title);
-                clone.find(".descripcion").html(item.Entrada.texto);
-                clone.find(".buttom_ir_perfil").find("a").attr("href", "perfil_deportivo.html?usuario_id="+item.Entrada.usuario_id);
-                clone.find(".like_cash").find(".like").text(item.seguidores);
-                clone.find(".like_cash").css("display", "block");
-                clone.find(".entrada_imagen").attr("src", BASE_URL_APP+'img/home/crop.php?w=150&i='+item.Entrada.imagen);
-                clone.addClass("clone");
-                clone.css("display", "inline-block");
-                
-           	    parent.find(".m-carousel-inner").append(clone);
-                if(index == 0){
-                    parent.find(".m-carousel-controls").append('<a href="#" data-slide="'+(index+2)+'" class="m-active">'+(index+2)+'</a>');
-                }else{
-                    parent.find(".m-carousel-controls").append('<a href="#" data-slide="'+(index+2)+'">'+(index+2)+'</a>');
-                }
-            });
-            
-            parent.find(".m-carousel-inner").promise().done(function() {
-                parent.find(".m-carousel-controls").show();
-                parent.find('.m-carousel').carousel();
-                //ocultamos loading
-                $.mobile.loading( 'hide' );
-            });
-        } 
-    });
-}
-
-//OBTENEMOS LAS ACTIVIDADES EN PATROCINALOS
-function getActividades() {
-    $.getJSON(BASE_URL_APP+'actividades/mobileGetActividades', function(data) {
-        $('#lista_actividades li').remove();
-        if(data.items){
-             //mostramos loading
-             $.mobile.loading( 'show' );
-            
-             var actividades = data.items;
-             $.each(actividades, function(index, actividad) {
+            //actividad en patrocinalos
+            parent.find('#lista_actividades').find("li").remove();
+            var notificaciones_patrocinalos =  data.notificaciones_sistema;
+            $.each(notificaciones_patrocinalos, function(index, item) {
                 html='<li>';
                 html+='<div class="recorte">';
-                html+='<img src="'+BASE_URL_APP+'img/Usuario/169/'+actividad.Actividade.usuario_imagen+'"/>';
+                html+='<img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Notificacion.usuario_imagen+'"/>';
                 html+='</div>';
                 html+='<div class="content_descripcion left">';
+                html+='<time class="age" date="'+item.Notificacion.date+'" datetime="'+item.Notificacion.datetime+'">&nbsp;</time>';
                 html+='<h4 class="ui-li-heading">';
-                if(actividad.Actividade.usuario_imagen == "gustafoto"){
-                    html+='A <b>'+actividad.Actividade.usuario_title+'</b>';
+                if(item.Notificacion.tipo == "like"){
+                    html+='A <b>'+item.Notificacion.usuario_title+'</b>';
                 }else{
-                    html+='<b>'+actividad.Actividade.usuario_title+'</b>';
+                    html+='<b>'+item.Notificacion.usuario_title+'</b>';
                 }
                 html+='</h4>';
-                html+='<p class="ui-li-desc">'+actividad.Actividade.texto_descripcion+'</p>';
+                html+='<p class="ui-li-desc">'+item.Notificacion.texto_descripcion+'</p>';
                 html+='</div>';
                 html+='</li>';
-                                
-                $('#lista_actividades').append(html);
+                
+                parent.find('#lista_actividades').append(html);
              });
              
-             $('#lista_actividades').listview('refresh');
+            parent.find('#lista_actividades').listview('refresh');
             
-             $('#lista_actividades').find("li:last img").load(function() {
+            //mostralos la lista de actividad de patrocinalos
+            parent.find("#lista_actividades").promise().done(function() {
                 //ocultamos loading
                 $.mobile.loading( 'hide' );
+                $(".age").age();
+            });
+            
+            //actividad en las rondas
+            parent.find('#lista_actividades_ronda').find("li").remove();
+            var notificaciones_ronda =  data.notificaciones_ronda;
+            $.each(notificaciones_ronda, function(index, item) {
+                html='<li>';
+                html+='<div class="recorte">';
+                html+='<img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Notificacion.usuario_imagen+'"/>';
+                html+='</div>';
+                html+='<div class="content_descripcion left">';
+                html+='<time class="age" date="'+item.Notificacion.date+'" datetime="'+item.Notificacion.datetime+'">&nbsp;</time>';
+                html+='<h4 class="ui-li-heading">';
+                html+='<b>'+item.Notificacion.usuario_title+'</b>';
+                html+='</h4>';
+                html+='<p class="ui-li-desc">'+item.Notificacion.texto_descripcion+'</p>';
+                html+='</div>';
+                html+='</li>';
+                
+                parent.find('#lista_actividades_ronda').append(html);
              });
-        }
+             
+            parent.find('#lista_actividades_ronda').listview('refresh');
+            
+            //mostralos la lista de actividad de patrocinalos
+            parent.find("#lista_actividades_ronda").promise().done(function() {
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+                $(".age").age();
+            });
+            
+            //mostramos el tab que se selecciono
+            if(hash == "#actividad_ronda"){
+                parent.find('#tab_actividad_patrocinalos').removeClass("active");
+                parent.find('#tab_actividad_rondas').addClass("active");
+                parent.find('#lista_actividades_ronda').show();
+            }else{
+                parent.find('#tab_actividad_rondas').removeClass("active");
+                parent.find('#tab_actividad_patrocinalos').addClass("active");
+                parent.find('#lista_actividades').show();
+            }
+                     
+            //cargamos los proyectos si es mayor a lo que actulamente se muestra, esto se da por si se vuelve a la page
+            var items_proyectos = parent.find("#carrousel_proyectos").find(".m-item").length;
+            if(data.entradas.length > items_proyectos){
+                parent.find("#carrousel_proyectos").find(".m-item").remove();
+                parent.find("#carrousel_proyectos").find(".m-carousel-controls").find("a").remove();
+                
+                //entradas de los deportista que tienen proyectos
+                var entradas = data.entradas;
+               	$.each(entradas, function(index, item) {
+               	    var mclass = ""; 
+               	    if(index == 0) mclass = "m-active";
+                    var html='<div class="m-item '+mclass+'">'+
+                        '<div class="info_deportista">'+
+                            '<div class="info_content">'+
+                                '<h2 class="usuario_title">'+item.Entrada.title+'</h2>'+
+                                '<div class="left">'+
+                                    '<div class="recuadro">'+
+                                        '<img class="entrada_imagen" src="'+BASE_URL_APP+'img/home/crop.php?w=150&i='+item.Entrada.imagen+'" />'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="right">'+
+                                    '<p class="descripcion">'+item.Entrada.texto+'</p>'+
+                                    '<div class="like_cash">'+
+                                        '<span class="like">'+item.seguidores+'</span>'+
+                                        '<span class="cash">1</span>'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="buttom_ir_perfil">'+
+                                    '<a class="ui-btn-submit celeste ui-btn ui-btn-corner-all" href="perfil_deportivo.html?usuario_id='+item.Entrada.usuario_id+'">'+
+                                        '<span class="ui-btn-inner">'+
+                                        '<span class="ui-btn-text">VISITA SU PROYECTO</span>'+
+                                        '</span>'+
+                                    '</a>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>';
+                    
+               	    parent.find("#carrousel_proyectos").find(".m-carousel-inner").append(html);
+                    parent.find("#carrousel_proyectos").find(".m-carousel-controls").append('<a href="#" data-slide="'+(index+1)+'">'+(index+1)+'</a>');
+                });
+                
+                //iniciamos el carousel
+                parent.find("#carrousel_proyectos").find(".m-carousel-inner").promise().done(function() {
+                    //volvemos a recargar el plugin unicamente si es que los datos son mas de 1, porque inicialmente el html es uno y eso cuenta
+                    if(items_proyectos > 1){
+                        parent.find('#carrousel_proyectos').carousel("reload");
+                    }else{
+                        parent.find('#carrousel_proyectos').carousel();
+                    }
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );
+                });
+            }
+        } 
     });
 }
 

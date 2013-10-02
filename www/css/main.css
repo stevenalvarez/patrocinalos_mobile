@@ -455,7 +455,8 @@ form .valid_field span.success i{
     height: 60px;
     margin-right: 8px;
     overflow: hidden;
-    width: 90px;  
+    width: 60px;
+    border-radius: 5px;  
 }
 .content_list_two .ui-listview li .recorte img{
     width: 100%;
@@ -474,6 +475,12 @@ form .valid_field span.success i{
 .content_list_two .ui-li-heading,
 .content_list_two .ui-li-desc{
     color: #6b7882;
+}
+.content_list_two time.age{
+    color: #999999;
+    font-size: 10px;
+    text-shadow: 0 0 0;
+    font-weight: normal;    
 }
 .content_list_two h4.ui-li-heading b{
     color:  #000;
@@ -1393,7 +1400,7 @@ label.custom{
 
 /* INDEX/LOGIN*/
 #view .ui-content,
-#login_user .ui-content,
+#login .ui-content,
 #options_register .ui-content,
 #register_user .ui-content,
 #register_finalizado .ui-content,
@@ -1423,19 +1430,19 @@ label.custom{
 #completar_perfil_exitosamente .ui-content{
     min-height: 320px;
 }
-#login_user .ui-content{
+#login .ui-content{
     margin-bottom: 25px;
     min-height: 215px;
 }
 #view h1, 
-#login_user h1{
+#login h1{
     margin: 0.2em 8% 0.2em;
     height: auto;
     overflow: hidden;
     padding: 10px 10px 0 10px;
 }
 #view h1 img,
-#login_user h1 img{
+#login h1 img{
     width: 100%;
 }
 #view .background_view{
@@ -1505,40 +1512,40 @@ label.custom{
 
 /*LOGIN */
 
-#login_user .recuperar_contrasena,
+#login .recuperar_contrasena,
 #register_finalizado .guardar,
 #edicion_datos_personales .guardar,
 #configuracion_privacidad .guardar{
     margin: 0 32px;
     margin-bottom: 10px;
 }
-#login_user .access_login{
+#login .access_login{
     padding-top: 10px;
 }
-#login_user .access_login div.ui-body-cu.ui-input-text:first-child{
+#login .access_login div.ui-body-cu.ui-input-text:first-child{
     background: url("../img/bg-login.png") no-repeat scroll left center #fff;
     background-size: 20px;
     background-position: 6px;
     margin-bottom: 12px;
 }
-#login_user .access_login div.ui-body-cu.ui-input-text:last-child{
+#login .access_login div.ui-body-cu.ui-input-text:last-child{
     background: url("../img/bg-password.png") no-repeat scroll left center #fff;
     background-size: 20px;
     background-position: 6px;
 }
-#login_user .ui-controlgroup{
+#login .ui-controlgroup{
     margin-bottom: 16px;
 }
-#login_user p.text{
+#login p.text{
     font-size: 12px;
     margin-bottom: 18px;
     margin-left: 10px; 
     padding-top: 10px;
 }
-#login_user p.text span{
+#login p.text span{
     color: #2eaae0;
 }
-#login_user .recuperar_contrasena .ui-btn-inner{
+#login .recuperar_contrasena .ui-btn-inner{
     padding-left: 10px;
     padding-right: 10px;    
 }
@@ -3032,7 +3039,7 @@ label.custom{
 }
 
 /* INFO GENERAL */
-#info_general, 
+#home, 
 #info_ronda,
 #perfil_deportivo,
 #detail_ronda,
@@ -3116,7 +3123,7 @@ label.custom{
     text-shadow: 0 0 0;
 }
 .info_content .like_cash span{
-    margin-right: 5px;
+    margin-right: 8px;
     border-radius: 4px;
     padding: 4px 5px 4px 20px;
     text-align: right;
@@ -3165,6 +3172,7 @@ label.custom{
     font-size: 12px;
     letter-spacing: -1px;
     padding-left: 24px;
+    text-shadow: 0 0 0;
 }
 #panel_menu .ui-panel-inner li:hover > a,
 #panel_menu .ui-panel-inner li a:hover{
@@ -3223,6 +3231,7 @@ label.custom{
     background: none;
     border: 0;
     text-shadow: 0 0 0;
+    margin-bottom: 0;
 }
 #panel_menu .ui-collapsible-heading a .ui-btn-inner {
     background: none;
@@ -3565,16 +3574,19 @@ label.custom{
 }
 
 /* LISTA ACTIVIDADES */
-.content_list_two #lista_actividades.ui-listview li .recorte{
-    background-color: #000;
+.content_list_two #lista_actividades.ui-listview li .recorte,
+.content_list_two #lista_actividades_ronda.ui-listview li .recorte{
+    background-color: #fff;
     text-align: center;
 }
-.content_list_two #lista_actividades.ui-listview li .recorte img{
+.content_list_two #lista_actividades.ui-listview li .recorte img,
+.content_list_two #lista_actividades_ronda.ui-listview li .recorte img{
     width: auto;
     height: 60px;
 }
-.content_list_two #lista_actividades.ui-listview li .content_descripcion{
-    width: 66%;
+.content_list_two #lista_actividades.ui-listview li .content_descripcion,
+.content_list_two #lista_actividades_ronda.ui-listview li .content_descripcion{
+    width: 75%;
 }
 #solicitan_buscan_patrocinio .list_buscan_patro h4{
     margin: 14px 0;
@@ -3616,7 +3628,7 @@ and (orientation:portrait)
     }
         
     #view h1,
-    #login_user h1{
+    #login h1{
         font-size: 26px;
         margin: 0.5em 4% 0.2em;
     }
@@ -4093,7 +4105,7 @@ and (orientation:portrait)
     #recuperar_password .btn-access{
         min-height: 420px;
     }
-    #login_user .ui-content{
+    #login .ui-content{
         min-height: 295px;
     }
     .ui-panel-position-bottom, .ui-panel-position-top{
@@ -4230,8 +4242,9 @@ and (orientation:landscape)
     .info_content h2.bg_ronda{
         margin: 0 7.4em 6px 7.4em;
     }
-    .content_list_two #lista_actividades.ui-listview li .content_descripcion{
-        width: 78%;
+    .content_list_two #lista_actividades.ui-listview li .content_descripcion,
+    .content_list_two #lista_actividades_ronda.ui-listview li .content_descripcion{
+        width: 85%;
     }
     #solicitan_buscan_patrocinio .list_buscan_patro .ui-listview li .buttons a{
         width: 44%;
