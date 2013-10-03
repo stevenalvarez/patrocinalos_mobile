@@ -35,57 +35,58 @@
                             <a href="#" class="facebook">Facebook</a>
                             <a href="#" class="twitter">Twitter</a>
                         </div>
-                        <div class="dias_finalizar" style="display: none;">
-                            <span><i>150</i> d&iacute;as para finalizar</span>
-                        </div>
+                        <!--<div class="dias_finalizar" style="display: none;">
+                            <span>150</span> d&iacute;as para finalizar
+                        </div>-->
                     </div>
                     <div class="left description">
                         <div class="content">
-                            <label class="nombre_user">&nbsp;</label>
-                            <div class="deporte" style="display: none;">
-                                <label class="inline">Deporte:</label>
-                                <span>&nbsp;</span>
+                            <div class="nombre_usuario">
+                                <label>El proyecto de...</label>
+                                <span style="font-weight: 700;" class="nombre_user">&nbsp;</span>
                             </div>
                             <div class="patrociname" style="display: none;">
-                                <label class="inline">Patrociname:</label>
-                                <span>Campeonato Nacional de Nataci&oacute;n 2013</span>
+                                <label class="inline">Necesito vuestra ayuda para...</label>
+                                <span style="font-weight: 600;color: #000;font-size: 14px;">Campeonato Nacional de Nataci&oacute;n 2013</span>
                             </div>
                             <div class="necesito_para" style="display: none;">
-                                <label class="inline">Para que lo necesito?:</label>
-                                <span>Nataci&oacute;n. deporte minoritario. por eso necesito apoyo. El 10% de lo que recaude lo destinar&eacute; a una causa solidaria.</span>
+                                <span style="font-size: 11px;">Nataci&oacute;n. deporte minoritario. por eso necesito apoyo. El 10% de lo que recaude lo destinar&eacute; a una causa solidaria.</span>
                             </div>
-                            <div class="cuanto_necesito" style="display: none;">
-                                <label class="inline">Cuanto necesito:</label>
-                                <span><b class="monto">500</b> &euro;</span>
+                            <div class="expira" style="margin-top: 4px;display: none;">
+                                <label>La petici&oacute;n expira...</label>
+                                <span style="font-size: 11px;display: block;margin-top: 2px;" class="age" date="" datetime="">&nbsp;</span>
                             </div>
-                            <div class="recaudado" style="display: none;">
-                                <label class="inline">Recaudado:</label>
-                                <span><b class="monto">300</b> &euro;</span>
+                            <div style="overflow: hidden;">
+                                <div class="cuanto_necesito" style="float: right;margin-right: 2px;display: none;">
+                                    <label class="inline">Necesito:</label>
+                                    <span style="color: #000;"><b class="monto">500</b>&euro;</span>
+                                </div>
+                                <div class="recaudado" style="float: left;display: none;">
+                                    <label class="inline">Tengo:</label>
+                                    <span style="color: #000;"><b class="monto">300</b>&euro;</span>
+                                </div>
                             </div>
-                            <div class="content_progress">
+                            <div class="content_progress" style="margin-top: 4px;">
                                 <div class="progress" style="display: none;">
                                     <div class="porcentaje" style="width: 60%;">&nbsp;</div>
                                 </div>
-                                <div class="numero_porcentaje" style="display: none;">
+                                <!--<div class="numero_porcentaje" style="display: none;">
                                     <span class="numero">60</span>%
-                                </div>
-                            </div>
+                                </div>-->
+                            </div>                            
                         </div>
                     </div>
                 </div>
             </div>
             <div class="btn-options">
                 <div class="btn-first">
-                    <a id="seguir_deportista" class="ui-btn-submit orange seguir" href="javascript:void(0)" data-role="button">SEGUIR</a>
+                    <a id="seguir_deportista" class="ui-btn-submit red seguir" href="javascript:void(0)" data-role="button">Apoyo este proyecto</a>
                 </div>
                 <div class="btn-second">
                     <a class="ui-btn-submit green" href="#popupPatrocinar" data-role="button" data-rel="popup" data-position-to="window" data-transition="pop">PATROCINAR</a>
                 </div>
             </div>
             <div class="content_comentarios">
-                <div class="title">
-                    <h2>&Uacute;ltimos comentarios</h2>
-                </div>
                 <ul class="list_comentarios" data-role="listview" data-theme="c">
                     <li style="display: none;">
                         <a href="#">
@@ -125,6 +126,7 @@
                 <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right close">Close</a>
                 <div style="background-color: #C4E2E8;border-radius: 5px;overflow: hidden;">
                     <form class="formulario_pago_patrocinio" id="formulario_pago_individual">
+                        <input type="hidden" value="" id="proyecto_id" name="proyecto_id" />
                         <div class="container_info" style="margin-bottom:0; border-bottom: none">
                             <div class="ofrecido_por" style="padding-bottom: 0;">
                                 <div class="recuadro left">
@@ -138,7 +140,6 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" value="" id="crowd_id" name="crowd" />
                         <div class="container_info_bottom">
                             <div class="pago_realizar">
                                 <div class="monto_euro">

@@ -1072,50 +1072,50 @@ function getEntradasByCarrousel(parent_id, hash){
 
 //OBTENEMOS LOS DATOS DEL PERFIL DE UN DEPORTISTA EN ESPECIFICO
 function loadPerfilDeportista(parent_id, me, usuario_id){
-    
     var parent = $("#"+parent_id);
-    $.getJSON(BASE_URL_APP + 'usuarios/mobileGetPerfilDeportista?me=' + me + '&usuario_id='+usuario_id, function(data){
+    $.getJSON(BASE_URL_APP + 'usuarios/mobileGetProyectoDeportista?me=' + me + '&usuario_id='+usuario_id, function(data){
         if(data.item){
             
             //mostramos loading
             $.mobile.loading( 'show' );
             
-            var data_item = data.item;
+            var item = data.item;
             
             //verifica si el deportista logeado ya es seguidor del deportista x
-            if(data_item.Usuario.soy_su_seguidor){
-                parent.find("#seguir_deportista").find(".ui-btn-text").text("Dejar de seguir");
+            if(item.Usuario.soy_su_seguidor){
+                parent.find("#seguir_deportista").find(".ui-btn-text").text("Dejar de Apoyar");
                 parent.find("#seguir_deportista").removeClass("seguir");
                 parent.find("#seguir_deportista").addClass("dejar_seguir");
             }
             
-            parent.find(".imagen_user").attr("src", BASE_URL_APP+'img/Usuario/169/'+data_item.Usuario.imagen);
+            parent.find(".imagen_user").attr("src", BASE_URL_APP+'img/Usuario/169/crop.php?w=150&i='+item.Usuario.imagen);
+            parent.find(".nombre_user").html(item.Usuario.title);
             
-            if(data_item.Usuario.urlfacebook){
+            if(item.Usuario.urlfacebook){
                 var element = parent.find(".link_red_social a.facebook");
-                element.attr("href", data_item.Usuario.urlfacebook);
+                element.attr("href", item.Usuario.urlfacebook);
                 element.attr("onclick", "window.open(this.href,'_system'); return false;");
             }
-            if(data_item.Usuario.twitter){
+            if(item.Usuario.twitter){
                 var element = parent.find(".link_red_social a.twitter");
-                element.attr("href", data_item.Usuario.twitter);
+                element.attr("href", item.Usuario.twitter);
                 element.attr("onclick", "window.open(this.href,'_system'); return false;");
             }
             
-            parent.find(".nombre_user").text(data_item.Usuario.title);
-            parent.find(".deporte span").text(data_item.Usuario.deporte_nombre).parent().show();
-            
-            if(data_item.Crowfunding !=""){
-                parent.find(".dias_finalizar").find("i").text(data_item.Crowfunding.dias_restantes);
-                parent.find(".dias_finalizar").show();
-                parent.find(".patrociname span").text(data_item.Crowfunding.titulo).parent().show();
-                parent.find(".necesito_para span").text(data_item.Crowfunding.paraque_necesito).parent().show();
-                parent.find(".cuanto_necesito").find(".monto").text(data_item.Crowfunding.monto);
+            if(item.Proyecto !=""){
+                parent.find(".expira").find("span").attr("date",item.Proyecto.date);
+                parent.find(".expira").find("span").attr("datetime",item.Proyecto.fecha_fin);
+                parent.find(".expira").show();
+                parent.find(".patrociname span").html(item.Proyecto.title).parent().show();
+                parent.find(".necesito_para span").html(item.Proyecto.paraque_necesito).parent().show();
+                parent.find(".cuanto_necesito").find(".monto").html(item.Proyecto.monto);
                 parent.find(".cuanto_necesito").show();
-                parent.find(".recaudado").find(".monto").text(data_item.Crowfunding.total_recaudado);
+                parent.find(".recaudado").find(".monto").html(item.Proyecto.total_recaudado);
                 parent.find(".recaudado").show();
-                parent.find(".progress").find(".porcentaje").css("width", data_item.Crowfunding.porcentaje_recaudado+"%").parent().show();
-                parent.find(".numero_porcentaje span").text(data_item.Crowfunding.porcentaje_recaudado).parent().show();                
+                parent.find(".progress").find(".porcentaje").css("width", item.Proyecto.porcentaje_recaudado+"%").parent().show();
+                parent.find(".numero_porcentaje span").html(item.Proyecto.porcentaje_recaudado).parent().show();
+                
+                $(".age").age();                
             }
             
             parent.promise().done(function() {
@@ -1125,46 +1125,11 @@ function loadPerfilDeportista(parent_id, me, usuario_id){
                 });
             });
             
-            if(data_item.MisComentariosdeMuro != ""){
-                
-                //borramos todos los items clonados
-                parent.find(".list_comentarios > li.cloned").remove();
-                
-                //mostramos loading
-                $.mobile.loading( 'show' );
-                var comentarios_muros = data_item.MisComentariosdeMuro;
-                $.each(comentarios_muros, function(index, comentario_muro) {
-                    if(comentario_muro.mensaje != ""){
-                        var clone = parent.find(".list_comentarios").find("li:first").clone(true);
-                        clone.find(".img_avatar").attr("src", BASE_URL_APP+'img/Usuario/169/'+comentario_muro.usuario_imagen);
-                        clone.find(".nombre_usuario").html(comentario_muro.usuario_title);
-                        clone.find(".fecha_publicacion").html(comentario_muro.fecha);
-                        
-                        var element_comentario = clone.find(".comentario");
-                        element_comentario.html(comentario_muro.mensaje);
-                        openOnWindow(element_comentario, '_system');
-                        
-                        clone.addClass("cloned");
-                        clone.css("display", "block");
-                        
-                        parent.find(".list_comentarios").append(clone);
-                    }
-                });
-                
-                parent.find(".list_comentarios").listview('refresh');
-                parent.find(".list_comentarios").promise().done(function() {
-                    $(this).find("li:last").find("img").load(function(){
-                        //ocultamos loading
-                        $.mobile.loading( 'hide' );
-                    });
-                });
-            }
-            
             //Actualizamos los datos para realizar la aportacion
             var form_pago = parent.find("#formulario_pago_individual"); 
-            form_pago.find("#imagen_deportista").attr("src", BASE_URL_APP+'img/Usuario/169/'+data_item.Usuario.imagen);
-            form_pago.find(".nombre_deportista").text(data_item.Usuario.title);
-            form_pago.find("#crowd_id").val(data_item.Crowfunding.id);
+            form_pago.find("#imagen_deportista").attr("src", BASE_URL_APP+'img/Usuario/169/crop.php?w=60&i='+item.Usuario.imagen);
+            form_pago.find(".nombre_deportista").text(item.Usuario.title);
+            form_pago.find("#proyecto_id").val(item.Proyecto.id);
         }
     });
 }
@@ -1176,9 +1141,9 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
         if($(this).hasClass("seguir")){
             //mostramos loading
             $.mobile.loading( 'show' );
-            $.getJSON(BASE_URL_APP + 'amigos/mobileSeguirDeportista?me=' + me + "&to_usuario_id=" + to_usuario_id, function(data){
+            $.getJSON(BASE_URL_APP + 'seguidores/mobileSeguirDeportista?me=' + me + "&to_usuario_id=" + to_usuario_id, function(data){
                 if(data.success){
-                    $(element).find("#seguir_deportista").find(".ui-btn-text").text("Dejar de seguir");
+                    $(element).find("#seguir_deportista").find(".ui-btn-text").text("Dejar de Apoyar");
                     $(element).find("#seguir_deportista").removeClass("seguir");
                     $(element).find("#seguir_deportista").addClass("dejar_seguir");
                     //ocultamos loading
@@ -1187,8 +1152,21 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
                     showAlert("Ocurrio un error", "Error", "Aceptar");
                 }
             });
+        
         }else if($(this).hasClass("dejar_seguir")){
-            dejarSeguirDeportista(element, me, to_usuario_id);
+            //mostramos loading
+            $.mobile.loading( 'show' );
+            $.getJSON(BASE_URL_APP + 'seguidores/mobileDejarSeguirDeportista?me=' + me + '&to_usuario_id=' + to_usuario_id, function(data){
+                if(data.success){
+                    $(element).find("#seguir_deportista").find(".ui-btn-text").text("Apoyo este proyecto");
+                    $(element).find("#seguir_deportista").removeClass("dejar_seguir");
+                    $(element).find("#seguir_deportista").addClass("seguir");
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );
+                }else{
+                    showAlert("Ocurrio un error", "Error", "Aceptar");
+                }
+            });
         }
         
         return false;
@@ -1224,7 +1202,7 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
                                 
                                 var url_pago = result.url_redirect_pago;
                                 window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
-                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPago(loc, me); }; // When the ChildBrowser URL changes we need to track that
+                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoPayPal(loc, me); }; // When the ChildBrowser URL changes we need to track that
                             }else{
                                 showAlert(result.error_alcanzado, "Error", "Aceptar");
                             }
@@ -1279,25 +1257,8 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
     //END PAYPAL
 }
 
-//DEJAR DE SEGUIR A UN DEPORTISTA
-function dejarSeguirDeportista(element, me, to_usuario_id){
-    //mostramos loading
-    $.mobile.loading( 'show' );
-    $.getJSON(BASE_URL_APP + 'amigos/mobileDejarSeguirDeportista?me=' + me + '&to_usuario_id=' + to_usuario_id, function(data){
-        if(data.success){
-            $(element).find("#seguir_deportista").find(".ui-btn-text").text("Seguir");
-            $(element).find("#seguir_deportista").removeClass("dejar_seguir");
-            $(element).find("#seguir_deportista").addClass("seguir");
-            //ocultamos loading
-            $.mobile.loading( 'hide' );
-        }else{
-            showAlert("Ocurrio un error", "Error", "Aceptar");
-        }
-    });
-}
-
-//CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO
-function procesoPago(loc, usuario_id){
+//CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO POR PAYPAL
+function procesoPagoPayPal(loc, usuario_id){
     
     var url_callback = BASE_URL_APP + 'aportaciones/mobileAddAportacion/' + usuario_id + '/';
     if (loc.indexOf(url_callback + "?") >= 0) {
