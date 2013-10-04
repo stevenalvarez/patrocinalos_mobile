@@ -394,7 +394,7 @@
  .list_recompensas li .cont_bottom a.link_profile h2{
     background: url("../img/icon_info.jpg") no-repeat scroll 2px 2px #3398de;
     background-size: 32px;
-    padding: 10px 0px 11px 40px;
+    padding: 9px 0px 10px 40px;
     width: 120px;
  }
  .list_recompensas li .cont_bottom a.link_patrocina span{
@@ -412,6 +412,18 @@
     height: auto;
     float: left;
     border-radius: 120px;
+ }
+ .list_recompensas .content_descripcion p{
+    font-size: 11px;
+    font-family: Arial,Helvetica,sans-serif;
+    line-height: 11px;
+    margin: 12px 4px 0;
+ }  
+ .list_recompensas.list_buscan_patro li .cont_bottom a span{
+    background-position: 10px;
+ }
+ .list_recompensas.list_buscan_patro li .cont_bottom{
+    margin-top: 4px;
  }
  /*PAGE RECOMPENSAS HOME*/
  
@@ -1522,6 +1534,9 @@ and (orientation:landscape)
  .list_buscan_patro li .cont_top .content_descripcion p{
     font-size: 14px;
  }
+ .list_recompensas.list_buscan_patro li .cont_top .content_descripcion p{
+    font-size: 13px;
+ }
  .list_buscan_patro li .mount span{
     display: inline-block;
     width: 100%;
@@ -1544,10 +1559,14 @@ and (orientation:landscape)
  .list_recompensas li .cont_bottom a.link_profile,.list_recompensas li .cont_bottom a.link_patrocina{
     width: 50%;
  }
- .list_recompensas li .cont_bottom a.link_patrocina span,.list_recompensas li .cont_bottom a.link_profile h2{
+ .list_recompensas li .cont_bottom a.link_patrocina span{
    width: 100%;
    padding-left: 0;
    padding-right: 0;
+ }
+ .list_recompensas li .cont_bottom a.link_profile h2{
+   width: 82%;
+   text-align: left; 
  }
  /*PAGE RECOMPENSAS HOME*/
  

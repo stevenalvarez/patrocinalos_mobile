@@ -217,7 +217,7 @@ $('#home_buscan_patrocinio').live('pagebeforeshow', function(event, ui) {
 
 //CUANDO CARGUE LA PAGE DE LAS RECOMPENSAS DE LA HOME
 $('#home_recompensas_ofrecidas').live('pagebeforeshow', function(event, ui) {
-    getRecompensas();
+    getRecompensasMazzel();
 });
 
 //CUANDO CARGUE LA PAGE DE EDICIÓN DE DATOS DE PERFIL
@@ -559,14 +559,14 @@ function getBuscanPatrocinio(parent_id){
 	});
 }
 
-/*OBTENEMOS LOS DATOS DE LAS RECOMPENSAS DE LA HOME*/
-function getRecompensas(){
-    jQuery("#recompensas_home").html("");
-    $.getJSON(BASE_URL_APP+'recompensas/mobileGetRecompensas', function(data) {
+/*OBTENEMOS LOS DATOS DE LAS RECOMPENSAS MAZZEL DE LA HOME*/
+function getRecompensasMazzel(){
+    $.getJSON(BASE_URL_APP+'rondas/mobileGetRecompensasMazzel', function(data) {
+        jQuery("#recompensas_home").html("");
         //mostramos loading
         $.mobile.loading( 'show' );
-        var items = data.items;
-       	$.each(items, function(index,item) {
+        var recompensas = data.items;
+       	$.each(recompensas, function(index,item) {
        	    html_data=' <li>';
             html_data+='    <div class="cont_top">';
             html_data+='      <div class="recorte">';
@@ -577,7 +577,7 @@ function getRecompensas(){
             html_data+='      </div>';
             html_data+='    </div>';
             html_data+='    <div class="cont_bottom">';
-            html_data+='       <a href="#" class="link_profile"><h2>'+item.Recompensa.nombre+'</h2></a>';
+            html_data+='       <a href="#" class="link_profile"><h2>'+item.Recompensa.title+'</h2></a>';
             html_data+='       <a href="#" class="link_patrocina"><span>PATROCINAR</span></a>';
             html_data+='    </div>';
             html_data+='</li>';
