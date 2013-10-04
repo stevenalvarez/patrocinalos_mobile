@@ -172,7 +172,7 @@ $('#proyecto_deportivo').live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
         var user = COOKIE;
         var me = user.id;
-        loadPerfilDeportista($(this).attr('id'), me, getUrlVars()["usuario_id"]);
+        loadPerfilDeportista($(this).attr('id'), me, getUrlVars()["usuario_id"], getUrlVars()["patrocina"]);
         loadEventPerfilDeportista(this, me, getUrlVars()["usuario_id"]);
     }else{
         redirectLogin();
@@ -212,7 +212,7 @@ $('#home_blog_comment').live('pagebeforeshow', function(event, ui) {
 
 //CUANDO CARGUE LA PAGE DE LOS PATROCINIOS ACTIVOS DE LA HOME
 $('#home_buscan_patrocinio').live('pagebeforeshow', function(event, ui) {
-    getBuscanPatrocinio();
+    getBuscanPatrocinio($(this).attr('id'));
 });
 
 //CUANDO CARGUE LA PAGE DE LAS RECOMPENSAS DE LA HOME
@@ -509,43 +509,53 @@ function getInfoBlogComment(id_blog){
 }
 
 /*OBTENEMOS LOS DATOS DE LOS DEPORTISTAS CON PATROCINIO ACTIVO DE LA HOME*/
-function getBuscanPatrocinio(){
-    jQuery(".list_buscan_patro").html("");
-    $.getJSON(BASE_URL_APP+'crowfundings/mobileGetBuscanPatrocinio', function(data) {
-        $.mobile.loading( 'show' );
-        var items = data.items;
-       	$.each(items, function(index,item) {
-       	    html_data=' <li>';
-            html_data+='    <div class="cont_top">';
-            html_data+='        <div class="recorte">';
-            html_data+='            <img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Usuario.imagen+'"/>';
-            html_data+='        </div>';
-            html_data+='        <div class="content_descripcion">';
-            html_data+='            <p>'+item.Crowfunding.actividad_patrocinio+'</p>';
-            html_data+='        </div>';
-            html_data+='        <div class="mount">';
-            html_data+='            <span>'+item.Crowfunding.monto+' &euro;</span>';
-            html_data+='        </div>';
-            html_data+='    </div>';
-            html_data+='    <div class="cont_bottom">';
-            html_data+='        <a href="#" class="link_profile"><h2>'+item.Usuario.title+'</h2></a>';
-            html_data+='        <a href="#" class="link_patrocina"><span>PATROCINAR</span></a>';
-            html_data+='       <div class="mount">';
-            html_data+='            <span>'+item.Crowfunding.monto+' &euro;</span>';
-            html_data+='        </div>';
-            html_data+='    </div>';
-            html_data+='</li>';
-            
-            if(item.Crowfunding.actividad_patrocinio!=null && item.Crowfunding.actividad_patrocinio!="")        
-            jQuery(".list_buscan_patro").append(html_data);
-    	});
+function getBuscanPatrocinio(parent_id){
+    var parent = $("#"+parent_id);
+    $.getJSON(BASE_URL_APP+'proyectos/mobileGetBuscanPatrocinio', function(data) {
+        var proyectos = data.items;
         
-        jQuery(".list_buscan_patro").promise().done(function() {
-            $(this).find("li:last img").load(function(){
-                //ocultamos loading
-                $.mobile.loading( 'hide' );
-            });
-        });
+        //llenamos si solo los datos obtenidos es mayor a los datos que hay
+        if(proyectos.length > parent.find(".list_buscan_patro > li").length){
+            parent.find(".list_buscan_patro").html("");
+            $.mobile.loading( 'show' );        
+           	$.each(proyectos, function(index,item) {
+           	    html_data=' <li>';
+                html_data+='    <div class="cont_top">';
+                html_data+='        <div class="recorte">';
+                html_data+='            <a href="proyecto_deportivo.html?usuario_id='+item.Usuario.id+'">';
+                html_data+='                <img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Usuario.imagen+'"/>';
+                html_data+='            </a>';
+                html_data+='        </div>';
+                html_data+='        <div class="content_descripcion">';
+                html_data+='            <p>';
+                html_data+='                <span>Necesita patrocinio para:</span>'+item.Proyecto.title+ '<br/>'+item.Proyecto.actividad_patrocinio;
+                html_data+='            </p>';
+                html_data+='        </div>';
+                html_data+='        <div class="mount">';
+                html_data+='            <span>'+item.Proyecto.monto+' &euro;</span>';
+                html_data+='        </div>';
+                html_data+='    </div>';
+                html_data+='    <div class="cont_bottom">';
+                html_data+='        <a href="proyecto_deportivo.html?usuario_id='+item.Usuario.id+'" class="link_profile"><h2>'+item.Usuario.title+'</h2></a>';
+                html_data+='        <a href="proyecto_deportivo.html?usuario_id='+item.Usuario.id+'&patrocina=show" class="link_patrocina"><span>PATROCINAR</span></a>';
+                html_data+='       <div class="mount">';
+                html_data+='            <span>'+item.Proyecto.monto+' &euro;</span>';
+                html_data+='        </div>';
+                html_data+='    </div>';
+                html_data+='</li>';
+                
+                if(item.Proyecto.actividad_patrocinio!=null && item.Proyecto.actividad_patrocinio!=""){
+                    parent.find(".list_buscan_patro").append(html_data);
+                }
+        	});
+            
+            parent.find(".list_buscan_patro").promise().done(function() {
+                $(this).find("li:last img").load(function(){
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );
+                });
+            });            
+        }
 	});
 }
 
@@ -1071,7 +1081,7 @@ function getEntradasByCarrousel(parent_id, hash){
 }
 
 //OBTENEMOS LOS DATOS DEL PERFIL DE UN DEPORTISTA EN ESPECIFICO
-function loadPerfilDeportista(parent_id, me, usuario_id){
+function loadPerfilDeportista(parent_id, me, usuario_id, show_popup_patrocinar){
     var parent = $("#"+parent_id);
     $.getJSON(BASE_URL_APP + 'usuarios/mobileGetProyectoDeportista?me=' + me + '&usuario_id='+usuario_id, function(data){
         if(data.item){
@@ -1132,6 +1142,16 @@ function loadPerfilDeportista(parent_id, me, usuario_id){
                 $(this).find(".imagen_user").load(function(){
                     //ocultamos loading
                     $.mobile.loading( 'hide' );
+                    
+                    //mostrarlos el popup para patrocinar si solo si viene la variable patrocinar=show
+                    if(show_popup_patrocinar !== undefined && show_popup_patrocinar == "show"){
+                        //comprobamos que toda la page se haiga cargado y recien mostramos el popup
+                        $( parent).bind( 'pageshow',function(event){
+                            setTimeout(function(){
+                                $("#popupPatrocinar").popup("open");
+                            },100);
+                        });
+                    }
                 });
             });
             
