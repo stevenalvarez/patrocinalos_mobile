@@ -1093,7 +1093,7 @@ function redirectLogin(){
 //_blank - always open in the InAppBrowser 
 //_system - always open in the system web browser/
 function openOnWindow(element, target){
-	element.find('a').click( function() {
+	element.find('a').bind("click", function() {
 	   window.open($(this).attr('href') , target );
 	   return false;
 	});

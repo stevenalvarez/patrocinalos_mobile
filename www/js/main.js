@@ -185,8 +185,8 @@ $(document).on('pageinit', "#home_destacados", function(){
 });
 
 //CUANDO CARGUE LA PAGE DE PUBLICACIONES DESTACADAS DE LA HOME
-$(document).on('pageinit', "#home_elites", function(){
-  getElites();
+$(document).on('pageinit', "#home_mas_proyectos", function(){
+  getMasProyectos();
 });
 
 //CUANDO CARGUE LA PAGE DE INFO DE LA RONDA
@@ -308,19 +308,20 @@ function getDestacados(){
        	var destacados = data.items;
        	$.each(destacados, function(index, destacado) {
     	    html_data=' <li>';
-            html_data+=' <a href="#">';
             html_data+='    <div class="recorte">';
-            html_data+='      <img src="'+BASE_URL_APP+"img/home/"+destacado.Entrada.imagen+'"/>';
+            html_data+='        <a href="'+destacado.Entrada.url+'">';
+            html_data+='            <img src="'+BASE_URL_APP+"img/home/"+destacado.Entrada.imagen+'"/>';
+            html_data+='        </a>';
             html_data+='    </div>';
             html_data+='    <div class="content_descripcion">'
             html_data+='         <p>';
             html_data+='            '+destacado.Entrada.texto;
             html_data+='         </p>';
             html_data+='    </div>';
-            html_data+='  </a>';
             html_data+='</li>';
                     
             jQuery(".list_destacados").append(html_data);
+            openOnWindow(jQuery(".list_destacados"), '_blank');
     	});
         
         jQuery(".list_destacados").promise().done(function() {
@@ -332,32 +333,31 @@ function getDestacados(){
 	});
 }
 
-/*OBTENEMOS LOS DATOS DE DEPORTISTAS ÉLITES DE LA HOME*/
-function getElites(){
+/*OBTENEMOS LOS DATOS DE MAS PROYECTOS DE LA HOME*/
+function getMasProyectos(){
     
-    $.getJSON(BASE_URL_APP+'rondas/mobileGetHomeElites', function(data) {
+    $.getJSON(BASE_URL_APP+'rondas/mobileGetHomeMasProyectos', function(data) {
         //mostramos loading
         jQuery(".elite_list").html("");
         $.mobile.loading( 'show' );
-       	var destacados = data.items;
-       	$.each(destacados, function(index, destacado) {
-    	    html_data=' <li class="ui-btn ui-btn-up-c ui-btn-icon-right ui-li-has-arrow ui-li">';
-            html_data+=' <div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a class="ui-link-inherit" href="#">';
+       	var proyectos = data.items;
+       	$.each(proyectos, function(index, proyecto) {
+    	    html_data=' <li class="ui-li ui-li-static ui-btn-up-c">';
             html_data+='    <div class="recorte">';
-            html_data+='      <img src="'+BASE_URL_APP+'img/home/'+destacado.Entrada.imagen+'"/>';
+            html_data+='        <a href="proyecto_deportivo.html?usuario_id='+proyecto.Entrada.usuario_id+'" class="ui-link">';
+            html_data+='            <img src="'+BASE_URL_APP+'img/home/'+proyecto.Entrada.imagen+'"/>';
+            html_data+='        </a>';
             html_data+='    </div>';
             html_data+='    <div class="content_descripcion left">'
-            html_data+='         <p class="ui-li-desc">';
-            html_data+='            '+destacado.Entrada.title+'';
-            html_data+='         </p>';
-            
-            if(destacado.Entrada.usuario_id!=null){
-                html_data+='         <span class="button_blue">visita su perf&iacute;l</span>';
-            }
+            html_data+='        <h2 class="ui-li-heading">'+proyecto.Entrada.title;
+            html_data+='        </h2>';
+            html_data+='        <p class="ui-li-desc">'+proyecto.Entrada.texto;
+            html_data+='        </p>';
+            html_data+='        <a class="button_blue" href="proyecto_deportivo.html?usuario_id='+proyecto.Entrada.usuario_id+'" class="ui-link">visita su proyecto';
+            html_data+='        </a>';
             html_data+='    </div>';
-            html_data+='  </a></div></div>';
             html_data+='</li>';
-                    
+            
             jQuery(".elite_list").append(html_data);
         });
         

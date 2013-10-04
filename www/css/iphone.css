@@ -135,7 +135,8 @@
  /*PAGE REGISTRO - BUSCAN PATROCINIO*/
  
  
- /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/
+ /*PAGE DEPORTISTAS ÉLITE home_mas_proyectos.HTML*/
+ .content_list_two ul.elite_list h2{color: #F1C40F;text-shadow: 0 0 0;margin-bottom: 4px;font-weight: 500;}
  .content_list_two ul.elite_list li.ui-btn-up-c,.content_list_two ul.elite_list li.ui-btn-hover-c,
  .content_list_two ul.elite_list li,.content_list_two ul.elite_list{
    background: #3d586d;
@@ -169,36 +170,36 @@
  }
   .content_list_two ul.elite_list li.ui-btn-up-c div{
     border: none;
+    border-radius: 0;
   }
  .content_list_two ul.elite_list li.ui-btn-up-c .ui-link-inherit{
     padding: 0;
     position: relative;
  }
- .content_list_two ul.elite_list{
-    padding: 3px!important;
- }
  .content_list_two ul.elite_list li.ui-btn-up-c .recorte,.content_list_two ul.elite_list li.ui-btn-hover-c .recorte{
-    height: 80px;
+    height: auto;
     margin: 0;
     overflow: hidden;
-    width: 120px;
+    width: 155px;
+    max-height: 103px;
+    min-height: 100px;
  }
  .content_list_two ul.elite_list li.ui-btn-up-c .recorte img,.content_list_two ul.elite_list li.ui-btn-hover-c .recorte img{
-    height: 80px;
-    width: 120px;
+    height: auto;
+    width: 182px;
  } 
  .content_list_two ul.elite_list li.ui-btn-up-c .content_descripcion.left,.content_list_two ul.elite_list li.ui-btn-hover-c .content_descripcion.left{
-    background: url("../img/arrow_list_elite.png") no-repeat scroll 0 0 transparent;
-    height: 68px;
-    left: 107px;
-    overflow: visible;
-    padding: 12px 0 0 25px!important;
+    background: url("../img/arrow_list_destacado.png") no-repeat scroll 0 0 transparent;
+    max-height: 98px;
+    left: 139px;
+    overflow: hidden;
+    padding: 5px 0 0 22px!important;
     position: absolute;
  }
  .content_list_two ul.elite_list li.ui-btn-up-c .content_descripcion.left p,.content_list_two ul.elite_list li.li.ui-btn-hover-c .content_descripcion.left p
  ,.content_list_two ul.elite_list.ui-listview li.ui-li-has-arrow.ui-btn-hover-c .content_descripcion.left p
  ,.content_list_two ul.elite_list li.li.ui-btn-hover-c .content_descripcion.left a{
-    color: #ddd!important;
+    color: #fff!important;
     font-family: 'helvetica_lightregular';
     text-shadow: none;
     font-size:12px;
@@ -206,6 +207,9 @@
     margin: 0;
     letter-spacing: 0;
     white-space:normal; 
+    line-height: 12px;
+    min-height: 37px;
+    max-height: 37px;
  }
  .content_list_two ul.elite_list li.ui-btn-up-c .content_descripcion.left p b,.content_list_two ul.elite_list li.ui-btn-hover-c .content_descripcion.left p b
  ,.content_list_two ul.elite_list li.ui-btn-hover-c .content_descripcion.left a b{
@@ -231,7 +235,13 @@
     width: 170px;
     margin: 7px 0!important;
  }
- /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/
+ .content_list_two ul.elite_list li.ui-btn-up-c .content_descripcion.left a.button_blue,
+ .content_list_two ul.elite_list li.ui-btn-hover-c .content_descripcion.left a.button_blue{
+    margin: 5px 0!important;
+    width: 98% !important;
+    text-shadow: 0 1px 0 #000;
+ }
+ /*PAGE DEPORTISTAS ÉLITE home_mas_proyectos.HTML*/
  
  
  /*PAGE DESTACADOS ÉLITE home_destacado.html*/
@@ -239,18 +249,20 @@
     
  }
  .list_destacados li{
-    background: #ecf0f1;
+    background: #34495E;
     overflow: hidden;
     border-bottom: 1px solid #d8d9d9;
  }
  .list_destacados li .recorte{
-    width: 140px;
+    width: 185px;
     height: auto;
-    max-height: 109px;
+    max-height: 110px;
+    min-height: 100px;
     float: left;
+    overflow: hidden;
  }
  .list_destacados li .recorte img{
-    width: 140px;
+    max-width: 200px;
     height: auto;
     float: left;
     min-height: 65px;
@@ -264,11 +276,12 @@
  }
  .list_destacados li .content_descripcion p{
     font-family: 'helvetica_lightregular';
-    font-size: 12px;
-    color:#7e7e7e;
+    font-size: 13px;
+    color:#F1C40F;
     font-weight: normal;
-    padding: 10px 5px;
+    padding: 10px;
     display: inline-block;
+    text-shadow: 0 0 0;
  }
  .list_destacados li .content_descripcion p b{
     color:#1a91c4;
@@ -1430,15 +1443,15 @@
 and (max-width: 480px)  
 and (orientation:portrait)
 {    
- /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/   
+ /*PAGE DEPORTISTAS ÉLITE home_mas_proyectos.HTML*/   
  .content_list_two ul.elite_list li.ui-btn-up-c .content_descripcion.left{
-    width: 182px;
+    width: 155px;
  }
- /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/
+ /*PAGE DEPORTISTAS ÉLITE home_mas_proyectos.HTML*/
  
  /*PAGE DESTACADOS home_destacado.html*/
  .list_destacados li .content_descripcion{
-    width: 180px;
+    width: 134px;
     float: left;
  }
  /*PAGE DESTACADOS home_destacado.html*/
@@ -1458,17 +1471,17 @@ and (max-width: 640px)
 and (orientation:landscape)
 {
  
- /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/   
+ /*PAGE DEPORTISTAS ÉLITE home_mas_proyectos.HTML*/   
  .content_list_two ul.elite_list li.ui-btn-up-c .content_descripcion.left p,.content_list_two ul.elite_list li.li.ui-btn-hover-c .content_descripcion.left p
  ,.content_list_two ul.elite_list.ui-listview li.ui-li-has-arrow.ui-btn-hover-c .content_descripcion.left p
  ,.content_list_two ul.elite_list li.li.ui-btn-hover-c .content_descripcion.left a{
-    font-size:15px;
+    font-size:14px;
  }
- /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/
+ /*PAGE DEPORTISTAS ÉLITE home_mas_proyectos.HTML*/
  
  /*PAGE DESTACADOS home_destacado.html*/   
  .list_destacados li .content_descripcion{
-    max-width: 70%;
+    max-width: 60%;
  }
  .list_destacados li .content_descripcion p{
     font-family: 'helvetica_lightregular';
@@ -1557,13 +1570,13 @@ and (min-width: 768px)
 and (orientation:portrait)
 {    
  
- /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/      
+ /*PAGE DEPORTISTAS ÉLITE home_mas_proyectos.HTML*/      
  .content_list_two ul.elite_list li.ui-btn-up-c, .content_list_two ul.elite_list li.ui-btn-hover-c{
     float: left;
     width: 49%;
     margin: 0 3px!important;
  }
- /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/   
+ /*PAGE DEPORTISTAS ÉLITE home_mas_proyectos.HTML*/   
  
  /*PAGE BUSCAN PATRCINIO home_buscan_patrocinio.html*/
  .list_buscan_patro li .cont_bottom .mount{
@@ -1676,13 +1689,13 @@ and (max-width: 1024px)
 and (min-width: 1024px)  
 and (orientation:landscape)
 {  
- /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/      
+ /*PAGE DEPORTISTAS ÉLITE home_mas_proyectos.HTML*/      
  .content_list_two ul.elite_list li.ui-btn-up-c, .content_list_two ul.elite_list li.ui-btn-hover-c{
     float: left;
     width: 49%;
     margin: 0 3px!important;
  }
- /*PAGE DEPORTISTAS ÉLITE home_deportistas_elite.HTML*/   
+ /*PAGE DEPORTISTAS ÉLITE home_mas_proyectos.HTML*/   
  
  /*PAGE BUSCAN PATRCINIO home_buscan_patrocinio.html*/
  .list_buscan_patro li .cont_bottom .mount{
