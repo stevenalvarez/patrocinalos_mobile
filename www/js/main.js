@@ -1295,11 +1295,11 @@ function procesoPagoPayPal(loc, usuario_id){
             //Cerramos el childBrowser
             window.plugins.childBrowser.close();
             
-            //Actualizamos la aportacion
+            //Actualizamos la aportacion, porque se realizo correctamente el pago
             $.ajax({
                 data: "token="+token,
                 type: "POST",
-                url: BASE_URL_APP+'aportaciones/mobileUpdateAportacion/PAYPAL',
+                url: BASE_URL_APP+'aportaciones/mobileUpdateAportacionPayPal',
                 dataType: "html",
                 success: function(data){
                     
@@ -1308,8 +1308,7 @@ function procesoPagoPayPal(loc, usuario_id){
                     var result = $.parseJSON(data);
                     
                     if(result.update_success){
-                        //Aqui debemos mostrar un popup con el texto de agradecimiento, por ahora solo un mensaje
-                        showAlert("Aportacion realizada con exito", "Aviso", "Aceptar");
+                        showAlert(result.success_alcanzado, "Aviso", "Aceptar");
                     }else{
                         showAlert(result.error_alcanzado, "Error", "Aceptar");
                     }
@@ -1322,7 +1321,7 @@ function procesoPagoPayPal(loc, usuario_id){
         }else{
             //Cerramos el childBrowser
             window.plugins.childBrowser.close();
-            showAlert("Su aportacion fue cancelada", "Error", "Aceptar");
+            showAlert("Su aportacion fue cancelada", "Aviso", "Aceptar");
         }
         
     }else {
