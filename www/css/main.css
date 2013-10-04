@@ -2145,7 +2145,7 @@ label.custom{
 }
 #proyecto_deportivo .data_user .description{
     min-height: 135px;
-    width: 61%;
+    width: 60%;
     padding: 4px 0 0 4px;
 }
 #proyecto_deportivo .data_user .description .content{
@@ -4212,6 +4212,13 @@ and (orientation:landscape)
         width: 83%;
         margin: 5px auto;
     }
+    
+    #proyecto_deportivo .data_user .foto_perfil{
+        width: 21%;
+    }
+    #proyecto_deportivo .data_user .description{
+        width: 76%;
+    }    
     /* TODO */
 }  
 

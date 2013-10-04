@@ -1115,7 +1115,17 @@ function loadPerfilDeportista(parent_id, me, usuario_id){
                 parent.find(".progress").find(".porcentaje").css("width", item.Proyecto.porcentaje_recaudado+"%").parent().show();
                 parent.find(".numero_porcentaje span").html(item.Proyecto.porcentaje_recaudado).parent().show();
                 
-                $(".age").age();                
+                $(".age").age();
+            }
+            
+            if(item.Publicaciones != ""){
+                var publicaciones = item.Publicaciones;
+                $.each(publicaciones, function(index, item) {
+                    parent.find("#publicaciones").append(item.Publicacion);
+                });
+                parent.find("#publicaciones").promise().done(function() {
+                    $(".age").age();
+                });
             }
             
             parent.promise().done(function() {
