@@ -1211,6 +1211,7 @@ function loadEventPerfilDeportista(element, me, to_usuario_id){
                                 $("#popupPatrocinar").popup("close");
                                 
                                 var url_pago = result.url_redirect_pago;
+                                //window.location = site_url;
                                 window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
                                 window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoPayPal(loc, me); }; // When the ChildBrowser URL changes we need to track that
                             }else{
@@ -1325,7 +1326,7 @@ function procesoPagoPayPal(loc, usuario_id){
         }
         
     }else {
-        // todo
+        // TODO
     }
 }
 
@@ -1334,7 +1335,7 @@ function procesoPagoTPV(loc){
     //Exiten 3 tipos de estados en el cual se mueve el pago para realizar la transaccion
     //aceptadaconfirmadortodotpvokpasarela -> Coloca el pago si todo esta bine en estado "pagado"
     //denegada -> error al momento de realizar el pago
-    //vuelve -> Significa que ser hizo correctamente el pago
+    //vuelve -> Significa que se hizo correctamente el pago
     
     //Controlamos 2 casos de estados de transaccion "denegada y vuelve"
     
@@ -1361,7 +1362,10 @@ function procesoPagoTPV(loc){
             //Cerramos el childBrowser
             window.plugins.childBrowser.close();
             
-            //Verificamos si la aportacion fue pagada
+            //Verificamos si la aportacion fue pagada, si llega al metodo vuelve, 
+            //sabemos que fue completada la aportacion, pero para mayor seguridad verificamos si se hizo correctamente la aportacion.
+            //solo verificamos si la aportacion tiene su estado 'pagado', no enviamos mail ni nada por el estilo ya que se supone
+            //que llego al metodo vuelve y éste sabe hacer todo(enviar mail, colocar la aportacion en estado pagado, etc)
             $.ajax({
                 data: "token="+token,
                 type: "POST",
@@ -1374,8 +1378,7 @@ function procesoPagoTPV(loc){
                     var result = $.parseJSON(data);
                     
                     if(result.aportacion_pagada){
-                        //Aqui debemos mostrar un popup con el texto de agradecimiento, por ahora solo un mensaje
-                        showAlert("Aportacion realizada con exito", "Aviso", "Aceptar");
+                        showAlert(result.success_alcanzado, "Aviso", "Aceptar");
                     }else{
                         showAlert(result.error_alcanzado, "Error", "Aceptar");
                     }
@@ -1388,15 +1391,15 @@ function procesoPagoTPV(loc){
         }else{
             //Cerramos el childBrowser
             window.plugins.childBrowser.close();
-            showAlert("Su aportacion fue denegada", "Error", "Aceptar");
+            showAlert("Ocurrio un error al momento de realizar el pago. Por favor, asegurese de que ha introducido correctamente sus datos de pago y vuelva a intentarlo.", "Error", "Aceptar");
         }
         
     }else if (loc.indexOf(url_callback_denegada + "?") >= 0) {
         //Cerramos el childBrowser
         window.plugins.childBrowser.close();
-        showAlert("Su aportacion fue denegada", "Error", "Aceptar");
+        showAlert("Su aportacion fue denegada. Por favor, asegurese de que ha introducido correctamente sus datos de pago y vuelva a intentarlo.", "Error", "Aceptar");
         
     }else{
-        // todo
+        // TODO
     }
 }
