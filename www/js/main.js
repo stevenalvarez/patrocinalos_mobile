@@ -217,7 +217,7 @@ $('#home_buscan_patrocinio').live('pagebeforeshow', function(event, ui) {
 
 //CUANDO CARGUE LA PAGE DE LAS RECOMPENSAS DE LA HOME
 $('#home_recompensas_ofrecidas').live('pagebeforeshow', function(event, ui) {
-    getRecompensasMazzel();
+    getRecompensasMazzel($(this).attr('id'));
 });
 
 //CUANDO CARGUE LA PAGE DE EDICIÓN DE DATOS DE PERFIL
@@ -560,37 +560,69 @@ function getBuscanPatrocinio(parent_id){
 }
 
 /*OBTENEMOS LOS DATOS DE LAS RECOMPENSAS MAZZEL DE LA HOME*/
-function getRecompensasMazzel(){
+function getRecompensasMazzel(parent_id){
+    var parent = $("#"+parent_id);
     $.getJSON(BASE_URL_APP+'rondas/mobileGetRecompensasMazzel', function(data) {
-        jQuery("#recompensas_home").html("");
-        //mostramos loading
-        $.mobile.loading( 'show' );
-        var recompensas = data.items;
-       	$.each(recompensas, function(index,item) {
-       	    html_data=' <li>';
-            html_data+='    <div class="cont_top">';
-            html_data+='      <div class="recorte">';
-            html_data+='           <img src="'+BASE_URL_APP+'img/recompensas/'+item.Recompensa.imagen+'"/>';
-            html_data+='      </div>';
-            html_data+='      <div class="content_descripcion">';
-            html_data+='          <p>'+item.Recompensa.descripcion+'</p>';
-            html_data+='      </div>';
-            html_data+='    </div>';
-            html_data+='    <div class="cont_bottom">';
-            html_data+='       <a href="#" class="link_profile"><h2>'+item.Recompensa.title+'</h2></a>';
-            html_data+='       <a href="#" class="link_patrocina"><span>PATROCINAR</span></a>';
-            html_data+='    </div>';
-            html_data+='</li>';
-                    
-            jQuery("#recompensas_home").append(html_data);
-    	});
         
-        jQuery("#recompensas_home").promise().done(function() {
-            $(this).find("li:last img").load(function(){
-                //ocultamos loading
-                $.mobile.loading( 'hide' );
+        //llenamos si solo los datos obtenidos es mayor a los datos que hay
+        var recompensas = data.items;
+        if(recompensas.length > parent.find(".list_recompensas > li").length){
+            parent.find("#recompensas_home").html("");
+            //mostramos loading
+            $.mobile.loading( 'show' );
+           	$.each(recompensas, function(index,item) {
+           	    html_data=' <li>';
+                html_data+='    <div class="cont_top">';
+                html_data+='      <div class="recorte">';
+                html_data+='           <img src="'+BASE_URL_APP+'img/recompensas/crop.php?w=400&i='+item.Recompensa.imagen+'"/>';
+                html_data+='      </div>';
+                html_data+='      <div class="content_descripcion informacion">';
+                html_data+='           <img src="'+BASE_URL_APP+'img/Usuario/800/crop.php?w=30&i='+item.Recompensa.destacado.imagen+'" class="avatar deportista">';
+                html_data+='           <p>Cons&iacute;guelo patrocinando el proyecto de <a href="proyecto_deportivo.html?usuario_id='+item.Recompensa.destacado.id+'">'+item.Recompensa.destacado.title+'</a></p>';
+                html_data+='           <p class="activo_hasta">Activo hasta <b>'+item.Recompensa.fecha_fin+'</b></p>';
+                html_data+='      </div>';
+                html_data+='    </div>';
+                html_data+='    <div class="cont_bottom">';
+                html_data+='       <a id="'+item.Recompensa.id+'" class="link_profile" href="#mas_info_recompensa" data-role="button" data-rel="popup" data-position-to="window" data-transition="pop"><h2>'+item.Recompensa.title+'</h2></a>';
+                html_data+='       <a href="proyecto_deportivo.html?usuario_id='+item.Recompensa.destacado.id+'&patrocina=show" class="link_patrocina"><span>PATROCINAR</span></a>';
+                html_data+='    </div>';
+                html_data+='</li>';
+                
+                parent.find("#recompensas_home").append(html_data);
+                
+                //popup mas info
+                var parent_contenedor = parent.find("#mas_info_recompensa").find("#lista_recompensas_popup");
+                var div_clone = parent_contenedor.find(".recompensa_item").clone();
+                div_clone.removeClass("recompensa_item").addClass("recompensa_item_"+item.Recompensa.id);
+                div_clone.find("h2").html(item.Recompensa.title);
+                div_clone.find("img.imagen_recompensa").attr("src",BASE_URL_APP+'img/recompensas/'+item.Recompensa.imagen);
+                div_clone.find(".descripcion").find("p").html(item.Recompensa.descripcion);
+                div_clone.find(".fechas_sorteo").find("span").html(item.Recompensa.fecha_participacion);
+                parent_contenedor.append(div_clone);
+        	});
+            
+            parent.find("#recompensas_home").promise().done(function() {
+                $(this).find("li:last img").load(function(){
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );
+                    
+                    //marcamos selected al item que se hizo click
+                    parent.find("#recompensas_home").find("a.link_profile").bind("touchstart click",function(){
+                        parent.find("#recompensas_home").find("a.link_profile").removeClass("selected");
+                        $(this).addClass("selected"); 
+                    });
+                    
+                    //evento que se lanza entes de mostrar el popup
+                    parent.find( "#mas_info_recompensa" ).bind({
+                       popupbeforeposition: function(event, ui) {
+                            var recompensa_seleccionda = parent.find("#recompensas_home").find("a.link_profile.selected").attr("id");
+                            parent.find("#mas_info_recompensa").find("#lista_recompensas_popup").children().hide();
+                            parent.find("#mas_info_recompensa").find("#lista_recompensas_popup").find(".recompensa_item_"+recompensa_seleccionda).show();
+                       }
+                    });
+                });
             });
-        });
+        }
 	});
 }
 
@@ -1146,11 +1178,12 @@ function loadPerfilDeportista(parent_id, me, usuario_id, show_popup_patrocinar){
                     //mostrarlos el popup para patrocinar si solo si viene la variable patrocinar=show
                     if(show_popup_patrocinar !== undefined && show_popup_patrocinar == "show"){
                         //comprobamos que toda la page se haiga cargado y recien mostramos el popup
-                        $( parent).bind( 'pageshow',function(event){
-                            setTimeout(function(){
-                                $("#popupPatrocinar").popup("open");
-                            },100);
-                        });
+                        //mostramos loading
+                        $.mobile.loading( 'show' );
+                        setTimeout(function(){
+                            $("#popupPatrocinar").popup("open");
+                            $.mobile.loading( 'hide' );
+                        },400);
                     }
                 });
             });

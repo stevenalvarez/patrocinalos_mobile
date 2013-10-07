@@ -3327,6 +3327,10 @@ label.custom{
     font-weight: normal;
     overflow: hidden;
 }
+.popup_recompensa .container_info.noborder{
+    border-bottom: 0;
+    margin-bottom: 5px;
+}
 .popup_recompensa .container_info label{
     color: #000;
     font-weight: bold;
@@ -3335,9 +3339,11 @@ label.custom{
 .popup_recompensa .container_info p{
     color: #7f7f7f;
 }
+.popup_recompensa .container_info span.del_al{
+    line-height: 14px;
+}
 .popup_recompensa .container_info p{
-    line-height: 11px;
-    max-height: 78px;
+    line-height: 13px;
     overflow: hidden;
     font-size: 11px;    
 }
@@ -3349,7 +3355,7 @@ label.custom{
 }
 .popup_recompensa .container_info .recuadro_recompensa{
     float: left;
-    height: 80px;
+    height: 100px;
     margin-right: 8px;
     overflow: hidden;
     width: 120px;     
@@ -3369,7 +3375,7 @@ label.custom{
 }
 .popup_recompensa .container_info .descripcion{
     width: 54%;
-    margin-top: 2px; 
+    margin-top: 5px; 
 }
 .popup_recompensa h2{
     background-color: #9F3A3B;
@@ -3393,7 +3399,8 @@ label.custom{
     float: left;
 }
 .popup_recompensa .popup_header li b{
-    font-size: 20px;
+    font-size: 17px;
+    letter-spacing: 0;
 }
 .popup_recompensa .popup_header li.first{
     width: 45%;
@@ -3535,7 +3542,6 @@ label.custom{
 /* POPUP ZOOM FOTO */
 .popup_recompensa .popup_header{
     padding-right: 20px;
-    padding-bottom: 10px;
     padding-top: 10px;
 }
 .popup_recompensa.zoom .container_info{
