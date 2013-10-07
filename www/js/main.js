@@ -157,7 +157,7 @@ $(document).on('pageinit', "#login", function(){
     });
 });
 
-//INFO GENERAL
+//HOME
 $('#home').live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
         var hash = window.location.hash;
@@ -181,43 +181,74 @@ $('#proyecto_deportivo').live('pagebeforeshow', function(event, ui) {
 
 //CUANDO CARGUE LA PAGE DE PUBLICACIONES DESTACADAS DE LA HOME
 $(document).on('pageinit', "#home_destacados", function(){
-   getDestacados();
+    if(isLogin()){
+        getDestacados();
+    }else{
+        redirectLogin();
+    }
 });
 
 //CUANDO CARGUE LA PAGE DE PUBLICACIONES DESTACADAS DE LA HOME
 $(document).on('pageinit', "#home_mas_proyectos", function(){
-  getMasProyectos();
+    if(isLogin()){
+        getMasProyectos();
+    }else{
+        redirectLogin();
+    }
 });
 
 //CUANDO CARGUE LA PAGE DE INFO DE LA RONDA
 $(document).on('pageinit', "#detail_ronda", function(){
-  getRondaActiva();
+    if(isLogin()){
+        getRondaActiva($(this).attr("id"), COOKIE.id);
+    }else{
+        redirectLogin();
+    }
 });
 
 //CUANDO CARGUE LA PAGE DE INFO DE LA RONDA
 $(document).on('pageinit', "#home_bloggin", function(){
-  getBlogHome();
+    if(isLogin()){
+        getBlogHome();
+    }else{
+        redirectLogin();
+    }
 });
 
 //CUANDO CARGUE LA PAGE DE DETALLE DE ENTRADA DE BLOG
 $('#home_detail_blog').live('pagebeforeshow', function(event, ui) {
-  getInfoBlog(getUrlVars()["id_blog"]);
+    if(isLogin()){
+        getInfoBlog(getUrlVars()["id_blog"]);
+    }else{
+        redirectLogin();
+    }
 });
 
 //CUANDO CARGUE LA PAGE DE COMENTAR LA ENTRADA DE BLOG
 $('#home_blog_comment').live('pagebeforeshow', function(event, ui) {
-  getInfoBlogComment(getUrlVars()["id_blog"]);
-  
+    if(isLogin()){
+        getInfoBlogComment(getUrlVars()["id_blog"]);
+    }else{
+        redirectLogin();
+    }
 });
 
 //CUANDO CARGUE LA PAGE DE LOS PATROCINIOS ACTIVOS DE LA HOME
 $('#home_buscan_patrocinio').live('pagebeforeshow', function(event, ui) {
-    getBuscanPatrocinio($(this).attr('id'));
+    if(isLogin()){
+        getBuscanPatrocinio($(this).attr('id'));
+    }else{
+        redirectLogin();
+    }
 });
 
 //CUANDO CARGUE LA PAGE DE LAS RECOMPENSAS DE LA HOME
 $('#home_recompensas_ofrecidas').live('pagebeforeshow', function(event, ui) {
-    getRecompensasMazzel($(this).attr('id'));
+    if(isLogin()){
+        getRecompensasMazzel($(this).attr('id'));
+    }else{
+        redirectLogin();
+    }
 });
 
 //CUANDO CARGUE LA PAGE DE EDICIÓN DE DATOS DE PERFIL
@@ -371,20 +402,57 @@ function getMasProyectos(){
 }
 
 /*OBTENEMOS LA INFO DE RONDA ACTIVA*/
-function getRondaActiva(){
-    $.getJSON(BASE_URL_APP+'rondas/mobileGetRondaActiva', function(data) {
+function getRondaActiva(parent_id,usuario_id){
+    var parent = $("#"+parent_id);
+    $.getJSON(BASE_URL_APP+'rondas/mobileGetRondaActiva/'+usuario_id, function(data) {
         //mostramos loading
         $.mobile.loading('show');
-       	var ronda = data.ronda;
-        jQuery("#name_ronda").text(""+ronda.nombre);    
-        jQuery("#patrocinio_ronda").text( ""+ronda.patrocinio_hasta);    
-        jQuery("#num_ganadores").text(""+ronda.num_patrocinados);
-        jQuery("#puntos_necesarios").text(""+ronda.puntos_necesarios+" puntos");
-        jQuery("#fecha_inscripcion").text(""+ronda.fecha_ini);
-        jQuery("#fecha_fin").text(""+ronda.fecha_fin);
-        jQuery("#fecha_votacion").text(""+ronda.fecha_ini);
-        $.mobile.loading( 'hide' );    
+       	
+        var item = data.item;
         
+        if(item.Ronda.usuario_inscrito){
+            
+        }else{
+            //info usuario
+            parent.find(".profile").find("img").attr("src",BASE_URL_APP+'img/Usuario/169/crop.php?w=50&i='+COOKIE.imagen);
+            parent.find(".profile").find("strong").html(COOKIE.title);
+            
+            parent.find(".profile").find(".inscribirme").click(function(){
+                //mostramos loading
+                $.mobile.loading( 'show' );
+                $.getJSON(BASE_URL_APP + 'rondas/setMobileInscribirme?me=' + me + "&to_usuario_id=" + to_usuario_id, function(data){
+                    if(data.success){
+                        $(element).find("#seguir_deportista").find(".ui-btn-text").text("Dejar de Apoyar");
+                        $(element).find("#seguir_deportista").removeClass("seguir");
+                        $(element).find("#seguir_deportista").addClass("dejar_seguir");
+                        //ocultamos loading
+                        $.mobile.loading( 'hide' );
+                    }else{
+                        showAlert("Ocurrio un error", "Error", "Aceptar");
+                    }
+                });
+                
+                return false;
+            });
+            
+            //info ronda
+            parent.find("#imagen_ronda").attr("src", BASE_URL_APP+'img/rondas/'+item.Ronda.serializado.imagenronda1);
+            parent.find("#name_ronda").html(item.Ronda.nombre);
+            parent.find("#patrocinio_ronda").html(item.Ronda.serializado.recompensa+"&euro;");
+            parent.find("#ganadoresliteral").html(item.Ronda.serializado.ganadoresliteral);
+            parent.find("#text_inscripcion").html(item.Ronda.serializado.inscripcion);
+            parent.find("#fecha_inscripcion").html(item.Ronda.fecha_ini);
+            parent.find("#text_condiciones").html(item.Ronda.serializado.condiciones);
+            parent.find("#text_finalizacion").html(item.Ronda.serializado.finalizacion);
+            parent.find("#fecha_cierre").html(item.Ronda.fecha_fin);
+            
+            parent.find("#imagen_ronda").load(function(){
+                parent.find(".content_info_ronda").fadeIn("slow",function(){
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );
+                });
+            });
+        }
     });
 }
 

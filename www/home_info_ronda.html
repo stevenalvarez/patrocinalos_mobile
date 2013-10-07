@@ -1,6 +1,57 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+        <title>Patrocinalos</title>
+        
+        <link rel="stylesheet" href="css/jquery.mobile-1.3.1.css" />
+        <link rel="stylesheet" href="css/reset.css" />
+       	<link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/iphone.css" />
+        <link rel="stylesheet" href="css/muro.css" />
+        
+        <!-- include carousel.css -->
+        <link rel="stylesheet" href="css/carousel.css" />
+        <link rel="stylesheet" href="css/carousel-style.css" />
+            
+        <script src="js/jquery-1.8.2.js"></script>
+        
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.defaultPageTransition = 'slide';
+            });
+        </script>
+        
+        <!-- debug sin configurar en el config.xml -->
+        <!--<script src="http://debug.phonegap.com/target/target-script-min.js#mobilelospa"></script>-->
+        
+        <script src="js/jquery.mobile-1.3.1.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/validate.add.method.js"></script>
+        <script src="js/jquery.age.js"></script>
+        <!-- include carousel.js -->
+        <script src="js/carousel.js"></script>
+        <script src="cordova.js"></script>
+        <script src="cdv-plugin-fb-connect.js"></script>
+        <script src="facebook-js-sdk.js"></script>
+        <script src="childbrowser.js"></script>
+        <script src="js/jsOAuth-1.3.6.min.js"></script>
+        <script src="js/functions.js"></script>
+        <script src="js/app.functions.js"></script>
+        <script src="js/tw.functions.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="js/calendar/jqm-datebox-1.1.0.css" />
+        <script type="text/javascript" src="js/calendar/jqm-datebox.core.min.js"></script>
+        <script type="text/javascript" src="js/calendar/jqm-datebox.mode.calbox.min.js"></script>
+        <script type="text/javascript" src="js/calendar/jquery.mobile.datebox.i18n.es-ES.utf8.js"></script>
+        <!-- cargamos al ultimo el script que inicializa los valores una vez cargado el dispositivo -->
+        <script type="text/javascript" src="js/app.ready.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>    
     </head>
     <body>
 
@@ -23,14 +74,14 @@
         </div><!-- /header -->
     
     	<div data-role="content">
-            <div class="content_info_ronda">
+            <div class="content_info_ronda" style="display: none;">
                 <div class="description">
                     <div class="image">
-                        <img src="img/ronda_iberdrola.jpg" alt="blog"/>
+                        <img id="imagen_ronda" src="img/ronda_iberdrola.jpg" alt="blog"/>
                     </div>
                     <div class="text">
-                        <h2><span id="name_ronda">Iberdrola ofrece</span> <strong><b id="patrocinio_ronda"></b> &euro;</strong></h2>
-                        <p>A repartir entre los <span id="num_ganadores">3</span> ganadores</p>
+                        <h2><span id="name_ronda"></span> ofrece <strong><b id="patrocinio_ronda"></b></strong></h2>
+                        <p id="ganadoresliteral"></p>
                     </div>
                 </div>
                 <div class="profile">
@@ -41,27 +92,22 @@
                             <strong>Eric Sanches</strong>
                         </div>
                     </div>
-                    <a class="inscribe" href="#">inscribirse en la ronda</a>
+                    <a class="inscribirme" href="javascript:void(0)">inscribirse en la ronda</a>
                 </div>
                 <div class="content_bottom">
                     <div>
                         <h3>Inscripci&oacute;n:</h3>
-                        <p>Inscr&iacute;bete en la rondas antes de que se cierre el plazo,
-                            no dejes escapar la oportunidad</p>
-                        <h4><span>Fin de la inscripci&oacute;n:</span><strong id="fecha_inscripcion">23/06/2013</strong></h4>
+                        <div id="text_inscripcion">Inscr&iacute;bete en la rondas antes de que se cierre el plazo, no dejes escapar la oportunidad</div>
+                        <h4><span>Fecha inicio de la ronda:</span><strong id="fecha_inscripcion">23/06/2013</strong></h4>
                     </div>
                     <div>
-                        <h3>Puntuaci&oacute;n:</h3>
-                        <p>
-                            consigue puntos para superar el corte, consigue puntos 
-                            con fotos, videos, amigos.</p>
-                        <h4><span>Puntos necesarios:</span><strong id="puntos_necesarios">500 puntos</strong></h4>
-                        <h4><span>Fecha l&iacute;mite:</span><strong id="fecha_fin">30/06/2013</strong></h4>
+                        <h3>Condiciones:</h3>
+                        <div id="text_condiciones">consigue puntos para superar el corte, consigue puntos con fotos, videos, amigos.</div>
                     </div>
                     <div>
-                        <h3>Votaci&oacute;n:</h3>
-                        <p>Los usuarios, con sus votos, elegir&aacute;n los 10 mejores perfiles</p>
-                        <h4><span>Fin de la inscripci&oacute;n:</span><strong id="fecha_votacion">23/06/2013</strong></h4>
+                        <h3>Finalizaci&oacute;n:</h3>
+                        <div id="text_finalizacion">Los usuarios, con sus votos, elegir&aacute;n los 10 mejores perfiles</div>
+                        <h4><span>Cierre de la ronda:</span><strong id="fecha_cierre">23/06/2013</strong></h4>
                     </div>
                 </div>
             </div>
