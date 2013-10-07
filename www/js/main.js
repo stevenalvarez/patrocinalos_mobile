@@ -410,23 +410,39 @@ function getRondaActiva(parent_id,usuario_id){
        	
         var item = data.item;
         
-        if(item.Ronda.usuario_inscrito){
-            
+        //info ronda
+        parent.find("#imagen_ronda").attr("src", BASE_URL_APP+'img/rondas/'+item.Ronda.serializado.imagenronda1);
+        parent.find("#name_ronda").html(item.Ronda.nombre);
+        parent.find("#patrocinio_ronda").html(item.Ronda.serializado.recompensa+"&euro;");
+        parent.find("#ganadoresliteral").html(item.Ronda.serializado.ganadoresliteral);
+        
+        parent.find("#imagen_ronda").load(function(){
+            parent.find(".content_info_ronda").fadeIn("slow",function(){
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+            });
+        });
+        
+        if(item.Ronda.usuario_ya_inscrito_en_ronda){
+            var notificaciones_ronda =  data.notificaciones_ronda;
+            showNotificacionesRonda(parent,notificaciones_ronda);
         }else{
             //info usuario
             parent.find(".profile").find("img").attr("src",BASE_URL_APP+'img/Usuario/169/crop.php?w=50&i='+COOKIE.imagen);
             parent.find(".profile").find("strong").html(COOKIE.title);
+            parent.find(".profile").find(".inscribirme").attr("id",item.Ronda.id);
+            parent.find(".profile").show();
             
             parent.find(".profile").find(".inscribirme").click(function(){
                 //mostramos loading
                 $.mobile.loading( 'show' );
-                $.getJSON(BASE_URL_APP + 'rondas/setMobileInscribirme?me=' + me + "&to_usuario_id=" + to_usuario_id, function(data){
+                $.getJSON(BASE_URL_APP + 'rondas/mobileInscribirmeRonda/'+usuario_id+'/'+$(this).attr("id"), function(data){
                     if(data.success){
-                        $(element).find("#seguir_deportista").find(".ui-btn-text").text("Dejar de Apoyar");
-                        $(element).find("#seguir_deportista").removeClass("seguir");
-                        $(element).find("#seguir_deportista").addClass("dejar_seguir");
-                        //ocultamos loading
-                        $.mobile.loading( 'hide' );
+                        showAlert(data.mensaje, "Aviso", "Aceptar");
+                        //ocultamos los elmentos
+                        parent.find(".profile, .content_bottom").fadeOut("slow");
+                        var notificaciones_ronda =  data.notificaciones_ronda;
+                        showNotificacionesRonda(parent,notificaciones_ronda);
                     }else{
                         showAlert("Ocurrio un error", "Error", "Aceptar");
                     }
@@ -435,25 +451,47 @@ function getRondaActiva(parent_id,usuario_id){
                 return false;
             });
             
-            //info ronda
-            parent.find("#imagen_ronda").attr("src", BASE_URL_APP+'img/rondas/'+item.Ronda.serializado.imagenronda1);
-            parent.find("#name_ronda").html(item.Ronda.nombre);
-            parent.find("#patrocinio_ronda").html(item.Ronda.serializado.recompensa+"&euro;");
-            parent.find("#ganadoresliteral").html(item.Ronda.serializado.ganadoresliteral);
-            parent.find("#text_inscripcion").html(item.Ronda.serializado.inscripcion);
-            parent.find("#fecha_inscripcion").html(item.Ronda.fecha_ini);
-            parent.find("#text_condiciones").html(item.Ronda.serializado.condiciones);
-            parent.find("#text_finalizacion").html(item.Ronda.serializado.finalizacion);
-            parent.find("#fecha_cierre").html(item.Ronda.fecha_fin);
-            
-            parent.find("#imagen_ronda").load(function(){
-                parent.find(".content_info_ronda").fadeIn("slow",function(){
-                    //ocultamos loading
-                    $.mobile.loading( 'hide' );
-                });
-            });
+            //info ronda complementaria
+            parent.find(".info_ronda").find("#text_inscripcion").html(item.Ronda.serializado.inscripcion);
+            parent.find(".info_ronda").find("#fecha_inscripcion").html(item.Ronda.fecha_ini);
+            parent.find(".info_ronda").find("#text_condiciones").html(item.Ronda.serializado.condiciones);
+            parent.find(".info_ronda").find("#text_finalizacion").html(item.Ronda.serializado.finalizacion);
+            parent.find(".info_ronda").find("#fecha_cierre").html(item.Ronda.fecha_fin);
+            parent.find(".info_ronda").show();
         }
     });
+}
+
+/*MOSTRAMOS LAS NOTIFICACIONES DE LA RONDA*/
+function showNotificacionesRonda(parent,notificaciones_ronda){
+    //actividad en las rondas
+    parent.find('#lista_actividades_ronda').find("li").remove();
+    $.each(notificaciones_ronda, function(index, item) {
+        html='<li>';
+        html+='<div class="recorte">';
+        html+='<img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Notificacion.usuario_imagen+'"/>';
+        html+='</div>';
+        html+='<div class="content_descripcion left">';
+        html+='<time class="age" date="'+item.Notificacion.date+'" datetime="'+item.Notificacion.datetime+'">&nbsp;</time>';
+        html+='<h4 class="ui-li-heading">';
+        html+='<b>'+item.Notificacion.usuario_title+'</b>';
+        html+='</h4>';
+        html+='<p class="ui-li-desc">'+item.Notificacion.texto_descripcion+'</p>';
+        html+='</div>';
+        html+='</li>';
+        
+        parent.find('#lista_actividades_ronda').append(html);
+     });
+     
+    parent.find('#lista_actividades_ronda').listview('refresh');
+    
+    //mostralos la lista de actividad de patrocinalos
+    parent.find("#lista_actividades_ronda").promise().done(function() {
+        //ocultamos loading
+        $.mobile.loading( 'hide' );
+        $(".age").age();
+        parent.find("#lista_actividades_ronda").fadeIn("slow");
+    });    
 }
 
 /*OBTENEMOS LOS DATOS DE DEPORTISTAS ÉLITES DE LA HOME*/
