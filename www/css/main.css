@@ -3057,15 +3057,15 @@ label.custom{
 #home, 
 #info_ronda,
 #proyecto_deportivo,
-#detail_ronda,
+#home_ronda_activa,
 #home_detail_blog,
 #home_destacados,
 #home_mas_proyectos,
 #home_blog_comment,
-#home_bloggin,
+#home_blog,
 #edicion_datos_personales,
 #home_buscan_patrocinio,
-#home_recompensas_ofrecidas{
+#home_recompensas{
     padding-bottom: 0px !important;
 }
 .info_deportista{

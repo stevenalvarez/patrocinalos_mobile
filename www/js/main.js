@@ -36,7 +36,7 @@ $(document).bind('pageshow', function() {
 
 //INICIO
 $('#view').live('pagebeforeshow', function(event, ui) {
-   getUsuariosRandom();
+    getUsuariosRandom();
 });
 
 //REGISTRO
@@ -167,19 +167,18 @@ $('#home').live('pagebeforeshow', function(event, ui) {
     }
 });
 
-//PERFIL DEPORTIVO
+//PROYECTO DEPORTIVO, PAGINA DEL PROYECTO
 $('#proyecto_deportivo').live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
         var user = COOKIE;
         var me = user.id;
         loadPerfilDeportista($(this).attr('id'), me, getUrlVars()["usuario_id"], getUrlVars()["patrocina"]);
-        loadEventPerfilDeportista(this, me, getUrlVars()["usuario_id"]);
     }else{
         redirectLogin();
     }
 });
 
-//CUANDO CARGUE LA PAGE DE PUBLICACIONES DESTACADAS DE LA HOME
+//DESTACADOS - HOME
 $(document).on('pageinit', "#home_destacados", function(){
     if(isLogin()){
         getDestacados();
@@ -188,7 +187,7 @@ $(document).on('pageinit', "#home_destacados", function(){
     }
 });
 
-//CUANDO CARGUE LA PAGE DE PUBLICACIONES DESTACADAS DE LA HOME
+//MAS PROYECTOS - HOME
 $(document).on('pageinit', "#home_mas_proyectos", function(){
     if(isLogin()){
         getMasProyectos();
@@ -197,8 +196,26 @@ $(document).on('pageinit', "#home_mas_proyectos", function(){
     }
 });
 
-//CUANDO CARGUE LA PAGE DE INFO DE LA RONDA
-$(document).on('pageinit', "#detail_ronda", function(){
+//BUSCAN PATROCINIO - HOME
+$('#home_buscan_patrocinio').live('pagebeforeshow', function(event, ui) {
+    if(isLogin()){
+        getBuscanPatrocinio($(this).attr('id'));
+    }else{
+        redirectLogin();
+    }
+});
+
+//RECOMPENSAS - HOME
+$('#home_recompensas').live('pagebeforeshow', function(event, ui) {
+    if(isLogin()){
+        getRecompensasMazzel($(this).attr('id'));
+    }else{
+        redirectLogin();
+    }
+});
+
+//RONDA ACTIVA - HOME
+$(document).on('pageinit', "#home_ronda_activa", function(){
     if(isLogin()){
         getRondaActiva($(this).attr("id"), COOKIE.id);
     }else{
@@ -206,8 +223,8 @@ $(document).on('pageinit', "#detail_ronda", function(){
     }
 });
 
-//CUANDO CARGUE LA PAGE DE INFO DE LA RONDA
-$(document).on('pageinit', "#home_bloggin", function(){
+//BLOG - HOME
+$(document).on('pageinit', "#home_blog", function(){
     if(isLogin()){
         getBlogHome();
     }else{
@@ -228,24 +245,6 @@ $('#home_detail_blog').live('pagebeforeshow', function(event, ui) {
 $('#home_blog_comment').live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
         getInfoBlogComment(getUrlVars()["id_blog"]);
-    }else{
-        redirectLogin();
-    }
-});
-
-//CUANDO CARGUE LA PAGE DE LOS PATROCINIOS ACTIVOS DE LA HOME
-$('#home_buscan_patrocinio').live('pagebeforeshow', function(event, ui) {
-    if(isLogin()){
-        getBuscanPatrocinio($(this).attr('id'));
-    }else{
-        redirectLogin();
-    }
-});
-
-//CUANDO CARGUE LA PAGE DE LAS RECOMPENSAS DE LA HOME
-$('#home_recompensas_ofrecidas').live('pagebeforeshow', function(event, ui) {
-    if(isLogin()){
-        getRecompensasMazzel($(this).attr('id'));
     }else{
         redirectLogin();
     }
@@ -329,9 +328,224 @@ function getUsuariosRandom() {
 	});
 }
 
-/*OBTENEMOS LOS DATOS DE PUBLICACIONES DESTACADOS DE LA HOME*/
-function getDestacados(){
+//CARROUSEL,ACTIVIDAD EN PATROCINALOS Y ACTIVIDAD EN LA RONDA, PARA LA PAGINA HOME 
+function getEntradasByCarrousel(parent_id, hash){
+    var parent = $("#"+parent_id);
+    parent.find("#tabs_opciones a").bind("touchstart click",function(){
+        $(this).parent().find("a").removeClass("active");
+        $(this).addClass("active");
+        if($(this).attr("id") == "tab_actividad_rondas"){
+            parent.find('#lista_actividades').hide();
+            parent.find('#lista_actividades_ronda').show();            
+        }else{
+            parent.find('#lista_actividades_ronda').hide();
+            parent.find('#lista_actividades').show();            
+        }
+    });
     
+    //obtenemos los proyectos, actividad en patrocinalos y actividad en ronda
+    $.getJSON(BASE_URL_APP+'rondas/mobileHome', function(data) {
+        if(data){
+            
+            //mostramos loading
+            $.mobile.loading('show');
+            
+            //actividad en patrocinalos
+            parent.find('#lista_actividades').find("li").remove();
+            var notificaciones_patrocinalos =  data.notificaciones_sistema;
+            $.each(notificaciones_patrocinalos, function(index, item) {
+                html='<li>';
+                html+='<div class="recorte">';
+                html+='<img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Notificacion.usuario_imagen+'"/>';
+                html+='</div>';
+                html+='<div class="content_descripcion left">';
+                html+='<time class="age" date="'+item.Notificacion.date+'" datetime="'+item.Notificacion.datetime+'">&nbsp;</time>';
+                html+='<h4 class="ui-li-heading">';
+                if(item.Notificacion.tipo == "like"){
+                    html+='A <b>'+item.Notificacion.usuario_title+'</b>';
+                }else{
+                    html+='<b>'+item.Notificacion.usuario_title+'</b>';
+                }
+                html+='</h4>';
+                html+='<p class="ui-li-desc">'+item.Notificacion.texto_descripcion+'</p>';
+                html+='</div>';
+                html+='</li>';
+                
+                parent.find('#lista_actividades').append(html);
+             });
+             
+            parent.find('#lista_actividades').listview('refresh');
+            
+            //mostralos la lista de actividad de patrocinalos
+            parent.find("#lista_actividades").promise().done(function() {
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+                $(".age").age();
+            });
+            
+            //sacamos la actividad en las rondas
+            var notificaciones_ronda =  data.notificaciones_ronda;
+            showNotificacionesRonda(parent,notificaciones_ronda);
+            
+            //mostramos el tab que se selecciono
+            if(hash == "#actividad_ronda"){
+                parent.find('#tab_actividad_patrocinalos').removeClass("active");
+                parent.find('#tab_actividad_rondas').addClass("active");
+                parent.find('#lista_actividades_ronda').show();
+            }else{
+                parent.find('#tab_actividad_rondas').removeClass("active");
+                parent.find('#tab_actividad_patrocinalos').addClass("active");
+                parent.find('#lista_actividades').show();
+            }
+                     
+            //cargamos los proyectos si es mayor a lo que actulamente se muestra, esto se da por si se vuelve a la page
+            var items_proyectos = parent.find("#carrousel_proyectos").find(".m-item").length;
+            if(data.entradas.length > items_proyectos){
+                parent.find("#carrousel_proyectos").find(".m-item").remove();
+                parent.find("#carrousel_proyectos").find(".m-carousel-controls").find("a").remove();
+                
+                //entradas de los deportista que tienen proyectos
+                var entradas = data.entradas;
+               	$.each(entradas, function(index, item) {
+               	    var mclass = ""; 
+               	    if(index == 0) mclass = "m-active";
+                    var html='<div class="m-item '+mclass+'">'+
+                        '<div class="info_deportista">'+
+                            '<div class="info_content">'+
+                                '<h2 class="usuario_title">'+item.Entrada.title+'</h2>'+
+                                '<div class="left">'+
+                                    '<div class="recuadro">'+
+                                        '<img class="entrada_imagen" src="'+BASE_URL_APP+'img/home/crop.php?w=150&i='+item.Entrada.imagen+'" />'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="right">'+
+                                    '<p class="descripcion">'+item.Entrada.texto+'</p>'+
+                                    '<div class="like_cash">'+
+                                        '<span class="like">'+item.seguidores+'</span>'+
+                                        '<span class="cash">1</span>'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="buttom_ir_perfil">'+
+                                    '<a class="ui-btn-submit celeste ui-btn ui-btn-corner-all" href="proyecto_deportivo.html?usuario_id='+item.Entrada.usuario_id+'">'+
+                                        '<span class="ui-btn-inner">'+
+                                        '<span class="ui-btn-text">VISITA SU PROYECTO</span>'+
+                                        '</span>'+
+                                    '</a>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>';
+                    
+               	    parent.find("#carrousel_proyectos").find(".m-carousel-inner").append(html);
+                    parent.find("#carrousel_proyectos").find(".m-carousel-controls").append('<a href="#" data-slide="'+(index+1)+'">'+(index+1)+'</a>');
+                });
+                
+                //iniciamos el carousel
+                parent.find("#carrousel_proyectos").find(".m-carousel-inner").promise().done(function() {
+                    //volvemos a recargar el plugin unicamente si es que los datos son mas de 1, porque inicialmente el html es uno y eso cuenta
+                    if(items_proyectos > 1){
+                        parent.find('#carrousel_proyectos').carousel("reload");
+                    }else{
+                        parent.find('#carrousel_proyectos').carousel();
+                    }
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );
+                });
+            }
+        } 
+    });
+}
+
+//OBTENEMOS LOS DATOS DEL PERFIL DE UN DEPORTISTA EN ESPECIFICO
+function loadPerfilDeportista(parent_id, me, usuario_id, show_popup_patrocinar){
+    var parent = $("#"+parent_id);
+    $.getJSON(BASE_URL_APP + 'usuarios/mobileGetProyectoDeportista?me=' + me + '&usuario_id='+usuario_id, function(data){
+        if(data.item){
+            
+            //mostramos loading
+            $.mobile.loading( 'show' );
+            
+            var item = data.item;
+            
+            //verifica si el deportista logeado ya es seguidor del deportista x
+            if(item.Usuario.soy_su_seguidor){
+                parent.find("#seguir_deportista").find(".ui-btn-text").text("Dejar de Apoyar");
+                parent.find("#seguir_deportista").removeClass("seguir");
+                parent.find("#seguir_deportista").addClass("dejar_seguir");
+            }
+            
+            parent.find(".imagen_user").attr("src", BASE_URL_APP+'img/Usuario/169/crop.php?w=150&i='+item.Usuario.imagen);
+            parent.find(".nombre_user").html(item.Usuario.title);
+            
+            if(item.Usuario.urlfacebook){
+                var element = parent.find(".link_red_social a.facebook");
+                element.attr("href", item.Usuario.urlfacebook);
+                element.attr("onclick", "window.open(this.href,'_system'); return false;");
+            }
+            if(item.Usuario.twitter){
+                var element = parent.find(".link_red_social a.twitter");
+                element.attr("href", item.Usuario.twitter);
+                element.attr("onclick", "window.open(this.href,'_system'); return false;");
+            }
+            
+            if(item.Proyecto !=""){
+                parent.find(".expira").find("span").attr("date",item.Proyecto.date);
+                parent.find(".expira").find("span").attr("datetime",item.Proyecto.fecha_fin);
+                parent.find(".expira").show();
+                parent.find(".patrociname span").html(item.Proyecto.title).parent().show();
+                parent.find(".necesito_para span").html(item.Proyecto.paraque_necesito).parent().show();
+                parent.find(".cuanto_necesito").find(".monto").html(item.Proyecto.monto);
+                parent.find(".cuanto_necesito").show();
+                parent.find(".recaudado").find(".monto").html(item.Proyecto.total_recaudado);
+                parent.find(".recaudado").show();
+                parent.find(".progress").find(".porcentaje").css("width", item.Proyecto.porcentaje_recaudado+"%").parent().show();
+                parent.find(".numero_porcentaje span").html(item.Proyecto.porcentaje_recaudado).parent().show();
+                
+                $(".age").age();
+            }
+            
+            if(item.Publicaciones != ""){
+                var publicaciones = item.Publicaciones;
+                $.each(publicaciones, function(index, item) {
+                    parent.find("#publicaciones").append(item.Publicacion);
+                });
+                parent.find("#publicaciones").promise().done(function() {
+                    $(".age").age();
+                });
+            }
+            
+            parent.promise().done(function() {
+                $(this).find(".imagen_user").load(function(){
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );
+                    
+                    //mostrarlos el popup para patrocinar si solo si viene la variable patrocinar=show
+                    if(show_popup_patrocinar !== undefined && show_popup_patrocinar == "show"){
+                        //comprobamos que toda la page se haiga cargado y recien mostramos el popup
+                        //mostramos loading
+                        $.mobile.loading( 'show' );
+                        setTimeout(function(){
+                            $("#popupPatrocinar").popup("open");
+                            $.mobile.loading( 'hide' );
+                        },400);
+                    }
+                });
+            });
+            
+            //Actualizamos los datos para realizar la aportacion
+            var form_pago = parent.find("#formulario_pago_individual"); 
+            form_pago.find("#imagen_deportista").attr("src", BASE_URL_APP+'img/Usuario/169/crop.php?w=60&i='+item.Usuario.imagen);
+            form_pago.find(".nombre_deportista").text(item.Usuario.title);
+            form_pago.find("#proyecto_id").val(item.Proyecto.id);
+            
+            //llamamos a la funcion que inicia los eventos de la pagina proyecto
+            loadEventPerfilDeportista(parent, me, usuario_id);
+        }
+    });
+}
+
+/*OBTENEMOS LOS DATOS DE LOS PROYECTOS DESTACADOS*/
+function getDestacados(){
     $.getJSON(BASE_URL_APP+'rondas/mobileGetHomeDestacados', function(data) {
         //mostramos loading
         jQuery(".list_destacados").html("");
@@ -364,9 +578,8 @@ function getDestacados(){
 	});
 }
 
-/*OBTENEMOS LOS DATOS DE MAS PROYECTOS DE LA HOME*/
+/*OBTENEMOS LOS DATOS DE MAS PROYECTOS*/
 function getMasProyectos(){
-    
     $.getJSON(BASE_URL_APP+'rondas/mobileGetHomeMasProyectos', function(data) {
         //mostramos loading
         jQuery(".elite_list").html("");
@@ -398,6 +611,124 @@ function getMasProyectos(){
                 $.mobile.loading( 'hide' );
             });
         });
+	});
+}
+
+/*OBTENEMOS LOS DATOS DE LOS DEPORTISTAS QUE BUSCAN PATROCINIO*/
+function getBuscanPatrocinio(parent_id){
+    var parent = $("#"+parent_id);
+    $.getJSON(BASE_URL_APP+'proyectos/mobileGetBuscanPatrocinio', function(data) {
+        var proyectos = data.items;
+        
+        //llenamos si solo los datos obtenidos es mayor a los datos que hay
+        if(proyectos.length > parent.find(".list_buscan_patro > li").length){
+            parent.find(".list_buscan_patro").html("");
+            $.mobile.loading( 'show' );        
+           	$.each(proyectos, function(index,item) {
+           	    html_data=' <li>';
+                html_data+='    <div class="cont_top">';
+                html_data+='        <div class="recorte">';
+                html_data+='            <a href="proyecto_deportivo.html?usuario_id='+item.Usuario.id+'">';
+                html_data+='                <img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Usuario.imagen+'"/>';
+                html_data+='            </a>';
+                html_data+='        </div>';
+                html_data+='        <div class="content_descripcion">';
+                html_data+='            <p>';
+                html_data+='                <span>Necesita patrocinio para:</span>'+item.Proyecto.title+ '<br/>'+item.Proyecto.actividad_patrocinio;
+                html_data+='            </p>';
+                html_data+='        </div>';
+                html_data+='        <div class="mount">';
+                html_data+='            <span>'+item.Proyecto.monto+' &euro;</span>';
+                html_data+='        </div>';
+                html_data+='    </div>';
+                html_data+='    <div class="cont_bottom">';
+                html_data+='        <a href="proyecto_deportivo.html?usuario_id='+item.Usuario.id+'" class="link_profile"><h2>'+item.Usuario.title+'</h2></a>';
+                html_data+='        <a href="proyecto_deportivo.html?usuario_id='+item.Usuario.id+'&patrocina=show" class="link_patrocina"><span>PATROCINAR</span></a>';
+                html_data+='       <div class="mount">';
+                html_data+='            <span>'+item.Proyecto.monto+' &euro;</span>';
+                html_data+='        </div>';
+                html_data+='    </div>';
+                html_data+='</li>';
+                
+                if(item.Proyecto.actividad_patrocinio!=null && item.Proyecto.actividad_patrocinio!=""){
+                    parent.find(".list_buscan_patro").append(html_data);
+                }
+        	});
+            
+            parent.find(".list_buscan_patro").promise().done(function() {
+                $(this).find("li:last img").load(function(){
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );
+                });
+            });            
+        }
+	});
+}
+
+/*OBTENEMOS LOS DATOS DE LAS RECOMPENSAS MAZZEL*/
+function getRecompensasMazzel(parent_id){
+    var parent = $("#"+parent_id);
+    $.getJSON(BASE_URL_APP+'rondas/mobileGetRecompensasMazzel', function(data) {
+        
+        //llenamos si solo los datos obtenidos es mayor a los datos que hay
+        var recompensas = data.items;
+        if(recompensas.length > parent.find(".list_recompensas > li").length){
+            parent.find("#recompensas_home").html("");
+            //mostramos loading
+            $.mobile.loading( 'show' );
+           	$.each(recompensas, function(index,item) {
+           	    html_data=' <li>';
+                html_data+='    <div class="cont_top">';
+                html_data+='      <div class="recorte">';
+                html_data+='           <img src="'+BASE_URL_APP+'img/recompensas/crop.php?w=400&i='+item.Recompensa.imagen+'"/>';
+                html_data+='      </div>';
+                html_data+='      <div class="content_descripcion informacion">';
+                html_data+='           <img src="'+BASE_URL_APP+'img/Usuario/800/crop.php?w=30&i='+item.Recompensa.destacado.imagen+'" class="avatar deportista">';
+                html_data+='           <p>Cons&iacute;guelo patrocinando el proyecto de <a href="proyecto_deportivo.html?usuario_id='+item.Recompensa.destacado.id+'">'+item.Recompensa.destacado.title+'</a></p>';
+                html_data+='           <p class="activo_hasta">Activo hasta <b>'+item.Recompensa.fecha_fin+'</b></p>';
+                html_data+='      </div>';
+                html_data+='    </div>';
+                html_data+='    <div class="cont_bottom">';
+                html_data+='       <a id="'+item.Recompensa.id+'" class="link_profile" href="#mas_info_recompensa" data-role="button" data-rel="popup" data-position-to="window" data-transition="pop"><h2>'+item.Recompensa.title+'</h2></a>';
+                html_data+='       <a href="proyecto_deportivo.html?usuario_id='+item.Recompensa.destacado.id+'&patrocina=show" class="link_patrocina"><span>PATROCINAR</span></a>';
+                html_data+='    </div>';
+                html_data+='</li>';
+                
+                parent.find("#recompensas_home").append(html_data);
+                
+                //popup mas info
+                var parent_contenedor = parent.find("#mas_info_recompensa").find("#lista_recompensas_popup");
+                var div_clone = parent_contenedor.find(".recompensa_item").clone();
+                div_clone.removeClass("recompensa_item").addClass("recompensa_item_"+item.Recompensa.id);
+                div_clone.find("h2").html(item.Recompensa.title);
+                div_clone.find("img.imagen_recompensa").attr("src",BASE_URL_APP+'img/recompensas/'+item.Recompensa.imagen);
+                div_clone.find(".descripcion").find("p").html(item.Recompensa.descripcion);
+                div_clone.find(".fechas_sorteo").find("span").html(item.Recompensa.fecha_participacion);
+                parent_contenedor.append(div_clone);
+        	});
+            
+            parent.find("#recompensas_home").promise().done(function() {
+                $(this).find("li:last img").load(function(){
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );
+                    
+                    //marcamos selected al item que se hizo click
+                    parent.find("#recompensas_home").find("a.link_profile").bind("touchstart click",function(){
+                        parent.find("#recompensas_home").find("a.link_profile").removeClass("selected");
+                        $(this).addClass("selected"); 
+                    });
+                    
+                    //evento que se lanza entes de mostrar el popup
+                    parent.find( "#mas_info_recompensa" ).bind({
+                       popupbeforeposition: function(event, ui) {
+                            var recompensa_seleccionda = parent.find("#recompensas_home").find("a.link_profile.selected").attr("id");
+                            parent.find("#mas_info_recompensa").find("#lista_recompensas_popup").children().hide();
+                            parent.find("#mas_info_recompensa").find("#lista_recompensas_popup").find(".recompensa_item_"+recompensa_seleccionda).show();
+                       }
+                    });
+                });
+            });
+        }
 	});
 }
 
@@ -460,38 +791,6 @@ function getRondaActiva(parent_id,usuario_id){
             parent.find(".info_ronda").show();
         }
     });
-}
-
-/*MOSTRAMOS LAS NOTIFICACIONES DE LA RONDA*/
-function showNotificacionesRonda(parent,notificaciones_ronda){
-    //actividad en las rondas
-    parent.find('#lista_actividades_ronda').find("li").remove();
-    $.each(notificaciones_ronda, function(index, item) {
-        html='<li>';
-        html+='<div class="recorte">';
-        html+='<img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Notificacion.usuario_imagen+'"/>';
-        html+='</div>';
-        html+='<div class="content_descripcion left">';
-        html+='<time class="age" date="'+item.Notificacion.date+'" datetime="'+item.Notificacion.datetime+'">&nbsp;</time>';
-        html+='<h4 class="ui-li-heading">';
-        html+='<b>'+item.Notificacion.usuario_title+'</b>';
-        html+='</h4>';
-        html+='<p class="ui-li-desc">'+item.Notificacion.texto_descripcion+'</p>';
-        html+='</div>';
-        html+='</li>';
-        
-        parent.find('#lista_actividades_ronda').append(html);
-     });
-     
-    parent.find('#lista_actividades_ronda').listview('refresh');
-    
-    //mostralos la lista de actividad de patrocinalos
-    parent.find("#lista_actividades_ronda").promise().done(function() {
-        //ocultamos loading
-        $.mobile.loading( 'hide' );
-        $(".age").age();
-        parent.find("#lista_actividades_ronda").fadeIn("slow");
-    });    
 }
 
 /*OBTENEMOS LOS DATOS DE DEPORTISTAS ÉLITES DE LA HOME*/
@@ -612,124 +911,6 @@ function getInfoBlogComment(id_blog){
             showAlert("Debes introducir un comentario.", "Aviso", "Aceptar");
         }
     });
-}
-
-/*OBTENEMOS LOS DATOS DE LOS DEPORTISTAS CON PATROCINIO ACTIVO DE LA HOME*/
-function getBuscanPatrocinio(parent_id){
-    var parent = $("#"+parent_id);
-    $.getJSON(BASE_URL_APP+'proyectos/mobileGetBuscanPatrocinio', function(data) {
-        var proyectos = data.items;
-        
-        //llenamos si solo los datos obtenidos es mayor a los datos que hay
-        if(proyectos.length > parent.find(".list_buscan_patro > li").length){
-            parent.find(".list_buscan_patro").html("");
-            $.mobile.loading( 'show' );        
-           	$.each(proyectos, function(index,item) {
-           	    html_data=' <li>';
-                html_data+='    <div class="cont_top">';
-                html_data+='        <div class="recorte">';
-                html_data+='            <a href="proyecto_deportivo.html?usuario_id='+item.Usuario.id+'">';
-                html_data+='                <img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Usuario.imagen+'"/>';
-                html_data+='            </a>';
-                html_data+='        </div>';
-                html_data+='        <div class="content_descripcion">';
-                html_data+='            <p>';
-                html_data+='                <span>Necesita patrocinio para:</span>'+item.Proyecto.title+ '<br/>'+item.Proyecto.actividad_patrocinio;
-                html_data+='            </p>';
-                html_data+='        </div>';
-                html_data+='        <div class="mount">';
-                html_data+='            <span>'+item.Proyecto.monto+' &euro;</span>';
-                html_data+='        </div>';
-                html_data+='    </div>';
-                html_data+='    <div class="cont_bottom">';
-                html_data+='        <a href="proyecto_deportivo.html?usuario_id='+item.Usuario.id+'" class="link_profile"><h2>'+item.Usuario.title+'</h2></a>';
-                html_data+='        <a href="proyecto_deportivo.html?usuario_id='+item.Usuario.id+'&patrocina=show" class="link_patrocina"><span>PATROCINAR</span></a>';
-                html_data+='       <div class="mount">';
-                html_data+='            <span>'+item.Proyecto.monto+' &euro;</span>';
-                html_data+='        </div>';
-                html_data+='    </div>';
-                html_data+='</li>';
-                
-                if(item.Proyecto.actividad_patrocinio!=null && item.Proyecto.actividad_patrocinio!=""){
-                    parent.find(".list_buscan_patro").append(html_data);
-                }
-        	});
-            
-            parent.find(".list_buscan_patro").promise().done(function() {
-                $(this).find("li:last img").load(function(){
-                    //ocultamos loading
-                    $.mobile.loading( 'hide' );
-                });
-            });            
-        }
-	});
-}
-
-/*OBTENEMOS LOS DATOS DE LAS RECOMPENSAS MAZZEL DE LA HOME*/
-function getRecompensasMazzel(parent_id){
-    var parent = $("#"+parent_id);
-    $.getJSON(BASE_URL_APP+'rondas/mobileGetRecompensasMazzel', function(data) {
-        
-        //llenamos si solo los datos obtenidos es mayor a los datos que hay
-        var recompensas = data.items;
-        if(recompensas.length > parent.find(".list_recompensas > li").length){
-            parent.find("#recompensas_home").html("");
-            //mostramos loading
-            $.mobile.loading( 'show' );
-           	$.each(recompensas, function(index,item) {
-           	    html_data=' <li>';
-                html_data+='    <div class="cont_top">';
-                html_data+='      <div class="recorte">';
-                html_data+='           <img src="'+BASE_URL_APP+'img/recompensas/crop.php?w=400&i='+item.Recompensa.imagen+'"/>';
-                html_data+='      </div>';
-                html_data+='      <div class="content_descripcion informacion">';
-                html_data+='           <img src="'+BASE_URL_APP+'img/Usuario/800/crop.php?w=30&i='+item.Recompensa.destacado.imagen+'" class="avatar deportista">';
-                html_data+='           <p>Cons&iacute;guelo patrocinando el proyecto de <a href="proyecto_deportivo.html?usuario_id='+item.Recompensa.destacado.id+'">'+item.Recompensa.destacado.title+'</a></p>';
-                html_data+='           <p class="activo_hasta">Activo hasta <b>'+item.Recompensa.fecha_fin+'</b></p>';
-                html_data+='      </div>';
-                html_data+='    </div>';
-                html_data+='    <div class="cont_bottom">';
-                html_data+='       <a id="'+item.Recompensa.id+'" class="link_profile" href="#mas_info_recompensa" data-role="button" data-rel="popup" data-position-to="window" data-transition="pop"><h2>'+item.Recompensa.title+'</h2></a>';
-                html_data+='       <a href="proyecto_deportivo.html?usuario_id='+item.Recompensa.destacado.id+'&patrocina=show" class="link_patrocina"><span>PATROCINAR</span></a>';
-                html_data+='    </div>';
-                html_data+='</li>';
-                
-                parent.find("#recompensas_home").append(html_data);
-                
-                //popup mas info
-                var parent_contenedor = parent.find("#mas_info_recompensa").find("#lista_recompensas_popup");
-                var div_clone = parent_contenedor.find(".recompensa_item").clone();
-                div_clone.removeClass("recompensa_item").addClass("recompensa_item_"+item.Recompensa.id);
-                div_clone.find("h2").html(item.Recompensa.title);
-                div_clone.find("img.imagen_recompensa").attr("src",BASE_URL_APP+'img/recompensas/'+item.Recompensa.imagen);
-                div_clone.find(".descripcion").find("p").html(item.Recompensa.descripcion);
-                div_clone.find(".fechas_sorteo").find("span").html(item.Recompensa.fecha_participacion);
-                parent_contenedor.append(div_clone);
-        	});
-            
-            parent.find("#recompensas_home").promise().done(function() {
-                $(this).find("li:last img").load(function(){
-                    //ocultamos loading
-                    $.mobile.loading( 'hide' );
-                    
-                    //marcamos selected al item que se hizo click
-                    parent.find("#recompensas_home").find("a.link_profile").bind("touchstart click",function(){
-                        parent.find("#recompensas_home").find("a.link_profile").removeClass("selected");
-                        $(this).addClass("selected"); 
-                    });
-                    
-                    //evento que se lanza entes de mostrar el popup
-                    parent.find( "#mas_info_recompensa" ).bind({
-                       popupbeforeposition: function(event, ui) {
-                            var recompensa_seleccionda = parent.find("#recompensas_home").find("a.link_profile.selected").attr("id");
-                            parent.find("#mas_info_recompensa").find("#lista_recompensas_popup").children().hide();
-                            parent.find("#mas_info_recompensa").find("#lista_recompensas_popup").find(".recompensa_item_"+recompensa_seleccionda).show();
-                       }
-                    });
-                });
-            });
-        }
-	});
 }
 
 /*OBTENEMOS LOS DATOS PERSONALES DENTRO EL PANEL DE GESTION DEL DEPORTISTA*/
@@ -1063,502 +1244,5 @@ function saveRecompensasPatrocinio(form,seguir){
                        }
                     }
                });
-    }
-}
-
-function getEntradasByCarrousel(parent_id, hash){
-    var parent = $("#"+parent_id);
-    parent.find("#tabs_opciones a").bind("touchstart click",function(){
-        $(this).parent().find("a").removeClass("active");
-        $(this).addClass("active");
-        if($(this).attr("id") == "tab_actividad_rondas"){
-            parent.find('#lista_actividades').hide();
-            parent.find('#lista_actividades_ronda').show();            
-        }else{
-            parent.find('#lista_actividades_ronda').hide();
-            parent.find('#lista_actividades').show();            
-        }
-    });
-    
-    //obtenemos los proyectos, actividad en patrocinalos y actividad en ronda
-    $.getJSON(BASE_URL_APP+'rondas/mobileHome', function(data) {
-        if(data){
-            
-            //mostramos loading
-            $.mobile.loading('show');
-            
-            //actividad en patrocinalos
-            parent.find('#lista_actividades').find("li").remove();
-            var notificaciones_patrocinalos =  data.notificaciones_sistema;
-            $.each(notificaciones_patrocinalos, function(index, item) {
-                html='<li>';
-                html+='<div class="recorte">';
-                html+='<img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Notificacion.usuario_imagen+'"/>';
-                html+='</div>';
-                html+='<div class="content_descripcion left">';
-                html+='<time class="age" date="'+item.Notificacion.date+'" datetime="'+item.Notificacion.datetime+'">&nbsp;</time>';
-                html+='<h4 class="ui-li-heading">';
-                if(item.Notificacion.tipo == "like"){
-                    html+='A <b>'+item.Notificacion.usuario_title+'</b>';
-                }else{
-                    html+='<b>'+item.Notificacion.usuario_title+'</b>';
-                }
-                html+='</h4>';
-                html+='<p class="ui-li-desc">'+item.Notificacion.texto_descripcion+'</p>';
-                html+='</div>';
-                html+='</li>';
-                
-                parent.find('#lista_actividades').append(html);
-             });
-             
-            parent.find('#lista_actividades').listview('refresh');
-            
-            //mostralos la lista de actividad de patrocinalos
-            parent.find("#lista_actividades").promise().done(function() {
-                //ocultamos loading
-                $.mobile.loading( 'hide' );
-                $(".age").age();
-            });
-            
-            //actividad en las rondas
-            parent.find('#lista_actividades_ronda').find("li").remove();
-            var notificaciones_ronda =  data.notificaciones_ronda;
-            $.each(notificaciones_ronda, function(index, item) {
-                html='<li>';
-                html+='<div class="recorte">';
-                html+='<img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Notificacion.usuario_imagen+'"/>';
-                html+='</div>';
-                html+='<div class="content_descripcion left">';
-                html+='<time class="age" date="'+item.Notificacion.date+'" datetime="'+item.Notificacion.datetime+'">&nbsp;</time>';
-                html+='<h4 class="ui-li-heading">';
-                html+='<b>'+item.Notificacion.usuario_title+'</b>';
-                html+='</h4>';
-                html+='<p class="ui-li-desc">'+item.Notificacion.texto_descripcion+'</p>';
-                html+='</div>';
-                html+='</li>';
-                
-                parent.find('#lista_actividades_ronda').append(html);
-             });
-             
-            parent.find('#lista_actividades_ronda').listview('refresh');
-            
-            //mostralos la lista de actividad de patrocinalos
-            parent.find("#lista_actividades_ronda").promise().done(function() {
-                //ocultamos loading
-                $.mobile.loading( 'hide' );
-                $(".age").age();
-            });
-            
-            //mostramos el tab que se selecciono
-            if(hash == "#actividad_ronda"){
-                parent.find('#tab_actividad_patrocinalos').removeClass("active");
-                parent.find('#tab_actividad_rondas').addClass("active");
-                parent.find('#lista_actividades_ronda').show();
-            }else{
-                parent.find('#tab_actividad_rondas').removeClass("active");
-                parent.find('#tab_actividad_patrocinalos').addClass("active");
-                parent.find('#lista_actividades').show();
-            }
-                     
-            //cargamos los proyectos si es mayor a lo que actulamente se muestra, esto se da por si se vuelve a la page
-            var items_proyectos = parent.find("#carrousel_proyectos").find(".m-item").length;
-            if(data.entradas.length > items_proyectos){
-                parent.find("#carrousel_proyectos").find(".m-item").remove();
-                parent.find("#carrousel_proyectos").find(".m-carousel-controls").find("a").remove();
-                
-                //entradas de los deportista que tienen proyectos
-                var entradas = data.entradas;
-               	$.each(entradas, function(index, item) {
-               	    var mclass = ""; 
-               	    if(index == 0) mclass = "m-active";
-                    var html='<div class="m-item '+mclass+'">'+
-                        '<div class="info_deportista">'+
-                            '<div class="info_content">'+
-                                '<h2 class="usuario_title">'+item.Entrada.title+'</h2>'+
-                                '<div class="left">'+
-                                    '<div class="recuadro">'+
-                                        '<img class="entrada_imagen" src="'+BASE_URL_APP+'img/home/crop.php?w=150&i='+item.Entrada.imagen+'" />'+
-                                    '</div>'+
-                                '</div>'+
-                                '<div class="right">'+
-                                    '<p class="descripcion">'+item.Entrada.texto+'</p>'+
-                                    '<div class="like_cash">'+
-                                        '<span class="like">'+item.seguidores+'</span>'+
-                                        '<span class="cash">1</span>'+
-                                    '</div>'+
-                                '</div>'+
-                                '<div class="buttom_ir_perfil">'+
-                                    '<a class="ui-btn-submit celeste ui-btn ui-btn-corner-all" href="proyecto_deportivo.html?usuario_id='+item.Entrada.usuario_id+'">'+
-                                        '<span class="ui-btn-inner">'+
-                                        '<span class="ui-btn-text">VISITA SU PROYECTO</span>'+
-                                        '</span>'+
-                                    '</a>'+
-                                '</div>'+
-                            '</div>'+
-                        '</div>'+
-                    '</div>';
-                    
-               	    parent.find("#carrousel_proyectos").find(".m-carousel-inner").append(html);
-                    parent.find("#carrousel_proyectos").find(".m-carousel-controls").append('<a href="#" data-slide="'+(index+1)+'">'+(index+1)+'</a>');
-                });
-                
-                //iniciamos el carousel
-                parent.find("#carrousel_proyectos").find(".m-carousel-inner").promise().done(function() {
-                    //volvemos a recargar el plugin unicamente si es que los datos son mas de 1, porque inicialmente el html es uno y eso cuenta
-                    if(items_proyectos > 1){
-                        parent.find('#carrousel_proyectos').carousel("reload");
-                    }else{
-                        parent.find('#carrousel_proyectos').carousel();
-                    }
-                    //ocultamos loading
-                    $.mobile.loading( 'hide' );
-                });
-            }
-        } 
-    });
-}
-
-//OBTENEMOS LOS DATOS DEL PERFIL DE UN DEPORTISTA EN ESPECIFICO
-function loadPerfilDeportista(parent_id, me, usuario_id, show_popup_patrocinar){
-    var parent = $("#"+parent_id);
-    $.getJSON(BASE_URL_APP + 'usuarios/mobileGetProyectoDeportista?me=' + me + '&usuario_id='+usuario_id, function(data){
-        if(data.item){
-            
-            //mostramos loading
-            $.mobile.loading( 'show' );
-            
-            var item = data.item;
-            
-            //verifica si el deportista logeado ya es seguidor del deportista x
-            if(item.Usuario.soy_su_seguidor){
-                parent.find("#seguir_deportista").find(".ui-btn-text").text("Dejar de Apoyar");
-                parent.find("#seguir_deportista").removeClass("seguir");
-                parent.find("#seguir_deportista").addClass("dejar_seguir");
-            }
-            
-            parent.find(".imagen_user").attr("src", BASE_URL_APP+'img/Usuario/169/crop.php?w=150&i='+item.Usuario.imagen);
-            parent.find(".nombre_user").html(item.Usuario.title);
-            
-            if(item.Usuario.urlfacebook){
-                var element = parent.find(".link_red_social a.facebook");
-                element.attr("href", item.Usuario.urlfacebook);
-                element.attr("onclick", "window.open(this.href,'_system'); return false;");
-            }
-            if(item.Usuario.twitter){
-                var element = parent.find(".link_red_social a.twitter");
-                element.attr("href", item.Usuario.twitter);
-                element.attr("onclick", "window.open(this.href,'_system'); return false;");
-            }
-            
-            if(item.Proyecto !=""){
-                parent.find(".expira").find("span").attr("date",item.Proyecto.date);
-                parent.find(".expira").find("span").attr("datetime",item.Proyecto.fecha_fin);
-                parent.find(".expira").show();
-                parent.find(".patrociname span").html(item.Proyecto.title).parent().show();
-                parent.find(".necesito_para span").html(item.Proyecto.paraque_necesito).parent().show();
-                parent.find(".cuanto_necesito").find(".monto").html(item.Proyecto.monto);
-                parent.find(".cuanto_necesito").show();
-                parent.find(".recaudado").find(".monto").html(item.Proyecto.total_recaudado);
-                parent.find(".recaudado").show();
-                parent.find(".progress").find(".porcentaje").css("width", item.Proyecto.porcentaje_recaudado+"%").parent().show();
-                parent.find(".numero_porcentaje span").html(item.Proyecto.porcentaje_recaudado).parent().show();
-                
-                $(".age").age();
-            }
-            
-            if(item.Publicaciones != ""){
-                var publicaciones = item.Publicaciones;
-                $.each(publicaciones, function(index, item) {
-                    parent.find("#publicaciones").append(item.Publicacion);
-                });
-                parent.find("#publicaciones").promise().done(function() {
-                    $(".age").age();
-                });
-            }
-            
-            parent.promise().done(function() {
-                $(this).find(".imagen_user").load(function(){
-                    //ocultamos loading
-                    $.mobile.loading( 'hide' );
-                    
-                    //mostrarlos el popup para patrocinar si solo si viene la variable patrocinar=show
-                    if(show_popup_patrocinar !== undefined && show_popup_patrocinar == "show"){
-                        //comprobamos que toda la page se haiga cargado y recien mostramos el popup
-                        //mostramos loading
-                        $.mobile.loading( 'show' );
-                        setTimeout(function(){
-                            $("#popupPatrocinar").popup("open");
-                            $.mobile.loading( 'hide' );
-                        },400);
-                    }
-                });
-            });
-            
-            //Actualizamos los datos para realizar la aportacion
-            var form_pago = parent.find("#formulario_pago_individual"); 
-            form_pago.find("#imagen_deportista").attr("src", BASE_URL_APP+'img/Usuario/169/crop.php?w=60&i='+item.Usuario.imagen);
-            form_pago.find(".nombre_deportista").text(item.Usuario.title);
-            form_pago.find("#proyecto_id").val(item.Proyecto.id);
-        }
-    });
-}
-
-//INICIAMOS LOS EVENTO SEGUIR, PATROCINAR DEPORTISTA
-function loadEventPerfilDeportista(element, me, to_usuario_id){
-    $(element).find("#seguir_deportista").click(function(){
-        
-        if($(this).hasClass("seguir")){
-            //mostramos loading
-            $.mobile.loading( 'show' );
-            $.getJSON(BASE_URL_APP + 'seguidores/mobileSeguirDeportista?me=' + me + "&to_usuario_id=" + to_usuario_id, function(data){
-                if(data.success){
-                    $(element).find("#seguir_deportista").find(".ui-btn-text").text("Dejar de Apoyar");
-                    $(element).find("#seguir_deportista").removeClass("seguir");
-                    $(element).find("#seguir_deportista").addClass("dejar_seguir");
-                    //ocultamos loading
-                    $.mobile.loading( 'hide' );
-                }else{
-                    showAlert("Ocurrio un error", "Error", "Aceptar");
-                }
-            });
-        
-        }else if($(this).hasClass("dejar_seguir")){
-            //mostramos loading
-            $.mobile.loading( 'show' );
-            $.getJSON(BASE_URL_APP + 'seguidores/mobileDejarSeguirDeportista?me=' + me + '&to_usuario_id=' + to_usuario_id, function(data){
-                if(data.success){
-                    $(element).find("#seguir_deportista").find(".ui-btn-text").text("Apoyo este proyecto");
-                    $(element).find("#seguir_deportista").removeClass("dejar_seguir");
-                    $(element).find("#seguir_deportista").addClass("seguir");
-                    //ocultamos loading
-                    $.mobile.loading( 'hide' );
-                }else{
-                    showAlert("Ocurrio un error", "Error", "Aceptar");
-                }
-            });
-        }
-        
-        return false;
-    });
-    
-    //PAGO MEDIANTE PAYPAL Y TPV
-    form_pago = $(element).find("#formulario_pago_individual"); 
-    //START PAYPAL
-    form_pago.find("a.pago_paypal, a.pago_tpv_4B").off('click').on("click", function(){
-        var elem = $(this);
-        var pago_monto = form_pago.find("#pago_monto").val();
-        var pago_termino = form_pago.find("#pago_termino").is(":checked") ? true : false;
-        
-        if($.trim(pago_monto) != "" && (parseInt(pago_monto) > 0)){
-            if(isLogin()){
-                
-                //PAGO PAYPAL
-                if(elem.attr("lang") == "PAYPAL"){
-                    $.ajax({
-                        data: $(form_pago).serialize(),
-                        type: "POST",
-                        url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/PAYPAL",
-                        dataType: "html",
-                        success: function(data){
-                            
-                            //ocultamos el loading
-                            $.mobile.loading('hide');
-                            var result = $.parseJSON(data);
-                            
-                            if(result.aportacion_realizada){
-                                //Cerramos el popup
-                                $("#popupPatrocinar").popup("close");
-                                
-                                var url_pago = result.url_redirect_pago;
-                                //window.location = site_url;
-                                window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
-                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoPayPal(loc, me); }; // When the ChildBrowser URL changes we need to track that
-                            }else{
-                                showAlert(result.error_alcanzado, "Error", "Aceptar");
-                            }
-                        },
-                        beforeSend : function(){
-                            //mostramos loading
-                            showLoadingCustom('Verificando datos...');
-                        }
-                    });
-                
-                //PAGO TPV
-                }else if(elem.attr("lang") == "TPV"){
-                    $.ajax({
-                        data: $(form_pago).serialize(),
-                        type: "POST",
-                        url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/TPV",
-                        dataType: "html",
-                        success: function(data){
-                            
-                            //ocultamos el loading
-                            $.mobile.loading('hide');
-                            var result = $.parseJSON(data);
-                            
-                            if(result.aportacion_realizada){
-                                //Cerramos el popup
-                                $("#popupPatrocinar").popup("close");
-                                
-                                var url_pago = result.url_redirect_pago;
-                                var params = result.params;
-                                var site_url = BASE_URL_APP+'aportaciones/mobileRedireccionamientoTPV/?url='+url_pago+'&ref='+params.ref+'&store='+params.store+'&idioma='+params.idioma;
-                                //window.location = site_url;
-                                window.plugins.childBrowser.showWebPage(site_url, { showLocationBar : false });
-                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoTPV(loc); }; // When the ChildBrowser URL changes we need to track that
-                            }else{
-                                showAlert(result.error_alcanzado, "Error", "Aceptar");
-                            }
-                        },
-                        beforeSend : function(){
-                            //mostramos loading
-                            showLoadingCustom('Verificando datos...');
-                        }
-                    });
-                }
-            }else{
-                showAlert("Por favor vuelva a logearse he intente de nuevo", "Aviso", "Aceptar");
-            }
-        }else{
-            showAlert("Por favor!, introduzca un monto valido.", "Aviso", "Aceptar");
-            form_pago.find("#pago_monto").val("");
-        }
-    });
-    //END PAYPAL
-}
-
-//CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO POR PAYPAL
-function procesoPagoPayPal(loc, usuario_id){
-    
-    var url_callback = BASE_URL_APP + 'aportaciones/mobileAddAportacion/' + usuario_id + '/';
-    if (loc.indexOf(url_callback + "?") >= 0) {
-        
-        // Parse the returned URL
-        var token, payer_id = '';
-        var params = loc.substr(loc.indexOf('?') + 1);
-         
-        params = params.split('&');
-        for (var i = 0; i < params.length; i++) {
-            var y = params[i].split('=');
-            if(y[0] === 'PayerID') {
-                payer_id = y[1];
-            }
-            //Obtenemos el token generado
-            if(y[0] === 'token') {
-                token = y[1];
-            }
-        }
-        
-        //controlamos si es que se realizo el pago correctamete, porque tambien puede cancelarlo
-        if(payer_id != '')
-        {
-            //Cerramos el childBrowser
-            window.plugins.childBrowser.close();
-            
-            //Actualizamos la aportacion, porque se realizo correctamente el pago
-            $.ajax({
-                data: "token="+token,
-                type: "POST",
-                url: BASE_URL_APP+'aportaciones/mobileUpdateAportacionPayPal',
-                dataType: "html",
-                success: function(data){
-                    
-                    //ocultamos el loading
-                    $.mobile.loading('hide');
-                    var result = $.parseJSON(data);
-                    
-                    if(result.update_success){
-                        showAlert(result.success_alcanzado, "Aviso", "Aceptar");
-                    }else{
-                        showAlert(result.error_alcanzado, "Error", "Aceptar");
-                    }
-                },
-                beforeSend : function(){
-                    //mostramos loading
-                    showLoadingCustom('Guardando aportacion...');
-                }
-            });
-        }else{
-            //Cerramos el childBrowser
-            window.plugins.childBrowser.close();
-            showAlert("Su aportacion fue cancelada", "Aviso", "Aceptar");
-        }
-        
-    }else {
-        // TODO
-    }
-}
-
-//CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO POR TPV
-function procesoPagoTPV(loc){
-    //Exiten 3 tipos de estados en el cual se mueve el pago para realizar la transaccion
-    //aceptadaconfirmadortodotpvokpasarela -> Coloca el pago si todo esta bine en estado "pagado"
-    //denegada -> error al momento de realizar el pago
-    //vuelve -> Significa que se hizo correctamente el pago
-    
-    //Controlamos 2 casos de estados de transaccion "denegada y vuelve"
-    
-    var url_callback_denegada = BASE_URL_APP + 'aportaciones/denegada/';
-    var url_callback_vuelve = BASE_URL_APP + 'aportaciones/vuelve/';
-    
-    if (loc.indexOf(url_callback_vuelve + "?") >= 0) {
-        
-        // Parse the returned URL
-        var token = '';
-        var params = loc.substr(loc.indexOf('?') + 1);
-         
-        params = params.split('&');
-        for (var i = 0; i < params.length; i++) {
-            var y = params[i].split('=');
-            if(y[0] === 'pszPurchorderNum') {
-                token = y[1];
-            }
-        }
-        
-        //controlamos si es que se realizo el pago correctamete, porque tambien puede cancelarlo
-        if(token != '')
-        {
-            //Cerramos el childBrowser
-            window.plugins.childBrowser.close();
-            
-            //Verificamos si la aportacion fue pagada, si llega al metodo vuelve, 
-            //sabemos que fue completada la aportacion, pero para mayor seguridad verificamos si se hizo correctamente la aportacion.
-            //solo verificamos si la aportacion tiene su estado 'pagado', no enviamos mail ni nada por el estilo ya que se supone
-            //que llego al metodo vuelve y éste sabe hacer todo(enviar mail, colocar la aportacion en estado pagado, etc)
-            $.ajax({
-                data: "token="+token,
-                type: "POST",
-                url: BASE_URL_APP+'aportaciones/mobileVerificarAportacion',
-                dataType: "html",
-                success: function(data){
-                    
-                    //ocultamos el loading
-                    $.mobile.loading('hide');
-                    var result = $.parseJSON(data);
-                    
-                    if(result.aportacion_pagada){
-                        showAlert(result.success_alcanzado, "Aviso", "Aceptar");
-                    }else{
-                        showAlert(result.error_alcanzado, "Error", "Aceptar");
-                    }
-                },
-                beforeSend : function(){
-                    //mostramos loading
-                    showLoadingCustom('Verificando aportacion...');
-                }
-            });
-        }else{
-            //Cerramos el childBrowser
-            window.plugins.childBrowser.close();
-            showAlert("Ocurrio un error al momento de realizar el pago. Por favor, asegurese de que ha introducido correctamente sus datos de pago y vuelva a intentarlo.", "Error", "Aceptar");
-        }
-        
-    }else if (loc.indexOf(url_callback_denegada + "?") >= 0) {
-        //Cerramos el childBrowser
-        window.plugins.childBrowser.close();
-        showAlert("Su aportacion fue denegada. Por favor, asegurese de que ha introducido correctamente sus datos de pago y vuelva a intentarlo.", "Error", "Aceptar");
-        
-    }else{
-        // TODO
     }
 }
