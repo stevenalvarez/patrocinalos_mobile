@@ -226,25 +226,7 @@ $(document).on('pageinit', "#home_ronda_activa", function(){
 //BLOG - HOME
 $(document).on('pageinit', "#home_blog", function(){
     if(isLogin()){
-        getBlogHome();
-    }else{
-        redirectLogin();
-    }
-});
-
-//CUANDO CARGUE LA PAGE DE DETALLE DE ENTRADA DE BLOG
-$('#home_detail_blog').live('pagebeforeshow', function(event, ui) {
-    if(isLogin()){
-        getInfoBlog(getUrlVars()["id_blog"]);
-    }else{
-        redirectLogin();
-    }
-});
-
-//CUANDO CARGUE LA PAGE DE COMENTAR LA ENTRADA DE BLOG
-$('#home_blog_comment').live('pagebeforeshow', function(event, ui) {
-    if(isLogin()){
-        getInfoBlogComment(getUrlVars()["id_blog"]);
+        getBlog($(this).attr('id'));
     }else{
         redirectLogin();
     }
@@ -794,123 +776,42 @@ function getRondaActiva(parent_id,usuario_id){
 }
 
 /*OBTENEMOS LOS DATOS DE DEPORTISTAS ÉLITES DE LA HOME*/
-function getBlogHome(){
-    
-    $.getJSON(BASE_URL_APP+'comentarios/mobileGetBlogHome', function(data) {
+function getBlog(parent_id){
+    var parent = $("#"+parent_id);
+    $.getJSON(BASE_URL_APP+'rondas/mobileGetBlog', function(data) {
         //mostramos loading
-        jQuery(".list_blog").html("");
+        parent.find(".list_blog").html("");
         $.mobile.loading( 'show' );
-       	var comentarios = data.items;
-       	$.each(comentarios, function(index, item) {
+       	
+        var blogs = data.items;
+       	$.each(blogs, function(index, blog) {
     	    html_data='<li>';
-            html_data+='<a href="home_info_blog.html?id_blog='+item.comentario.id+'">';
-            html_data+='  <div class="cont_top">';
-            html_data+='    <div class="content_descripcion">';
-            html_data+='      <h2>'+item.usuario.title+'</h2>';
-            html_data+='      <p>'+item.comentario.mensaje+'</p>';
+            html_data+='    <div class="cont_top">';
+            html_data+='        <div class="content_descripcion">';
+            html_data+='            <h2>';
+            html_data+='                <a href="'+blog.url+'">'+blog.post.post_title+'</a>';
+            html_data+='            </h2>';
+            html_data+='            <p>'+blog.descripcion+'</p>';
+            html_data+='        </div>';
+            html_data+='        <div class="time">';
+            html_data+='            <span class="hour">'+blog.fecha.dia+'</span>';
+            html_data+='            <span class="day_month">'+blog.fecha.anio+'</span>';
+            html_data+='            <span class="day_week">'+blog.fecha.mes+'</span>';
+            html_data+='        </div>';
             html_data+='    </div>';
-            html_data+='    <div class="time">';
-            html_data+='        <span class="hour">'+item.comentario.hora+'</span>';
-            html_data+='        <span class="day_month">'+item.comentario.dia+'</span>';
-            html_data+='        <span class="day_week">'+item.comentario.dia_semana+'</span>';
-            html_data+='    </div>';
-            html_data+='  </div>';
-            html_data+='  <div class="cont_bottom">';
-            html_data+='    <span class="coments_count">Comentarios <b>('+item.comentario.respuestas+')</b></span>';
-            html_data+='    <span class="like_count">Me gusta <b>('+item.comentario.likes_count+')</b></span>';
-            html_data+='  </div>';
-            html_data+='</a>';
             html_data+='</li>';
                     
-            jQuery(".list_blog").append(html_data);
-            $.mobile.loading( 'hide' );
-        });
-   	});
-}
-
-/*OBTENEMOS LOS DATOS DE UNA ENTRADA ESPECÍFICA DEL BLOG DE LA HOME*/
-function getInfoBlog(id_blog){
-    $.getJSON(BASE_URL_APP+'comentarios/mobileGetComment/'+id_blog, function(data) {
-       var item = data.item;
-       jQuery("#detail_post .day_month").text(item.comentario.dia);
-       jQuery("#detail_post .month").text(item.comentario.mes);
-       jQuery("#detail_post .day_week").text(item.comentario.dia_semana);
-       jQuery("#detail_post .title_post").text(item.usuario.title);
-       jQuery("#detail_post .text").html(item.comentario.mensaje);
-       jQuery("#btn_comment").attr("href","home_blog_comentar.html?id_blog="+id_blog);
-       jQuery("#number_comment").text("("+item.comentario.respuestas+")");
-       if(item.comentario.img!=null && $.trim(item.comentario.img)!=""){
-         jQuery("#detail_post .image").html('<img src="'+BASE_URL_APP+'img/comentarios/800/'+item.comentario.img+'" alt="blog"/>');
-        }
-       else jQuery("#detail_post .image").remove();
-    });
-}
-
-/*OBTENEMOS LOS DATOS PARA COMENTAR UNA ENTRADA ESPECÍFICA DEL BLOG DE LA HOME*/
-function getInfoBlogComment(id_blog){
-    $.getJSON(BASE_URL_APP+'comentarios/mobileGetComment/'+id_blog, function(data) {
-       var item = data.item;
-       var respuestas = data.respuestas;
-       jQuery("#detail_post .day_month").text(item.comentario.dia);
-       jQuery("#detail_post .month").text(item.comentario.mes);
-       jQuery("#detail_post .day_week").text(item.comentario.dia_semana);
-       jQuery("#detail_post .title_post").text(item.usuario.title);
-       jQuery(".list_comments_blog").html("");
-       jQuery("#number_comment_c").text("("+item.comentario.respuestas+")");
-       jQuery("#id_coment_form").val(id_blog);
-       jQuery("#id_user_login").val(COOKIE.id);
-       	$.each(respuestas, function(index, respuesta) {
-       	   html_c=" <li>";
-           html_c+='      <div class="avatar">';
-           html_c+='         <img src="'+BASE_URL_APP+'img/Usuario/169/'+respuesta.usuario.imagen+'" alt="avatar" />';
-           html_c+='     </div>';
-           html_c+='     <div class="text_comment">';
-           html_c+='         <div>';
-           html_c+='              <p><span>'+respuesta.usuario.title+' :</span> '+respuesta.comentario.mensaje+'</p>';
-           html_c+='         </div>';
-           html_c+='     </div>';
-           html_c+=' </li>';
-           jQuery(".list_comments_blog").append(html_c);
+            parent.find(".list_blog").append(html_data);
         });
         
-    });
-    
-    jQuery('a#btn_send_comment').on("click", function(){
-        if(jQuery("#form_response_comment #comentario").val()!="" &&  jQuery("#form_response_comment #comentario").val()!="Escribe tu comentario..."){
-        showLoadingCustom('Enviando datos...');
-        $.ajax({
-                    data: $("#form_response_comment").serialize(),
-                    type: "POST",
-                    url: BASE_URL_APP+'comentarios/respadd',
-                    dataType: "html",
-                    success: function(data){
-                       data_j = $.parseJSON(data);
-                       if(data_j.respuesta==1)
-                       {
-                         html_c=" <li>";
-                         html_c+='      <div class="avatar">';
-                         html_c+='         <img src="'+BASE_URL_APP+'img/Usuario/169/'+COOKIE.imagen+'" alt="avatar" />';
-                         html_c+='     </div>';
-                         html_c+='     <div class="text_comment">';
-                         html_c+='         <div>';
-                         html_c+='              <p><span>'+COOKIE.title+' :</span> '+$("#form_response_comment #comentario").val()+'</p>';
-                         html_c+='         </div>';
-                         html_c+='     </div>';
-                         html_c+=' </li>';
-                         jQuery(".list_comments_blog").append(html_c);
-                        showAlert('Se ha enviado correctamente tu comentario.', "Aviso", "Aceptar");
-                       }
-                       else{
-                        showAlert('Ha ocurrido un error, intente nuevamente.', "Aviso", "Aceptar");
-                       }
-                       $.mobile.loading( 'hide' );
-                    }
-                });
-        }
-        else{
-            showAlert("Debes introducir un comentario.", "Aviso", "Aceptar");
-        }
-    });
+        openOnWindow(parent.find(".list_blog"), '_blank');
+        parent.find(".list_blog").promise().done(function() {
+            $(this).find("li:last img").load(function(){
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+            });
+        });
+   	});
 }
 
 /*OBTENEMOS LOS DATOS PERSONALES DENTRO EL PANEL DE GESTION DEL DEPORTISTA*/
