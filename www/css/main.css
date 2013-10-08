@@ -3197,7 +3197,7 @@ label.custom{
     background: url("../img/bg_m_inicio.png") no-repeat scroll left center transparent;
     background-size: 16px 14px;
 }
-#panel_menu .ui-panel-inner li a.m_deportista_elite{
+#panel_menu .ui-panel-inner li a.m_usuario_destacado{
     background: url("../img/bg_m_dep_e.png") no-repeat scroll left center transparent;
     background-size: 20px;
 }
@@ -3214,10 +3214,14 @@ label.custom{
 #panel_menu .ui-panel-inner li a.m_blog{
     background: url("../img/bg_m_blog.png") no-repeat scroll left center transparent;
     background-size: 13px;
-    background-position: 3px 3px;
+    background-position: 1px 3px;
 }
 #panel_menu .ui-panel-inner li a.m_editar{
     background: url("../img/bg_m_edit.png") no-repeat scroll left center transparent;
+    background-size: 14px;
+}
+#panel_menu .ui-panel-inner li a.m_setting{
+    background: url("../img/bg_m_setting.png") no-repeat scroll left center transparent;
     background-size: 14px;
 }
 #panel_menu .ui-panel-inner li a.m_recaudacion{

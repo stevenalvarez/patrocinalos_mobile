@@ -232,6 +232,24 @@ $(document).on('pageinit', "#home_blog", function(){
     }
 });
 
+//SOLICITAR PATROCINIO / EDITAR PATROCINIO - PERFIL
+$("#edicion_datos_patrocinio").live('pagebeforeshow', function(event, ui) {
+    if(isLogin()){
+        getPatrocinioDeportivo();
+    }else{
+        redirectLogin();
+    }
+});
+
+//CUANDO CARGUE LA PAGE DE RECOMPENSAS DE PATROCINIO
+$("#edicion_recompensas_patrocinio").live('pagebeforeshow', function(event, ui) {
+    if(isLogin()){
+        getRecompensasPatrocinio(getUrlVars()['crowd_id']);
+    }else{
+        redirectLogin();
+    }
+});
+
 //CUANDO CARGUE LA PAGE DE EDICIÓN DE DATOS DE PERFIL
 $("#edicion_datos_personales").live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
@@ -263,24 +281,6 @@ $("#page_list_albums").live('pagebeforeshow', function(event, ui) {
 $("#page_list_fotos").live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
         getPhotosAlbum(getUrlVars()["album"]);
-    }else{
-        redirectLogin();
-    }
-});
-
-//CUANDO CARGUE LA PAGE DE EDICIÓN DE PATROCINIO
-$("#edicion_datos_patrocinio").live('pagebeforeshow', function(event, ui) {
-    if(isLogin()){
-        getPatrocinioDeportivo();
-    }else{
-        redirectLogin();
-    }
-});
-
-//CUANDO CARGUE LA PAGE DE RECOMPENSAS DE PATROCINIO
-$("#edicion_recompensas_patrocinio").live('pagebeforeshow', function(event, ui) {
-    if(isLogin()){
-        getRecompensasPatrocinio(getUrlVars()['crowd_id']);
     }else{
         redirectLogin();
     }
