@@ -773,6 +773,146 @@ function form_solicitar_patrocinio(element){
     });
 }
 
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO SOLICITAR EDITAR PATROCINIO
+function form_solicitar_editar_patrocinio(parent_id, element, user){
+    var parent = $("#"+parent_id);
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+   		   "proyecto_monto": {
+    			required: true,
+    			number: true
+   		   },
+   		   "proyecto_title": {
+    			required: true,
+                minlength:20,
+                maxlength:60,
+   		   },
+   		   "proyecto_actividad_patrocinio": {
+    			required: true,
+                minlength:60,
+                maxlength:150,
+   		   },
+   		   "proyecto_enlace": {
+    			url: true
+   		   },
+           "proyecto_fecha_limite" : {
+                required: true
+           },
+   		   "proyecto_masinfo": {
+                maxlength:1000,
+   		   }
+    	},
+    	messages: {
+            "proyecto_monto": {
+    			required: "Por favor, ingrese un monto <i></i>",
+    			number: "Por favor, ingrese solo numeros <i></i>"
+    		},
+            "proyecto_title": {
+    			required: "Por favor, ingrese un frase breve <i></i>",
+                minlength: "Por favor, no escribas menos de 20 caracteres. <i></i>",
+                maxlength: "Por favor, no escribas m&aacute;s de 60 caracteres. <i></i>",
+    		},
+            "proyecto_actividad_patrocinio": {
+    			required: "Por favor, ingrese una descripcion corta <i></i>",
+                minlength: "Por favor, no escribas menos de 60 caracteres. <i></i>",
+                maxlength: "Por favor, no escribas m&aacute;s de 150 caracteres. <i></i>",
+    		},
+            "proyecto_enlace": {
+    			url: "Por favor, escribe una URL v&aacute;lida. <i></i>"
+    		},
+            "proyecto_fecha_limite": {
+    			required: "Por favor, establezca una fecha limite <i></i>"
+    		},
+            "proyecto_masinfo": {
+                maxlength: "Por favor, no escribas m&aacute;s de 1000 caracteres. <i></i>",
+    		},
+    	}
+    });
+    
+    //establecemos el id del usuario el cual solicita un patrocinio
+    formulario.find("input[name='u_usuario_id']").val(user.id);
+    
+    //revisamos si tiene proyecto, para mostrar el texto correcto de la page, no importa si el proyecto es activo o pendiente
+    if(user.proyecto_id !== undefined && parseInt(user.proyecto_id) > 0){
+        parent.find(".page").find("span:nth-child(2)").removeClass().addClass("show");
+        formulario.find("input[name='u_proyecto_id']").val(user.proyecto_id);
+    }else{
+        parent.find(".page").find("span:nth-child(1)").removeClass().addClass("show");
+    }
+    
+    //Submit form
+    formulario.submit(function() {
+        
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            var usuario_id = formulario.find("input[name='u_usuario_id']").val();
+            var proyecto_id = formulario.find("input[name='u_proyecto_id']").val();
+            var url = BASE_URL_APP+'proyectos/mobileSolictarPatrocinio/'+user.id;
+            if(proyecto_id != '' && parseInt(proyecto_id) > 0){
+                url = BASE_URL_APP+'proyectos/mobileEditarPatrocinio/'+user.id;
+            }
+            
+            if(usuario_id != '' && parseInt(usuario_id) > 0)
+            {
+                $.ajax({
+                    data: formulario.serialize(),
+                    type: "POST",
+                    url: url,
+                    dataType: "html",
+                    success: function(data){
+                        $.mobile.loading( 'hide' );
+                        
+                        data = $.parseJSON(data);
+                        if(data.success){
+                            //controlamos que el valor de la imagen a subir no este vacia, 
+                            //eso significa que se selecciono un imagen o se capturo una imagen
+                            if(IMAGEURI != ''){
+                                
+                                //creamos un objecto con los parametros que queremos que llegue al servidor
+                                //para luego ahi hacer otra operaciones con esos parametros.
+                                var params = new Object();
+                                params.folder = "Proyecto"; // la carpeta donde se va a guardar la imagen
+                                params.usuario_id = user.id; // id del usuario para el cual es la nueva imagen.
+                                params.proyecto_id = data.proyecto_id; // id del proyecto para el cual es la imagen.
+                                
+                                //Utilizamos la funcion de subir la imagen de forma asincrona, ya que solo
+                                //va subir la imagen y nada mas, ahi termina el proceso.
+                                uploadImagenAsynchronous(params);
+                            }
+                            
+                            //establecemos el id del proyecto creado, con eso sabemos si tiene ya un proyecto creado
+                            formulario.find("input[name='u_proyecto_id']").val(data.proyecto_id);
+                            //actualizamos la cookie
+                            COOKIE.proyecto_id = data.proyecto_id;
+                            //actualizamos el panel
+                            actualizar_panel();
+                            
+                            //colocamos el texto correcto para saber en que page estamos
+                            parent.find(".page").find("span").removeClass().addClass("hide");
+                            parent.find(".page").find("span:nth-child(2)").removeClass().addClass("show");
+                            
+                            //mostramos el mensaje de exito al guardar el patrocinio
+                            showAlert(data.mensaje, "Aviso", "Aceptar");
+                        }else{
+                            showAlert(data.mensaje, "Error", "Aceptar");
+                        }
+                    },
+                    beforeSend : function(){
+                        //mostramos loading
+                        showLoadingCustom('Guardando datos...');
+                    }
+                });
+            
+            }else{
+                showAlert("Error no puede solicitar patrocinio!.","Error", "Aceptar");
+            }
+        }
+      return false;
+    });
+}
+
 //INICIA LAS VALIDACIONES PARA EL FORMULARIO DE LOGIN
 function form_login(){
     jQuery("#form_login").validate({
@@ -1445,4 +1585,14 @@ function showNotificacionesRonda(parent,notificaciones_ronda){
         $(".age").age();
         parent.find("#lista_actividades_ronda").fadeIn("slow");
     });
+}
+
+function actualizar_panel(){
+    //verificamos si el usuario logeado tiene proyecto
+    if(COOKIE !== ''){
+        var user = COOKIE;
+        if(user.proyecto_id !== undefined && parseInt(user.proyecto_id) > 0){
+            $("#item_solicitar_editar_patrocinio").html("EDITAR PROYECTO");
+        }
+    }    
 }

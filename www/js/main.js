@@ -232,19 +232,19 @@ $(document).on('pageinit', "#home_blog", function(){
     }
 });
 
-//SOLICITAR PATROCINIO / EDITAR PATROCINIO - PERFIL
-$("#edicion_datos_patrocinio").live('pagebeforeshow', function(event, ui) {
+//SOLICITAR / EDITAR PATROCINIO - PERFIL
+$("#solicitar_editar_patrocinio").live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
-        getPatrocinioDeportivo();
-    }else{
-        redirectLogin();
-    }
-});
-
-//CUANDO CARGUE LA PAGE DE RECOMPENSAS DE PATROCINIO
-$("#edicion_recompensas_patrocinio").live('pagebeforeshow', function(event, ui) {
-    if(isLogin()){
-        getRecompensasPatrocinio(getUrlVars()['crowd_id']);
+        var user = COOKIE;
+        form_solicitar_editar_patrocinio($(this).attr("id"), "form_solicitar_editar_patrocinio",user);
+        key_press("form_solicitar_editar_patrocinio");
+        $(this).find('a.guardar_form').bind("click", function(){
+            var form_parent = document.getElementById("form_solicitar_editar_patrocinio");
+            $(form_parent).submit();
+        });
+        $(this).find('a.borrar_form').bind("click", function(){
+            clear_form("form_solicitar_editar_patrocinio");
+        });
     }else{
         redirectLogin();
     }
@@ -775,7 +775,7 @@ function getRondaActiva(parent_id,usuario_id){
     });
 }
 
-/*OBTENEMOS LOS DATOS DE DEPORTISTAS ÉLITES DE LA HOME*/
+/*OBTENEMOS LOS DATOS DEL BLOG DE WP*/
 function getBlog(parent_id){
     var parent = $("#"+parent_id);
     $.getJSON(BASE_URL_APP+'rondas/mobileGetBlog', function(data) {
@@ -812,6 +812,65 @@ function getBlog(parent_id){
             });
         });
    	});
+}
+
+/*FUNCION PARA OBTENER LOS DATOS DE PATROCINIO*/
+function getPatrocinioDeportivo(){
+    $.getJSON(BASE_URL_APP+'crowfundings/mobileGetPatrocinio/'+COOKIE.id, function(data){
+        if(data){
+          jQuery("#form_edit_data #cantidad_patro").val(data.crowd.monto);
+          jQuery("#form_edit_data #cantidad_min_patro").val(data.crowd.monto_min);
+          jQuery("#form_edit_data #titulo_patro").val(data.crowd.titulo);
+          jQuery("#form_edit_data #descripcion_patro").val(data.crowd.descripcion);       
+          jQuery("#form_edit_data #fecha_fin").val(data.crowd.fecha_fin);
+          jQuery("#form_edit_data #crowd_id").val(data.crowd.id);
+          jQuery("#form_edit_data #save_edit").val("edit");
+        }
+    });
+}
+
+/*FUNCION PARA GUARDAR LOS DATOS DE PATROCINIO*/
+function saveDatosPatrocinio(form,seguir){
+    jQuery("#"+form).validate({
+        errorElement:'span',
+    	rules:{ "cantidad_patro":{required:true,number:true},
+                 "cantidad_min_patro":{required:true,number:true},
+    		    "titulo_patro":{required:true}, 
+                "descripcion_patro":{required:true},
+                "fecha_fin":{required:true},
+        },
+    	messages: {
+    		"cantidad_patro":{required: "La cantidad es incorrecta.<i></i>",number:"Debe ser un n&uacute;mero.<i></i>"},
+            "cantidad_min_patro":{required: "La cantidad es incorrecta.<i></i>",number:"Debe ser un n&uacute;mero.<i></i>"},
+            "titulo_patro":{required:"Este campo es obligatorio.<i></i>"},
+            "descripcion_patro":{required:"Este campo es obligatorio.<i></i>"},
+            "fecha_fin":{required:"Este campo es obligatorio.<i></i>"},
+        }
+    });
+    if(COOKIE.id && jQuery("#"+form).valid()){
+        showLoadingCustom('Enviando datos...');
+        $.ajax({
+                    data: $("#"+form).serialize(),
+                    type: "POST",
+                    url: BASE_URL_APP+'crowfundings/mobileSavePatrocinio/'+COOKIE.id,
+                    dataType: "html",
+                    success: function(data){
+                       data_p = $.parseJSON(data);
+                       if(data_p.respuesta==1)
+                       {
+                        jQuery("#"+form+" #save_edit").val("edit");
+                        jQuery("#"+form+" #crowd_id").val(data_p.crowd.id);
+                        if(seguir)
+                            $.mobile.changePage('p_edicion_recompensas_patrocinio.html?crowd_id='+data_p.crowd.id,{transition: "slide", changeHash: true});
+                        else showAlert(data_p.message, "Aviso", "Aceptar");
+                       }
+                       else{
+                        showAlert(data_p.message, "Aviso", "Aceptar");
+                       }
+                       $.mobile.loading('hide');
+                    }
+               });
+    }
 }
 
 /*OBTENEMOS LOS DATOS PERSONALES DENTRO EL PANEL DE GESTION DEL DEPORTISTA*/
@@ -1020,130 +1079,4 @@ function getPhotosAlbum(album){
 function zoomPhoto(thiss){
     jQuery("#modal_box_media").find(".zoom_image img").attr("src",jQuery(thiss).attr("rel"));
     jQuery("#modal_box_media").fadeIn("fast");
-}
-
-/*FUNCION PARA OBTENER LOS DATOS DE PATROCINIO*/
-function getPatrocinioDeportivo(){
-    $.getJSON(BASE_URL_APP+'crowfundings/mobileGetPatrocinio/'+COOKIE.id, function(data){
-        if(data){
-          jQuery("#form_edit_data #cantidad_patro").val(data.crowd.monto);
-          jQuery("#form_edit_data #cantidad_min_patro").val(data.crowd.monto_min);
-          jQuery("#form_edit_data #titulo_patro").val(data.crowd.titulo);
-          jQuery("#form_edit_data #descripcion_patro").val(data.crowd.descripcion);       
-          jQuery("#form_edit_data #fecha_fin").val(data.crowd.fecha_fin);
-          jQuery("#form_edit_data #crowd_id").val(data.crowd.id);
-          jQuery("#form_edit_data #save_edit").val("edit");
-        }
-    });
-}
-
-/*FUNCION PARA GUARDAR LOS DATOS DE PATROCINIO*/
-function saveDatosPatrocinio(form,seguir){
-    jQuery("#"+form).validate({
-        errorElement:'span',
-    	rules:{ "cantidad_patro":{required:true,number:true},
-                 "cantidad_min_patro":{required:true,number:true},
-    		    "titulo_patro":{required:true}, 
-                "descripcion_patro":{required:true},
-                "fecha_fin":{required:true},
-        },
-    	messages: {
-    		"cantidad_patro":{required: "La cantidad es incorrecta.<i></i>",number:"Debe ser un n&uacute;mero.<i></i>"},
-            "cantidad_min_patro":{required: "La cantidad es incorrecta.<i></i>",number:"Debe ser un n&uacute;mero.<i></i>"},
-            "titulo_patro":{required:"Este campo es obligatorio.<i></i>"},
-            "descripcion_patro":{required:"Este campo es obligatorio.<i></i>"},
-            "fecha_fin":{required:"Este campo es obligatorio.<i></i>"},
-        }
-    });
-    if(COOKIE.id && jQuery("#"+form).valid()){
-        showLoadingCustom('Enviando datos...');
-        $.ajax({
-                    data: $("#"+form).serialize(),
-                    type: "POST",
-                    url: BASE_URL_APP+'crowfundings/mobileSavePatrocinio/'+COOKIE.id,
-                    dataType: "html",
-                    success: function(data){
-                       data_p = $.parseJSON(data);
-                       if(data_p.respuesta==1)
-                       {
-                        jQuery("#"+form+" #save_edit").val("edit");
-                        jQuery("#"+form+" #crowd_id").val(data_p.crowd.id);
-                        if(seguir)
-                            $.mobile.changePage('p_edicion_recompensas_patrocinio.html?crowd_id='+data_p.crowd.id,{transition: "slide", changeHash: true});
-                        else showAlert(data_p.message, "Aviso", "Aceptar");
-                       }
-                       else{
-                        showAlert(data_p.message, "Aviso", "Aceptar");
-                       }
-                       $.mobile.loading('hide');
-                    }
-               });
-    }
-}
-
-/*FUNCION PARA OPTENER LAS RECOMPENSAS DE PATROCINALOS*/
-function getRecompensasPatrocinio(crowd_id){
-    jQuery("#form_edit_data #crowd_id").val(crowd_id);
-    jQuery("#list_recompensa_patro").html("");
-    $.getJSON(BASE_URL_APP+'recompensas/mobileGetRecompensas', function(data) {
-        //mostramos loading
-        $.mobile.loading('show');
-        
-        var items = data.items;
-       	$.each(items, function(index,item){
-       	    html_data=' <li id="'+item.Recompensa.id+'">';
-            html_data+='  <div>';
-            html_data+='     <div class="recorte">';
-            html_data+='           <img src="'+BASE_URL_APP+'img/recompensas/'+item.Recompensa.imagen+'"/>';
-            html_data+='     </div>';
-            html_data+='     <h4>'+item.Recompensa.nombre+'</h4>';
-            html_data+='  </div>';
-            html_data+='</li>';
-                    
-            jQuery("#list_recompensa_patro").append(html_data);
-            jQuery("#list_recompensa_patro li#"+item.Recompensa.id).click(function(){
-                    if(jQuery(this).hasClass("selected")) jQuery(this).removeClass("selected");
-                    else jQuery(this).addClass("selected");
-                    jQuery("#form_edit_data input."+jQuery(this).attr("id")).remove();
-                    if(jQuery(this).hasClass("selected"))
-                       jQuery("#form_edit_data").append('<input class='+jQuery(this).attr("id")+' type="hidden" name="recompensas_select[]" value="'+jQuery(this).attr("id")+'"/>');    
-            });
-    	});
-        
-        $.getJSON(BASE_URL_APP+'crowfundings/mobileRecompensasSelect/'+COOKIE.id+'/?crowd_id='+crowd_id, function(data){
-            jQuery.each(data.items,function(index,item){
-              jQuery("#list_recompensa_patro li#"+item.recompensa.recompensa_id).addClass("selected");
-              jQuery("#form_edit_data").append('<input class='+item.recompensa.recompensa_id+' type="hidden" name="recompensas_select[]" value="'+item.recompensa.recompensa_id+'"/>');
-            });
-        });
-        
-        jQuery("#list_recompensa_patro").promise().done(function() {
-            $(this).find("li:last img").load(function(){
-                //ocultamos loading
-                $.mobile.loading( 'hide' );
-                
-            });
-        });
-	});
-}
-
-/*FUNCION PARA GUARDAR LAS RECOMPENSAS SELECCIONADAS EN LA SECCION DE PATROCINIO DEL PG*/
-function saveRecompensasPatrocinio(form,seguir){
-    if(COOKIE.id && jQuery("#"+form).valid()){
-        showLoadingCustom('Enviando datos...');
-        $.ajax({
-                    data: $("#"+form).serialize(),
-                    type: "POST",
-                    url: BASE_URL_APP+'crowfundings/mobileSaveRecompensas/'+COOKIE.id,
-                    dataType: "html",
-                    success: function(data){
-                       data_p = $.parseJSON(data);
-                       if(seguir) $.mobile.changePage('p_multimedia_patrocinio.html',{transition: "slide", changeHash: true});
-                       else{
-                        showAlert(data_p.message, "Aviso", "Aceptar");
-                        $.mobile.loading( 'hide' );
-                       }
-                    }
-               });
-    }
 }

@@ -134,7 +134,8 @@ form .fecha_calendario span.error,
 form .fecha_calendario .valid_field span.success{
     display: none;
 }
-form .ui-input-text span.error{
+form .ui-input-text span.error,
+form .content_textarea span.error{
     top: 7px;
     right: 21px;
     width: auto;
@@ -152,7 +153,8 @@ form .fecha_calendario .ui-input-text span.error{
     right: 55px;
     top: 9px;
 }
-form .ui-input-text span.error i{
+form .ui-input-text span.error i,
+form .content_textarea span.error i{
     background: url("../img/bg_valid_arrow.jpg") no-repeat scroll top right transparent;
     background-size: 18px 20px;
     padding-right: 28px;
@@ -178,6 +180,9 @@ form .valid_field span.success i{
     display: inline-block;
     position: absolute;
     right: -17px;     
+}
+form .content_textarea{
+    position: relative;
 }
 .content_list_first .ui-listview li.ui-li-static.ui-li,
 .content_list_two .ui-listview li.ui-li-static.ui-li{
@@ -777,7 +782,7 @@ form .valid_field span.success i{
     padding: 0;
     text-align: center;
     height: 0px;
-    bottom: 20px;
+    bottom: 20px !important;
 }
 .footer_menu img{
     height: 20px;
@@ -1409,6 +1414,7 @@ label.custom{
 #register_finalizado .ui-content,
 #completar_perfil .ui-content,
 #solicitar_patrocinio .ui-content,
+#solicitar_editar_patrocinio .ui-content,
 #completar_perfil_patrocinador .ui-content,
 #completar_perfil_empresa .ui-content,
 #recuperar_password .ui-content,
@@ -1591,7 +1597,8 @@ label.custom{
 #register_user .ui-select span.ui-btn-text,
 #completar_perfil .ui-select span.ui-btn-text,
 #completar_perfil_patrocinador .ui-select span.ui-btn-text,
-#solicitar_patrocinio .ui-select span.ui-btn-text{
+#solicitar_patrocinio .ui-select span.ui-btn-text,
+#solicitar_editar_patrocinio .ui-select span.ui-btn-text{
     font-size: 14px;
     margin: 3px 0;
 }
@@ -1610,7 +1617,8 @@ label.custom{
 #register_user .access_login .ui-input-text,
 #completar_perfil .ui-input-text,
 #completar_perfil_patrocinador .ui-input-text
-#solicitar_patrocinio .ui-input-text{
+#solicitar_patrocinio .ui-input-text,
+#solicitar_editar_patrocinio .ui-input-text{
     margin: 0.25em 0;
     position: relative;
 }
@@ -1620,7 +1628,8 @@ label.custom{
 #register_user .texto_formulario span,
 #completar_perfil .texto_formulario span,
 #completar_perfil_patrocinador .texto_formulario span,
-#solicitar_patrocinio .texto_formulario span{
+#solicitar_patrocinio .texto_formulario span,
+#solicitar_editar_patrocinio .texto_formulario span{
     margin: 0 4.5em;
 }
 
@@ -1663,33 +1672,39 @@ label.custom{
 
 #completar_perfil .btn-access,
 #completar_perfil_patrocinador .btn-access,
-#solicitar_patrocinio .btn-access{
+#solicitar_patrocinio .btn-access,
+#solicitar_editar_patrocinio .btn-access{
     margin-left: 8px;
     min-height: 345px;
 }
 #completar_perfil .content_formulario > div,
 #completar_perfil_patrocinador .content_formulario > div,
-#solicitar_patrocinio .content_formulario > div{
+#solicitar_patrocinio .content_formulario > div,
+#solicitar_editar_patrocinio .content_formulario > div{
     padding-left: 2px;
 }
 #completar_perfil .content_formulario > div.ui-input-text,
 #completar_perfil_patrocinador .content_formulario > div.ui-input-text,
 #solicitar_patrocinio .content_formulario > div.ui-input-text,
+#solicitar_editar_patrocinio .content_formulario > div.ui-input-text,
 #completar_perfil .content_formulario > textarea,
 #completar_perfil_patrocinador .content_formulario > textarea,
-#solicitar_patrocinio .content_formulario > textarea{
+#solicitar_patrocinio .content_formulario > textarea,
+#solicitar_editar_patrocinio .content_formulario > textarea{
     margin-left: 2px;
     padding-left: 0.4em;
 }
 #completar_perfil .fecha_nacimiento,
 #completar_perfil_patrocinador .fecha_nacimiento,
-#solicitar_patrocinio .fecha_nacimiento{
+#solicitar_patrocinio .fecha_nacimiento,
+#solicitar_editar_patrocinio .fecha_nacimiento{
     display: block;
     overflow: hidden;
 }
 #completar_perfil .fecha_nacimiento div.ui-input-text,
 #completar_perfil_patrocinador .fecha_nacimiento div.ui-input-text,
-#solicitar_patrocinio .fecha_nacimiento div.ui-input-text{
+#solicitar_patrocinio .fecha_nacimiento div.ui-input-text,
+#solicitar_editar_patrocinio .fecha_nacimiento div.ui-input-text{
     width: 77%;
     display: inline-block;
     float: left;
@@ -1698,7 +1713,8 @@ label.custom{
 }
 #completar_perfil .fecha_nacimiento a.calendario,
 #completar_perfil_patrocinador .fecha_nacimiento a.calendario,
-#solicitar_patrocinio .fecha_nacimiento a.calendario{
+#solicitar_patrocinio .fecha_nacimiento a.calendario,
+#solicitar_editar_patrocinio .fecha_nacimiento a.calendario{
     width: 15%;
     display: inline-block;
     float: right;
@@ -1748,17 +1764,21 @@ label.custom{
 }
 
 /* SOLICITAR PATROCINIO */
-#solicitar_patrocinio .texto_formulario{
+#solicitar_patrocinio .texto_formulario,
+#solicitar_editar_patrocinio .texto_formulario{
     margin: 5px 0;
 }
-#solicitar_patrocinio .ui-content{
+#solicitar_patrocinio .ui-content,
+#solicitar_editar_patrocinio .ui-content{
     margin-top: 8px;
     margin-bottom: 0px;
 }
-#solicitar_patrocinio textarea{
+#solicitar_patrocinio textarea,
+#solicitar_editar_patrocinio textarea{
     height: 55px;
 }
-#solicitar_patrocinio .seleccionar_recompensas{
+#solicitar_patrocinio .seleccionar_recompensas,
+#solicitar_editar_patrocinio .seleccionar_recompensas{
     margin-top: 5px;
     color: #909b9c;
     font-size: 11px;
@@ -1767,16 +1787,19 @@ label.custom{
     overflow: hidden;
     margin-bottom: 5px;
 }
-#solicitar_patrocinio .seleccionar_recompensas h2{
+#solicitar_patrocinio .seleccionar_recompensas h2,
+#solicitar_editar_patrocinio .seleccionar_recompensas h2{
     font-size: 15px;
     font-weight: bold;
     margin: 4px 0;
 }
-#solicitar_patrocinio .seleccionar_recompensas ul{
+#solicitar_patrocinio .seleccionar_recompensas ul,
+#solicitar_editar_patrocinio .seleccionar_recompensas ul{
     overflow: hidden;
     margin: 10px 0;    
 }
-#solicitar_patrocinio .seleccionar_recompensas li{
+#solicitar_patrocinio .seleccionar_recompensas li,
+#solicitar_editar_patrocinio .seleccionar_recompensas li{
     float: left;
     margin-right: 4px;
     margin-left: 4px;
@@ -1786,30 +1809,36 @@ label.custom{
     cursor: pointer;
     width: 75px;
 }
-#solicitar_patrocinio .seleccionar_recompensas li.last{
+#solicitar_patrocinio .seleccionar_recompensas li.last,
+#solicitar_editar_patrocinio .seleccionar_recompensas li.last{
     margin-right: 0;
 }
-#solicitar_patrocinio .seleccionar_recompensas .item{
+#solicitar_patrocinio .seleccionar_recompensas .item,
+#solicitar_editar_patrocinio .seleccionar_recompensas .item{
     text-align: center;
     padding-top: 5px;
     padding-bottom: 5px;
 }
-#solicitar_patrocinio .seleccionar_recompensas .item.selected{
+#solicitar_patrocinio .seleccionar_recompensas .item.selected,
+#solicitar_editar_patrocinio .seleccionar_recompensas .item.selected{
     background-color: #adddda;
     border-radius: 5px;
     color: #fff;
 }
-#solicitar_patrocinio .seleccionar_recompensas .content_recompensa{
+#solicitar_patrocinio .seleccionar_recompensas .content_recompensa,
+#solicitar_editar_patrocinio .seleccionar_recompensas .content_recompensa{
     width: 60px;
     height: 60px;
     text-align: center;
     display: inline-block;
     position: relative;
 }
-#solicitar_patrocinio .seleccionar_recompensas .content_recompensa img.success{
+#solicitar_patrocinio .seleccionar_recompensas .content_recompensa img.success,
+#solicitar_editar_patrocinio .seleccionar_recompensas .content_recompensa img.success{
     display: none;
 }
-#solicitar_patrocinio .seleccionar_recompensas .selected .content_recompensa img.success{
+#solicitar_patrocinio .seleccionar_recompensas .selected .content_recompensa img.success,
+#solicitar_editar_patrocinio .seleccionar_recompensas .selected .content_recompensa img.success{
     display: block;
     height: 18px;
     width: 20px;
@@ -1817,16 +1846,35 @@ label.custom{
     top: -2px;
     left: -5px;
 }
-#solicitar_patrocinio .seleccionar_recompensas .content_recompensa img{
+#solicitar_patrocinio .seleccionar_recompensas .content_recompensa img,
+#solicitar_editar_patrocinio .seleccionar_recompensas .content_recompensa img{
     width: 100%;
     height: 100%;
 }
-#solicitar_patrocinio .seleccionar_recompensas p.nombre_recompensa{
+#solicitar_patrocinio .seleccionar_recompensas p.nombre_recompensa,
+#solicitar_editar_patrocinio .seleccionar_recompensas p.nombre_recompensa{
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 85%;
     display: inline-block;
     overflow: hidden;    
+}
+#solicitar_editar_patrocinio .page span.hide{
+    display: none;
+}
+#solicitar_editar_patrocinio .page span.show{
+    display: block;
+}
+#solicitar_editar_patrocinio{
+    padding-bottom: 15px !important;
+}
+#solicitar_editar_patrocinio .informacion{
+    color: #55a0b5;
+    font-family: 'HelveticaCondensedMedium';
+    letter-spacing: 0px;
+    font-size: 13px;
+    margin: 5px 0;
+    text-shadow: none;
 }
 
 /* CSS NAVIGATION HOME*/
@@ -3812,7 +3860,8 @@ and (orientation:landscape)
     #register_user .texto_formulario span,
     #completar_perfil .texto_formulario span,
     #completar_perfil_patrocinador .texto_formulario span,
-    #solicitar_patrocinio .texto_formulario span{
+    #solicitar_patrocinio .texto_formulario span,
+    #solicitar_editar_patrocinio .texto_formulario span{
         margin: 0 9em;
     }
     #register_finalizado .content_formulario .opciones{
@@ -4061,14 +4110,16 @@ and (orientation:portrait)
     #completar_perfil .ui-input-text,
     #completar_perfil_patrocinador .ui-input-text,
     #completar_perfil_empresa .ui-input-text,
-    #solicitar_patrocinio .ui-input-text{
+    #solicitar_patrocinio .ui-input-text,
+    #solicitar_editar_patrocinio .ui-input-text{
         margin: 0.35em 0;
     }
     #register_user .ui-select,
     #completar_perfil .ui-select,
     #completar_perfil_patrocinador .ui-select,
     #completar_perfil_empresa .ui-select,
-    #solicitar_patrocinio .ui-select{
+    #solicitar_patrocinio .ui-select,
+    #solicitar_editar_patrocinio .ui-select{
         margin: 8px 0;
     }
     /* TODO */
@@ -4086,14 +4137,18 @@ and (orientation:portrait)
     #completar_perfil_empresa textarea.ui-mini,
     #solicitar_patrocinio input.ui-mini, 
     #solicitar_patrocinio .ui-mini input, 
-    #solicitar_patrocinio textarea.ui-mini{
+    #solicitar_patrocinio textarea.ui-mini,
+    #solicitar_editar_patrocinio input.ui-mini, 
+    #solicitar_editar_patrocinio .ui-mini input, 
+    #solicitar_editar_patrocinio textarea.ui-mini{
         font-size: 16px;
     }
     #register_user .ui-select span.ui-btn-text,
     #completar_perfil .ui-select span.ui-btn-text,
     #completar_perfil_patrocinador .ui-select span.ui-btn-text,
     #completar_perfil_empresa .ui-select span.ui-btn-text,
-    #solicitar_patrocinio .ui-select span.ui-btn-text{
+    #solicitar_patrocinio .ui-select span.ui-btn-text,
+    #solicitar_editar_patrocinio .ui-select span.ui-btn-text{
         font-size: 16px;
         margin: 5px 0;
     }
@@ -4116,7 +4171,8 @@ and (orientation:portrait)
     #completar_perfil .fecha_nacimiento a.calendario,
     #completar_perfil_patrocinador .fecha_nacimiento a.calendario,
     #completar_perfil_empresa .fecha_nacimiento a.calendario,
-    #solicitar_patrocinio .fecha_nacimiento a.calendario{
+    #solicitar_patrocinio .fecha_nacimiento a.calendario,
+    #solicitar_editar_patrocinio .fecha_nacimiento a.calendario{
         background-size: 40px;
         height: 42px;
     }
@@ -4194,14 +4250,18 @@ and (orientation:landscape)
     #completar_perfil_empresa textarea.ui-mini,
     #solicitar_patrocinio input.ui-mini, 
     #solicitar_patrocinio .ui-mini input, 
-    #solicitar_patrocinio textarea.ui-mini {
+    #solicitar_patrocinio textarea.ui-mini,
+    #solicitar_editar_patrocinio input.ui-mini, 
+    #solicitar_editar_patrocinio .ui-mini input, 
+    #solicitar_editar_patrocinio textarea.ui-mini{
         font-size: 16px;
     }
     #register_user .ui-select span.ui-btn-text,
     #completar_perfil .ui-select span.ui-btn-text,
     #completar_perfil_patrocinador .ui-select span.ui-btn-text,
     #completar_perfil_empresa .ui-select span.ui-btn-text,
-    #solicitar_patrocinio .ui-select span.ui-btn-text{
+    #solicitar_patrocinio .ui-select span.ui-btn-text,
+    #solicitar_editar_patrocinio .ui-select span.ui-btn-text{
         font-size: 16px;
         margin: 5px 0;
     }
@@ -4214,11 +4274,13 @@ and (orientation:landscape)
     #completar_perfil .fecha_nacimiento a.calendario,
     #completar_perfil_patrocinador .fecha_nacimiento a.calendario,
     #completar_perfil_empresa .fecha_nacimiento a.calendario,
-    #solicitar_patrocinio .fecha_nacimiento a.calendario{
+    #solicitar_patrocinio .fecha_nacimiento a.calendario,
+    #solicitar_editar_patrocinio .fecha_nacimiento a.calendario{
         background-size: 40px;
         height: 42px;
     }
-    #solicitar_patrocinio .seleccionar_recompensas ul{
+    #solicitar_patrocinio .seleccionar_recompensas ul,
+    #solicitar_editar_patrocinio .seleccionar_recompensas ul{
         width: 83%;
         margin: 5px auto;
     }
@@ -4247,27 +4309,34 @@ and (orientation:landscape)
     #completar_perfil .fecha_nacimiento a.calendario,
     #completar_perfil_patrocinador .fecha_nacimiento a.calendario,
     #completar_perfil_empresa .fecha_nacimiento a.calendario,
-    #solicitar_patrocinio .fecha_nacimiento a.calendario{
+    #solicitar_patrocinio .fecha_nacimiento a.calendario,
+    #solicitar_editar_patrocinio .fecha_nacimiento a.calendario{
         width: 8%;
     }
     #completar_perfil .fecha_nacimiento div.ui-input-text,
     #completar_perfil_patrocinador .fecha_nacimiento div.ui-input-text,
     #completar_perfil_empresa .fecha_nacimiento div.ui-input-text,
-    #solicitar_patrocinio .fecha_nacimiento div.ui-input-text{
+    #solicitar_patrocinio .fecha_nacimiento div.ui-input-text,
+    #solicitar_editar_patrocinio .fecha_nacimiento div.ui-input-text{
         width: 84% ;
     }
     #solicitar_patrocinio span,
-    #solicitar_patrocinio p{
+    #solicitar_patrocinio p,
+    #solicitar_editar_patrocinio span,
+    #solicitar_editar_patrocinio p{
         letter-spacing: 0px;
     }    
-    #solicitar_patrocinio .seleccionar_recompensas li{
+    #solicitar_patrocinio .seleccionar_recompensas li,
+    #solicitar_editar_patrocinio .seleccionar_recompensas li{
         width: 126px;
     }    
-    #solicitar_patrocinio .seleccionar_recompensas .content_recompensa{
+    #solicitar_patrocinio .seleccionar_recompensas .content_recompensa,
+    #solicitar_editar_patrocinio .seleccionar_recompensas .content_recompensa{
         width: 100px;
         height: 100px;
     }
-    #solicitar_patrocinio .seleccionar_recompensas .selected .content_recompensa img.success {
+    #solicitar_patrocinio .seleccionar_recompensas .selected .content_recompensa img.success,
+    #solicitar_editar_patrocinio .seleccionar_recompensas .selected .content_recompensa img.success {
         height: 25px;
         width: 28px;
     }

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+        <title>Patrocinalos</title>
+        
+        <link rel="stylesheet" href="css/jquery.mobile-1.3.1.css" />
+        <link rel="stylesheet" href="css/reset.css" />
+       	<link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/iphone.css" />
+        <link rel="stylesheet" href="css/muro.css" />
+        
+        <!-- include carousel.css -->
+        <link rel="stylesheet" href="css/carousel.css" />
+        <link rel="stylesheet" href="css/carousel-style.css" />
+            
+        <script src="js/jquery-1.8.2.js"></script>
+        
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.defaultPageTransition = 'slide';
+            });
+        </script>
+        
+        <!-- debug sin configurar en el config.xml -->
+        <!--<script src="http://debug.phonegap.com/target/target-script-min.js#mobilelospa"></script>-->
+        
+        <script src="js/jquery.mobile-1.3.1.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/validate.add.method.js"></script>
+        <script src="js/jquery.age.js"></script>
+        <!-- include carousel.js -->
+        <script src="js/carousel.js"></script>
+        <script src="cordova.js"></script>
+        <script src="cdv-plugin-fb-connect.js"></script>
+        <script src="facebook-js-sdk.js"></script>
+        <script src="childbrowser.js"></script>
+        <script src="js/jsOAuth-1.3.6.min.js"></script>
+        <script src="js/functions.js"></script>
+        <script src="js/app.functions.js"></script>
+        <script src="js/tw.functions.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="js/calendar/jqm-datebox-1.1.0.css" />
+        <script type="text/javascript" src="js/calendar/jqm-datebox.core.min.js"></script>
+        <script type="text/javascript" src="js/calendar/jqm-datebox.mode.calbox.min.js"></script>
+        <script type="text/javascript" src="js/calendar/jquery.mobile.datebox.i18n.es-ES.utf8.js"></script>
+        <!-- cargamos al ultimo el script que inicializa los valores una vez cargado el dispositivo -->
+        <script type="text/javascript" src="js/app.ready.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>    
+    </head>
+    <body>
+    
+    <!-- SOLICITAR Y EDITAR PATROCINIO -->
+    
+    <div data-role="page" id="solicitar_editar_patrocinio" data-theme="c">
+    
+    	<div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
+                    </div>
+                </li>
+                <li class="page">
+                    <span class="hide">SOLICITAR PATROCINIO</span>
+                    <span class="hide">EDITAR PROYECTO</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+       	<div data-role="content">
+            <div class="btn-access" style="margin-bottom: 4px;">
+                <form id="form_solicitar_editar_patrocinio">
+                    <div class="content_formulario">
+                        <input type="hidden" name="u_usuario_id" value="" />
+                        <input type="hidden" name="u_proyecto_id" value="" />
+                        <input name="proyecto_title" placeholder="Para qu&eacute; necesitas el patrocinio?" autocomplete="off" type="text" data-mini="true"/>
+                        <div class="content_textarea">
+                            <textarea cols="40" rows="10" name="proyecto_actividad_patrocinio" placeholder="Descripci&oacute;n corta, un par de l&iacute;neas que ayuden a entender para que necesitas el patrocinio." data-mini="true"></textarea>
+                        </div>
+                        <input name="proyecto_monto" placeholder="&iquest;Cu&aacute;nto dinero necesitas?" autocomplete="off" type="text" data-mini="true"/>
+                        <input name="proyecto_enlace" placeholder="Enlace a tu pagina web..." autocomplete="off" type="text" data-mini="true"/>
+                        <div class="fecha_calendario">
+                            <input style="width: 100%;" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="proyecto_fecha_limite" type="text" placeholder="Fecha L&iacute;mite..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
+                        </div>
+                        <div class="content_textarea">
+                            <textarea cols="40" rows="10" name="proyecto_masinfo" placeholder="M&aacute;s informaci&oacute;n, aqu&iacute; si puedes extenderte tanto como quieras." data-mini="true"></textarea>
+                        </div>
+                        <img style="margin-left: 3px; margin-top: 2px; border: 1px solid #000; height: auto; width: 98%; border-radius: 4px;display: none;" id="pictureImageProyecto2" src="" />
+                        <div data-role="fieldcontain" class="content_upload_foto">
+                            <label class="lspacing" style="line-height: 15px;margin-top: 5px;margin-bottom: 18px;"><span class="foto_normal">Selecciona la imagen para tu solicitud</span></label>
+                            <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="getImage('pictureImageProyecto2')" data-role="button" data-mini="true">Buscar</a>
+                            <a class="ui-btn-submit blue upload_foto" href="javascript:void(0)" onclick="capturePhoto('pictureImageProyecto2')" data-role="button" data-mini="true">Capturar Foto</a>
+                        </div>
+                        <p class="informacion">Recuerda que tu proyecto ser&aacute; evaluado por nuestro staff para su validaci&oacute;n. Una vez aprobado podr&aacute;s subir m&aacute;s contenido e ir completando tu proyecto. Cada vez que edites tu proyecto, este ser&aacute; nuevamente evaluado. Nosotros te ayudaremos a completar tu historia. Patrocinalos.com sortea entre tus patrocinadores las mejores recompensas. Difunde tu proyecto. Nosotros haremos el resto.</p>
+                    </div>
+                </form>
+            </div>
+    	</div><!-- /content -->
+        
+        <div class="btn-options">
+            <div class="btn-first">
+                <a class="ui-btn-submit orange borrar_form" href="javascript:void(0)" data-role="button">BORRAR</a>
+            </div>
+            <div class="btn-second">
+                <a class="ui-btn-submit green guardar_form" href="javascript:void(0)" data-role="button">GUARDAR</a>
+            </div>
+        </div>
+    
+        <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="c" class="footer_menu">
+            <a href="#panel_menu" class="icon_menu">
+                <img src="img/bg_list_menu.png"/>
+            </a>
+        </div>
+        
+        <!--contenedor del panel-->
+        <div id="contenedor_panel"></div>
+    
+    </div><!-- /page -->
+    
+    </body>
+</html>
