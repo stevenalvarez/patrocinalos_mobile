@@ -814,65 +814,6 @@ function getBlog(parent_id){
    	});
 }
 
-/*FUNCION PARA OBTENER LOS DATOS DE PATROCINIO*/
-function getPatrocinioDeportivo(){
-    $.getJSON(BASE_URL_APP+'crowfundings/mobileGetPatrocinio/'+COOKIE.id, function(data){
-        if(data){
-          jQuery("#form_edit_data #cantidad_patro").val(data.crowd.monto);
-          jQuery("#form_edit_data #cantidad_min_patro").val(data.crowd.monto_min);
-          jQuery("#form_edit_data #titulo_patro").val(data.crowd.titulo);
-          jQuery("#form_edit_data #descripcion_patro").val(data.crowd.descripcion);       
-          jQuery("#form_edit_data #fecha_fin").val(data.crowd.fecha_fin);
-          jQuery("#form_edit_data #crowd_id").val(data.crowd.id);
-          jQuery("#form_edit_data #save_edit").val("edit");
-        }
-    });
-}
-
-/*FUNCION PARA GUARDAR LOS DATOS DE PATROCINIO*/
-function saveDatosPatrocinio(form,seguir){
-    jQuery("#"+form).validate({
-        errorElement:'span',
-    	rules:{ "cantidad_patro":{required:true,number:true},
-                 "cantidad_min_patro":{required:true,number:true},
-    		    "titulo_patro":{required:true}, 
-                "descripcion_patro":{required:true},
-                "fecha_fin":{required:true},
-        },
-    	messages: {
-    		"cantidad_patro":{required: "La cantidad es incorrecta.<i></i>",number:"Debe ser un n&uacute;mero.<i></i>"},
-            "cantidad_min_patro":{required: "La cantidad es incorrecta.<i></i>",number:"Debe ser un n&uacute;mero.<i></i>"},
-            "titulo_patro":{required:"Este campo es obligatorio.<i></i>"},
-            "descripcion_patro":{required:"Este campo es obligatorio.<i></i>"},
-            "fecha_fin":{required:"Este campo es obligatorio.<i></i>"},
-        }
-    });
-    if(COOKIE.id && jQuery("#"+form).valid()){
-        showLoadingCustom('Enviando datos...');
-        $.ajax({
-                    data: $("#"+form).serialize(),
-                    type: "POST",
-                    url: BASE_URL_APP+'crowfundings/mobileSavePatrocinio/'+COOKIE.id,
-                    dataType: "html",
-                    success: function(data){
-                       data_p = $.parseJSON(data);
-                       if(data_p.respuesta==1)
-                       {
-                        jQuery("#"+form+" #save_edit").val("edit");
-                        jQuery("#"+form+" #crowd_id").val(data_p.crowd.id);
-                        if(seguir)
-                            $.mobile.changePage('p_edicion_recompensas_patrocinio.html?crowd_id='+data_p.crowd.id,{transition: "slide", changeHash: true});
-                        else showAlert(data_p.message, "Aviso", "Aceptar");
-                       }
-                       else{
-                        showAlert(data_p.message, "Aviso", "Aceptar");
-                       }
-                       $.mobile.loading('hide');
-                    }
-               });
-    }
-}
-
 /*OBTENEMOS LOS DATOS PERSONALES DENTRO EL PANEL DE GESTION DEL DEPORTISTA*/
 function getDatosPersonales(id_user){
     var pais_dep="";

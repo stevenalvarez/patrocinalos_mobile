@@ -747,6 +747,7 @@ function form_solicitar_patrocinio(element){
                                 params.folder = "Proyecto"; // la carpeta donde se va a guardar la imagen
                                 params.usuario_id = userRegistered.id; // id del usuario para el cual es la nueva imagen.
                                 params.proyecto_id = data.proyecto_id; // id del proyecto para el cual es la imagen.
+                                params.accion = 'crear'; // que tipo accion se hizo.
                                 
                                 //Utilizamos la funcion de subir la imagen de forma asincrona, ya que solo
                                 //va subir la imagen y nada mas, ahi termina el proceso.
@@ -838,8 +839,53 @@ function form_solicitar_editar_patrocinio(parent_id, element, user){
     if(user.proyecto_id !== undefined && parseInt(user.proyecto_id) > 0){
         parent.find(".page").find("span:nth-child(2)").removeClass().addClass("show");
         formulario.find("input[name='u_proyecto_id']").val(user.proyecto_id);
+        formulario.find(".informacion.editar").show();
+        
+        //ya que tiene proyecto llenamos los campos del formulario
+        $.mobile.loading( 'show' );
+        formulario.css("opacity",0.5);
+        $.getJSON(BASE_URL_APP+'proyectos/mobileGetProyectoByIds/'+user.id+"/"+user.proyecto_id, function(data){
+            var success = data.success;
+            var mensaje_mejora = data.mensaje;
+            if(success){
+                var item = data.proyecto;
+                formulario.find("input[name='proyecto_title']").val(item.Proyecto.title).parent().hide(); //ocultamos esto porque en la web tampoco puedes modificar el titulo
+                if(item.Proyecto.serializado.actividad_patrocinio != undefined && item.Proyecto.serializado.actividad_patrocinio != ""){
+                    formulario.find("textarea[name='proyecto_actividad_patrocinio']").val(item.Proyecto.serializado.actividad_patrocinio);
+                }
+                formulario.find("input[name='proyecto_monto']").val(item.Proyecto.monto).parent().hide(); //ocultamos esto porque en la web tampoco puedes modificar el titulo
+                if(item.Proyecto.serializado.enlace != undefined && item.Proyecto.serializado.enlace != ""){
+                    formulario.find("input[name='proyecto_enlace']").val(item.Proyecto.serializado.enlace);
+                }
+                formulario.find("input[name='proyecto_fecha_limite']").val(item.Proyecto.fecha_fin_virtual);
+                if(item.Proyecto.serializado.masinfo != undefined && item.Proyecto.serializado.masinfo != ""){
+                    formulario.find("textarea[name='proyecto_masinfo']").val(item.Proyecto.serializado.masinfo);
+                }
+                if(item.Proyecto.serializado.imagen != undefined && item.Proyecto.serializado.imagen != ""){
+                    formulario.find("img").attr("src",BASE_URL_APP+'img/Usuario/800/'+item.Proyecto.serializado.imagen).show();
+                    formulario.promise().done(function() {
+                        $(this).find("img").load(function(){
+                            //ocultamos loading
+                            formulario.animate({opacity: 1}, 500 );
+                            $.mobile.loading( 'hide' );
+                        });
+                    });
+                }else{
+                    formulario.animate({opacity: 1}, 500 );
+                    $.mobile.loading( 'hide' );
+                }
+                
+                //si tiene mensaje de mejorar proyecto mostramos un alert
+                if(mensaje_mejora != ""){
+                    showAlert(mensaje_mejora, "Aviso", "Aceptar");
+                }
+                
+            }
+        });
+        
     }else{
         parent.find(".page").find("span:nth-child(1)").removeClass().addClass("show");
+        formulario.find(".informacion.crear").show();
     }
     
     //Submit form
@@ -847,11 +893,13 @@ function form_solicitar_editar_patrocinio(parent_id, element, user){
         
         //Si todo el form es valido mandamos
         if (jQuery(this).valid()) {
+            var accion = "crear";
             var usuario_id = formulario.find("input[name='u_usuario_id']").val();
             var proyecto_id = formulario.find("input[name='u_proyecto_id']").val();
-            var url = BASE_URL_APP+'proyectos/mobileSolictarPatrocinio/'+user.id;
+            var url = BASE_URL_APP+'proyectos/mobileSolictarPatrocinio';
             if(proyecto_id != '' && parseInt(proyecto_id) > 0){
-                url = BASE_URL_APP+'proyectos/mobileEditarPatrocinio/'+user.id;
+                url = BASE_URL_APP+'proyectos/mobileEditarPatrocinio';
+                accion = "editar";
             }
             
             if(usuario_id != '' && parseInt(usuario_id) > 0)
@@ -876,22 +924,26 @@ function form_solicitar_editar_patrocinio(parent_id, element, user){
                                 params.folder = "Proyecto"; // la carpeta donde se va a guardar la imagen
                                 params.usuario_id = user.id; // id del usuario para el cual es la nueva imagen.
                                 params.proyecto_id = data.proyecto_id; // id del proyecto para el cual es la imagen.
+                                params.accion = accion; // que tipo accion se hizo.
                                 
                                 //Utilizamos la funcion de subir la imagen de forma asincrona, ya que solo
                                 //va subir la imagen y nada mas, ahi termina el proceso.
                                 uploadImagenAsynchronous(params);
                             }
                             
-                            //establecemos el id del proyecto creado, con eso sabemos si tiene ya un proyecto creado
-                            formulario.find("input[name='u_proyecto_id']").val(data.proyecto_id);
-                            //actualizamos la cookie
-                            COOKIE.proyecto_id = data.proyecto_id;
-                            //actualizamos el panel
-                            actualizar_panel();
-                            
-                            //colocamos el texto correcto para saber en que page estamos
-                            parent.find(".page").find("span").removeClass().addClass("hide");
-                            parent.find(".page").find("span:nth-child(2)").removeClass().addClass("show");
+                            //solo si la accion fué crear entra, no asi para la accion editar
+                            if(accion == "crear"){
+                                //establecemos el id del proyecto creado, con eso sabemos si tiene ya un proyecto creado
+                                formulario.find("input[name='u_proyecto_id']").val(data.proyecto_id);
+                                //actualizamos la cookie
+                                COOKIE.proyecto_id = data.proyecto_id;
+                                //actualizamos el panel
+                                actualizar_panel();
+                                
+                                //colocamos el texto correcto para saber en que page estamos
+                                parent.find(".page").find("span").removeClass().addClass("hide");
+                                parent.find(".page").find("span:nth-child(2)").removeClass().addClass("show");                                
+                            }
                             
                             //mostramos el mensaje de exito al guardar el patrocinio
                             showAlert(data.mensaje, "Aviso", "Aceptar");

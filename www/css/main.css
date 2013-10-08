@@ -1870,11 +1870,12 @@ label.custom{
 }
 #solicitar_editar_patrocinio .informacion{
     color: #55a0b5;
-    font-family: 'HelveticaCondensedMedium';
     letter-spacing: 0px;
-    font-size: 13px;
+    font-size: 12px;
+    line-height: 12px;
     margin: 5px 0;
     text-shadow: none;
+    display: none;
 }
 
 /* CSS NAVIGATION HOME*/
