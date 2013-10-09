@@ -250,19 +250,10 @@ $("#solicitar_editar_patrocinio").live('pagebeforeshow', function(event, ui) {
     }
 });
 
-//CUANDO CARGUE LA PAGE DE EDICIÓN DE DATOS DE PERFIL
-$("#edicion_datos_personales").live('pagebeforeshow', function(event, ui) {
+//EDITAR - PERFIL
+$("#editar_perfil").live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
         getDatosPersonales(COOKIE.id);
-    }else{
-        redirectLogin();
-    }
-});
-
-//CUANDO CARGUE LA PAGE DE EDICIÓN DE DATOS DE DEPORTIVOS EN EL PERFIL
-$("#edicion_datos_deportivos").live('pagebeforeshow', function(event, ui) {
-    if(isLogin()){
-        getDatosDeportivos(COOKIE.id);
     }else{
         redirectLogin();
     }
@@ -814,7 +805,7 @@ function getBlog(parent_id){
    	});
 }
 
-/*OBTENEMOS LOS DATOS PERSONALES DENTRO EL PANEL DE GESTION DEL DEPORTISTA*/
+/*OBTENEMOS LOS DATOS DEL DEPORTISTA*/
 function getDatosPersonales(id_user){
     var pais_dep="";
     var provincia_dep="";
@@ -861,39 +852,6 @@ function getDatosPersonales(id_user){
          });
      });
      
-}
-
-/*OBTENEMOS LOS DATOS PERSONALES DENTRO EL PANEL DE GESTION DEL DEPORTISTA*/
-function getDatosDeportivos(id_user){
-     $.getJSON(BASE_URL_APP+'usuarios/mobileGetDatosPersonales/'+id_user, function(data){
-        jQuery("#objetivos_dep").val(data.item.usuario.objetivos);
-        jQuery("#objetivos_dep").before("<b class='title_mini'>Objetivos:</b>");
-        jQuery("#porquepatrocinar_dep").val(data.item.usuario.porque_patrocinar);
-        jQuery("#porquepatrocinar_dep").before("<b class='title_mini'>Porqu&eacute; patrocinarme:</b>");    
-        
-        if(data.item.usuario.tipo=="equipo"){
-          jQuery("#competiciones").hide();  
-          jQuery("#aniofundacion_dep").val(data.item.usuario.aniofundacion);
-          if(data.item.usuario.aniofundacion){
-            jQuery("#aniofundacion_dep").before("<b class='title_mini'>A&ntilde;o de fundaci&oacute;:</b>");
-          }
-          jQuery("#clasificacion_dep").val(data.item.usuario.clasificacion);
-          if(data.item.usuario.aniofundacion){
-            jQuery("#aniofundacion_dep").before("<b class='title_mini'>A&ntilde;o de fundaci&oacute;:</b>");
-          }    
-        }
-        else{
-          jQuery("#competiciones").val(data.item.usuario.competiciones);
-          if(data.item.usuario.competiciones){
-            jQuery("#competiciones").before("<b class='title_mini'>Competiciones en que he participado:</b>");
-          }
-          jQuery("#aniofundacion_dep").parent("div.ui-input-text").hide();
-          jQuery("#clasificacion_dep").parent("div.ui-input-text").hide(); 
-        }
-       
-        
-        
-     });
 }
 
 /*FUNCION PARA GUARDAR LOS DATOS PERSONALES*/

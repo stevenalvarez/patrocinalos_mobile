@@ -1526,7 +1526,7 @@ label.custom{
 
 #login .recuperar_contrasena,
 #register_finalizado .guardar,
-#edicion_datos_personales .guardar,
+#editar_perfil .guardar,
 #configuracion_privacidad .guardar{
     margin: 0 32px;
     margin-bottom: 10px;
@@ -2019,7 +2019,7 @@ label.custom{
 
 #lista_deportistas_elites .options,
 #lista_deportistas_amateurs .options,
-#edicion_datos_personales .options,
+#editar_perfil .options,
 #recaudacion_liquidacion .options,
 #mis_albunes .options{
     background-color: #e7e7e7;
@@ -2027,7 +2027,7 @@ label.custom{
 }
 #lista_deportistas_elites .options a.first,
 #lista_deportistas_amateurs .options a.first,
-#edicion_datos_personales .options a.first,
+#editar_perfil .options a.first,
 #recaudacion_liquidacion .options a.first,
 #mis_albunes .options a.first{
     margin-right: 2px;
@@ -2035,7 +2035,7 @@ label.custom{
 }
 #lista_deportistas_elites .options a,
 #lista_deportistas_amateurs .options a,
-#edicion_datos_personales .options a,
+#editar_perfil .options a,
 #recaudacion_liquidacion .options a,
 #mis_albunes .options a{
     display: inline-block;
@@ -2053,8 +2053,8 @@ label.custom{
 #lista_deportistas_elites .options a:hover,
 #lista_deportistas_amateurs .options a.active,
 #lista_deportistas_amateurs .options a:hover,
-#edicion_datos_personales .options a.active,
-#edicion_datos_personales .options a:hover,
+#editar_perfil .options a.active,
+#editar_perfil .options a:hover,
 #recaudacion_liquidacion .options a.active,
 #recaudacion_liquidacion .options a:hover,
 #mis_albunes .options a.active,
@@ -2077,35 +2077,35 @@ label.custom{
 
 /* EDICION DATOS PERSONALES */
 
-#edicion_datos_personales .options a{
+#editar_perfil .options a{
     font-size: 15px;
 }
-#edicion_datos_personales .content_formulario{
+#editar_perfil .content_formulario{
     width: 60%;
 }
-#edicion_datos_personales .content_formulario .opciones .first, 
-#edicion_datos_personales .content_formulario .opciones .second{
+#editar_perfil .content_formulario .opciones .first, 
+#editar_perfil .content_formulario .opciones .second{
     margin-right: 0px;
 }
-#edicion_datos_personales .content_formulario .opciones .ui-radio .ui-btn-inner .ui-btn-text{
+#editar_perfil .content_formulario .opciones .ui-radio .ui-btn-inner .ui-btn-text{
     font-size: 12px;
 }
-#edicion_datos_personales #change_foto,
+#editar_perfil #change_foto,
 #proyecto_deportivo #hacerme_amigo{
     clear: both;
     margin-bottom: 0;
 }
-#edicion_datos_personales #change_foto .ui-btn-inner,
+#editar_perfil #change_foto .ui-btn-inner,
 #proyecto_deportivo #hacerme_amigo .ui-btn-inner{
     padding: 0.15em 9px .2em;
 }
-#edicion_datos_personales #change_foto .ui-btn-text,
+#editar_perfil #change_foto .ui-btn-text,
 #proyecto_deportivo #hacerme_amigo .ui-btn-text{
     font-size: 14px;
     text-shadow: 0 0px 0 #FFFFFF;
     font-weight: normal;
 }
-#edicion_datos_personales .recuadro{
+#editar_perfil .recuadro{
     width: 40px;
     height: 40px;
     overflow: hidden;
@@ -2114,15 +2114,15 @@ label.custom{
     margin-right: 3px;
     margin-bottom: 3px;   
 }
-#edicion_datos_personales .recuadro img{
+#editar_perfil .recuadro img{
     width: 100%;
     height: 100%;
 }
-#edicion_datos_personales .content_list_first{
+#editar_perfil .content_list_first{
     padding-bottom: 10px;
 }
-#edicion_datos_personales .guardar,
-#edicion_datos_personales .guardar a{
+#editar_perfil .guardar,
+#editar_perfil .guardar a{
     margin-bottom: 0;
 }
 
@@ -3110,7 +3110,7 @@ label.custom{
 #home_destacados,
 #home_mas_proyectos,
 #home_blog,
-#edicion_datos_personales,
+#editar_perfil,
 #home_buscan_patrocinio,
 #home_recompensas{
     padding-bottom: 0px !important;
@@ -3929,10 +3929,10 @@ and (orientation:landscape)
     
     /* EDICION DATOS PERSONALES */
     
-    #edicion_datos_personales .options a{
+    #editar_perfil .options a{
         font-size: 18px;
     }
-    #edicion_datos_personales .content_formulario{
+    #editar_perfil .content_formulario{
         width: 45%;
     }
     
