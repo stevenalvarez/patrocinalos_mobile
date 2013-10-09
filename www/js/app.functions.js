@@ -965,6 +965,121 @@ function form_solicitar_editar_patrocinio(parent_id, element, user){
     });
 }
 
+//INICIA LAS VALIDACIONES PARA EL FORMULARIO EDITAR PERFIL
+function form_editar_perfil(parent_id, element, user){
+    var parent = $("#"+parent_id);
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+   		   "nombre_dep": {
+    			required: true
+   		   },
+   		   "fecha_nacimiento_dep": {
+    			required: true
+   		   },
+   		   "pais_id": {
+    			required: true
+   		   },
+   		   "ciudad_id": {
+    			required: true
+   		   },
+           "deporte_dep" : {
+                required: true
+           }
+    	},
+    	messages: {
+            "nombre_dep": {
+    			required: "Por favor, ingrese un nombre <i></i>",
+    		},
+            "fecha_nacimiento_dep": {
+    			required: "Por favor, establezca una fecha <i></i>"
+    		},            
+            "pais_id": {
+    			required: ""
+    		},
+            "ciudad_id": {
+    			required: ""
+    		},
+            "deporte_dep": {
+    			required: ""
+    		},
+    	}
+    });
+    
+    //establecemos los datos
+    formulario.find("input[name='u_usuario_id']").val(user.id);
+    formulario.find("#imagen_dep").attr("src",BASE_URL_APP+'img/Usuario/169/crop.php?w=50&i='+user.imagen);
+    var tipodeportista = formulario.find("input."+user.tipodeportista+"[name='tipo_dep']"); 
+    tipodeportista.attr("checked","checked");
+    tipodeportista.parent().find("label").trigger("click");
+    var genero = formulario.find("input."+user.genero+"[name='genero_dep']"); 
+    genero.attr("checked","checked");
+    genero.parent().find("label").trigger("click");
+    formulario.find("input[name='nombre_dep']").val(user.nombre);
+    formulario.find("input[name='apellidos_dep']").val(user.apellidos);
+    formulario.find("input[name='fecha_nacimiento_dep']").val(formatDate(user.fechanacimiento));
+    formulario.find("input[name='telefono_dep']").val(user.telefono);
+    formulario.find("input[name='direccion_dep']").val(user.direccion);
+    $("#modal_box img.preview").attr("src",BASE_URL_APP+'img/Usuario/169/'+user.imagen);
+    
+    //Submit form
+    formulario.submit(function() {
+        
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            var usuario_id = formulario.find("input[name='u_usuario_id']").val();
+            
+            if(usuario_id != '' && parseInt(usuario_id) > 0)
+            {
+                $.ajax({
+                    data: formulario.serialize(),
+                    type: "POST",
+                    url: BASE_URL_APP+'proyectos/mobileUpdateDatosPersonales',
+                    dataType: "html",
+                    success: function(data){
+                        $.mobile.loading( 'hide' );
+                        
+                        data = $.parseJSON(data);
+                        if(data.success){
+                            //controlamos que el valor de la imagen a subir no este vacia, 
+                            //eso significa que se selecciono un imagen o se capturo una imagen
+                            if(IMAGEURI != ''){
+                                
+                                //creamos un objecto con los parametros que queremos que llegue al servidor
+                                //para luego ahi hacer otra operaciones con esos parametros.
+                                var params = new Object();
+                                params.folder = "Usuario"; // la carpeta donde se va a guardar la imagen
+                                params.usuario_id = user.id; // id del usuario para el cual es la nueva imagen.
+                                
+                                //Utilizamos la funcion de subir la imagen de forma asincrona, ya que solo
+                                //va subir la imagen y nada mas, ahi termina el proceso.
+                                uploadImagenAsynchronous(params);
+                                
+                                //Actualizamos la nueva imagen de su perfil
+                                var pictureImage = document.getElementById('imagen_dep');
+                                pictureImage.src = IMAGEURI;
+                            }
+                            
+                            showAlert(data.mensaje, "Aviso", "Aceptar");
+                        }else{
+                            showAlert(data.mensaje, "Error", "Aceptar");
+                        }
+                    },
+                    beforeSend : function(){
+                        //mostramos loading
+                        showLoadingCustom('Guardando datos...');
+                    }
+                });
+            
+            }else{
+                showAlert("Error no puede solicitar patrocinio!.","Error", "Aceptar");
+            }
+        }
+      return false;
+    });
+}
+
 //INICIA LAS VALIDACIONES PARA EL FORMULARIO DE LOGIN
 function form_login(){
     jQuery("#form_login").validate({

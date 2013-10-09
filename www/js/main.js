@@ -253,7 +253,13 @@ $("#solicitar_editar_patrocinio").live('pagebeforeshow', function(event, ui) {
 //EDITAR - PERFIL
 $("#editar_perfil").live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
-        getDatosPersonales(COOKIE.id);
+        var user = COOKIE;
+        form_editar_perfil($(this).attr("id"), "form_editar_perfil",user);
+        key_press("form_editar_perfil");
+        $(this).find('a.guardar_form').bind("click", function(){
+            var form_parent = document.getElementById("form_editar_perfil");
+            $(form_parent).submit();
+        });
     }else{
         redirectLogin();
     }
@@ -803,126 +809,6 @@ function getBlog(parent_id){
             });
         });
    	});
-}
-
-/*OBTENEMOS LOS DATOS DEL DEPORTISTA*/
-function getDatosPersonales(id_user){
-    var pais_dep="";
-    var provincia_dep="";
-     $.getJSON(BASE_URL_APP+'usuarios/mobileGetDatosPersonales/'+id_user, function(data){
-        jQuery("#estado_dep").val(data.item.usuario.estado);
-        jQuery("#estado_dep").before("<b class='title_mini'>Estado:</b>");
-        jQuery("#title_dep").val(data.item.usuario.title);
-        jQuery("#title_dep").before("<b class='title_mini'>Nombre:</b>");
-        jQuery("#email_dep").val(data.item.usuario.email);
-        jQuery("#email_dep").before("<b class='title_mini'>Email:</b>");
-        jQuery("#direccion_dep").val(data.item.usuario.direccion);
-        jQuery("#direccion_dep").before("<b class='title_mini'>Direccion:</b>");
-        jQuery("#postal_dep").val(data.item.usuario.postal);
-        jQuery("#postal_dep").before("<b class='title_mini'>Postal:</b>");
-        jQuery("#telefono_dep").val(data.item.usuario.telefono);
-        jQuery("#telefono_dep").before("<b class='title_mini'>Tel&eacute;fono:</b>");
-        jQuery("#urlamigable_dep").val(data.item.usuario.urlamigable);
-        jQuery("#urlamigable_dep").before("<b class='title_mini'>Url:</b>");
-        jQuery("#imagen_dep").attr("src",BASE_URL_APP+'img/Usuario/169/'+data.item.usuario.imagen);
-        jQuery("#modal_box img.preview").attr("src",BASE_URL_APP+'img/Usuario/169/'+data.item.usuario.imagen);
-        
-        pais_dep=data.item.pais.id;
-        jQuery("#select-pais").siblings("span.ui-btn-inner").find("span.ui-btn-text").html("<span>"+data.item.pais.nombre+"</span>");
-        provincia_dep=data.item.provincia.id;
-        jQuery("#select-ciudad").siblings("span.ui-btn-inner").find("span.ui-btn-text").html("<span>"+data.item.provincia.nombre+"</span>");
-     
-    
-         $.getJSON(BASE_URL_APP+'usuarios/mobileGetPaises', function(data){
-            $.each(data.items,function(index,item){
-                if(item.paises.id==pais_dep)
-                    jQuery("#select-pais").append('<option selected="selected" value="'+item.paises.id+'">'+item.paises.nombre+'</option>');
-                else
-                    jQuery("#select-pais").append('<option value="'+item.paises.id+'">'+item.paises.nombre+'</option>');
-            });
-         });
-         
-         $.getJSON(BASE_URL_APP+'usuarios/mobileGetCiudades/'+pais_dep, function(data){
-            $.each(data.items,function(index,item){
-                if(item.ciudades.id==provincia_dep)
-                    jQuery("#select-ciudad").append('<option selected="selected" value="'+item.ciudades.id+'">'+item.ciudades.nombre+'</option>');
-                else
-                    jQuery("#select-ciudad").append('<option value="'+item.ciudades.id+'">'+item.ciudades.nombre+'</option>');
-            });
-         });
-     });
-     
-}
-
-/*FUNCION PARA GUARDAR LOS DATOS PERSONALES*/
-function saveDatosPersonales(form, upload_image){
-    
-    jQuery("#"+form).validate({
-        errorElement:'span',
-    	rules:{ "estado_dep":{minlength:2},
-    		    "title_dep":{required: true,minlength:5},
-                "email_dep":{required: true,email:true},
-                "select-pais":{required: true},
-                "select-ciudad":{required: true},
-                "urlamigable_dep":{required: true},
-        },
-    	messages: {
-    		"estado_dep":{minlength: "M&iacute;nimo de 2 caracteres<i></i>"},
-            "title_dep":{required:"Este campo es obligatorio.<i></i>",minlength:"M&iacute;nimo de 5 caracteres<i></i>"},
-            "email_dep":{required:"Este campo es obligatorio.<i></i>",email:"Email no v&aacute;lido<i></i>"},
-            "select-pais":{required:"Este campo es obligatorio.<i></i>"},
-            "select-ciudad":{required:"Este campo es obligatorio.<i></i>"},
-            "urlamigable_dep":{required:"Este campo es obligatorio.<i></i>"},
-    	}
-    });
-    
-    if(COOKIE.id && jQuery("#"+form).valid()){
-        
-        showLoadingCustom('Enviando datos...');
-        
-        //Existen 2 proceso
-        //1.- Subir la imagen
-        if(upload_image !== undefined && upload_image == true){
-            //controlamos que el valor de la imagen a subir no este vacia, 
-            //eso significa que se selecciono un imagen o se capturo una imagen
-            if(IMAGEURI != ''){
-                
-                //creamos un objecto con los parametros que queremos que llegue al servidor
-                //para luego ahi hacer otra operaciones con esos parametros.
-                var params = new Object();
-                params.folder = "Usuario"; // la carpeta donde se va a guardar la imagen
-                params.usuario_id = COOKIE.id; // id del usuario para el cual es la nueva imagen.
-                
-                //Utilizamos la funcion de subir la imagen de forma asincrona, ya que solo
-                //va subir la imagen y nada mas, ahi termina el proceso.
-                uploadImagenAsynchronous(params);
-                
-                //Actualizamos la nueva imagen de su perfil
-                var pictureImage = document.getElementById('imagen_dep');
-                pictureImage.src = IMAGEURI;
-            }
-        }
-        
-        //2.- Actualizar los otros datos
-        $.ajax({
-                    data: $("#"+form).serialize(),
-                    type: "POST",
-                    url: BASE_URL_APP+'usuarios/mobileSaveDatosPersonales/'+COOKIE.id,
-                    dataType: "html",
-                    success: function(data){
-                       data_j = $.parseJSON(data);
-                       if(data_j.respuesta==1)
-                       {
-                        showAlert(data_j.message, "Aviso", "Aceptar");
-                       }
-                       else{
-                        showAlert(data_j.message, "Aviso", "Aceptar");
-                       }
-                       $.mobile.loading('hide');
-                    }
-               });
-    }
-    
 }
 
 /*OBTENEMOS LA LISTA DE GALERIA DE FOTOS*/

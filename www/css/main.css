@@ -308,10 +308,10 @@ form .content_textarea{
 }
 .content_list_first .content_edicion{
     padding: 5px;
-    background-color: #6BB0C5;
+    background-color: #f0f0f0;
     overflow: hidden;
-    border-radius: 5px;
-    border: 1px solid #aaa;
+    border-radius: 3px;
+    border: 1px solid #d2d2d2;
 }
 .content_list_first .content_edicion .info_top{
     overflow: hidden;
@@ -1616,6 +1616,7 @@ label.custom{
 }
 #register_user .access_login .ui-input-text,
 #completar_perfil .ui-input-text,
+#editar_perfil .ui-icon-datebox,
 #completar_perfil_patrocinador .ui-input-text
 #solicitar_patrocinio .ui-input-text,
 #solicitar_editar_patrocinio .ui-input-text{
@@ -2019,7 +2020,6 @@ label.custom{
 
 #lista_deportistas_elites .options,
 #lista_deportistas_amateurs .options,
-#editar_perfil .options,
 #recaudacion_liquidacion .options,
 #mis_albunes .options{
     background-color: #e7e7e7;
@@ -2027,7 +2027,6 @@ label.custom{
 }
 #lista_deportistas_elites .options a.first,
 #lista_deportistas_amateurs .options a.first,
-#editar_perfil .options a.first,
 #recaudacion_liquidacion .options a.first,
 #mis_albunes .options a.first{
     margin-right: 2px;
@@ -2035,7 +2034,6 @@ label.custom{
 }
 #lista_deportistas_elites .options a,
 #lista_deportistas_amateurs .options a,
-#editar_perfil .options a,
 #recaudacion_liquidacion .options a,
 #mis_albunes .options a{
     display: inline-block;
@@ -2053,8 +2051,6 @@ label.custom{
 #lista_deportistas_elites .options a:hover,
 #lista_deportistas_amateurs .options a.active,
 #lista_deportistas_amateurs .options a:hover,
-#editar_perfil .options a.active,
-#editar_perfil .options a:hover,
 #recaudacion_liquidacion .options a.active,
 #recaudacion_liquidacion .options a:hover,
 #mis_albunes .options a.active,
@@ -2077,9 +2073,6 @@ label.custom{
 
 /* EDICION DATOS PERSONALES */
 
-#editar_perfil .options a{
-    font-size: 15px;
-}
 #editar_perfil .content_formulario{
     width: 60%;
 }
@@ -2090,29 +2083,21 @@ label.custom{
 #editar_perfil .content_formulario .opciones .ui-radio .ui-btn-inner .ui-btn-text{
     font-size: 12px;
 }
-#editar_perfil #change_foto,
-#proyecto_deportivo #hacerme_amigo{
-    clear: both;
-    margin-bottom: 0;
-}
-#editar_perfil #change_foto .ui-btn-inner,
-#proyecto_deportivo #hacerme_amigo .ui-btn-inner{
-    padding: 0.15em 9px .2em;
-}
-#editar_perfil #change_foto .ui-btn-text,
-#proyecto_deportivo #hacerme_amigo .ui-btn-text{
+#editar_perfil .content_formulario label.info{
+    color: #7F8C8D;
     font-size: 14px;
-    text-shadow: 0 0px 0 #FFFFFF;
-    font-weight: normal;
+    margin-left: 2px;
+    font-weight: bold;    
 }
 #editar_perfil .recuadro{
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     overflow: hidden;
     text-align: right;
-    float: right;
     margin-right: 3px;
-    margin-bottom: 3px;   
+    margin-bottom: 3px;
+    float: left;
+    border-radius: 4px;
 }
 #editar_perfil .recuadro img{
     width: 100%;
@@ -2125,9 +2110,51 @@ label.custom{
 #editar_perfil .guardar a{
     margin-bottom: 0;
 }
-
+#editar_perfil .content_top{
+    overflow: hidden;
+}
+#editar_perfil .content_top a{
+    border: none;
+    border-radius: 3px;
+    padding: 16px 7px;
+    line-height: 17px;
+    font-family: 'HelveticaLTStdLight';
+    font-size: 17px;
+    margin: 0 0 0 3px;
+    float: left;
+    min-width: 105px;
+}
+#editar_perfil .content_top a#change_foto{
+    background: #019add;
+}
+#editar_perfil .content_top a#change_pass{
+    line-height: 11px;
+    padding: 12px 7px 13px 7px;
+    background: #ff6148;
+}
+#editar_perfil .content_top a span.ui-btn-text{
+    font-size: 16px;
+    text-shadow: 1px 1px 0 #000;
+    font-weight: normal;
+}
+#editar_perfil .content_top a span.ui-btn-inner{
+    padding: 0;
+    border: 0;
+}
 /* EDICION DATOS DEPORTIVOS */
 
+#proyecto_deportivo #hacerme_amigo{
+    clear: both;
+    margin-bottom: 0;
+}
+#proyecto_deportivo #hacerme_amigo .ui-btn-inner{
+    padding: 0.15em 9px .2em;
+}
+#proyecto_deportivo #hacerme_amigo .ui-btn-text{
+    font-size: 14px;
+    text-shadow: 0 0px 0 #FFFFFF;
+    font-weight: normal;
+}
 #proyecto_deportivo .ui-listview li .info a{
     background-image: url("../img/bg_like_sprite.png");
     background-repeat: no-repeat;
@@ -3929,14 +3956,11 @@ and (orientation:landscape)
     
     /* EDICION DATOS PERSONALES */
     
-    #editar_perfil .options a{
-        font-size: 18px;
-    }
     #editar_perfil .content_formulario{
         width: 45%;
     }
     
-    /* EDICION DATOS DEPORTUVOS */
+    /* EDICION DATOS DEPORTIVOS */
     
     #proyecto_deportivo .data_user .foto_perfil{
         width: 24%;

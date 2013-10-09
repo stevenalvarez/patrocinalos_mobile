@@ -278,3 +278,8 @@ function readCookie(name) {
 	}
 	return null;
 }
+
+function formatDate(date){
+    var format = date.split("-");
+    return format[2]+"/"+format[1]+"/"+format[0];
+}
