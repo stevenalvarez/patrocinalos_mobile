@@ -79,36 +79,6 @@ function uploadPhoto(params) {
 
 /************************************ FUNCTIONS APP *******************************************************/
 
-//LLENAR DEPORTES PARA EL FORMULARIO DE REGISTRO
-function llenarDeportes(){
-	$.getJSON(BASE_URL_APP + 'usuarios/mobileGetDeportes', function(data) {
-		var deportes = data.items;
-        var html = "";
-        $.each(deportes, function(index, item) {
-            html+= "<option value="+item.deportes.id+">"+item.deportes.nombre+"</option>";
-        });
-        
-        jQuery("#select_deporte").find("option").after(html);
-	});
-}
-
-//LLENAR DEPORTES PARA EL FORMULARIO DE REGISTRO PARA PATROCINADOR
-function llenarDeportesPatrocinador(parent_id){
-	$.getJSON(BASE_URL_APP + 'usuarios/mobileGetDeportes', function(data) {
-		var deportes = data.items;
-        var html = "";
-        $.each(deportes, function(index, item) {
-            html+="<li>"
-            html+="<label>";
-            html+="<input name='deportes["+item.deportes.id+"]' value='"+item.deportes.id+"' type='checkbox'/>"+item.deportes.nombre;
-            html+="</label>";
-            html+="</li>"
-        });
-        
-        jQuery("#"+parent_id).find("#deportes_que_sigues").append(html);
-	});
-}
-
 //INICIA LAS VALIDACIONES PARA EL FORMULARIO DE REGISTRO
 function form_registro(){
     jQuery("#form_registro").validate({
@@ -163,9 +133,7 @@ function form_registro(){
     //Submit form registro
     jQuery('#form_registro').submit(function() {
         
-        fixedSelector("form_registro", "select_deporte");
         fixedSelector("form_registro", "select_tipo_u");
-        
         $("#u_email_register").parent().removeClass("error_field_email");
         
         //Si todo el form es valido mandamos a registrar los datos
@@ -386,6 +354,79 @@ function popup_form_cambiar_password(element){
                         clear_form(element);
                         showAlert(data.mensaje, "Aviso", "Aceptar");
                         $.mobile.changePage('login.html', {transition: "fade"});
+                    }else{
+                        showAlert(data.mensaje, "Error", "Aceptar");
+                    }
+                },
+                beforeSend : function(){
+                    //mostramos loading
+                    showLoadingCustom('Guardando datos...');
+                }
+            });
+        }
+      return false;
+    });
+}
+
+//INICIA LAS VALIDACIONES PARA EL MODAL CAMBIAR PASSWORD - PERFIL
+function form_perfil_cambiar_password(element,user){
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+
+    		"u_old_password": {
+    			required: true,
+    			minlength: 5
+    		},
+    		"u_new_password": {
+    			required: true,
+    			minlength: 5
+    		},
+            "u_repetir_password": {
+    			required: true,
+    			minlength: 5,
+    			equalTo: "#u_new_password"
+    		}
+    	},
+    	messages: {
+    		"u_old_password": {
+    			required: "Por favor, ingrese su antigua contrase&ntilde;a <i></i>",
+    			minlength: "M&iacute;nimo de 5 caracteres <i></i>"
+    		},
+    		"u_new_password": {
+    			required: "Por favor, ingrese su contrase&ntilde;a <i></i>",
+    			minlength: "M&iacute;nimo de 5 caracteres <i></i>"
+    		},
+            "u_repetir_password": {
+    			required: "Por favor, ingrese su contrase&ntilde;a <i></i>",
+    			minlength: "M&iacute;nimo de 5 caracteres <i></i>",
+    			equalTo: "Repita contrase&ntilde;a <i></i>"
+    		}
+    	}
+    });
+    
+    //colocamos el id del usuario
+    formulario.find("input[name='usuario_id']").val(user.id);
+    
+    //Submit form
+    formulario.submit(function() {
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            $.ajax({
+                data: formulario.serialize(),
+                type: "POST",
+                url: BASE_URL_APP + 'usuarios/mobileCambiarPassword',
+                dataType: "html",
+                success: function(data){
+                    $.mobile.loading( 'hide' );
+                    
+                    data = $.parseJSON(data);
+                    if(data.success){
+                        clear_form(element);
+                        showAlert(data.mensaje, "Aviso", "Aceptar");
+                        //cerramos e modal
+                        $("#modal_box_pass").fadeOut("slow");
                     }else{
                         showAlert(data.mensaje, "Error", "Aceptar");
                     }
@@ -703,7 +744,7 @@ function form_solicitar_patrocinio(element){
     		},
             "proyecto_enlace": {
     			url: "Por favor, escribe una URL v&aacute;lida. <i></i>"
-    		},            
+    		},
             "proyecto_fecha_limite": {
     			required: "Por favor, establezca una fecha limite <i></i>"
     		},
@@ -942,7 +983,7 @@ function form_solicitar_editar_patrocinio(parent_id, element, user){
                                 
                                 //colocamos el texto correcto para saber en que page estamos
                                 parent.find(".page").find("span").removeClass().addClass("hide");
-                                parent.find(".page").find("span:nth-child(2)").removeClass().addClass("show");                                
+                                parent.find(".page").find("span:nth-child(2)").removeClass().addClass("show");
                             }
                             
                             //mostramos el mensaje de exito al guardar el patrocinio
@@ -972,56 +1013,69 @@ function form_editar_perfil(parent_id, element, user){
     formulario.validate({
         errorElement:'span',
     	rules: {
-   		   "nombre_dep": {
+   		   "u_nombre": {
     			required: true
    		   },
-   		   "fecha_nacimiento_dep": {
+   		   "u_fecha_nacimiento": {
     			required: true
    		   },
-   		   "pais_id": {
+   		   "u_pais_id": {
     			required: true
    		   },
-   		   "ciudad_id": {
+   		   "u_ciudad_id": {
     			required: true
    		   },
-           "deporte_dep" : {
+           "u_deporte" : {
                 required: true
+           },
+           "u_telefono" : {
+                number: true
            }
     	},
     	messages: {
-            "nombre_dep": {
+            "u_nombre": {
     			required: "Por favor, ingrese un nombre <i></i>",
     		},
-            "fecha_nacimiento_dep": {
+            "u_fecha_nacimiento": {
     			required: "Por favor, establezca una fecha <i></i>"
-    		},            
-            "pais_id": {
+    		},
+            "u_pais_id": {
     			required: ""
     		},
-            "ciudad_id": {
+            "u_ciudad_id": {
     			required: ""
     		},
-            "deporte_dep": {
+            "u_deporte": {
     			required: ""
     		},
+            "u_telefono" : {
+                number: "Por favor, ingrese solo numeros <i></i>"
+           }
     	}
     });
     
     //establecemos los datos
     formulario.find("input[name='u_usuario_id']").val(user.id);
     formulario.find("#imagen_dep").attr("src",BASE_URL_APP+'img/Usuario/169/crop.php?w=50&i='+user.imagen);
-    var tipodeportista = formulario.find("input."+user.tipodeportista+"[name='tipo_dep']"); 
+    var tipodeportista = formulario.find("input."+user.tipodeportista+"[name='u_tipo_deportista']"); 
     tipodeportista.attr("checked","checked");
     tipodeportista.parent().find("label").trigger("click");
-    var genero = formulario.find("input."+user.genero+"[name='genero_dep']"); 
+    var genero = formulario.find("input."+user.genero+"[name='u_genero']"); 
     genero.attr("checked","checked");
     genero.parent().find("label").trigger("click");
-    formulario.find("input[name='nombre_dep']").val(user.nombre);
-    formulario.find("input[name='apellidos_dep']").val(user.apellidos);
-    formulario.find("input[name='fecha_nacimiento_dep']").val(formatDate(user.fechanacimiento));
-    formulario.find("input[name='telefono_dep']").val(user.telefono);
-    formulario.find("input[name='direccion_dep']").val(user.direccion);
+    formulario.find("input[name='u_nombre']").val(user.nombre);
+    formulario.find("input[name='u_apellidos']").val(user.apellidos);
+    formulario.find("input[name='u_fecha_nacimiento']").val(formatDate(user.fechanacimiento));
+    formulario.find("input[name='u_telefono']").val(user.telefono);
+    formulario.find("input[name='u_direccion']").val(user.direccion);
     $("#modal_box img.preview").attr("src",BASE_URL_APP+'img/Usuario/169/'+user.imagen);
+    
+    //llenamos los paises y seleccionamos en el cual esta
+    llenarPaises(formulario, "select-pais",user.pais_id);
+    //llenamos las ciudades, ya sabemos de que pais es el usuario y en que ciudad esta
+    llenarCiudades(formulario, "select-ciudad",user.pais_id,user.ciudad_id);
+    //llenamos los deportes
+    llenarDeportes(formulario.attr("id"), user.deporte_id);
     
     //Submit form
     formulario.submit(function() {
@@ -1035,7 +1089,7 @@ function form_editar_perfil(parent_id, element, user){
                 $.ajax({
                     data: formulario.serialize(),
                     type: "POST",
-                    url: BASE_URL_APP+'proyectos/mobileUpdateDatosPersonales',
+                    url: BASE_URL_APP + 'usuarios/mobileCompletarPerfil',
                     dataType: "html",
                     success: function(data){
                         $.mobile.loading( 'hide' );
@@ -1061,6 +1115,11 @@ function form_editar_perfil(parent_id, element, user){
                                 pictureImage.src = IMAGEURI;
                             }
                             
+                            //actualizamos la COOKIE
+                            var usuario = data.usuario.Usuario;
+                            createCookie("user", JSON.stringify(usuario), 1);
+                            COOKIE = $.parseJSON(readCookie("user"));
+                            
                             showAlert(data.mensaje, "Aviso", "Aceptar");
                         }else{
                             showAlert(data.mensaje, "Error", "Aceptar");
@@ -1073,7 +1132,7 @@ function form_editar_perfil(parent_id, element, user){
                 });
             
             }else{
-                showAlert("Error no puede solicitar patrocinio!.","Error", "Aceptar");
+                showAlert("Error no puede actualizar datos!.","Error", "Aceptar");
             }
         }
       return false;
@@ -1449,6 +1508,68 @@ function llenarCiudades(parent, element, pais_id, provincia_id){
         //actualiza el texto
         fixedSelector(parent.attr("id"), element);
     });
+}
+
+//llena los paises y coloca seleccionado ala pais seleccionado
+//parent : formulario padre
+//element : elemento donde se va colocar todos los paises
+//param : pais_id, id del pais que se quiere seleccionar
+function llenarPaises(parent, element, pais_id){
+    //si no hay pais a listar sus ciudades por defecto es españa
+    if(pais_id == undefined || pais_id == ''){
+        pais_id = '';
+    }
+    
+    $.getJSON(BASE_URL_APP+'usuarios/mobileGetPaises/'+pais_id, function(data){
+        $.each(data.items,function(index,item){
+            if(item.paises.id==pais_id)
+                parent.find("#"+element).append('<option selected="selected" value="'+item.paises.id+'">'+item.paises.nombre+'</option>');
+            else
+                parent.find("#"+element).append('<option value="'+item.paises.id+'">'+item.paises.nombre+'</option>');
+        });
+        //actualiza el texto
+        fixedSelector(parent.attr("id"), element);
+    });
+}
+
+//LLENAR DEPORTES PARA EL FORMULARIO
+function llenarDeportes(parent_id, deporte_id){
+    //si no hay deporte a seleccionar
+    if(deporte_id == undefined || deporte_id == ''){
+        deporte_id = '';
+    }
+    
+	$.getJSON(BASE_URL_APP + 'usuarios/mobileGetDeportes', function(data) {
+		var deportes = data.items;
+        var html = "";
+        $.each(deportes, function(index, item) {
+            if(item.deportes.id==deporte_id)
+                html+= "<option selected='selected' value="+item.deportes.id+">"+item.deportes.nombre+"</option>";
+            else
+                html+= "<option value="+item.deportes.id+">"+item.deportes.nombre+"</option>";
+        });
+        
+        jQuery("#"+parent_id).find("#select_deporte").find("option").after(html);
+        //actualiza el texto
+        fixedSelector(parent_id, 'select_deporte');
+	});
+}
+
+//LLENAR DEPORTES PARA EL FORMULARIO DE REGISTRO PARA PATROCINADOR
+function llenarDeportesPatrocinador(parent_id){
+	$.getJSON(BASE_URL_APP + 'usuarios/mobileGetDeportes', function(data) {
+		var deportes = data.items;
+        var html = "";
+        $.each(deportes, function(index, item) {
+            html+="<li>"
+            html+="<label>";
+            html+="<input name='deportes["+item.deportes.id+"]' value='"+item.deportes.id+"' type='checkbox'/>"+item.deportes.nombre;
+            html+="</label>";
+            html+="</li>"
+        });
+        
+        jQuery("#"+parent_id).find("#deportes_que_sigues").append(html);
+	});
 }
 
 //fixea el error que hay cuando se selecciona un elemento del selector

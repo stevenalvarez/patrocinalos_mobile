@@ -94,7 +94,7 @@ $(document).on('pageinit', "#register_finalizado", function(){
 
 //COMPLETAR PERFIL
 $(document).on('pageinit', "#completar_perfil", function(){
-    llenarDeportes();
+    llenarDeportes('form_completar_perfil');
     form_completar_perfil("form_completar_perfil");
     key_press("form_completar_perfil");
     $(this).find('a.guardar_form').on("click", function(){
@@ -256,8 +256,14 @@ $("#editar_perfil").live('pagebeforeshow', function(event, ui) {
         var user = COOKIE;
         form_editar_perfil($(this).attr("id"), "form_editar_perfil",user);
         key_press("form_editar_perfil");
+        form_perfil_cambiar_password("form_perfil_cambiar_password",user);
+        key_press("form_perfil_cambiar_password");
         $(this).find('a.guardar_form').bind("click", function(){
             var form_parent = document.getElementById("form_editar_perfil");
+            $(form_parent).submit();
+        });
+	    $(this).find('a.cambiar_nuevo_password').on("click", function(){
+            var form_parent = document.getElementById("form_perfil_cambiar_password");
             $(form_parent).submit();
         });
     }else{
