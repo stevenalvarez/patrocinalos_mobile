@@ -1,5 +1,9 @@
 /* FUNCTIONS */
 
+$( window ).on( "orientationchange", function( event ) {
+    callbackOrientationChange(event.orientation, $.mobile.activePage.attr('id'));
+});
+
 (function($) {
     $.fn.escape = function() {
         return escape(this.val());};

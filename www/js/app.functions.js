@@ -1954,6 +1954,7 @@ function showNotificacionesRonda(parent,notificaciones_ronda,show_lista){
     });
 }
 
+/*ACTUALIZA EL PANEL QUE TIENE TODAS LA OPCIONES DE NAVEGABILIDAD*/
 function actualizar_panel(){
     //verificamos si el usuario logeado tiene proyecto
     if(COOKIE !== ''){
@@ -1964,11 +1965,13 @@ function actualizar_panel(){
     }    
 }
 
+/*EFECTO DE ZOOM SOBRE LA FOTO*/
 function zoomPhoto(thiss){
     jQuery("#modal_box_media").find(".zoom_image img").attr("src",jQuery(thiss).attr("rel"));
     jQuery("#modal_box_media").fadeIn("fast");
 }
 
+/*SUBE LA IMAGEN QUE SE SELECCION0 DESDE EL DIPOSITIVO O QUE SE CAPTURA CON EL DISPOSITIVO, LO HACE A TRAVEZ DEL EVENTO "SUBIR FOTO"*/
 function subirFotoSeleccionada(thiss){
     //controlamos que el valor de la imagen a subir no este vacia, 
     //eso significa que se selecciono un imagen o se capturo una imagen
@@ -1986,5 +1989,21 @@ function subirFotoSeleccionada(thiss){
     
     }else{
         showAlert("No ha seleccionado ninguna foto!", "Error", "Aceptar");
+    }
+}
+
+/*EVENTOS QUE SE LANZAN AL MOMENTO DE CAMBIAR DE LANSCAPE A PORTRAIT O VICEVERSA*/
+/*orientation:puede ser lanscape o portrait*/
+/*page_id:el id de la pagina actual en el que se realizo el movimiento*/
+function callbackOrientationChange(orientation, page_id){
+    if(page_id == "mis_fotos"){
+        var parent = $("#"+page_id);
+        parent.find("ul.list_media_fotos").find(".preview").each(function(){
+            var height = ($(this).height()/2) - 12;
+            var width = ($(this).width()/2) - 12;
+            $(this).find("a.zoom_media").css("left",width);
+            $(this).find("a.zoom_media").css("top",height);
+            $(this).find("a.zoom_media").fadeIn("slow");
+        });
     }
 }
