@@ -289,6 +289,20 @@ $("#page_list_fotos").live('pagebeforeshow', function(event, ui) {
     }
 });
 
+//CONFIGURAR ALERTAS - PERFIL
+$(document).on('pageinit', "#mis_alertas", function(){
+    if(isLogin()){
+        var user = COOKIE;
+        form_configurar_alertas("form_configurar_alertas",user);
+        $(this).find('a.guardar_form').bind("click", function(){
+            var form_parent = document.getElementById("form_configurar_alertas");
+            $(form_parent).submit();
+        });
+    }else{
+        redirectLogin();
+    }
+});
+
 /************************************ FUNCTIONS *******************************************************/
 
 //OBTENEMOS 10 USUARIOS DE FORMA RANDOMICA 
@@ -370,7 +384,7 @@ function getEntradasByCarrousel(parent_id, hash){
             
             //sacamos la actividad en las rondas
             var notificaciones_ronda =  data.notificaciones_ronda;
-            showNotificacionesRonda(parent,notificaciones_ronda);
+            showNotificacionesRonda(parent,notificaciones_ronda,false);
             
             //mostramos el tab que se selecciono
             if(hash == "#actividad_ronda"){
@@ -741,7 +755,7 @@ function getRondaActiva(parent_id,usuario_id){
         
         if(item.Ronda.usuario_ya_inscrito_en_ronda){
             var notificaciones_ronda =  data.notificaciones_ronda;
-            showNotificacionesRonda(parent,notificaciones_ronda);
+            showNotificacionesRonda(parent,notificaciones_ronda,true);
         }else{
             //info usuario
             parent.find(".profile").find("img").attr("src",BASE_URL_APP+'img/Usuario/169/crop.php?w=50&i='+COOKIE.imagen);
@@ -758,7 +772,7 @@ function getRondaActiva(parent_id,usuario_id){
                         //ocultamos los elmentos
                         parent.find(".profile, .content_bottom").fadeOut("slow");
                         var notificaciones_ronda =  data.notificaciones_ronda;
-                        showNotificacionesRonda(parent,notificaciones_ronda);
+                        showNotificacionesRonda(parent,notificaciones_ronda,true);
                     }else{
                         showAlert("Ocurrio un error", "Error", "Aceptar");
                     }

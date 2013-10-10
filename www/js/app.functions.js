@@ -1219,6 +1219,61 @@ function form_login(){
     });
 }
 
+//INICIA LAS VALIDACIONES PARA CONFUGURAR ALERTAS - PERFIL
+function form_configurar_alertas(element,user){
+    var formulario = jQuery("#"+element); 
+    
+    //obtenemos las alertas
+    $.mobile.loading( 'show' );
+    formulario.css("opacity",0.5);
+    $.getJSON(BASE_URL_APP+'usuarios/mobileGetAlertas/'+user.id, function(data){
+        var alertas = data.item;
+        if(alertas){
+            $.each(alertas,function(index,value){
+                if(value != undefined && value != ""){
+                    formulario.find("input[name='alerta_"+index+"']").parent().find("label").trigger("click");
+                    formulario.find("input[name='alerta_"+index+"']").attr("checked","checked");
+                }
+            });
+            formulario.css("opacity",1);
+        }else{
+            formulario.css("opacity",1);
+        }
+    });
+    $.mobile.loading( 'hide' );
+    
+    //colocamos el id del usuario
+    formulario.find("input[name='usuario_id']").val(user.id);
+    
+    //Submit form
+    formulario.submit(function() {
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            $.ajax({
+                data: formulario.serialize(),
+                type: "POST",
+                url: BASE_URL_APP + 'usuarios/mobileSaveAlertas',
+                dataType: "html",
+                success: function(data){
+                    $.mobile.loading( 'hide' );
+                    
+                    data = $.parseJSON(data);
+                    if(data.success){
+                        showAlert(data.mensaje, "Aviso", "Aceptar");
+                    }else{
+                        showAlert(data.mensaje, "Error", "Aceptar");
+                    }
+                },
+                beforeSend : function(){
+                    //mostramos loading
+                    showLoadingCustom('Guardando datos...');
+                }
+            });
+        }
+      return false;
+    });
+}
+
 // REGISTRO SUCCESS
 //
 function success_registro(){
@@ -1844,7 +1899,7 @@ function procesoPagoTPV(loc){
 }
 
 /*MOSTRAMOS LAS NOTIFICACIONES DE LA RONDA*/
-function showNotificacionesRonda(parent,notificaciones_ronda){
+function showNotificacionesRonda(parent,notificaciones_ronda,show_lista){
     //actividad en las rondas
     parent.find('#lista_actividades_ronda').find("li").remove();
     $.each(notificaciones_ronda, function(index, item) {
@@ -1871,7 +1926,10 @@ function showNotificacionesRonda(parent,notificaciones_ronda){
         //ocultamos loading
         $.mobile.loading( 'hide' );
         $(".age").age();
-        parent.find("#lista_actividades_ronda").fadeIn("slow");
+        
+        if(show_lista){
+            parent.find("#lista_actividades_ronda").fadeIn("slow");
+        }
     });
 }
 

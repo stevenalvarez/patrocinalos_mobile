@@ -1,49 +1,63 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <head> 
     </head>
     <body>
     
     <!-- EDICION DE CONFIGURACION DE PRIVACIDAD -->
     
-    <div data-role="page" id="configuracion_privacidad" data-theme="c">
-    
+    <div data-role="page" id="mis_alertas" data-theme="c">
+    	<div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
+                    </div>
+                </li>
+                <li class="page">
+                    <span>CONFIGURAR ALERTAS</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
     	<div data-role="content">
             <div class="content_list_first">
                 <div class="content_edicion">
-                    <form>
+                    <form id="form_configurar_alertas">
+                        <input type="hidden" name="usuario_id" value="" />
                         <fieldset data-role="controlgroup">
-                            <legend>Puedes configurar las alertas que recibiras en tu mail.</legend>
-                            <input name="configuracion[notificacion_voto]" id="recibir_notificaion" type="checkbox"/>
-                            <label for="recibir_notificaion">Deseo recibir una notificaci&oacute;n cuando un usuario me vote.</label>
-                            <input name="configuracion[notificacion_semanal]" id="notificacion_semanal" type="checkbox"/>
-                            <label for="notificacion_semanal">Deseo recibir una notificaci&oacute;n de la actualizaci&oacute;n semanal</label>
-                            <input name="configuracion[notificacion_comentario]" id="notificacion_comentario" type="checkbox"/>
-                            <label for="notificacion_comentario">Deseo recibir una notificaci&oacute;n de comentarios</label>
-                            <input name="configuracion[notificacion_patrocinio_aprobado]" id="notificacion_patrocinio_aprobado" type="checkbox"/>
-                            <label for="notificacion_patrocinio_aprobado">Recibir una notificaci&oacute;n cuando mi patrocinio sea aprobado.</label>
-                            <input name="configuracion[notificacion_patrocinio_concluye]" id="notificacion_patrocinio_concluye" type="checkbox"/>
-                            <label for="notificacion_patrocinio_concluye">Recibir notificaci&oacute;n cuando el plazo de mi patrocinio concluya.</label>
-                            <input name="configuracion[notificacion_add_amigo]" id="notificacion_add_amigo" type="checkbox"/>
-                            <label for="notificacion_add_amigo">Notificaci&oacute;n cuando un usuario me a&ntilde;ada como amigo.</label>
-                            <input name="configuracion[notificacion_pregunta_patrocinio]" id="notificacion_pregunta_patrocinio" type="checkbox"/>
-                            <label for="notificacion_pregunta_patrocinio">Notificaci&oacute;n cuando me env&iacute;en una pregunta sobre mi patrocinio.</label>
-                            <input name="configuracion[notificacion_team_mazzel]" id="notificacion_team_mazzel" type="checkbox"/>
-                            <label for="notificacion_team_mazzel">Notificaci&oacute;n del equipo de mazzel.</label>
-                            <input name="configuracion[notificacion_novedad]" id="notificacion_novedad" type="checkbox"/>
-                            <label for="notificacion_novedad">Notificaci&oacute;n de las novedades de newsletter.</label>
-                            <input name="configuracion[notificacion_liquidacion]" id="notificacion_liquidacion" type="checkbox"/>
-                            <label for="notificacion_liquidacion">Notificaci&oacute;n cuando reciba una liquidacion en mi patrocinio.</label>
-                            
+                            <input name="alerta_proyecto" id="alerta_proyecto" type="checkbox"/>
+                            <label for="alerta_proyecto">Ya no quiero recibir alertas acerca de la actividad en mi proyecto (aportes recibidos, finalizaci&oacute;n de mi proyecto, aprobaci&oacute;n de mi proyecto)</label>
+                            <input name="alerta_muro" id="alerta_muro" type="checkbox"/>
+                            <label for="alerta_muro">Ya no quiero recibir alertas acerca de la actividad en mi muro (comentarios sobre una publicaci&oacute;n, likes sobre un publicaci&oacute;n)</label>
+                            <input name="alerta_mensaje" id="alerta_mensaje" type="checkbox"/>
+                            <label for="alerta_mensaje">Ya no quiero recibir alertas cuando alguien me env&iacute;a un mensaje</label>
+                            <input name="alerta_seguir" id="alerta_seguir" type="checkbox"/>
+                            <label for="alerta_seguir">Ya no quiero recibir alertas cuando alguien me ha empezado a seguir</label>
+                            <input name="alerta_publicaciones" id="alerta_publicaciones" type="checkbox"/>
+                            <label for="alerta_publicaciones">Ya no quiero recibir alertas de nuevas publicaciones de los que sigo (cuando publican fotos, videos, eventos)</label>
+                            <input name="alerta_newsletter" id="alerta_newsletter" type="checkbox"/>
+                            <label for="alerta_newsletter">Ya no quiero recibir alertas de newsletter por parte patrocinalos.com</label>
                         </fieldset>
                         
-                        <div class="guardar">
-                            <a href="#" data-role="button" data-theme="r">ACTUALIZAR DATOS</a>
+                        <div class="buttons_action">
+                            <a href="javascript:void(0)" class="guardar_form green">GUARDAR CONFIGURACION</a>
                         </div>
-                    </form>                        
+                    </form>
                 </div>
             </div>
     	</div><!-- /content -->
+        
+        <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="c" class="footer_menu">
+            <a href="#panel_menu" class="icon_menu">
+                <img src="img/bg_list_menu.png"/>
+            </a>
+        </div>
+        
+        <!--contenedor del panel-->
+        <div id="contenedor_panel"></div>
     
     </div><!-- /page -->
     

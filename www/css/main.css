@@ -1527,7 +1527,7 @@ label.custom{
 #login .recuperar_contrasena,
 #register_finalizado .guardar,
 #editar_perfil .guardar,
-#configuracion_privacidad .guardar{
+#mis_alertas .guardar{
     margin: 0 32px;
     margin-bottom: 10px;
 }
@@ -2425,14 +2425,14 @@ label.custom{
     border-bottom: 1px solid #b7cbcf;
 }
 
-/* CONFIGURACION DE PRIVACIDAD O ALERTAS */
-#configuracion_privacidad .content_edicion legend,
-#configuracion_privacidad .content_edicion label .ui-btn-text{
+/* MIS ALERTAS */
+#mis_alertas .content_edicion legend,
+#mis_alertas .content_edicion label .ui-btn-text{
     font-weight: normal;
     text-shadow: 0 0 0;
     font-size: 12px;
 }
-#configuracion_privacidad .content_edicion legend{
+#mis_alertas .content_edicion legend{
     font-size: 13px;
     font-weight: bold;
     margin-bottom: 15px;
@@ -3139,7 +3139,8 @@ label.custom{
 #home_blog,
 #editar_perfil,
 #home_buscan_patrocinio,
-#home_recompensas{
+#home_recompensas,
+#mis_alertas{
     padding-bottom: 0px !important;
 }
 .info_deportista{
@@ -3984,7 +3985,7 @@ and (orientation:landscape)
     }
     
     /* CONFIGURACION DE PRIVACIDAD O ALERTAS */
-    #configuracion_privacidad .content_edicion legend{
+    #mis_alertas .content_edicion legend{
         font-size: 15px;
     }
     
