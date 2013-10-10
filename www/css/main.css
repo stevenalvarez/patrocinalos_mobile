@@ -184,6 +184,30 @@ form .valid_field span.success i{
 form .content_textarea{
     position: relative;
 }
+.content_upload_foto{
+    overflow: hidden;
+    margin: 4px;
+}
+.content_upload_foto a{
+    color: #fff !important;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'HelveticaLTStdBoldCondensed';
+    border-radius: 4px;
+    text-shadow: 1px 1px 0 #000;
+    margin-right: 2px;
+    padding: 4px;
+    display: inline-block;
+    box-shadow: 2px 2px 5px #aaa;
+}
+.content_upload_foto a.anadir_foto{
+    width: 35%;
+    background-color: #5CB85C;
+}
+.content_upload_foto a.subir_foto{
+    width: 28%;
+    background-color: #428BCA;
+}
 .content_list_first .ui-listview li.ui-li-static.ui-li,
 .content_list_two .ui-listview li.ui-li-static.ui-li{
     margin-bottom: 2px;
@@ -3140,7 +3164,9 @@ label.custom{
 #editar_perfil,
 #home_buscan_patrocinio,
 #home_recompensas,
-#mis_alertas{
+#mis_alertas,
+#mis_fotos,
+#mis_videos{
     padding-bottom: 0px !important;
 }
 .info_deportista{
@@ -3307,6 +3333,10 @@ label.custom{
 }
 #panel_menu .ui-panel-inner li a.m_foto{
     background: url("../img/bg_m_picture.png") no-repeat scroll left center transparent;
+    background-size: 14px;
+}
+#panel_menu .ui-panel-inner li a.m_video{
+    background: url("../img/bg_video.png") no-repeat scroll left center transparent;
     background-size: 14px;
 }
 #panel_menu .ui-panel-inner li a.m_muro{

@@ -251,7 +251,7 @@ function uploadImagenSynchronous(params) {
     function(r){
         IMAGEURI = ''; //establecemos en vacio la variable por si quiere volver a subir la misma imagen
         //consolelog(r.response); //respuesta del servidor
-        callbackSynchronous(r);
+        callbackSynchronous(r.response);
     }, 
     function(error){
         showAlert('Failed because: ' + error, "Error", "Aceptar");

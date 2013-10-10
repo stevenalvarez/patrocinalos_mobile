@@ -1536,6 +1536,27 @@ function modalOpenHide(thiss,status){
 function callbackSynchronous(response){
     //aqui controlamos que mas se hace despues de subir la imagen
     //podemos ejecutar actualizaciones, mandar un post, etc.
+    var respuesta = $.parseJSON(response);
+    if(respuesta.success && respuesta.seccion == "foto"){
+        var parent = $("#mis_fotos").find(".list_media_fotos");
+        html_data='<div class="preview">';
+        html_data+='    <a href="javascript:void()" onclick="zoomPhoto(this)" rel="'+BASE_URL_APP+'/img/Usuario/800/'+respuesta.nombre_imagen+'" class="zoom_media">&nbsp;</a>';
+        html_data+='    <img src="'+BASE_URL_APP+'/img/Usuario/169/'+respuesta.nombre_imagen+'" width="auto" height="auto" />';
+        html_data+='</div>';
+    
+        parent.find("li.list_left").append(html_data);
+        var item = parent.find("li.list_left").find("preview:last");
+        item.find("img").load(function(){
+            var height = ($(this).parent().height()/2) - 12;
+            var width = ($(this).parent().width()/2) - 12;
+            item.find("a.zoom_media").css("left",width);
+            item.find("a.zoom_media").css("top",height);
+            item.find("a.zoom_media").fadeIn("slow");
+        });
+                        
+        showAlert("Se ha subido correctamente la foto!.", 'Aviso', 'Aceptar');
+        $.mobile.loading( 'hide' );
+    }
 }
 
 //llena las ciudades de un determinado pais y coloca seleccionado a la ciudad seleccionada
@@ -1941,4 +1962,29 @@ function actualizar_panel(){
             $("#item_solicitar_editar_patrocinio").html("EDITAR PROYECTO");
         }
     }    
+}
+
+function zoomPhoto(thiss){
+    jQuery("#modal_box_media").find(".zoom_image img").attr("src",jQuery(thiss).attr("rel"));
+    jQuery("#modal_box_media").fadeIn("fast");
+}
+
+function subirFotoSeleccionada(thiss){
+    //controlamos que el valor de la imagen a subir no este vacia, 
+    //eso significa que se selecciono un imagen o se capturo una imagen
+    if(IMAGEURI != ''){
+        
+        //creamos un objecto con los parametros que queremos que llegue al servidor
+        //para luego ahi hacer otra operaciones con esos parametros.
+        var params = new Object();
+        params.folder = "Foto"; // la carpeta donde se va a guardar la imagen
+        params.usuario_id = COOKIE.id; // id del usuario para el cual es la nueva imagen.
+        
+        //Utilizamos la funcion de subir la imagen de forma sincrona, porque vamos a efectuar otra operacion
+        showLoadingCustom('Subiendo!, por favor espere...');
+        uploadImagenSynchronous(params);
+    
+    }else{
+        showAlert("No ha seleccionado ninguna foto!", "Error", "Aceptar");
+    }
 }
