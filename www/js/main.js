@@ -311,6 +311,16 @@ $(document).on('pageinit', "#mis_alertas", function(){
     }
 });
 
+//MI WIDGET - MI PATROCINIO
+$(document).on('pageinit', "#mi_widget", function(){
+    if(isLogin()){
+        var user = COOKIE;
+        showMiWidget($(this).attr("id"), user)
+    }else{
+        redirectLogin();
+    }
+});
+
 /************************************ FUNCTIONS *******************************************************/
 
 //OBTENEMOS 10 USUARIOS DE FORMA RANDOMICA 
@@ -939,4 +949,19 @@ function getVideos(parent_id,user){
             });
         });
     });
+}
+
+/*MOSTRAMOS EL WIDGET DEL DEPORTISTA*/
+function showMiWidget(parent_id,user){
+    var parent = $("#"+parent_id);
+    if(user.proyecto_id !== undefined && user.proyecto_estado == "activo"){
+        var src = BASE_URL_APP + "proyectos/widget/"+user.proyecto_id+"?device=true";
+        var url = BASE_URL_APP + "proyectos/widget/"+user.proyecto_id;
+        parent.find("#widget").find("iframe").attr("src",src);
+        var iframe_compartir = '<iframe width="310px" height="450px" src="'+url+'"></iframe>';
+        parent.find("#widget").find("form").find("textarea").text(iframe_compartir);
+        parent.find("#widget").fadeIn("slow");
+    }else{
+        parent.find("#no_compartir").fadeIn("slow");
+    }
 }
