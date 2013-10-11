@@ -2046,7 +2046,11 @@ function actualizar_panel(){
         if(user.proyecto_id !== undefined && parseInt(user.proyecto_id) > 0){
             $("#item_solicitar_editar_patrocinio").html("EDITAR PROYECTO");
         }
-    }    
+        //controlamos si tiene el proyecto activo solo asi se muestra la opcion "mis recaudaciones"
+        if(user.proyecto_estado !== undefined && user.proyecto_estado == "activo"){
+            $("#item_mis_recaudaciones").parent().show();
+        }
+    }
 }
 
 /*EFECTO DE ZOOM SOBRE LA FOTO*/
