@@ -1245,8 +1245,40 @@
     text-align: center;
     text-shadow: 1px 1px 0 #000;
  }
- .modal_box#modal_box_pass .content_modal .content_change .buttons_upload a{
+ .modal_box .content_modal .ajax_loader{
+    position: relative;
+    text-align: center;
     width: 100%;
+    top: -145px;
+    height: 0;
+ }
+ .modal_box .content_modal .ajax_loader .ui-icon-loading{
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    text-align: center;
+    background-size: 35px 35px;
+ }
+ .modal_box#modal_box_pass .content_modal .content_change .buttons_upload a,
+ .modal_box#modal_box_video .content_modal .content_change .buttons_upload a{
+    width: 100%;
+ }
+ .modal_box form#form_subir_video div.ui-input-text{
+    box-shadow: inset 0 1px 4px rgba(0,0,0,.2);
+    background: #f9f9f9;
+    border-radius: 5px 5px 5px 5px;
+ } 
+ .modal_box .content_modal .content_change form#form_subir_video input{
+    letter-spacing: -1px;
+    font-size: 14px;
+    padding: 0.5em 0;
+    font-family: inherit;
+ }
+ .modal_box .content_modal .content_change form#form_subir_video textarea{
+    min-height: 70px;
+    letter-spacing: -1px;
+    font-size: 14px;    
  }
  .modal_box#modal_box_pass form div.ui-input-text{
     margin: 10px 0;
@@ -1310,14 +1342,13 @@
  .content_media.content_list_first{
     padding: 0;
  }
- .list_media_fotos{
-    
- }
- .list_media_fotos li{
+ .list_media_fotos li,
+ .list_media_videos li{
     float: left;
     width: 50%;
  }
- .list_media_fotos li a.zoom_media{
+ .list_media_fotos li a.zoom_media,
+ .list_media_videos li a.zoom_media{
     position: absolute;
     background: url("../img/zoom_icon.png") no-repeat center center transparent;
     width: 35px;
@@ -1326,7 +1357,8 @@
     background-size: 35px;
     display: none;
  }
- .list_media_fotos li div.preview{
+ .list_media_fotos li div.preview,
+ .list_media_videos li div.preview{
     position: relative;
     border: 1px solid #fff;
     padding: 0;
@@ -1334,12 +1366,14 @@
     border-left: 0;
     border-bottom: 0;
  }
- .list_media_fotos li div.preview img{
+ .list_media_fotos li div.preview img,
+ .list_media_videos li div.preview img{
     width: 100%;
     height: auto;
     float: left;
  }
- .list_media_fotos li a.delete_media{
+ .list_media_fotos li a.delete_media,
+ .list_media_videos li a.delete_media{
     position: absolute;
     top: 0;
  }

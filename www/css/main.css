@@ -209,6 +209,10 @@ form .content_textarea{
     width: 28%;
     background-color: #428BCA;
 }
+.content_upload_foto_options a.subir_video{
+    width: 47%;
+    background-color: #E74C3C;
+}
 .content_list_first .ui-listview li.ui-li-static.ui-li,
 .content_list_two .ui-listview li.ui-li-static.ui-li{
     margin-bottom: 2px;

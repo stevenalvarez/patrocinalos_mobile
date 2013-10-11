@@ -281,6 +281,22 @@ $("#mis_fotos").live('pagebeforeshow', function(event, ui) {
     }
 });
 
+//MIS VIDEOS - PERFIL
+$("#mis_videos").live('pagebeforeshow', function(event, ui) {
+    if(isLogin()){
+        var user = COOKIE;
+        form_subir_video($(this).attr("id"),"form_subir_video",user);
+        key_press("form_subir_video");
+	    $(this).find('a.publicar').on("click", function(){
+            var form_parent = document.getElementById("form_subir_video");
+            $(form_parent).submit();
+        });
+        getVideos($(this).attr("id"),user);
+    }else{
+        redirectLogin();
+    }
+});
+
 //CONFIGURAR ALERTAS - PERFIL
 $(document).on('pageinit', "#mis_alertas", function(){
     if(isLogin()){
@@ -829,6 +845,7 @@ function getFotos(parent_id,user){
     //colocamos en vacio la variable que tiene la imagen seleccionada desde el dispositivo
     IMAGEURI = "";
     $.mobile.loading('show');
+    parent.find("ul.list_media_fotos").hide();
     parent.find("ul.list_media_fotos").css("opacity",0.5);
     
     $.getJSON(BASE_URL_APP+'usuarios/mobileGetMisImagenes/'+user.id, function(data){
@@ -838,7 +855,7 @@ function getFotos(parent_id,user){
             lista_izquierda = data.lista_izquierda;
             $.each(lista_izquierda, function(index,photo){
                 html_data='<div class="preview">';
-                html_data+='    <a href="javascript:void()" onclick="zoomPhoto(this)" rel="'+BASE_URL_APP+'/img/Usuario/800/'+photo.imagen+'" class="zoom_media">&nbsp;</a>';
+                html_data+='    <a href="javascript:void(0)" onclick="zoomPhoto(this)" rel="'+BASE_URL_APP+'/img/Usuario/800/'+photo.imagen+'" class="zoom_media">&nbsp;</a>';
                 html_data+='    <img src="'+BASE_URL_APP+'/img/Usuario/169/'+photo.imagen+'" width="auto" height="auto" />';
                 html_data+='</div>';
             
@@ -850,7 +867,7 @@ function getFotos(parent_id,user){
             lista_derecha = data.lista_derecha;
             $.each(lista_derecha, function(index,photo){
                 html_data='<div class="preview">';
-                html_data+='    <a href="javascript:void()" onclick="zoomPhoto(this)" rel="'+BASE_URL_APP+'/img/Usuario/800/'+photo.imagen+'" class="zoom_media">&nbsp;</a>';
+                html_data+='    <a href="javascript:void(0)" onclick="zoomPhoto(this)" rel="'+BASE_URL_APP+'/img/Usuario/800/'+photo.imagen+'" class="zoom_media">&nbsp;</a>';
                 html_data+='    <img src="'+BASE_URL_APP+'/img/Usuario/169/'+photo.imagen+'" width="auto" height="auto" />';
                 html_data+='</div>';
                 
@@ -859,6 +876,10 @@ function getFotos(parent_id,user){
         }
         
         parent.find("ul.list_media_fotos .preview:last").find("img").load(function(){
+            $.mobile.loading( 'hide' );
+            parent.find("ul.list_media_fotos").css("opacity",1);
+            parent.find("ul.list_media_fotos").fadeIn("slow");
+            
             parent.find("ul.list_media_fotos").find(".preview").each(function(){
                 var height = ($(this).height()/2) - 12;
                 var width = ($(this).width()/2) - 12;
@@ -866,11 +887,56 @@ function getFotos(parent_id,user){
                 $(this).find("a.zoom_media").css("top",height);
                 $(this).find("a.zoom_media").fadeIn("slow");
             });
+        });
+    });
+}
+
+/*OBTENEMOS LOS VIDEOS DEL DEPORTISTA */
+function getVideos(parent_id,user){
+    var parent = $("#"+parent_id);
+    $.mobile.loading('show');
+    parent.find("ul.list_media_videos").hide();
+    parent.find("ul.list_media_videos").css("opacity",0.5);
+    
+    $.getJSON(BASE_URL_APP+'usuarios/mobileGetMisVideos/'+user.id, function(data){
+        parent.find("ul.list_media_videos").find(".preview").remove();
+        
+        if(data.lista_izquierda){
+            lista_izquierda = data.lista_izquierda;
+            $.each(lista_izquierda, function(index,video){
+                html_data='<div class="preview">';
+                html_data+='    <a href="javascript:void(0)" onclick="playVideo(this)" rel="'+video.src_iframe+'" class="zoom_media">&nbsp;</a>';
+                html_data+='    <img src="'+video.src+'" width="auto" height="auto" />';
+                html_data+='</div>';
             
+                parent.find("ul.list_media_videos li.list_left").append(html_data);
+            });
+        }
+        
+        if(data.lista_derecha){
+            lista_derecha = data.lista_derecha;
+            $.each(lista_derecha, function(index,video){
+                html_data='<div class="preview">';
+                html_data+='    <a href="javascript:void(0)" onclick="playVideo(this)" rel="'+video.src_iframe+'" class="zoom_media">&nbsp;</a>';
+                html_data+='    <img src="'+video.src+'" width="auto" height="auto" />';
+                html_data+='</div>';
+                
+                parent.find("ul.list_media_videos li.list_right").append(html_data);
+            });
+        }
+        
+        parent.find("ul.list_media_videos .preview:last").find("img").load(function(){
             $.mobile.loading( 'hide' );
-            parent.find("ul.list_media_fotos").css("visibility","visible");
-            parent.find("ul.list_media_fotos").css("opacity",1);
-            parent.find("ul.list_media_fotos").fadeIn("slow");
+            parent.find("ul.list_media_videos").css("opacity",1);
+            parent.find("ul.list_media_videos").fadeIn("slow");
+            
+            parent.find("ul.list_media_videos").find(".preview").each(function(){
+                var height = ($(this).height()/2) - 12;
+                var width = ($(this).width()/2) - 12;
+                $(this).find("a.zoom_media").css("left",width);
+                $(this).find("a.zoom_media").css("top",height);
+                $(this).find("a.zoom_media").fadeIn("slow");
+            });
         });
     });
 }

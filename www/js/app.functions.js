@@ -1274,6 +1274,84 @@ function form_configurar_alertas(element,user){
     });
 }
 
+//INICIA LAS VALIDACIONES PARA EL MODAL SUBIR VIDEO - PERFIL
+function form_subir_video(parent_id, element,user){
+    var parent = $("#"+parent_id);
+    var formulario = jQuery("#"+element); 
+    formulario.validate({
+        errorElement:'span',
+    	rules: {
+
+    		"videourl": {
+    			required: true
+    		},
+    		"descripcion_media": {
+    			maxlength:100
+    		}
+    	},
+    	messages: {
+    		"videourl": {
+    			required: "Por favor, ingrese la url del video <i></i>"
+    		},
+    		"descripcion_media": {
+    			maxlength: "M&aacute;ximo permitido 100 caracteres <i></i>"
+    		}
+    	}
+    });
+    
+    //colocamos el id del usuario
+    formulario.find("input[name='usuario_id']").val(user.id);
+    
+    //Submit form
+    formulario.submit(function() {
+        //Si todo el form es valido mandamos
+        if (jQuery(this).valid()) {
+            $.ajax({
+                data: formulario.serialize(),
+                type: "POST",
+                url: BASE_URL_APP + 'publicaciones/mobileSaveVideo',
+                dataType: "html",
+                success: function(data){
+                    $.mobile.loading( 'hide' );
+                    
+                    data = $.parseJSON(data);
+                    if(data.success){
+                        var publicacion = data.publicacion.publicacion; 
+                        //add nuevo item
+                        html_data='<div class="preview">';
+                        html_data+='    <a href="javascript:void(0)" onclick="playVideo(this)" rel="'+publicacion.src_iframe+'" class="zoom_media">&nbsp;</a>';
+                        html_data+='    <img src="'+publicacion.src+'" width="auto" height="auto" />';
+                        html_data+='</div>';
+                    
+                        parent.find("ul.list_media_videos li.list_left").append(html_data);
+                        var item = parent.find("ul.list_media_videos li.list_left").find(".preview:last");
+                        item.find("img").load(function(){
+                            var height = ($(this).parent().height()/2) - 12;
+                            var width = ($(this).parent().width()/2) - 12;
+                            item.find("a.zoom_media").css("left",width);
+                            item.find("a.zoom_media").css("top",height);
+                            item.find("a.zoom_media").fadeIn("slow");
+                        });
+                                
+                        clear_form(element);
+                        showAlert(data.mensaje, "Aviso", "Aceptar");
+                        //cerramos el modal
+                        $("#modal_box_video").fadeOut("slow");
+                    }else{
+                        clear_form(element);
+                        showAlert(data.mensaje, "Error", "Aceptar");
+                    }
+                },
+                beforeSend : function(){
+                    //mostramos loading
+                    showLoadingCustom('Guardando datos...');
+                }
+            });
+        }
+      return false;
+    });
+}
+
 // REGISTRO SUCCESS
 //
 function success_registro(){
@@ -1523,11 +1601,17 @@ function openOnWindow(element, target){
 /*funccion para cerrar un modal*/
 //thiss:link que cierra el modal
 //status:para cerrar o mostrar un modal
-function modalOpenHide(thiss,status){
-    if(status=="hide")
+//tipo:paramentro extra
+function modalOpenHide(thiss,status,tipo){
+    if(status=="hide"){
         jQuery("#"+jQuery(thiss).attr("rel")).fadeOut("fast");
-    else if(status=="show")
-            jQuery("#"+jQuery(thiss).attr("rel")).fadeIn("fast");
+        if(tipo != undefined && tipo == "video"){
+            jQuery("#"+jQuery(thiss).attr("rel")).find("iframe").attr("src","");
+        }
+    }
+    else if(status=="show"){
+        jQuery("#"+jQuery(thiss).attr("rel")).fadeIn("fast");
+    }
 }
 
 //funcion que se ejecuta una vez que se subio con exito la imagen
@@ -1545,7 +1629,7 @@ function callbackSynchronous(response){
         html_data+='</div>';
     
         parent.find("li.list_left").append(html_data);
-        var item = parent.find("li.list_left").find("preview:last");
+        var item = parent.find("li.list_left").find(".preview:last");
         item.find("img").load(function(){
             var height = ($(this).parent().height()/2) - 12;
             var width = ($(this).parent().width()/2) - 12;
@@ -1971,6 +2055,16 @@ function zoomPhoto(thiss){
     jQuery("#modal_box_media").fadeIn("fast");
 }
 
+/*REPRODUCE EL VIDEO*/
+function playVideo(thiss){
+    jQuery("#modal_box_playvideo").find(".ui-icon-loading").show();
+    jQuery("#modal_box_playvideo").find(".zoom_image iframe").attr("src",jQuery(thiss).attr("rel"));
+    jQuery("#modal_box_playvideo").fadeIn("fast");
+    jQuery("#modal_box_playvideo").find(".zoom_image iframe").load(function(){
+        jQuery("#modal_box_playvideo").find(".ui-icon-loading").hide();
+    });
+}
+
 /*SUBE LA IMAGEN QUE SE SELECCION0 DESDE EL DIPOSITIVO O QUE SE CAPTURA CON EL DISPOSITIVO, LO HACE A TRAVEZ DEL EVENTO "SUBIR FOTO"*/
 function subirFotoSeleccionada(thiss){
     //controlamos que el valor de la imagen a subir no este vacia, 
@@ -1996,9 +2090,9 @@ function subirFotoSeleccionada(thiss){
 /*orientation:puede ser lanscape o portrait*/
 /*page_id:el id de la pagina actual en el que se realizo el movimiento*/
 function callbackOrientationChange(orientation, page_id){
-    if(page_id == "mis_fotos"){
+    if(page_id == "mis_fotos" || page_id == "mis_videos"){
         var parent = $("#"+page_id);
-        parent.find("ul.list_media_fotos").find(".preview").each(function(){
+        parent.find("ul.list_media_fotos, ul.list_media_videos").find(".preview").each(function(){
             var height = ($(this).height()/2) - 12;
             var width = ($(this).width()/2) - 12;
             $(this).find("a.zoom_media").css("left",width);
