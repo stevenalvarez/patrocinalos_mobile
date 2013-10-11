@@ -184,11 +184,12 @@ form .valid_field span.success i{
 form .content_textarea{
     position: relative;
 }
-.content_upload_foto{
+.content_upload_foto_options{
     overflow: hidden;
     margin: 4px;
+    padding-bottom: 4px;
 }
-.content_upload_foto a{
+.content_upload_foto_options a{
     color: #fff !important;
     text-align: center;
     font-size: 18px;
@@ -200,11 +201,11 @@ form .content_textarea{
     display: inline-block;
     box-shadow: 2px 2px 5px #aaa;
 }
-.content_upload_foto a.anadir_foto{
+.content_upload_foto_options a.anadir_foto{
     width: 35%;
     background-color: #5CB85C;
 }
-.content_upload_foto a.subir_foto{
+.content_upload_foto_options a.subir_foto{
     width: 28%;
     background-color: #428BCA;
 }

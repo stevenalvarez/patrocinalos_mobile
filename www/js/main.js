@@ -865,12 +865,12 @@ function getFotos(parent_id,user){
                 $(this).find("a.zoom_media").css("left",width);
                 $(this).find("a.zoom_media").css("top",height);
                 $(this).find("a.zoom_media").fadeIn("slow");
-                
-                $.mobile.loading( 'hide' );
-                parent.find("ul.list_media_fotos").css("visibility","visible");
-                parent.find("ul.list_media_fotos").css("opacity",1);
-                parent.find("ul.list_media_fotos").fadeIn("slow");
             });
-        }); 
+            
+            $.mobile.loading( 'hide' );
+            parent.find("ul.list_media_fotos").css("visibility","visible");
+            parent.find("ul.list_media_fotos").css("opacity",1);
+            parent.find("ul.list_media_fotos").fadeIn("slow");
+        });
     });
 }

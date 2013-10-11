@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+    
+    <!-- EDICION DE DATOS PERSONALES -->
+    
+    <div data-role="page" id="edicion_datos_personales" data-theme="c">
+    
+    	<div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
+                    </div>
+                </li>
+                <li class="page">
+                    <span>EDITAR PERFIL</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+        <div class="modal_box" id="modal_box">
+            <a class="close" rel="modal_box" href="javascript:void(0)" onclick="modalOpenHide(this,'hide')">X</a>
+            <div class="content_modal">
+                <div class="content_change">
+                    <h3>Cambiar imagen de perf&iacute;l</h3>
+                    <img src="img/image_profile.jpg" width="170" height="auto" class="preview" id="pictureImage3" />
+                    <p>
+                        Puedes buscar y cargar una foto existente en tu tel&eacute;fono, o puedes hacerte 
+                        una nueva foto con la c&aacute;mara del dispositivo.
+                    </p>
+                    <div class="buttons_upload">
+                        <a href="javascript:void(0)" onclick="capturePhoto('pictureImage3')">CAPTURAR FOTO</a>
+                        <a href="javascript:void(0)" onclick="getImage('pictureImage3')">BUSCAR UNA FOTO</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal_box" id="modal_box_pass">
+            <a class="close" rel="modal_box_pass" href="javascript:void(0)" onclick="modalOpenHide(this,'hide')">X</a>
+            <div class="content_modal">
+                <div class="content_change">
+                    <h3>Cambiar contrase&ntilde; de acceso</h3>
+                    <form id="form_pass">
+                        <input type="hidden" name="datos" value="cambiar_pass" />
+                        <input name="passold_dep" placeholder="contrase&ntilde;a anterior..." autocomplete="off" type="password"/>
+                        <input name="nuevapass_dep" placeholder="nueva contrase&ntilde;a..." autocomplete="off" type="password"/>
+                        <input name="renuevapass_dep" placeholder="repetir nueva contrase&ntilde;a..." autocomplete="off" type="password"/>
+                    </form>
+                    <div class="buttons_upload">
+                        <a href="javascript:void(0)" onclick="saveDatosPersonales('form_pass', false)">GUARDAR CONTRASE&Ntilde;A</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    	<div data-role="content">
+            <div class="content_list_first">
+                <div class="options">
+                    <a class="first" href="pg_lista_albums_fotos.html">FOTOS</a>
+                    <a class="active" href="pg_lista_videos.html">VIDEOS</a>
+                </div>
+                <div class="content_edicion form_data_profile">
+                    
+                </div>
+    	</div><!-- /content -->
+    
+        <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="c" class="footer_menu">
+            <a href="#panel_menu" class="icon_menu">
+                <img src="img/bg_list_menu.png"/>
+            </a>
+        </div>
+        
+        <!--contenedor del panel-->
+        <div id="contenedor_panel"></div>
+    
+    </div><!-- /page -->
+    
+    </body>
+</html>
