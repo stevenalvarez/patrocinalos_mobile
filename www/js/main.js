@@ -321,6 +321,16 @@ $(document).on('pageinit', "#mi_widget", function(){
     }
 });
 
+//MIS RECAUDACIONES - MI PATROCINIO
+$("#mis_recaudaciones").live('pagebeforeshow', function(event, ui) {
+    if(isLogin()){
+        var user = COOKIE;
+        getMisRecaudaciones($(this).attr("id"),user);
+    }else{
+        redirectLogin();
+    }
+});
+
 /************************************ FUNCTIONS *******************************************************/
 
 //OBTENEMOS 10 USUARIOS DE FORMA RANDOMICA 
@@ -963,5 +973,41 @@ function showMiWidget(parent_id,user){
         parent.find("#widget").fadeIn("slow");
     }else{
         parent.find("#no_compartir").fadeIn("slow");
+    }
+}
+
+/*MOSTRAMOS LA LISTA DE RECAUDACIONES Y PAGOS QUE SE HIZO AL DEPORTISTA*/
+function getMisRecaudaciones(parent_id,user){
+    var parent = $("#"+parent_id);
+    parent.find("#tabs_opciones a").bind("touchstart click",function(){
+        $(this).parent().find("a").removeClass("active2");
+        $(this).addClass("active2");
+        if($(this).attr("id") == "tab_pagos"){
+            parent.find('#lista_recaudaciones').hide();
+            parent.find('#lista_pagos').show();
+        }else{
+            parent.find('#lista_pagos').hide();
+            parent.find('#lista_recaudaciones').show();
+        }
+    });
+        
+    $.mobile.loading('show');
+    parent.find("#lista_recaudaciones").hide();
+    parent.find("#lista_recaudaciones").css("opacity",0.5);
+        
+    if(user.proyecto_id !== undefined && parseInt(user.proyecto_id) > 0){
+        $.getJSON(BASE_URL_APP+'aportaciones/mobileGetMisRecaudacionesYPagos/'+user.proyecto_id, function(data){
+            var proyecto = data.objetos.proyecto.Proyecto;
+            var recaudaciones = data.objetos.respuesta_aportaciones;
+            var pagos = data.objetos.respuesta_pagos;
+            
+            parent.find("#proyecto_title").html(proyecto.title);
+            parent.find("#proyecto_title").parent().parent().fadeIn("slow");
+            //recaudaciones
+            parent.find("#lista_recaudaciones").css("opacity",1);
+            parent.find("#lista_recaudaciones").append(recaudaciones).fadeIn("slow");
+            //pagos
+            parent.find("#lista_pagos").append(pagos);
+        });
     }
 }
