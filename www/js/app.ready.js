@@ -13,9 +13,9 @@ var REDIREC_TO = '';
 var oauth; // Holds out oAuth request
 var requestParams; // Specific request params
 
-var consumer_key = '5MbWg9ZfT2W2wcDzyT8Q'; //YOUR Twitter CONSUMER_KEY
-var consumer_secret = 'PRpVXyyaDmMiIGBX5Q2dUntNaLSyBWwQuoh78G9H6I'; //// YOUR Twitter CONSUMER_SECRET
-var callback = 'http://www.patrocinalos.com/registro/deportistas';  //// YOUR CALLBACK URL
+var consumer_key = '3caCJB4muG5QMOKWO9NLcA'; //YOUR Twitter CONSUMER_KEY
+var consumer_secret = 'XoR21vweocbgpo7btokkhBDj8uneG2puJtIbuzIKc'; //// YOUR Twitter CONSUMER_SECRET
+var callback = 'https://www.patrocinalos.com/usuarios/registro';  //// YOUR CALLBACK URL
 
 var options = { 
             consumerKey: consumer_key, // REPLACE WITH YOUR CONSUMER_KEY

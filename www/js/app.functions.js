@@ -1500,13 +1500,13 @@ function loginFacebookConnect() {
                 
                 //llenamos los datos name, email
                 FB.api('/me', {
-                    fields: 'id, name, email, picture'
+                    fields: 'id, name, username, email, picture'
                 },function(response) {
                     if (response.error) { 
                        showAlert('get user datas failed ' + JSON.stringify(response.error));
                     }else{
                         var user = response;
-                        $("#form_registro").find("#u_title").val(user.name);
+                        $("#form_registro").find("#u_urlamigable").val(user.username);
                         $("#form_registro").find("#u_email_register").val(user.email);
                         
                         //ocultamos el loading...
