@@ -795,6 +795,8 @@ function getRondaActiva(parent_id,usuario_id){
                 //mostramos loading
                 $.mobile.loading( 'show' );
                 $.getJSON(BASE_URL_APP + 'rondas/mobileInscribirmeRonda/'+usuario_id+'/'+$(this).attr("id"), function(data){
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );                    
                     if(data.success){
                         showAlert(data.mensaje, "Aviso", "Aceptar");
                         //ocultamos los elmentos
@@ -802,7 +804,7 @@ function getRondaActiva(parent_id,usuario_id){
                         var notificaciones_ronda =  data.notificaciones_ronda;
                         showNotificacionesRonda(parent,notificaciones_ronda,true);
                     }else{
-                        showAlert("Ocurrio un error", "Error", "Aceptar");
+                        showAlert(data.mensaje, "Error", "Aceptar");
                     }
                 });
                 
@@ -871,43 +873,52 @@ function getFotos(parent_id,user){
     $.getJSON(BASE_URL_APP+'usuarios/mobileGetMisImagenes/'+user.id, function(data){
         parent.find("ul.list_media_fotos").find(".preview").remove();
         
-        if(data.lista_izquierda){
-            lista_izquierda = data.lista_izquierda;
-            $.each(lista_izquierda, function(index,photo){
-                html_data='<div class="preview">';
-                html_data+='    <a href="javascript:void(0)" onclick="zoomPhoto(this)" rel="'+BASE_URL_APP+'/img/Usuario/800/'+photo.imagen+'" class="zoom_media">&nbsp;</a>';
-                html_data+='    <img src="'+BASE_URL_APP+'/img/Usuario/169/'+photo.imagen+'" width="auto" height="auto" />';
-                html_data+='</div>';
-            
-                parent.find("ul.list_media_fotos li.list_left").append(html_data);
-            });
-        }
-        
-        if(data.lista_derecha){
-            lista_derecha = data.lista_derecha;
-            $.each(lista_derecha, function(index,photo){
-                html_data='<div class="preview">';
-                html_data+='    <a href="javascript:void(0)" onclick="zoomPhoto(this)" rel="'+BASE_URL_APP+'/img/Usuario/800/'+photo.imagen+'" class="zoom_media">&nbsp;</a>';
-                html_data+='    <img src="'+BASE_URL_APP+'/img/Usuario/169/'+photo.imagen+'" width="auto" height="auto" />';
-                html_data+='</div>';
+        if(data.lista_izquierda.length > 0 || data.lista_derecha.length > 0){
+            if(data.lista_izquierda){
+                lista_izquierda = data.lista_izquierda;
+                $.each(lista_izquierda, function(index,photo){
+                    html_data='<div class="preview">';
+                    html_data+='    <a href="javascript:void(0)" onclick="zoomPhoto(this)" rel="'+BASE_URL_APP+'/img/Usuario/800/'+photo.imagen+'" class="zoom_media">&nbsp;</a>';
+                    html_data+='    <img src="'+BASE_URL_APP+'/img/Usuario/169/'+photo.imagen+'" width="auto" height="auto" />';
+                    html_data+='</div>';
                 
-                parent.find("ul.list_media_fotos li.list_right").append(html_data);
-            });
-        }
-        
-        parent.find("ul.list_media_fotos .preview:last").find("img").load(function(){
-            $.mobile.loading( 'hide' );
-            parent.find("ul.list_media_fotos").css("opacity",1);
-            parent.find("ul.list_media_fotos").fadeIn("slow");
+                    parent.find("ul.list_media_fotos li.list_left").append(html_data);
+                });
+            }
             
-            parent.find("ul.list_media_fotos").find(".preview").each(function(){
-                var height = ($(this).height()/2) - 12;
-                var width = ($(this).width()/2) - 12;
-                $(this).find("a.zoom_media").css("left",width);
-                $(this).find("a.zoom_media").css("top",height);
-                $(this).find("a.zoom_media").fadeIn("slow");
+            if(data.lista_derecha){
+                lista_derecha = data.lista_derecha;
+                $.each(lista_derecha, function(index,photo){
+                    html_data='<div class="preview">';
+                    html_data+='    <a href="javascript:void(0)" onclick="zoomPhoto(this)" rel="'+BASE_URL_APP+'/img/Usuario/800/'+photo.imagen+'" class="zoom_media">&nbsp;</a>';
+                    html_data+='    <img src="'+BASE_URL_APP+'/img/Usuario/169/'+photo.imagen+'" width="auto" height="auto" />';
+                    html_data+='</div>';
+                    
+                    parent.find("ul.list_media_fotos li.list_right").append(html_data);
+                });
+            }
+            
+            parent.find("ul.list_media_fotos .preview:last").find("img").load(function(){
+                $.mobile.loading( 'hide' );
+                parent.find("ul.list_media_fotos").find(".no_imagenes").remove();
+                parent.find("ul.list_media_fotos").css("opacity",1);
+                parent.find("ul.list_media_fotos").fadeIn("slow");
+                
+                parent.find("ul.list_media_fotos").find(".preview").each(function(){
+                    var height = ($(this).height()/2) - 12;
+                    var width = ($(this).width()/2) - 12;
+                    $(this).find("a.zoom_media").css("left",width);
+                    $(this).find("a.zoom_media").css("top",height);
+                    $(this).find("a.zoom_media").fadeIn("slow");
+                });
             });
-        });
+        
+        }else{
+            parent.find("ul.list_media_fotos").append("<li class='no_imagenes'>A&uacute;n no tienes imagenes!.</li>");
+            $.mobile.loading('hide');
+            parent.find("ul.list_media_fotos").show();
+            parent.find("ul.list_media_fotos").css("opacity",1);
+        }
     });
 }
 
@@ -921,43 +932,51 @@ function getVideos(parent_id,user){
     $.getJSON(BASE_URL_APP+'usuarios/mobileGetMisVideos/'+user.id, function(data){
         parent.find("ul.list_media_videos").find(".preview").remove();
         
-        if(data.lista_izquierda){
-            lista_izquierda = data.lista_izquierda;
-            $.each(lista_izquierda, function(index,video){
-                html_data='<div class="preview">';
-                html_data+='    <a href="javascript:void(0)" onclick="playVideo(this)" rel="'+video.src_iframe+'" class="zoom_media">&nbsp;</a>';
-                html_data+='    <img src="'+video.src+'" width="auto" height="auto" />';
-                html_data+='</div>';
-            
-                parent.find("ul.list_media_videos li.list_left").append(html_data);
-            });
-        }
-        
-        if(data.lista_derecha){
-            lista_derecha = data.lista_derecha;
-            $.each(lista_derecha, function(index,video){
-                html_data='<div class="preview">';
-                html_data+='    <a href="javascript:void(0)" onclick="playVideo(this)" rel="'+video.src_iframe+'" class="zoom_media">&nbsp;</a>';
-                html_data+='    <img src="'+video.src+'" width="auto" height="auto" />';
-                html_data+='</div>';
+        if(data.lista_izquierda.length > 0 || data.lista_derecha.length > 0){
+            if(data.lista_izquierda){
+                lista_izquierda = data.lista_izquierda;
+                $.each(lista_izquierda, function(index,video){
+                    html_data='<div class="preview">';
+                    html_data+='    <a href="javascript:void(0)" onclick="playVideo(this)" rel="'+video.src_iframe+'" class="zoom_media">&nbsp;</a>';
+                    html_data+='    <img src="'+video.src+'" width="auto" height="auto" />';
+                    html_data+='</div>';
                 
-                parent.find("ul.list_media_videos li.list_right").append(html_data);
-            });
-        }
-        
-        parent.find("ul.list_media_videos .preview:last").find("img").load(function(){
-            $.mobile.loading( 'hide' );
-            parent.find("ul.list_media_videos").css("opacity",1);
-            parent.find("ul.list_media_videos").fadeIn("slow");
+                    parent.find("ul.list_media_videos li.list_left").append(html_data);
+                });
+            }
             
-            parent.find("ul.list_media_videos").find(".preview").each(function(){
-                var height = ($(this).height()/2) - 12;
-                var width = ($(this).width()/2) - 12;
-                $(this).find("a.zoom_media").css("left",width);
-                $(this).find("a.zoom_media").css("top",height);
-                $(this).find("a.zoom_media").fadeIn("slow");
+            if(data.lista_derecha){
+                lista_derecha = data.lista_derecha;
+                $.each(lista_derecha, function(index,video){
+                    html_data='<div class="preview">';
+                    html_data+='    <a href="javascript:void(0)" onclick="playVideo(this)" rel="'+video.src_iframe+'" class="zoom_media">&nbsp;</a>';
+                    html_data+='    <img src="'+video.src+'" width="auto" height="auto" />';
+                    html_data+='</div>';
+                    
+                    parent.find("ul.list_media_videos li.list_right").append(html_data);
+                });
+            }
+            
+            parent.find("ul.list_media_videos .preview:last").find("img").load(function(){
+                $.mobile.loading( 'hide' );
+                parent.find("ul.list_media_videos").find(".no_videos").remove();
+                parent.find("ul.list_media_videos").css("opacity",1);
+                parent.find("ul.list_media_videos").fadeIn("slow");
+                
+                parent.find("ul.list_media_videos").find(".preview").each(function(){
+                    var height = ($(this).height()/2) - 12;
+                    var width = ($(this).width()/2) - 12;
+                    $(this).find("a.zoom_media").css("left",width);
+                    $(this).find("a.zoom_media").css("top",height);
+                    $(this).find("a.zoom_media").fadeIn("slow");
+                });
             });
-        });
+        }else{
+            parent.find("ul.list_media_videos").append("<li class='no_videos'>A&uacute;n no tienes videos!.</li>");
+            $.mobile.loading('hide');
+            parent.find("ul.list_media_videos").show();
+            parent.find("ul.list_media_videos").css("opacity",1);
+        }
     });
 }
 

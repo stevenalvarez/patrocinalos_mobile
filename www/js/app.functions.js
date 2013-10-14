@@ -1022,7 +1022,7 @@ function form_editar_perfil(parent_id, element, user){
    		   "u_pais_id": {
     			required: true
    		   },
-   		   "u_ciudad_id": {
+   		   "u_ciudad": {
     			required: true
    		   },
            "u_deporte" : {
@@ -1042,7 +1042,7 @@ function form_editar_perfil(parent_id, element, user){
             "u_pais_id": {
     			required: ""
     		},
-            "u_ciudad_id": {
+            "u_ciudad": {
     			required: ""
     		},
             "u_deporte": {
@@ -1623,6 +1623,7 @@ function callbackSynchronous(response){
     var respuesta = $.parseJSON(response);
     if(respuesta.success && respuesta.seccion == "foto"){
         var parent = $("#mis_fotos").find(".list_media_fotos");
+        parent.find(".no_imagenes").remove();
         html_data='<div class="preview">';
         html_data+='    <a href="javascript:void()" onclick="zoomPhoto(this)" rel="'+BASE_URL_APP+'/img/Usuario/800/'+respuesta.nombre_imagen+'" class="zoom_media">&nbsp;</a>';
         html_data+='    <img src="'+BASE_URL_APP+'/img/Usuario/169/'+respuesta.nombre_imagen+'" width="auto" height="auto" />';
@@ -1637,7 +1638,7 @@ function callbackSynchronous(response){
             item.find("a.zoom_media").css("top",height);
             item.find("a.zoom_media").fadeIn("slow");
         });
-                        
+        
         showAlert("Se ha subido correctamente la foto!.", 'Aviso', 'Aceptar');
         $.mobile.loading( 'hide' );
     }
@@ -2104,4 +2105,10 @@ function callbackOrientationChange(orientation, page_id){
             $(this).find("a.zoom_media").fadeIn("slow");
         });
     }
+}
+
+/*borramos los datos de la cookie*/
+function logout(){
+    createCookie("user", "", 0);
+    redirectLogin();
 }
