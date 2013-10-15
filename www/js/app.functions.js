@@ -1354,9 +1354,18 @@ function form_subir_video(parent_id, element,user){
 // REGISTRO SUCCESS
 //
 function success_registro(){
-    $.mobile.changePage('#register_finalizado', {transition: "slide"});
-    document.getElementById("form_registro").reset();
-    $.mobile.loading( 'hide' );
+    $.mobile.changePage('#registro_finalizado', {transition: "slide"});
+    console.log("aqui entra mierda");
+    
+    /*$.mobile.loading( 'hide' );
+    alert("puta2");
+    console.log("puta2");
+    //document.getElementById("form_registro").reset();
+    alert("puta3");
+    console.log("puta3");
+    //$.mobile.changePage('#register_finalizado', {transition: "slide"});
+    alert("puta4");
+    console.log("puta4");*/
 }
 
 // REGISTRO ERROR
