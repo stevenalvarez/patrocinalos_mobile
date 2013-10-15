@@ -61,6 +61,8 @@ function uploadPhoto(params) {
         
         var respuesta = $.parseJSON(r.response);
         if(respuesta.success){
+            console.log(respuesta);
+            alert(respuesta.success)
             IMAGEURI = '';
             success_registro();
         }else{
