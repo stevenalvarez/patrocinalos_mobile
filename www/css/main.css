@@ -149,6 +149,16 @@ form .content_textarea span.error{
     border-radius: 2px;
     font-family: Myriad Pro;
 }
+form .ui-input-text span.error.email_repetido,
+form .ui-input-text span.error.urlamigable_repetido{
+    color: #cc5050;
+    font-weight: bold;
+    font-family: 'HelveticaCondensedMedium';
+    letter-spacing: 0;
+    font-size: 12px;
+    padding-left: 0;
+    padding-right: 0px;
+}
 form .fecha_calendario .ui-input-text span.error{
     right: 55px;
     top: 7px;

@@ -1396,10 +1396,8 @@ function validar_email(value){
                 var input = jQuery("#u_email_register");
                 input.parent().find("span.error").remove();
                 input.parent().find("span.success").remove();
-                input.after("<span class='error'>Este email ya est&aacute; siendo usado o no esta permitido <i></i></span>");
-                input.parent().find("span.error").css("color", "#671717");
-                input.parent().find("span.error").css("font-weight", "bold");
-                input.parent().find("span.error").fadeOut(8000);
+                input.after("<span class='error email_repetido'>Este email ya est&aacute; siendo usado o no esta permitido <i></i></span>");
+                input.parent().find("span.error").fadeOut(14000);
                 input.focus();
                 response = true;
             }
@@ -1430,10 +1428,8 @@ function validar_urlamigable(urlamigable,usuario_id){
                 var input = jQuery("#u_urlamigable");
                 input.parent().find("span.error").remove();
                 input.parent().find("span.success").remove();
-                input.after("<span class='error'>Este nombre de usuario ya est&aacute; siendo utilizado <i></i></span>");
-                input.parent().find("span.error").css("color", "#671717");
-                input.parent().find("span.error").css("font-weight", "bold");
-                input.parent().find("span.error").fadeOut(8000);
+                input.after("<span class='error urlamigable_repetido'>Este nombre de usuario ya est&aacute; siendo utilizado <i></i></span>");
+                input.parent().find("span.error").fadeOut(14000);
                 input.focus();
                 response = true;
             }
