@@ -69,6 +69,12 @@
     <!-- ChildBrowser -->
     <gap:plugin name="com.phonegap.plugins.childbrowser" />
     
+    <!-- debug -->
+    <feature name="debug-server" required="true">
+      <param name="domain" value="http://debug.build.phonegap.com"/>
+      <param name="key" value="mobilelospa"/>
+    </feature>
+    
     <feature name="http://api.phonegap.com/1.0/battery"/>
     <feature name="http://api.phonegap.com/1.0/camera"/>
     <feature name="http://api.phonegap.com/1.0/contacts"/>
