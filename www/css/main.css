@@ -151,7 +151,7 @@ form .content_textarea span.error{
 }
 form .fecha_calendario .ui-input-text span.error{
     right: 55px;
-    top: 9px;
+    top: 8px;
 }
 form .ui-input-text span.error i,
 form .content_textarea span.error i{
@@ -948,6 +948,7 @@ form .content_textarea{
     letter-spacing: 0px;
     color: #fff;
     text-shadow: 0px 1px 0px #000;
+    line-height: 15px;
 }
 .ui-btn-submit.blue .ui-btn-inner{
     background-color: #019add;
@@ -1001,8 +1002,7 @@ form .content_textarea{
 .ui-btn-submit.twitter_registro .ui-btn-text{
     display: inline-block;
     text-align: left;
-    padding: 0.6em 0;
-    padding-left: 10px;
+    padding: 0.8em 0 0.6em 10px;
 }
 .ui-btn-submit.facebook_registro .ui-btn-text{
     background: url("../img/bg_border_fabebook.png") no-repeat scroll left top transparent;
@@ -1662,7 +1662,7 @@ label.custom{
 #register_user .access_login .ui-input-text,
 #completar_perfil .ui-input-text,
 #editar_perfil .ui-icon-datebox,
-#completar_perfil_patrocinador .ui-input-text
+#completar_perfil_patrocinador .ui-input-text,
 #solicitar_patrocinio .ui-input-text,
 #solicitar_editar_patrocinio .ui-input-text{
     margin: 0.25em 0;

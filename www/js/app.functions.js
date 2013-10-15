@@ -114,6 +114,10 @@ function form_registro(){
     	}
     });
     
+    //ocultamos los campo nombre y apellido
+    jQuery("#form_registro").find("input[name='u_nombre']").parent().hide();
+    jQuery("#form_registro").find("input[name='u_apellidos']").parent().hide();
+    
     //Cambiamos de texto para la foto dependiendo si es empresa, deportista o patrocinador
     jQuery("#form_registro").find("#select_tipo_u").change(function(){
         var form_registro = jQuery("#form_registro");
