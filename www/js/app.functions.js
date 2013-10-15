@@ -162,7 +162,6 @@ function form_registro(){
                             var usuario_id = usuario.id;
                             
                             //una vez creado guardamos en cookies su datos importantes
-                            createCookie("userRegistered", "", 0);
                             createCookie("userRegistered", JSON.stringify(usuario), 1);
                             
                             //Si selecciono un imagen mandamos a guardar en la base de datos
@@ -1575,9 +1574,6 @@ function isLogin(){
 function isUserRegistered(){
     var res = false;
     var cookie_userRegistered = $.parseJSON(readCookie("userRegistered"));
-    console.log("...........");
-    console.log(cookie_userRegistered);
-    console.log(".............");
     if(cookie_userRegistered !== null){
         res = true;
         COOKIE_NEW_REGISTER = cookie_userRegistered;
