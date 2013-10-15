@@ -62,7 +62,6 @@ function uploadPhoto(params) {
         var respuesta = $.parseJSON(r.response);
         if(respuesta.success){
             IMAGEURI = '';
-            $.mobile.loading( 'hide' );
             success_registro();
         }else{
             error_registro('Ha ocurrido un error al momento de actualizar los datos del deportista!, por favor intente de nuevo');
@@ -1358,6 +1357,7 @@ function success_registro(){
     $.mobile.loading( 'hide' );
     document.getElementById("form_registro").reset();
     $.mobile.changePage('#register_finalizado', {transition: "slide"});
+    console.log("aqui");
 }
 
 // REGISTRO ERROR
