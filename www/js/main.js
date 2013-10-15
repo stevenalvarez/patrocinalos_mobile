@@ -82,16 +82,17 @@ $(document).on('pageinit', "#recuperar_password", function(){
 $(document).on('pageinit', "#registro_finalizado", function(){
     //controlamos si completar perfil pertenece a deportista(individual o equipo), patrocinador o empresa
     if(isUserRegistered()){
+        alert("KJasdf");
         var userRegistered = COOKIE_NEW_REGISTER;
-        console.log("pura");
-        console.log(userRegistered);
         if(userRegistered.tipo == "empresa"){
             $(this).find('a.btn_completar_perfil').attr("href","#completar_perfil_empresa");
         }else if(userRegistered.tipo == "patrocinador"){
             $(this).find('a.btn_completar_perfil').attr("href","#completar_perfil_patrocinador");
         }
+    }else{
+        alert("no");
     }
-})
+});
 
 //COMPLETAR PERFIL
 $(document).on('pageinit', "#completar_perfil", function(){
