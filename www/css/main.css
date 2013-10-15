@@ -3839,6 +3839,31 @@ label.custom{
     width: 41%;
 }
 
+/* TERMINOS Y CONDICIONES */
+#terminos_y_condiciones .ui-header .ui-title{
+    margin: .6em 18% .8em;
+    color: #E74C3C;
+    font-weight: 500;
+    font-size: 18px;
+}
+#terminos_y_condiciones #stye_terminos{
+    color: #95A5A6;
+    font-size: 12px;
+}
+#terminos_y_condiciones #stye_terminos h5 {
+    color: #34495E;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 5px 0;
+    letter-spacing: 0;
+}
+#terminos_y_condiciones #stye_terminos p {
+    color: #7F8C8D;
+    font-size: 12px;
+    line-height: 15px;
+    padding-bottom: 5px;
+    letter-spacing: 0;
+}
 /***************************************** RESPONSIVO *******************************************************/
 
 /* PORTRAIT IPHONE 4/4s */

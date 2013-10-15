@@ -1508,12 +1508,14 @@ function loginFacebookConnect() {
                 
                 //llenamos los datos name, email
                 FB.api('/me', {
-                    fields: 'id, name, username, email, picture'
+                    fields: 'id, name, first_name, last_name, username, email, picture'
                 },function(response) {
                     if (response.error) { 
                        showAlert('get user datas failed ' + JSON.stringify(response.error));
                     }else{
                         var user = response;
+                        $("#form_registro").find("#u_nombre").val(user.first_name);
+                        $("#form_registro").find("#u_apellidos").val(user.last_name);
                         $("#form_registro").find("#u_urlamigable").val(user.username);
                         $("#form_registro").find("#u_email_register").val(user.email);
                         

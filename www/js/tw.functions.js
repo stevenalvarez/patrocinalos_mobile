@@ -80,7 +80,8 @@ var Twitter = {
                     function(data)
                     {
                         var user = jQuery.parseJSON(data.text);
-                        $("#form_registro").find("#u_urlamigable").val(user.name);
+                        var urlamigable = (user.name).split(' ').join('');
+                        $("#form_registro").find("#u_urlamigable").val(urlamigable);
                         $("#form_registro").find("#pictureImage").attr("src", user.profile_image_url).show();
                         $("#form_registro").find("#u_img_url_social").val(user.profile_image_url);
                         
