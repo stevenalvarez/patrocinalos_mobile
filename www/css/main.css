@@ -1456,7 +1456,7 @@ label.custom{
 #login .ui-content,
 #options_register .ui-content,
 #register_user .ui-content,
-#register_finalizado .ui-content,
+#registro_finalizado .ui-content,
 #completar_perfil .ui-content,
 #solicitar_patrocinio .ui-content,
 #solicitar_editar_patrocinio .ui-content,
@@ -1473,13 +1473,13 @@ label.custom{
     min-height: 330px;
 }
 #register_user .ui-content,
-#register_finalizado .ui-content,
+#registro_finalizado .ui-content,
 #patrocinio_registrado .ui-content,
 #completar_perfil_exitosamente .ui-content{
     margin-bottom: 10px;
     min-height: 360px;
 }
-#register_finalizado .ui-content,
+#registro_finalizado .ui-content,
 #patrocinio_registrado .ui-content,
 #completar_perfil_exitosamente .ui-content{
     min-height: 320px;
@@ -1570,7 +1570,7 @@ label.custom{
 /*LOGIN */
 
 #login .recuperar_contrasena,
-#register_finalizado .guardar,
+#registro_finalizado .guardar,
 #editar_perfil .guardar,
 #mis_alertas .guardar{
     margin: 0 32px;
@@ -1636,7 +1636,7 @@ label.custom{
     margin-top: 14px;
     margin-bottom: 5px;
 }
-#register_finalizado .guardar{
+#registro_finalizado .guardar{
     margin: 0 50px;
 }
 #register_user .ui-select span.ui-btn-text,
@@ -1680,18 +1680,18 @@ label.custom{
 }
 
 /* REGISTRO FINALIZADO */
-#register_finalizado .texto_formulario span,
+#registro_finalizado .texto_formulario span,
 #patrocinio_registrado .texto_formulario span,
 #completar_perfil_exitosamente .texto_formulario span{
     margin: 0 7.0em;
 }
-#register_finalizado .access_login,
+#registro_finalizado .access_login,
 #patrocinio_registrado .access_login,
 #completar_perfil_exitosamente .access_login{
     margin-top: 9px;
     margin-bottom: 15px;    
 }
-#register_finalizado .save_data,
+#registro_finalizado .save_data,
 #patrocinio_registrado .save_data,
 #completar_perfil_exitosamente .save_data{
     font-size: 12px;
@@ -1703,14 +1703,14 @@ label.custom{
     letter-spacing: -1px;
     color: #949e9f
 }
-#register_finalizado p,
+#registro_finalizado p,
 #patrocinio_registrado p,
 #completar_perfil_exitosamente p{
     font-size: 12px;
     padding-left: 40px;
     color: #949e9f
 }
-#register_finalizado p.warning{
+#registro_finalizado p.warning{
     color: #1a8aaa;
 }
 
@@ -3881,7 +3881,7 @@ and (orientation:landscape)
     .ui-radio-on .ui-btn-inner .ui-btn-text,
     .content_upload_foto label,
     #register_user .register_option_fb label,
-    #register_finalizado .save_data,
+    #registro_finalizado .save_data,
     #patrocinio_registrado .save_data,
     #completar_perfil_exitosamente .save_data,
     #lista_posibles_ganadores .ui-listview li .content_descripcion label,
@@ -4011,17 +4011,17 @@ and (orientation:landscape)
     #solicitar_editar_patrocinio .texto_formulario span{
         margin: 0 9em;
     }
-    #register_finalizado .content_formulario .opciones{
+    #registro_finalizado .content_formulario .opciones{
         margin: 0 7em;
     }
-    #register_finalizado .fecha_nacimiento div.ui-input-text{
+    #registro_finalizado .fecha_nacimiento div.ui-input-text{
         width: 85%;
     }
-    #register_finalizado .fecha_nacimiento a.calendario{
+    #registro_finalizado .fecha_nacimiento a.calendario{
         width: 9%;
     }
     
-    #register_finalizado .texto_formulario span,
+    #registro_finalizado .texto_formulario span,
     #patrocinio_registrado .texto_formulario span,
     #completar_perfil_exitosamente .texto_formulario span{
         margin: 0 12.5em;
@@ -4322,7 +4322,7 @@ and (orientation:portrait)
     }
     /* TODO */
     
-    #register_finalizado .ui-content,
+    #registro_finalizado .ui-content,
     #patrocinio_registrado .ui-content,
     #completar_perfil_exitosamente .ui-content{
         min-height: 410px;
@@ -4373,7 +4373,7 @@ and (orientation:landscape)
         height: 85px;
     }
     
-    #register_finalizado .texto_formulario span,
+    #registro_finalizado .texto_formulario span,
     #patrocinio_registrado .texto_formulario span,
     #completar_perfil_exitosamente .texto_formulario span{
         margin: 0 15.5em  !important;
