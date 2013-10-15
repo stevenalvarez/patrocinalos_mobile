@@ -1354,8 +1354,9 @@ function form_subir_video(parent_id, element,user){
 // REGISTRO SUCCESS
 //
 function success_registro(){
+    console.log("aqui entra mierda da!!!");
     $.mobile.changePage('#patrocinio_registrado', {transition: "slide"});
-    console.log("aqui entra mierda");
+    document.getElementById("form_registro").reset();
     
     /*$.mobile.loading( 'hide' );
     alert("puta2");
