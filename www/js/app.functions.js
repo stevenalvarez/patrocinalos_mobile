@@ -1359,10 +1359,11 @@ function success_registro(){
     $.mobile.loading( 'hide' );
     alert("puta2");
     console.log("puta2");
-    document.getElementById("form_registro").reset();
+    //document.getElementById("form_registro").reset();
     alert("puta3");
     console.log("puta3");
     $.mobile.changePage('#register_finalizado');
+    $.mobile.changePage('#register_finalizado', {transition: "slide"});
     alert("puta4");
     console.log("puta4");
 }
