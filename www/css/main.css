@@ -151,7 +151,7 @@ form .content_textarea span.error{
 }
 form .fecha_calendario .ui-input-text span.error{
     right: 55px;
-    top: 8px;
+    top: 7px;
 }
 form .ui-input-text span.error i,
 form .content_textarea span.error i{
@@ -941,6 +941,7 @@ form .content_textarea{
 .ui-btn-submit .ui-btn-inner {
     border-top: 0;
     border-color: inherit;
+    padding-top: 0.8em;
 }
 .ui-btn-submit .ui-btn-text{
     font-size: 17px;

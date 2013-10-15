@@ -530,6 +530,8 @@ function form_completar_perfil(element){
                         }else{
                             showAlert(data.mensaje, "Error", "Aceptar");
                         }
+                        //borramos los datos del formulario
+                        clear_form(element);
                     },
                     beforeSend : function(){
                         //mostramos loading
@@ -608,6 +610,8 @@ function form_completar_perfil_patrocinador(element){
                         }else{
                             showAlert(data.mensaje, "Error", "Aceptar");
                         }
+                        //borramos los datos del formulario
+                        clear_form(element);
                     },
                     beforeSend : function(){
                         //mostramos loading
@@ -702,6 +706,8 @@ function form_completar_perfil_empresa(element){
                         }else{
                             showAlert(data.mensaje, "Error", "Aceptar");
                         }
+                        //borramos los datos del formulario
+                        clear_form(element);
                     },
                     beforeSend : function(){
                         //mostramos loading
@@ -800,6 +806,8 @@ function form_solicitar_patrocinio(element){
                             
                             //mandamos a la pagina de patrocinio finalizado
                             $.mobile.changePage('#patrocinio_registrado', {transition: "slide"});
+                            //borramos los datos del formulario
+                            clear_form(element);
                         }else{
                             showAlert(data.mensaje, "Error", "Aceptar");
                         }
@@ -1359,7 +1367,6 @@ function form_subir_video(parent_id, element,user){
 //
 function success_registro(){
     $.mobile.changePage('#registro_finalizado', {transition: "slide"});
-    document.getElementById("form_registro").reset();
     clear_form("form_registro");
     $.mobile.loading( 'hide' );
 }
@@ -1477,7 +1484,7 @@ function key_press(id){
 function clear_form(form){
     $("#"+form).find("span.success").remove();
     document.getElementById(form).reset();
-    $("#"+form).find("img").attr("src","");
+    $("#"+form).find("img").attr("src","").hide();;
 }
 
 /* REGISTRO FACEBOOK FUNCTION */

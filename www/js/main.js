@@ -79,7 +79,7 @@ $(document).on('pageinit', "#recuperar_password", function(){
 });
 
 //REGISTRO FINALIZADO
-$(document).on('pageinit', "#registro_finalizado", function(){
+$('#registro_finalizado').live('pagebeforeshow', function(event, ui) {
     //controlamos si completar perfil pertenece a deportista(individual o equipo), patrocinador o empresa
     if(isUserRegistered()){
         var userRegistered = COOKIE_NEW_REGISTER;
@@ -89,7 +89,7 @@ $(document).on('pageinit', "#registro_finalizado", function(){
             $(this).find('a.btn_completar_perfil').attr("href","#completar_perfil_patrocinador");
         }
     }
-})
+});
 
 //COMPLETAR PERFIL
 $(document).on('pageinit', "#completar_perfil", function(){
