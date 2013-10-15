@@ -35,7 +35,7 @@ $(document).bind('pageshow', function() {
 /************************************ EVENTOS *******************************************************/
 
 //INICIO
-$('#view').live('pagebeforeshow', function(event, ui) {
+$(document).on('pageinit', "#view", function(){
     getUsuariosRandom();
 });
 

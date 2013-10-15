@@ -1355,8 +1355,9 @@ function form_subir_video(parent_id, element,user){
 //
 function success_registro(){
     $.mobile.changePage('#registro_finalizado', {transition: "slide"});
-    $.mobile.loading( 'hide' );
     document.getElementById("form_registro").reset();
+    clear_form("form_registro");
+    $.mobile.loading( 'hide' );
 }
 
 // REGISTRO ERROR
@@ -1472,6 +1473,7 @@ function key_press(id){
 function clear_form(form){
     $("#"+form).find("span.success").remove();
     document.getElementById(form).reset();
+    $("#"+form).find("img").attr("src","");
 }
 
 /* REGISTRO FACEBOOK FUNCTION */
