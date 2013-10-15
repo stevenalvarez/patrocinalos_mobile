@@ -81,6 +81,7 @@ $(document).on('pageinit', "#recuperar_password", function(){
 //REGISTRO FINALIZADO
 $(document).on('pageinit', "#registro_finalizado", function(){
     //controlamos si completar perfil pertenece a deportista(individual o equipo), patrocinador o empresa
+    console.log("parece error.......");
     if(isUserRegistered()){
         alert("KJasdf");
         var userRegistered = COOKIE_NEW_REGISTER;
