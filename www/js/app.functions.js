@@ -1362,7 +1362,7 @@ function success_registro(){
     document.getElementById("form_registro").reset();
     alert("puta3");
     console.log("puta3");
-    $.mobile.changePage('#register_finalizado', {transition: "slide"});
+    $.mobile.changePage('#register_finalizado');
     alert("puta4");
     console.log("puta4");
 }
