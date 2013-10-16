@@ -152,7 +152,6 @@ form .content_textarea span.error{
 form .ui-input-text span.error.email_repetido,
 form .ui-input-text span.error.urlamigable_repetido{
     color: #cc5050;
-    font-weight: bold;
     font-family: 'HelveticaCondensedMedium';
     letter-spacing: 0;
     font-size: 12px;
@@ -1159,7 +1158,7 @@ form .content_textarea{
 }
 .btn-options .btn-first.long.bouble_row .ui-btn-inner{
     padding: 0.2em 10px;
-    padding-bottom: 2px;
+    padding-bottom: 0px;
 }
 .btn-options .btn-first.long.bouble_row .ui-btn-text{
     line-height: 16px;
@@ -1636,7 +1635,7 @@ label.custom{
     color: #B74040;
     display: inline-block;
     font-size: 10px;
-    margin-left: 10px;
+    margin-left: 8px;
     letter-spacing: -1px;
 }
 

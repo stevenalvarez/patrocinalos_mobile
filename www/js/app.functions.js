@@ -1208,15 +1208,25 @@ function form_login(){
                             if(REDIREC_TO != ''){
                                 goToPage = REDIREC_TO;
                             }
+                            if(msg.activo_su_cuenta){
+                                showAlert("Haz validado tu cuenta, ahora puedes crear tu patrocinio para empezar a recibir aportaciones.", "Enhorabuena", "Aceptar");
+                            }
                             $.mobile.changePage(goToPage, {transition: "fade"});
                         }else{
                             //mostramos el mensaje de que debe colocar el codigo de activacion para quedar activo en el sistema
-                            $("#login").find(".msg_error").find("label").html("Usted no activo su cuenta, por favor coloque el c&oacute;digo de validaci&oacute;n");
+                            //si el codigo que puso es erroneo
+                            if(msg.codigo_validacion != ""){
+                                $("#login").find(".msg_error").find("label").html("El c&oacute;digo de confirmaci&oacute;n, que introdujo es err&oacute;neo. Por favor verifique o ingrese nuevamente el c&oacute;digo de confirmaci&oacute;n.");
+                            }else{
+                                $("#login").find(".msg_error").find("label").html("Hemos detectado que no has validado tu cuenta, por favor introduce el c&oacute;digo de confirmaci&oacute;n, que se te envi&oacute; a tu correo.");
+                            }
+                            $("#login").find(".msg_error").find("label").css("width","90%");
                             $("#login").find(".msg_error").fadeIn("slow");
                             $("#login").find(".campo_codigo_validacion").show();
                         }
                     }else{
                         //mostramos el mensaje de login fallido
+                        $("#login").find(".campo_codigo_validacion").hide();
                         $("#login").find(".msg_error").fadeIn("slow");
                     }
                 },
