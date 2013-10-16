@@ -1568,7 +1568,7 @@ function compartiFacebookWallPost(usuario_title, proyecto_title, proyecto_activi
         name: usuario_title + ' - ' + proyecto_title,
         link: enlace_proyecto,
         picture: proyecto_imagen,
-        caption: 'proyecto_actividad_patrocinio',
+        caption: 'www.patrocinalos.com',
         description: proyecto_actividad_patrocinio
     };
     FB.ui(params, function(obj) { 
@@ -1805,7 +1805,7 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
             $.mobile.loading( 'show' );
             $.getJSON(BASE_URL_APP + 'seguidores/mobileDejarSeguirDeportista?me=' + me + '&to_usuario_id=' + to_usuario_id, function(data){
                 if(data.success){
-                    parent.find("#seguir_deportista").find(".ui-btn-text").text("Apoyo este proyecto");
+                    parent.find("#seguir_deportista").find(".ui-btn-text").text("Apoyar Proyecto");
                     parent.find("#seguir_deportista").removeClass("dejar_seguir");
                     parent.find("#seguir_deportista").addClass("seguir");
                     //ocultamos loading

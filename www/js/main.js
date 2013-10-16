@@ -357,6 +357,7 @@ function getUsuariosRandom() {
 //CARROUSEL,ACTIVIDAD EN PATROCINALOS Y ACTIVIDAD EN LA RONDA, PARA LA PAGINA HOME 
 function getEntradasByCarrousel(parent_id, hash){
     var parent = $("#"+parent_id);
+    parent.find(".ui-content").hide();
     parent.find("#tabs_opciones a").bind("touchstart click",function(){
         $(this).parent().find("a").removeClass("active");
         $(this).addClass("active");
@@ -476,6 +477,7 @@ function getEntradasByCarrousel(parent_id, hash){
                     }
                     //ocultamos loading
                     $.mobile.loading( 'hide' );
+                    parent.find(".ui-content").fadeIn("slow");
                 });
             }
         } 
@@ -485,6 +487,7 @@ function getEntradasByCarrousel(parent_id, hash){
 //OBTENEMOS LOS DATOS DEL PERFIL DE UN DEPORTISTA EN ESPECIFICO
 function loadPerfilDeportista(parent_id, me, usuario_id, show_popup_patrocinar){
     var parent = $("#"+parent_id);
+    parent.find(".ui-content").hide();
     $.getJSON(BASE_URL_APP + 'usuarios/mobileGetProyectoDeportista?me=' + me + '&usuario_id='+usuario_id, function(data){
         if(data.item){
             
@@ -524,7 +527,7 @@ function loadPerfilDeportista(parent_id, me, usuario_id, show_popup_patrocinar){
                 parent.find(".recaudado").find(".monto").html(item.Proyecto.total_recaudado);
                 parent.find(".recaudado").show();
                 parent.find(".progress").find(".porcentaje").css("width", item.Proyecto.porcentaje_recaudado+"%").parent().show();
-                parent.find(".numero_porcentaje span").html(item.Proyecto.porcentaje_recaudado).parent().show();
+                parent.find(".numero_porcentaje span").html(parseFloat(item.Proyecto.porcentaje_recaudado).toFixed(2)).parent().show();
                 
                 $(".age").age();
             }
@@ -554,6 +557,8 @@ function loadPerfilDeportista(parent_id, me, usuario_id, show_popup_patrocinar){
                             $.mobile.loading( 'hide' );
                         },400);
                     }
+                    
+                    parent.find(".ui-content").fadeIn("slow");
                 });
             });
             

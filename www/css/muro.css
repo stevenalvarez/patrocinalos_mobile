@@ -1,5 +1,5 @@
 .muro-propio {margin: 0 5px 5px 5px;}
-.muro-propio .evento{border: 1px solid #ddd;margin-bottom: 2px;background-color: #fff;}
+.muro-propio .evento{border: 1px solid #ddd;margin-bottom: 5px;background-color: #fff;}
 .muro-propio a{color: #3498DB;}
 .muro-propio .icon-box-add {background: url("../img/bg_patrocinar.png") no-repeat scroll top right transparent;background-size: 25px 25px;width:25px;height: 25px;}
 .muro-propio .avatar.usuario {border-radius: 120px 120px 120px 120px;}
@@ -8,7 +8,7 @@
 .muro-propio .patrocina{padding:0 0 15px 42px;font-family:"Open Sans",sans-serif;font-size:24px;font-weight:400;line-height:110%;color:#27ae60}
 .muro-propio .patrocina strong{font-weight:700}
 .muro-propio .patrocina p{margin:10px 0;padding:10px 0 0;border-top:1px dotted #ecf0f1;font-family:Arial, Helvetica, sans-serif;font-size:11px;line-height:130%;color:#7f8c8d}
-.muro-propio .evento article{width:auto;border:1px solid #ecf0f1;color:#7f8c8d}
+.muro-propio .evento article{width:auto;border:1px solid #bec2c3;color:#7f8c8d}
 .muro-propio .evento .quien{margin:20px;font-size:11px;line-height:130%}
 .muro-propio .quien .avatar{margin:0 10px 0 0;float:left}
 .muro-propio .quien time{color:#bdc3c7}
