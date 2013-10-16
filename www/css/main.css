@@ -2289,7 +2289,8 @@ label.custom{
     color: #000;
     font-size: 13px;
 }
-#proyecto_deportivo .data_user .content label{
+#proyecto_deportivo .data_user .content label,
+#proyecto_deportivo .data_user label.compartir{
     font-size: 10px;
     margin-top: 0;
     color: #CF4536;
@@ -2298,6 +2299,10 @@ label.custom{
     text-shadow: 0 0 0;
     font-weight: normal;
     letter-spacing: 0;
+}
+#proyecto_deportivo .data_user label.compartir{
+    display: block;
+    margin-bottom: 4px;
 }
 #proyecto_deportivo .data_user .content label.nombre_user{
     font-size: 16px;
@@ -2351,11 +2356,13 @@ label.custom{
     text-align: center;
     font-size: 16px;
     color: #2f475f !important;
+    font-weight: bold;
 }
 #proyecto_deportivo .numero_porcentaje span.numero{
     font-size: 18px;
     display: inline-block;
     color: #2f475f !important;
+    font-weight: bold;
 }
 #proyecto_deportivo .link_red_social{
     padding-top: 5px;

@@ -1560,6 +1560,23 @@ function loginFacebookConnect() {
     }
 }
 
+//compartiFacebookWallPost
+//comparte en facebook el proyecto del deportista
+function compartiFacebookWallPost(usuario_title, proyecto_title, proyecto_actividad_patrocinio, proyecto_imagen, enlace_proyecto) {
+    var params = {
+        method: 'feed',
+        name: usuario_title + ' - ' + proyecto_title,
+        link: enlace_proyecto,
+        picture: proyecto_imagen,
+        caption: 'proyecto_actividad_patrocinio',
+        description: proyecto_actividad_patrocinio
+    };
+    FB.ui(params, function(obj) { 
+        //console.log(obj);
+        showAlert("Haz compartido con exito el proyecto!.", "Enhorabuena", "Aceptar");
+    });
+}
+
 //loginTwitter
 function loginTwitter() {
     if(TW_LOGIN_SUCCESS){

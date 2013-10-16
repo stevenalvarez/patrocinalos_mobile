@@ -503,11 +503,10 @@ function loadPerfilDeportista(parent_id, me, usuario_id, show_popup_patrocinar){
             parent.find(".imagen_user").attr("src", BASE_URL_APP+'img/Usuario/169/crop.php?w=150&i='+item.Usuario.imagen);
             parent.find(".nombre_user").html(item.Usuario.title);
             
-            if(item.Usuario.urlfacebook){
-                var element = parent.find(".link_red_social a.facebook");
-                element.attr("href", item.Usuario.urlfacebook);
-                element.attr("onclick", "window.open(this.href,'_system'); return false;");
-            }
+            //compartir proyecto en facebook
+            var element = parent.find(".link_red_social a.facebook");
+            element.attr("onclick", "compartiFacebookWallPost('"+item.Usuario.title+"','"+item.Proyecto.title+"','"+item.Proyecto.paraque_necesito+"','"+BASE_URL_APP+'img/Usuario/169/'+item.Usuario.imagen+"','"+BASE_URL_APP+'proyecto/'+item.Usuario.urlamigable+'/'+item.Proyecto.nombre_url+"')");
+            
             if(item.Usuario.twitter){
                 var element = parent.find(".link_red_social a.twitter");
                 element.attr("href", item.Usuario.twitter);
