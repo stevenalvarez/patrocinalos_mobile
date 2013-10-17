@@ -23,24 +23,6 @@
                 </li>
             </ul>
         </div><!-- /header -->
-        <!-- modal seleccionar foto -->
-        <div class="modal_box" id="modal_box">
-            <a class="close" rel="modal_box" href="javascript:void(0)" onclick="modalOpenHide(this,'hide')">X</a>
-            <div class="content_modal">
-                <div class="content_change">
-                    <h3>SELECCIONAR FOTO</h3>
-                    <img style="width: 100%;display: none;" src="" width="100%" height="auto" class="preview" id="pictureNewImage" />
-                    <p>
-                        Puedes buscar y cargar una foto existente en tu tel&eacute;fono, o puedes hacerte 
-                        una nueva foto con la c&aacute;mara del dispositivo.
-                    </p>
-                    <div class="buttons_upload">
-                        <a href="javascript:void(0)" onclick="capturePhoto('pictureNewImage')">CAPTURAR FOTO</a>
-                        <a href="javascript:void(0)" onclick="getImage('pictureNewImage')">BUSCAR UNA FOTO</a>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- modal zoom foto -->
         <div class="modal_box" id="modal_box_media">
             <a class="close" rel="modal_box_media" href="javascript:void(0)" onclick="modalOpenHide(this,'hide')">X</a>
@@ -48,14 +30,13 @@
                 <div class="zoom_image">
                     <img src="" />
                 </div>
-                
             </div>
         </div>
      	<div data-role="content">
             <div class="content_list_first content_media">
                 <div class="content_upload_foto_options">
-                    <a href="javascript:void(0)" rel="modal_box" onclick="modalOpenHide(this,'show')" class="anadir_foto green">A&ntilde;adir foto</a>
-                    <a href="javascript:void(0)" onclick="subirFotoSeleccionada(this)" class="subir_foto green">Subir foto</a>
+                    <a href="javascript:void(0)" onclick="capturePhoto('pictureNewImage','upload')" class="subir_foto left">CAPTURAR FOTO</a>
+                    <a href="javascript:void(0)" onclick="getImage('pictureNewImage','upload')" class="subir_foto right">BUSCAR UNA FOTO</a>
                 </div>
                 <ul class="list_media_fotos" style="overflow: hidden;">
                     <li class="list_left">

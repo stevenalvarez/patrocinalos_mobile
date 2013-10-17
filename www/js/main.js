@@ -906,14 +906,6 @@ function getFotos(parent_id,user){
                 parent.find("ul.list_media_fotos").find(".no_imagenes").remove();
                 parent.find("ul.list_media_fotos").css("opacity",1);
                 parent.find("ul.list_media_fotos").fadeIn("slow");
-                
-                parent.find("ul.list_media_fotos").find(".preview").each(function(){
-                    var height = ($(this).height()/2) - 12;
-                    var width = ($(this).width()/2) - 12;
-                    $(this).find("a.zoom_media").css("left",width);
-                    $(this).find("a.zoom_media").css("top",height);
-                    $(this).find("a.zoom_media").fadeIn("slow");
-                });
             });
         
         }else{
@@ -965,14 +957,6 @@ function getVideos(parent_id,user){
                 parent.find("ul.list_media_videos").find(".no_videos").remove();
                 parent.find("ul.list_media_videos").css("opacity",1);
                 parent.find("ul.list_media_videos").fadeIn("slow");
-                
-                parent.find("ul.list_media_videos").find(".preview").each(function(){
-                    var height = ($(this).height()/2) - 12;
-                    var width = ($(this).width()/2) - 12;
-                    $(this).find("a.zoom_media").css("left",width);
-                    $(this).find("a.zoom_media").css("top",height);
-                    $(this).find("a.zoom_media").fadeIn("slow");
-                });
             });
         }else{
             parent.find("ul.list_media_videos").append("<li class='no_videos'>A&uacute;n no tienes videos!.</li>");

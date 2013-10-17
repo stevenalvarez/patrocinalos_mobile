@@ -165,7 +165,7 @@ function showLoadingCustom(msg){
 //como parametros se le mandan 2 posibles elementos donde se van a mostrar antes las fotos antes de subirlas 
 //param : elem_preview, id del elemento donde va ha mostrar el preview de la imagen seleccionada
 //return: void
-function getImage(elem_preview) {
+function getImage(elem_preview, upload) {
     navigator.camera.getPicture(function (imageURI){
         
         var pictureImage = document.getElementById(elem_preview);
@@ -174,9 +174,15 @@ function getImage(elem_preview) {
         
         //guardamos la imagen seleccionada para luego enviar al servidor
         IMAGEURI = imageURI;
+        
+        //subimos directamente la foto si nos dice upload
+        if(upload != undefined && upload == "upload"){
+            subirFotoSeleccionada("Foto");
+        }
     },
     function(message) {
-        showAlert('Failed because: ' + message, 'Error', 'Aceptar');
+        var mensaje = message == "no image selected" ? "No se ha seleccionado ninguna imagen" : message;
+        showAlert(mensaje, 'Error', 'Aceptar');
     },
     {
         quality: 50,
@@ -189,7 +195,7 @@ function getImage(elem_preview) {
 //como parametros se le mandan 2 posibles elementos donde se van a mostrar antes las fotos antes de subirlas 
 //param : elem_preview, id del elemento donde va ha mostrar el preview de la imagen seleccionada
 //return: void
-function capturePhoto(elem_preview) {
+function capturePhoto(elem_preview, upload) {
     
     navigator.camera.getPicture(function(imageURI){
         var pictureImage = document.getElementById(elem_preview);
@@ -198,9 +204,15 @@ function capturePhoto(elem_preview) {
           
         //guardamos la imagen capturada para luego enviar al servidor
         IMAGEURI = imageURI;
+        
+        //subimos directamente la foto si nos dice upload
+        if(upload != undefined && upload == "upload"){
+            subirFotoSeleccionada("Foto");
+        }
     }, 
     function(message) {
-        showAlert('Failed because: ' + message, 'Error', 'Aceptar');
+        var mensaje = message == "no image selected" ? "No se ha seleccionado ninguna imagen" : message;
+        showAlert(mensaje, 'Error', 'Aceptar');
     }, 
     { 
         quality: 50, 

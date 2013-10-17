@@ -197,11 +197,12 @@ form .content_textarea{
     overflow: hidden;
     margin: 4px;
     padding-bottom: 4px;
+    text-align: center;
 }
 .content_upload_foto_options a{
     color: #fff !important;
     text-align: center;
-    font-size: 18px;
+    font-size: 15px;
     font-family: 'HelveticaLTStdBoldCondensed';
     border-radius: 4px;
     text-shadow: 1px 1px 0 #000;
@@ -215,7 +216,7 @@ form .content_textarea{
     background-color: #5CB85C;
 }
 .content_upload_foto_options a.subir_foto{
-    width: 28%;
+    width: 46%;
     background-color: #428BCA;
 }
 .content_upload_foto_options a.subir_video{
@@ -3389,11 +3390,11 @@ label.custom{
 #panel_menu .ui-panel-inner li a{
     display: block;
     margin: 0px 10px;
-    padding: 0.35em 0;
+    padding: 0.45em 0;
     font-weight: normal;
     color: #e96262;
     font-size: 12px;
-    letter-spacing: -1px;
+    letter-spacing: 0px;
     padding-left: 24px;
     text-shadow: 0 0 0;
 }
@@ -3472,6 +3473,7 @@ label.custom{
 #panel_menu .ui-collapsible-heading a .ui-btn-text{
     color: #74bed1;
     font-size: 12px;
+    letter-spacing: 0;
 }
 /* Popup Votar y Patrocinio Creado */
 #popupVoto,

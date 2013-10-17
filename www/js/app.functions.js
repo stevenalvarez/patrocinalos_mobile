@@ -35,8 +35,8 @@ function onPhotoURISuccess(imageURI) {
 // Called if something bad happens.
 // 
 function onFail(message) {
-    mensaje = message == "no image selected" ? "no se selecciono ninguna imagen" : message;
-    showAlert(mensaje, 'Aviso', 'Aceptar');
+    mensaje = message == "no image selected" ? "No se ha seleccionado ninguna imagen" : message;
+    showAlert(mensaje, 'Error', 'Aceptar');
 }
 
 // UploadPhoto
@@ -1344,15 +1344,7 @@ function form_subir_video(parent_id, element,user){
                         html_data+='    <img src="'+publicacion.src+'" width="auto" height="auto" />';
                         html_data+='</div>';
                     
-                        parent.find("ul.list_media_videos li.list_left").append(html_data);
-                        var item = parent.find("ul.list_media_videos li.list_left").find(".preview:last");
-                        item.find("img").load(function(){
-                            var height = ($(this).parent().height()/2) - 12;
-                            var width = ($(this).parent().width()/2) - 12;
-                            item.find("a.zoom_media").css("left",width);
-                            item.find("a.zoom_media").css("top",height);
-                            item.find("a.zoom_media").fadeIn("slow");
-                        });
+                        parent.find("ul.list_media_videos li.list_left").prepend(html_data);
                                 
                         clear_form(element);
                         showAlert(data.mensaje, "Aviso", "Aceptar");
@@ -1666,16 +1658,7 @@ function callbackSynchronous(response){
         html_data+='    <img src="'+BASE_URL_APP+'/img/Usuario/169/'+respuesta.nombre_imagen+'" width="auto" height="auto" />';
         html_data+='</div>';
     
-        parent.find("li.list_left").append(html_data);
-        var item = parent.find("li.list_left").find(".preview:last");
-        item.find("img").load(function(){
-            var height = ($(this).parent().height()/2) - 12;
-            var width = ($(this).parent().width()/2) - 12;
-            item.find("a.zoom_media").css("left",width);
-            item.find("a.zoom_media").css("top",height);
-            item.find("a.zoom_media").fadeIn("slow");
-        });
-        
+        parent.find("li.list_left").prepend(html_data);
         showAlert("Se ha subido correctamente la foto!.", 'Aviso', 'Aceptar');
         $.mobile.loading( 'hide' );
     }
@@ -2093,12 +2076,14 @@ function actualizar_panel(){
 
 /*EFECTO DE ZOOM SOBRE LA FOTO*/
 function zoomPhoto(thiss){
+    jQuery("#modal_box_media").css("padding-top",$(document).scrollTop()+"px");
     jQuery("#modal_box_media").find(".zoom_image img").attr("src",jQuery(thiss).attr("rel"));
     jQuery("#modal_box_media").fadeIn("fast");
 }
 
 /*REPRODUCE EL VIDEO*/
 function playVideo(thiss){
+    jQuery("#modal_box_playvideo").css("padding-top",$(document).scrollTop()+"px");
     jQuery("#modal_box_playvideo").find(".ui-icon-loading").show();
     jQuery("#modal_box_playvideo").find(".zoom_image iframe").attr("src",jQuery(thiss).attr("rel"));
     jQuery("#modal_box_playvideo").fadeIn("fast");
@@ -2107,8 +2092,18 @@ function playVideo(thiss){
     });
 }
 
+function playVideoPublicacion(thiss){
+    jQuery("#modal_box_playvideo_publicacion").css("padding-top",$(document).scrollTop()+"px");
+    jQuery("#modal_box_playvideo_publicacion").find(".ui-icon-loading").show();
+    jQuery("#modal_box_playvideo_publicacion").find(".zoom_image iframe").attr("src",jQuery(thiss).attr("rel"));
+    jQuery("#modal_box_playvideo_publicacion").fadeIn("fast");
+    jQuery("#modal_box_playvideo_publicacion").find(".zoom_image iframe").load(function(){
+        jQuery("#modal_box_playvideo_publicacion").find(".ui-icon-loading").hide();
+    });
+}
+
 /*SUBE LA IMAGEN QUE SE SELECCION0 DESDE EL DIPOSITIVO O QUE SE CAPTURA CON EL DISPOSITIVO, LO HACE A TRAVEZ DEL EVENTO "SUBIR FOTO"*/
-function subirFotoSeleccionada(thiss){
+function subirFotoSeleccionada(folder){
     //controlamos que el valor de la imagen a subir no este vacia, 
     //eso significa que se selecciono un imagen o se capturo una imagen
     if(IMAGEURI != ''){
@@ -2116,11 +2111,11 @@ function subirFotoSeleccionada(thiss){
         //creamos un objecto con los parametros que queremos que llegue al servidor
         //para luego ahi hacer otra operaciones con esos parametros.
         var params = new Object();
-        params.folder = "Foto"; // la carpeta donde se va a guardar la imagen
+        params.folder = folder; // la carpeta donde se va a guardar la imagen
         params.usuario_id = COOKIE.id; // id del usuario para el cual es la nueva imagen.
         
         //Utilizamos la funcion de subir la imagen de forma sincrona, porque vamos a efectuar otra operacion
-        showLoadingCustom('Subiendo!, por favor espere...');
+        showLoadingCustom('Subiendo por favor espere...');
         uploadImagenSynchronous(params);
     
     }else{
@@ -2132,16 +2127,7 @@ function subirFotoSeleccionada(thiss){
 /*orientation:puede ser lanscape o portrait*/
 /*page_id:el id de la pagina actual en el que se realizo el movimiento*/
 function callbackOrientationChange(orientation, page_id){
-    if(page_id == "mis_fotos" || page_id == "mis_videos"){
-        var parent = $("#"+page_id);
-        parent.find("ul.list_media_fotos, ul.list_media_videos").find(".preview").each(function(){
-            var height = ($(this).height()/2) - 12;
-            var width = ($(this).width()/2) - 12;
-            $(this).find("a.zoom_media").css("left",width);
-            $(this).find("a.zoom_media").css("top",height);
-            $(this).find("a.zoom_media").fadeIn("slow");
-        });
-    }
+    
 }
 
 /*borramos los datos de la cookie*/

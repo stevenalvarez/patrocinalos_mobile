@@ -1178,11 +1178,11 @@
  .modal_box a.close{
    background: #e7666a;
     display: inline-block;
-    width: 35px;
-    height: 35px;
+    width: 36px;
+    height: 34px;
     border-radius: 120px;
     text-align: center;
-    font-size: 26px;
+    font-size: 24px;
     color: #fff !important;
     line-height: 34px;
     font-family: 'HelveticaLTStdLight';
@@ -1222,7 +1222,11 @@
     font-family: 'HelveticaLTStdLight';
     font-size: 13px;
  }
- 
+ .modal_box .content_modal .content_change p.texto_ejemplo{
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+ }
  .modal_box .content_modal .content_change .buttons_upload{
     margin: 10px 0;
     overflow: hidden;
@@ -1347,15 +1351,21 @@
     float: left;
     width: 50%;
  }
+ .list_media_fotos li a.zoom_media{
+    background: url("../img/bg_foto_publicacion.png") no-repeat center center transparent;
+ }
+ .list_media_videos li a.zoom_media{
+    background: url("../img/bg_video_publicacion.png") no-repeat center center transparent;
+ }
  .list_media_fotos li a.zoom_media,
  .list_media_videos li a.zoom_media{
     position: absolute;
-    background: url("../img/zoom_icon.png") no-repeat center center transparent;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 28px;
     display: block;
-    background-size: 35px;
-    display: none;
+    right: 7px;
+    top: 7px;
+    border-radius: 4px;
  }
  .list_media_fotos li div.preview,
  .list_media_videos li div.preview{
