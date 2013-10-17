@@ -1862,6 +1862,7 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                             if(result.aportacion_realizada){
                                 //Cerramos el popup
                                 $("#popupPatrocinar").popup("close");
+                                document.getElementById("formulario_pago_individual").reset();
                                 
                                 var url_pago = result.url_redirect_pago;
                                 //window.location = url_pago;
@@ -1893,6 +1894,7 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                             if(result.aportacion_realizada){
                                 //Cerramos el popup
                                 $("#popupPatrocinar").popup("close");
+                                document.getElementById("formulario_pago_individual").reset();
                                 
                                 var url_pago = result.url_redirect_pago;
                                 var params = result.params;
