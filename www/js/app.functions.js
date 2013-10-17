@@ -1647,6 +1647,7 @@ function modalOpenHide(thiss,status,tipo){
 //para luego hacer otros procedimientos
 //recibe toda la respuesta del servidor
 function callbackSynchronous(response){
+    console.log("c");
     //aqui controlamos que mas se hace despues de subir la imagen
     //podemos ejecutar actualizaciones, mandar un post, etc.
     var respuesta = $.parseJSON(response);
@@ -1661,6 +1662,7 @@ function callbackSynchronous(response){
         parent.find("li.list_left").prepend(html_data);
         showAlert("Se ha subido correctamente la foto!.", 'Aviso', 'Aceptar');
         $.mobile.loading( 'hide' );
+        console.log("d");
     }
 }
 
@@ -2104,9 +2106,11 @@ function playVideoPublicacion(thiss){
 
 /*SUBE LA IMAGEN QUE SE SELECCION0 DESDE EL DIPOSITIVO O QUE SE CAPTURA CON EL DISPOSITIVO, LO HACE A TRAVEZ DEL EVENTO "SUBIR FOTO"*/
 function subirFotoSeleccionada(folder){
+    console.log(folder);
     //controlamos que el valor de la imagen a subir no este vacia, 
     //eso significa que se selecciono un imagen o se capturo una imagen
     if(IMAGEURI != ''){
+        console.log("a");
         
         //creamos un objecto con los parametros que queremos que llegue al servidor
         //para luego ahi hacer otra operaciones con esos parametros.

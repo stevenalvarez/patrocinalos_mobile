@@ -197,7 +197,6 @@ form .content_textarea{
     overflow: hidden;
     margin: 4px;
     padding-bottom: 4px;
-    text-align: center;
 }
 .content_upload_foto_options a{
     color: #fff !important;
@@ -210,6 +209,7 @@ form .content_textarea{
     padding: 4px;
     display: inline-block;
     box-shadow: 2px 2px 5px #aaa;
+    padding-top: 8px;
 }
 .content_upload_foto_options a.anadir_foto{
     width: 35%;

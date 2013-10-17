@@ -176,7 +176,7 @@ function getImage(elem_preview, upload) {
         IMAGEURI = imageURI;
         
         //subimos directamente la foto si nos dice upload
-        if(upload != undefined && upload == "upload"){
+        if(upload !== undefined && upload == "upload"){
             subirFotoSeleccionada("Foto");
         }
     },
@@ -206,7 +206,7 @@ function capturePhoto(elem_preview, upload) {
         IMAGEURI = imageURI;
         
         //subimos directamente la foto si nos dice upload
-        if(upload != undefined && upload == "upload"){
+        if(upload !== undefined && upload == "upload"){
             subirFotoSeleccionada("Foto");
         }
     }, 
@@ -253,6 +253,7 @@ function uploadImagenAsynchronous(params) {
 //params: parametros que contienen por ejemplo la carpeta donde se va a guardar la imagen, nombre, etc.
 //return: void
 function uploadImagenSynchronous(params) {
+    console.log("c");
     
     var options = new FileUploadOptions();
     options.fileKey = "file";
