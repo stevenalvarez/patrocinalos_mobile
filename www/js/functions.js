@@ -253,7 +253,6 @@ function uploadImagenAsynchronous(params) {
 //params: parametros que contienen por ejemplo la carpeta donde se va a guardar la imagen, nombre, etc.
 //return: void
 function uploadImagenSynchronous(params) {
-    console.log("c");
     
     var options = new FileUploadOptions();
     options.fileKey = "file";
