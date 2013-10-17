@@ -1754,6 +1754,21 @@ function llenarDeportesPatrocinador(parent_id){
 	});
 }
 
+//LLENAR ONG'S PARA EL FORMULARIO
+function llenarOngs(parent_id){
+	$.getJSON(BASE_URL_APP + 'ongs/mobileGetOngs', function(data) {
+		var ongs = data.items;
+        var html = "";
+        $.each(ongs, function(index, item) {
+            html+= "<option value="+item.ongs.id+">"+item.ongs.title+"</option>";
+        });
+        
+        jQuery("#"+parent_id).find("#ong_id").append(html);
+        //actualiza el texto
+        fixedSelector(parent_id, 'ong_id');
+	});
+}
+
 //fixea el error que hay cuando se selecciona un elemento del selector
 function fixedSelector(form_id, element_selector){
     var selector_deporte = jQuery('#'+form_id).find("#" +element_selector);
@@ -1803,15 +1818,32 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
         return false;
     });
     
+    //llenamos las ongs
+    llenarOngs(parent.attr("id"));
+    
+    form_pago = parent.find("#formulario_pago_individual");
+    form_pago.find("#pago_monto").keyup(function(){
+        var monto = 0;
+        if($(this).val() == ""){
+            monto = 0;
+        }else{
+            if(validarInt("pago_monto")){
+                monto = $(this).val();
+            }
+        }
+        //calculamos el porcentaje, por ahora siempre es 5 %
+        var porcentaje = 5;
+        var porcentaje_ong = parseInt(monto) -  (parseInt(monto) * ((100-parseInt(porcentaje))/100));
+        form_pago.find("#porcentaje").find("span").html("(" + parseFloat(porcentaje_ong).toFixed(2) + "&euro;)");
+    });
+    
     //PAGO MEDIANTE PAYPAL Y TPV
-    form_pago = parent.find("#formulario_pago_individual"); 
-    //START PAYPAL
     form_pago.find("a.pago_paypal, a.pago_tpv_4B").off('click').on("click", function(){
         var elem = $(this);
         var pago_monto = form_pago.find("#pago_monto").val();
         var pago_termino = form_pago.find("#pago_termino").is(":checked") ? true : false;
         
-        if($.trim(pago_monto) != "" && (parseInt(pago_monto) > 0)){
+        if($.trim(pago_monto) != "" && (parseInt(pago_monto) > 0 && validarInt("pago_monto"))){
             if(isLogin()){
                 
                 //PAGO PAYPAL
@@ -1832,7 +1864,7 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                                 $("#popupPatrocinar").popup("close");
                                 
                                 var url_pago = result.url_redirect_pago;
-                                //window.location = site_url;
+                                //window.location = url_pago;
                                 window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
                                 window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoPayPal(loc, me); }; // When the ChildBrowser URL changes we need to track that
                             }else{
@@ -1886,7 +1918,7 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
             form_pago.find("#pago_monto").val("");
         }
     });
-    //END PAYPAL
+    //END
 }
 
 //CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO POR PAYPAL
@@ -1930,6 +1962,15 @@ function procesoPagoPayPal(loc, usuario_id){
                     var result = $.parseJSON(data);
                     
                     if(result.update_success){
+                        if(result.publicacion_nueva != ""){
+                            var parent = $("#proyecto_deportivo");
+                            parent.find("#publicaciones").css("opacity",0.5);
+                            parent.find("#publicaciones").prepend(result.publicacion_nueva);
+                            parent.find("#publicaciones").promise().done(function() {
+                                parent.find("#publicaciones").animate({opacity: 1}, 500 );
+                                $(".age").age();
+                            });
+                        }
                         showAlert(result.success_alcanzado, "Aviso", "Aceptar");
                     }else{
                         showAlert(result.error_alcanzado, "Error", "Aceptar");
