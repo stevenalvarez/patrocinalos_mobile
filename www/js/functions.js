@@ -311,3 +311,13 @@ function formatDate(date){
     var format = date.split("-");
     return format[2]+"/"+format[1]+"/"+format[0];
 }
+
+function validarInt(id) {
+    var error = true;
+    elemento = document.getElementById(id);
+    var re = /^(-)?[0-9]*$/;
+    if (!re.test(elemento.value)) {
+        error = false;
+    }
+    return error;
+}

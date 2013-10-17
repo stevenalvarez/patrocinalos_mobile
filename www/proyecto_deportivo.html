@@ -134,6 +134,9 @@
                             </div>
                         </div>
                         <div class="container_info_bottom">
+                            <div class="content_textarea">
+                                <textarea cols="10" rows="5" name="mensaje" placeholder="&iquest;Qui&eacute;res dejar un mensaje de apoyo al deportista?" data-mini="true"></textarea>
+                            </div>
                             <div class="pago_realizar">
                                 <div class="monto_euro">
                                      <label>Patrocinio a transferir: </label>
@@ -143,18 +146,26 @@
                             <div class="patrocinio_termino">
                                 <fieldset data-role="controlgroup" data-theme="c">
                                     <label>
-                                        <input id="pago_termino" name="anonimo" type="checkbox"/>Quiero que mi patrocinio sea an&oacute;nimo
+                                        <input id="pago_termino" name="anonimo" type="checkbox"/>Aportaci&oacute;n an&oacute;nima
                                     </label>
+                                    <label class="texto_anonimo">No figuran tu nombre ni apellidos en la lista del patrocinado</label>
                                 </fieldset>
+                            </div>
+                            <div class="content_ong">
+                                <p class="pratrocinar_por"> Selecciona la ong para la cual se destinar&aacute; un <b>5%</b> de lo que aportes.</p>
+                                <select data-theme="c" name="ong_id" id="ong_id">
+                                </select>
+                                <p id="porcentaje">Porcentaje para esta ong <span>(0.00&euro;)</span></p>
                             </div>
                             <p class="pratrocinar_por">Realiza el patrocinio de forma segura a trav&eacute;s de Paypal o mediante la pasarela TPV-4B.</p>
                         </div>
                         <div class="patrocinar_pago">
+                            <label>Patrocinar Mediante: </label>
                             <div class="paypal left">
-                                <a class="pago_paypal" lang="PAYPAL" style="margin-bottom:8px" href="javascript:void(0)" data-theme="r" data-role="button">PATROCINAR VIA PAYPAL</a>
+                                <a class="pago_paypal" lang="PAYPAL" style="margin-bottom:8px" href="javascript:void(0)" data-theme="r" data-role="button">PAYPAL</a>
                             </div>
                             <div class="tpv right">
-                                <a class="pago_tpv_4B" lang="TPV" style="margin-bottom:8px" href="javascript:void(0)" data-theme="r" data-role="button">PATROCINAR VIA TPV 4B</a>
+                                <a class="pago_tpv_4B" lang="TPV" style="margin-bottom:8px" href="javascript:void(0)" data-theme="r" data-role="button">TPV 4B</a>
                             </div>
                         </div>
                     </form>

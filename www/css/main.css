@@ -3679,7 +3679,21 @@ label.custom{
 .popup_recompensa.pago .container_info_bottom{
     margin: 0 8px;
     border-bottom: 0;
-    letter-spacing: -1px;    
+    letter-spacing: -1px;
+}
+.popup_recompensa.pago .container_info_bottom label.texto_anonimo{
+    font-size: 11px;
+    color: #7f7f7f;
+    margin-left: 25px;
+    margin-top: -7px;
+    display: block;
+}
+.popup_recompensa.pago .container_info_bottom .content_textarea{
+    font-size: 11px;
+    padding-top: 5px;
+}
+.popup_recompensa.pago .container_info_bottom .content_textarea textarea{
+    font-size: 11px;
 }
 .popup_recompensa.pago .container_info_bottom .pago_realizar{
     overflow: hidden;
@@ -3698,10 +3712,11 @@ label.custom{
     margin: 0;
     background: url("../img/bg_euro.png") no-repeat scroll left center #fff;
     background-size: 20px;
-    background-position: 6px;    
+    background-position: 6px;
 }
 .popup_recompensa.pago .container_info_bottom .patrocinio_termino fieldset{
     margin-top: 2px;
+    margin-bottom: 8px;
 }
 .popup_recompensa.pago .container_info_bottom .patrocinio_termino label{
     background: transparent;
@@ -3714,7 +3729,7 @@ label.custom{
 .popup_recompensa.pago .container_info_bottom .patrocinio_termino label .ui-btn-text{
     font-size: 13px;
     text-shadow: 0 0 0;
-    font-weight: normal;    
+    font-weight: normal;
 }
 .popup_recompensa.pago .container_info_bottom .patrocinio_termino .ui-icon.ui-icon{
     left: 0;
@@ -3728,6 +3743,19 @@ label.custom{
 .popup_recompensa.pago .container_info_bottom p.pratrocinar_por{
     margin-bottom: 5px;
 }
+.popup_recompensa.pago .container_info_bottom .ui-select .ui-btn-text > span{
+    display: inline-block;
+    padding-top: 4px;
+    font-size: 15px;
+}
+.popup_recompensa.pago .container_info_bottom #porcentaje{
+    color: #CF4536;
+    padding-bottom: 8px;    
+}
+.popup_recompensa.pago .container_info_bottom #porcentaje span{
+    font-weight: bold;
+    color: #000;
+}
 .popup_recompensa.pago .patrocinar_pago{
     margin: 0 5px;
     overflow: hidden;
@@ -3738,10 +3766,16 @@ label.custom{
 }
 .popup_recompensa.pago .patrocinar_pago .ui-btn-inner{
     padding-left: 5px;
-    padding-right: 5px;    
+    padding-right: 5px;
 }
 .popup_recompensa.pago .patrocinar_pago .ui-btn-text{
     font-size: 13px;  
+}
+.popup_recompensa.pago .patrocinar_pago label{
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: -1px;
 }
 .popup_recompensa.pago .popup_footer p{
     background: url("../img/bg_pagos_por.png") no-repeat scroll right center transparent;
@@ -3752,7 +3786,7 @@ label.custom{
     font-size: 11px;
     display: block;
     width: 48%;
-    line-height: 11px;    
+    line-height: 11px;
 }
 
 /* POPUP ZOOM FOTO */
@@ -3772,7 +3806,7 @@ label.custom{
     width: 28px;
     background-color: transparent;
     background-position: 0 0;
-    background-repeat: no-repeat;    
+    background-repeat: no-repeat;
 }
 .popup_recompensa .social_red a.owner_like{
     background-image: url("../img/bg_like_sprite.png");
