@@ -902,18 +902,18 @@ function form_solicitar_editar_patrocinio(parent_id, element, user){
             if(success){
                 var item = data.proyecto;
                 formulario.find("input[name='proyecto_title']").val(item.Proyecto.title).parent().hide(); //ocultamos esto porque en la web tampoco puedes modificar el titulo
-                if(item.Proyecto.serializado.actividad_patrocinio != undefined && item.Proyecto.serializado.actividad_patrocinio != ""){
+                if(item.Proyecto.serializado.actividad_patrocinio !== undefined && item.Proyecto.serializado.actividad_patrocinio != ""){
                     formulario.find("textarea[name='proyecto_actividad_patrocinio']").val(item.Proyecto.serializado.actividad_patrocinio);
                 }
                 formulario.find("input[name='proyecto_monto']").val(item.Proyecto.monto).parent().hide(); //ocultamos esto porque en la web tampoco puedes modificar el titulo
-                if(item.Proyecto.serializado.enlace != undefined && item.Proyecto.serializado.enlace != ""){
+                if(item.Proyecto.serializado.enlace !== undefined && item.Proyecto.serializado.enlace != ""){
                     formulario.find("input[name='proyecto_enlace']").val(item.Proyecto.serializado.enlace);
                 }
                 formulario.find("input[name='proyecto_fecha_limite']").val(item.Proyecto.fecha_fin_virtual);
-                if(item.Proyecto.serializado.masinfo != undefined && item.Proyecto.serializado.masinfo != ""){
+                if(item.Proyecto.serializado.masinfo !== undefined && item.Proyecto.serializado.masinfo != ""){
                     formulario.find("textarea[name='proyecto_masinfo']").val(item.Proyecto.serializado.masinfo);
                 }
-                if(item.Proyecto.serializado.imagen != undefined && item.Proyecto.serializado.imagen != ""){
+                if(item.Proyecto.serializado.imagen !== undefined && item.Proyecto.serializado.imagen != ""){
                     formulario.find("img").attr("src",BASE_URL_APP+'img/Usuario/800/'+item.Proyecto.serializado.imagen).show();
                     formulario.promise().done(function() {
                         $(this).find("img").load(function(){
@@ -1252,7 +1252,7 @@ function form_configurar_alertas(element,user){
         var alertas = data.item;
         if(alertas){
             $.each(alertas,function(index,value){
-                if(value != undefined && value != ""){
+                if(value !== undefined && value != ""){
                     formulario.find("input[name='alerta_"+index+"']").parent().find("label").trigger("click");
                     formulario.find("input[name='alerta_"+index+"']").attr("checked","checked");
                 }
@@ -1635,7 +1635,7 @@ function openOnWindow(element, target){
 function modalOpenHide(thiss,status,tipo){
     if(status=="hide"){
         jQuery("#"+jQuery(thiss).attr("rel")).fadeOut("fast");
-        if(tipo != undefined && tipo == "video"){
+        if(tipo !== undefined && tipo == "video"){
             jQuery("#"+jQuery(thiss).attr("rel")).find("iframe").attr("src","");
         }
     }
