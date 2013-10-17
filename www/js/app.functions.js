@@ -987,8 +987,9 @@ function form_solicitar_editar_patrocinio(parent_id, element, user){
                             if(accion == "crear"){
                                 //establecemos el id del proyecto creado, con eso sabemos si tiene ya un proyecto creado
                                 formulario.find("input[name='u_proyecto_id']").val(data.proyecto_id);
-                                //actualizamos la cookie
+                                //actualizamos la cookie y re-escribimos la cookie con esa nueva variable
                                 COOKIE.proyecto_id = data.proyecto_id;
+                                reWriteCookie("user","proyecto_id",data.proyecto_id);
                                 //actualizamos el panel
                                 actualizar_panel();
                                 
@@ -2132,6 +2133,6 @@ function callbackOrientationChange(orientation, page_id){
 
 /*borramos los datos de la cookie*/
 function logout(){
-    createCookie("user", "", 0);
+    eraseCookie("user");
     redirectLogin();
 }

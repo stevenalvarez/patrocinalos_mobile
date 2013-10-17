@@ -295,6 +295,18 @@ function readCookie(name) {
 	return null;
 }
 
+function reWriteCookie(name,attr,value) {
+    var cookie_name = readCookie(name);
+    var parseData = $.parseJSON(cookie_name);
+    parseData[attr] = value;
+    var stringify = JSON.stringify(parseData)
+    document.cookie = name+"="+stringify;
+}
+
+function eraseCookie(name) {
+	createCookie(name,"",-1);
+}
+
 function formatDate(date){
     var format = date.split("-");
     return format[2]+"/"+format[1]+"/"+format[0];
