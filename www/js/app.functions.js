@@ -980,7 +980,6 @@ function form_solicitar_editar_patrocinio(parent_id, element, user){
                                 
                                 //Utilizamos la funcion de subir la imagen de forma asincrona, ya que solo
                                 //va subir la imagen y nada mas, ahi termina el proceso.
-                                console.log(params);
                                 uploadImagenAsynchronous(params);
                             }
                             
@@ -999,7 +998,7 @@ function form_solicitar_editar_patrocinio(parent_id, element, user){
                             }
                             
                             //mostramos el mensaje de exito al guardar el patrocinio
-                            //showAlert(data.mensaje, "Aviso", "Aceptar");
+                            showAlert(data.mensaje, "Aviso", "Aceptar");
                         }else{
                             showAlert(data.mensaje, "Error", "Aceptar");
                         }
