@@ -404,15 +404,15 @@ function getEntradasByCarrousel(parent_id, hash){
             parent.find('#lista_actividades').listview('refresh');
             
             //mostralos la lista de actividad de patrocinalos
-            parent.find("#lista_actividades").promise().done(function() {
+            /*parent.find("#lista_actividades").promise().done(function() {
                 //ocultamos loading
                 $.mobile.loading( 'hide' );
                 $(".age").age();
-            });
+            });*/
             
             //sacamos la actividad en las rondas
             var notificaciones_ronda =  data.notificaciones_ronda;
-            showNotificacionesRonda(parent,notificaciones_ronda,false);
+            //showNotificacionesRonda(parent,notificaciones_ronda,false);
             
             //mostramos el tab que se selecciono
             if(hash !== undefined && hash == "#actividad_ronda"){
