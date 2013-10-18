@@ -2109,11 +2109,23 @@ function actualizar_panel(){
     if(COOKIE !== ''){
         var user = COOKIE;
         if(user.proyecto_id !== undefined && parseInt(user.proyecto_id) > 0){
-            $(".item_solicitar_editar_patrocinio").html("EDITAR PROYECTO");
+            //actualizamos el texto a "EDITAR PROYECTO", PORQUE TIENE UN PROYECTO
+            $(".mi_patrocinio").find("ul li:nth-child(2)").find("a").html("EDITAR PROYECTO"); //solicitar|editar patrocinio
         }
-        //controlamos si tiene el proyecto activo solo asi se muestra la opcion "mis recaudaciones"
-        if(user.proyecto_estado !== undefined && user.proyecto_estado == "activo"){
-            $(".item_mis_recaudaciones").parent().show();
+        
+        //mostramos las opciones del panel-menu, segun el tipo de usuario
+        if(user.tipo == "empresa"){
+            $(".actividad_comunidad").hide();
+            $(".mi_patrocinio").hide();
+            $(".mi_perfil").hide();
+        }else if(user.tipo != "patrocinador" && user.tipo != "seguidor"){
+            //controlamos si tiene el proyecto activo solo asi se muestra la opcion "mis recaudaciones"
+            if(user.proyecto_estado !== undefined && user.proyecto_estado == "activo"){
+                $(".mi_patrocinio").find("ul li:nth-child(3)").show(); //mis recaudaciones
+            }
+            $(".mi_patrocinio").find("ul li:nth-child(1)").show(); //mis proyectos
+            $(".mi_patrocinio").find("ul li:nth-child(2)").show(); //solicitar|editar patrocinio
+            $(".mi_patrocinio").find("ul li:nth-child(5)").show(); //mi widget
         }
     }
 }
