@@ -469,15 +469,16 @@ function getEntradasByCarrousel(parent_id, hash){
                 
                 //iniciamos el carousel
                 parent.find("#carrousel_proyectos").find(".m-carousel-inner").promise().done(function() {
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );
+                    parent.find(".ui-content").fadeIn("slow");
+                    
                     //volvemos a recargar el plugin unicamente si es que los datos son mas de 1, porque inicialmente el html es uno y eso cuenta
                     if(items_proyectos > 1){
                         parent.find('#carrousel_proyectos').carousel("reload");
                     }else{
-                        parent.find('#carrousel_proyectos').carousel();
+                        parent.find('#carrousel_proyectos').carousel("reload");
                     }
-                    //ocultamos loading
-                    $.mobile.loading( 'hide' );
-                    parent.find(".ui-content").fadeIn("slow");
                 });
             }
         } 
