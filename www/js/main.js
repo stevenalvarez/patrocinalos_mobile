@@ -407,7 +407,7 @@ function getEntradasByCarrousel(parent_id, hash){
             parent.find("#lista_actividades").promise().done(function() {
                 //ocultamos loading
                 $.mobile.loading( 'hide' );
-                //$(".age").age();
+                parent.find('#lista_actividades').find(".age").age();
             });
             
             //sacamos la actividad en las rondas
