@@ -157,11 +157,10 @@ $(document).on('pageinit', "#login", function(){
 });
 
 //HOME
-$(document).on('pageshow', "#home", function(){
-    alert("Khasdf");
+$('#home').live('pagebeforeshow', function(event, ui) {
     if(isLogin()){
-        var hash = window.location.hash;
-        getEntradasByCarrousel($(this).attr('id'), hash);
+        //var hash = window.location.hash;
+        getEntradasByCarrousel($(this).attr('id'), "");
     }else{
         redirectLogin();
     }
@@ -358,80 +357,11 @@ function getUsuariosRandom() {
 //CARROUSEL,ACTIVIDAD EN PATROCINALOS Y ACTIVIDAD EN LA RONDA, PARA LA PAGINA HOME 
 function getEntradasByCarrousel(parent_id, hash){
     var parent = $("#"+parent_id);
-    parent.find(".ui-content").hide();
-    parent.find("#tabs_opciones a").bind("touchstart click",function(){
-        $(this).parent().find("a").removeClass("active");
-        $(this).addClass("active");
-        if($(this).attr("id") == "tab_actividad_rondas"){
-            parent.find('#lista_actividades').hide();
-            parent.find('#lista_actividades_ronda').show();            
-        }else{
-            parent.find('#lista_actividades_ronda').hide();
-            parent.find('#lista_actividades').show();            
-        }
-    });
     
     //obtenemos los proyectos, actividad en patrocinalos y actividad en ronda
     $.getJSON(BASE_URL_APP+'rondas/mobileHome', function(data) {
         if(data){
-            
-            //mostramos loading
-            $.mobile.loading('show');
-            
-            //actividad en patrocinalos
-            parent.find('#lista_actividades').find("li").remove();
-            var notificaciones_patrocinalos =  data.notificaciones_sistema;
-            $.each(notificaciones_patrocinalos, function(index, item) {
-                html='<li>';
-                html+='<div class="recorte">';
-                html+='<img src="'+BASE_URL_APP+'img/Usuario/169/'+item.Notificacion.usuario_imagen+'"/>';
-                html+='</div>';
-                html+='<div class="content_descripcion left">';
-                html+='<time class="age" date="'+item.Notificacion.date+'" datetime="'+item.Notificacion.datetime+'">&nbsp;</time>';
-                html+='<h4 class="ui-li-heading">';
-                if(item.Notificacion.tipo == "like"){
-                    html+='A <b>'+item.Notificacion.usuario_title+'</b>';
-                }else{
-                    html+='<b>'+item.Notificacion.usuario_title+'</b>';
-                }
-                html+='</h4>';
-                html+='<p class="ui-li-desc">'+item.Notificacion.texto_descripcion+'</p>';
-                html+='</div>';
-                html+='</li>';
-                
-                parent.find('#lista_actividades').append(html);
-             });
-             
-            parent.find('#lista_actividades').listview('refresh');
-            
-            //mostralos la lista de actividad de patrocinalos
-            parent.find("#lista_actividades").promise().done(function() {
-                //ocultamos loading
-                $.mobile.loading( 'hide' );
-                $(".age").age();
-            });
-            
-            //sacamos la actividad en las rondas
-            var notificaciones_ronda =  data.notificaciones_ronda;
-            showNotificacionesRonda(parent,notificaciones_ronda,false);
-            
-            //mostramos el tab que se selecciono
-            if(hash == "#actividad_ronda"){
-                parent.find('#tab_actividad_patrocinalos').removeClass("active");
-                parent.find('#tab_actividad_rondas').addClass("active");
-                parent.find('#lista_actividades_ronda').show();
-            }else{
-                parent.find('#tab_actividad_rondas').removeClass("active");
-                parent.find('#tab_actividad_patrocinalos').addClass("active");
-                parent.find('#lista_actividades').show();
-            }
-                     
-            //cargamos los proyectos si es mayor a lo que actulamente se muestra, esto se da por si se vuelve a la page
-            var items_proyectos = parent.find("#carrousel_proyectos").find(".m-item").length;
-            if(data.entradas.length > items_proyectos){
-                parent.find("#carrousel_proyectos").find(".m-item").remove();
-                parent.find("#carrousel_proyectos").find(".m-carousel-controls").find("a").remove();
-                
+                            
                 //entradas de los deportista que tienen proyectos
                 var entradas = data.entradas;
                	$.each(entradas, function(index, item) {
@@ -468,19 +398,10 @@ function getEntradasByCarrousel(parent_id, hash){
                     parent.find("#carrousel_proyectos").find(".m-carousel-controls").append('<a href="#" data-slide="'+(index+1)+'">'+(index+1)+'</a>');
                 });
                 
-                //iniciamos el carousel
-                parent.find("#carrousel_proyectos").find(".m-carousel-inner").promise().done(function() {
-                    //volvemos a recargar el plugin unicamente si es que los datos son mas de 1, porque inicialmente el html es uno y eso cuenta
-                    if(items_proyectos > 1){
-                        parent.find('#carrousel_proyectos').carousel("reload");
-                    }else{
-                        parent.find('#carrousel_proyectos').carousel();
-                    }
-                    //ocultamos loading
-                    $.mobile.loading( 'hide' );
-                    parent.find(".ui-content").fadeIn("slow");
-                });
-            }
+                setTimeout(function(){
+                    parent.find('#carrousel_proyectos').carousel();
+                    alert("hkasfd");
+                },5000);
         } 
     });
 }
