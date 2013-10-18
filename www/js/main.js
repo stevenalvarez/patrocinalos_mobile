@@ -157,7 +157,8 @@ $(document).on('pageinit', "#login", function(){
 });
 
 //HOME
-$(document).on('pageinit', "#home", function(){    
+$(document).on('pageshow', "#home", function(){
+    alert("Khasdf");
     if(isLogin()){
         var hash = window.location.hash;
         getEntradasByCarrousel($(this).attr('id'), hash);
