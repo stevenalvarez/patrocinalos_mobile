@@ -404,15 +404,15 @@ function getEntradasByCarrousel(parent_id, hash){
             parent.find('#lista_actividades').listview('refresh');
             
             //mostralos la lista de actividad de patrocinalos
-            /*parent.find("#lista_actividades").promise().done(function() {
+            parent.find("#lista_actividades").promise().done(function() {
                 //ocultamos loading
                 $.mobile.loading( 'hide' );
-                $(".age").age();
-            });*/
+                //$(".age").age();
+            });
             
             //sacamos la actividad en las rondas
             var notificaciones_ronda =  data.notificaciones_ronda;
-            //showNotificacionesRonda(parent,notificaciones_ronda,false);
+            showNotificacionesRonda(parent,notificaciones_ronda,false);
             
             //mostramos el tab que se selecciono
             if(hash !== undefined && hash == "#actividad_ronda"){
@@ -467,14 +467,20 @@ function getEntradasByCarrousel(parent_id, hash){
                     parent.find("#carrousel_proyectos").find(".m-carousel-controls").append('<a href="#" data-slide="'+(index+1)+'">'+(index+1)+'</a>');
                 });
                 
-                    //ocultamos loading
-                    $.mobile.loading( 'hide' );
-                    parent.find(".ui-content").fadeIn("slow");
-                
-                setTimeout(function(){
-                    parent.find('#carrousel_proyectos').carousel();
-                    alert("hkasfd");
-                },5000);
+                //iniciamos el carousel
+                parent.find("#carrousel_proyectos").find(".m-carousel-inner").promise().done(function() {
+                    $(this).find("img.entrada_imagen:last").load(function(){
+                        //volvemos a recargar el plugin unicamente si es que los datos son mas de 1, porque inicialmente el html es uno y eso cuenta
+                        if(items_proyectos > 1){
+                            parent.find('#carrousel_proyectos').carousel("reload");
+                        }else{
+                            parent.find('#carrousel_proyectos').carousel();
+                        }
+                        //ocultamos loading
+                        $.mobile.loading( 'hide' );
+                        parent.find(".ui-content").fadeIn("slow");
+                    });
+                });
             }
         } 
     });

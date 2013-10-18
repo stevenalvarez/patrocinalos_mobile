@@ -2095,7 +2095,7 @@ function showNotificacionesRonda(parent,notificaciones_ronda,show_lista){
     parent.find("#lista_actividades_ronda").promise().done(function() {
         //ocultamos loading
         $.mobile.loading( 'hide' );
-        $(".age").age();
+        //$(".age").age();
         
         if(show_lista){
             parent.find("#lista_actividades_ronda").fadeIn("slow");
