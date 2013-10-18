@@ -475,6 +475,7 @@ function getEntradasByCarrousel(parent_id, hash){
                     parent.find('#carrousel_proyectos').carousel();
                     alert("hkasfd");
                 },5000);
+            }
         } 
     });
 }
