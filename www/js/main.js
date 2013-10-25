@@ -158,10 +158,13 @@ $(document).on('pageinit', "#login", function(){
 
 //HOME
 $('#home').live('pagebeforeshow', function(event, ui) {
+    alert("home " + $(this).attr('id'));
     if(isLogin()){
+        alert("home si..........");
         var hash = window.location.hash;
         getEntradasByCarrousel($(this).attr('id'), hash);
     }else{
+        alert("home no perra..........");
         redirectLogin();
     }
 });
