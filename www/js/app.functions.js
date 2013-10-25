@@ -1205,6 +1205,9 @@ function form_login(){
                             
                             //una vez logeado guardamos en cookies su datos importantes y lo llevamos a otra vista
                             createCookie("user", JSON.stringify(usuario), days);
+                            console.log("comienza.....");
+                            console.log(readCookie("user"));
+                            console.log("termina.....");                            
                             
                             var goToPage =  "home.html";
                             if(REDIREC_TO != ''){
@@ -1595,7 +1598,9 @@ function showRegistroSocial(social){
 
 function isLogin(){
     var res = false;
+    console.log("en login");
     var cookie_user = $.parseJSON(readCookie("user"));
+    console.log(cookie_user);
     if(cookie_user !== null){
         res = true;
         COOKIE = cookie_user;
