@@ -281,12 +281,12 @@ function createCookie(name,value,days) {
 		var expires = ";expires="+date.toGMTString();
 	}
 	else var expires = "";
-	document.cookie = name+"="+value+expires+";path=/";
+	window.cookie = name+"="+value+expires+";path=/";
 }
 
 function readCookie(name) {
 	var nameEQ = name + "=";
-	var ca = document.cookie.split(';');
+	var ca = window.cookie.split(';');
 	for(var i=0;i < ca.length;i++) {
 		var c = ca[i];
 		while (c.charAt(0)==' ') c = c.substring(1,c.length);
@@ -300,7 +300,7 @@ function reWriteCookie(name,attr,value) {
     var parseData = $.parseJSON(cookie_name);
     parseData[attr] = value;
     var stringify = JSON.stringify(parseData)
-    document.cookie = name+"="+stringify;
+    window.cookie = name+"="+stringify;
 }
 
 function eraseCookie(name) {
