@@ -1199,7 +1199,6 @@ function form_login(){
                         //entonces mostramos el campo para que meta su codigo de activacion
                         var validado = msg.validado;
                         if(validado){
-                            alert("valido");
                             var usuario = datas.Usuario;
                             var days = $("#u_remember_me").is(":checked") ? 365 : 1;
                             
@@ -1213,9 +1212,7 @@ function form_login(){
                             if(msg.activo_su_cuenta){
                                 showAlert("Haz validado tu cuenta, ahora puedes crear tu patrocinio para empezar a recibir aportaciones.", "Enhorabuena", "Aceptar");
                             }
-                            alert(goToPage);
                             $.mobile.changePage(goToPage, {transition: "fade"});
-                            alert("aqui");
                         }else{
                             //mostramos el mensaje de que debe colocar el codigo de activacion para quedar activo en el sistema
                             //si el codigo que puso es erroneo
