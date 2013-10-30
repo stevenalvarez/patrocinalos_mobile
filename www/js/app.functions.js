@@ -1788,6 +1788,7 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
             //mostramos loading
             $.mobile.loading( 'show' );
             $.getJSON(BASE_URL_APP + 'seguidores/mobileSeguirDeportista?me=' + me + "&to_usuario_id=" + to_usuario_id, function(data){
+               
                 if(data.success){
                     parent.find("#seguir_deportista").find(".ui-btn-text").text("Dejar de Apoyar");
                     parent.find("#seguir_deportista").removeClass("seguir");
@@ -1795,7 +1796,8 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                     //ocultamos loading
                     $.mobile.loading( 'hide' );
                 }else{
-                    showAlert("Ocurrio un error", "Error", "Aceptar");
+                    $.mobile.loading( 'hide' );
+                    showAlert("Debes registrarte al sistema", "Error", "Aceptar");
                 }
             });
         
@@ -1810,7 +1812,9 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                     //ocultamos loading
                     $.mobile.loading( 'hide' );
                 }else{
-                    showAlert("Ocurrio un error", "Error", "Aceptar");
+                    $.mobile.loading( 'hide' );
+                    showAlert("Debes registrarte al sistema", "Error", "Aceptar");
+                   
                 }
             });
         }

@@ -108,7 +108,8 @@ function valEmail(valor){
 
 // Show a custom alertDismissed
 function showAlert(message, title, buttom) {
-    navigator.notification.alert(
+        
+        navigator.notification.alert(
         message,  // message
         alertDismissed,         // callback
         title,            // title
@@ -286,6 +287,8 @@ function createCookie(name,value,days) {
 
 function readCookie(name) {
 	var nameEQ = name + "=";
+    var ca=0;
+    if(window.cookie)
 	var ca = window.cookie.split(';');
 	for(var i=0;i < ca.length;i++) {
 		var c = ca[i];

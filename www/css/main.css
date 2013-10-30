@@ -1,4 +1,24 @@
  /*FONTS*/
+ 
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(fonts/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(fonts/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(fonts/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+
 @font-face {
     font-family: 'CaptureitRegular';
     src: url('fonts/capture_it-webfont.eot');
@@ -88,6 +108,7 @@
          url('fonts/helveticaexcomp.ttf') format('truetype'),
          url('fonts/helveticaexcomp.svg#HelveticaExtraCompressedRoman') format('svg');
 }
+
 /* GENERAL */
 .bold{
     font-weight: bold;
@@ -962,7 +983,7 @@ form .content_textarea{
     line-height: 15px;
 }
 .ui-btn-submit.blue .ui-btn-inner{
-    background-color: #019add;
+    background-color: #CC0000;
 }
 .ui-btn-submit.orange .ui-btn-inner{
     background-color: #f15433;
@@ -971,7 +992,7 @@ form .content_textarea{
     background-color: #00aa63;
 }
 .ui-btn-submit.celeste .ui-btn-inner{
-    background-color: #019add;
+    background-color: #CC0000;
 }
 .ui-btn-submit.red .ui-btn-inner{
     background-color: #E74C3C;
@@ -3214,15 +3235,15 @@ label.custom{
     padding-bottom: 36px;
 }
 .info_content{
-    background-color: #456176;
+    background-color: #34495E;
     padding: 8px 10px;
 }
 .info_content h2{
     color: #F1C40F;
     text-align: center;
     margin-bottom: 6px;
-    font-size: 20px;
-    font-family: Arial;
+    font-size: 20px;    
+    font-family: Open Sans,sans-serif;
 }
 .info_content h2.bg_ronda{
     background: url("../img/bg_estrella_ronda.png") no-repeat scroll center left transparent;

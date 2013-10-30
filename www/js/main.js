@@ -158,23 +158,30 @@ $(document).on('pageinit', "#login", function(){
 
 //HOME
 $('#home').live('pagebeforeshow', function(event, ui) {
+    /* QUITAMOS LA RESTRICCION DE LOGIN
     if(isLogin()){
         var hash = window.location.hash;
         getEntradasByCarrousel($(this).attr('id'), hash);
     }else{
         redirectLogin();
     }
+    */
+    var hash = window.location.hash;
+        getEntradasByCarrousel($(this).attr('id'), hash);
 });
 
 //PROYECTO DEPORTIVO, PAGINA DEL PROYECTO
 $('#proyecto_deportivo').live('pagebeforeshow', function(event, ui) {
-    if(isLogin()){
+   // if(isLogin()){
+        var me=2;
         var user = COOKIE;
+        if(user.id)
         var me = user.id;
+                
         loadPerfilDeportista($(this).attr('id'), me, getUrlVars()["usuario_id"], getUrlVars()["patrocina"]);
-    }else{
-        redirectLogin();
-    }
+   // }else{
+//        redirectLogin();
+//    }
 });
 
 //DESTACADOS - HOME
