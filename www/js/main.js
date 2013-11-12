@@ -1,37 +1,3 @@
-
-/************************************ BIND EVENT *******************************************************/
-
-$(document).bind('pageinit', function(){
-});
-
-$(document).bind('pageshow', function() {
-    var page_id = $("#" + $.mobile.activePage.attr('id'));
-    //cargamos el panel de opciones en donde se encuentre #contenedor_panel
-    //solo cargamos en el caso que no este cargado aun el panel, en otro caso no.
-    if(page_id.find("#contenedor_panel").html() == ""){
-        page_id.find("#contenedor_panel").load("panel.html", function(){
-            page_id.find("#contenedor_panel").find("#panel_menu").panel();
-            page_id.find("#contenedor_panel").find("#panel_menu").find("#content_options").trigger("create");
-            setTimeout(function(){
-                page_id.find( "#panel_menu" ).panel({
-                    beforeopen: function( event, ui ) {}
-                });
-                page_id.find( "#panel_menu" ).panel({
-                    close: function( event, ui ) {}
-                });
-            	page_id.find("#panel_menu").on("panelbeforeopen", function (event, ui) {
-            	    $(this).find(".close_menu").css("top", "-20px");
-                    page_id.find(".footer_menu").find("a.icon_menu").hide();
-                });
-            	page_id.find("#panel_menu").on("panelclose", function (event, ui) {
-            	    $(this).find(".close_menu").css("top", "0px");
-                    page_id.find(".footer_menu").find("a.icon_menu").show();
-                });
-            },0);
-        });
-    }
-});
-
 /************************************ EVENTOS *******************************************************/
 
 //INICIO
@@ -84,9 +50,9 @@ $('#registro_finalizado').live('pagebeforeshow', function(event, ui) {
     if(isUserRegistered()){
         var userRegistered = COOKIE_NEW_REGISTER;
         if(userRegistered.tipo == "empresa"){
-            $(this).find('a.btn_completar_perfil').attr("href","#completar_perfil_empresa");
+            $(this).find('a.btn_completar_perfil').attr("href","completar_perfil_empresa.html");
         }else if(userRegistered.tipo == "patrocinador"){
-            $(this).find('a.btn_completar_perfil').attr("href","#completar_perfil_patrocinador");
+            $(this).find('a.btn_completar_perfil').attr("href","completar_perfil_patrocinador.html");
         }
     }
 });
@@ -157,24 +123,34 @@ $(document).on('pageinit', "#login", function(){
 });
 
 //HOME
+//$(document).on('pagebeforeshow', "#home", function(){
 $('#home').live('pagebeforeshow', function(event, ui) {
+    /* QUITAMOS LA RESTRICCION DE LOGIN
     if(isLogin()){
         var hash = window.location.hash;
         getEntradasByCarrousel($(this).attr('id'), hash);
     }else{
         redirectLogin();
     }
+    */
+        var hash = window.location.hash;
+        getEntradasByCarrousel($(this).attr('id'), hash);
 });
+// fix no se por que no muestra en los android bien sin esto
+
 
 //PROYECTO DEPORTIVO, PAGINA DEL PROYECTO
 $('#proyecto_deportivo').live('pagebeforeshow', function(event, ui) {
-    if(isLogin()){
+   // if(isLogin()){
+        var me=2;
         var user = COOKIE;
+        if(user.id)
         var me = user.id;
+                
         loadPerfilDeportista($(this).attr('id'), me, getUrlVars()["usuario_id"], getUrlVars()["patrocina"]);
-    }else{
-        redirectLogin();
-    }
+   // }else{
+//        redirectLogin();
+//    }
 });
 
 //DESTACADOS - HOME
@@ -357,7 +333,7 @@ function getUsuariosRandom() {
 //CARROUSEL,ACTIVIDAD EN PATROCINALOS Y ACTIVIDAD EN LA RONDA, PARA LA PAGINA HOME 
 function getEntradasByCarrousel(parent_id, hash){
     var parent = $("#"+parent_id);
-    parent.find(".ui-content").hide();
+  //  parent.find(".ui-content").hide();
     parent.find("#tabs_opciones a").bind("touchstart click",function(){
         $(this).parent().find("a").removeClass("active");
         $(this).addClass("active");
@@ -413,17 +389,11 @@ function getEntradasByCarrousel(parent_id, hash){
             //sacamos la actividad en las rondas
             var notificaciones_ronda =  data.notificaciones_ronda;
             showNotificacionesRonda(parent,notificaciones_ronda,false);
-            
-            //mostramos el tab que se selecciono
-            if(hash !== undefined && hash == "#actividad_ronda"){
-                parent.find('#tab_actividad_patrocinalos').removeClass("active");
-                parent.find('#tab_actividad_rondas').addClass("active");
-                parent.find('#lista_actividades_ronda').show();
-            }else{
+
                 parent.find('#tab_actividad_rondas').removeClass("active");
                 parent.find('#tab_actividad_patrocinalos').addClass("active");
                 parent.find('#lista_actividades').show();
-            }
+            
                      
             //cargamos los proyectos si es mayor a lo que actulamente se muestra, esto se da por si se vuelve a la page
             var items_proyectos = parent.find("#carrousel_proyectos").find(".m-item").length;
@@ -438,18 +408,19 @@ function getEntradasByCarrousel(parent_id, hash){
                	    if(index == 0) mclass = "m-active";
                     var html='<div class="m-item '+mclass+'">'+
                         '<div class="info_deportista">'+
+                        '<div style="position: relative;"><div class="info_content baner">'+
+                        '<h2 class="usuario_title" style="font-family:Open Sans">'+item.Entrada.title+'</h2></div>'+
+                        '<img src="'+BASE_URL_APP+'img/home/crop2.php?i='+item.Entrada.imagen+'" style="width: 100%;"/><p class="text ">'+item.Entrada.texto+'</p></div>'+
+                        
+                        
                             '<div class="info_content">'+
-                                '<h2 class="usuario_title">'+item.Entrada.title+'</h2>'+
-                                '<div class="left">'+
-                                    '<div class="recuadro">'+
-                                        '<img class="entrada_imagen" src="'+BASE_URL_APP+'img/home/crop.php?w=150&i='+item.Entrada.imagen+'" />'+
-                                    '</div>'+
-                                '</div>'+
-                                '<div class="right">'+
-                                    '<p class="descripcion">'+item.Entrada.texto+'</p>'+
+                                
+                                '<div>'+
                                     '<div class="like_cash">'+
                                         '<span class="like">'+item.seguidores+'</span>'+
                                         '<span class="cash">1</span>'+
+                                        '<span class="icon-normal"><i class="icon-box-add"></i>'+item.npatrocinios+'</span>'+
+                                        '<a rel="https://www.youtube.com/embed/'+item.Entrada.video+'?autoplay=1&amp;wmode=transparent" onclick="playVideoPublicacion(this)" href="javascript:void(0)"><span class="icon-normal red"><i class="icon-film"></i> Video</span></a>'+
                                     '</div>'+
                                 '</div>'+
                                 '<div class="buttom_ir_perfil">'+
@@ -475,24 +446,41 @@ function getEntradasByCarrousel(parent_id, hash){
                     }else{
                         parent.find('#carrousel_proyectos').carousel();
                     }
+                     setInterval("autoslidenext()",7000);
                     //ocultamos loading
-                    $.mobile.loading( 'hide' );
-                    parent.find(".ui-content").fadeIn("slow");
+                   
                 });
+                
+                 $.mobile.loading( 'hide' );
+                 parent.find(".ui-content").show();
             }
         } 
     });
 }
 
+function autoslidenext()
+{
+   if($("#carrousel_proyectos").is(":visible") &&  !$("#carrousel_proyectos").is(".stop") )
+   {
+    if( $(".m-carousel-controls a.m-active").next("a").length)
+    $(".m-carousel-controls a.m-active").next("a").click();
+    else
+    {
+        $(".m-carousel-controls a:first-child").click();
+    }
+   }
+}
+
+
 //OBTENEMOS LOS DATOS DEL PERFIL DE UN DEPORTISTA EN ESPECIFICO
 function loadPerfilDeportista(parent_id, me, usuario_id, show_popup_patrocinar){
     var parent = $("#"+parent_id);
-    parent.find(".ui-content").hide();
+  //  parent.find(".ui-content").hide();
     $.getJSON(BASE_URL_APP + 'usuarios/mobileGetProyectoDeportista?me=' + me + '&usuario_id='+usuario_id, function(data){
         if(data.item){
             
             //mostramos loading
-            $.mobile.loading( 'show' );
+            $.mobile.loading('show');
             
             var item = data.item;
             
@@ -558,7 +546,7 @@ function loadPerfilDeportista(parent_id, me, usuario_id, show_popup_patrocinar){
                         },400);
                     }
                     
-                    parent.find(".ui-content").fadeIn("slow");
+                    parent.find(".ui-content").show();
                 });
             });
             
@@ -1017,3 +1005,55 @@ function getMisRecaudaciones(parent_id,user){
         });
     }
 }
+
+
+/************************************ BIND EVENT *******************************************************/
+//
+//$(document).bind('beforepageshow', function()
+//{
+// 
+//});
+
+/* la traslado al ultimo por si un caso**/
+$(document).bind('pageshow', function() {
+ if(isLogin())
+ {
+  var cookie_user = $.parseJSON(readCookie("user"));
+//  console.log(cookie_user);
+  /*solo cargamos del panel si esta logeado el usuario*/
+      var page_id = $("#" + $.mobile.activePage.attr('id'));//devuelve el id de la páguina
+    //cargamos el panel de opciones en donde se encuentre #contenedor_panel
+    //solo cargamos en el caso que no este cargado aun el panel, en otro caso no.
+    var cache=$('body').children("#cache");
+    
+    var panel=page_id.find("#contenedor_panel");
+    if(panel.html() == ""){        
+        if($(cache).length>0)
+        {
+            panel.html( $(cache).html());
+            panel.find("#panel_menu").panel();
+            panel.find("#panel_menu").find("#content_options").trigger("create");
+        }
+        else
+        {
+            panel.load("panel.html", function(){
+            panel.find("#panel_menu").panel();
+            panel.find("#panel_menu").find("#content_options").trigger("create");
+            $("body").append("<div id='cache' style='display: none;'>"+panel.html()+"<div>");
+        });
+       }
+       actualizar_panel(); 
+       $(".footer_menu").show();
+    }
+  var html='<a class="user" href="editar_perfil.html">';
+  html+='<img src="'+BASE_URL_APP+'img/Usuario/169/crop.php?w=100&i='+cookie_user.imagen+'" width="35" /></a>';  
+  $(".header_navigation .setting").html(html);  
+    
+ }
+ else
+ {
+    $(".footer_menu").hide();
+    $(".header_navigation .setting").html('<a href="login.html" data-transition="slide" class="ui-link"><i class="icon-key"></i></a>');
+ }
+});
+

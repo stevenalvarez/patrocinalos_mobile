@@ -12,7 +12,7 @@
             <ul>
                 <li class="back">
                     <div class="left">
-                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
+                        <a class="volver" href="index.html#home" data-role="button" data-iconpos="notext">Volver</a>
                     </div>
                 </li>
                 <li class="page">
@@ -24,18 +24,6 @@
             </ul>
         </div><!-- /header -->
         <!-- modal para ver el video -->
-        <div class="modal_box" id="modal_box_playvideo_publicacion">
-            <a class="close" rel="modal_box_playvideo_publicacion" href="javascript:void(0)" onclick="modalOpenHide(this,'hide','video')">X</a>
-            <div class="content_modal">
-                <div class="zoom_image">
-                    <iframe style="width: 100%;" width="100%" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src=""></iframe>
-                </div>
-                <div class="ajax_loader">
-                    <span class='ui-icon-loading'>&nbsp;</span>
-                </div>
-            </div>
-        </div>
-    
     	<div data-role="content">
             <div class="content_top">
                 <div class="data_user">
@@ -140,7 +128,7 @@
                             <div class="pago_realizar">
                                 <div class="monto_euro">
                                      <label>Patrocinio a transferir: </label>
-                                     <input id="pago_monto" class="monto_pago bold" data-theme="cu" name="amount" placeholder="Monto" autocomplete="off" type="text" value=""/>
+                                     <input id="pago_monto" class="monto_pago bold" data-theme="cu" name="amount" placeholder="Importe" autocomplete="off" type="text" value=""/>
                                 </div>
                             </div>
                             <div class="patrocinio_termino">
@@ -166,8 +154,26 @@
                             </div>
                             <div class="tpv right">
                                 <a class="pago_tpv_4B" lang="TPV" style="margin-bottom:8px" href="javascript:void(0)" data-theme="r" data-role="button">TPV 4B</a>
+                            </div>                    
+                            <div class="tpv left">
+                                <a class="pago_codigo" data-rel="popup" data-transition="pop" style="margin-bottom:8px" href="#popupCode" data-theme="r" data-role="button">C&Oacute;DIGO</a>
                             </div>
+                            <div class="tpv right">
+                                <a class="pago_bonos" lang="BONOS" style="margin-bottom:8px" href="javascript:void(0)" data-theme="r" data-role="button">BONOS</a>
+                            </div>  
+                            
+                            <div class="codecode" style="display: none;">
+                                <a class="pago_code" lang="code" style="margin-bottom:8px" href="javascript:void(0)" data-theme="r" data-role="button">UTILIZAR MI CODIGO PARA PATROCINAR</a>
+                            </div>  
+                            
                         </div>
+                        <div id="participar">
+                        </div>
+                        <div id="recompensas" style="padding: 5px; overflow: hidden; clear: both;">
+                        </div>
+                        
+                        
+                        
                     </form>
                     <div class="popup_footer">
                         <p>
@@ -176,6 +182,38 @@
                     </div>
                 </div>
             </div>
+            
+            <div data-role="popup" class="popup_recompensa pago" id="popupCode" data-theme="c" class="ui-corner-all" data-overlay-theme="a">
+                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right close">Close</a>
+                <div style="background-color: #C4E2E8;border-radius: 5px;overflow: hidden;">
+                    <form class="formulario_pago_patrocinio" id="formulario_codigo">
+                     <div class="patrocinar_pago">
+                            <label>Copia tu c&oacute;digo de patrocinio: </label>
+                     </div>                 
+                        <div class="container_info_bottom">
+                            <div class="content_textarea">
+                                <textarea style="width: 90%;" cols="40" rows="5" name="codigo" id="codigopat" placeholder="Copia tu c&oacute;digo de patrocinio" data-mini="true"></textarea>
+                            </div>                            
+                        </div>
+                        <div class="patrocinar_pago">                            
+                            <div class="paypal left">
+                                <a class="utilizar_codigo" lang="codigo" style="margin-bottom:8px" href="#popupPatrocinar" data-rel="popup" data-theme="r" data-role="button">Verificar el c&oacute;digo</a>
+                            </div>
+                            <div class="paypal right">
+                                <a class="volver" data-rel="popup" data-transition="pop" style="margin-bottom:8px" href="#popupPatrocinar" data-theme="r" data-role="button">Volver</a>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="popup_footer">
+                        <p>
+                            <span>&nbsp;</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
         </div>
         <!-- termina -->
     

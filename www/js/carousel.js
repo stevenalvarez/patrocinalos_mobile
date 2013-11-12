@@ -290,7 +290,12 @@ Mobify.UI.Carousel = (function($, Utils) {
 
         function drag(e) {
             if (!dragging || canceled) return;
-
+            
+            jQuery(function(){
+                $("#carrousel_proyectos").addClass("stop");
+                
+            });
+            
             var newXY = Utils.getCursorPosition(e)
               , dragLimit = self.$element.width();
             dx = xy.x - newXY.x;

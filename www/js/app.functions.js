@@ -702,7 +702,7 @@ function form_completar_perfil_empresa(element){
                         data = $.parseJSON(data);
                         if(data.success){
                             //mandamos a la pagina de perfil completado satisfactoriamente
-                            $.mobile.changePage('#completar_perfil_exitosamente', {transition: "slide"});
+                            $.mobile.changePage('completar_perfil_exitosamente.html', {transition: "slide"});
                         }else{
                             showAlert(data.mensaje, "Error", "Aceptar");
                         }
@@ -805,7 +805,7 @@ function form_solicitar_patrocinio(element){
                             }
                             
                             //mandamos a la pagina de patrocinio finalizado
-                            $.mobile.changePage('#patrocinio_registrado', {transition: "slide"});
+                            $.mobile.changePage('patrocinio_registrado.html', {transition: "slide"});
                             //borramos los datos del formulario
                             clear_form(element);
                         }else{
@@ -1205,7 +1205,7 @@ function form_login(){
                             //una vez logeado guardamos en cookies su datos importantes y lo llevamos a otra vista
                             createCookie("user", JSON.stringify(usuario), days);
                             
-                            var goToPage =  "home.html";
+                            var goToPage =  "index.html";
                             if(REDIREC_TO != ''){
                                 goToPage = REDIREC_TO;
                             }
@@ -1369,7 +1369,7 @@ function form_subir_video(parent_id, element,user){
 // REGISTRO SUCCESS
 //
 function success_registro(){
-    $.mobile.changePage('#registro_finalizado', {transition: "slide"});
+    $.mobile.changePage('registro_finalizado.html', {transition: "slide"});
     clear_form("form_registro");
     $.mobile.loading( 'hide' );
 }
@@ -1587,7 +1587,7 @@ function showRegistroSocial(social){
         $("#register_user").find(".page span").html("REGISTRO CON TWITTER");
     }
     
-    $.mobile.changePage('#register_user', {transition: "slide"});
+    $.mobile.changePage('register_user.html', {transition: "slide"});
 }
 
 function isLogin(){
@@ -1596,9 +1596,8 @@ function isLogin(){
     if(cookie_user !== null){
         res = true;
         COOKIE = cookie_user;
-    }else{
-        REDIREC_TO = window.location.href;
     }
+    
     return res;
 }
 
@@ -1769,6 +1768,28 @@ function llenarOngs(parent_id){
 	});
 }
 
+function llenarRecompensas($parent,usuario_id)
+{
+    	$.getJSON(BASE_URL_APP + 'recompensas/mobileGetRecompensas/'+usuario_id, function(data) {
+		var recompensas = data;
+        var html = "";
+        $.each(recompensas, function(index, item) {
+            
+            var xx='';
+            if(index==0)
+            { var xx='checked';}          
+            html+= "<label class='recompensas_aportaciones "+xx+"' onclick='$(this).siblings().removeClass("+'"'+"checked"+'"'+"); $(this).addClass("+'"'+"checked"+'"'+")' for='select"+item.Recompensa.id+"'><img class='imagen_redonda' src='"+BASE_URL_APP+"img/recompensas/crop.php?w=60&i="+item.Recompensa.serializado.imagen+"'><br>"+item.Recompensa.title+"";
+            html+= "<input "+xx+" type='radio' style='display:none' id='select"+item.Recompensa.id+"' value='"+item.Recompensa.id+"' name='recompensa_id'/></label>";
+        });
+        
+        jQuery($parent).find("#recompensas").append(html);
+        //actualiza el texto
+	});
+    
+}
+
+
+
 //fixea el error que hay cuando se selecciona un elemento del selector
 function fixedSelector(form_id, element_selector){
     var selector_deporte = jQuery('#'+form_id).find("#" +element_selector);
@@ -1788,6 +1809,7 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
             //mostramos loading
             $.mobile.loading( 'show' );
             $.getJSON(BASE_URL_APP + 'seguidores/mobileSeguirDeportista?me=' + me + "&to_usuario_id=" + to_usuario_id, function(data){
+               
                 if(data.success){
                     parent.find("#seguir_deportista").find(".ui-btn-text").text("Dejar de Apoyar");
                     parent.find("#seguir_deportista").removeClass("seguir");
@@ -1795,7 +1817,8 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                     //ocultamos loading
                     $.mobile.loading( 'hide' );
                 }else{
-                    showAlert("Ocurrio un error", "Error", "Aceptar");
+                    $.mobile.loading( 'hide' );
+                    showAlert("Debes registrarte al sistema", "Error", "Aceptar");
                 }
             });
         
@@ -1810,7 +1833,9 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                     //ocultamos loading
                     $.mobile.loading( 'hide' );
                 }else{
-                    showAlert("Ocurrio un error", "Error", "Aceptar");
+                    $.mobile.loading( 'hide' );
+                    showAlert("Debes registrarte al sistema", "Error", "Aceptar");
+                   
                 }
             });
         }
@@ -1818,10 +1843,22 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
         return false;
     });
     
+    
     //llenamos las ongs
     llenarOngs(parent.attr("id"));
+  //  llenarRecompensas(parent,to_usuario_id);
     
     form_pago = parent.find("#formulario_pago_individual");
+//        if(!isLogin())
+//        {
+//            var registrate="<p style=' font-family: helvetica;font-size: 12px;font-weight: bold;'>No estas registrado si deseas participar del sorteo de recompensas dejanos tu nombre y tu email ademas debes aceptar y leer las condiciones de uso</p>";
+//            registrate+='<input  class="ui-input-text ui-corner-all ui-shadow-inset ui-mini" type="text" name="nombre" placeholder="Tu nombre y apellido" /><input  class="ui-input-text ui-corner-all ui-shadow-inset ui-mini" type="text" name="email" placeholder="Tu email" />';            
+//            registrate+='<label style="font-size: 12px;">';
+//            registrate+='<input type="checkbox" name="leido_term_gral" id="checkme_term_gral" class="validate[required]" style="margin-top: 0;">';
+//            registrate+='He leido y acepto los <a onclick="showTerms(this)" id="link_terms_gral" href="javascript:void(0)" class="popup">T&eacute;rminos y condiciones de uso.</a></label>';
+//            form_pago.find("#participar").html(registrate);
+//        }
+    
     form_pago.find("#pago_monto").keyup(function(){
         var monto = 0;
         if($(this).val() == ""){
@@ -1838,23 +1875,28 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
     });
     
     //PAGO MEDIANTE PAYPAL Y TPV
-    form_pago.find("a.pago_paypal, a.pago_tpv_4B").off('click').on("click", function(){
+    
+    form_pago.find("a.pago_codigo").off('click').on("click", function()
+    {
+      //  alert("hacer patrocinio por code");
+    });
+  
+    
+    form_pago.find("a.pago_paypal, a.pago_tpv_4B ,a.pago_code,a.pago_bonos").off('click').on("click", function(){     
+      //  alert( $(form_pago).serialize());
         var elem = $(this);
         var pago_monto = form_pago.find("#pago_monto").val();
         var pago_termino = form_pago.find("#pago_termino").is(":checked") ? true : false;
         
         if($.trim(pago_monto) != "" && (parseInt(pago_monto) > 0 && validarInt("pago_monto"))){
-            if(isLogin()){
-                
                 //PAGO PAYPAL
-                if(elem.attr("lang") == "PAYPAL"){
+       if(elem.attr("lang") == "PAYPAL"){
                     $.ajax({
                         data: $(form_pago).serialize(),
                         type: "POST",
                         url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/PAYPAL",
                         dataType: "html",
-                        success: function(data){
-                            
+                        success: function(data){                            
                             //ocultamos el loading
                             $.mobile.loading('hide');
                             var result = $.parseJSON(data);
@@ -1863,7 +1905,7 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                                 //Cerramos el popup
                                 $("#popupPatrocinar").popup("close");
                                 document.getElementById("formulario_pago_individual").reset();
-                                
+                                                                                                
                                 var url_pago = result.url_redirect_pago;
                                 //window.location = url_pago;
                                 window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
@@ -1877,16 +1919,14 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                             showLoadingCustom('Verificando datos...');
                         }
                     });
-                
-                //PAGO TPV
-                }else if(elem.attr("lang") == "TPV"){
+                }
+                else if(elem.attr("lang") == "TPV"){
                     $.ajax({
                         data: $(form_pago).serialize(),
                         type: "POST",
                         url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/TPV",
                         dataType: "html",
-                        success: function(data){
-                            
+                        success: function(data){                            
                             //ocultamos el loading
                             $.mobile.loading('hide');
                             var result = $.parseJSON(data);
@@ -1912,15 +1952,106 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                         }
                     });
                 }
-            }else{
-                showAlert("Por favor vuelva a logearse he intente de nuevo", "Aviso", "Aceptar");
-            }
+                else if(elem.attr("lang") == "code"){
+                    $.ajax({
+                        data: $(form_pago).serialize(),
+                        type: "POST",
+                        url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/CODE",
+                        dataType: "html",
+                        success: function(data){                            
+                            //ocultamos el loading
+                            $.mobile.loading('hide');
+                            var result = $.parseJSON(data);
+                            if(result.aportacion_realizada){
+                                //Cerramos el popup
+                                $("#popupPatrocinar").popup("close");
+                                document.getElementById("formulario_pago_individual").reset();
+                                showAlert('Aportaci&oacute;n realizada', "Aviso", "Aceptar");
+                            }else{
+                                showAlert(result.error_alcanzado, "Error", "Aceptar");
+                            }
+                        },
+                        beforeSend : function(){
+                            //mostramos loading
+                            showLoadingCustom('Verificando datos...');
+                        }
+                    });
+                }
+                else if(elem.attr("lang") == "BONOS"){
+                     showAlert('Debes registrate para patrocinar mediante bonos', "Error", "Aceptar");
+//                    $.ajax({
+//                        data: $(form_pago).serialize(),
+//                        type: "POST",
+//                        url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/CODE",
+//                        dataType: "html",
+//                        success: function(data){                            
+//                            //ocultamos el loading
+//                            $.mobile.loading('hide');
+//                            var result = $.parseJSON(data);
+//                            if(result.aportacion_realizada){
+//                                //Cerramos el popup
+//                                $("#popupPatrocinar").popup("close");
+//                                document.getElementById("formulario_pago_individual").reset();
+//                                showAlert('Aportaci&oacute;n realizada', "Aviso", "Aceptar");
+//                            }else{
+//                                showAlert(result.error_alcanzado, "Error", "Aceptar");
+//                            }
+//                        },
+//                        beforeSend : function(){
+//                            //mostramos loading
+//                            showLoadingCustom('Verificando datos...');
+//                        }
+//                    });
+                }   
+                
         }else{
             showAlert("Por favor!, introduzca un monto valido.", "Aviso", "Aceptar");
             form_pago.find("#pago_monto").val("");
         }
     });
     //END
+    
+    form_pago_code = parent.find("#formulario_codigo");
+    
+     form_pago_code.find("a.utilizar_codigo").off('click').on("click", function()
+     {
+        showLoadingCustom('Verificando datos...');
+        var code = form_pago_code.find("#codigopat").val();
+         $.ajax({
+                       
+                        type: "GET",
+                        url: BASE_URL_APP+'aportaciones/ajax_get_importe/'+ code,
+                        dataType: "html",
+                        success: function(data){
+                            if(data)
+                            {    
+                                // showAlert("C&oacute;digo aceptado.", "Aviso", "Aceptar");
+                                 /*leno los datos de formulario a la ong*/
+                                 var monto=data;
+                                 var porcentaje = 5;
+                                 var porcentaje_ong = parseInt(monto) -  (parseInt(monto) * ((100-parseInt(porcentaje))/100));
+                                 form_pago.find("#porcentaje").find("span").html("(" + parseFloat(porcentaje_ong).toFixed(2) + "&euro;)");
+                                 
+                                 
+                                 // solo mostrar el boton de codigo
+                                 form_pago.find(".patrocinar_pago").children('div').hide();
+                                 form_pago.find(".patrocinar_pago").children('div.codecode').show();
+                                  
+                                 
+                                 form_pago.find("#pago_monto").val(data);
+                                 form_pago.find("#pago_monto").attr('readonly');
+                                 //form_pago.find("#pago_monto").parent().parent().after("<div><label>Tu c&oacute;digo fue aceptado<label></div>")
+                                 form_pago.find("#pago_monto").after('<input type="hidden" name="code_patrocinio" value="'+code+'" />');
+                                 $.mobile.loading('hide');                                                
+                            }else
+                            {
+                                 $.mobile.loading('hide');
+                                 showAlert("C&oacute;digo incorrecto", "Aviso", "Aceptar");
+                                
+                            }
+                        }
+                }); 
+   });
 }
 
 //CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO POR PAYPAL

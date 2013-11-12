@@ -1,4 +1,24 @@
  /*FONTS*/
+ 
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(fonts/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(fonts/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(fonts/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+
 @font-face {
     font-family: 'CaptureitRegular';
     src: url('fonts/capture_it-webfont.eot');
@@ -88,6 +108,55 @@
          url('fonts/helveticaexcomp.ttf') format('truetype'),
          url('fonts/helveticaexcomp.svg#HelveticaExtraCompressedRoman') format('svg');
 }
+
+
+/* Iconos */
+@font-face{font-family:'iconfont';src:url('fonts/iconfont.eot');src:url('fonts/iconfont.eot?#iefix') format('embedded-opentype'), url('fonts/iconfont.svg#iconfont') format('svg'), url('fonts/iconfont.woff') format('woff'), url('fonts/iconfont.ttf') format('truetype');font-weight:normal;font-style:normal}
+[class^="icon-"],[class*=" icon-"]{font-family:"iconFont";font-weight:normal;font-style:normal;text-decoration:inherit;-webkit-font-smoothing:antialiased;display:inline-block;width:auto;height:auto;line-height:normal;vertical-align:baseline;background-image:none;background-position:0% 0%;background-repeat:repeat;margin-top:0;position:relative}
+[class^="icon-"]:before,[class*=" icon-"]:before{text-decoration:inherit;display:inline-block;speak:none}
+.icon-home:before{content:"\e000"}
+.icon-key:before{content:"\e044"}
+.icon-trophy:before{content:"\e04f"}
+.icon-heart:before{content:"\e07f"}
+.icon-user-2:before{content:"\e03c"}
+.icon-thumbs-up:before{content:"\e081"}
+.icon-box-add:before{content:"\e02a"}
+.icon-star-3:before{content:"\e07e"}
+.icon-history:before{content:"\e01d"}
+.icon-comments:before{content:"\e036"}
+.icon-comments-3:before{content:"\e038"}
+.icon-forward:before{content:"\e033"}
+.icon-pencil:before{content:"\e002"}
+.icon-info-2:before{content:"\e167"}
+.icon-newspaper:before{content:"\e001"}
+.icon-arrow-up-2:before{content:"\e098"}
+.icon-arrow-right-2:before{content:"\e099"}
+.icon-arrow-down-2:before{content:"\e09a"}
+.icon-arrow-left-2:before{content:"\e09b"}
+.icon-menu:before{content:"\e0a0"}
+.icon-remove:before{content:"\e059"}
+.icon-cancel-2:before{content:"\e089"}
+.icon-search:before{content:"\e041"}
+.icon-phone:before{content:"\e019"}
+.icon-pictures:before{content:"\e004"}
+.icon-film:before{content:"\e007"}
+.icon-upload-2:before{content:"\e072"}
+.icon-folder:before{content:"\e012"}
+.icon-bell:before{content:"\e01f"}
+.icon-address-book:before{content:"\e13d"}
+.icon-new-tab:before{content:"\e0b3"}
+.icon-location:before{content:"\e01b"}
+.icon-clipboard:before{content:"\e06a"}
+.icon-clipboard-2:before{content:"\e06b"}
+.icon-blocked:before{content:"\e087"}
+.icon-share:before{content:"\e0b2"}
+.icon-mail:before{content:"\e01a"}
+.icon-google-plus:before{content:"\e0bc"}
+.icon-facebook:before{content:"\e0be"}
+.icon-twitter:before{content:"\e0c0"}
+.icon-pinterest:before{content:"\e0e1"}
+
+
 /* GENERAL */
 .bold{
     font-weight: bold;
@@ -794,10 +863,10 @@ form .content_textarea{
 }
 .header_navigation .page{
     text-align: center;
-    margin-top: 15px;
+    margin-top: 12px;
     margin-bottom: 10px;
     font-family: 'helvetica_neueblack';
-    width: 78%;
+    width: 77%;
     color: #cc5050;
     font-size: 15px;
     letter-spacing: -1px;
@@ -962,7 +1031,7 @@ form .content_textarea{
     line-height: 15px;
 }
 .ui-btn-submit.blue .ui-btn-inner{
-    background-color: #019add;
+    background-color: #CC0000;
 }
 .ui-btn-submit.orange .ui-btn-inner{
     background-color: #f15433;
@@ -971,7 +1040,7 @@ form .content_textarea{
     background-color: #00aa63;
 }
 .ui-btn-submit.celeste .ui-btn-inner{
-    background-color: #019add;
+    background-color: #CC0000;
 }
 .ui-btn-submit.red .ui-btn-inner{
     background-color: #E74C3C;
@@ -3214,15 +3283,15 @@ label.custom{
     padding-bottom: 36px;
 }
 .info_content{
-    background-color: #456176;
+    background-color: #34495E;
     padding: 8px 10px;
 }
 .info_content h2{
     color: #F1C40F;
     text-align: center;
     margin-bottom: 6px;
-    font-size: 20px;
-    font-family: Arial;
+    font-size: 20px;    
+    font-family: Open Sans,sans-serif;
 }
 .info_content h2.bg_ronda{
     background: url("../img/bg_estrella_ronda.png") no-repeat scroll center left transparent;
@@ -3250,7 +3319,7 @@ label.custom{
     position: relative;
     margin: 0 2em;
     height: 22px;
-    padding-top: 10px;
+    padding-top: 0px;
 }
 .info_content h3{
     color: #eab800;
@@ -3274,14 +3343,14 @@ label.custom{
     color: #d3d5d7;
     line-height: 14px;
     font-size: 12px;
-    margin: 0 0 8px 0;
+    margin: 0 0 5px 0;
     max-height: 82px;
-    min-height: 82px;
     overflow: hidden;
     text-shadow: 0 0 0;
 }
 .info_content .like_cash span{
     margin-right: 8px;
+    margin-bottom: 5px;    
     border-radius: 4px;
     padding: 4px 5px 4px 20px;
     text-align: right;
@@ -3290,6 +3359,7 @@ label.custom{
     display: inline-block;
     font-size: 14px;
     font-weight: bold;
+    vertical-align: bottom;
 }
 .info_content .like_cash span.like{
     color: #FF0000;
@@ -3299,7 +3369,7 @@ label.custom{
 }
 .info_content .like_cash span.cash{
     text-align: center;
-    color: #eab800;
+    color: #27AE60;
     background: url("../img/bg_color_cup.png") no-repeat scroll center left #ecf0f1;
     background-size: 15px;
     background-position: 6px;
@@ -3906,6 +3976,70 @@ label.custom{
     padding-bottom: 5px;
     letter-spacing: 0;
 }
+
+
+    .info_content .like_cash .icon-normal
+    {
+        background-color: #ECF0F1;
+        color:#27AE60;
+        vertical-align: baseline;
+        font-family: Helvetica;
+        padding-left: 8px;
+        padding-right: 8px;
+        width: 35px;
+    }
+    .info_content .like_cash .icon-normal i
+    {
+        float: left;
+        font-size: 16px;
+    }
+    .info_content .like_cash .icon-normal.red
+    {
+        background:none repeat scroll 0 0 #E74C3C;
+        color:#FFFFFF;
+        width: 65px;
+    }
+    .recompensas_aportaciones {
+        float: left;
+        width: 100px;
+        text-align: center;
+        font-size: 12px;
+        height: 95px;
+        overflow: hidden;
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+    .recompensas_aportaciones.checked
+    {
+      background-color: #80FF80;   
+    }
+    .imagen_redonda {
+        border-radius: 120px 120px 120px 120px;
+    }
+    #participar { padding: 5px; width: 90%; }
+    
+    .info_deportista .baner { background: none rgba(0, 0, 0, 0.6); position: absolute; top:0; width: 100%; padding: 0;  }
+    .info_deportista .text { background: none rgba(0, 0, 0, 0.6); position: absolute; bottom:0; width: 100%; padding: 0; color: #ECF0F1; font-size: 12px; font-family: "Open Sans",?sans-serif; padding: 5px;  }
+    .info_deportista .like_cash { padding-left: 8px !important; width: 264px; margin: auto; }
+    
+    .setting .ui-link{
+    background: none repeat scroll 0 0 #A20000;
+    border:solid 1px #3D3D3D;
+    border-radius: 4px !important;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    height: 22px;
+    line-height: 24px !important;
+    margin: 0;
+    padding: 0 5px !important;
+    width: 17px;
+    }
+    .setting .ui-link{ color: white !important;}
+    .setting a.user { display: inline-block; vertical-align: bottom; margin: 0 5px 0 0 !important; padding-top: 1px; } 
+    
+    #contenedor_panel #content_options { padding-top: 22px; }
+    
 /***************************************** RESPONSIVO *******************************************************/
 
 /* PORTRAIT IPHONE 4/4s */
