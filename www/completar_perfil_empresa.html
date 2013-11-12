@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    
+    <body>
+    <div data-role="page" id="completar_perfil_empresa" data-theme="c">
+    
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
+                    </div>
+                </li>
+                <li class="page">
+                    <span>COMPLETAR PERFIL</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+    
+    	<div data-role="content" style="margin-bottom: 5px;">
+            
+            <div class="btn-access">
+            
+                <div class="texto_formulario" style="margin: 5px 0;">
+                    <span class="lspacing">Completa el siguiente formulario</span>
+                </div>
+                <div class="box_consultar">
+                    <p>Si quieres que el perfil de tu empresa tenga el mejor aspecto, si quieres sacarle el m&aacute;ximo partido, consulta nuestra p&aacute;gina de ayuda de empresas.</p>
+                    <div class="left">
+                        <a class="ui-btn-normal azul" href="#" title="" onclick="window.open(this.href,'_blank'); return false;" data-role="button">Consulta la ayuda</a>
+                    </div>
+                    <div class="right">
+                        <span class="close_text">X</span>
+                    </div>
+                </div>
+                
+                <form id="form_completar_perfil_empresa">
+                    <div class="content_formulario">
+                        <input type="hidden" name="u_usuario_id" value="" />
+                        <input type="hidden" name="u_pais_id" value="" />
+                        <div data-role="collapsible" data-mini="true" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-collapsed="false">
+                            <h4>Datos obligatorios</h4>
+                            <ul data-role="listview">
+                                <li>
+                                    <input id="e_cif" name="e_cif" placeholder="CIF..." autocomplete="off" type="text" data-mini="true"/>
+                                </li>
+                                <li>
+                                     <select data-theme="c" name="u_ciudad" id="select_ciudad3" data-mini="true">
+                                        <option value="">Ciudad sede...</option>
+                                     </select>
+                                </li>
+                                <li>
+                                    <input id="e_direccion" name="e_direccion" placeholder="Direcci&oacute;n..." autocomplete="off" type="text" data-mini="true"/>
+                                </li>
+                                <li>
+                                    <input id="e_cod_postal" name="e_cod_postal" placeholder="C&oacute;digo postal..." autocomplete="off" type="text" data-mini="true"/>
+                                </li>
+                            </ul>
+                        </div>
+                        <div data-role="collapsible" data-mini="true" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right">
+                            <h4>Datos de contacto</h4>
+                            <ul data-role="listview">
+                                <li>
+                                    <input id="u_nombre" name="u_nombre" placeholder="Empresa(nombre)..." autocomplete="off" type="text" data-mini="true"/>
+                                </li>
+                                <li>
+                                    <input id="e_persona_contacto" name="e_persona_contacto" placeholder="Persona de contacto..." autocomplete="off" type="text" data-mini="true"/>
+                                </li>
+                                <li>
+                                    <input id="e_telefono" name="e_telefono" placeholder="Tel&eacute;fono de contacto..." autocomplete="off" type="text" data-mini="true"/>
+                                </li>
+                            </ul>
+                        </div>
+                        <div data-role="collapsible" data-mini="true" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right">
+                            <h4>Infomaci&oacute;n para el perfil</h4>
+                            <ul data-role="listview">
+                                <li>
+                                    <div class="otros_deportes" data-role="collapsible" data-mini="true" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right">
+                                        <h4>Deportes a los que quieres asociar tu marca.</h4>
+                                        <ul data-role="listview" id="deportes_que_sigues">
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                     </div>
+                </form>
+            </div>
+    	</div><!-- /content -->
+        
+        <div class="btn-options">
+            <div class="btn-first">
+                <a class="ui-btn-submit orange borrar_form" href="javascript:void(0)" data-role="button">BORRAR</a>
+            </div>
+            <div class="btn-second">
+                <a class="ui-btn-submit green guardar_form" href="javascript:void(0)" data-role="button">GUARDAR</a>
+            </div>
+        </div>
+    
+    </div>
+    </body>
+</html>

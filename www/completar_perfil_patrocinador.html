@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <div data-role="page" id="completar_perfil_patrocinador" data-theme="c">
+    
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
+                    </div>
+                </li>
+                <li class="page">
+                    <span>COMPLETAR PERFIL</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+    
+    	<div data-role="content">     
+            
+            <div class="btn-access">
+            
+                <div class="texto_formulario" style="margin: 20px 0;">
+                    <span class="lspacing">Completa tus datos de perfil</span>
+                </div>
+                
+                <form id="form_completar_perfil_patrocinador">
+                    <div class="content_formulario">
+                         <input type="hidden" name="u_usuario_id" value="" />
+                         <input type="hidden" name="u_pais_id" value="" />
+                         <input id="u_nombre" name="u_nombre" placeholder="Nombre..." autocomplete="off" type="text" data-mini="true"/>
+                         <input id="u_apellidos" name="u_apellidos" placeholder="Apellidos..." autocomplete="off" type="text" data-mini="true"/>
+                         <select data-theme="c" name="u_genero" id="select_genero2" data-mini="true">
+                            <option value="">G&eacute;nero</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                         </select>
+                         <div class="fecha_calendario">
+                            <input style="width: 100%;" id="u_fecha_nacimiento" class="ui-icon-datebox" onclick="$(this).datebox('open')" name="u_fecha_nacimiento" type="text" placeholder="Fecha de nacimiento..." data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' data-mini="true" />
+                         </div>
+                         <select data-theme="c" name="u_ciudad" id="select_ciudad2" data-mini="true">
+                            <option value="">Ciudad de residencia</option>
+                         </select>
+                        <div class="otros_deportes" data-role="collapsible" data-mini="true" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right">
+                            <h4>Deportes que sigues</h4>
+                            <ul data-role="listview" id="deportes_que_sigues">
+                            </ul>
+                        </div>
+                     </div>
+                </form>
+            </div>
+    	</div><!-- /content -->
+        
+        <div class="btn-options">
+            <a class="ui-btn-submit orange guardar_form" href="javascript:void(0)" data-role="button">GUARDAR Y CONTINUAR</a>
+        </div>
+    
+    </div>
+</html>
