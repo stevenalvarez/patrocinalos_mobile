@@ -102,7 +102,7 @@
         
         <!-- popup's para ver el detalle de las recompensas y patrocinar por paypal o patrocinar via TPV 4B-->
         <!-- comienza -->
-        <div data-role="popup" data-theme="c" data-overlay-theme="a">
+        <div>
             <div data-role="popup" class="popup_recompensa pago" id="popupPatrocinar" data-theme="c" class="ui-corner-all" data-overlay-theme="a">
                 <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right close">Close</a>
                 <div style="background-color: #C4E2E8;border-radius: 5px;overflow: hidden;">
@@ -131,7 +131,21 @@
                                      <input id="pago_monto" class="monto_pago bold" data-theme="cu" name="amount" placeholder="Importe" autocomplete="off" type="text" value=""/>
                                 </div>
                             </div>
-                            <div class="patrocinio_termino">
+                            
+                            
+                           <div id="participar" class="patrocinio_termino">
+                           </div>
+                           
+                           <div class="patrocinio_termino" id="noregistrado" style="display: none;">
+                                <fieldset data-role="controlgroup" data-theme="c">
+                                    <label>
+                                        <input id="checkme_term_gral" name="terminos_g" type="checkbox"/>
+                                    </label>
+                                    <label style="margin-top: -16px;" class="texto_anonimo">He leido y acepto los <a data-transition="pop" data-rel="dialog" href="terminos_y_condiciones.html" class="ui-link">T&eacute;rminos y condiciones de uso</a></label>
+                                </fieldset>
+                            </div>
+                           
+                           <div class="patrocinio_termino anonima">
                                 <fieldset data-role="controlgroup" data-theme="c">
                                     <label>
                                         <input id="pago_termino" name="anonimo" type="checkbox"/>Aportaci&oacute;n an&oacute;nima
@@ -139,6 +153,7 @@
                                     <label class="texto_anonimo">No figuran tu nombre ni apellidos en la lista del patrocinado</label>
                                 </fieldset>
                             </div>
+                            
                             <div class="content_ong">
                                 <p class="pratrocinar_por"> Selecciona la ong para la cual se destinar&aacute; un <b>5%</b> de lo que aportes.</p>
                                 <select data-theme="c" name="ong_id" id="ong_id">
@@ -147,6 +162,7 @@
                             </div>
                             <p class="pratrocinar_por">Realiza el patrocinio de forma segura a trav&eacute;s de Paypal o mediante la pasarela TPV-4B.</p>
                         </div>
+                        
                         <div class="patrocinar_pago">
                             <label>Patrocinar Mediante: </label>
                             <div class="paypal left">
@@ -166,13 +182,7 @@
                                 <a class="pago_code" lang="code" style="margin-bottom:8px" href="javascript:void(0)" data-theme="r" data-role="button">UTILIZAR MI CODIGO PARA PATROCINAR</a>
                             </div>  
                             
-                        </div>
-                        <div id="participar">
-                        </div>
-                        <div id="recompensas" style="padding: 5px; overflow: hidden; clear: both;">
-                        </div>
-                        
-                        
+                        </div> 
                         
                     </form>
                     <div class="popup_footer">
@@ -211,8 +221,28 @@
                     </div>
                 </div>
             </div>
+            <div data-role="popup" class="popup_recompensa ui-content" id="popupderecompensas" data-theme="c" class="ui-corner-all" data-overlay-theme="a">
+                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right close">Close</a>
+                <div style="background-color: #C4E2E8;border-radius: 5px;overflow: hidden;">
+                    <form class="formulario_de_recompensas" id="formulario_codigo" style="overflow: hidden; padding: 5px;">
+                     <div class="patrocinar_pago"><br />
+                     <b>Gracias por haber patrocinado</b><br />
+                            <label style="font-size: 12px; letter-spacing: -1;">Por tu aporte puedes ganar una de las siguientes recompensas mediante un sorteo entre todos los que aportaron, selecciona la de tu preferencia:  <br /> <br /></label>
+                      </div> 
+                      <div id="recompensas" style="padding: 5px; overflow: hidden; clear: both;">
+                      </div>     <br />                   
+                      <div class="paypal left">
+                          <a id="cerrarmodal" class="volver" style="margin-bottom:8px" href="#" data-theme="r" data-role="button">Seleccionar recompensa</a>
+                      </div>
+                      <br />
+                      <br /><br />                                                                                                
+                    </form>                    
+                </div>
+            </div>
             
-            
+            <div style="display: none;">
+            <a id="abritepopup" class="pago_codigo" data-rel="popup" data-transition="pop" style="margin-bottom:8px" href="#popupderecompensas" data-theme="r" data-role="button">open</a>            
+            </div>
             
         </div>
         <!-- termina -->

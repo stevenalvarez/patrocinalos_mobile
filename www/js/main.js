@@ -371,6 +371,9 @@ function getEntradasByCarrousel(parent_id, hash){
                 }
                 html+='</h4>';
                 html+='<p class="ui-li-desc">'+item.Notificacion.texto_descripcion+'</p>';
+                 if(item.Notificacion.tipo == "aportacion"){
+                    html+='<div><span class="atributo verde"><i class="icon-box-add"></i></span><span class="dato verde">+ '+item.Notificacion.monto+' &euro;</span></div>';
+                }
                 html+='</div>';
                 html+='</li>';
                 
@@ -515,8 +518,7 @@ function loadPerfilDeportista(parent_id, me, usuario_id, show_popup_patrocinar){
                 parent.find(".recaudado").find(".monto").html(item.Proyecto.total_recaudado);
                 parent.find(".recaudado").show();
                 parent.find(".progress").find(".porcentaje").css("width", item.Proyecto.porcentaje_recaudado+"%").parent().show();
-                parent.find(".numero_porcentaje span").html(parseFloat(item.Proyecto.porcentaje_recaudado).toFixed(2)).parent().show();
-                
+                parent.find(".numero_porcentaje span").html(parseFloat(item.Proyecto.porcentaje_recaudado).toFixed(2)).parent().show();                
                 $(".age").age();
             }
             
@@ -549,7 +551,6 @@ function loadPerfilDeportista(parent_id, me, usuario_id, show_popup_patrocinar){
                     parent.find(".ui-content").show();
                 });
             });
-            
             //Actualizamos los datos para realizar la aportacion
             var form_pago = parent.find("#formulario_pago_individual"); 
             form_pago.find("#imagen_deportista").attr("src", BASE_URL_APP+'img/Usuario/169/crop.php?w=60&i='+item.Usuario.imagen);
@@ -1019,14 +1020,11 @@ $(document).bind('pageshow', function() {
  if(isLogin())
  {
   var cookie_user = $.parseJSON(readCookie("user"));
-//  console.log(cookie_user);
-  /*solo cargamos del panel si esta logeado el usuario*/
       var page_id = $("#" + $.mobile.activePage.attr('id'));//devuelve el id de la páguina
     //cargamos el panel de opciones en donde se encuentre #contenedor_panel
     //solo cargamos en el caso que no este cargado aun el panel, en otro caso no.
-    var cache=$('body').children("#cache");
-    
-    var panel=page_id.find("#contenedor_panel");
+    var cache=$('body').children("#cache");    
+    var panel=page_id.find("#contenedor_panel");    
     if(panel.html() == ""){        
         if($(cache).length>0)
         {
@@ -1036,16 +1034,25 @@ $(document).bind('pageshow', function() {
         }
         else
         {
-            panel.load("panel.html", function(){
-            panel.find("#panel_menu").panel();
-            panel.find("#panel_menu").find("#content_options").trigger("create");
-            $("body").append("<div id='cache' style='display: none;'>"+panel.html()+"<div>");
-        });
+            panel.load("panel.html", function()
+            {
+                $("body").append("<div id='cache' style='display: none;'>"+panel.html()+"<div>");
+                panel.find("#panel_menu").panel();
+                panel.find("#panel_menu").find("#content_options").trigger("create");
+                
+            });
        }
        actualizar_panel(); 
        $(".footer_menu").show();
     }
-  var html='<a class="user" href="editar_perfil.html">';
+  var html='';
+  if(cookie_user.bono)
+  {
+    html+='<div class="divbono"><i class="icon-box-add icono-grande"></i> '+cookie_user.bono+' Euros </div>';
+  }
+    
+    
+  html+='<a class="user" href="editar_perfil.html">';
   html+='<img src="'+BASE_URL_APP+'img/Usuario/169/crop.php?w=100&i='+cookie_user.imagen+'" width="35" /></a>';  
   $(".header_navigation .setting").html(html);  
     

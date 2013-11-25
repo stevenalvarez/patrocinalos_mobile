@@ -1212,7 +1212,13 @@ function form_login(){
                             if(msg.activo_su_cuenta){
                                 showAlert("Haz validado tu cuenta, ahora puedes crear tu patrocinio para empezar a recibir aportaciones.", "Enhorabuena", "Aceptar");
                             }
+                            
+                            //if(usuario.bono)
+//                            showAlert("Tienes un bono de "+usuario.bono+" Euros para patrocinar a tu deportista favorito", "Enhorabuena", "Aceptar");
+                            
                             $.mobile.changePage(goToPage, {transition: "fade"});
+                            
+                            
                         }else{
                             //mostramos el mensaje de que debe colocar el codigo de activacion para quedar activo en el sistema
                             //si el codigo que puso es erroneo
@@ -1768,9 +1774,10 @@ function llenarOngs(parent_id){
 	});
 }
 
-function llenarRecompensas($parent,usuario_id)
+function llenarRecompensas(parent,app_id)
 {
-    	$.getJSON(BASE_URL_APP + 'recompensas/mobileGetRecompensas/'+usuario_id, function(data) {
+    $.mobile.loading('show');
+	$.getJSON(BASE_URL_APP + 'recompensas/mobileGetRecompensas/'+app_id, function(data) {
 		var recompensas = data;
         var html = "";
         $.each(recompensas, function(index, item) {
@@ -1781,11 +1788,24 @@ function llenarRecompensas($parent,usuario_id)
             html+= "<label class='recompensas_aportaciones "+xx+"' onclick='$(this).siblings().removeClass("+'"'+"checked"+'"'+"); $(this).addClass("+'"'+"checked"+'"'+")' for='select"+item.Recompensa.id+"'><img class='imagen_redonda' src='"+BASE_URL_APP+"img/recompensas/crop.php?w=60&i="+item.Recompensa.serializado.imagen+"'><br>"+item.Recompensa.title+"";
             html+= "<input "+xx+" type='radio' style='display:none' id='select"+item.Recompensa.id+"' value='"+item.Recompensa.id+"' name='recompensa_id'/></label>";
         });
+        parent.find("#recompensas").html(html);
+        $.mobile.loading('hide');
+        parent.find("#abritepopup").trigger("click");
         
-        jQuery($parent).find("#recompensas").append(html);
-        //actualiza el texto
 	});
     
+   var formulario= parent.find(".formulario_de_recompensas");
+   $(parent).find(".formulario_de_recompensas #cerrarmodal").off('click').on("click", function()
+   {            
+                    $.ajax({
+                        data: $(formulario).serialize(),
+                        type: "POST",
+                        url: BASE_URL_APP+'aportaciones/mobileselecionarrecompensa/'+ app_id                       
+                    });
+   parent.find("#popupderecompensas").popup('close');                 
+                    
+   });
+  
 }
 
 
@@ -1838,26 +1858,25 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                    
                 }
             });
-        }
-        
+        }        
         return false;
     });
     
     
     //llenamos las ongs
     llenarOngs(parent.attr("id"));
-  //  llenarRecompensas(parent,to_usuario_id);
-    
+
     form_pago = parent.find("#formulario_pago_individual");
-//        if(!isLogin())
-//        {
-//            var registrate="<p style=' font-family: helvetica;font-size: 12px;font-weight: bold;'>No estas registrado si deseas participar del sorteo de recompensas dejanos tu nombre y tu email ademas debes aceptar y leer las condiciones de uso</p>";
-//            registrate+='<input  class="ui-input-text ui-corner-all ui-shadow-inset ui-mini" type="text" name="nombre" placeholder="Tu nombre y apellido" /><input  class="ui-input-text ui-corner-all ui-shadow-inset ui-mini" type="text" name="email" placeholder="Tu email" />';            
-//            registrate+='<label style="font-size: 12px;">';
-//            registrate+='<input type="checkbox" name="leido_term_gral" id="checkme_term_gral" class="validate[required]" style="margin-top: 0;">';
-//            registrate+='He leido y acepto los <a onclick="showTerms(this)" id="link_terms_gral" href="javascript:void(0)" class="popup">T&eacute;rminos y condiciones de uso.</a></label>';
-//            form_pago.find("#participar").html(registrate);
-//        }
+        if(!isLogin())
+        {
+            var registrate="<p style='letter-spacing: -1px; font-family: helvetica;font-size: 12px;font-weight: bold;'>No estas registrado si deseas participar del sorteo de recompensas dejanos tu nombre y tu email ademas debes aceptar y leer las condiciones de uso, si tienes cuenta registrate <a href='login.html'>aqu&iacute;</a></p>";
+            registrate+='<input  class="ui-input-text ui-corner-all ui-shadow-inset ui-mini" type="text" name="nombre" placeholder="Tu nombre y apellido" /><input  class="ui-input-text ui-corner-all ui-shadow-inset ui-mini" type="text" name="email" placeholder="Tu email" />';                       
+            form_pago.find("#participar").html(registrate);            
+            parent.find("#noregistrado").show();
+            
+            parent.find(".patrocinio_termino.anonima pago_termino").attr('checked','checked');
+            parent.find(".patrocinio_termino.anonima").hide();
+        }
     
     form_pago.find("#pago_monto").keyup(function(){
         var monto = 0;
@@ -1887,7 +1906,24 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
         var elem = $(this);
         var pago_monto = form_pago.find("#pago_monto").val();
         var pago_termino = form_pago.find("#pago_termino").is(":checked") ? true : false;
+       
+        var condiciones=1;
         
+        if(!isLogin())
+        {
+           var check=form_pago.find("#checkme_term_gral");
+           if($(check).is(":checked"))
+           {
+             var condiciones=1;
+           }
+           else
+            var condiciones=0;
+           
+        }   
+        
+        /*Tiene que aceptar las condiciones*/
+        if(condiciones)
+        {        
         if($.trim(pago_monto) != "" && (parseInt(pago_monto) > 0 && validarInt("pago_monto"))){
                 //PAGO PAYPAL
        if(elem.attr("lang") == "PAYPAL"){
@@ -1903,13 +1939,13 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                             
                             if(result.aportacion_realizada){
                                 //Cerramos el popup
-                                $("#popupPatrocinar").popup("close");
-                                document.getElementById("formulario_pago_individual").reset();
-                                                                                                
+                                $("#popupPatrocinar").popup("close");                                                                                                                               
+                                document.getElementById("formulario_pago_individual").reset();                                                                                                
                                 var url_pago = result.url_redirect_pago;
                                 //window.location = url_pago;
-                                window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false }); 
-                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoPayPal(loc, me); }; // When the ChildBrowser URL changes we need to track that
+                                $("body").hide();                                
+                                window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false, showNavigationBar : false, showAddress : false  }); 
+                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoPayPal(loc, me,result.app_id); }; // When the ChildBrowser URL changes we need to track that
                             }else{
                                 showAlert(result.error_alcanzado, "Error", "Aceptar");
                             }
@@ -1963,12 +1999,11 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                             $.mobile.loading('hide');
                             var result = $.parseJSON(data);
                             if(result.aportacion_realizada){
-                                //Cerramos el popup
-                                $("#popupPatrocinar").popup("close");
+                                llenarRecompensas(parent,result.app_id);
                                 document.getElementById("formulario_pago_individual").reset();
-                                showAlert('Aportaci&oacute;n realizada', "Aviso", "Aceptar");
+                               
                             }else{
-                                showAlert(result.error_alcanzado, "Error", "Aceptar");
+                                showAlert("Error", "Error", "Aceptar");
                             }
                         },
                         beforeSend : function(){
@@ -2005,7 +2040,12 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                 }   
                 
         }else{
-            showAlert("Por favor!, introduzca un monto valido.", "Aviso", "Aceptar");
+            showAlert("Ingrese un importe valido y solo enteros para aportar", "Aviso", "Aceptar");
+            form_pago.find("#pago_monto").val("");
+        }
+        }else
+        {
+            showAlert("Debe aceptar los t&eacute;rmino y condiciones de uso", "Aviso", "Aceptar");
             form_pago.find("#pago_monto").val("");
         }
     });
@@ -2055,7 +2095,7 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
 }
 
 //CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO POR PAYPAL
-function procesoPagoPayPal(loc, usuario_id){
+function procesoPagoPayPal(loc, usuario_id,app_id){
     
     var url_callback = BASE_URL_APP + 'aportaciones/mobileAddAportacion/' + usuario_id + '/';
     if (loc.indexOf(url_callback + "?") >= 0) {
@@ -2080,6 +2120,7 @@ function procesoPagoPayPal(loc, usuario_id){
         if(payer_id != '')
         {
             //Cerramos el childBrowser
+            $("body").show();            
             window.plugins.childBrowser.close();
             
             //Actualizamos la aportacion, porque se realizo correctamente el pago
@@ -2094,17 +2135,18 @@ function procesoPagoPayPal(loc, usuario_id){
                     $.mobile.loading('hide');
                     var result = $.parseJSON(data);
                     
-                    if(result.update_success){
+                    if(result.update_success){                                                                        
                         if(result.publicacion_nueva != ""){
                             var parent = $("#proyecto_deportivo");
                             parent.find("#publicaciones").css("opacity",0.5);
                             parent.find("#publicaciones").prepend(result.publicacion_nueva);
                             parent.find("#publicaciones").promise().done(function() {
-                                parent.find("#publicaciones").animate({opacity: 1}, 500 );
-                                $(".age").age();
+                            parent.find("#publicaciones").animate({opacity: 1}, 500 );
+                            $(".age").age();
+                             llenarRecompensas(parent,result.app_id);               
                             });
-                        }
-                        showAlert(result.success_alcanzado, "Aviso", "Aceptar");
+                        }                       
+                       
                     }else{
                         showAlert(result.error_alcanzado, "Error", "Aceptar");
                     }
@@ -2116,6 +2158,7 @@ function procesoPagoPayPal(loc, usuario_id){
             });
         }else{
             //Cerramos el childBrowser
+            $("body").show();                        
             window.plugins.childBrowser.close();
             showAlert("Su aportacion fue cancelada", "Aviso", "Aceptar");
         }
@@ -2173,7 +2216,8 @@ function procesoPagoTPV(loc){
                     var result = $.parseJSON(data);
                     
                     if(result.aportacion_pagada){
-                        showAlert(result.success_alcanzado, "Aviso", "Aceptar");
+                       llenarRecompensas(parent,result.app_id);
+                       // showAlert(result.success_alcanzado, "Aviso", "Aceptar");
                     }else{
                         showAlert(result.error_alcanzado, "Error", "Aceptar");
                     }

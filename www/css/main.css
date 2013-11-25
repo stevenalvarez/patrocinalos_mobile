@@ -108,7 +108,16 @@
          url('fonts/helveticaexcomp.ttf') format('truetype'),
          url('fonts/helveticaexcomp.svg#HelveticaExtraCompressedRoman') format('svg');
 }
-
+.ui-mobile, .ui-mobile body {
+    background-color: #000000;
+    height: 99.9%;
+}
+html, body {
+    background-color: #000000;
+    border: medium none;
+    margin: 0;
+    padding: 0;
+}
 
 /* Iconos */
 @font-face{font-family:'iconfont';src:url('fonts/iconfont.eot');src:url('fonts/iconfont.eot?#iefix') format('embedded-opentype'), url('fonts/iconfont.svg#iconfont') format('svg'), url('fonts/iconfont.woff') format('woff'), url('fonts/iconfont.ttf') format('truetype');font-weight:normal;font-style:normal}
@@ -4022,7 +4031,7 @@ label.custom{
     .info_deportista .text { background: none rgba(0, 0, 0, 0.6); position: absolute; bottom:0; width: 100%; padding: 0; color: #ECF0F1; font-size: 12px; font-family: "Open Sans",?sans-serif; padding: 5px;  }
     .info_deportista .like_cash { padding-left: 8px !important; width: 264px; margin: auto; }
     
-    .setting .ui-link{
+    .setting .ui-link, .back .search{
     background: none repeat scroll 0 0 #A20000;
     border:solid 1px #3D3D3D;
     border-radius: 4px !important;
@@ -4039,6 +4048,42 @@ label.custom{
     .setting a.user { display: inline-block; vertical-align: bottom; margin: 0 5px 0 0 !important; padding-top: 1px; } 
     
     #contenedor_panel #content_options { padding-top: 22px; }
+    
+        
+    .atributo.verde {
+        background: none repeat scroll 0 0 #27AE60;
+    }
+    .atributo {
+        border-radius: 2px 0 0 2px;
+        color: #FFFFFF;
+        margin-right: 0 !important;
+    }
+    
+        
+    .dato.verde, .puntos.verde {
+        color: #27AE60;
+    }
+    .dato {
+        background: none repeat scroll 0 0 #ECF0F1;
+        border-radius: 0 2px 2px 0;
+        font-size: 12px !important;
+    }  
+    
+    .boton, .atributo, .dato, .puntos {
+    display: block;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif !important;
+    font-size: 14px;
+    font-weight: bold !important;
+    height: 28px;
+    line-height: 28px !important;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding: 0 8px !important;
+}  
+div.divbono { position: absolute; width: 40px; top: 4px; right: 62px; font-size: 12px;  }
+div.divbono i { color: #27AE61; font-size: 16px; }
+    
     
 /***************************************** RESPONSIVO *******************************************************/
 

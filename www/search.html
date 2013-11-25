@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+
+    <div data-role="page" id="search_proys" data-theme="c">
+    
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
+                    </div>
+                </li>
+                <li class="page">
+                    <span>BUSCAR PROYECTOS ACTIVOS</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+    
+    	<div data-role="content">
+        
+        <div class="ui-input-text ui-shadow-inset ui-corner-all ui-btn-shadow ui-body-c valid_field">
+        <input type="text" data-type="search"  id="input" onkeyup="lookup(this.value);" autocomplete="off" placeholder="Escribe el nombre del deportista..." name="u_nombre" class="ui-input-search  ui-body-c valid">
+        <span class="success"><i></i></span></div>
+        
+        <script>
+                        $("input").blur(function(){
+                     //   $('#suggestions2').fadeOut();
+                        });
+                        function lookup(inputString) {
+                        if(inputString.length == 0) {
+                        $('#suggestions2').fadeOut(); // Hide the suggestions box
+                        } else {
+                        $.mobile.loading( 'show' );    
+                        $.post( BASE_URL_APP + "Usuarios/findusersmobile", {queryString: ""+inputString+""}, function(data) { // Do an AJAX call
+                        $('#suggestions2').fadeIn(); // Show the suggestions box
+                        $('#suggestions2').html(data); // Fill the suggestions box
+                         $.mobile.loading( 'hide' );
+                        });
+                        }
+                        }  
+        </script>
+            <div class="content_list_two">
+                <ul data-role="listview" class="elite_list" id="suggestions2">                
+                	
+                </ul>
+            </div>
+    	</div><!-- /content -->
+        
+        <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="c" class="footer_menu">
+            <a href="#panel_menu" class="icon_menu">
+                <img src="img/bg_list_menu.png"/>
+            </a>
+        </div>
+        
+        <!--contenedor del panel-->
+        <div id="contenedor_panel"></div>
+    
+    </div><!-- /page -->
+    
+    </body>
+</html>
