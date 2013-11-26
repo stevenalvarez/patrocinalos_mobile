@@ -1,7 +1,7 @@
 /************************************ VARIABLES DE CONFIGURACION *******************************************************/
 
 /************************************ server *******************************************************/
-var BASE_URL_APP = "https://www.patrocinalos.com/app/webroot/redsocialtest/";
+var BASE_URL_APP = "https://www.patrocinalos.com/";
 
 /************************************ localhost *******************************************************/
 //var BASE_URL_APP = "http://localhost/patrocinalos/";
