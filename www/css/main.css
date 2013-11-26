@@ -866,6 +866,7 @@ form .content_textarea{
 }
 .header_navigation .back{
     width: 12%;
+    max-height: 40px;
 }
 .header_navigation .setting{
     width: 10%;
