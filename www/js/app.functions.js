@@ -1213,8 +1213,8 @@ function form_login(){
                                 showAlert("Haz validado tu cuenta, ahora puedes crear tu patrocinio para empezar a recibir aportaciones.", "Enhorabuena", "Aceptar");
                             }
                             
-                            //if(usuario.bono)
-//                            showAlert("Tienes un bono de "+usuario.bono+" Euros para patrocinar a tu deportista favorito", "Enhorabuena", "Aceptar");
+                            if(usuario.bono)
+                            //showAlert("Tienes un bono de "+usuario.bono+" Euros para patrocinar a tu deportista favorito", "Enhorabuena", "Aceptar");
                             
                             $.mobile.changePage(goToPage, {transition: "fade"});
                             
@@ -1778,7 +1778,9 @@ function llenarRecompensas(parent,app_id)
 {
     $.mobile.loading('show');
 	$.getJSON(BASE_URL_APP + 'recompensas/mobileGetRecompensas/'+app_id, function(data) {
-		var recompensas = data;
+		
+        if(data){
+        var recompensas = data;
         var html = "";
         $.each(recompensas, function(index, item) {
             
@@ -1791,6 +1793,7 @@ function llenarRecompensas(parent,app_id)
         parent.find("#recompensas").html(html);
         $.mobile.loading('hide');
         parent.find("#abritepopup").trigger("click");
+        }
         
 	});
     
@@ -1966,7 +1969,6 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                             //ocultamos el loading
                             $.mobile.loading('hide');
                             var result = $.parseJSON(data);
-                            
                             if(result.aportacion_realizada){
                                 //Cerramos el popup
                                 $("#popupPatrocinar").popup("close");
@@ -1999,9 +2001,9 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                             $.mobile.loading('hide');
                             var result = $.parseJSON(data);
                             if(result.aportacion_realizada){
-                                llenarRecompensas(parent,result.app_id);
+                                $("#popupPatrocinar").popup("close");
                                 document.getElementById("formulario_pago_individual").reset();
-                               
+                                llenarRecompensas(parent,result.app_id);
                             }else{
                                 showAlert("Error", "Error", "Aceptar");
                             }
@@ -2012,40 +2014,57 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                         }
                     });
                 }
-                else if(elem.attr("lang") == "BONOS"){
-                     showAlert('Debes registrate para patrocinar mediante bonos', "Error", "Aceptar");
-//                    $.ajax({
-//                        data: $(form_pago).serialize(),
-//                        type: "POST",
-//                        url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/CODE",
-//                        dataType: "html",
-//                        success: function(data){                            
-//                            //ocultamos el loading
-//                            $.mobile.loading('hide');
-//                            var result = $.parseJSON(data);
-//                            if(result.aportacion_realizada){
-//                                //Cerramos el popup
-//                                $("#popupPatrocinar").popup("close");
-//                                document.getElementById("formulario_pago_individual").reset();
-//                                showAlert('Aportaci&oacute;n realizada', "Aviso", "Aceptar");
-//                            }else{
-//                                showAlert(result.error_alcanzado, "Error", "Aceptar");
-//                            }
-//                        },
-//                        beforeSend : function(){
-//                            //mostramos loading
-//                            showLoadingCustom('Verificando datos...');
-//                        }
-//                    });
-                }   
                 
+                else if(elem.attr("lang") == "BONOS")
+                {
+                     if(!isLogin())
+                    { showAlert('Debes registrate para patrocinar mediante bonos', "Error", "Aceptar");}
+                    else{
+                    $.ajax({
+                        data: $(form_pago).serialize(),
+                        type: "POST",
+                        url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/BONOS",
+                        dataType: "html",
+                        success: function(data){                            
+                            //ocultamos el loading
+                            $.mobile.loading('hide');
+                            var result = $.parseJSON(data);
+                            if(result.aportacion_realizada){
+                                
+                                var cookie_user = $.parseJSON(readCookie("user"));
+                                if(result.params.saldo)
+                                {
+                                    $(".divbono span").html(result.params.saldo);
+                                    cookie_user.bono=result.params.saldo;
+                                }
+                                else
+                                {
+                                    $(".divbono").hide();
+                                    cookie_user.bono=0;
+                                }
+                                createCookie("user", JSON.stringify(cookie_user),1);                                
+                                //Cerramos el popup
+                                $("#popupPatrocinar").popup("close");
+                                document.getElementById("formulario_pago_individual").reset();
+                                llenarRecompensas(parent,result.app_id);
+                            }else{
+                                showAlert(result.error_alcanzado, "Error", "Aceptar");
+                            }
+                        },
+                       beforeSend : function(){
+                            //mostramos loading
+                            showLoadingCustom('Verificando datos...');
+                        }
+                    });
+                }   
+                }
         }else{
             showAlert("Ingrese un importe valido y solo enteros para aportar", "Aviso", "Aceptar");
             form_pago.find("#pago_monto").val("");
         }
         }else
         {
-            showAlert("Debe aceptar los t&eacute;rmino y condiciones de uso", "Aviso", "Aceptar");
+            showAlert("Debe aceptar las condiciones de uso", "Aviso", "Aceptar");
             form_pago.find("#pago_monto").val("");
         }
     });

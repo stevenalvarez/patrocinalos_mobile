@@ -306,6 +306,20 @@ $("#mis_recaudaciones").live('pagebeforeshow', function(event, ui) {
     }
 });
 
+$(document).on('pageinit', "#search_proys", function(){
+    
+    
+    $.post( BASE_URL_APP + "Usuarios/findusersmobile/destacados", 
+                        {queryString: "all"},
+                        function(data)
+                        { // Do an AJAX call
+                            $('#suggestions2').fadeIn(); // Show the suggestions box
+                            $('#suggestions2').html(data); // Fill the suggestions box
+                        });
+});
+
+
+
 /************************************ FUNCTIONS *******************************************************/
 
 //OBTENEMOS 10 USUARIOS DE FORMA RANDOMICA 
@@ -1048,7 +1062,7 @@ $(document).bind('pageshow', function() {
   var html='';
   if(cookie_user.bono)
   {
-    html+='<div class="divbono"><i class="icon-box-add icono-grande"></i> '+cookie_user.bono+' Euros </div>';
+    html+='<div class="divbono"><i class="icon-box-add icono-grande"></i> <span>'+cookie_user.bono+'</span> Euros </div>';
   }
     
     

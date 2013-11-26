@@ -26,12 +26,9 @@
         
         <div class="ui-input-text ui-shadow-inset ui-corner-all ui-btn-shadow ui-body-c valid_field">
         <input type="text" data-type="search"  id="input" onkeyup="lookup(this.value);" autocomplete="off" placeholder="Escribe el nombre del deportista..." name="u_nombre" class="ui-input-search  ui-body-c valid">
-        <span class="success"><i></i></span></div>
-        
+        <span class="success"><i></i></span>
+        </div>        
         <script>
-                        $("input").blur(function(){
-                     //   $('#suggestions2').fadeOut();
-                        });
                         function lookup(inputString) {
                         if(inputString.length == 0) {
                         $('#suggestions2').fadeOut(); // Hide the suggestions box
@@ -43,8 +40,40 @@
                          $.mobile.loading( 'hide' );
                         });
                         }
-                        }  
+                        }
+                        
+                        function lookupfilter(filter)
+                        {
+                            $.mobile.loading( 'show' );    
+                            $.post( BASE_URL_APP + "Usuarios/findusersmobile/"+filter, {queryString:'all' }, function(data)
+                            { // Do an AJAX call
+                                $('#suggestions2').fadeIn(); // Show the suggestions box
+                                $('#suggestions2').html(data); // Fill the suggestions box
+                                 $.mobile.loading( 'hide' );
+                            });
+                        }
+                       
+                        
+                          
         </script>
+        
+        <div class="btn-options">
+        
+        <div class="btn-first">
+            <a onclick="lookupfilter('destacado')" href="javascript:void(0)" class="ui-btn-submit green ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all" 
+            data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" aria-haspopup="true" aria-owns="popupPatrocinar" aria-expanded="false">
+            <span class="ui-btn-inner"><span class="ui-btn-text">Destacados</span></span></a>
+        </div>
+        
+        <div class="btn-second">
+            <a onclick="lookupfilter('otros')" href="javascript:void(0)" class="ui-btn-submit red seguir ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c"
+             data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c">
+             <span class="ui-btn-inner"><span class="ui-btn-text">Otros</span></span></a>
+        </div>
+                
+        </div>
+        
+        
             <div class="content_list_two">
                 <ul data-role="listview" class="elite_list" id="suggestions2">                
                 	
