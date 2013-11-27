@@ -5,7 +5,7 @@ var Twitter = {
         var storedAccessData, rawData = localStorage.getItem(twitterKey);
 		
 		// First thing we need to do is check to see if we already have the user saved!
-		if(localStorage.getItem(twitterKey) !== null){
+		if(false){
 			
 			// If we already have them
 			storedAccessData = JSON.parse(rawData); // Parse our JSON object
@@ -22,8 +22,19 @@ var Twitter = {
 			oauth.get('https://api.twitter.com/oauth/request_token',
 				function(data) {
 					requestParams = data.text;
-					window.plugins.childBrowser.showWebPage('https://api.twitter.com/oauth/authorize?'+data.text, { showLocationBar : false }); // This opens the Twitter authorization / sign in page
-					window.plugins.childBrowser.onLocationChange = function(loc){ Twitter.success(loc); }; // When the ChildBrowser URL changes we need to track that
+                    alert("si");
+                     var ref = window.open('https://api.twitter.com/oauth/authorize?'+data.text, '_blank', 'location=no'); // redirection.
+                    // check if the location the phonegap changes to matches our callback url or not
+                    ref.addEventListener("loadstart", function(iABObject) {
+                        if(iABObject.url.match(/localhost/)) {
+                            ref.close();
+                            alert(JSON.stringify(iABObject))
+                        }else{
+                            alert("no " + JSON.stringify(iABObject));
+                        }
+                    });
+					//window.plugins.childBrowser.showWebPage('https://api.twitter.com/oauth/authorize?'+data.text, { showLocationBar : false }); // This opens the Twitter authorization / sign in page
+					//window.plugins.childBrowser.onLocationChange = function(loc){ Twitter.success(loc); }; // When the ChildBrowser URL changes we need to track that
 				},
 				function(data) {
 					console.log("ERROR: "+data);
@@ -67,7 +78,7 @@ var Twitter = {
                     accessData.accessTokenSecret = accessParams.oauth_token_secret;
                     
                     // SETTING OUR LOCAL STORAGE
-                    localStorage.setItem(twitterKey, JSON.stringify(accessData));
+                    //localStorage.setItem(twitterKey, JSON.stringify(accessData));
                     
                     //mandamos al registro
                     setTimeout(function(){
