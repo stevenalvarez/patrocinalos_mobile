@@ -23,7 +23,7 @@ var Twitter = {
 				function(data) {
 					requestParams = data.text;
                     alert("si");
-                     var ref = window.open('https://api.twitter.com/oauth/authorize?'+data.text, '_blank', 'location=no'); // redirection.
+                     var ref = window.open('https://api.twitter.com/oauth/authorize?'+data.text, '_blank', 'location=yes'); // redirection.
                     // check if the location the phonegap changes to matches our callback url or not
                     ref.addEventListener("loadstart", function(iABObject) {
                         if(iABObject.url.match(/localhost/)) {
