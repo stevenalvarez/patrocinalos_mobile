@@ -1600,6 +1600,7 @@ function loginTwitter() {
                         var verifier = params[1].toString();
                         oauth.get('https://api.twitter.com/oauth/access_token?' + verifier+'&'+requestParams,
                             function(data) {
+                                alert("perra :" + JSON.stringify(data));
                                 var accessParams = {};
                                 var qvars_tmp = data.text.split('&');
                                 for (var i = 0; i < qvars_tmp.length; i++) {
