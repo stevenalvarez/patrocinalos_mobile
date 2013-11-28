@@ -24,8 +24,8 @@ var Twitter = {
 					requestParams = data.text;
                     var ref = window.open('https://api.twitter.com/oauth/authorize?'+data.text, '_blank', 'location=no,toolbar=no'); // redirection.
                     // check if the location the phonegap changes to matches our callback url or not
-                    ref.addEventListener("loadstart", function(loc) {
-                        Twitter.success(loc);
+                    ref.addEventListener("loadstart", function(iABObject) {
+                        Twitter.success(iABObject);
                     });
 				},
 				function(data) {
@@ -39,15 +39,12 @@ var Twitter = {
 	When The ChildBrowser URL changes we will track it here.
 	We will also determine if the request was a success or not here
 	*/
-	success:function(loc){
-		
-        alert(JSON.stringify(loc));
-		// The supplied oauth_callback_url for this session is being loaded
+	success:function(iABObject){
 		
 		/*
 		We will check to see if the childBrowser's new URL matches our callBackURL
 		*/
-        if (loc.indexOf(callback + "?") >= 0) {
+        if (iABObject.url.indexOf(callback + "?") >= 0) {
         
             // Parse the returned URL
             var params = loc.toString().split("&");
@@ -105,7 +102,7 @@ var Twitter = {
             );
         }
         else {
-            alert("else:" + JSON.stringify(loc));
+            alert("else:" + JSON.stringify(iABObject.url));
         // do nothing
         }
 	}
