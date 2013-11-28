@@ -2051,8 +2051,10 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                                 var params = result.params;
                                 var site_url = BASE_URL_APP+'aportaciones/mobileRedireccionamientoTPV/?url='+url_pago+'&ref='+params.ref+'&store='+params.store+'&idioma='+params.idioma;
                                 //window.location = site_url;
-                                window.plugins.childBrowser.showWebPage(site_url, { showLocationBar : false });
-                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoTPV(loc); }; // When the ChildBrowser URL changes we need to track that
+                                var ref = window.open(site_url, '_blank', 'location=no,toolbar=no');
+                                ref.addEventListener("loadstart", function(iABObject) {
+                                    procesoPagoTPV(ref, iABObject, me, result.app_id);
+                                });
                             }else{
                                 showAlert(result.error_alcanzado, "Error", "Aceptar");
                             }
@@ -2195,8 +2197,6 @@ function procesoPagoPayPal(win, loc, usuario_id, app_id){
         // Parse the returned URL
         var token, payer_id = '';
         var params = loc.url.substr(loc.url.indexOf('?') + 1);
-        
-        alert(JSON.stringify(params));
          
         params = params.split('&');
         for (var i = 0; i < params.length; i++) {
@@ -2213,7 +2213,6 @@ function procesoPagoPayPal(win, loc, usuario_id, app_id){
         //controlamos si es que se realizo el pago correctamete, porque tambien puede cancelarlo
         if(payer_id != '')
         {
-            alert("entra: " +payer_id)
             //Cerramos el windows
             $("body").show();
             win.close();
@@ -2264,7 +2263,7 @@ function procesoPagoPayPal(win, loc, usuario_id, app_id){
 }
 
 //CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO POR TPV
-function procesoPagoTPV(loc){
+function procesoPagoTPV(win, loc, usuario_id, app_id){
     //Exiten 3 tipos de estados en el cual se mueve el pago para realizar la transaccion
     //aceptadaconfirmadortodotpvokpasarela -> Coloca el pago si todo esta bine en estado "pagado"
     //denegada -> error al momento de realizar el pago
@@ -2275,11 +2274,11 @@ function procesoPagoTPV(loc){
     var url_callback_denegada = BASE_URL_APP + 'aportaciones/denegada/';
     var url_callback_vuelve = BASE_URL_APP + 'aportaciones/vuelve/';
     
-    if (loc.indexOf(url_callback_vuelve + "?") >= 0) {
+    if (loc.url.indexOf(url_callback_vuelve + "?") >= 0) {
         
         // Parse the returned URL
         var token = '';
-        var params = loc.substr(loc.indexOf('?') + 1);
+        var params = loc.url.substr(loc.url.indexOf('?') + 1);
          
         params = params.split('&');
         for (var i = 0; i < params.length; i++) {
@@ -2292,8 +2291,8 @@ function procesoPagoTPV(loc){
         //controlamos si es que se realizo el pago correctamete, porque tambien puede cancelarlo
         if(token != '')
         {
-            //Cerramos el childBrowser
-            window.plugins.childBrowser.close();
+            //Cerramos
+            win.close();
             
             //Verificamos si la aportacion fue pagada, si llega al metodo vuelve, 
             //sabemos que fue completada la aportacion, pero para mayor seguridad verificamos si se hizo correctamente la aportacion.
@@ -2323,14 +2322,14 @@ function procesoPagoTPV(loc){
                 }
             });
         }else{
-            //Cerramos el childBrowser
-            window.plugins.childBrowser.close();
+            //Cerramos
+            win.close();
             showAlert("Ocurrio un error al momento de realizar el pago. Por favor, asegurese de que ha introducido correctamente sus datos de pago y vuelva a intentarlo.", "Error", "Aceptar");
         }
         
     }else if (loc.indexOf(url_callback_denegada + "?") >= 0) {
-        //Cerramos el childBrowser
-        window.plugins.childBrowser.close();
+        //Cerramos
+        win.close();
         showAlert("Su aportacion fue denegada. Por favor, asegurese de que ha introducido correctamente sus datos de pago y vuelva a intentarlo.", "Error", "Aceptar");
         
     }else{
