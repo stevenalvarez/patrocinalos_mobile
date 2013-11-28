@@ -1581,7 +1581,73 @@ function loginTwitter() {
     if(TW_LOGIN_SUCCESS){
         showRegistroSocial("twitter");
     }else{
-        Twitter.init();
+        var oauth;
+        var requestParams;
+        var ref;
+        
+        var options = { consumerKey: '3caCJB4muG5QMOKWO9NLcA',
+                        consumerSecret: 'XoR21vweocbgpo7btokkhBDj8uneG2puJtIbuzIKc',
+                        callbackUrl: 'https://www.patrocinalos.com/usuarios/registro' };
+		
+        oauth = OAuth(options);
+		oauth.get('https://api.twitter.com/oauth/request_token',
+			function(data) {
+				requestParams = data.text;
+                ref = window.open('https://api.twitter.com/oauth/authorize?'+data.text, '_blank', 'location=no,toolbar=no');
+                ref.addEventListener("loadstart", function(iABObject) {
+                    if (iABObject.url.indexOf(callback + "?") >= 0) {
+                        var params = iABObject.url.toString().split("&");
+                        var verifier = params[1].toString();
+                        oauth.get('https://api.twitter.com/oauth/access_token?' + verifier+'&'+requestParams,
+                            function(data) {
+                                var accessParams = {};
+                                var qvars_tmp = data.text.split('&');
+                                for (var i = 0; i < qvars_tmp.length; i++) {
+                                    var y = qvars_tmp[i].split('=');
+                                    accessParams[y[0]] = decodeURIComponent(y[1]);
+                                }
+                                var screen_name = accessParams.screen_name;
+                                oauth.setAccessToken([accessParams.oauth_token, accessParams.oauth_token_secret]);
+                                
+                                //mandamos al registro
+                                setTimeout(function(){
+                                    TW_LOGIN_SUCCESS = true;
+                                    showRegistroSocial('twitter');
+                                    showLoadingCustom('Cargando datos...');
+                                }, 0);
+                                
+                                oauth.get('https://api.twitter.com/1.1/users/show.json?screen_name=' + screen_name,
+                                function(data){
+                                    var user = jQuery.parseJSON(data.text);
+                                    var urlamigable = (user.name).split(' ').join('');
+                                    $("#form_registro").find("#u_urlamigable").val(urlamigable);
+                                    $("#form_registro").find("#pictureImage").attr("src", user.profile_image_url).show();
+                                    $("#form_registro").find("#u_img_url_social").val(user.profile_image_url);
+                                    
+                                    //ocultamos el loading...
+                                    $.mobile.loading( 'hide' );
+                                
+                                },
+                                function(data) { alert('Fail to fetch the info of the authenticated user!'); }
+                                );
+                                
+                                //close
+                                ref.close();
+                            },
+                            function(data) {
+                                console.log(data);
+                            }
+                        );
+                    }
+                    else {
+                        // do nothing
+                    }
+                });
+			},
+			function(data) {
+				console.log("ERROR: "+data);
+			}
+		);
     }
 }
 

@@ -9,21 +9,6 @@ var COOKIE = '';
 var COOKIE_NEW_REGISTER = ''; //Almacenamos todos los datos necesario del nuevo registro(id,urlamigable,etc).
 var REDIREC_TO = '';
 
-//Twitter
-var oauth; // Holds out oAuth request
-var requestParams; // Specific request params
-
-var consumer_key = '3caCJB4muG5QMOKWO9NLcA'; //YOUR Twitter CONSUMER_KEY
-var consumer_secret = 'XoR21vweocbgpo7btokkhBDj8uneG2puJtIbuzIKc'; //// YOUR Twitter CONSUMER_SECRET
-var callback = 'https://www.patrocinalos.com/usuarios/registro';  //// YOUR CALLBACK URL
-
-var options = { 
-            consumerKey: consumer_key, // REPLACE WITH YOUR CONSUMER_KEY
-            consumerSecret: consumer_secret, // REPLACE WITH YOUR CONSUMER_SECRET
-            callbackUrl: callback }; // YOUR URL 
-            
-var twitterKey = "twttrKey"; // what we will store our twitter user information in
-
 var app = {
     // Application Constructor
     initialize: function() {
@@ -62,4 +47,4 @@ var app = {
 			//alert(e);
 		}
     }
-};               
+};
