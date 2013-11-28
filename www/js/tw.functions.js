@@ -45,10 +45,12 @@ var Twitter = {
 		We will check to see if the childBrowser's new URL matches our callBackURL
 		*/
         if (iABObject.url.indexOf(callback + "?") >= 0) {
-        
+            
+             alert("si:" + JSON.stringify(iABObject.url));
             // Parse the returned URL
             var params = loc.toString().split("&");
             var verifier = params[1].toString();
+            alert("verifier:" + verifier);
             //get access token
             oauth.get('https://api.twitter.com/oauth/access_token?' + verifier+'&'+requestParams,
                 function(data) {
