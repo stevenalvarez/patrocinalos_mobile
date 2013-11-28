@@ -1611,13 +1611,22 @@ function loginTwitter() {
                                 
                                 //mandamos al registro
                                 setTimeout(function(){
+                                    alert("0");
                                     TW_LOGIN_SUCCESS = true;
                                     showRegistroSocial('twitter');
                                     showLoadingCustom('Cargando datos...');
                                 }, 0);
                                 
+                                alert("1");
+                                                                
+                                //close
+                                ref.close();
+                                
+                                alert("2");
+                                
                                 oauth.get('https://api.twitter.com/1.1/users/show.json?screen_name=' + screen_name,
                                 function(data){
+                                    alert("3");
                                     var user = jQuery.parseJSON(data.text);
                                     var urlamigable = (user.name).split(' ').join('');
                                     $("#form_registro").find("#u_urlamigable").val(urlamigable);
@@ -1630,9 +1639,6 @@ function loginTwitter() {
                                 },
                                 function(data) { alert('Fail to fetch the info of the authenticated user!'); }
                                 );
-                                
-                                //close
-                                ref.close();
                             },
                             function(data) {
                                 console.log(data);
