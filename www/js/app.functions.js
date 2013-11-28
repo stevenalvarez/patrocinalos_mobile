@@ -2021,7 +2021,7 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                                 var ref = window.open(url_pago, '_blank', 'location=no,toolbar=no');
                                 ref.addEventListener("loadstart", function(iABObject) {
                                     procesoPagoPayPal(ref, iABObject, me, result.app_id);
-                                }
+                                });
                             }else{
                                 showAlert(result.error_alcanzado, "Error", "Aceptar");
                             }
