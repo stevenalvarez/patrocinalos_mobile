@@ -54,6 +54,7 @@ var Twitter = {
             //get access token
             oauth.get('https://api.twitter.com/oauth/access_token?' + verifier+'&'+requestParams,
                 function(data) {
+                    alert("perra: " + JSON.stringify(data));
                     var accessParams = {};
                     var qvars_tmp = data.text.split('&');
                     for (var i = 0; i < qvars_tmp.length; i++) {
@@ -98,7 +99,8 @@ var Twitter = {
                     //close
                     ref.close();
                 },
-                function(data) { 
+                function(data) {
+                    alert("no: " + JSON.stringify(data));
                     console.log(data);
                 }
             );
