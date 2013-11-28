@@ -5,7 +5,7 @@ var Twitter = {
         var storedAccessData, rawData = localStorage.getItem(twitterKey);
 		
 		// First thing we need to do is check to see if we already have the user saved!
-		if(false){
+		if(localStorage.getItem(twitterKey) !== null){
 			
 			// If we already have them
 			storedAccessData = JSON.parse(rawData); // Parse our JSON object
@@ -22,19 +22,11 @@ var Twitter = {
 			oauth.get('https://api.twitter.com/oauth/request_token',
 				function(data) {
 					requestParams = data.text;
-                    alert("si");
-                     var ref = window.open('https://api.twitter.com/oauth/authorize?'+data.text, '_blank', 'location=no,toolbar=no'); // redirection.
+                    var ref = window.open('https://api.twitter.com/oauth/authorize?'+data.text, '_blank', 'location=no,toolbar=no'); // redirection.
                     // check if the location the phonegap changes to matches our callback url or not
-                    ref.addEventListener("loadstart", function(iABObject) {
-                        if(iABObject.url.match(/localhost/)) {
-                            ref.close();
-                            alert(JSON.stringify(iABObject))
-                        }else{
-                            alert("no " + JSON.stringify(iABObject));
-                        }
+                    ref.addEventListener("loadstart", function(loc) {
+                        Twitter.success(loc);
                     });
-					//window.plugins.childBrowser.showWebPage('https://api.twitter.com/oauth/authorize?'+data.text, { showLocationBar : false }); // This opens the Twitter authorization / sign in page
-					//window.plugins.childBrowser.onLocationChange = function(loc){ Twitter.success(loc); }; // When the ChildBrowser URL changes we need to track that
 				},
 				function(data) {
 					console.log("ERROR: "+data);
@@ -49,6 +41,7 @@ var Twitter = {
 	*/
 	success:function(loc){
 		
+        alert(JSON.stringify(loc));
 		// The supplied oauth_callback_url for this session is being loaded
 		
 		/*
@@ -103,8 +96,8 @@ var Twitter = {
                     function(data) { alert('Fail to fetch the info of the authenticated user!'); }
                     );                        
                     
-                    // Since everything went well we can close our childBrowser!
-                    window.plugins.childBrowser.close();
+                    //close
+                    ref.close();
                 },
                 function(data) { 
                     console.log(data);
@@ -112,23 +105,8 @@ var Twitter = {
             );
         }
         else {
-        // do nothing	
+            alert("else:" + JSON.stringify(loc));
+        // do nothing
         }
-	},
-	tweet:function(){
-		var storedAccessData, rawData = localStorage.getItem(twitterKey);
-		
-			storedAccessData = JSON.parse(rawData); // Parse our JSON object
-			options.accessTokenKey = storedAccessData.accessTokenKey; // This is saved when they first sign in
-			options.accessTokenSecret = storedAccessData.accessTokenSecret; // this is saved when they first sign in
-			
-			// jsOAuth takes care of everything for us we just need to provide the options
-			oauth = OAuth(options);
-	},
-	/*
-	Now that we have the information we can Tweet!
-	*/
-	post:function(){
-		var theTweet = $("#tweet").val(); // Change this out for what ever you want!
 	}
 };
