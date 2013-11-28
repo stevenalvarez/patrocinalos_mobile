@@ -1585,9 +1585,14 @@ function loginTwitter() {
         var requestParams;
         var ref;
         
-        var options = { consumerKey: '3caCJB4muG5QMOKWO9NLcA',
-                        consumerSecret: 'XoR21vweocbgpo7btokkhBDj8uneG2puJtIbuzIKc',
-                        callbackUrl: 'https://www.patrocinalos.com/usuarios/registro' };
+        var consumer_key = '3caCJB4muG5QMOKWO9NLcA';
+        var consumer_secret = 'XoR21vweocbgpo7btokkhBDj8uneG2puJtIbuzIKc';
+        var callback = 'https://www.patrocinalos.com/usuarios/registro';
+        
+        var options = { 
+                    consumerKey: consumer_key,
+                    consumerSecret: consumer_secret,
+                    callbackUrl: callback };
 		
         oauth = OAuth(options);
 		oauth.get('https://api.twitter.com/oauth/request_token',
@@ -1600,7 +1605,6 @@ function loginTwitter() {
                         var verifier = params[1].toString();
                         oauth.get('https://api.twitter.com/oauth/access_token?' + verifier+'&'+requestParams,
                             function(data) {
-                                alert("perra :" + JSON.stringify(data));
                                 var accessParams = {};
                                 var qvars_tmp = data.text.split('&');
                                 for (var i = 0; i < qvars_tmp.length; i++) {
@@ -1612,22 +1616,13 @@ function loginTwitter() {
                                 
                                 //mandamos al registro
                                 setTimeout(function(){
-                                    alert("0");
                                     TW_LOGIN_SUCCESS = true;
                                     showRegistroSocial('twitter');
                                     showLoadingCustom('Cargando datos...');
                                 }, 0);
                                 
-                                alert("1");
-                                                                
-                                //close
-                                ref.close();
-                                
-                                alert("2");
-                                
                                 oauth.get('https://api.twitter.com/1.1/users/show.json?screen_name=' + screen_name,
                                 function(data){
-                                    alert("3");
                                     var user = jQuery.parseJSON(data.text);
                                     var urlamigable = (user.name).split(' ').join('');
                                     $("#form_registro").find("#u_urlamigable").val(urlamigable);
@@ -1640,6 +1635,9 @@ function loginTwitter() {
                                 },
                                 function(data) { alert('Fail to fetch the info of the authenticated user!'); }
                                 );
+                                
+                                //close
+                                ref.close();
                             },
                             function(data) {
                                 console.log(data);
