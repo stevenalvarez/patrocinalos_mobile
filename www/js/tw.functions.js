@@ -48,7 +48,7 @@ var Twitter = {
             
              alert("si:" + JSON.stringify(iABObject.url));
             // Parse the returned URL
-            var params = iABObject.toString().split("&");
+            var params = iABObject.url.toString().split("&");
             var verifier = params[1].toString();
             alert("verifier:" + verifier);
             //get access token
