@@ -2006,20 +2006,22 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
                         type: "POST",
                         url: BASE_URL_APP+'aportaciones/mobileAddAportacion/'+ me + "/PAYPAL",
                         dataType: "html",
-                        success: function(data){                            
+                        success: function(data){
                             //ocultamos el loading
                             $.mobile.loading('hide');
                             var result = $.parseJSON(data);
                             
                             if(result.aportacion_realizada){
                                 //Cerramos el popup
-                                $("#popupPatrocinar").popup("close");                                                                                                                               
-                                document.getElementById("formulario_pago_individual").reset();                                                                                                
+                                $("#popupPatrocinar").popup("close");
+                                document.getElementById("formulario_pago_individual").reset();
                                 var url_pago = result.url_redirect_pago;
                                 //window.location = url_pago;
-                                $("body").hide();                                
-                                window.plugins.childBrowser.showWebPage(url_pago, { showLocationBar : false, showNavigationBar : false, showAddress : false  }); 
-                                window.plugins.childBrowser.onLocationChange = function(loc){ procesoPagoPayPal(loc, me,result.app_id); }; // When the ChildBrowser URL changes we need to track that
+                                $("body").hide();
+                                var ref = window.open(url_pago, '_blank', 'location=no,toolbar=no');
+                                ref.addEventListener("loadstart", function(iABObject) {
+                                    procesoPagoPayPal(ref, iABObject, me, result.app_id);
+                                }
                             }else{
                                 showAlert(result.error_alcanzado, "Error", "Aceptar");
                             }
@@ -2185,14 +2187,16 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
 }
 
 //CONTROLAMOS LAS DISTINTAS RESPUESTAS AL MOMENTO DE REALIZAR EL PAGO POR PAYPAL
-function procesoPagoPayPal(loc, usuario_id,app_id){
+function procesoPagoPayPal(win, loc, usuario_id, app_id){
     
     var url_callback = BASE_URL_APP + 'aportaciones/mobileAddAportacion/' + usuario_id + '/';
-    if (loc.indexOf(url_callback + "?") >= 0) {
+    if (loc.url.indexOf(url_callback + "?") >= 0) {
         
         // Parse the returned URL
         var token, payer_id = '';
-        var params = loc.substr(loc.indexOf('?') + 1);
+        var params = loc.url.substr(loc.url.indexOf('?') + 1);
+        
+        alert(JSON.stringify(params));
          
         params = params.split('&');
         for (var i = 0; i < params.length; i++) {
@@ -2209,9 +2213,10 @@ function procesoPagoPayPal(loc, usuario_id,app_id){
         //controlamos si es que se realizo el pago correctamete, porque tambien puede cancelarlo
         if(payer_id != '')
         {
-            //Cerramos el childBrowser
-            $("body").show();            
-            window.plugins.childBrowser.close();
+            alert("entra: " +payer_id)
+            //Cerramos el windows
+            $("body").show();
+            win.close();
             
             //Actualizamos la aportacion, porque se realizo correctamente el pago
             $.ajax({
@@ -2225,7 +2230,7 @@ function procesoPagoPayPal(loc, usuario_id,app_id){
                     $.mobile.loading('hide');
                     var result = $.parseJSON(data);
                     
-                    if(result.update_success){                                                                        
+                    if(result.update_success){
                         if(result.publicacion_nueva != ""){
                             var parent = $("#proyecto_deportivo");
                             parent.find("#publicaciones").css("opacity",0.5);
@@ -2247,9 +2252,9 @@ function procesoPagoPayPal(loc, usuario_id,app_id){
                 }
             });
         }else{
-            //Cerramos el childBrowser
-            $("body").show();                        
-            window.plugins.childBrowser.close();
+            //Cerramos el windows
+            $("body").show();
+            win.close();
             showAlert("Su aportacion fue cancelada", "Aviso", "Aceptar");
         }
         
