@@ -1868,6 +1868,7 @@ function llenarRecompensas(parent,app_id)
         
 	});
     
+   $.mobile.loading('hide');
    var formulario= parent.find(".formulario_de_recompensas");
    $(parent).find(".formulario_de_recompensas #cerrarmodal").off('click').on("click", function()
    {            
