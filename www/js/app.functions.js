@@ -1945,7 +1945,7 @@ function loadEventPerfilDeportista(parent, me, to_usuario_id){
         if(!isLogin())
         {
             var registrate="<p style='letter-spacing: -1px; font-family: helvetica;font-size: 12px;font-weight: bold;'>No estas registrado si deseas participar del sorteo de recompensas dejanos tu nombre y tu email ademas debes aceptar y leer las condiciones de uso, si tienes cuenta registrate <a href='login.html'>aqu&iacute;</a></p>";
-            registrate+='<input  class="ui-input-text ui-corner-all ui-shadow-inset ui-mini" type="text" name="nombre" placeholder="Tu nombre y apellido" /><input  class="ui-input-text ui-corner-all ui-shadow-inset ui-mini" type="text" name="email" placeholder="Tu email" />';                       
+            registrate+='<input  class="ui-input-text ui-corner-all ui-shadow-inset ui-mini" type="text" name="nombre_aportador" placeholder="Tu nombre y apellido" /><input  class="ui-input-text ui-corner-all ui-shadow-inset ui-mini" type="text" name="email_aportador" placeholder="Tu email" />';
             form_pago.find("#participar").html(registrate);            
             parent.find("#noregistrado").show();
             
