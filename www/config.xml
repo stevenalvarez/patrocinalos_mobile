@@ -2,18 +2,18 @@
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
 	id		    = "mobilelospa"
-    versionCode = "6"
-	version 	= "2.0.6">
+    versionCode = "5"
+	version 	= "2.0.5">
 
 	<name>Patrocinalos</name>
 
 	<description>
-		Aplicacion Movil
+		Aplicacion mobile para patrocinalos.com
 	</description>
 
 	<author href="http://www.patrocinalos.com"
-		email="nfo@mazzelsponsor.com">
-		VERSUS MULTIMEDIA S.L
+		email="steven.alvarez.v@gmail.com">
+		SYSDECOM
 	</author>
     
     <!--
@@ -34,12 +34,12 @@
     <preference name="orientation" value="default" /> <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device" value="universal" /> <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen" value="true" /> <!-- all: hides the status bar at the top of the screen -->
-    <preference name="webviewbounce" value="false" /> <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
+    <preference name="webviewbounce" value="true" /> <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
     <preference name="prerendered-icon" value="true" /> <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
     <preference name="stay-in-webview" value="false" /> <!-- ios: external links should open in the default browser, 'true' would use the webview the app lives in -->
     <preference name="ios-statusbarstyle" value="black-opaque" /> <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
     <preference name="detect-data-types" value="true" /> <!-- ios: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
-    <preference name="exit-on-suspend" value="false" /> <!-- ios: if set to true, app will terminate when home button is pressed -->
+    <preference name="exit-on-suspend" value="true" /> <!-- ios: if set to true, app will terminate when home button is pressed -->
     <preference name="show-splash-screen-spinner" value="true" /> <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
     <preference name="auto-hide-splash-screen" value="true" /> <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
     <preference name="disable-cursor" value="false" /> <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
@@ -54,7 +54,26 @@
     
     <gap:splash src="res/screen/ios/screen-iphone-portrait.png" />
     <gap:splash src="res/screen/ios/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480" />
-
+    
+    <!-- facebookconnect -->
+    <gap:plugin name="com.phonegap.plugins.facebookconnect">
+        <param name="APP_ID" value="378569528879624" />
+        <param name="APP_NAME" value="Patrocinalos by Mazzel" />
+    </gap:plugin>
+    
+    <!-- inappbrowser -->
+    <plugin name="InAppBrowser" value="CDVInAppBrowser" />
+    <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
+    
+    <!-- access -->
+    <access origin="*" browserOnly="true"/>
+    
+    <!-- debug -->
+    <feature name="debug-server" required="true">
+        <param name="domain" value="http://debug.build.phonegap.com"/>
+        <param name="key" value="mobilelospa"/>
+    </feature>
+    
     <feature name="http://api.phonegap.com/1.0/file"/>
     <feature name="http://api.phonegap.com/1.0/camera"/>
     <feature name="http://api.phonegap.com/1.0/network"/>

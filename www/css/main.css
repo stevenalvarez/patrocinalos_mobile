@@ -1,0 +1,4758 @@
+ /*FONTS*/
+ 
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(fonts/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(fonts/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(fonts/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'CaptureitRegular';
+    src: url('fonts/capture_it-webfont.eot');
+    src: url('fonts/capture_it-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/capture_it-webfont.woff') format('woff'),
+         url('fonts/capture_it-webfont.ttf') format('truetype'),
+         url('fonts/capture_it-webfont.svg#CaptureitRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaCondensedBlack';
+    src: url('fonts/HelveticaCdBlk.eot');
+    src: url('fonts/HelveticaCdBlk.eot?#iefix') format('embedded-opentype'),
+         url('fonts/HelveticaCdBlk.woff') format('woff'),
+         url('fonts/HelveticaCdBlk.ttf') format('truetype'),
+         url('fonts/HelveticaCdBlk.svg#HelveticaCondensedBlack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaCondensedMedium';
+    src: url('fonts/HelveticaCdMed.eot');
+    src: url('fonts/HelveticaCdMed.eot?#iefix') format('embedded-opentype'),
+         url('fonts/HelveticaCdMed.woff') format('woff'),
+         url('fonts/HelveticaCdMed.ttf') format('truetype'),
+         url('fonts/HelveticaCdMed.svg#HelveticaCondensedMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'HelveticaInserat';
+	src: url('fonts/HelveticaInserat.eot');
+	src: url('fonts/HelveticaInserat.eot?#iefix') format('embedded-opentype'),
+         url('fonts/HelveticaInserat.woff') format('woff'), 
+         url('fonts/HelveticaInserat.ttf') format('truetype'), 
+         url('fonts/HelveticaInserat.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'helvetica_lightregular';
+    src: url('fonts/helvetica-light-webfont.eot');
+    src: url('fonts/helvetica-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/helvetica-light-webfont.woff') format('woff'),
+         url('fonts/helvetica-light-webfont.ttf') format('truetype'),
+         url('fonts/helvetica-light-webfont.svg#helvetica_lightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'helvetica_neueblack';
+    src: url('fonts/helvetica_95_black-webfont.eot');
+    src: url('fonts/helvetica_95_black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/helvetica_95_black-webfont.woff') format('woff'),
+         url('fonts/helvetica_95_black-webfont.ttf') format('truetype'),
+         url('fonts/helvetica_95_black-webfont.svg#helvetica_neueblack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'HelveticaLTStdBoldCondensed';
+    src: url('fonts/helveticaltstd-boldcond.eot');
+    src: url('fonts/helveticaltstd-boldcond.eot') format('embedded-opentype'),
+         url('fonts/helveticaltstd-boldcond.woff') format('woff'),
+         url('fonts/helveticaltstd-boldcond.ttf') format('truetype'),
+         url('fonts/helveticaltstd-boldcond.svg#HelveticaLTStdBoldCondensed') format('svg');
+}
+@font-face {
+    font-family: 'HelveticaLTStdLight';
+    src: url('fonts/helveticaltstd-light.eot');
+    src: url('fonts/helveticaltstd-light.eot') format('embedded-opentype'),
+         url('fonts/helveticaltstd-light.woff') format('woff'),
+         url('fonts/helveticaltstd-light.ttf') format('truetype'),
+         url('fonts/helveticaltstd-light.svg#HelveticaLTStdLight') format('svg');
+}
+@font-face {
+    font-family: 'HelveticaExtraCompressedRoman';
+    src: url('fonts/helveticaexcomp.eot');
+    src: url('fonts/helveticaexcomp.eot') format('embedded-opentype'),
+         url('fonts/helveticaexcomp.woff') format('woff'),
+         url('fonts/helveticaexcomp.ttf') format('truetype'),
+         url('fonts/helveticaexcomp.svg#HelveticaExtraCompressedRoman') format('svg');
+}
+.ui-mobile, .ui-mobile body {
+    background-color: #000000;
+    height: 99.9%;
+}
+html, body {
+    background-color: #000000;
+    border: medium none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Iconos */
+@font-face{font-family:'iconfont';src:url('fonts/iconfont.eot');src:url('fonts/iconfont.eot?#iefix') format('embedded-opentype'), url('fonts/iconfont.svg#iconfont') format('svg'), url('fonts/iconfont.woff') format('woff'), url('fonts/iconfont.ttf') format('truetype');font-weight:normal;font-style:normal}
+[class^="icon-"],[class*=" icon-"]{font-family:"iconFont";font-weight:normal;font-style:normal;text-decoration:inherit;-webkit-font-smoothing:antialiased;display:inline-block;width:auto;height:auto;line-height:normal;vertical-align:baseline;background-image:none;background-position:0% 0%;background-repeat:repeat;margin-top:0;position:relative}
+[class^="icon-"]:before,[class*=" icon-"]:before{text-decoration:inherit;display:inline-block;speak:none}
+.icon-home:before{content:"\e000"}
+.icon-key:before{content:"\e044"}
+.icon-trophy:before{content:"\e04f"}
+.icon-heart:before{content:"\e07f"}
+.icon-user-2:before{content:"\e03c"}
+.icon-thumbs-up:before{content:"\e081"}
+.icon-box-add:before{content:"\e02a"}
+.icon-star-3:before{content:"\e07e"}
+.icon-history:before{content:"\e01d"}
+.icon-comments:before{content:"\e036"}
+.icon-comments-3:before{content:"\e038"}
+.icon-forward:before{content:"\e033"}
+.icon-pencil:before{content:"\e002"}
+.icon-info-2:before{content:"\e167"}
+.icon-newspaper:before{content:"\e001"}
+.icon-arrow-up-2:before{content:"\e098"}
+.icon-arrow-right-2:before{content:"\e099"}
+.icon-arrow-down-2:before{content:"\e09a"}
+.icon-arrow-left-2:before{content:"\e09b"}
+.icon-menu:before{content:"\e0a0"}
+.icon-remove:before{content:"\e059"}
+.icon-cancel-2:before{content:"\e089"}
+.icon-search:before{content:"\e041"}
+.icon-phone:before{content:"\e019"}
+.icon-pictures:before{content:"\e004"}
+.icon-film:before{content:"\e007"}
+.icon-upload-2:before{content:"\e072"}
+.icon-folder:before{content:"\e012"}
+.icon-bell:before{content:"\e01f"}
+.icon-address-book:before{content:"\e13d"}
+.icon-new-tab:before{content:"\e0b3"}
+.icon-location:before{content:"\e01b"}
+.icon-clipboard:before{content:"\e06a"}
+.icon-clipboard-2:before{content:"\e06b"}
+.icon-blocked:before{content:"\e087"}
+.icon-share:before{content:"\e0b2"}
+.icon-mail:before{content:"\e01a"}
+.icon-google-plus:before{content:"\e0bc"}
+.icon-facebook:before{content:"\e0be"}
+.icon-twitter:before{content:"\e0c0"}
+.icon-pinterest:before{content:"\e0e1"}
+
+
+/* GENERAL */
+.bold{
+    font-weight: bold;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.clear{
+    clear: both;
+}
+.content_list_first{
+    padding: 5px;
+}
+.m-fluid .m-item{
+    margin-right: 0px !important;
+}
+.m-carousel-bulleted a{
+    padding: 2px !important;
+    margin: 0 3px !important;
+    background-color: #fff !important;
+}
+.m-carousel-controls{
+    padding-top: 0px !important;
+    position: absolute !important;
+    bottom: 3px !important;
+    width: 96%;
+}
+.m-carousel-bulleted a.m-active{
+    background-color: #b94949 !important;
+}
+h1, h2, h3, h4, h5, h6, span.error, span.text{
+    letter-spacing: -1px;
+}
+form span.error,
+form .valid_field span.success{
+    position: absolute;
+    font-size: 0.7em;
+    color: #5e5d5d;
+}
+form .fecha_calendario span.error,
+form .fecha_calendario .valid_field span.success{
+    display: none;
+}
+form .ui-input-text span.error,
+form .content_textarea span.error{
+    top: 7px;
+    right: 21px;
+    width: auto;
+    text-align: right;
+    border: 1px solid #d2d2d4;
+    padding: 4px 0;
+    background-color: #f5f5f7;
+    height: 12px;
+    padding-right: 10px;
+    padding-left: 8px;
+    border-radius: 2px;
+    font-family: Myriad Pro;
+}
+form .ui-input-text span.error.email_repetido,
+form .ui-input-text span.error.urlamigable_repetido{
+    color: #cc5050;
+    font-family: 'HelveticaCondensedMedium';
+    letter-spacing: 0;
+    font-size: 12px;
+    padding-left: 0;
+    padding-right: 0px;
+}
+form .fecha_calendario .ui-input-text span.error{
+    right: 55px;
+    top: 7px;
+}
+form .ui-input-text span.error i,
+form .content_textarea span.error i{
+    background: url("../img/bg_valid_arrow.jpg") no-repeat scroll top right transparent;
+    background-size: 18px 20px;
+    padding-right: 28px;
+    height: 21px;
+    display: inline-block;
+    position: absolute;
+    right: -17px;
+    top: 0px; 
+}
+form .error_field_email span.error{
+    display: none !important;
+}
+form .valid_field span.success{
+    top: 8px;
+    right: 22px;
+    width: auto;   
+}
+form .valid_field span.success i{
+    background: url("../img/succes.png") no-repeat scroll top right transparent;
+    background-size: 18px 20px;
+    padding-right: 28px;
+    height: 21px;
+    display: inline-block;
+    position: absolute;
+    right: -17px;     
+}
+form .content_textarea{
+    position: relative;
+}
+.content_upload_foto_options{
+    overflow: hidden;
+    margin: 4px;
+    padding-bottom: 4px;
+}
+.content_upload_foto_options a{
+    color: #fff !important;
+    text-align: center;
+    font-size: 15px;
+    font-family: 'HelveticaLTStdBoldCondensed';
+    border-radius: 4px;
+    text-shadow: 1px 1px 0 #000;
+    margin-right: 2px;
+    padding: 4px;
+    display: inline-block;
+    box-shadow: 2px 2px 5px #aaa;
+    padding-top: 8px;
+}
+.content_upload_foto_options a.anadir_foto{
+    width: 35%;
+    background-color: #5CB85C;
+}
+.content_upload_foto_options a.subir_foto{
+    width: 46%;
+    background-color: #428BCA;
+}
+.content_upload_foto_options a.subir_video{
+    width: 47%;
+    background-color: #E74C3C;
+}
+.content_list_first .ui-listview li.ui-li-static.ui-li,
+.content_list_two .ui-listview li.ui-li-static.ui-li{
+    margin-bottom: 2px;
+    min-height: 80px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    overflow: hidden;
+}
+.content_list_two .ui-listview li.ui-li-has-arrow.ui-btn-hover-c{
+    border-top: 0;
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 2px solid #ced5d9;
+}
+.content_list_two .ui-listview{
+    padding: 0 5px 5px 5px;
+}
+.content_list_two .ui-listview li.ui-li-static.ui-li{
+    padding-top: 0px;
+    margin-top: 5px;
+    min-height: 60px;
+}
+.content_list_two .ui-listview li.ui-li-has-arrow.ui-li{
+    margin-top: 5px;
+    min-height: 60px;
+    margin-bottom: 2px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    overflow: hidden;
+}
+.content_list_two .ui-listview li.ui-li-has-arrow.ui-li a{
+    padding: 0 40px 0 0;
+}
+.content_list_two .minutos{
+    font-weight: normal;
+    font-size: 11px;
+    color: #6b7882;
+}
+.content_list_first .ui-listview li .content_descripcion{
+    overflow: hidden;
+}
+.content_list_first .ui-listview li .recorte{
+    float: left;
+    height: 80px;
+    margin-right: 8px;
+    overflow: hidden;
+    width: 80px;  
+}
+.content_list_first .ui-listview li img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px 5px 5px 5px;
+}
+.content_list_first .ui-listview li p.ui-li-desc{
+    margin-bottom: 0;
+}
+.content_list_first .ui-listview li .ui-li-heading{
+    margin-top: 0;
+}
+.content_list_first .ui-listview li .info{
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+}
+.content_list_first .ui-listview li .info a{
+    display: block;
+    height: 25px;
+    text-indent: -9999px;
+    width: 25px;
+}
+.content_list_first .ui-listview li .info.inline a{
+    display: inline-block;
+}
+.content_list_first li.pair.ui-btn-up-c  {
+    border-bottom: 1px solid #AAAAAA;
+    border-left: 1px solid #AAAAAA;
+    border-right: 1px solid #AAAAAA;
+}
+.content_list_first li.pair.ui-btn-up-c span.fecha{
+    color: #b52d2f;
+}
+.content_list_first li.ui-btn-up-c .content_descripcion label{
+    color: #91161B;
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: -1px;
+}
+.content_list_first li.odd.ui-btn-up-c .ui-li-heading,
+.content_list_first li.odd.ui-btn-up-c label,
+.content_list_first li.odd.ui-btn-up-c span{
+    color: #fff !important;
+    text-shadow: 0 0px 0 #FFFFFF;
+}
+.content_list_first li.ui-btn-up-c span{
+    letter-spacing: -1px;
+    font-size: 15px;
+}
+.content_list_first .content_seguidor{
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    width: 85px;
+    border-radius: 5px 5px 5px 5px;
+    padding: 7px 0;
+    text-shadow: 0 0px 0 #FFFFFF;
+    letter-spacing: -1px;
+    display: none;
+}
+.content_list_first li .content_seguidor b{
+    display: block;
+    font-size: 18px;
+    line-height: 15px;
+}
+.content_list_first li.pair .content_seguidor{
+    background-color: #e94142;
+    color: #fff;
+}
+.content_list_first li.odd .content_seguidor{
+    background-color: #f2f1f1;
+    color: #000;
+}
+.content_list_first .content_edicion{
+    padding: 5px;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    border-radius: 3px;
+    border: 1px solid #d2d2d2;
+}
+.content_list_first .content_edicion .info_top{
+    overflow: hidden;
+}
+.content_list_first .list_recompensa.ui-listview li.ui-li-static.ui-li{
+    background-color: transparent;
+    border: 0 none;
+    padding: 0;
+    text-shadow: 0 0 0;
+}
+.content_list_first .list_recompensa li .item_1,
+.content_list_first .list_recompensa li .item_2{
+    background-color: #F5F4F4;
+    border: 1px solid #E1E1E1;
+    padding: 5px;
+    width: 140px;
+}
+.content_list_first .list_recompensa li .item_2{
+    margin-left: 5px;
+}
+.content_list_first .list_recompensa h4{
+    margin-bottom: 2px;
+    font-size: 14px;
+}
+.content_list_first .list_recompensa li .content_middle{
+    position: relative;
+}
+.content_list_first .list_recompensa li .content_middle .capa{
+    background-color: #970b0b;
+    bottom: 5px;
+    height: 25px;
+    opacity: 0.5;
+    position: absolute;
+    width: 100%;
+}
+.content_list_first .list_recompensa li .content_middle p{
+    bottom: 8px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 5px;
+    position: absolute;
+    width: 93%;
+    height: 18px;
+}
+.content_list_first .list_recompensa li .content_middle .compartir{
+    position: absolute;
+    right: 5px;    
+}
+.content_list_first .list_recompensa li .recuadro_recompensa{
+    height: auto;
+    border: 0;
+    width: 100%;
+}
+.content_list_first .list_recompensa li .recuadro_recompensa img{
+    width: 100%;
+    border-radius: 0px;
+}
+.content_list_first .list_recompensa li .content_bottom{
+    margin-top: -5px;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.content_list_first .list_recompensa li .content_bottom label,
+.content_list_first .list_recompensa li .content_bottom span{
+    font-size: 12px;
+    color: #b7982e;
+}
+.content_list_first .list_recompensa li .action_patrocinar a{
+    margin: 0;
+}
+.content_list_first .list_recompensa li .action_patrocinar .ui-btn-inner{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: inline-block;
+    border-top: 0;
+    padding-left: 32px;
+}
+.content_list_first .list_recompensa li .action_patrocinar .ui-btn-text{
+    font-size: 12px;
+}
+.content_list_first .list_recompensa li .action_patrocinar .ui-icon{
+    background: url("../img/bg_euro.png") no-repeat scroll top left transparent;
+    background-size: 14px auto;
+    border-radius: 0 0 0 0;
+}
+.content_list_first .list_recompensa li .content_middle .compartir a{
+    display: inline-block;
+    height: 18px;
+    text-indent: -9999px;
+    width: 18px;
+    background-color: transparent;
+    background-position: 0 0;
+    background-repeat: no-repeat;    
+}
+.content_list_first .list_recompensa li .content_middle .compartir a.tw{
+    background-image: url("../img/bg_tw.png");
+    background-size: 18px auto;
+}
+.content_list_first .list_recompensa li .content_middle .compartir a.fb{
+    background-image: url("../img/bg_fb.png");
+    background-size: 18px auto;
+}
+.content_list_two .options{
+    overflow: hidden;
+    background-color: #c8cfd5;
+    margin-bottom: 10px;
+}
+.content_list_two .options a{
+    text-align: center;
+    font-size: 13px;
+    line-height: 12px;
+    width: 50%;
+    color: #6c9fb5 !important;
+    padding-top: 6px;
+    padding-bottom: 8px;
+    letter-spacing: -1px;
+}
+.content_list_two .options a:hover{
+    color: #6b7882;
+}
+.content_list_two .options a.active{
+    color: #6b7882 !important;
+    background: url("../img/bg_away.png") no-repeat scroll 4px 8px #fff;
+    background-size: 22px;
+}
+.content_list_two .options a.active.left{
+    -moz-box-shadow: 2px 0px 5px rgba(0,0,0,.2);
+    -webkit-box-shadow: 2px 0px 5px rgba(0,0,0,.2);
+    border-right: 1px solid #7c8084;
+    width: 46%;
+    padding-left: 10px;
+}
+.content_list_two .options a.active.right{
+    -moz-box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+    border-left: 1px solid #7c8084;
+    width: 46%;
+    padding-right: 10px;
+}
+.content_list_two .options a.active2{
+    color: #6b7882 !important;
+    background: #fff;
+}
+.content_list_two .options a.active2.left{
+    -moz-box-shadow: 2px 0px 5px rgba(0,0,0,.2);
+    -webkit-box-shadow: 2px 0px 5px rgba(0,0,0,.2);
+    border-right: 1px solid #7c8084;
+    width: 49.5%;
+}
+.content_list_two .options a.active2.right{
+    -moz-box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+    border-left: 1px solid #7c8084;
+    width: 49.5%;
+}
+.content_list_two .ui-listview li .recorte{
+    float: left;
+    height: 60px;
+    margin-right: 8px;
+    overflow: hidden;
+    width: 60px;
+    border-radius: 5px;  
+}
+.content_list_two .ui-listview li .recorte img{
+    width: 100%;
+    height: 100%;
+}
+.content_list_two .ui-listview .ui-btn-up-c{
+    background-color: #fff;
+    border-top: 0;
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 2px solid #ced5d9;
+}
+.content_list_two .ui-li-heading{
+    margin: 0em 0 0.4em 0;
+}
+.content_list_two .ui-li-heading,
+.content_list_two .ui-li-desc{
+    color: #6b7882;
+}
+.content_list_two time.age{
+    color: #999999;
+    font-size: 10px;
+    text-shadow: 0 0 0;
+    font-weight: normal;    
+}
+.content_list_two h4.ui-li-heading b{
+    color:  #000;
+}
+.odd.ui-btn-up-c {
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #cc4646 /*{a-bup-background-start}*/), to( #b93838 /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #cc4646 /*{a-bup-background-start}*/, #b93838 /*{a-bup-background-end}*/);    
+    border: 1px solid #CCCCCC;
+    color: #222222;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+.white.ui-body-c, .white.ui-overlay-c {
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #ffffff /*{a-bup-background-start}*/), to( #ffffff /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #ffffff /*{a-bup-background-start}*/, #ffffff /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #ffffff /*{a-bup-background-start}*/, #ffffff /*{a-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #ffffff /*{a-bup-background-start}*/, #ffffff /*{a-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #ffffff /*{a-bup-background-start}*/, #ffffff /*{a-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #ffffff /*{a-bup-background-start}*/, #ffffff /*{a-bup-background-end}*/);    
+}
+/* SEARCH */
+.content_search{
+    overflow: hidden;
+    background-color: #6BB0C5;
+    border-bottom: 1px solid #466B6F;
+}
+.content_search div.ui-body-cu.ui-input-text:first-child{
+    background: url("../img/bg_search_dep.png") no-repeat scroll left center #F9F9F9;
+    background-size: 20px;
+    background-position: 6px;
+    float: left;
+    width: 54%;
+    margin-left: 4px;
+}
+.content_search a.search_dep{
+    float: right;
+    margin-bottom: 0;
+    margin-top: 8px;
+    width: 28%;
+    margin-right: 4px;
+}
+
+/* RADIOS CUSTOMS */
+.content_formulario{
+    width: 100%;
+}
+.content_formulario .opciones .first,
+.content_formulario .opciones .second{
+    height: 25px;
+    overflow: hidden;
+    position: relative;
+    margin-right: 5px;    
+}
+.content_formulario .opciones .first .ui-radio:first-child,
+.content_formulario .opciones .second .ui-radio:first-child{
+    left: 0;
+    position: absolute;
+    width: 100px;
+}
+.content_formulario .opciones .first .ui-radio:last-child,
+.content_formulario .opciones .second .ui-radio:last-child{
+    right: 0;
+    position: absolute;
+    width: 100px;
+}
+/* SLIDER CUSTOMS */
+.content_slider{
+    padding-top: 22px;
+    position: relative;
+    margin-top: 5px;
+}
+.content_slider .background{
+    background-color: #fff;
+    border-radius: 10px 10px 10px 10px;
+}
+.content_slider .ui-slider{
+    height: 23px;
+    margin: 0;
+}
+.content_slider .ui-slider .slider_range{
+    position: absolute;
+    top: 0;
+    padding: 0;
+    margin-left: -18px;
+}
+.content_slider .ui-slider-track.ui-mini{
+    height: 8px;
+    top: 6px;
+    margin: 0 8px;
+}
+.content_slider .ui-slider-track .ui-btn-active{
+    background-color: #77c5d8;
+}
+
+/* MULTIPLES OPTIONS */
+.container_options .bottom .ui-btn .ui-btn-inner{
+    width: 75%;
+}
+.container_options .bottom .ui-btn-inner .ui-btn-text{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;    
+}
+.container_options .bottom .ui-icon{
+    border-radius: 0px;
+    box-shadow: none;
+    height: 24px;
+    width: 20px;
+    display: block;
+    margin-top: -14px;    
+}
+
+/* NAVIGATION */
+.footer .ui-btn-hover-g,
+.footer .ui-btn-active-g {
+    border-radius: 6px;
+}
+.footer .nav-custom li{
+	background: 			#585961 /*{a-bup-background-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #585961 /*{a-bup-background-start}*/), to( #161618 /*{a-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #585961 /*{a-bup-background-start}*/, #161618 /*{a-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #585961 /*{a-bup-background-start}*/, #161618 /*{a-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #585961 /*{a-bup-background-start}*/, #161618 /*{a-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #585961 /*{a-bup-background-start}*/, #161618 /*{a-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #585961 /*{a-bup-background-start}*/, #161618 /*{a-bup-background-end}*/);
+    padding: 3px 6px;
+}
+.nav-custom .ui-btn .ui-icon {
+    border-radius: 0 0 0 0 !important;
+    box-shadow: none !important;
+    height: 30px !important;
+    margin-left: -15px !important;
+    width: 30px !important;
+}
+.nav-custom .ui-btn.nav_perfil .ui-icon {
+    background-image: url("../img/bg_perfil.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 24px 22px;
+    background-position: 50% 50%;
+}
+.nav-custom .ui-btn.nav_patrocinio_deportivo .ui-icon {
+    background-image: url("../img/bg_patrocinio_deportivo.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 18px 22px;
+    background-position: 50% 50%;
+}
+.nav-custom .ui-btn.nav_fotos_videos .ui-icon {
+    background-image: url("../img/bg_fotos_videos.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 44px 22px;
+    background-position: 50% 50%;
+    margin-left: -25px !important;
+    width: 50px!important;
+}
+.nav-custom .ui-btn.nav_blog_muros .ui-icon {    
+    background-image: url("../img/bg_blog_muros.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 24px 22px;
+    background-position: 50% 50%;
+}
+.nav-custom .ui-btn.nav_home .ui-icon {
+    background-image: url("../img/bg_home_sprite.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 28px 58px;
+    background-position: 50% 0%;
+}
+.nav-custom .ui-btn.nav_home.ui-btn-active-g .ui-icon,
+.nav-custom .ui-btn.nav_home.ui-btn-hover-g .ui-icon{
+    background-image: url("../img/bg_home_sprite.png");
+    background-position: 50% 104%;
+}
+.nav-custom .ui-btn.nav_login .ui-icon {
+    background-image: url("../img/bg_login_sprite.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 26px 60px;
+    background-position: 50% 0%;
+}
+.nav-custom .ui-btn.nav_login.ui-btn-active-g .ui-icon,
+.nav-custom .ui-btn.nav_login.ui-btn-hover-g .ui-icon{
+    background-image: url("../img/bg_login_sprite.png");
+    background-position: 50% 104%;
+}
+.nav-custom .ui-btn.nav_ranking .ui-icon {
+    background-image: url("../img/bg_ranking_sprite.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 28px 58px;
+    background-position: 50% 0%;
+}
+.nav-custom .ui-btn.nav_ranking.ui-btn-active-g .ui-icon,
+.nav-custom .ui-btn.nav_ranking.ui-btn-hover-g .ui-icon{
+    background-image: url("../img/bg_ranking_sprite.png");
+    background-position: 50% 104%;
+}
+.nav-custom .ui-btn.nav_deportistas .ui-icon {
+    background-image: url("../img/bg_deportistas_sprite.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 28px 58px;
+    background-position: 50% 0%;
+}
+.nav-custom .ui-btn.nav_deportistas.ui-btn-active-g .ui-icon,
+.nav-custom .ui-btn.nav_deportistas.ui-btn-hover-g .ui-icon{
+    background-image: url("../img/bg_deportistas_sprite.png");
+    background-position: 50% 104%;
+}
+.nav-custom .ui-btn .ui-btn-inner {
+    padding-top: 32px !important;
+    border-top: none;
+}
+.nav-custom .ui-btn-inner .ui-btn-text{
+    font-size: 12.5px;
+    letter-spacing: -1.5px;    
+}
+.nav-custom .ui-btn-up-g,
+.nav-custom .ui-btn-hover-g {
+    border-left: 0px;
+}
+.header_navigation{
+    overflow: hidden;
+}
+.header_navigation ul{
+    margin: 0 10px;
+}
+.header_navigation ul li{
+    float: left;
+}
+.header_navigation a{
+    border-radius: 0 0 0 0 !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    -moz-box-shadow: 0px 0px 0px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0px 0px 0px rgba(0,0,0,.2)
+}
+.header_navigation .back{
+    width: 12%;
+    max-height: 40px;
+}
+.header_navigation .setting{
+    width: 10%;
+}
+.header_navigation .page{
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    font-family: 'helvetica_neueblack';
+    width: 77%;
+    color: #cc5050;
+    font-size: 15px;
+    letter-spacing: -1px;
+}
+.header_navigation .volver{
+    background: url("../img/bg_back.png") no-repeat scroll left top transparent;
+    height: 25px;
+    width: 35px;
+    border: 0;
+    background-size: 35px;
+}
+.header_navigation .volver .ui-btn-inner{
+    border: 0;
+}
+.footer .nav-custom .ui-btn-inner .ui-btn-text{
+    font-family:'CaptureitRegular';
+    letter-spacing: 0px;
+    color: #000;
+    text-shadow: 0 1px 0 #5c5e64;
+}
+.footer .nav-custom .ui-btn-active-g .ui-btn-inner .ui-btn-text,
+.footer .nav-custom .ui-btn-hover-g .ui-btn-inner .ui-btn-text{
+    color: #FFF;
+}
+.footer .ui-btn-up-g,
+.footer .ui-btn-up-g:visited,
+.footer .ui-btn-up-g a.ui-link-inherit,
+.footer .ui-btn-hover-g,
+.footer .ui-btn-hover-g:visited,
+.footer .ui-btn-hover-g:hover,
+.footer .ui-btn-hover-g a.ui-link-inherit {
+	color: #585961;
+}
+.footer_menu{
+    background: transparent;
+    border: 0;
+    padding: 0;
+    text-align: center;
+    height: 0px;
+    bottom: 20px !important;
+}
+.footer_menu img{
+    height: 20px;
+    cursor: pointer;
+    margin-top: 2px;
+}
+.footer_menu a.icon_menu{
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    background-image: inherit;
+}
+.footer_menu a.icon_menu.hidden{
+    display: none;
+}
+.footer_menu a.icon_menu .ui-btn-inner,
+.footer_menu a.icon_menu .ui-btn-text{
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: inherit;
+    font-size: inherit;
+}
+.texto_formulario{
+    background: url("../img/bg_inline.png") repeat-x scroll center center transparent;
+}
+.texto_formulario span{
+    text-align: center;
+    display: block;
+    font-size: 12px;
+    background-color: #eeeeee;
+    margin: 0 3.0em;
+    color: #55a0b5;
+    font-family: 'HelveticaCondensedMedium';
+    letter-spacing: 0px;
+}
+.facebook_registro .ui-icon,
+.twitter_registro .ui-icon{
+    border-radius: 0px;
+    width: 30px;
+    height: 25px;
+    left: 5px;
+    border-bottom: 0;
+    display: block;
+}
+.facebook_registro .ui-icon{
+    background: url("../img/bg_facebook.png") no-repeat scroll center top transparent;
+    background-size: 15px;
+    top: 40% !important;
+}
+.twitter_registro .ui-icon{
+    background: url("../img/bg_twitter.png") no-repeat scroll center top transparent;
+    background-size: 25px;
+    top: 45% !important;
+}
+.lspacing{
+    letter-spacing: -1.2px;
+}
+.ui-panel-inner{
+    padding: 5px 0;
+}
+.ui-panel-position-bottom, .ui-panel-position-top{
+    height: 24.8em;
+    width: 59.2%;
+    min-width: 59.2%;
+    overflow: initial;
+}
+.ui-panel-position-bottom a.close_menu{
+    margin: 0;
+    padding: 0;
+    width: 60px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    text-shadow: 0 0 0;
+    box-shadow: 0 0 0;
+    position: absolute;
+    right: 0px;
+    margin-top: 2px;
+}
+.ui-panel-position-bottom a.close_menu .ui-btn-inner{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    min-width: 60px;
+    width: 60px;
+} 
+.ui-panel-position-bottom a.close_menu img{
+    height: 20px;
+}
+.ui-loader-verbose h1{
+    font-weight: bold;
+}
+.ui-icon-shadow {
+    -webkit-box-shadow: 0px 0px 0 rgba(255,255,255,.4) /*{global-icon-shadow}*/;
+    box-shadow: 0px 0px 0 rgba(255,255,255,.4) /*{global-icon-shadow}*/;
+    text-shadow: 0 /*{b-bup-shadow-x}*/ 0px /*{b-bup-shadow-y}*/ 0 /*{b-bup-shadow-radius}*/ #194b7e /*{b-bup-shadow-color}*/;    
+}
+.ui-btn-corner-all,
+.ui-corner-all{
+    border-radius: 5px 5px 5px 5px;
+}
+.ui-btn.close{
+    border-radius: 1em;
+}
+.ui-btn-text{
+    font-size: 17px;
+    letter-spacing: -1px;
+}
+.ui-btn-submit .ui-btn-inner {
+    border-top: 0;
+    border-color: inherit;
+    padding-top: 0.8em;
+}
+.ui-btn-submit .ui-btn-text{
+    font-size: 17px;
+    font-family:'HelveticaLTStdBoldCondensed';
+    letter-spacing: 0px;
+    color: #fff;
+    text-shadow: 0px 1px 0px #000;
+    line-height: 15px;
+}
+.ui-btn-submit.blue .ui-btn-inner{
+    background-color: #CC0000;
+}
+.ui-btn-submit.orange .ui-btn-inner{
+    background-color: #f15433;
+}
+.ui-btn-submit.green .ui-btn-inner{
+    background-color: #00aa63;
+}
+.ui-btn-submit.celeste .ui-btn-inner{
+    background-color: #CC0000;
+}
+.ui-btn-submit.red .ui-btn-inner{
+    background-color: #E74C3C;
+}
+.ui-btn-submit.ui-shadow,
+.ui-btn-normal.ui-shadow{
+    -moz-box-shadow: 0px 0px 0px /*{global-box-shadow-size}*/ rgba(0,0,0,.6) /*{global-box-shadow-color}*/;
+    -webkit-box-shadow: 0px 0px 0px /*{global-box-shadow-size}*/ rgba(0,0,0,0.6) /*{global-box-shadow-color}*/;
+}
+.ui-btn-submit.ui-btn,
+.ui-btn-normal.ui-btn{
+    border: none;
+}
+.ui-btn-submit.facebook_registro .ui-btn-inner,
+.ui-btn-submit.twitter_registro .ui-btn-inner{
+    padding: 0 10px 0 38px;
+}
+.ui-btn-submit.facebook_registro.ui-btn-up-c{
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #3c5a9a /*{c-bup-background-start}*/), to( #3c5a9a /*{c-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #3c5a9a /*{c-bup-background-start}*/, #3c5a9a /*{c-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #3c5a9a /*{c-bup-background-start}*/, #3c5a9a /*{c-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #3c5a9a /*{c-bup-background-start}*/, #3c5a9a /*{c-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #3c5a9a /*{c-bup-background-start}*/, #3c5a9a /*{c-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #3c5a9a /*{c-bup-background-start}*/, #3c5a9a /*{c-bup-background-end}*/);        
+}
+.ui-btn-submit.facebook_registro.ui-btn-hover-c,
+.ui-btn-submit.facebook_registro.ui-btn-active{
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #5393C5 /*{c-bup-background-start}*/), to( #5393C5 /*{c-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #5393C5 /*{c-bup-background-start}*/, #5393C5 /*{c-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #5393C5 /*{c-bup-background-start}*/, #5393C5 /*{c-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #5393C5 /*{c-bup-background-start}*/, #5393C5 /*{c-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #5393C5 /*{c-bup-background-start}*/, #5393C5 /*{c-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #5393C5 /*{c-bup-background-start}*/, #5393C5 /*{c-bup-background-end}*/);        
+}
+.ui-btn-submit.twitter_registro .ui-btn-inner{
+    background-color: #55bee6;
+}
+.ui-btn-submit.facebook_registro .ui-btn-text,
+.ui-btn-submit.twitter_registro .ui-btn-text{
+    display: inline-block;
+    text-align: left;
+    padding: 0.8em 0 0.6em 10px;
+}
+.ui-btn-submit.facebook_registro .ui-btn-text{
+    background: url("../img/bg_border_fabebook.png") no-repeat scroll left top transparent;
+    background-position: 0 0;
+    background-size: 2px;
+}
+.ui-btn-submit.twitter_registro .ui-btn-text{
+    background: url("../img/bg_border_twitter.png") no-repeat scroll left top transparent;
+    background-position: 0 0;
+    background-size: 2px;
+}
+.ui-btn.ui-btn-up-r,
+.ui-btn.ui-btn-hover-r{
+    margin-bottom: 20px;
+}
+.ui-btn-normal .ui-btn-inner{
+    padding: .3em 20px;
+    border-color: inherit;
+    border-top: 0;
+}
+.ui-btn-normal .ui-btn-text{
+    font-size: 13px;
+    color: #fff;
+    font-weight: normal;
+    letter-spacing: 0;
+}
+.ui-btn-normal.azul .ui-btn-inner{
+    background-color: #019add;
+}
+.ui-collapsible-content{
+    padding: 0;
+}
+.ui-collapsible-content ul{
+    padding-top: 5px;
+}
+.ui-collapsible-content .ui-li-static.ui-li{
+    padding: 0 !important;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    margin: 6px 0px;
+}
+.ui-collapsible-heading a .ui-btn-inner{
+    background-color: #d9e4e5;
+}
+.ui-collapsible-heading a .ui-btn-text{
+    color: #6bb48b;
+    text-shadow: 0 0 0;
+    font-weight: normal;
+}
+.btn-access{
+    padding-top: 6px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.ui-radio label{
+    background: none;
+    border: none;
+}
+.ui-radio input{
+    left: 12px;
+}
+.ui-radio-on .ui-icon{
+    background-color: #70a126 /*{global-active-background-color}*/;
+}
+.ui-radio .ui-btn-icon-left .ui-icon {
+    left: 8px;
+}
+.ui-radio .ui-btn-icon-left .ui-btn-inner{
+    padding: 0px 0px 0px 32px;
+    height: 22px;
+    margin-top: 0;
+    border-top: 0;
+}
+.ui-radio-off .ui-btn-inner .ui-btn-text,
+.ui-radio-on .ui-btn-inner .ui-btn-text{
+    font-weight: normal;
+    color: #7F8C8D;
+    letter-spacing: -1.2px;
+    font-size: 13px;
+    text-shadow: 0 0px 0 #7F8C8D;
+}
+.ui-radio span.error{
+    left: 8px;
+    top: -13px;
+}
+.ui-select span.ui-btn-inner{
+    padding-left: 7px;
+}
+.ui-select span.ui-btn-text{
+    text-align: left;
+    font-weight: normal;
+    color: #aaa;
+    font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;    
+}
+.ui-select span.error{
+    left: 0;
+    margin-top: 5px;
+    font-weight: normal;
+}
+.ui-select .ui-btn-inner span.ui-btn-text > span.error{
+    color: #AAAAAA;
+    font-size: 17px;
+    font-weight: normal;
+    left: inherit;
+    margin-top: 0;
+    position: inherit;
+    text-align: left;       
+}
+.content_upload_foto{
+    overflow: hidden;
+    padding: 0;
+    border-bottom: 0;
+}
+.content_upload_foto label{
+    float: left;
+    font-size: 13px;
+    width: 42%;
+    padding-left: 27px;
+    background: url("../img/subir_foto.png") no-repeat scroll left center transparent;
+    background-size: 22px;
+    margin: 10px 0 12px 0;
+    height: 22px;
+    line-height: 24px;
+    color: #949e9f;
+}
+.content_upload_foto .upload_foto{
+    float: right;
+    width: 46%;    
+}
+.btn-options{
+    overflow: hidden;
+    margin: 0 10px;
+}
+.btn-options .ui-btn-inner{
+    padding: .6em 10px;
+}
+.btn-options .btn-first {
+    width: 49%;
+    float: left;
+}
+.btn-options .btn-first.long{
+    width: 49%;
+}
+.btn-options .btn-first.long.bouble_row .ui-btn-inner{
+    padding: 0.2em 10px;
+    padding-bottom: 0px;
+}
+.btn-options .btn-first.long.bouble_row .ui-btn-text{
+    line-height: 16px;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 2px;
+}
+.btn-options .btn-second {
+    width: 49%;
+    float: right;
+}
+.btn-options .btn-second.long{
+    width: 49%;
+}
+label.custom{
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+    display: inline-block;    
+}
+.ui-content{
+    padding: 0;
+}
+.ui-content .ui-listview{
+    margin: 0;
+}
+.ui-content .ui-listview .ui-li-static.ui-li{
+    padding: .7em 5px;
+}
+.ui-content p{
+    letter-spacing: -1px;
+}
+.data_user{
+    padding: 5px 6px 8px 6px;
+    border-bottom: 1px solid #466b6f;
+    background-color: #6bb0c5;
+    overflow: hidden;
+}
+.data_user .recorte{
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    float: left;
+    margin-right: 10px;
+}
+.data_user .recorte img{
+    width: 100%;
+}
+.data_user .content{
+    float: left;
+}
+.data_user .content label{
+    display: block;
+    font-weight: bold;
+    text-shadow: 0 0px 0 #000;
+    margin-top: 4px;
+    letter-spacing: -1px;
+    font-size: 20px;
+}
+.data_user .content span.deporte{
+    font-weight: bold;
+    font-size: 14px;
+    padding-left: 26px;
+    text-shadow: 0 0px 0 #000;
+    letter-spacing: -1px;
+    background: url("../img/deportes/img_deporte.png") no-repeat scroll center left transparent;
+    background-size: 22px;
+    height: 20px;
+    display: block;
+    padding-top: 4px;
+}
+.data_user .hacerme_amigo{
+    width: 40%;
+}
+.data_user .hacerme_amigo a{
+    margin-bottom: 0;
+    margin-top: 18px;
+}
+.data_user .hacerme_amigo .ui-btn-inner{
+    padding-left: 20px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.data_user .hacerme_amigo .ui-btn-inner .ui-btn-text{
+    font-weight: normal;
+    font-size: 15px;
+}
+.data_user .hacerme_amigo .ui-btn-inner .ui-icon{
+    background-image: url("../img/bg_like.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 15px auto;
+    border-radius: 0;
+    background-position: 50% 0;
+    height: 20px;
+    margin-top: -11px;
+}
+.resumen_data{
+    clear: both;
+    overflow: hidden;
+    padding-top: 5px;
+}
+.resumen_data li{
+    border-radius: inherit;
+    width: 49%;
+    background-color: #e1e1e1;
+    border-right: 1px solid #728e97;
+    border-top: 1px solid #728e97;
+    float: left;
+    text-align: center;
+    font-size: 14px;
+    text-shadow: 0 0 0;
+    min-height: 45px;
+    padding: 5px 0;    
+}
+.resumen_data li.first{
+    border-left: 1px solid #728e97;
+    margin-left: 1px;
+}
+.resumen_data li span.text{
+    color: #000;
+    font-weight: normal;
+    font-size: 13px;    
+}
+.resumen_data li b{
+    font-size: 32px;
+    color: #000;
+    display: block;
+    line-height: 30px;
+}
+.lista_opciones{
+    margin: 10px;
+    margin-right: 0;
+    margin-left: 8px;
+}
+.lista_opciones .ui-controlgroup-horizontal .ui-btn{
+    display: inline-block;
+    height: 90px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: none;
+}
+.lista_opciones .ui-controlgroup{
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.lista_opciones .ui-controlgroup-horizontal .ui-btn-inner{
+    width: 86px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 58px;
+    border: none;
+}
+.lista_opciones .ui-controlgroup-horizontal .ui-btn{
+    border-right-width: 1px;
+    border-radius: 5px;
+}
+.lista_opciones .ui-controlgroup-controls{
+    overflow: hidden;
+}
+.lista_opciones .ui-controlgroup-controls .ui-icon{
+    border-radius: 0 0 0 0 !important;
+}
+.lista_opciones .ui-controlgroup-controls .ui-btn-text{
+    height: auto;
+    display: inline-block;
+    width: 84px;
+    font-size: 12px;
+    text-shadow: 0 0px 0 #000;
+    color: #fff;
+    white-space: normal;
+    line-height: 12px;
+}
+.lista_opciones .ui-controlgroup-controls .ui-btn-text span{
+    font-size: 10px;
+}
+.lista_opciones .ui-controlgroup-controls .icon_custom .ui-btn-text{
+    width: 94px;
+    margin-left: -4px;
+}
+.lista_opciones .ui-controlgroup-horizontal .icon_ptop_custom .ui-btn-inner{
+    padding-top: 48px;
+}
+.ui-controlgroup-horizontal .ui-icon {
+    margin-left: -20px !important;
+    display: inline-block;
+    width: 42px;
+    height: 47px;
+}
+.ui-controlgroup-horizontal .icon_pencil.ui-btn,
+.ui-controlgroup-horizontal .icon_smile.ui-btn,
+.ui-controlgroup-horizontal .icon_cash.ui-btn,
+.ui-controlgroup-horizontal .icon_foto.ui-btn{
+    background: #ca2c2c;
+}
+.ui-controlgroup-horizontal .icon_info.ui-btn,
+.ui-controlgroup-horizontal .icon_smile_bgdos.ui-btn,
+.ui-controlgroup-horizontal .icon_gear.ui-btn,
+.ui-controlgroup-horizontal .icon_ppublico.ui-btn,
+.ui-controlgroup-horizontal .icon_video.ui-btn{
+    background: #aa2424;
+}
+.ui-controlgroup-horizontal .icon_recompensa.ui-btn,
+.ui-controlgroup-horizontal .icon_add_recompensa.ui-btn,
+.ui-controlgroup-horizontal .icon_smile_bgtres.ui-btn,
+.ui-controlgroup-horizontal .icon_tool.ui-btn,
+.ui-controlgroup-horizontal .icon_promocionar_social.ui-btn,
+.ui-controlgroup-horizontal .icon_mis_albunes.ui-btn,
+.ui-controlgroup-horizontal .icon_mis_puntos_obtenidos.ui-btn{
+    background: #8f1d1d; 
+}
+.ui-controlgroup-horizontal .icon_old_recompensa.ui-btn,
+.ui-controlgroup-horizontal .icon_help.ui-btn,
+.ui-controlgroup-horizontal .icon_search.ui-btn,
+.ui-controlgroup-horizontal .icon_mis_videos.ui-btn{ 
+    background: #6e1414;
+}
+.ui-controlgroup-horizontal .icon_pencil .ui-icon {
+    background: url("../img/bg_pincel.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_info .ui-icon {
+    background: url("../img/bg_info.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_recompensa .ui-icon {
+    background: url("../img/bg_recompensa.png") no-repeat scroll left top transparent;
+    background-size: 40px;   
+}
+.ui-controlgroup-horizontal .icon_old_recompensa .ui-icon {
+    background: url("../img/bg_old_recompensa.png") no-repeat scroll left top transparent;
+    width: 60px;
+    height: 48px;
+    background-size: 60px;
+    margin-left: -25px !important;
+}
+.ui-controlgroup-horizontal .icon_add_recompensa .ui-icon {
+    background: url("../img/bg_add_recompensa.png") no-repeat scroll left top transparent;
+    width: 60px;
+    height: 48px;
+    background-size: 60px;
+    margin-left: -25px !important;
+}
+.ui-controlgroup-horizontal .icon_smile .ui-icon {
+    background: url("../img/bg_smile.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_cash .ui-icon {
+    background: url("../img/bg_cash.png") no-repeat scroll left top transparent;
+    background-size: 33px;
+    margin-left: -16px !important;
+}
+.ui-controlgroup-horizontal .icon_help .ui-icon {
+    background: url("../img/bg_help.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_tool .ui-icon {
+    background: url("../img/bg_tool.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_search .ui-icon {
+    background: url("../img/bg_search.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_gear .ui-icon {
+    background: url("../img/bg_gear.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_ppublico .ui-icon {
+    background: url("../img/bg_user.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_promocionar_social .ui-icon {
+    background: url("../img/bg_wifi.png") no-repeat scroll left top transparent;
+    width: 50px;
+    height: 47px;
+    background-size: 50px;
+    margin-left: -25px !important;
+}
+.ui-controlgroup-horizontal .icon_foto .ui-icon {
+    background: url("../img/bg_foto.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_video .ui-icon {
+    background: url("../img/bg_video.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_mis_albunes .ui-icon {
+    background: url("../img/bg_lista_albunes.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_mis_videos .ui-icon {
+    background: url("../img/bg_lista_videos.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+.ui-controlgroup-horizontal .icon_mis_puntos_obtenidos .ui-icon {
+    background: url("../img/bg_puntos.png") no-repeat scroll left top transparent;
+    background-size: 40px;
+}
+
+/* PAGES */
+
+/* INDEX/LOGIN*/
+#view .ui-content,
+#login .ui-content,
+#options_register .ui-content,
+#register_user .ui-content,
+#registro_finalizado .ui-content,
+#completar_perfil .ui-content,
+#solicitar_patrocinio .ui-content,
+#solicitar_editar_patrocinio .ui-content,
+#completar_perfil_patrocinador .ui-content,
+#completar_perfil_empresa .ui-content,
+#recuperar_password .ui-content,
+#patrocinio_registrado .ui-content,
+#completar_perfil_exitosamente .ui-content{
+    background: #eeeeee;
+    margin: 18px 10px;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+    padding: 0;
+    min-height: 330px;
+}
+#register_user .ui-content,
+#registro_finalizado .ui-content,
+#patrocinio_registrado .ui-content,
+#completar_perfil_exitosamente .ui-content{
+    margin-bottom: 10px;
+    min-height: 360px;
+}
+#registro_finalizado .ui-content,
+#patrocinio_registrado .ui-content,
+#completar_perfil_exitosamente .ui-content{
+    min-height: 320px;
+}
+#login .ui-content{
+    margin-bottom: 25px;
+    min-height: 215px;
+}
+#proyecto_deportivo .ui-content{
+    background-color: #ecf0f1;
+}
+#view h1, 
+#login h1{
+    margin: 0.2em 8% 0.2em;
+    height: auto;
+    overflow: hidden;
+    padding: 10px 10px 0 10px;
+}
+#view h1 img,
+#login h1 img{
+    width: 100%;
+}
+#view .background_view{
+    background: url("../img/bg-index2.png") no-repeat scroll center top transparent;
+    background-position: 50% 60%;
+}
+#view .usuarios-patrocinalos{
+    padding-top: 39%;
+}
+#view .content_usuarios{
+    padding: 5px 10px 4px 10px;
+    background: url("../img/bg-usuarios-index.png") repeat scroll 0 0 transparent;
+    overflow: hidden;
+    min-height: 128px;
+}
+#view .content_usuarios p{
+    color: #fff;
+    font-size: 12px;
+    padding-bottom: 2px;
+}
+#view .content_usuarios .list > li{
+    float: left;
+    margin: 1px;
+    margin-right: 2px;
+    margin-bottom: 4px;
+    margin-left: 2px;
+}
+#view .content_usuarios .recuadro_img{
+    border: 1px solid #FFFFFF;
+    height: 49px;
+    width: 49px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #000;
+    margin-left: auto;
+    display: block;
+    margin-bottom: 0;
+    margin-right: auto;
+    text-align: center;
+}
+#view .content_usuarios .recuadro_img img{
+    height: 49px;
+    width: auto;
+}
+
+/* OPTIONES REGISTRO */
+#options_register .ui-content{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+#options_register .content_options{
+    margin: 32px 8px
+}
+#options_register p.text {
+    font-size: 12px;
+    font-family: 'HelveticaCondensedMedium';
+    letter-spacing: 0px;
+    margin: 4px 0px;
+}
+#options_register .form_registro .ui-btn-inner{
+    padding: .6em 6px;
+}
+#options_register .facebook_registro,
+#options_register .twitter_registro{
+    margin-bottom: 20px;
+}
+
+/*LOGIN */
+
+#login .recuperar_contrasena,
+#registro_finalizado .guardar,
+#editar_perfil .guardar,
+#mis_alertas .guardar{
+    margin: 0 32px;
+    margin-bottom: 10px;
+}
+#login .access_login{
+    padding-top: 10px;
+}
+#login .access_login div.ui-body-cu.ui-input-text:first-child{
+    background: url("../img/bg-login.png") no-repeat scroll left center #fff;
+    background-size: 20px;
+    background-position: 6px;
+    margin-bottom: 12px;
+}
+#login .access_login div.ui-body-cu.ui-input-text:last-child{
+    background: url("../img/bg-password.png") no-repeat scroll left center #fff;
+    background-size: 20px;
+    background-position: 6px;
+}
+#login .ui-controlgroup{
+    margin-bottom: 16px;
+}
+#login p.text{
+    font-size: 12px;
+    margin-bottom: 18px;
+    margin-left: 10px; 
+    padding-top: 10px;
+}
+#login p.text span{
+    color: #2eaae0;
+}
+#login .recuperar_contrasena .ui-btn-inner{
+    padding-left: 10px;
+    padding-right: 10px;    
+}
+.msg_error{
+    background: none repeat scroll 0 0 #f9f9fa;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px 5px 5px 5px;
+    margin: 18px 10px;
+    padding: 5px;
+    overflow: hidden;
+}
+.msg_error a.ui-link{
+    color: #A72929;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    float: left;
+}
+.msg_error label{
+    color: #B74040;
+    display: inline-block;
+    font-size: 10px;
+    margin-left: 8px;
+    letter-spacing: -1px;
+}
+
+/* REGISTRO */
+#register_user .ui-content,
+#completar_perfil .ui-content,
+#completar_perfil_patrocinador .ui-content{
+    margin-top: 14px;
+    margin-bottom: 5px;
+}
+#registro_finalizado .guardar{
+    margin: 0 50px;
+}
+#register_user .ui-select span.ui-btn-text,
+#completar_perfil .ui-select span.ui-btn-text,
+#completar_perfil_patrocinador .ui-select span.ui-btn-text,
+#solicitar_patrocinio .ui-select span.ui-btn-text,
+#solicitar_editar_patrocinio .ui-select span.ui-btn-text{
+    font-size: 14px;
+    margin: 3px 0;
+}
+#register_user label.text_termino{
+    font-size: 12px;
+    letter-spacing: -1px;
+    display: inline-block;
+    color: #949e9f;
+    line-height: 12px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+#register_user label.text_termino a{
+    color: #57a8df;
+}
+#register_user .access_login .ui-input-text,
+#completar_perfil .ui-input-text,
+#editar_perfil .ui-icon-datebox,
+#completar_perfil_patrocinador .ui-input-text,
+#solicitar_patrocinio .ui-input-text,
+#solicitar_editar_patrocinio .ui-input-text{
+    margin: 0.25em 0;
+    position: relative;
+}
+#register_user .texto_formulario{
+    margin: 10px 0;
+}
+#register_user .texto_formulario span,
+#completar_perfil .texto_formulario span,
+#completar_perfil_patrocinador .texto_formulario span,
+#solicitar_patrocinio .texto_formulario span,
+#solicitar_editar_patrocinio .texto_formulario span{
+    margin: 0 4.5em;
+}
+
+/* REGISTRO FINALIZADO */
+#registro_finalizado .texto_formulario span,
+#patrocinio_registrado .texto_formulario span,
+#completar_perfil_exitosamente .texto_formulario span{
+    margin: 0 7.0em;
+}
+#registro_finalizado .access_login,
+#patrocinio_registrado .access_login,
+#completar_perfil_exitosamente .access_login{
+    margin-top: 9px;
+    margin-bottom: 15px;    
+}
+#registro_finalizado .save_data,
+#patrocinio_registrado .save_data,
+#completar_perfil_exitosamente .save_data{
+    font-size: 12px;
+    padding-left: 40px;
+    display: block;
+    background: url("../img/succes.png") no-repeat scroll center left transparent;
+    background-size: 30px;
+    overflow: hidden;
+    letter-spacing: -1px;
+    color: #949e9f
+}
+#registro_finalizado p,
+#patrocinio_registrado p,
+#completar_perfil_exitosamente p{
+    font-size: 12px;
+    padding-left: 40px;
+    color: #949e9f
+}
+#registro_finalizado p.warning{
+    color: #1a8aaa;
+}
+
+/* COMPLETAR PERFIL */
+
+#completar_perfil .btn-access,
+#completar_perfil_patrocinador .btn-access,
+#solicitar_patrocinio .btn-access,
+#solicitar_editar_patrocinio .btn-access{
+    margin-left: 8px;
+    min-height: 345px;
+}
+#completar_perfil .content_formulario > div,
+#completar_perfil_patrocinador .content_formulario > div,
+#solicitar_patrocinio .content_formulario > div,
+#solicitar_editar_patrocinio .content_formulario > div{
+    padding-left: 2px;
+}
+#completar_perfil .content_formulario > div.ui-input-text,
+#completar_perfil_patrocinador .content_formulario > div.ui-input-text,
+#solicitar_patrocinio .content_formulario > div.ui-input-text,
+#solicitar_editar_patrocinio .content_formulario > div.ui-input-text,
+#completar_perfil .content_formulario > textarea,
+#completar_perfil_patrocinador .content_formulario > textarea,
+#solicitar_patrocinio .content_formulario > textarea,
+#solicitar_editar_patrocinio .content_formulario > textarea{
+    margin-left: 2px;
+    padding-left: 0.4em;
+}
+#completar_perfil .fecha_nacimiento,
+#completar_perfil_patrocinador .fecha_nacimiento,
+#solicitar_patrocinio .fecha_nacimiento,
+#solicitar_editar_patrocinio .fecha_nacimiento{
+    display: block;
+    overflow: hidden;
+}
+#completar_perfil .fecha_nacimiento div.ui-input-text,
+#completar_perfil_patrocinador .fecha_nacimiento div.ui-input-text,
+#solicitar_patrocinio .fecha_nacimiento div.ui-input-text,
+#solicitar_editar_patrocinio .fecha_nacimiento div.ui-input-text{
+    width: 77%;
+    display: inline-block;
+    float: left;
+    margin-bottom: 2px;
+    margin-top: 0.2em;
+}
+#completar_perfil .fecha_nacimiento a.calendario,
+#completar_perfil_patrocinador .fecha_nacimiento a.calendario,
+#solicitar_patrocinio .fecha_nacimiento a.calendario,
+#solicitar_editar_patrocinio .fecha_nacimiento a.calendario{
+    width: 15%;
+    display: inline-block;
+    float: right;
+    margin-top: 0.4em;
+    margin-bottom: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    -webkit-box-shadow: 0px 0px 0px /*{global-box-shadow-size}*/ rgba(0,0,0,.2) /*{global-box-shadow-color}*/;
+    background: url("../img/bg_calendario.png") no-repeat scroll center center transparent;
+    background-size: 35px;
+}
+
+/* COMPLETAR PERFIL PATROCINADOR */
+.otros_deportes .ui-collapsible-content{
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background: #fff;
+}
+.otros_deportes .ui-collapsible-content .ui-listview label{
+    font-weight: normal;
+}
+.otros_deportes .ui-collapsible-heading{
+    margin: .6em 0;
+}
+.otros_deportes .ui-collapsible-heading-toggle{
+    margin-bottom: 2px;
+}
+
+/* COMPLETAR PERFIL EMPRESA */
+#completar_perfil_empresa .box_consultar{
+    background-color: #d9e4e5;
+    padding: 8px 8px 1px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #7f8c8d;
+    overflow: hidden;
+}
+#completar_perfil_empresa .close_text{
+    display: block;
+    padding-top: 12px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
+/* SOLICITAR PATROCINIO */
+#solicitar_patrocinio .texto_formulario,
+#solicitar_editar_patrocinio .texto_formulario{
+    margin: 5px 0;
+}
+#solicitar_patrocinio .ui-content,
+#solicitar_editar_patrocinio .ui-content{
+    margin-top: 8px;
+    margin-bottom: 0px;
+}
+#solicitar_patrocinio textarea,
+#solicitar_editar_patrocinio textarea{
+    height: 55px;
+}
+#solicitar_patrocinio .seleccionar_recompensas,
+#solicitar_editar_patrocinio .seleccionar_recompensas{
+    margin-top: 5px;
+    color: #909b9c;
+    font-size: 11px;
+    line-height: 12px;
+    letter-spacing: -1px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+#solicitar_patrocinio .seleccionar_recompensas h2,
+#solicitar_editar_patrocinio .seleccionar_recompensas h2{
+    font-size: 15px;
+    font-weight: bold;
+    margin: 4px 0;
+}
+#solicitar_patrocinio .seleccionar_recompensas ul,
+#solicitar_editar_patrocinio .seleccionar_recompensas ul{
+    overflow: hidden;
+    margin: 10px 0;    
+}
+#solicitar_patrocinio .seleccionar_recompensas li,
+#solicitar_editar_patrocinio .seleccionar_recompensas li{
+    float: left;
+    margin-right: 4px;
+    margin-left: 4px;
+    margin-bottom: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+    cursor: pointer;
+    width: 75px;
+}
+#solicitar_patrocinio .seleccionar_recompensas li.last,
+#solicitar_editar_patrocinio .seleccionar_recompensas li.last{
+    margin-right: 0;
+}
+#solicitar_patrocinio .seleccionar_recompensas .item,
+#solicitar_editar_patrocinio .seleccionar_recompensas .item{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#solicitar_patrocinio .seleccionar_recompensas .item.selected,
+#solicitar_editar_patrocinio .seleccionar_recompensas .item.selected{
+    background-color: #adddda;
+    border-radius: 5px;
+    color: #fff;
+}
+#solicitar_patrocinio .seleccionar_recompensas .content_recompensa,
+#solicitar_editar_patrocinio .seleccionar_recompensas .content_recompensa{
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+}
+#solicitar_patrocinio .seleccionar_recompensas .content_recompensa img.success,
+#solicitar_editar_patrocinio .seleccionar_recompensas .content_recompensa img.success{
+    display: none;
+}
+#solicitar_patrocinio .seleccionar_recompensas .selected .content_recompensa img.success,
+#solicitar_editar_patrocinio .seleccionar_recompensas .selected .content_recompensa img.success{
+    display: block;
+    height: 18px;
+    width: 20px;
+    position: absolute;
+    top: -2px;
+    left: -5px;
+}
+#solicitar_patrocinio .seleccionar_recompensas .content_recompensa img,
+#solicitar_editar_patrocinio .seleccionar_recompensas .content_recompensa img{
+    width: 100%;
+    height: 100%;
+}
+#solicitar_patrocinio .seleccionar_recompensas p.nombre_recompensa,
+#solicitar_editar_patrocinio .seleccionar_recompensas p.nombre_recompensa{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 85%;
+    display: inline-block;
+    overflow: hidden;    
+}
+#solicitar_editar_patrocinio .page span.hide{
+    display: none;
+}
+#solicitar_editar_patrocinio .page span.show{
+    display: block;
+}
+#solicitar_editar_patrocinio{
+    padding-bottom: 15px !important;
+}
+#solicitar_editar_patrocinio .informacion{
+    color: #55a0b5;
+    letter-spacing: 0px;
+    font-size: 12px;
+    line-height: 12px;
+    margin: 5px 0;
+    text-shadow: none;
+    display: none;
+}
+
+/* CSS NAVIGATION HOME*/
+
+/* LISTA ACTIVIDAD GENERAL */
+#lista_actividad_general .title,
+#mis_recompensas .title,
+#ultimas_recompensas .title{
+    background-color: #972224;
+}
+#lista_actividad_general .title h2,
+#mis_recompensas .title h2,
+#ultimas_recompensas .title h2{
+    text-align: center;
+    font-size: 20px;
+    font-family:'CaptureitRegular';
+    color: #FFFFFF;
+    padding: 5px;
+    margin-bottom: 8px;
+}
+#lista_actividad_general .ui-listview li.pair{
+    background-color: #000;
+}
+#lista_actividad_general .ui-listview li.odd{
+    background-color: #a02b30;
+}
+#lista_actividad_general .ui-listview li p.ui-li-desc span.recuadro{
+    border: 1px solid #AAAAAA;
+    display: inline-block;
+    float: left;
+    height: 50px;
+    margin-right: 5px;
+    width: 70px;
+}
+#lista_actividad_general .ui-listview li p.ui-li-desc span.desc{
+    white-space: normal;
+    font-size: 11px;
+    line-height: 11px;
+    text-align: justify;
+    display: block;
+}
+#lista_actividad_general .ui-listview li p.ui-li-desc a{
+    color: #55938f;
+    display: inline-block;
+    padding-top: 3px;
+    height: 14px;
+}
+#lista_actividad_general .ui-listview li .info a{
+    background-image: url("../img/bg_info_home.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 25px auto;
+    background-position: 50% 50%;
+}
+
+/* LISTA POSIBLES GANADORES */
+#lista_posibles_ganadores .title h2,
+#proyecto_deportivo .title h2,
+#ultimas_entradas_usuario_x h2{
+    font-size: 13px;
+    font-weight: bold;
+    color: #cc5050;
+    line-height: 22px;
+    margin-bottom: 4px;
+}
+#lista_posibles_ganadores .ui-listview li .ui-li-heading,
+#lista_deportistas_elites .ui-listview li .ui-li-heading,
+#lista_deportistas_amateurs .ui-listview li .ui-li-heading,
+#lista_nuevos_deportistas .ui-listview li .ui-li-heading,
+#recaudacion_liquidacion .ui-listview li .ui-li-heading,
+#mis_recompensas .ui-listview li .ui-li-heading,
+#ultimas_recompensas .ui-listview li .ui-li-heading{
+    margin-bottom: 0px;
+}
+#lista_posibles_ganadores .ui-listview li .deporte_ciudad,
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar{
+    overflow: hidden;
+}
+#lista_posibles_ganadores .ui-listview li .deporte_ciudad .second{
+    float: right;
+    line-height: 27px;
+    display: none;
+}
+#lista_posibles_ganadores .ui-listview li .deporte_descripcion{
+    background: url("../img/deportes/img_deporte.png") no-repeat scroll center left transparent;
+    background-size: 25px;
+    display: inline-block;
+    height: 25px;
+    line-height: 27px;
+    padding-left: 28px;
+}
+#lista_posibles_ganadores .ui-listview li .action_votar{
+    overflow: hidden;
+    padding-top: 4px;
+}
+#lista_posibles_ganadores .ui-listview li .action_votar label{
+    display: inline-block;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    float: left;
+}
+#lista_posibles_ganadores .ui-listview li .content_start{
+    float: left;
+    margin-left: 4px;
+}
+#lista_posibles_ganadores .ui-listview li span.start{
+    font-size: inherit;
+    display: inline-block;
+}
+#lista_posibles_ganadores .ui-listview li span.start > a{
+    background-image: url("../img/bg_start_sprite.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: 50% 0%;
+    background-size: 20px auto;
+    display: inline-block;
+    height: 19px;
+    text-indent: -9999px;
+    width: 18px;
+}
+#lista_posibles_ganadores .ui-listview li span.start > a.active,
+#lista_posibles_ganadores .ui-listview li span.start > a:hover{
+    background-position: 50% 100%;
+}
+#lista_posibles_ganadores .ui-listview li .info{
+    display: none;
+}
+#lista_posibles_ganadores .ui-listview li .info a{
+    background-image: url("../img/bg_shared_sprite.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 25px auto;
+    background-position: 50% 0%;
+}
+#lista_posibles_ganadores .ui-listview li .info a.active,
+#lista_posibles_ganadores .ui-listview li .info a:hover{
+    background-position: 50% 100%;
+}
+
+/* LISTA ELITES */
+
+#lista_deportistas_elites .options,
+#lista_deportistas_amateurs .options,
+#recaudacion_liquidacion .options,
+#mis_albunes .options{
+    background-color: #e7e7e7;
+    margin-bottom: 5px;
+}
+#lista_deportistas_elites .options a.first,
+#lista_deportistas_amateurs .options a.first,
+#recaudacion_liquidacion .options a.first,
+#mis_albunes .options a.first{
+    margin-right: 2px;
+    width: 48%;
+}
+#lista_deportistas_elites .options a,
+#lista_deportistas_amateurs .options a,
+#recaudacion_liquidacion .options a,
+#mis_albunes .options a{
+    display: inline-block;
+    font-size: 20px;
+    padding: 4px 0;
+    text-align: center;
+    width: 50%;
+    color: #000000;
+    font-family:'CaptureitRegular';
+    letter-spacing: 0px;
+    text-shadow: 0 1px 0 #5c5e64;
+    font-weight: normal;
+}
+#lista_deportistas_elites .options a.active,
+#lista_deportistas_elites .options a:hover,
+#lista_deportistas_amateurs .options a.active,
+#lista_deportistas_amateurs .options a:hover,
+#recaudacion_liquidacion .options a.active,
+#recaudacion_liquidacion .options a:hover,
+#mis_albunes .options a.active,
+#mis_albunes .options a:hover{
+    background-color: #992425;
+    color: #fff;
+    border-bottom: 1px solid #000;
+}
+#lista_deportistas_elites .content_descripcion,
+#lista_deportistas_amateurs .content_descripcion{
+    width: 68%;
+}
+#lista_deportistas_elites .content_descripcion .srecompensa span,
+#lista_deportistas_amateurs .content_descripcion .srecompensa span{
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* EDICION DATOS PERSONALES */
+
+#editar_perfil .content_formulario{
+    width: 60%;
+}
+#editar_perfil .content_formulario .opciones .first, 
+#editar_perfil .content_formulario .opciones .second{
+    margin-right: 0px;
+}
+#editar_perfil .content_formulario .opciones .ui-radio .ui-btn-inner .ui-btn-text{
+    font-size: 12px;
+}
+#editar_perfil .content_formulario label.info{
+    color: #7F8C8D;
+    font-size: 14px;
+    margin-left: 2px;
+    font-weight: bold;    
+}
+#editar_perfil .recuadro{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    text-align: right;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    float: left;
+    border-radius: 4px;
+}
+#editar_perfil .recuadro img{
+    width: 100%;
+    height: 100%;
+}
+#editar_perfil .content_list_first{
+    padding-bottom: 10px;
+}
+#editar_perfil .guardar,
+#editar_perfil .guardar a{
+    margin-bottom: 0;
+}
+#editar_perfil .content_top{
+    overflow: hidden;
+}
+#editar_perfil .content_top a{
+    border: none;
+    border-radius: 3px;
+    padding: 16px 7px;
+    line-height: 17px;
+    font-family: 'HelveticaLTStdLight';
+    font-size: 17px;
+    margin: 0 0 0 3px;
+    float: left;
+    min-width: 105px;
+}
+#editar_perfil .content_top a#change_foto{
+    background: #019add;
+}
+#editar_perfil .content_top a#change_pass{
+    line-height: 11px;
+    padding: 12px 7px 13px 7px;
+    background: #ff6148;
+}
+#editar_perfil .content_top a span.ui-btn-text{
+    font-size: 16px;
+    text-shadow: 1px 1px 0 #000;
+    font-weight: normal;
+}
+#editar_perfil .content_top a span.ui-btn-inner{
+    padding: 0;
+    border: 0;
+}
+/* EDICION DATOS DEPORTIVOS */
+
+#proyecto_deportivo #hacerme_amigo{
+    clear: both;
+    margin-bottom: 0;
+}
+#proyecto_deportivo #hacerme_amigo .ui-btn-inner{
+    padding: 0.15em 9px .2em;
+}
+#proyecto_deportivo #hacerme_amigo .ui-btn-text{
+    font-size: 14px;
+    text-shadow: 0 0px 0 #FFFFFF;
+    font-weight: normal;
+}
+#proyecto_deportivo .ui-listview li .info a{
+    background-image: url("../img/bg_like_sprite.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 25px auto;
+}
+#proyecto_deportivo .ui-listview li.pair .info a{
+    background-position: 50% 0%;
+}
+#proyecto_deportivo .ui-listview li.odd .info a{
+    background-position: 50% 100%;
+}
+#proyecto_deportivo .ui-listview li .ui-li-heading span.nombre_usuario{
+    font-size: 15px;
+    color: #00A2E1;
+}
+#proyecto_deportivo .ui-listview li .ui-li-heading span.fecha_publicacion{
+    font-size: 12px;
+}
+#proyecto_deportivo .ui-listview li.pair .ui-li-heading span.fecha_publicacion{
+    color: #8d2828;
+}
+#proyecto_deportivo .ui-listview li p{
+    white-space: normal;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: justify;
+    display: block;
+    text-shadow: 0 0 0  !important;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+#proyecto_deportivo .title h2{
+    font-size: 15px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+#proyecto_deportivo .data_user{
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+#proyecto_deportivo .data_user .recorte{
+    height: 115px;
+    width: 115px;
+    margin-right: 0px;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-box-shadow: 1px 3px 4px #d5d5d5 /*{global-icon-shadow}*/;
+    box-shadow: 1px 3px 4px #d5d5d5 /*{global-icon-shadow}*/;
+    overflow: hidden;
+    background-color: #000;
+    text-align: center;
+}
+#proyecto_deportivo .data_user .recorte img{
+    width: auto;
+    height: 115px;    
+}
+#proyecto_deportivo .data_user .foto_perfil{
+    padding-right: 2px;
+    min-height: 140px;
+    width: 36%;
+    margin-left: 2px;
+    margin-top: 4px;
+}
+#proyecto_deportivo .data_user .description{
+    min-height: 135px;
+    width: 60%;
+    padding: 4px 0 0 4px;
+}
+#proyecto_deportivo .data_user .description .content{
+    width: 100%;
+}
+#proyecto_deportivo .data_user .description .content span{
+    color: #7F8C8D;
+}
+#proyecto_deportivo .data_user .content b{
+    color: #000;
+    font-size: 13px;
+}
+#proyecto_deportivo .data_user .content label,
+#proyecto_deportivo .data_user label.compartir{
+    font-size: 10px;
+    margin-top: 0;
+    color: #CF4536;
+    text-transform: uppercase;
+    font-family: Arial,Helvetica,sans-serif;
+    text-shadow: 0 0 0;
+    font-weight: normal;
+    letter-spacing: 0;
+}
+#proyecto_deportivo .data_user label.compartir{
+    display: block;
+    margin-bottom: 4px;
+}
+#proyecto_deportivo .data_user .content label.nombre_user{
+    font-size: 16px;
+    display: block;
+}
+#proyecto_deportivo .data_user .content span{
+    font-size: 13px;
+    letter-spacing: 0px;
+}
+#proyecto_deportivo .data_user .content .necesito_para{
+    margin-top: 4px;
+}
+#proyecto_deportivo .data_user .content .patrociname span,
+#proyecto_deportivo .data_user .content .necesito_para span{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+}
+#proyecto_deportivo .data_user .content label.inline{
+    display: inline-block;
+}
+#proyecto_deportivo .content_middle .top{
+    overflow: hidden;
+    font-size: 14px;
+    letter-spacing: -1px;
+    margin: 8px 3px 2px 3px;
+}
+#proyecto_deportivo .content_middle .top b{
+    color: #A22020;
+}
+#proyecto_deportivo .progress{
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3) inset;
+    background-color: #BEC3C7;
+    border-top: 1px solid #d1cfcf;
+    border-bottom: 1px solid #d1cfcf;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 2px;
+}
+#proyecto_deportivo .progress .porcentaje{
+    background-color: #27AE60;
+    text-shadow: 0 0 0;
+    padding: 5px 0;
+    text-align: center;
+    font-weight: bold;
+    height: 2px;
+    border-radius: 2px 0px 0px 2px;
+}
+#proyecto_deportivo .numero_porcentaje{
+    text-align: center;
+    font-size: 16px;
+    color: #2f475f !important;
+    font-weight: bold;
+}
+#proyecto_deportivo .numero_porcentaje span.numero{
+    font-size: 18px;
+    display: inline-block;
+    color: #2f475f !important;
+    font-weight: bold;
+}
+#proyecto_deportivo .link_red_social{
+    padding-top: 5px;
+    margin-left: 2px;
+    clear: both;
+}
+#proyecto_deportivo .link_red_social a{
+    text-indent: -9999px;
+    display: inline-block;
+}
+#proyecto_deportivo .link_red_social a.facebook{ 
+    background: url("../img/bg_link_facebook.png") no-repeat scroll center left transparent;
+    background-position: 0 0;
+    background-size: 33px;
+    height: 33px;
+    width: 33px;
+}
+#proyecto_deportivo .link_red_social a.twitter{
+    margin-left: 2px;
+    background: url("../img/bg_link_twitter.png") no-repeat scroll center left transparent;
+    background-position: 0 0;
+    background-size: 34px;
+    height: 34px;
+    width: 34px;
+}
+#proyecto_deportivo .btn-options{
+    margin: 0 5px;
+}
+#proyecto_deportivo .dias_finalizar{
+    font-size: 13px;
+    letter-spacing: -1px;
+    margin-top: 2px;
+}
+#proyecto_deportivo .info_deportista{
+    margin: 5px 0 5px 5px;
+    overflow: hidden;
+}
+#proyecto_deportivo .info_deportista li{
+    float: left;
+    margin-right: 4px;
+    background-color: #94c9ea;
+    border: 1px solid #7cb4d7;
+    min-height: 60px;
+    padding: 5px;
+    width: 18%;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;    
+    text-shadow: 0 0 0 !important;
+}
+#proyecto_deportivo .info_deportista li label{
+    color: #fff;
+    font-size: 15px;
+} 
+#proyecto_deportivo .info_deportista li p{
+    color: #9b3d3f;
+    text-shadow: 0 0 0 !important;
+    font-size: 14px;
+    line-height: 13px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+#proyecto_deportivo .info_deportista li.black{
+    background-color: #191919;
+    width: 25%;
+    text-align: left;
+}
+#proyecto_deportivo .info_deportista li.last{
+    margin-right: 0;
+}
+#proyecto_deportivo .info_deportista li b{
+    font-size: 32px;
+    text-shadow: 0 0 0 !important;
+    color: #000;
+    display: block;
+}
+#proyecto_deportivo .info_deportista li.clasificacion span.text{
+    margin-left: -3px;
+}
+#proyecto_deportivo #seguir_deportista .ui-btn-inner{
+    padding: .6em 5px;
+}
+/* LISTA COMETARIOS */
+.list_comentarios{
+    overflow: hidden;
+}
+.list_comentarios li{
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 2px;
+    border-top: 1px solid #fff;
+}
+.list_comentarios li a.ui-link-inherit{
+    padding: 0 !important;
+}
+.list_comentarios .ui-li-heading{
+    margin-top: 0;
+    font-weight: normal;
+}
+.list_comentarios li .avatar{
+    width: 45px;
+    height: 48px;
+    float: left;
+    margin-right: 8px;
+}
+.list_comentarios li .avatar img{
+    width: 45px;
+    height: 45px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px -1px #444;
+}
+.list_comentarios li .content_descripcion{
+    font-family: 'HelveticaLTStdLight';
+    color:#75848e;
+    font-size: 13px;
+}
+.list_comentarios .description_c{
+    background:url("../img/arrow_link.png") no-repeat scroll right center #edf2f3; 
+    overflow: hidden;
+    padding: 5px;
+    background-size: 20px;
+    border-bottom: 1px solid #b7cbcf;
+}
+
+/* MIS ALERTAS */
+#mis_alertas .content_edicion legend,
+#mis_alertas .content_edicion label .ui-btn-text{
+    font-weight: normal;
+    text-shadow: 0 0 0;
+    font-size: 12px;
+}
+#mis_alertas .content_edicion legend{
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* PUNTOS OBTENIDOS EN LA RONDA */
+#puntos_obtenidos_en_ronda .content_top,
+#recaudacion_liquidacion .content_top{
+    overflow: hidden;
+    border-bottom: 1px solid #466b6f;
+    background-color: #6bb0c5;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+#puntos_obtenidos_en_ronda .content_top li,
+#recaudacion_liquidacion .content_top li{
+    float: left;
+    background-color: #fff;
+    min-height: 45px;
+    width: 49%;
+    text-align: center;
+    font-size: 14px;
+    text-shadow: 0 0 0 !important;
+    border-radius: 5px;
+    padding: 5px 0;
+}
+#puntos_obtenidos_en_ronda .content_top li b,
+#recaudacion_liquidacion .content_top li b{
+    font-size: 32px;
+    text-shadow: 0 0 0 !important;
+    color: #000;
+    display: block;
+    line-height: 30px;
+}
+#puntos_obtenidos_en_ronda .content_top li span.text{
+    color: #B93838;
+    font-weight: bold;
+}
+#puntos_obtenidos_en_ronda .content_list_first h2{
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+#puntos_obtenidos_en_ronda .content_list_first li .content_seguidor b{
+    display: block;
+    font-size: 50px;
+    line-height: 44px;    
+}
+#puntos_obtenidos_en_ronda .content_list_first .content_seguidor{
+    font-size: 18px;
+}
+#puntos_obtenidos_en_ronda .content_list_first .content_seguidor {
+    display: block;
+}
+#puntos_obtenidos_en_ronda .content_list_first .ui-listview li .content_descripcion{
+    padding-left: 10px;
+    line-height: 25px;
+}
+
+/* PATROCINIO DEPORTIVO - CREACION  PASO 1 */
+#creacion_patrocinio_deportivo_paso1 .content_edicion h2,
+#creacion_patrocinio_deportivo_paso2 .content_edicion h2,
+#creacion_patrocinio_deportivo_paso3 .content_edicion h2,
+#promocionar_patrocinio_deportivo .content_edicion h2,
+#crear_nueva_recompensa .content_edicion h2,
+#crear_nueva_entrada .content_edicion h2{
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    text-shadow: 0 0 0;
+}
+#creacion_patrocinio_deportivo_paso1 textarea,
+#creacion_patrocinio_deportivo_paso2 textarea,
+#crear_nueva_recompensa textarea,
+#crear_nueva_entrada textarea{
+    height: 150px;
+}
+#creacion_patrocinio_deportivo_paso2 .content_edicion label,
+#creacion_patrocinio_deportivo_paso3 .content_edicion label,
+#crear_nueva_recompensa .content_edicion label,
+#crear_nueva_entrada .content_edicion label{
+    text-shadow: 0 0 0;
+}
+.formulario_patrocinio .guardar_patrocinio{
+    margin: 0 40px;
+    margin-bottom: 10px;
+}
+.formulario_patrocinio .guardar_patrocinio .ui-btn .ui-btn-inner,
+.container_options .bottom .ui-btn .ui-btn-inner{
+    border-top: 0 none;
+    display: inline-block;
+    margin-bottom: -2px;
+    padding-left: 35px;
+}
+.formulario_patrocinio .guardar_patrocinio .next .ui-btn .ui-btn-inner{
+    padding-left: 15px;
+    padding-right: 35px;
+}
+.formulario_patrocinio .guardar_patrocinio .ui-icon {
+    background: url("../img/bg_next.png") no-repeat scroll top center transparent;
+    border-radius: 0px;
+    box-shadow: none;
+    height: 24px;
+    width: 20px;
+    display: block;
+    background-size: 15px auto;
+    margin-top: -12px;
+}
+/* PATROCINIO DEPORTIVO - CREACION  PASO 2 */
+
+.formulario_patrocinio .guardar_patrocinio .volver {
+    width: 42%;
+    float: left;
+}
+.formulario_patrocinio .guardar_patrocinio .volver .ui-icon{
+    background: url("../img/bg_volver.png") no-repeat scroll top center transparent;
+    border-radius: 0px;
+    box-shadow: none;
+    height: 24px;
+    width: 20px;
+    display: block;
+    background-size: 15px auto;
+    margin-top: -12px;    
+}
+.formulario_patrocinio .guardar_patrocinio .next{
+    width: 55%;
+    float: right;
+}
+.formulario_patrocinio .guardar_patrocinio .next .ui-icon{
+    background: url("../img/bg_next.png") no-repeat scroll top right transparent;
+    border-radius: 0px;
+    box-shadow: none;
+    height: 24px;
+    width: 20px;
+    display: block;
+    background-size: 15px auto;
+    margin-top: -12px;    
+}
+/* PATROCINIO DEPORTIVO - CREACION  PASO 3 */
+#creacion_patrocinio_deportivo_paso3 .content_upload_foto{
+    margin: 0 20px;
+    border-bottom: 0;    
+} 
+#creacion_patrocinio_deportivo_paso3 .lista_fotos{
+    overflow: hidden;
+    margin: 15px 0;
+}
+#creacion_patrocinio_deportivo_paso3 .lista_fotos li{
+    float: left;
+    border: 1px solid #fff;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    height: 52px;
+}
+#creacion_patrocinio_deportivo_paso3 .lista_fotos li img{
+    height: 52px;
+}
+
+/* RECAUDACION LIQUIDACION */
+#recaudacion_liquidacion .content_top li{
+    border-radius: inherit;
+    width: 33%;
+    background-color: #e1e1e1;
+    border-right: 1px solid #728e97;
+    border-bottom: 1px solid #728e97;
+    border-top: 1px solid #728e97;
+}
+#recaudacion_liquidacion .content_top li.first{
+    border-left: 1px solid #728e97;
+}
+#recaudacion_liquidacion .content_top li.last{
+    border-right: none;
+}
+#recaudacion_liquidacion .content_top{
+    text-shadow: 0 0 0;
+}
+#recaudacion_liquidacion .content_top h2{
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 13px;
+}
+#recaudacion_liquidacion .content_top p{
+    color: #FFFFFF;
+    font-size: 15px; 
+}
+#recaudacion_liquidacion .content_top li span.text{
+    color: #000;
+    font-weight: normal;
+    font-size: 13px;
+}
+#recaudacion_liquidacion .content_list_first .options a{
+    font-size: 13px;
+    letter-spacing: -1px;
+    font-weight: bold;
+    font-family: inherit;
+    padding: 6px 0;
+}
+#recaudacion_liquidacion .content_list_first h3{
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 2px;    
+}
+#recaudacion_liquidacion .content_list_first .content_detalle{
+    font-size: 14px;
+    font-weight: normal;
+    text-align: right;
+    text-shadow: 0 0 0;
+    letter-spacing: -1px;
+}
+#recaudacion_liquidacion .content_list_first .ui-listview li.ui-li-static.ui-li{
+    min-height: 60px;
+}
+#recaudacion_liquidacion .content_list_first .ui-listview li .recorte{
+    height: 60px;
+    width: 60px;    
+}
+#recaudacion_liquidacion .content_list_first .ui-listview li p.ui-li-desc{
+    font-size: 25px;
+    margin-bottom: 0;
+    margin-top: 5px;
+    overflow: hidden;
+    font-weight: bold;
+}
+#recaudacion_liquidacion .content_list_first .ui-listview li p.ui-li-desc span{
+    font-size: 20px;
+    font-weight: bold;
+}
+#recaudacion_liquidacion .content_list_first li.odd.ui-btn-up-c b{
+    color: #fff;
+}
+#recaudacion_liquidacion .content_list_first li.ui-btn-up-c .content_descripcion label{
+    display: block;
+}
+#recaudacion_liquidacion .content_list_first li.ui-btn-up-c span.fecha_recaudacion{
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* PROMOCIONAR PATROCINIO DEPORTIVO */
+#promocionar_patrocinio_deportivo .container_options{
+    background: #FFFFFF;
+    border-radius: 5px;
+    border: 1px solid #000;
+    overflow: hidden;
+    font-size: 12px;
+    letter-spacing: -1px;
+    text-shadow: 0 0 0;
+    padding: 10px;
+    font-weight: normal;
+}
+#promocionar_patrocinio_deportivo .container_options li{
+    overflow: hidden;
+}
+#recuperar_password #form_recuperar_password .content_numero,
+#promocionar_patrocinio_deportivo .container_options .content_numero{
+    padding-right: 8px;
+    width: 30px;
+}
+#recuperar_password #form_recuperar_password .numero,
+#promocionar_patrocinio_deportivo .container_options .numero{
+    background: url("../img/bg_numero.png") no-repeat scroll left center / 30px auto #F9F9F9;
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    height: 28px;
+    padding-left: 8px;
+    padding-top: 2px;
+    width: 22px;
+}
+#recuperar_password #form_recuperar_password .numero{
+    background: url("../img/bg_numero.png") no-repeat scroll left center / 30px auto transparent;
+}
+#recuperar_password #form_recuperar_password li{
+    margin: 20px 0;
+    overflow: hidden;
+}
+#recuperar_password #form_recuperar_password .item{
+    width: 85%;
+}
+#promocionar_patrocinio_deportivo .container_options .item{
+    width: 80%;
+}
+#recuperar_password #form_recuperar_password .item p,
+#promocionar_patrocinio_deportivo .container_options .item p{
+    line-height: 12px;
+    color: #457a85;
+}
+#recuperar_password #form_recuperar_password .item p{
+    font-size: 12px;
+    letter-spacing: -1px;
+    text-shadow: 0 0 0;
+    font-weight: normal;
+}
+#promocionar_patrocinio_deportivo .container_options .bottom .recompensa .ui-icon {
+    background: url("../img/bg_recompensa.png") no-repeat scroll top center transparent;
+    background-size: 20px auto;
+}
+#promocionar_patrocinio_deportivo .container_options .bottom .promocionar_p .ui-icon {
+    background: url("../img/bg_promocionar_patrocinio.png") no-repeat scroll center center transparent;
+    background-size: 20px auto;
+}
+#promocionar_patrocinio_deportivo .container_options .bottom .invita_amigos .ui-icon {
+    background: url("../img/bg_invitar_amigos.png") no-repeat scroll center center transparent;
+    background-size: 22px auto;
+}
+#promocionar_patrocinio_deportivo .container_options .bottom .crear_dossier .ui-icon {
+    background: url("../img/bg_crear_dossier.png") no-repeat scroll center center transparent;
+    background-size: 20px auto;
+}
+
+/* MIS RECOMPENSAS */
+#mis_recompensas .content_list_first .ui-listview li .recorte,
+#ultimas_recompensas .content_list_first .ui-listview li .recorte {
+    border: 1px solid #FFFFFF;
+    border-radius: 5px 5px 5px 5px;
+}
+#mis_recompensas .ui-listview li .info a,
+#ultimas_recompensas .ui-listview li .info a{
+    background-repeat: no-repeat;
+    background-color: transparent;
+    margin-left: 4px;
+    background-size: 25px auto;
+}
+#mis_recompensas .ui-listview li.pair .info a,
+#ultimas_recompensas .ui-listview li.pair .info a{
+    background-position: 50% 100%;    
+}
+#mis_recompensas .ui-listview li.odd .info a,
+#ultimas_recompensas .ui-listview li.odd .info a{
+    background-position: 50% 0%;
+}
+#mis_recompensas .ui-listview li .info a.compartir,
+#ultimas_recompensas .ui-listview li .info a.compartir{
+    background-image: url("../img/bg_share_facebook_sprite.png");
+}
+#mis_recompensas .ui-listview li .info a.editar{
+    background-image: url("../img/bg_pincel_sprite.png");
+}
+#mis_recompensas .ui-listview li .info a.eliminar{
+    background-image: url("../img/bg_delete_sprite.png");
+}
+#mis_recompensas .ui-listview li p,
+#ultimas_recompensas .ui-listview li p{
+    margin: 0;
+    white-space: normal;
+    text-shadow: 0 0 0;
+}
+#mis_recompensas .ui-listview li p.description,
+#ultimas_recompensas .ui-listview li p.description{
+    max-height: 45px;
+}
+#mis_recompensas .ui-listview li p.ui-li-desc span,
+#ultimas_recompensas .ui-listview li p.ui-li-desc span{
+    font-size: 12px;
+    line-height: 13px;    
+}
+#mis_recompensas .ui-listview li.odd p,
+#ultimas_recompensas .ui-listview li.odd p{
+    color: #fff;
+}
+#mis_recompensas .content_list_first li.ui-btn-up-c label,
+#ultimas_recompensas .content_list_first li.ui-btn-up-c label{
+    font-weight: bold;
+}
+#mis_recompensas .ui-li-heading span,
+#ultimas_recompensas .ui-li-heading span{
+    font-size: 16px;
+}
+#mis_recompensas .ui-li-heading span.titulo,
+#ultimas_recompensas .ui-li-heading span.titulo{
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#mis_recompensas .content_list_first .ui-listview li .info,
+#ultimas_recompensas .content_list_first .ui-listview li .info{
+    display: none;
+}
+
+/* ULTIMAS RECOMPENSAS */
+#ultimas_recompensas .content_list_first .ui-listview li .recorte a.ver_amplio{
+    background-image: url("../img/bg_info_home.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 38px auto;
+    background-position: center center;
+    display: block;
+    height: 38px;
+    left: 28px;
+    position: absolute;
+    top: 25px;
+    width: 38px;
+    text-indent: -9999px;
+}
+/* BUSQUEDA DE DEPORTISTAS */
+.ui-listview.list .ui-li-desc{
+    letter-spacing: 0;
+    padding: 0 0 5px 0;
+}
+.ui-listview.list li .ui-icon{
+    background-image: url("../img/bg_next.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 20px auto;
+    background-position: center top;
+    border-radius: 0;
+    display: inline-block;
+    height: 30px;
+    width: 25px;
+    top: 45%;
+}
+
+/* FOTOS Y VIDEO */
+#mis_albunes .content_list_first .ui-listview li,
+#mis_fotos .content_list_first .ui-listview li,
+#mis_videos .content_list_first .ui-listview li{
+    background: transparent;
+    border: none;
+    padding: 0;
+    min-height: 65px;
+}
+#mis_albunes .content_list_first .content_album,
+#mis_fotos .content_list_first .content_fotos
+#mis_videos .content_list_first .content_videos{
+    border: 1px solid #EEEEEE;
+    position: relative;
+    text-shadow: 0 0 0;
+    width: 152px;
+    margin-bottom: 2px;
+    margin-right: 2px;
+}
+#mis_albunes .content_list_first .content_album.right,
+#mis_fotos .content_list_first .content_fotos.right,
+#mis_videos .content_list_first .content_videos.right{
+    margin-right: 0;
+}
+#mis_albunes .content_list_first .content_album .total_fotos,
+#mis_albunes .content_list_first .content_album .nombre_album{
+    background: url("../img/bg_opacity.png") repeat scroll left top transparent;
+    position: absolute;
+    color: #FFFFFF;
+}
+#mis_albunes .content_list_first .content_album .total_fotos{
+    height: 35px;
+    top: 0;
+    width: 54%;
+    padding: 5px 5px 5px 15px;
+    letter-spacing: -1px;
+    font-size: 16px;
+}
+#mis_albunes .content_list_first .content_album .total_fotos a{
+    color: #fff;
+}
+#mis_albunes .content_list_first .content_album .total_fotos b{
+    font-size: 28px;
+}
+#mis_albunes .content_list_first .content_album .nombre_album{
+    padding: 10px 10px 5px;
+    right: 0;
+    bottom: 0;
+    color: #D62E36;
+    width: 70%;
+    letter-spacing: 0;
+    height: 15px;
+}
+#mis_albunes .content_list_first .content_album .nombre_album p{
+    padding-top: 4px;
+    text-align: center;
+}
+#mis_albunes .content_list_first .ui-listview li img,
+#mis_fotos .content_list_first .ui-listview li img,
+#mis_videos .content_list_first .ui-listview li img{
+    border-radius: 0 0 0 0;
+}
+#mis_albunes .content_list_first .ui-listview .content_pictures li{
+    float: left;
+    padding: 0;
+    height: 60px;
+    width: 50%;
+}
+
+/* MIS FOTOS */
+#mis_fotos .content_list_first .row_second .content_fotos.first{
+    width: 210px;
+}
+#mis_fotos .content_list_first .row_second .content_fotos.second{
+    width: 93px;
+}
+#mis_fotos .content_list_first .content_fotos{
+    position: relative;
+}
+#mis_fotos .content_list_first a.zoom,
+#mis_videos .content_list_first a.zoom{
+    background-image: url("../img/bg_plus.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 38px auto;
+    background-position: center center;
+    display: block;
+    position: absolute;
+    text-indent: -9999px;
+    height: 38px;
+    width: 38px;
+}
+#mis_fotos .content_list_first .row_first a.zoom{
+    left: 58px;
+    top: 30px;
+}
+#mis_fotos .content_list_first .row_second .first a.zoom{
+    left: 85px;
+    top: 52px;
+}
+#mis_fotos .content_list_first .row_second .second a.zoom{
+    left: 28px;
+    top: 52px;
+}
+#mis_fotos .content_list_first .row_third a.zoom{
+    top: 14px;
+    left: 60px;
+}
+#mis_fotos .content_list_first .row_first .recuadro_foto{
+    width: 152px;
+    height: 102px;
+}
+#mis_fotos .content_list_first .row_second .recuadro_foto{
+    height: 140px;
+}
+#mis_fotos .content_list_first .row_third .recuadro_foto{
+    width: 152px;
+    height: 65px;
+}
+
+/* MIS VIDEOS */
+
+#mis_videos .content_list_first .content_videos{
+    position: relative;
+}
+#mis_videos .content_list_first .recuadro_video{
+    width: 152px;
+    height: auto;
+}
+#mis_videos .content_list_first a.zoom{
+    left: 58px;
+    top: 30px;
+}
+
+/* COMENTARIOS */
+.content_list_first.list_comments li{
+    text-shadow: 0 0 0;
+}
+.list_comments li p.ui-li-desc{
+    white-space: normal;
+    letter-spacing: -1px;
+    line-height: 12px;
+}
+.list_comments li.odd p.ui-li-desc{
+    color: #fff;
+}
+.list_comments li .content_social_red{
+    overflow: hidden;
+    margin-top: 8px;
+}
+.list_comments li .content_social_red .social a{
+    display: block;
+    height: 25px;
+    width: 25px;
+    text-indent: -9999px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 25px auto;
+    float: left;
+    margin-right: 5px;
+}
+.list_comments li .content_social_red a.comments{
+    background-image: url("../img/bg_comment_sprite.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 30px auto;
+    display: block;
+    height: 25px;
+    width: 16px;
+    padding-left: 7px;
+    padding-top: 5px;
+    padding-right: 7px;
+    font-size: 14px;
+    text-align: center;
+}
+.list_comments li .content_social_red .social a.like{
+    background-image: url("../img/bg_like_coment_sprite.png");
+}
+.list_comments li.pair .content_social_red .social a.like{
+    background-position: 50% 100%;
+}
+.list_comments li.odd .content_social_red .social a.like{
+    background-position: 50% 0%;
+}
+.list_comments li .content_social_red .social a.fb{
+    background-image: url("../img/bg_share_facebook_sprite.png");
+}
+.list_comments li.pair .content_social_red .social a.fb{
+    background-position: 50% 100%;
+}
+.list_comments li.odd .content_social_red .social a.fb{
+    background-position: 50% 0%;
+}
+.list_comments li .content_social_red .social a.tw{
+    background-image: url("../img/bg_tw_sprite.png"); 
+}
+.list_comments li.pair .content_social_red .social a.tw{
+    background-position: 50% 100%;
+}
+.list_comments li.pair .content_social_red a.comments{
+    background-position: 50% 100%;
+    color: #fff;
+}
+.list_comments li.odd .content_social_red a.comments{
+    background-position: 50% 0%;
+    color: #b52d2f;
+}
+
+/* ULTIMO ENTRADAS Y COMENTARIOS POR USUARIO */
+#ultimas_entradas_usuario_x .content_list_first .ui-listview li{
+    padding: 0;
+}
+#ultimas_entradas_usuario_x .content_list_first .ui-listview li .content_comentario{
+    padding: 5px;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados{
+    background-color: #6bb0c5;
+    position: relative;
+    border-bottom: 1px solid #251112;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados span.tab{
+    background-image: url("../img/bg_tab.png");
+    background-position: 0 0;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 10px;
+    right: 12px;
+    top: -9px;
+    position: absolute;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios{
+    overflow: hidden;
+    padding: 5px;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios h4{
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios li{
+    overflow: hidden;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #577e8a;
+    padding-bottom: 8px;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios li.last{
+    border-bottom: 0;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios .recuadro_comentario{
+    width: 50px;
+    height: 50px;    
+} 
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios .recuadro_comentario img{
+    border: 1px solid #fff;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios .descripcion_texto{
+    width: 81%;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios h5{
+    font-size: 13px;
+    color: #2f4b54;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios .comentario_hecho{
+    color: #fff;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar{
+    overflow: hidden;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar .texto_comentario{
+    width: 58%;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar .texto_comentario textarea,
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar .buttom a{
+    margin: 0;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar .texto_comentario textarea{
+    height: 80px;
+}
+#ultimas_entradas_usuario_x .content_comentario_realizados .comentar .buttom{
+    margin-top: 41px;
+}
+
+/* INFO GENERAL */
+#home, 
+#info_ronda,
+#proyecto_deportivo,
+#home_ronda_activa,
+#home_destacados,
+#home_mas_proyectos,
+#home_blog,
+#editar_perfil,
+#home_buscan_patrocinio,
+#home_recompensas,
+#mis_alertas,
+#mis_fotos,
+#mis_videos,
+#mis_recaudaciones{
+    padding-bottom: 0px !important;
+}
+.info_deportista{
+    background-color: #1d1d1d;
+    padding-bottom: 36px;
+}
+.info_content{
+    background-color: #34495E;
+    padding: 8px 10px;
+}
+.info_content h2{
+    color: #F1C40F;
+    text-align: center;
+    margin-bottom: 6px;
+    font-size: 20px;    
+    font-family: Open Sans,sans-serif;
+}
+.info_content h2.bg_ronda{
+    background: url("../img/bg_estrella_ronda.png") no-repeat scroll center left transparent;
+    background-size: 22px;
+    padding-left: 26px;
+    background-position: 0px 0px;
+    margin: 0 3.4em 6px 3.4em;
+}
+.info_content .recuadro{
+    width: 106px;
+    height: 106px;
+    border: 4px solid #fff;
+}
+.info_content .right{
+    width: 58%;
+    float: left;
+    padding-left: 10px;
+}
+.info_content .recuadro img{
+    height: 100%;
+    width: 100%;
+}
+.info_content .buttom_ir_perfil{
+    clear: both;
+    position: relative;
+    margin: 0 2em;
+    height: 22px;
+    padding-top: 0px;
+}
+.info_content h3{
+    color: #eab800;
+    line-height: 14px;
+    font-size: 18px;
+}
+.info_content h3.ofrece{
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.info_content h3.ofrece span{
+    color: #84c0d2;
+}
+.info_content h3.box_shadow{
+    font-family: 'HelveticaInserat';
+    letter-spacing: 0;
+    text-shadow: 0 1px 0 #000;
+}
+.info_content p{
+    color: #d3d5d7;
+    line-height: 14px;
+    font-size: 12px;
+    margin: 0 0 5px 0;
+    max-height: 82px;
+    overflow: hidden;
+    text-shadow: 0 0 0;
+}
+.info_content .like_cash span{
+    margin-right: 8px;
+    margin-bottom: 5px;    
+    border-radius: 4px;
+    padding: 4px 5px 4px 20px;
+    text-align: right;
+    height: 16px;
+    width: 25px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    vertical-align: bottom;
+}
+.info_content .like_cash span.like{
+    color: #FF0000;
+    background: url("../img/bg_heart.png") no-repeat scroll center left #ecf0f1;
+    background-size: 20px;
+    background-position: 6px;
+}
+.info_content .like_cash span.cash{
+    text-align: center;
+    color: #27AE60;
+    background: url("../img/bg_color_cup.png") no-repeat scroll center left #ecf0f1;
+    background-size: 15px;
+    background-position: 6px;
+}
+
+/* MIS RECAUDACIONES */
+#mis_recaudaciones .titulo-seccion{
+    border-bottom: 1px solid #7c8084;
+    padding-bottom: 5px;    
+}
+#mis_recaudaciones h3{
+    color: #7F8C8D;
+    font-size: 13px;
+    letter-spacing: 0;    
+}
+#mis_recaudaciones #lista_recaudaciones,
+#mis_recaudaciones #lista_pagos{
+   margin: 5px 0; 
+}
+#mis_recaudaciones #lista_recaudaciones .nuevo.header strong,
+#mis_recaudaciones #lista_pagos .nuevo.header strong{
+    float: left;
+    width: 25%;
+    font-size: 11px;
+    text-align: center;  
+    color: #E74C3C;  
+}
+#mis_recaudaciones #lista_pagos .nuevo.header strong{
+    width: 16%;
+    overflow: hidden;
+    font-size: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#mis_recaudaciones #lista_recaudaciones .nuevo.recaudado strong,
+#mis_recaudaciones #lista_pagos .nuevo.recaudado strong,
+#mis_recaudaciones #lista_pagos .nuevo.totales.recaudado strong{
+    width: 25%;
+    font-size: 12px;
+    text-align: center;
+    color: #6b7778;
+}
+#mis_recaudaciones #lista_pagos .nuevo.recaudado strong,
+#mis_recaudaciones #lista_pagos .nuevo.totales.recaudado strong{
+    width: 15%;
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;    
+}
+#mis_recaudaciones #lista_pagos .nuevo.totales{
+    font-size: 12px;
+    color: #6c9fb5;
+}
+#mis_recaudaciones #lista_recaudaciones .nuevo strong{
+    display: block;
+    float: left;
+    width: 146px;
+    color: #6c9fb5;
+}
+#mis_recaudaciones #lista_recaudaciones .nuevo strong b,
+#mis_recaudaciones #lista_pagos .nuevo strong b{
+    color: #E74C3C;
+}
+#mis_recaudaciones #lista_recaudaciones li,
+#mis_recaudaciones #lista_pagos li{
+    border-bottom: 1px solid #a8b9ba;
+    font-size: 14px;
+    overflow: hidden;
+    padding: 5px 0;
+}
+/* PANEL MENU */
+#panel_menu{
+    background: url("../img/bg_menu_panel.png") repeat scroll center center transparent;
+}
+#panel_menu .ui-panel-inner h5{
+    color: #74bed1;
+    margin: 15px 10px 4px 10px;
+    font-size: 12px;
+    display: block;
+    text-align: left;
+    border-bottom: 1px solid #7a7a7a;
+    padding-bottom: 2px;
+}
+#panel_menu .ui-panel-inner li:hover{
+    background-color: #ab3434;
+}
+#panel_menu .ui-panel-inner li a{
+    display: block;
+    margin: 0px 10px;
+    padding: 0.45em 0;
+    font-weight: normal;
+    color: #e96262;
+    font-size: 12px;
+    letter-spacing: 0px;
+    padding-left: 24px;
+    text-shadow: 0 0 0;
+}
+#panel_menu .ui-panel-inner li:hover > a,
+#panel_menu .ui-panel-inner li a:hover{
+    color: #fff;
+}
+#panel_menu .ui-panel-inner li a.m_inicio{
+    background: url("../img/bg_m_inicio.png") no-repeat scroll left center transparent;
+    background-size: 16px 14px;
+}
+#panel_menu .ui-panel-inner li a.m_usuario_destacado{
+    background: url("../img/bg_m_dep_e.png") no-repeat scroll left center transparent;
+    background-size: 20px;
+}
+#panel_menu .ui-panel-inner li a.m_busca_patrocinio{
+    background: url("../img/bg_m_b_patro.png") no-repeat scroll left center transparent;
+    background-size: 12px;
+    background-position: 3px;
+}
+#panel_menu .ui-panel-inner li a.m_recompensa{
+    background: url("../img/bg_m_recomp.png") no-repeat scroll left center transparent;
+    background-size: 15px;
+    background-position: 1px 2px;
+}
+#panel_menu .ui-panel-inner li a.m_blog{
+    background: url("../img/bg_m_blog.png") no-repeat scroll left center transparent;
+    background-size: 13px;
+    background-position: 1px 3px;
+}
+#panel_menu .ui-panel-inner li a.m_editar{
+    background: url("../img/bg_m_edit.png") no-repeat scroll left center transparent;
+    background-size: 14px;
+}
+#panel_menu .ui-panel-inner li a.m_setting{
+    background: url("../img/bg_m_setting.png") no-repeat scroll left center transparent;
+    background-size: 14px;
+}
+#panel_menu .ui-panel-inner li a.m_recaudacion{
+    background: url("../img/bg_m_recaudacion.png") no-repeat scroll left center transparent;
+    background-size: 14px;
+}
+#panel_menu .ui-panel-inner li a.m_foto{
+    background: url("../img/bg_m_picture.png") no-repeat scroll left center transparent;
+    background-size: 14px;
+}
+#panel_menu .ui-panel-inner li a.m_video{
+    background: url("../img/bg_video.png") no-repeat scroll left center transparent;
+    background-size: 14px;
+}
+#panel_menu .ui-panel-inner li a.m_muro{
+    background: url("../img/bg_m_muro.png") no-repeat scroll left center transparent;
+    background-size: 14px;
+}
+#panel_menu .ui-panel-inner li a.m_salir{
+    background: url("../img/bg_m_exit.png") no-repeat scroll left center transparent;
+    background-size: 14px;
+}
+#panel_menu .ui-collapsible-set,
+#panel_menu .ui-collapsible-inset{
+    margin: 0;
+}
+#panel_menu .ui-collapsible-inset .ui-collapsible-heading .ui-btn{
+    border: 0;
+    color: #74bed1;
+    background: none;
+    border: 0;
+    text-shadow: 0 0 0;
+    margin-bottom: 0;
+}
+#panel_menu .ui-collapsible-heading a .ui-btn-inner {
+    background: none;
+    padding: 1px 25px 1px 0;
+    border: 0;
+}
+#panel_menu .ui-collapsible-heading a .ui-btn-text{
+    color: #74bed1;
+    font-size: 12px;
+    letter-spacing: 0;
+}
+/* Popup Votar y Patrocinio Creado */
+#popupVoto,
+#popupPatrocinio, .popup_recompensa{
+    border: 0;
+    border-radius: 10px 10px 5px 5px;
+}
+#popupVoto h3,
+#popupPatrocinio h3{
+    background-color: #9F3A3B;
+    border: 0 none;
+    border-radius: 4px 4px 0 0;
+    color: white;
+    font-size: 15px;
+    font-weight: normal;
+    padding: 7px 0;
+    text-shadow: 0 0 0;
+}
+#popupVoto h3 span,
+#popupPatrocinio h3 span{
+    padding-left: 25px;
+    background-image: url("../img/bg_ticket.png");
+    background-repeat: no-repeat;
+    background-color: #9f3a3b;
+    background-size: 20px auto;
+    background-position: center left;
+    margin-left: 8px;
+}
+#popupVoto p,
+#popupPatrocinio p{
+    padding: 10px 20px 25px 20px;
+    margin: 0 5px;
+    font-size: 12px;
+    text-shadow: 0 0 0;
+    line-height: 12px;
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 20px;
+}
+#popupVoto .patrocinar_elite,
+.popup_recompensa .patrocinar_elite{
+    margin: 20px 40px;
+}
+#popupVoto .patrocinar_elite .ui-btn .ui-btn-inner,
+.popup_recompensa .patrocinar_elite .ui-btn .ui-btn-inner{
+    padding-left: 35px;
+    display: inline-block;
+}
+#popupVoto .patrocinar_elite .ui-icon,
+.popup_recompensa .patrocinar_elite .ui-icon{
+    background: url("../img/bg_euro.png") no-repeat scroll top center transparent;
+    border-radius: 0px;
+    box-shadow: none;
+    height: 20px;
+    width: 20px;
+    display: block;
+    background-size: 14px auto;
+}
+
+/* Popup Recompensa */
+.popup_recompensa .container_info,
+.popup_recompensa .container_info_bottom{
+    font-size: 12px;
+    text-shadow: 0 0 0;
+    line-height: 12px;
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 20px;
+    font-weight: normal;
+    overflow: hidden;
+}
+.popup_recompensa .container_info.noborder{
+    border-bottom: 0;
+    margin-bottom: 5px;
+}
+.popup_recompensa .container_info label{
+    color: #000;
+    font-weight: bold;
+}
+.popup_recompensa .container_info span,
+.popup_recompensa .container_info p{
+    color: #7f7f7f;
+}
+.popup_recompensa .container_info span.del_al{
+    line-height: 14px;
+}
+.popup_recompensa .container_info p{
+    line-height: 13px;
+    overflow: hidden;
+    font-size: 11px;    
+}
+.popup_recompensa .container_info .detalle,
+.popup_recompensa .container_info .fechas_sorteo,
+.popup_recompensa .container_info .tipo_recompensa,
+.popup_recompensa .container_info .ofrecido_por{
+    overflow: hidden;
+}
+.popup_recompensa .container_info .recuadro_recompensa{
+    float: left;
+    height: 100px;
+    margin-right: 8px;
+    overflow: hidden;
+    width: 120px;     
+}
+.popup_recompensa .container_info .recuadro{
+    float: left;
+    height: 80px;
+    margin-right: 8px;
+    overflow: hidden;
+    width: 80px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+}
+.popup_recompensa .container_info .recuadro_recompensa img,
+.popup_recompensa .container_info .recuadro img{
+    width: 100%;
+}
+.popup_recompensa .container_info .descripcion{
+    width: 54%;
+    margin-top: 5px; 
+}
+.popup_recompensa h2{
+    background-color: #9F3A3B;
+    border: 0 none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 7px 5px;
+    text-shadow: 0 0 0;
+}
+.popup_recompensa .popup_header,
+.popup_recompensa .popup_footer{
+    background-color: #2f2f2f;
+    text-shadow: 0 0 0;
+    letter-spacing: -1px;
+    min-height: 25px;
+    color: #fff;
+    padding: 5px 10px;
+}
+.popup_recompensa .popup_header li{
+    float: left;
+}
+.popup_recompensa .popup_header li b{
+    font-size: 17px;
+    letter-spacing: 0;
+}
+.popup_recompensa .popup_header li.first{
+    width: 45%;
+}
+.popup_recompensa .container_info .tipo_recompensa,
+.popup_recompensa .container_info .ofrecido_por{
+    padding: 6px 0;
+    margin: 0 8px;
+}
+.popup_recompensa .container_info .fechas_sorteo{
+    padding-top: 4px;
+    margin: 0 10px;
+}
+.popup_recompensa .container_info .fechas_sorteo .fecha_sorteo{
+    float: left;
+}
+.popup_recompensa .container_info .fechas_sorteo .fechas,
+.popup_recompensa .container_info .fechas_sorteo .fecha_sorteo{
+    margin: 4px 0;
+}
+
+/* Popup Patrocinar por PAYPAL O VIA TPV 4B */
+.popup_recompensa .container_info .auspiciador_recompensa,
+.popup_recompensa .container_info .deportista_patrocinador{
+    width: 74%;
+    margin-top: 2px; 
+}
+.popup_recompensa.pago .container_info .recuadro {
+    height: 60px;
+    width: 60px;
+    background-color: #000000;
+    text-align: center;
+}
+.popup_recompensa .container_info .auspiciador_recompensa div,
+.popup_recompensa .container_info .deportista_patrocinador .datos{
+    padding: 2px 0;
+}
+.popup_recompensa .container_info .auspiciador,
+.popup_recompensa .container_info .descripcion_recompensa label{
+    font-size: 13px;
+    letter-spacing: -1px;
+}
+.popup_recompensa .container_info .descripcion_recompensa span{
+    font-size: 11px;
+    line-height: 10px;    
+}
+.popup_recompensa .container_info .monto_patrocinio{
+    color: #000000;
+    font-weight: bold;
+}
+.popup_recompensa .container_info .deportista_patrocinador .datos{
+    font-size: 13px;
+    line-height: 18px;
+    overflow: hidden;
+    letter-spacing: -1px;
+}
+.popup_recompensa.pago .container_info{
+    margin-bottom: 10px;
+}
+.popup_recompensa.pago .container_info_bottom{
+    margin: 0 8px;
+    border-bottom: 0;
+    letter-spacing: -1px;
+}
+.popup_recompensa.pago .container_info_bottom label.texto_anonimo{
+    font-size: 11px;
+    color: #7f7f7f;
+    margin-left: 25px;
+    margin-top: -7px;
+    display: block;
+}
+.popup_recompensa.pago .container_info_bottom .content_textarea{
+    font-size: 11px;
+    padding-top: 5px;
+}
+.popup_recompensa.pago .container_info_bottom .content_textarea textarea{
+    font-size: 11px;
+}
+.popup_recompensa.pago .container_info_bottom .pago_realizar{
+    overflow: hidden;
+}
+.popup_recompensa.pago .container_info_bottom .pago_realizar label{
+    float: left;
+    display: inline-block;
+    margin-top: 13px;
+    font-size: 15px;
+    margin-right: 8px;
+    font-weight: bold;
+}
+.popup_recompensa.pago .container_info_bottom .pago_realizar div.ui-body-cu.ui-input-text{
+    width: 30%;
+    float: right;
+    margin: 0;
+    background: url("../img/bg_euro.png") no-repeat scroll left center #fff;
+    background-size: 20px;
+    background-position: 6px;
+}
+.popup_recompensa.pago .container_info_bottom .patrocinio_termino fieldset{
+    margin-top: 2px;
+    margin-bottom: 8px;
+}
+.popup_recompensa.pago .container_info_bottom .patrocinio_termino label{
+    background: transparent;
+    border: none;
+}
+.popup_recompensa.pago .container_info_bottom .patrocinio_termino label .ui-btn-inner{
+    border-top: 0;
+    padding-left: 25px;
+}
+.popup_recompensa.pago .container_info_bottom .patrocinio_termino label .ui-btn-text{
+    font-size: 13px;
+    text-shadow: 0 0 0;
+    font-weight: normal;
+}
+.popup_recompensa.pago .container_info_bottom .patrocinio_termino .ui-icon.ui-icon{
+    left: 0;
+}
+.popup_recompensa.pago .container_info_bottom .patrocinio_termino .ui-icon.ui-icon-checkbox-off{
+    background-color: #eee;
+}
+.popup_recompensa.pago .container_info_bottom .patrocinio_termino .ui-checkbox input{
+    left: 4px;
+}
+.popup_recompensa.pago .container_info_bottom p.pratrocinar_por{
+    margin-bottom: 5px;
+}
+.popup_recompensa.pago .container_info_bottom .ui-select .ui-btn-text > span{
+    display: inline-block;
+    padding-top: 4px;
+    font-size: 15px;
+}
+.popup_recompensa.pago .container_info_bottom #porcentaje{
+    color: #CF4536;
+    padding-bottom: 8px;    
+}
+.popup_recompensa.pago .container_info_bottom #porcentaje span{
+    font-weight: bold;
+    color: #000;
+}
+.popup_recompensa.pago .patrocinar_pago{
+    margin: 0 5px;
+    overflow: hidden;
+}
+.popup_recompensa.pago .patrocinar_pago .paypal,
+.popup_recompensa.pago .patrocinar_pago .tpv{
+    width: 49%;
+}
+.popup_recompensa.pago .patrocinar_pago .ui-btn-inner{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.popup_recompensa.pago .patrocinar_pago .ui-btn-text{
+    font-size: 13px;  
+}
+.popup_recompensa.pago .patrocinar_pago label{
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+.popup_recompensa.pago .popup_footer p{
+    background: url("../img/bg_pagos_por.png") no-repeat scroll right center transparent;
+    background-size: 140px;
+    min-height: 24px;
+}
+.popup_recompensa.pago .popup_footer p span{
+    font-size: 11px;
+    display: block;
+    width: 48%;
+    line-height: 11px;
+}
+
+/* POPUP ZOOM FOTO */
+.popup_recompensa .popup_header{
+    padding-right: 20px;
+    padding-top: 10px;
+}
+.popup_recompensa.zoom .container_info{
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+.popup_recompensa .social_red a,
+.popup_recompensa .control_preview_next a{
+    display: inline-block;
+    height: 27px;
+    text-indent: -9999px;
+    width: 28px;
+    background-color: transparent;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+.popup_recompensa .social_red a.owner_like{
+    background-image: url("../img/bg_like_sprite.png");
+    background-size: 25px auto;
+    background-position: 0% 0%;
+}
+.popup_recompensa .social_red a.compartir_tw{
+    background-image: url("../img/bg_tw.png");
+    background-size: 26px auto;
+}
+.popup_recompensa .social_red a.compartir_fb{
+    background-image: url("../img/bg_fb.png");
+    background-size: 26px auto;
+}
+.popup_recompensa.zoom .container_info .recuadro_foto_zoom {
+    width: 290px;
+}
+.popup_recompensa.zoom .container_info .recuadro_foto_zoom img{
+    width: 100%;
+    border-radius: 5px;
+}
+.popup_recompensa .control_preview_next{
+    padding-top: 10px;
+    min-height: 35px;
+    padding-bottom: 12px;
+}
+.popup_recompensa .control_preview_next a{
+    height: 35px;
+    width: 25px;
+}
+.popup_recompensa .control_preview_next a.preview{
+    background-image: url("../img/bg_volver.png");
+    background-size: 24px auto;
+}
+.popup_recompensa .control_preview_next a.next{
+    background-image: url("../img/bg_next.png");
+    background-size: 24px auto;
+}
+
+/* LISTA ACTIVIDADES */
+.content_list_two #lista_actividades.ui-listview li .recorte,
+.content_list_two #lista_actividades_ronda.ui-listview li .recorte{
+    background-color: #fff;
+    text-align: center;
+}
+.content_list_two #lista_actividades.ui-listview li .recorte img,
+.content_list_two #lista_actividades_ronda.ui-listview li .recorte img{
+    width: auto;
+    height: 60px;
+}
+.content_list_two #lista_actividades.ui-listview li .content_descripcion,
+.content_list_two #lista_actividades_ronda.ui-listview li .content_descripcion{
+    width: 75%;
+}
+#solicitan_buscan_patrocinio .list_buscan_patro h4{
+    margin: 14px 0;
+}
+#solicitan_buscan_patrocinio .list_buscan_patro h4 span{
+    color: #55a0b5;
+    font-family: 'HelveticaCondensedMedium';    
+}
+#solicitan_buscan_patrocinio .list_buscan_patro .ui-listview li{
+    margin: 0 auto;
+    background: none;
+    border-top: 0;
+    padding-top: 0;
+}
+#solicitan_buscan_patrocinio .list_buscan_patro .ui-listview li .ui-li-desc{
+    margin: 0;
+}
+#solicitan_buscan_patrocinio .list_buscan_patro .ui-listview li .buttons a{
+    width: 41%;
+}
+
+/* TERMINOS Y CONDICIONES */
+#terminos_y_condiciones .ui-header .ui-title{
+    margin: .6em 18% .8em;
+    color: #E74C3C;
+    font-weight: 500;
+    font-size: 18px;
+}
+#terminos_y_condiciones #stye_terminos{
+    color: #95A5A6;
+    font-size: 12px;
+}
+#terminos_y_condiciones #stye_terminos h5 {
+    color: #34495E;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 5px 0;
+    letter-spacing: 0;
+}
+#terminos_y_condiciones #stye_terminos p {
+    color: #7F8C8D;
+    font-size: 12px;
+    line-height: 15px;
+    padding-bottom: 5px;
+    letter-spacing: 0;
+}
+
+
+    .info_content .like_cash .icon-normal
+    {
+        background-color: #ECF0F1;
+        color:#27AE60;
+        vertical-align: baseline;
+        font-family: Helvetica;
+        padding-left: 8px;
+        padding-right: 8px;
+        width: 35px;
+    }
+    .info_content .like_cash .icon-normal i
+    {
+        float: left;
+        font-size: 16px;
+    }
+    .info_content .like_cash .icon-normal.red
+    {
+        background:none repeat scroll 0 0 #E74C3C;
+        color:#FFFFFF;
+        width: 65px;
+    }
+    .recompensas_aportaciones {
+        float: left;
+        width: 100px;
+        text-align: center;
+        font-size: 12px;
+        height: 95px;
+        overflow: hidden;
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+    .recompensas_aportaciones.checked
+    {
+      background-color: #80FF80;   
+    }
+    .imagen_redonda {
+        border-radius: 120px 120px 120px 120px;
+    }
+    #participar { padding: 5px; width: 90%; }
+    
+    .info_deportista .baner { background: none rgba(0, 0, 0, 0.6); position: absolute; top:0; width: 100%; padding: 0;  }
+    .info_deportista .text { background: none rgba(0, 0, 0, 0.6); position: absolute; bottom:0; width: 100%; padding: 0; color: #ECF0F1; font-size: 12px; font-family: "Open Sans",?sans-serif; padding: 5px;  }
+    .info_deportista .like_cash { padding-left: 8px !important; width: 264px; margin: auto; }
+    
+    .setting .ui-link, .back .search{
+    background: none repeat scroll 0 0 #A20000;
+    border:solid 1px #3D3D3D;
+    border-radius: 4px !important;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    height: 22px;
+    line-height: 24px !important;
+    margin: 0;
+    padding: 0 5px !important;
+    width: 17px;
+    }
+    .setting .ui-link{ color: white !important;}
+    .setting a.user { display: inline-block; vertical-align: bottom; margin: 0 5px 0 0 !important; padding-top: 1px; } 
+    
+    #contenedor_panel #content_options { padding-top: 22px; }
+    
+        
+    .atributo.verde {
+        background: none repeat scroll 0 0 #27AE60;
+    }
+    .atributo {
+        border-radius: 2px 0 0 2px;
+        color: #FFFFFF;
+        margin-right: 0 !important;
+    }
+    
+        
+    .dato.verde, .puntos.verde {
+        color: #27AE60;
+    }
+    .dato {
+        background: none repeat scroll 0 0 #ECF0F1;
+        border-radius: 0 2px 2px 0;
+        font-size: 12px !important;
+    }  
+    
+    .boton, .atributo, .dato, .puntos {
+    display: block;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif !important;
+    font-size: 14px;
+    font-weight: bold !important;
+    height: 28px;
+    line-height: 28px !important;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding: 0 8px !important;
+}  
+div.divbono { position: absolute; width: 40px; top: 4px; right: 62px; font-size: 12px;  }
+div.divbono i { color: #27AE61; font-size: 16px; }
+    
+    
+/***************************************** RESPONSIVO *******************************************************/
+
+/* PORTRAIT IPHONE 4/4s */
+
+@media only screen
+and (max-width: 479px) 
+and (min-width: 320px) 
+and (max-width: 480px) 
+and (-webkit-device-pixel-ratio: 2) 
+and (orientation:portrait)
+{
+    /* GENERAL */
+    .content_list_first li.ui-btn-up-c .span_normal span{
+        font-size: 13px;
+    }
+    .ui-select .ui-btn-inner span.ui-btn-text > span.error{
+        font-size: 14px;
+    }
+        
+    #view h1,
+    #login h1{
+        font-size: 26px;
+        margin: 0.5em 4% 0.2em;
+    }
+    
+    /* DEPORTISTAS - LISTA ELITES */
+    
+    #lista_deportistas_elites .ui-listview li .ui-li-heading,
+    #lista_deportistas_amateurs .ui-listview li .ui-li-heading,
+    #lista_nuevos_deportistas .ui-listview li .ui-li-heading{
+        font-size: 14px;
+        letter-spacing: -1px;
+    }
+    
+    #mis_recompensas .ui-li-heading span.titulo,
+    #ultimas_recompensas .ui-li-heading span.titulo{
+        width: 128px;
+    }
+}
+
+/* LANDSCAPE IPHONE 4/4s */
+
+@media only screen 
+and (min-width: 320px)  
+and (max-width: 480px) 
+and (-webkit-device-pixel-ratio: 2)  
+and (orientation:landscape)
+{   
+    /* GENERAL */
+    .ui-radio-off .ui-btn-inner .ui-btn-text, 
+    .ui-radio-on .ui-btn-inner .ui-btn-text,
+    .content_upload_foto label,
+    #register_user .register_option_fb label,
+    #registro_finalizado .save_data,
+    #patrocinio_registrado .save_data,
+    #completar_perfil_exitosamente .save_data,
+    #lista_posibles_ganadores .ui-listview li .content_descripcion label,
+    .list_comments li p.ui-li-desc,
+    #proyecto_deportivo .info_deportista li.clasificacion span.text,
+    #mis_albunes .content_list_first .content_album .total_fotos
+    {
+        letter-spacing: 0px;
+    }
+    .texto_formulario span{
+        margin: 0 7.5em;        
+    }
+    .content_upload_foto label{
+        font-size: 16px;
+        width: 40%;
+    }
+    .content_upload_foto .upload_foto {
+        width: 52%;
+    }
+    .lista_opciones{
+        margin-left: 40px;
+    }
+    .content_list_first .content_seguidor{
+        display: block;
+    }    
+    .container_options .bottom .ui-btn .ui-btn-inner {
+        width: auto;
+    }
+    
+    .popup_recompensa .container_info .recuadro_recompensa{
+        height: 100px;
+        width: 150px;
+    }
+    .popup_recompensa .container_info .descripcion {
+        width: 64%;
+    }
+    .popup_recompensa .container_info p{
+        font-size: 12px;
+        max-height: 95px;
+    }
+    .popup_recompensa .container_info .fechas_sorteo .fecha_sorteo{
+        float: right;
+    }
+    .data_user .hacerme_amigo .ui-btn-inner{
+        padding-left: 40px;
+        display: inline-block;
+    }
+    .content_list_first .list_recompensa li .item_1, 
+    .content_list_first .list_recompensa li .item_2{
+        width: 220px;
+    }
+    .content_list_first .list_recompensa li .action_patrocinar .ui-btn-text,
+    .content_list_first .list_recompensa li .content_middle p{
+        font-size: 14px;
+        height: 24px;
+        width: 95%;
+    }
+    .content_list_first .list_recompensa li .content_middle p label{
+        display: inline-block;
+        padding-top: 3px;
+    }
+    .content_list_first .list_recompensa li .content_bottom label, 
+    .content_list_first .list_recompensa li .content_bottom span{
+        font-size: 13px;
+    }
+    .content_list_first .list_recompensa h4{
+        font-size: 16px;
+    }
+    .content_list_first .list_recompensa li .content_middle .compartir a{
+        height: 24px;
+        width: 24px;
+    }
+    .content_list_first .list_recompensa li .content_middle .compartir a.tw,
+    .content_list_first .list_recompensa li .content_middle .compartir a.fb{
+        background-size: 24px auto;
+    }
+    .content_list_first .list_recompensa li .content_middle .capa{
+        height: 30px;
+    }
+    .popup_recompensa .container_info .auspiciador_recompensa, 
+    .popup_recompensa .container_info .deportista_patrocinador {
+        width: 82%;
+    }    
+    .popup_recompensa .container_info .deportista_patrocinador .datos .fecha_sorteo{
+        float: right;
+    }
+    .popup_recompensa.pago .popup_footer p span{
+        width: 65%;
+        line-height: 24px;
+    }
+    .popup_recompensa.zoom .popup_header{
+        padding-bottom: 15px;
+    }
+    .popup_recompensa .social_red a{
+        height: 30px;
+        width: 30px;
+    }
+    .popup_recompensa .social_red a.owner_like,
+    .popup_recompensa .social_red a.compartir_tw,
+    .popup_recompensa .social_red a.compartir_fb{
+        background-size: 30px auto;
+    }
+    .popup_recompensa.zoom .container_info .recuadro_foto_zoom {
+        width: 420px;
+    }
+    
+    #view .content_usuarios .recuadro_img{
+        margin-left: 5px;
+        height: 75px;
+        width: 75px;
+    }
+    #view .content_usuarios .recuadro_img img{
+        height: 75px;
+    }
+    #view .content_usuarios p{
+        font-size: 14px;
+    }
+    #register_user .register_option_fb .facebook_registro .ui-icon {
+        left: 20%;
+        border-bottom: 0;
+        display: block;
+    }    
+    #register_user .texto_formulario span,
+    #completar_perfil .texto_formulario span,
+    #completar_perfil_patrocinador .texto_formulario span,
+    #solicitar_patrocinio .texto_formulario span,
+    #solicitar_editar_patrocinio .texto_formulario span{
+        margin: 0 9em;
+    }
+    #registro_finalizado .content_formulario .opciones{
+        margin: 0 7em;
+    }
+    #registro_finalizado .fecha_nacimiento div.ui-input-text{
+        width: 85%;
+    }
+    #registro_finalizado .fecha_nacimiento a.calendario{
+        width: 9%;
+    }
+    
+    #registro_finalizado .texto_formulario span,
+    #patrocinio_registrado .texto_formulario span,
+    #completar_perfil_exitosamente .texto_formulario span{
+        margin: 0 12.5em;
+    }
+    
+    /* HOME - LISTA ACTIVIDAD GENERAL */
+    
+    #lista_actividad_general .title h2{
+        font-size: 25px;
+        padding: 5px 0;
+    }
+    #lista_actividad_general .ui-listview li p.ui-li-desc span.desc{
+        font-size: 13px;
+    }
+    
+    /* RANKING - LISTA POSIBLES GANADORES */
+    
+    #lista_posibles_ganadores .ui-listview li .deporte_ciudad .second{
+        display: inline-block;
+    }
+    #lista_posibles_ganadores .ui-listview li .content_start {
+        margin-left: 12px;
+    }
+    #lista_posibles_ganadores .ui-listview li span.start > a {
+        background-size: 30px auto;
+        height: 29px;
+        width: 32px;
+    }
+    #lista_posibles_ganadores .ui-listview li .action_votar label{
+        padding-top: 6px;
+    }
+    #lista_posibles_ganadores .ui-listview li .info{
+        display: block;
+    }
+    #lista_posibles_ganadores .title h2,
+    #ultimas_entradas_usuario_x h2{
+        font-size: 17px;
+    }
+    
+    /* DEPORTISTAS - LISTA ELITES */
+    
+    #lista_deportistas_elites .content_descripcion,
+    #lista_deportistas_amateurs .content_descripcion{
+        width: 61%;
+    }
+    #lista_deportistas_elites .options a,
+    #lista_deportistas_amateurs .options a{
+        font-size: 24px;
+        padding-left: 1px;
+    }
+    
+    /* EDICION DATOS PERSONALES */
+    
+    #editar_perfil .content_formulario{
+        width: 45%;
+    }
+    
+    /* EDICION DATOS DEPORTIVOS */
+    
+    #proyecto_deportivo .data_user .foto_perfil{
+        width: 24%;
+    }
+    #proyecto_deportivo .data_user .description{
+        width: 73%;
+    }
+    #proyecto_deportivo .data_user .content .necesito_para{
+        margin-top: 0;
+    }
+    #proyecto_deportivo .data_user .content .necesito_para span {
+        white-space: normal;
+        display: inline;
+    }
+    #proyecto_deportivo .info_deportista li {
+        margin-right: 6px;
+        width: 20%;
+    }
+    #proyecto_deportivo .info_deportista li.clasificacion span.text{
+        margin-left: 0;
+    }
+    
+    /* CONFIGURACION DE PRIVACIDAD O ALERTAS */
+    #mis_alertas .content_edicion legend{
+        font-size: 15px;
+    }
+    
+    /* PATROCINIO DEPORTIVO - CREACION  PASO 1,2,3 */
+    
+    #creacion_patrocinio_deportivo_paso3 .lista_fotos li{
+        margin-right: 15px;
+        margin-bottom: 12px;
+        height: 55px;    
+    }
+    #creacion_patrocinio_deportivo_paso3 .lista_fotos li img{
+        height: 55px;
+    }
+    
+    /* RECAUDACION LIQUIDACION */
+    
+    #recaudacion_liquidacion .content_list_first .options a{
+        font-size: 15px;
+    }
+    #recaudacion_liquidacion .content_list_first h3{
+        font-size: 17px;
+    }
+    
+    /* PROMOCIONAR PATROCINIO DEPORTIVO */
+    
+    #promocionar_patrocinio_deportivo .container_options .content_numero{
+        padding-right: 15px;
+    }
+    #mis_recompensas .content_list_first .ui-listview li .info,
+    #ultimas_recompensas .content_list_first .ui-listview li .info{
+        display: block;
+    }
+    #mis_recompensas .ui-li-heading span.titulo,
+    #ultimas_recompensas .ui-li-heading span.titulo{
+        width: 290px;
+    }
+    
+    /* MIS ALBUNES */
+    #mis_albunes .content_list_first .content_album{
+        width: 232px;
+    }
+    #mis_albunes .content_list_first .ui-listview .content_pictures li{
+        height: 75px;
+    }
+    #mis_albunes .content_list_first .content_album .total_fotos{
+        width: 55%;
+        height: 45px;
+    }
+    #mis_albunes .content_list_first .content_album .total_fotos b {
+        font-size: 35px;
+    }
+    #mis_albunes .content_list_first .content_album .nombre_album{
+        padding: 10px 20px 5px;
+        height: 20px;
+    }
+    #mis_albunes .content_list_first .content_album .nombre_album p{
+        font-size: 16px;
+        margin-top: -4px;
+    }
+    
+    /* MIS FOTOS */
+    #mis_fotos .content_list_first a.zoom {
+        background-size: 48px auto;
+        height: 48px;
+        width: 48px;       
+    }
+    #mis_fotos .content_list_first .content_fotos{
+        width: 232px;
+    }
+    #mis_fotos .content_list_first .row_second .first a.zoom {
+        left: 130px;
+        top: 80px;
+    }
+    #mis_fotos .content_list_first .row_second .second a.zoom {
+        left: 50px;
+        top: 80px;
+    }
+    #mis_fotos .content_list_first .row_third a.zoom {
+        top: 25px;
+        left: 95px;
+    }
+    #mis_fotos .content_list_first .row_first .recuadro_foto {
+        width: 232px;
+        height: 132px;
+    }
+    #mis_fotos .content_list_first .row_first a.zoom {
+        left: 94px;
+        top: 42px;
+    }
+    #mis_fotos .content_list_first .row_second .content_fotos.first {
+        width: 320px;
+    }
+    #mis_fotos .content_list_first .row_second .recuadro_foto {
+        height: 215px;
+    }
+    #mis_fotos .content_list_first .row_second .content_fotos.second {
+        width: 144px;
+    }
+    #mis_fotos .content_list_first .row_third .recuadro_foto {
+        width: 232px;
+        height: 100px;
+    }
+    
+    /* MIS VIDEOS */
+    #mis_videos .content_list_first .recuadro_video {
+        width: 232px;
+    }
+    #mis_videos .content_list_first a.zoom {
+        background-size: 48px auto;
+        height: 48px;
+        width: 48px;
+        left: 90px;
+        top: 60px;
+    }
+    
+    /* COMENTARIOS HECHOS */
+    #ultimas_entradas_usuario_x .content_comentario_realizados .lista_comentarios .descripcion_texto {
+        width: 87%;
+    }
+    #ultimas_entradas_usuario_x .content_comentario_realizados .comentar .texto_comentario {
+        width: 72%;
+    }
+}
+
+/* PORTRAIT IPHONE 5 */
+
+@media only screen 
+and (min-height : 568px)
+and (min-width: 320px) 
+and (max-width: 568px) 
+and (-webkit-device-pixel-ratio: 2)
+and (orientation:portrait) 
+{
+    .ui-select .ui-btn-inner span.ui-btn-text > span.error{
+        font-size: 16px;
+    }
+    #view .usuarios-patrocinalos{
+        padding-top: 68%;
+    }
+    #options_register .btn-access{
+        margin-bottom: 120px;
+    }
+    #register_user .ui-content{
+        margin-top: 18px;
+        margin-bottom: 8px;
+    }
+    #register_user .access_login .ui-input-text,
+    #completar_perfil .ui-input-text,
+    #completar_perfil_patrocinador .ui-input-text,
+    #completar_perfil_empresa .ui-input-text,
+    #solicitar_patrocinio .ui-input-text,
+    #solicitar_editar_patrocinio .ui-input-text{
+        margin: 0.35em 0;
+    }
+    #register_user .ui-select,
+    #completar_perfil .ui-select,
+    #completar_perfil_patrocinador .ui-select,
+    #completar_perfil_empresa .ui-select,
+    #solicitar_patrocinio .ui-select,
+    #solicitar_editar_patrocinio .ui-select{
+        margin: 8px 0;
+    }
+    /* TODO */
+    #register_user input.ui-mini, 
+    #register_user .ui-mini input, 
+    #register_user textarea.ui-mini,
+    #completar_perfil input.ui-mini, 
+    #completar_perfil .ui-mini input, 
+    #completar_perfil textarea.ui-mini,
+    #completar_perfil_patrocinador input.ui-mini, 
+    #completar_perfil_patrocinador .ui-mini input, 
+    #completar_perfil_patrocinador textarea.ui-mini,
+    #completar_perfil_empresa input.ui-mini, 
+    #completar_perfil_empresa .ui-mini input, 
+    #completar_perfil_empresa textarea.ui-mini,
+    #solicitar_patrocinio input.ui-mini, 
+    #solicitar_patrocinio .ui-mini input, 
+    #solicitar_patrocinio textarea.ui-mini,
+    #solicitar_editar_patrocinio input.ui-mini, 
+    #solicitar_editar_patrocinio .ui-mini input, 
+    #solicitar_editar_patrocinio textarea.ui-mini{
+        font-size: 16px;
+    }
+    #register_user .ui-select span.ui-btn-text,
+    #completar_perfil .ui-select span.ui-btn-text,
+    #completar_perfil_patrocinador .ui-select span.ui-btn-text,
+    #completar_perfil_empresa .ui-select span.ui-btn-text,
+    #solicitar_patrocinio .ui-select span.ui-btn-text,
+    #solicitar_editar_patrocinio .ui-select span.ui-btn-text{
+        font-size: 16px;
+        margin: 5px 0;
+    }
+    #register_user .texto_formulario,
+    #completar_perfil .texto_formulario,
+    #completar_perfil_patrocinador .texto_formulario,
+    #completar_perfil_empresa .texto_formulario{
+        margin: 20px 0 20px 0;
+    }
+    #register_user label.text_termino{
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    form .ui-input-text span.error {
+        top: 10px;
+    }
+    form .valid_field span.success i{
+        top: 4px;
+    }
+    #completar_perfil .fecha_nacimiento a.calendario,
+    #completar_perfil_patrocinador .fecha_nacimiento a.calendario,
+    #completar_perfil_empresa .fecha_nacimiento a.calendario,
+    #solicitar_patrocinio .fecha_nacimiento a.calendario,
+    #solicitar_editar_patrocinio .fecha_nacimiento a.calendario{
+        background-size: 40px;
+        height: 42px;
+    }
+    /* TODO */
+    
+    #registro_finalizado .ui-content,
+    #patrocinio_registrado .ui-content,
+    #completar_perfil_exitosamente .ui-content{
+        min-height: 410px;
+    }
+    #completar_perfil .btn-access,
+    #completar_perfil_patrocinador .btn-access,
+    #completar_perfil_empresa .btn-access,
+    #recuperar_password .btn-access{
+        min-height: 420px;
+    }
+    #login .ui-content{
+        min-height: 295px;
+    }
+    .ui-panel-position-bottom, .ui-panel-position-top{
+        height: 30em;
+    }
+    
+}
+
+/* LANDSCAPE IPHONE 5 */
+
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 767px)
+and (-webkit-device-pixel-ratio: 2) 
+and (orientation:landscape)
+{
+    .texto_formulario span{
+        margin: 0 11em !important;
+        letter-spacing: 0px;
+    }
+    #view .content_usuarios p{
+        letter-spacing: 0px;
+    }
+    #view .content_usuarios p{
+        font-size: 14px;
+    }
+    #view .background_view {
+        background-position: 50% 45%;
+    }
+    #view .content_usuarios .recuadro_img{
+        margin-left: 12px;
+        height: 85px;
+        width: 85px;
+        margin-bottom: 8px;
+    }
+    #view .content_usuarios .recuadro_img img{
+        height: 85px;
+    }
+    
+    #registro_finalizado .texto_formulario span,
+    #patrocinio_registrado .texto_formulario span,
+    #completar_perfil_exitosamente .texto_formulario span{
+        margin: 0 15.5em  !important;
+    }
+    
+    /* TODO */
+    #register_user input.ui-mini, 
+    #register_user .ui-mini input, 
+    #register_user textarea.ui-mini,
+    #completar_perfil input.ui-mini, 
+    #completar_perfil .ui-mini input, 
+    #completar_perfil textarea.ui-mini,
+    #completar_perfil_patrocinador input.ui-mini, 
+    #completar_perfil_patrocinador .ui-mini input, 
+    #completar_perfil_patrocinador textarea.ui-mini,
+    #completar_perfil_empresa input.ui-mini, 
+    #completar_perfil_empresa .ui-mini input, 
+    #completar_perfil_empresa textarea.ui-mini,
+    #solicitar_patrocinio input.ui-mini, 
+    #solicitar_patrocinio .ui-mini input, 
+    #solicitar_patrocinio textarea.ui-mini,
+    #solicitar_editar_patrocinio input.ui-mini, 
+    #solicitar_editar_patrocinio .ui-mini input, 
+    #solicitar_editar_patrocinio textarea.ui-mini{
+        font-size: 16px;
+    }
+    #register_user .ui-select span.ui-btn-text,
+    #completar_perfil .ui-select span.ui-btn-text,
+    #completar_perfil_patrocinador .ui-select span.ui-btn-text,
+    #completar_perfil_empresa .ui-select span.ui-btn-text,
+    #solicitar_patrocinio .ui-select span.ui-btn-text,
+    #solicitar_editar_patrocinio .ui-select span.ui-btn-text{
+        font-size: 16px;
+        margin: 5px 0;
+    }
+    form .ui-input-text span.error {
+        top: 10px;
+    }
+    form .valid_field span.success i{
+        top: 4px;
+    }
+    #completar_perfil .fecha_nacimiento a.calendario,
+    #completar_perfil_patrocinador .fecha_nacimiento a.calendario,
+    #completar_perfil_empresa .fecha_nacimiento a.calendario,
+    #solicitar_patrocinio .fecha_nacimiento a.calendario,
+    #solicitar_editar_patrocinio .fecha_nacimiento a.calendario{
+        background-size: 40px;
+        height: 42px;
+    }
+    #solicitar_patrocinio .seleccionar_recompensas ul,
+    #solicitar_editar_patrocinio .seleccionar_recompensas ul{
+        width: 83%;
+        margin: 5px auto;
+    }
+    
+    #proyecto_deportivo .data_user .foto_perfil{
+        width: 21%;
+    }
+    #proyecto_deportivo .data_user .description{
+        width: 76%;
+    }    
+    /* TODO */
+}  
+
+/* LANDSCAPE IPHONE 4/4s y 5 */
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+    .ui-panel-position-bottom, .ui-panel-position-top{
+        height: 14.8em;
+    }
+    .ui-btn-submit.facebook_registro .ui-btn-text, 
+    .ui-btn-submit.twitter_registro .ui-btn-text{
+        text-align: center;
+    }
+    #register_user label.text_termino {
+        font-size: 13px;
+    }
+    #completar_perfil .fecha_nacimiento a.calendario,
+    #completar_perfil_patrocinador .fecha_nacimiento a.calendario,
+    #completar_perfil_empresa .fecha_nacimiento a.calendario,
+    #solicitar_patrocinio .fecha_nacimiento a.calendario,
+    #solicitar_editar_patrocinio .fecha_nacimiento a.calendario{
+        width: 8%;
+    }
+    #completar_perfil .fecha_nacimiento div.ui-input-text,
+    #completar_perfil_patrocinador .fecha_nacimiento div.ui-input-text,
+    #completar_perfil_empresa .fecha_nacimiento div.ui-input-text,
+    #solicitar_patrocinio .fecha_nacimiento div.ui-input-text,
+    #solicitar_editar_patrocinio .fecha_nacimiento div.ui-input-text{
+        width: 84% ;
+    }
+    #solicitar_patrocinio span,
+    #solicitar_patrocinio p,
+    #solicitar_editar_patrocinio span,
+    #solicitar_editar_patrocinio p{
+        letter-spacing: 0px;
+    }    
+    #solicitar_patrocinio .seleccionar_recompensas li,
+    #solicitar_editar_patrocinio .seleccionar_recompensas li{
+        width: 126px;
+    }    
+    #solicitar_patrocinio .seleccionar_recompensas .content_recompensa,
+    #solicitar_editar_patrocinio .seleccionar_recompensas .content_recompensa{
+        width: 100px;
+        height: 100px;
+    }
+    #solicitar_patrocinio .seleccionar_recompensas .selected .content_recompensa img.success,
+    #solicitar_editar_patrocinio .seleccionar_recompensas .selected .content_recompensa img.success {
+        height: 25px;
+        width: 28px;
+    }
+    .info_content .right {
+        width: 72%;
+    }
+    .info_content h2.bg_ronda{
+        margin: 0 7.4em 6px 7.4em;
+    }
+    .content_list_two #lista_actividades.ui-listview li .content_descripcion,
+    .content_list_two #lista_actividades_ronda.ui-listview li .content_descripcion{
+        width: 85%;
+    }
+    #solicitan_buscan_patrocinio .list_buscan_patro .ui-listview li .buttons a{
+        width: 44%;
+    }    
+}

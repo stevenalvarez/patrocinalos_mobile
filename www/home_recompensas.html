@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+
+    <div data-role="page" id="home_recompensas" data-theme="c">
+    
+        <div data-role="header" data-tap-toggle="false" data-theme="g" class="header_navigation">
+            <ul>
+                <li class="back">
+                    <div class="left">
+                        <a class="volver" href="#" data-role="button" data-rel="back" data-iconpos="notext">Volver</a>
+                    </div>
+                </li>
+                <li class="page">
+                    <span>RECOMPENSAS</span>
+                </li>
+                <li class="setting">
+                    &nbsp;
+                </li>
+            </ul>
+        </div><!-- /header -->
+    
+    	<div data-role="content">
+            <div class="content_list_two">
+                <ul class="list_buscan_patro list_recompensas" id="recompensas_home">
+                	<li style="display: none;">
+                        <div class="cont_top">
+                            <div class="recorte">
+                                <img src=""/>
+                            </div>
+                            <div class="content_descripcion informacion">
+                                <img src="img/default_avatar.png" class="avatar deportista">
+                                <p>Cons&iacute;guelo patrocinando el proyecto de <a href="#">Rafael pastrana</a></p>
+                                <p class="activo_hasta">Activo hasta <b>31/12/2013</b></p>
+                            </div>
+                        </div>
+                        <div class="cont_bottom">
+                            <a href="#" class="link_profile"><h2>Reloj Nike con GPS</h2></a>
+                            <a href="#" class="link_patrocina"><span>PATROCINAR</span></a>
+                        </div>
+                    </li>
+                    <li style="display: none;">
+                        <div class="cont_top">
+                            <div class="recorte">
+                                <img src=""/>
+                            </div>
+                            <div class="content_descripcion informacion">
+                                <img src="img/default_avatar.png" class="avatar deportista">
+                                <p>Cons&iacute;guelo patrocinando el proyecto de <a href="#">Rafael pastrana</a></p>
+                                <p class="activo_hasta">Activo hasta <b>31/12/2013</b></p>
+                            </div>
+                        </div>
+                        <div class="cont_bottom">
+                            <a href="#" class="link_profile"><h2>Reloj Nike con GPS</h2></a>
+                            <a href="#" class="link_patrocina"><span>PATROCINAR</span></a>
+                        </div>
+                    </li>
+                    <li style="display: none;">
+                        <div class="cont_top">
+                            <div class="recorte">
+                                <img src=""/>
+                            </div>
+                            <div class="content_descripcion informacion">
+                                <img src="img/default_avatar.png" class="avatar deportista">
+                                <p>Cons&iacute;guelo patrocinando el proyecto de <a href="#">Rafael pastrana</a></p>
+                                <p class="activo_hasta">Activo hasta <b>31/12/2013</b></p>
+                            </div>
+                        </div>
+                        <div class="cont_bottom">
+                            <a href="#" class="link_profile"><h2>Reloj Nike con GPS</h2></a>
+                            <a href="#" class="link_patrocina"><span>PATROCINAR</span></a>
+                        </div>
+                    </li>
+                    <li style="display: none;">
+                        <div class="cont_top">
+                            <div class="recorte">
+                                <img src=""/>
+                            </div>
+                            <div class="content_descripcion informacion">
+                                <img src="img/default_avatar.png" class="avatar deportista">
+                                <p>Cons&iacute;guelo patrocinando el proyecto de <a href="#">Rafael pastrana</a></p>
+                                <p class="activo_hasta">Activo hasta <b>31/12/2013</b></p>
+                            </div>
+                        </div>
+                        <div class="cont_bottom">
+                            <a href="#" class="link_profile"><h2>Reloj Nike con GPS</h2></a>
+                            <a href="#" class="link_patrocina"><span>PATROCINAR</span></a>
+                        </div>
+                    </li>
+                    <li style="display: none;">
+                        <div class="cont_top">
+                            <div class="recorte">
+                                <img src=""/>
+                            </div>
+                            <div class="content_descripcion informacion">
+                                <img src="img/default_avatar.png" class="avatar deportista">
+                                <p>Cons&iacute;guelo patrocinando el proyecto de <a href="#">Rafael pastrana</a></p>
+                                <p class="activo_hasta">Activo hasta <b>31/12/2013</b></p>
+                            </div>
+                        </div>
+                        <div class="cont_bottom">
+                            <a href="#" class="link_profile"><h2>Reloj Nike con GPS</h2></a>
+                            <a href="#" class="link_patrocina"><span>PATROCINAR</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    	</div><!-- /content -->
+        
+        <div data-role="footer"  data-tap-toggle="false" data-position="fixed" data-theme="c" class="footer_menu">
+            <a href="#panel_menu" class="icon_menu">
+                <img src="img/bg_list_menu.png"/>
+            </a>
+        </div>
+        
+        <!--contenedor del panel-->
+        <div id="contenedor_panel"></div>
+        
+        <!-- popup's para ver el detalle de las recompensas -->
+        <!-- comienza -->
+        <div data-role="popup" data-theme="c" data-overlay-theme="a">
+            <div data-role="popup" class="popup_recompensa" id="mas_info_recompensa" data-theme="c" class="ui-corner-all" data-overlay-theme="a">
+                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right close">Close</a>
+                <div style="background-color: #C4E2E8;border-radius: 5px;overflow: hidden;">
+                    <div class="popup_header">
+                        <ul>
+                            <li class="first">
+                                <span><b>Recompensa</b></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="lista_recompensas_popup">
+                        <div class="recompensa_item" style="display: none;">
+                            <h2>Ipad &uacute;ltima generaci&oacute;n</h2>
+                            <div class="container_info noborder">
+                                <div class="detalle">
+                                    <div class="recuadro_recompensa left">
+                                        <img class="imagen_recompensa" src="" />
+                                    </div>
+                                    <div class="descripcion left large">
+                                        <p>Se puede leer m&aacute;s de 2800 libros, ver im&aacute;genes o v&iacute;deos en 720p MKV de alta definici&oacute;n a una resoluci&oacute;n de 800x480 p&iacute;xeles.  Este E-Book tiene una memoria interna de 4 GB de flash y tambi&eacute;n incluye un micro lector de tarjetas SD que le permite ampliar sus capacidades de almacenamiento de hasta 32GB.</p>
+                                    </div>
+                                </div>
+                                <div class="fechas_sorteo">
+                                    <div class="fechas left">
+                                        <label>Fecha de participaci&oacute;n: </label>
+                                        <span class="del_al">Del 12 Septiembre 2013 al 31 Diciembre 2013.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popup_footer">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+        <!-- termina -->       
+    
+    </div><!-- /page -->
+    
+    </body>
+</html>
